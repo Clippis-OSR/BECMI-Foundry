@@ -1,4 +1,23 @@
 import { BECMICharacterSheet } from "./module/actors/character-sheet.mjs";
+import { BECMICreatureSheet } from "./module/actors/creature-sheet.mjs";
+
+
+
+const BECMI_CREATURE_SHEET_ID = "becmi-foundry.BECMICreatureSheet";
+const BECMI_CHARACTER_SHEET_ID = "becmi-foundry.BECMICharacterSheet";
+
+const BECMI_CREATURE_DEFAULTS = {
+  combat: {
+    ac: 9,
+    thac0: 19,
+    morale: 8
+  },
+  hp: {
+    value: 1,
+    max: 1,
+    wounds: 0
+  }
+};
 
 const BECMI_CHARACTER_DEFAULTS = {
   details: {
@@ -158,19 +177,57 @@ Hooks.once("init", async function () {
   Actors.unregisterSheet("core", ActorSheet);
 
   Actors.registerSheet("becmi-foundry", BECMICharacterSheet, {
+    label: "BECMI Character Sheet",
     types: ["character"],
+    makeDefault: true
+  });
+
+  Actors.registerSheet("becmi-foundry", BECMICreatureSheet, {
+    label: "BECMI Creature Sheet",
+    types: ["monster", "retainer"],
     makeDefault: true
   });
 });
 
 Hooks.on("preCreateActor", (actor, data, options, userId) => {
-  if (actor.type !== "character") return;
+  if (actor.type === "character") {
+    const existing = actor.system ?? {};
+    const system = foundry.utils.mergeObject(
+      foundry.utils.deepClone(BECMI_CHARACTER_DEFAULTS),
+      existing
+    );
 
-  const existing = actor.system ?? {};
-  const system = foundry.utils.mergeObject(
-    foundry.utils.deepClone(BECMI_CHARACTER_DEFAULTS),
-    existing
-  );
+    actor.updateSource({
+      system,
+      flags: { core: { sheetClass: BECMI_CHARACTER_SHEET_ID } }
+    });
+    return;
+  }
 
-  actor.updateSource({ system });
+  if (actor.type === "monster" || actor.type === "retainer") {
+    const existing = actor.system ?? {};
+    const system = foundry.utils.mergeObject(
+      foundry.utils.deepClone(BECMI_CREATURE_DEFAULTS),
+      existing
+    );
+
+    actor.updateSource({
+      system,
+      flags: { core: { sheetClass: BECMI_CREATURE_SHEET_ID } }
+    });
+  }
+});
+
+Hooks.once("ready", async function () {
+  const updates = game.actors
+    .filter((actor) => actor.type === "monster" || actor.type === "retainer")
+    .filter((actor) => (actor.getFlag("core", "sheetClass") ?? "") !== BECMI_CREATURE_SHEET_ID)
+    .map((actor) => ({
+      _id: actor.id,
+      "flags.core.sheetClass": BECMI_CREATURE_SHEET_ID
+    }));
+
+  if (updates.length) {
+    await Actor.updateDocuments(updates);
+  }
 });

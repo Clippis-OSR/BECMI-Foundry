@@ -101,3 +101,22 @@ export async function rollInitiative(actor) {
     `
   });
 }
+
+
+export async function rollMorale(actor) {
+  const morale = Number(actor.system.combat?.morale ?? 8);
+  const roll = await new Roll("2d6").evaluate();
+  const total = roll.total;
+  const success = total <= morale;
+
+  await roll.toMessage({
+    speaker: ChatMessage.getSpeaker({ actor }),
+    flavor: `
+      <h2>Morale Check</h2>
+      <p><strong>Actor:</strong> ${actor.name}</p>
+      <p><strong>Morale Target:</strong> ${morale}</p>
+      <p><strong>Roll Result:</strong> ${total}</p>
+      <p><strong>Result:</strong> ${success ? "SUCCESS" : "FAILURE"}</p>
+    `
+  });
+}
