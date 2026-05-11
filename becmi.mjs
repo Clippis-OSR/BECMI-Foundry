@@ -1,9 +1,10 @@
 import { BECMICharacterSheet } from "./module/actors/character-sheet.mjs";
 import { BECMICreatureSheet } from "./module/actors/creature-sheet.mjs";
-
+import { BECMICreatureSheetV2 } from "./module/actors/creature-sheet-v2.mjs";
 
 
 const BECMI_CREATURE_SHEET_ID = "becmi-foundry.BECMICreatureSheet";
+const BECMI_CREATURE_SHEET_V2_ID = "becmi-foundry.BECMICreatureSheetV2";
 const BECMI_CHARACTER_SHEET_ID = "becmi-foundry.BECMICharacterSheet";
 
 const BECMI_CREATURE_DEFAULTS = {
@@ -202,6 +203,13 @@ Hooks.once("init", async function () {
     label: "BECMI Monster/Retainer Sheet"
   });
 
+  console.warn("Registering BECMICreatureSheetV2 for creature");
+  Actors.registerSheet("becmi-foundry", BECMICreatureSheetV2, {
+    types: ["creature"],
+    makeDefault: true,
+    label: "BECMI Creature Sheet V2"
+  });
+
   console.warn("BECMI actor types:", game.system.template.Actor);
   console.warn("BECMI registered actor sheets:", CONFIG.Actor.sheetClasses);
 });
@@ -236,7 +244,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
       system,
       flags: {
         core: {
-          sheetClass: BECMI_CREATURE_SHEET_ID
+          sheetClass: actor.type === "creature" ? BECMI_CREATURE_SHEET_V2_ID : BECMI_CREATURE_SHEET_ID
         }
       }
     });
@@ -256,6 +264,11 @@ Hooks.once("ready", async () => {
 
     if ((actor.type === "monster" || actor.type === "retainer") && currentSheet !== BECMI_CREATURE_SHEET_ID) {
       await actor.setFlag("core", "sheetClass", BECMI_CREATURE_SHEET_ID);
+      continue;
+    }
+
+    if (actor.type === "creature" && currentSheet !== BECMI_CREATURE_SHEET_V2_ID) {
+      await actor.setFlag("core", "sheetClass", BECMI_CREATURE_SHEET_V2_ID);
     }
   }
 });
