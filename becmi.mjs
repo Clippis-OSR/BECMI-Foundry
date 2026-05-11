@@ -180,6 +180,11 @@ turnUndead: {
 
 Hooks.once("init", async function () {
   console.log("BECMI Foundry | Init");
+  console.warn("BECMI sheet registration debug", {
+    actorTypes: Object.keys(game.system.documentTypes?.Actor ?? {}),
+    characterSheet: BECMI_CHARACTER_SHEET_ID,
+    creatureSheet: BECMI_CREATURE_SHEET_ID
+  });
 
   Actors.unregisterSheet("core", ActorSheet);
 
@@ -215,7 +220,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
     return;
   }
 
-  if (actor.type === "monster" || actor.type === "retainer") {
+  if (actor.type === "monster" || actor.type === "retainer" || actor.type === "creature") {
     const existing = actor.system ?? {};
     const system = foundry.utils.mergeObject(
       foundry.utils.deepClone(BECMI_CREATURE_DEFAULTS),

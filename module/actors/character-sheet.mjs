@@ -25,8 +25,35 @@ export class BECMICharacterSheet extends ActorSheet {
   }
 
   getData() {
+    if (this.actor?.type !== "character") {
+      console.error("BECMI sheet routing mismatch", {
+        actorName: this.actor?.name,
+        actorType: this.actor?.type,
+        sheetClass: this.constructor.name,
+        template: this.template,
+        system: this.actor?.system
+      });
+
+      return {
+        actor: this.actor,
+        cssClass: this.options.classes?.join(" ") ?? "",
+        editable: this.isEditable,
+        owner: this.actor?.isOwner,
+        limited: this.actor?.limited,
+        title: this.title,
+        system: this.actor?.system ?? {}
+      };
+    }
+
     const context = super.getData();
     context.system = this.actor.system;
+    console.warn("BECMI sheet debug", {
+      actorName: this.actor?.name,
+      actorType: this.actor?.type,
+      sheetClass: this.constructor.name,
+      template: this.template,
+      system: this.actor?.system
+    });
     return context;
   }
 
