@@ -1,6 +1,17 @@
-<form class="{{cssClass}} becmi sheet actor creature-sheet" autocomplete="off">
-  <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
+<form class="{{cssClass}}" autocomplete="off">
+  <h1>{{actor.name}}</h1>
+  <div>BECMI Creature — {{creatureRoleLabel}}</div>
+
+  <div>
+    <label>Creature Role</label>
+    <select name="system.creatureRole">
+      {{#select creatureRole}}
+        <option value="monster">Monster</option>
+        <option value="retainer">Retainer</option>
+        <option value="npc">NPC</option>
+      {{/select}}
+    </select>
+  </div>
 
     <div class="header-fields">
       <h1 class="charname">
@@ -20,31 +31,15 @@
     </div>
   </header>
 
-  <section class="sheet-body">
-    <div class="grid grid-3col">
-      <div class="form-group">
-        <label>HD</label>
-        <input type="text" name="system.hd" value="{{system.hd}}"/>
-      </div>
-      <div class="form-group">
-        <label>HP</label>
-        <input type="number" name="system.hp.value" value="{{system.hp.value}}"/>
-      </div>
-      <div class="form-group">
-        <label>Max HP</label>
-        <input type="number" name="system.hp.max" value="{{system.hp.max}}"/>
-      </div>
-      <div class="form-group">
-        <label>AC</label>
-        <input type="number" name="system.combat.ac" value="{{system.combat.ac}}"/>
-      </div>
-      <div class="form-group">
-        <label>THAC0</label>
-        <input type="number" name="system.thac0" value="{{system.thac0}}"/>
-      </div>
-      <div class="form-group">
-        <label>Morale</label>
-        <input type="number" name="system.combat.morale" value="{{system.combat.morale}}"/>
+    <h3>Attacks</h3>
+    {{#each attacks as |attack index|}}
+      <div class="attack-row">
+        <input type="text" name="system.attacks.{{index}}.name" value="{{attack.name}}" placeholder="Attack name" />
+        <input type="number" name="system.attacks.{{index}}.attackBonus" value="{{attack.attackBonus}}" placeholder="Atk bonus" />
+        <input type="text" name="system.attacks.{{index}}.damage" value="{{attack.damage}}" placeholder="Damage" />
+        <button type="button" data-action="monster-attack-roll" data-attack-index="{{index}}">Attack</button>
+        <button type="button" data-action="monster-damage-roll" data-attack-index="{{index}}">Damage</button>
+        <button type="button" class="remove-attack" data-attack-index="{{index}}">Remove Attack</button>
       </div>
     </div>
 
@@ -72,18 +67,26 @@
       </div>
     </div>
 
-    <h2>Attacks</h2>
-    <div class="attacks-list">
-      {{#each attacks as |attack index|}}
-        <div class="attack-row">
-          <input type="text" name="system.attacks.{{index}}.name" value="{{attack.name}}" placeholder="Attack"/>
-          <input type="number" name="system.attacks.{{index}}.attackBonus" value="{{attack.attackBonus}}" placeholder="Bonus"/>
-          <input type="text" name="system.attacks.{{index}}.damage" value="{{attack.damage}}" placeholder="Damage"/>
-        </div>
-      {{/each}}
+    <div><label>Alignment</label> <input type="text" name="system.details.alignment" value="{{system.details.alignment}}" /></div>
+    <div>
+      <label>Save As Class</label>
+      <select name="system.saveAs.class">
+        {{#select saveAsClass}}
+          <option value="fighter">Fighter</option>
+          <option value="cleric">Cleric</option>
+          <option value="magic-user">Magic-User</option>
+          <option value="thief">Thief</option>
+          <option value="dwarf">Dwarf</option>
+          <option value="elf">Elf</option>
+          <option value="halfling">Halfling</option>
+          <option value="normal-man">Normal Man</option>
+        {{/select}}
+      </select>
     </div>
-
-    <div class="form-group stacked">
+    <div><label>Save As Level</label> <input type="number" name="system.saveAs.level" value="{{saveAsLevel}}" /></div>
+    <div><label>Treasure Type</label> <input type="text" name="system.details.treasureType" value="{{system.details.treasureType}}" /></div>
+    <div><label>XP Value</label> <input type="number" name="system.details.xpValue" value="{{system.details.xpValue}}" /></div>
+    <div>
       <label>Special Notes</label>
       <textarea name="system.specialNotes">{{system.specialNotes}}</textarea>
     </div>
