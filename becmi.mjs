@@ -189,12 +189,12 @@ Hooks.once("init", async function () {
 
   Actors.unregisterSheet("core", ActorSheet);
 
-  console.warn("Registering BECMICharacterSheet for character");
   Actors.registerSheet("becmi-foundry", BECMICharacterSheet, {
     types: ["character"],
     makeDefault: true,
     label: "BECMI Character Sheet"
   });
+  console.log("BECMICharacterSheet registered");
 
   console.warn("Registering BECMICreatureSheet for monster/retainer");
   Actors.registerSheet("becmi-foundry", BECMICreatureSheet, {
@@ -203,12 +203,12 @@ Hooks.once("init", async function () {
     label: "BECMI Monster/Retainer Sheet"
   });
 
-  console.warn("Registering BECMICreatureSheetV2 for creature");
   Actors.registerSheet("becmi-foundry", BECMICreatureSheetV2, {
     types: ["creature"],
     makeDefault: true,
     label: "BECMI Creature Sheet V2"
   });
+  console.log("BECMICreatureSheetV2 registered");
 
   console.warn("BECMI actor types:", game.system.template.Actor);
   console.warn("BECMI registered actor sheets:", CONFIG.Actor.sheetClasses);
