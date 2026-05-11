@@ -1,5 +1,17 @@
 <form class="{{cssClass}}" autocomplete="off">
   <h1>{{actor.name}}</h1>
+  <div>BECMI Creature — {{creatureRoleLabel}}</div>
+
+  <div>
+    <label>Creature Role</label>
+    <select name="system.creatureRole">
+      {{#select creatureRole}}
+        <option value="monster">Monster</option>
+        <option value="retainer">Retainer</option>
+        <option value="npc">NPC</option>
+      {{/select}}
+    </select>
+  </div>
 
   <section>
     <h2>Combat</h2>
