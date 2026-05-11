@@ -31,13 +31,6 @@ export class BECMICreatureSheet extends ActorSheet {
     context.system.specialNotes = system.specialNotes ?? "";
     context.system.saveAs = saveAs;
     context.system.attacks = attacks;
-    console.warn("BECMI sheet debug", {
-      actorName: this.actor?.name,
-      actorType: this.actor?.type,
-      sheetClass: this.constructor.name,
-      template: this.template,
-      system: this.actor?.system
-    });
     return context;
   }
 

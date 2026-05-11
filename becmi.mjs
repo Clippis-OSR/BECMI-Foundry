@@ -195,7 +195,7 @@ Hooks.once("init", async function () {
   });
 
   Actors.registerSheet("becmi-foundry", BECMICreatureSheet, {
-    types: ["monster", "retainer", "creature"],
+    types: ["monster", "retainer"],
     makeDefault: true,
     label: "BECMI Monster/Retainer Sheet"
   });
@@ -249,7 +249,7 @@ Hooks.once("ready", async () => {
       continue;
     }
 
-    if ((actor.type === "monster" || actor.type === "retainer" || actor.type === "creature") && currentSheet !== BECMI_CREATURE_SHEET_ID) {
+    if ((actor.type === "monster" || actor.type === "retainer") && currentSheet !== BECMI_CREATURE_SHEET_ID) {
       await actor.setFlag("core", "sheetClass", BECMI_CREATURE_SHEET_ID);
     }
   }
