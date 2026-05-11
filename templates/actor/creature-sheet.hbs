@@ -21,7 +21,7 @@
     </div>
 
     <h3>Attacks</h3>
-    {{#each system.attacks as |attack index|}}
+    {{#each attacks as |attack index|}}
       <div class="attack-row">
         <input type="text" name="system.attacks.{{index}}.name" value="{{attack.name}}" placeholder="Attack name" />
         <input type="number" name="system.attacks.{{index}}.attackBonus" value="{{attack.attackBonus}}" placeholder="Atk bonus" />
@@ -43,7 +43,7 @@
     <div>
       <label>Save As Class</label>
       <select name="system.saveAs.class">
-        {{#select system.saveAs.class}}
+        {{#select saveAsClass}}
           <option value="fighter">Fighter</option>
           <option value="cleric">Cleric</option>
           <option value="magic-user">Magic-User</option>
@@ -55,7 +55,7 @@
         {{/select}}
       </select>
     </div>
-    <div><label>Save As Level</label> <input type="number" name="system.saveAs.level" value="{{system.saveAs.level}}" /></div>
+    <div><label>Save As Level</label> <input type="number" name="system.saveAs.level" value="{{saveAsLevel}}" /></div>
     <div><label>Treasure Type</label> <input type="text" name="system.details.treasureType" value="{{system.details.treasureType}}" /></div>
     <div><label>XP Value</label> <input type="number" name="system.details.xpValue" value="{{system.details.xpValue}}" /></div>
     <div>
