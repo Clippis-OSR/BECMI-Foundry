@@ -202,13 +202,17 @@
       }
     },
     "monster": {
+      "hd": "1",
+      "thac0": 19,
+      "specialNotes": "",
+      "saveAs": {
+        "class": "fighter",
+        "level": 1
+      },
+      "attacks": [],
       "combat": {
         "ac": 9,
-        "thac0": 19,
-        "hd": "1",
         "movement": "120' (40')",
-        "attacks": "1",
-        "damage": "1d6",
         "morale": 8
       },
       "details": {
@@ -223,13 +227,17 @@
       }
     },
     "retainer": {
+      "hd": "1",
+      "thac0": 19,
+      "specialNotes": "",
+      "saveAs": {
+        "class": "fighter",
+        "level": 1
+      },
+      "attacks": [],
       "combat": {
         "ac": 9,
-        "thac0": 19,
-        "hd": "1",
         "movement": "120' (40')",
-        "attacks": "1",
-        "damage": "1d6",
         "morale": 8
       },
       "details": {

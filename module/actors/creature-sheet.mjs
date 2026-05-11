@@ -19,6 +19,24 @@ export class BECMICreatureSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
     html.find(".roll-morale").click(this._onRollMorale.bind(this));
+    html.find(".add-attack").click(this._onAddAttack.bind(this));
+    html.find(".remove-attack").click(this._onRemoveAttack.bind(this));
+  }
+
+  async _onAddAttack(event) {
+    event.preventDefault();
+    const attacks = foundry.utils.deepClone(this.actor.system.attacks ?? []);
+    attacks.push({ name: "", attackBonus: 0, damage: "" });
+    await this.actor.update({ "system.attacks": attacks });
+  }
+
+  async _onRemoveAttack(event) {
+    event.preventDefault();
+    const index = Number(event.currentTarget.dataset.attackIndex);
+    const attacks = foundry.utils.deepClone(this.actor.system.attacks ?? []);
+    if (!Number.isInteger(index) || index < 0 || index >= attacks.length) return;
+    attacks.splice(index, 1);
+    await this.actor.update({ "system.attacks": attacks });
   }
 
   async _onRollMorale(event) {
