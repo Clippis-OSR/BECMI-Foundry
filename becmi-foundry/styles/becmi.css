@@ -1,0 +1,30 @@
+.becmi.sheet.actor .sheet-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #999;
+}
+
+.becmi.sheet.actor .sheet-tabs .item {
+  padding: 6px 10px;
+  border: 1px solid #999;
+  border-bottom: none;
+  cursor: pointer;
+}
+
+.becmi.sheet.actor .sheet-tabs .item.active {
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.becmi.sheet.actor input {
+  max-width: 120px;
+}
+
+.becmi.sheet.actor textarea {
+  width: 100%;
+}
+
+.becmi.sheet.actor table {
+  width: 100%;
+}

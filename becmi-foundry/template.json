@@ -1,0 +1,106 @@
+{
+  "Actor": {
+    "character": {
+      "details": {
+        "class": "fighter",
+        "alignment": "",
+        "sex": "",
+        "age": "",
+        "level": 1,
+        "xp": 0,
+        "primeReqAdjustment": 0
+      },
+      "abilities": {
+        "str": { "value": 10, "mod": 0 },
+        "int": { "value": 10, "mod": 0 },
+        "wis": { "value": 10, "mod": 0 },
+        "dex": { "value": 10, "mod": 0 },
+        "con": { "value": 10, "mod": 0 },
+        "cha": { "value": 10, "mod": 0 }
+      },
+      "combat": {
+        "ac": 9,
+        "wrestlingRating": 0,
+        "thac0": 19,
+        "initiative": 1
+      },
+      "hp": {
+        "value": 4,
+        "max": 4,
+        "wounds": 0
+      },
+      "saves": {
+        "death": 12,
+        "wands": 13,
+        "paralysis": 14,
+        "breath": 15,
+        "spells": 16
+      },
+      "languages": "",
+      "specialAbilities": "",
+      "weaponMastery": [
+        { "weapon": "", "level": "", "damage": "", "range": "", "defense": "", "special": "" },
+        { "weapon": "", "level": "", "damage": "", "range": "", "defense": "", "special": "" },
+        { "weapon": "", "level": "", "damage": "", "range": "", "defense": "", "special": "" }
+      ],
+      "generalSkills": "",
+      "coinage": {
+        "carried": { "pp": 0, "gp": 0, "ep": 0, "sp": 0, "cp": 0 },
+        "hoard": { "pp": 0, "gp": 0, "ep": 0, "sp": 0, "cp": 0 }
+      },
+      "treasure": "",
+      "encumbrance": {
+        "total": 0,
+        "withoutBackpack": 0,
+        "withoutSacks": 0,
+        "beltPouchAndWorn": 0,
+        "normalSpeed": 120,
+        "encounterSpeed": 40
+      },
+      "containers": {
+        "beltPouch": { "items": "", "enc": 0 },
+        "worn": { "items": "", "enc": 0 },
+        "backpack": { "items": "", "enc": 0 },
+        "sack1": { "items": "", "enc": 0 },
+        "sack2": { "items": "", "enc": 0 }
+      },
+      "thiefSkills": {
+        "openLocks": 0,
+        "findTraps": 0,
+        "removeTraps": 0,
+        "climbWalls": 0,
+        "moveSilently": 0,
+        "hideInShadows": 0,
+        "pickPockets": 0,
+        "hearNoise": 0
+      },
+      "spells": {
+        "magicUser": {
+          "known": { "1": "", "2": "", "3": "", "4": "", "5": "", "6": "" },
+          "slots": { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0 }
+        },
+        "cleric": {
+          "slots": { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0 }
+        },
+        "elf": {
+          "known": { "1": "", "2": "", "3": "", "4": "", "5": "" },
+          "slots": { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0 }
+        }
+      },
+      "turnUndead": {
+        "skeleton": "",
+        "zombie": "",
+        "ghoul": "",
+        "wight": "",
+        "wraith": "",
+        "mummy": "",
+        "spectre": "",
+        "vampire": "",
+        "phantom": "",
+        "haunt": "",
+        "spirit": "",
+        "nightshade": ""
+      }
+    }
+  }
+}
