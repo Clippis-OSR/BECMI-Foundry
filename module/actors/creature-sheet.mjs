@@ -12,7 +12,36 @@ export class BECMICreatureSheet extends ActorSheet {
 
   getData() {
     const context = super.getData();
-    context.system = this.actor.system;
+    const system = this.actor.system ?? {};
+    const attacks = Array.isArray(system.attacks)
+      ? foundry.utils.deepClone(system.attacks)
+      : [];
+    const saveAs = {
+      class: system.saveAs?.class ?? "fighter",
+      level: Number.isFinite(Number(system.saveAs?.level)) ? Number(system.saveAs.level) : 1
+    };
+    const creatureRole = ["monster", "retainer", "npc"].includes(system.creatureRole)
+      ? system.creatureRole
+      : "monster";
+    const creatureRoleLabel = {
+      monster: "Monster",
+      retainer: "Retainer",
+      npc: "NPC"
+    }[creatureRole];
+
+    context.system = system;
+    context.attacks = attacks;
+    context.saveAs = saveAs;
+    context.saveAsClass = saveAs.class;
+    context.saveAsLevel = saveAs.level;
+    context.creatureRole = creatureRole;
+    context.creatureRoleLabel = creatureRoleLabel;
+    context.system.hd = system.hd ?? "1";
+    context.system.thac0 = Number.isFinite(Number(system.thac0)) ? Number(system.thac0) : 19;
+    context.system.specialNotes = system.specialNotes ?? "";
+    context.system.saveAs = saveAs;
+    context.system.attacks = attacks;
+    context.system.creatureRole = creatureRole;
     return context;
   }
 

@@ -16,13 +16,14 @@
     "becmi.mjs"
   ],
   "template": "template.json",
-  "styles": ["styles/becmi.css"],
+  "styles": [
+    "styles/becmi.css"
+  ],
   "languages": [],
   "documentTypes": {
     "Actor": {
       "character": {},
-      "monster": {},
-      "retainer": {}
+      "creature": {}
     },
     "Item": {
       "weapon": {},
