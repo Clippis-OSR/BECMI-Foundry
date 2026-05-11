@@ -85,3 +85,19 @@ export async function rollWeaponAttack(actor, attackIndex) {
     `
   });
 }
+
+export async function rollInitiative(actor) {
+  const modifier = Number(actor.system.combat?.initiative ?? 0);
+
+  const roll = await new Roll(`1d12 + ${modifier}`).evaluate();
+
+  await roll.toMessage({
+    speaker: ChatMessage.getSpeaker({ actor }),
+    flavor: `
+      <h2>Initiative</h2>
+      <p><strong>Roll Type:</strong> 1d12</p>
+      <p><strong>Modifier:</strong> ${modifier >= 0 ? "+" : ""}${modifier}</p>
+      <p><strong>Total:</strong> ${roll.total}</p>
+    `
+  });
+}
