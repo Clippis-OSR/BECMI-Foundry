@@ -1,5 +1,6 @@
 import {
   rollAbilityCheck,
+  rollInitiative,
   rollSavingThrow,
   rollThiefSkill,
   rollWeaponAttack
@@ -36,6 +37,7 @@ export class BECMICharacterSheet extends ActorSheet {
     html.find(".roll-ability").click(this._onRollAbility.bind(this));
     html.find(".roll-thief-skill").click(this._onRollThiefSkill.bind(this));
     html.find(".roll-weapon-attack").click(this._onRollWeaponAttack.bind(this));
+    html.find(".roll-initiative").click(this._onRollInitiative.bind(this));
   }
 
   async _onRollSave(event) {
@@ -74,5 +76,11 @@ export class BECMICharacterSheet extends ActorSheet {
     const index = Number(event.currentTarget.dataset.index);
 
     await rollWeaponAttack(this.actor, index);
+  }
+
+  async _onRollInitiative(event) {
+    event.preventDefault();
+
+    await rollInitiative(this.actor);
   }
 }
