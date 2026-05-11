@@ -7,9 +7,16 @@ const BECMI_CREATURE_SHEET_ID = "becmi-foundry.BECMICreatureSheet";
 const BECMI_CHARACTER_SHEET_ID = "becmi-foundry.BECMICharacterSheet";
 
 const BECMI_CREATURE_DEFAULTS = {
+  hd: "1",
+  thac0: 19,
+  specialNotes: "",
+  saveAs: {
+    class: "fighter",
+    level: 1
+  },
+  attacks: [],
   combat: {
     ac: 9,
-    thac0: 19,
     morale: 8
   },
   hp: {
@@ -176,15 +183,22 @@ Hooks.once("init", async function () {
 
   Actors.unregisterSheet("core", ActorSheet);
 
+  console.warn("Registering BECMICharacterSheet for character");
   Actors.registerSheet("becmi-foundry", BECMICharacterSheet, {
     types: ["character"],
-    makeDefault: true
+    makeDefault: true,
+    label: "BECMI Character Sheet"
   });
 
+  console.warn("Registering BECMICreatureSheet for creature");
   Actors.registerSheet("becmi-foundry", BECMICreatureSheet, {
-    types: ["monster", "retainer"],
-    makeDefault: true
+    types: ["creature"],
+    makeDefault: true,
+    label: "BECMI Creature Sheet"
   });
+
+  console.warn("BECMI actor types:", game.system.template.Actor);
+  console.warn("BECMI registered actor sheets:", CONFIG.Actor.sheetClasses);
 });
 
 Hooks.on("preCreateActor", (actor, data, options, userId) => {
@@ -199,7 +213,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
     return;
   }
 
-  if (actor.type === "monster" || actor.type === "retainer") {
+  if (actor.type === "creature") {
     const existing = actor.system ?? {};
     const system = foundry.utils.mergeObject(
       foundry.utils.deepClone(BECMI_CREATURE_DEFAULTS),
