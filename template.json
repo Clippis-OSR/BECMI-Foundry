@@ -11,12 +11,30 @@
         "primeReqAdjustment": 0
       },
       "abilities": {
-        "str": { "value": 10, "mod": 0 },
-        "int": { "value": 10, "mod": 0 },
-        "wis": { "value": 10, "mod": 0 },
-        "dex": { "value": 10, "mod": 0 },
-        "con": { "value": 10, "mod": 0 },
-        "cha": { "value": 10, "mod": 0 }
+        "str": {
+          "value": 10,
+          "mod": 0
+        },
+        "int": {
+          "value": 10,
+          "mod": 0
+        },
+        "wis": {
+          "value": 10,
+          "mod": 0
+        },
+        "dex": {
+          "value": 10,
+          "mod": 0
+        },
+        "con": {
+          "value": 10,
+          "mod": 0
+        },
+        "cha": {
+          "value": 10,
+          "mod": 0
+        }
       },
       "combat": {
         "ac": 9,
@@ -39,14 +57,47 @@
       "languages": "",
       "specialAbilities": "",
       "weaponMastery": [
-        { "weapon": "", "level": "", "damage": "", "range": "", "defense": "", "special": "" },
-        { "weapon": "", "level": "", "damage": "", "range": "", "defense": "", "special": "" },
-        { "weapon": "", "level": "", "damage": "", "range": "", "defense": "", "special": "" }
+        {
+          "weapon": "",
+          "level": "",
+          "damage": "",
+          "range": "",
+          "defense": "",
+          "special": ""
+        },
+        {
+          "weapon": "",
+          "level": "",
+          "damage": "",
+          "range": "",
+          "defense": "",
+          "special": ""
+        },
+        {
+          "weapon": "",
+          "level": "",
+          "damage": "",
+          "range": "",
+          "defense": "",
+          "special": ""
+        }
       ],
       "generalSkills": "",
       "coinage": {
-        "carried": { "pp": 0, "gp": 0, "ep": 0, "sp": 0, "cp": 0 },
-        "hoard": { "pp": 0, "gp": 0, "ep": 0, "sp": 0, "cp": 0 }
+        "carried": {
+          "pp": 0,
+          "gp": 0,
+          "ep": 0,
+          "sp": 0,
+          "cp": 0
+        },
+        "hoard": {
+          "pp": 0,
+          "gp": 0,
+          "ep": 0,
+          "sp": 0,
+          "cp": 0
+        }
       },
       "treasure": "",
       "encumbrance": {
@@ -58,11 +109,26 @@
         "encounterSpeed": 40
       },
       "containers": {
-        "beltPouch": { "items": "", "enc": 0 },
-        "worn": { "items": "", "enc": 0 },
-        "backpack": { "items": "", "enc": 0 },
-        "sack1": { "items": "", "enc": 0 },
-        "sack2": { "items": "", "enc": 0 }
+        "beltPouch": {
+          "items": "",
+          "enc": 0
+        },
+        "worn": {
+          "items": "",
+          "enc": 0
+        },
+        "backpack": {
+          "items": "",
+          "enc": 0
+        },
+        "sack1": {
+          "items": "",
+          "enc": 0
+        },
+        "sack2": {
+          "items": "",
+          "enc": 0
+        }
       },
       "thiefSkills": {
         "openLocks": 0,
@@ -76,15 +142,48 @@
       },
       "spells": {
         "magicUser": {
-          "known": { "1": "", "2": "", "3": "", "4": "", "5": "", "6": "" },
-          "slots": { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0 }
+          "known": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": ""
+          },
+          "slots": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0
+          }
         },
         "cleric": {
-          "slots": { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0 }
+          "slots": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0,
+            "6": 0
+          }
         },
         "elf": {
-          "known": { "1": "", "2": "", "3": "", "4": "", "5": "" },
-          "slots": { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0 }
+          "known": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": ""
+          },
+          "slots": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0
+          }
         }
       },
       "turnUndead": {
@@ -100,6 +199,30 @@
         "haunt": "",
         "spirit": "",
         "nightshade": ""
+      }
+    },
+    "monster": {
+      "combat": {
+        "ac": 9,
+        "thac0": 19,
+        "morale": 8
+      },
+      "hp": {
+        "value": 1,
+        "max": 1,
+        "wounds": 0
+      }
+    },
+    "retainer": {
+      "combat": {
+        "ac": 9,
+        "thac0": 19,
+        "morale": 8
+      },
+      "hp": {
+        "value": 1,
+        "max": 1,
+        "wounds": 0
       }
     }
   }

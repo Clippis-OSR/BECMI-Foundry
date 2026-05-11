@@ -1,0 +1,30 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <h1>{{actor.name}}</h1>
+
+  <section>
+    <h2>Combat</h2>
+
+    <div>
+      AC:
+      <input type="number" name="system.combat.ac" value="{{system.combat.ac}}" />
+    </div>
+
+    <div>
+      THAC0:
+      <input type="number" name="system.combat.thac0" value="{{system.combat.thac0}}" />
+    </div>
+
+    <div>
+      Morale:
+      <input type="number" name="system.combat.morale" value="{{system.combat.morale}}" />
+      <button type="button" class="roll-morale">Roll Morale</button>
+    </div>
+
+    <div>
+      HP:
+      <input type="number" name="system.hp.value" value="{{system.hp.value}}" />
+      /
+      <input type="number" name="system.hp.max" value="{{system.hp.max}}" />
+    </div>
+  </section>
+</form>
