@@ -13,24 +13,23 @@
     </select>
   </div>
 
-  <section>
-    <h2>Combat</h2>
+    <div class="header-fields">
+      <h1 class="charname">
+        <input name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
+      </h1>
 
-    <div><label>AC</label> <input type="number" name="system.combat.ac" value="{{system.combat.ac}}" /></div>
-    <div><label>THAC0</label> <input type="number" name="system.thac0" value="{{system.thac0}}" /></div>
-    <div><label>HD</label> <input type="text" name="system.hd" value="{{system.hd}}" /></div>
-    <div>
-      <label>HP</label>
-      <input type="number" name="system.hp.value" value="{{system.hp.value}}" />
-      /
-      <input type="number" name="system.hp.max" value="{{system.hp.max}}" />
+      <div class="form-group">
+        <label>Creature Role</label>
+        <select name="system.creatureRole">
+          {{#select creatureRole}}
+            <option value="monster">Monster</option>
+            <option value="retainer">Retainer</option>
+            <option value="npc">NPC</option>
+          {{/select}}
+        </select>
+      </div>
     </div>
-    <div><label>Movement</label> <input type="text" name="system.combat.movement" value="{{system.combat.movement}}" /></div>
-    <div>
-      <label>Morale</label>
-      <input type="number" name="system.combat.morale" value="{{system.combat.morale}}" />
-      <button type="button" class="roll-morale">Roll Morale</button>
-    </div>
+  </header>
 
     <h3>Attacks</h3>
     {{#each attacks as |attack index|}}
@@ -42,14 +41,31 @@
         <button type="button" data-action="monster-damage-roll" data-attack-index="{{index}}">Damage</button>
         <button type="button" class="remove-attack" data-attack-index="{{index}}">Remove Attack</button>
       </div>
-    {{/each}}
-    <div>
-      <button type="button" class="add-attack">Add Attack</button>
     </div>
-  </section>
 
-  <section>
-    <h2>Monster Data</h2>
+    <h2>Save As</h2>
+    <div class="grid grid-2col">
+      <div class="form-group">
+        <label>Class</label>
+        <select name="system.saveAs.class">
+          {{#select saveAsClass}}
+            <option value="fighter">Fighter</option>
+            <option value="cleric">Cleric</option>
+            <option value="magic-user">Magic-User</option>
+            <option value="thief">Thief</option>
+            <option value="dwarf">Dwarf</option>
+            <option value="elf">Elf</option>
+            <option value="halfling">Halfling</option>
+            <option value="normal-man">Normal Man</option>
+          {{/select}}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Level</label>
+        <input type="number" name="system.saveAs.level" value="{{saveAsLevel}}"/>
+      </div>
+    </div>
 
     <div><label>Alignment</label> <input type="text" name="system.details.alignment" value="{{system.details.alignment}}" /></div>
     <div>
