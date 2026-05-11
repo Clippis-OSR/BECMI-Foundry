@@ -1,19 +1,61 @@
 import { rollMonsterAttack, rollMonsterDamage, rollMorale } from "../rolls/becmi-rolls.mjs";
 
 export class BECMICreatureSheet extends ActorSheet {
+  constructor(...args) {
+    super(...args);
+    console.warn("BECMICreatureSheet CONSTRUCTOR FIRED");
+  }
+
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["becmi", "sheet", "actor", "creature"],
       template: "systems/becmi-foundry/templates/actor/creature-sheet.hbs",
-      width: 520,
-      height: 420
+      width: 720,
+      height: 700
     });
   }
 
-  getData() {
-    const context = super.getData();
-    context.system = this.actor.system;
-    return context;
+  getData(options = {}) {
+    console.warn("BECMICreatureSheet getData FIRED");
+    const data = super.getData(options);
+    const system = data.actor?.system ?? {};
+    const attacks = Array.isArray(system.attacks)
+      ? foundry.utils.deepClone(system.attacks)
+      : [];
+    const saveAs = {
+      class: system.saveAs?.class ?? "fighter",
+      level: Number.isFinite(Number(system.saveAs?.level)) ? Number(system.saveAs.level) : 1
+    };
+    const creatureRole = ["monster", "retainer", "npc"].includes(system.creatureRole)
+      ? system.creatureRole
+      : "monster";
+    const creatureRoleLabel = {
+      monster: "Monster",
+      retainer: "Retainer",
+      npc: "NPC"
+    }[creatureRole];
+
+    system.hd = system.hd ?? "1";
+    system.thac0 = Number.isFinite(Number(system.thac0)) ? Number(system.thac0) : 19;
+    system.specialNotes = system.specialNotes ?? "";
+    system.saveAs = saveAs;
+    system.attacks = attacks;
+    system.creatureRole = creatureRole;
+    system.combat = system.combat ?? {};
+    system.combat.ac = Number.isFinite(Number(system.combat.ac)) ? Number(system.combat.ac) : 9;
+    system.combat.morale = Number.isFinite(Number(system.combat.morale)) ? Number(system.combat.morale) : 8;
+    system.hp = system.hp ?? { value: 1, max: 1 };
+
+    return {
+      ...data,
+      system,
+      attacks,
+      saveAs,
+      saveAsClass: saveAs.class,
+      saveAsLevel: saveAs.level,
+      creatureRole,
+      creatureRoleLabel
+    };
   }
 
   activateListeners(html) {
