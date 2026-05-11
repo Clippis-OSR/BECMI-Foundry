@@ -5,8 +5,6 @@ export class BECMICreatureSheet extends ActorSheet {
       template: "systems/becmi-foundry/templates/actor/creature-sheet.hbs",
       width: 720,
       height: 700,
-      submitOnChange: true,
-      closeOnSubmit: false
     });
   }
 
