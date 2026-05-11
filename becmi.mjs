@@ -7,9 +7,16 @@ const BECMI_CREATURE_SHEET_ID = "becmi-foundry.BECMICreatureSheet";
 const BECMI_CHARACTER_SHEET_ID = "becmi-foundry.BECMICharacterSheet";
 
 const BECMI_CREATURE_DEFAULTS = {
+  hd: "1",
+  thac0: 19,
+  specialNotes: "",
+  saveAs: {
+    class: "fighter",
+    level: 1
+  },
+  attacks: [],
   combat: {
     ac: 9,
-    thac0: 19,
     morale: 8
   },
   hp: {
