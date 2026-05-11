@@ -1,4 +1,4 @@
-import { rollMorale } from "../rolls/becmi-rolls.mjs";
+import { rollMonsterAttack, rollMonsterDamage, rollMorale } from "../rolls/becmi-rolls.mjs";
 
 export class BECMICreatureSheet extends ActorSheet {
   static get defaultOptions() {
@@ -21,6 +21,8 @@ export class BECMICreatureSheet extends ActorSheet {
     html.find(".roll-morale").click(this._onRollMorale.bind(this));
     html.find(".add-attack").click(this._onAddAttack.bind(this));
     html.find(".remove-attack").click(this._onRemoveAttack.bind(this));
+    html.find('[data-action="monster-attack-roll"]').click(this._onMonsterAttackRoll.bind(this));
+    html.find('[data-action="monster-damage-roll"]').click(this._onMonsterDamageRoll.bind(this));
   }
 
   async _onAddAttack(event) {
@@ -37,6 +39,33 @@ export class BECMICreatureSheet extends ActorSheet {
     if (!Number.isInteger(index) || index < 0 || index >= attacks.length) return;
     attacks.splice(index, 1);
     await this.actor.update({ "system.attacks": attacks });
+  }
+
+
+  async _onMonsterAttackRoll(event) {
+    event.preventDefault();
+    const index = Number(event.currentTarget.dataset.attackIndex);
+    const attacks = this.actor.system.attacks ?? [];
+
+    if (!Number.isInteger(index) || index < 0 || index >= attacks.length) {
+      ui.notifications.warn("Attack row not found.");
+      return;
+    }
+
+    await rollMonsterAttack(this.actor, attacks[index]);
+  }
+
+  async _onMonsterDamageRoll(event) {
+    event.preventDefault();
+    const index = Number(event.currentTarget.dataset.attackIndex);
+    const attacks = this.actor.system.attacks ?? [];
+
+    if (!Number.isInteger(index) || index < 0 || index >= attacks.length) {
+      ui.notifications.warn("Attack row not found.");
+      return;
+    }
+
+    await rollMonsterDamage(this.actor, attacks[index]);
   }
 
   async _onRollMorale(event) {

@@ -120,3 +120,60 @@ export async function rollMorale(actor) {
     `
   });
 }
+
+
+export async function rollMonsterAttack(actor, attack) {
+  if (!actor || !attack) return;
+
+  const thac0 = Number(actor.system?.thac0 ?? 19);
+  const attackName = (attack.name || "").trim() || "Attack";
+  const attackBonus = Number(attack.attackBonus ?? 0);
+  const formula = attackBonus === 0 ? "1d20" : `1d20 + ${attackBonus}`;
+
+  const roll = await new Roll(formula).evaluate();
+  const total = roll.total;
+  const acHit = thac0 - total;
+
+  await roll.toMessage({
+    speaker: ChatMessage.getSpeaker({ actor }),
+    flavor: `
+      <h2>Monster Attack: ${actor.name} — ${attackName}</h2>
+      <p><strong>Attack:</strong> ${attackName}</p>
+      <p><strong>Formula:</strong> ${formula}</p>
+      <p><strong>Roll Total:</strong> ${total}</p>
+      <p><strong>THAC0:</strong> ${thac0}</p>
+      <p><strong>Attack Bonus:</strong> ${attackBonus >= 0 ? "+" : ""}${attackBonus}</p>
+      <p><strong>AC Hit:</strong> ${acHit}</p>
+    `
+  });
+}
+
+export async function rollMonsterDamage(actor, attack) {
+  if (!actor || !attack) return;
+
+  const attackName = (attack.name || "").trim() || "Attack";
+  const damageFormula = (attack.damage || "").trim();
+
+  if (!damageFormula) {
+    ui.notifications.warn(`No damage formula set for ${attackName}.`);
+    return;
+  }
+
+  let roll;
+  try {
+    roll = await new Roll(damageFormula).evaluate();
+  } catch (error) {
+    ui.notifications.warn(`Invalid damage formula for ${attackName}: ${damageFormula}`);
+    return;
+  }
+
+  await roll.toMessage({
+    speaker: ChatMessage.getSpeaker({ actor }),
+    flavor: `
+      <h2>Monster Damage: ${actor.name} — ${attackName}</h2>
+      <p><strong>Attack:</strong> ${attackName}</p>
+      <p><strong>Damage Formula:</strong> ${damageFormula}</p>
+      <p><strong>Damage Total:</strong> ${roll.total}</p>
+    `
+  });
+}

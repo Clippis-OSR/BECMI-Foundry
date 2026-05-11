@@ -26,6 +26,8 @@
         <input type="text" name="system.attacks.{{index}}.name" value="{{attack.name}}" placeholder="Attack name" />
         <input type="number" name="system.attacks.{{index}}.attackBonus" value="{{attack.attackBonus}}" placeholder="Atk bonus" />
         <input type="text" name="system.attacks.{{index}}.damage" value="{{attack.damage}}" placeholder="Damage" />
+        <button type="button" data-action="monster-attack-roll" data-attack-index="{{index}}">Attack</button>
+        <button type="button" data-action="monster-damage-roll" data-attack-index="{{index}}">Damage</button>
         <button type="button" class="remove-attack" data-attack-index="{{index}}">Remove Attack</button>
       </div>
     {{/each}}
