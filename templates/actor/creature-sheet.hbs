@@ -1,94 +1,38 @@
-<form class="{{cssClass}}" autocomplete="off">
-  <h1>{{actor.name}}</h1>
-  <div>BECMI Creature — {{creatureRoleLabel}}</div>
+<form class="{{cssClass}} becmi sheet actor creature-sheet" autocomplete="off">
+  <h1>BECMI Creature Sheet Loaded</h1>
 
-  <div>
-    <label>Creature Role</label>
-    <select name="system.creatureRole">
-      {{#select creatureRole}}
-        <option value="monster">Monster</option>
-        <option value="retainer">Retainer</option>
-        <option value="npc">NPC</option>
-      {{/select}}
-    </select>
-  </div>
-
-    <div class="header-fields">
-      <h1 class="charname">
-        <input name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
-      </h1>
-
-      <div class="form-group">
-        <label>Creature Role</label>
-        <select name="system.creatureRole">
-          {{#select creatureRole}}
-            <option value="monster">Monster</option>
-            <option value="retainer">Retainer</option>
-            <option value="npc">NPC</option>
-          {{/select}}
-        </select>
-      </div>
-    </div>
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
+    <input name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
   </header>
 
-    <h3>Attacks</h3>
-    {{#each attacks as |attack index|}}
-      <div class="attack-row">
-        <input type="text" name="system.attacks.{{index}}.name" value="{{attack.name}}" placeholder="Attack name" />
-        <input type="number" name="system.attacks.{{index}}.attackBonus" value="{{attack.attackBonus}}" placeholder="Atk bonus" />
-        <input type="text" name="system.attacks.{{index}}.damage" value="{{attack.damage}}" placeholder="Damage" />
-        <button type="button" data-action="monster-attack-roll" data-attack-index="{{index}}">Attack</button>
-        <button type="button" data-action="monster-damage-roll" data-attack-index="{{index}}">Damage</button>
-        <button type="button" class="remove-attack" data-attack-index="{{index}}">Remove Attack</button>
-      </div>
-    </div>
+  <section class="sheet-body">
+    <label>Creature Role</label>
+    <select name="system.creatureRole">
+      <option value="monster">Monster</option>
+      <option value="retainer">Retainer</option>
+      <option value="npc">NPC</option>
+    </select>
 
-    <h2>Save As</h2>
-    <div class="grid grid-2col">
-      <div class="form-group">
-        <label>Class</label>
-        <select name="system.saveAs.class">
-          {{#select saveAsClass}}
-            <option value="fighter">Fighter</option>
-            <option value="cleric">Cleric</option>
-            <option value="magic-user">Magic-User</option>
-            <option value="thief">Thief</option>
-            <option value="dwarf">Dwarf</option>
-            <option value="elf">Elf</option>
-            <option value="halfling">Halfling</option>
-            <option value="normal-man">Normal Man</option>
-          {{/select}}
-        </select>
-      </div>
+    <label>HD</label>
+    <input type="text" name="system.hd" value="{{system.hd}}"/>
 
-      <div class="form-group">
-        <label>Level</label>
-        <input type="number" name="system.saveAs.level" value="{{saveAsLevel}}"/>
-      </div>
-    </div>
+    <label>HP</label>
+    <input type="number" name="system.hp.value" value="{{system.hp.value}}"/>
 
-    <div><label>Alignment</label> <input type="text" name="system.details.alignment" value="{{system.details.alignment}}" /></div>
-    <div>
-      <label>Save As Class</label>
-      <select name="system.saveAs.class">
-        {{#select saveAsClass}}
-          <option value="fighter">Fighter</option>
-          <option value="cleric">Cleric</option>
-          <option value="magic-user">Magic-User</option>
-          <option value="thief">Thief</option>
-          <option value="dwarf">Dwarf</option>
-          <option value="elf">Elf</option>
-          <option value="halfling">Halfling</option>
-          <option value="normal-man">Normal Man</option>
-        {{/select}}
-      </select>
-    </div>
-    <div><label>Save As Level</label> <input type="number" name="system.saveAs.level" value="{{saveAsLevel}}" /></div>
-    <div><label>Treasure Type</label> <input type="text" name="system.details.treasureType" value="{{system.details.treasureType}}" /></div>
-    <div><label>XP Value</label> <input type="number" name="system.details.xpValue" value="{{system.details.xpValue}}" /></div>
-    <div>
-      <label>Special Notes</label>
-      <textarea name="system.specialNotes">{{system.specialNotes}}</textarea>
-    </div>
+    <label>Max HP</label>
+    <input type="number" name="system.hp.max" value="{{system.hp.max}}"/>
+
+    <label>AC</label>
+    <input type="number" name="system.ac" value="{{system.ac}}"/>
+
+    <label>THAC0</label>
+    <input type="number" name="system.thac0" value="{{system.thac0}}"/>
+
+    <label>Morale</label>
+    <input type="number" name="system.morale" value="{{system.morale}}"/>
+
+    <label>Special Notes</label>
+    <textarea name="system.specialNotes">{{system.specialNotes}}</textarea>
   </section>
 </form>
