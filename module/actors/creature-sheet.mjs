@@ -12,9 +12,16 @@ export class BECMICreatureSheet extends ActorSheet {
     console.warn("BECMICreatureSheet getData");
     const data = super.getData(options);
     const system = data.actor?.system ?? {};
+    const creatureRole = system.creatureRole || "monster";
     data.system = system;
     data.attacks = Array.isArray(system.attacks) ? system.attacks : [];
     data.saveAs = system.saveAs ?? { class: "fighter", level: 1 };
+    data.creatureRole = creatureRole;
+    data.creatureRoleSelected = {
+      monster: creatureRole === "monster" ? "selected" : "",
+      retainer: creatureRole === "retainer" ? "selected" : "",
+      npc: creatureRole === "npc" ? "selected" : ""
+    };
     return data;
   }
 
