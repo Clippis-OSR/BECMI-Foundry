@@ -1,12 +1,17 @@
 import { rollMonsterAttack, rollMonsterDamage, rollMorale } from "../rolls/becmi-rolls.mjs";
 
 export class BECMICreatureSheet extends ActorSheet {
+  constructor(...args) {
+    super(...args);
+    console.warn("BECMICreatureSheet CONSTRUCTOR FIRED");
+  }
+
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["becmi", "sheet", "actor", "creature"],
       template: "systems/becmi-foundry/templates/actor/creature-sheet.hbs",
-      width: 520,
-      height: 420
+      width: 720,
+      height: 700
     });
   }
 
