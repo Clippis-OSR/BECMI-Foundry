@@ -12,7 +12,32 @@ export class BECMICreatureSheet extends ActorSheet {
 
   getData() {
     const context = super.getData();
-    context.system = this.actor.system;
+    const system = this.actor.system ?? {};
+    const attacks = Array.isArray(system.attacks)
+      ? foundry.utils.deepClone(system.attacks)
+      : [];
+    const saveAs = {
+      class: system.saveAs?.class ?? "fighter",
+      level: Number.isFinite(Number(system.saveAs?.level)) ? Number(system.saveAs.level) : 1
+    };
+
+    context.system = system;
+    context.attacks = attacks;
+    context.saveAs = saveAs;
+    context.saveAsClass = saveAs.class;
+    context.saveAsLevel = saveAs.level;
+    context.system.hd = system.hd ?? "1";
+    context.system.thac0 = Number.isFinite(Number(system.thac0)) ? Number(system.thac0) : 19;
+    context.system.specialNotes = system.specialNotes ?? "";
+    context.system.saveAs = saveAs;
+    context.system.attacks = attacks;
+    console.warn("BECMI sheet debug", {
+      actorName: this.actor?.name,
+      actorType: this.actor?.type,
+      sheetClass: this.constructor.name,
+      template: this.template,
+      system: this.actor?.system
+    });
     return context;
   }
 
