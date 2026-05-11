@@ -17,4 +17,15 @@ export class BECMICreatureSheet extends ActorSheet {
     data.saveAs = system.saveAs ?? { class: "fighter", level: 1 };
     return data;
   }
+
+  activateListeners(html) {
+    super.activateListeners(html);
+
+    html.find('[data-action="change-creature-role"]').on("change", async (event) => {
+      event.preventDefault();
+      const value = event.currentTarget.value || "monster";
+      await this.actor.update({ "system.creatureRole": value });
+    });
+  }
+
 }
