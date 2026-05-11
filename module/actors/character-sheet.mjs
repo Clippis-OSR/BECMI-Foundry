@@ -47,6 +47,7 @@ export class BECMICharacterSheet extends ActorSheet {
 
     const context = super.getData();
     context.system = this.actor.system;
+    console.log("BECMICharacterSheet getData fired");
     console.warn("BECMI sheet debug", {
       actorName: this.actor?.name,
       actorType: this.actor?.type,

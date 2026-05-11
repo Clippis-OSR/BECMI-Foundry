@@ -6,12 +6,6 @@ export class BECMICreatureSheetV2 extends HandlebarsApplicationMixin(ActorSheetV
     position: {
       width: 720,
       height: 700
-    },
-    tag: "form",
-    form: {
-      handler: BECMICreatureSheetV2.#onSubmit,
-      submitOnChange: true,
-      closeOnSubmit: false
     }
   };
 
@@ -26,15 +20,12 @@ export class BECMICreatureSheetV2 extends HandlebarsApplicationMixin(ActorSheetV
     const actor = this.document;
     const system = actor.system ?? {};
 
-    context.actor = actor;
-    context.system = system;
-    context.attacks = Array.isArray(system.attacks) ? system.attacks : [];
-    context.saveAs = system.saveAs ?? { class: "fighter", level: 1 };
+    console.log("BECMICreatureSheetV2 prepare context fired");
 
-    return context;
-  }
-
-  static async #onSubmit(_event, _form, formData) {
-    return this.document.update(foundry.utils.expandObject(formData.object));
+    return {
+      ...context,
+      actor,
+      system
+    };
   }
 }
