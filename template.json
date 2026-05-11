@@ -205,7 +205,16 @@
       "combat": {
         "ac": 9,
         "thac0": 19,
+        "hd": "1",
+        "movement": "120' (40')",
+        "attacks": "1",
+        "damage": "1d6",
         "morale": 8
+      },
+      "details": {
+        "alignment": "Neutral",
+        "treasureType": "",
+        "xpValue": 0
       },
       "hp": {
         "value": 1,
@@ -217,7 +226,16 @@
       "combat": {
         "ac": 9,
         "thac0": 19,
+        "hd": "1",
+        "movement": "120' (40')",
+        "attacks": "1",
+        "damage": "1d6",
         "morale": 8
+      },
+      "details": {
+        "alignment": "Neutral",
+        "treasureType": "",
+        "xpValue": 0
       },
       "hp": {
         "value": 1,

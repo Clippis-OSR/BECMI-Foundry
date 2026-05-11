@@ -4,27 +4,30 @@
   <section>
     <h2>Combat</h2>
 
+    <div><label>AC</label> <input type="number" name="system.combat.ac" value="{{system.combat.ac}}" /></div>
+    <div><label>THAC0</label> <input type="number" name="system.combat.thac0" value="{{system.combat.thac0}}" /></div>
+    <div><label>HD</label> <input type="text" name="system.combat.hd" value="{{system.combat.hd}}" /></div>
     <div>
-      AC:
-      <input type="number" name="system.combat.ac" value="{{system.combat.ac}}" />
-    </div>
-
-    <div>
-      THAC0:
-      <input type="number" name="system.combat.thac0" value="{{system.combat.thac0}}" />
-    </div>
-
-    <div>
-      Morale:
-      <input type="number" name="system.combat.morale" value="{{system.combat.morale}}" />
-      <button type="button" class="roll-morale">Roll Morale</button>
-    </div>
-
-    <div>
-      HP:
+      <label>HP</label>
       <input type="number" name="system.hp.value" value="{{system.hp.value}}" />
       /
       <input type="number" name="system.hp.max" value="{{system.hp.max}}" />
     </div>
+    <div><label>Movement</label> <input type="text" name="system.combat.movement" value="{{system.combat.movement}}" /></div>
+    <div><label>Attacks</label> <input type="text" name="system.combat.attacks" value="{{system.combat.attacks}}" /></div>
+    <div><label>Damage</label> <input type="text" name="system.combat.damage" value="{{system.combat.damage}}" /></div>
+    <div>
+      <label>Morale</label>
+      <input type="number" name="system.combat.morale" value="{{system.combat.morale}}" />
+      <button type="button" class="roll-morale">Roll Morale</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Monster Data</h2>
+
+    <div><label>Alignment</label> <input type="text" name="system.details.alignment" value="{{system.details.alignment}}" /></div>
+    <div><label>Treasure Type</label> <input type="text" name="system.details.treasureType" value="{{system.details.treasureType}}" /></div>
+    <div><label>XP Value</label> <input type="number" name="system.details.xpValue" value="{{system.details.xpValue}}" /></div>
   </section>
 </form>
