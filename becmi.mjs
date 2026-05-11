@@ -3,6 +3,9 @@ import { BECMICreatureSheet } from "./module/actors/creature-sheet.mjs";
 
 
 
+const BECMI_CREATURE_SHEET_ID = "becmi-foundry.BECMICreatureSheet";
+const BECMI_CHARACTER_SHEET_ID = "becmi-foundry.BECMICharacterSheet";
+
 const BECMI_CREATURE_DEFAULTS = {
   combat: {
     ac: 9,
