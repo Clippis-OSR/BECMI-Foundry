@@ -1,4 +1,20 @@
 import { BECMICharacterSheet } from "./module/actors/character-sheet.mjs";
+import { BECMICreatureSheet } from "./module/actors/creature-sheet.mjs";
+
+
+
+const BECMI_CREATURE_DEFAULTS = {
+  combat: {
+    ac: 9,
+    thac0: 19,
+    morale: 8
+  },
+  hp: {
+    value: 1,
+    max: 1,
+    wounds: 0
+  }
+};
 
 const BECMI_CHARACTER_DEFAULTS = {
   details: {
@@ -161,16 +177,32 @@ Hooks.once("init", async function () {
     types: ["character"],
     makeDefault: true
   });
+
+  Actors.registerSheet("becmi-foundry", BECMICreatureSheet, {
+    types: ["monster", "retainer"],
+    makeDefault: true
+  });
 });
 
 Hooks.on("preCreateActor", (actor, data, options, userId) => {
-  if (actor.type !== "character") return;
+  if (actor.type === "character") {
+    const existing = actor.system ?? {};
+    const system = foundry.utils.mergeObject(
+      foundry.utils.deepClone(BECMI_CHARACTER_DEFAULTS),
+      existing
+    );
 
-  const existing = actor.system ?? {};
-  const system = foundry.utils.mergeObject(
-    foundry.utils.deepClone(BECMI_CHARACTER_DEFAULTS),
-    existing
-  );
+    actor.updateSource({ system });
+    return;
+  }
 
-  actor.updateSource({ system });
+  if (actor.type === "monster" || actor.type === "retainer") {
+    const existing = actor.system ?? {};
+    const system = foundry.utils.mergeObject(
+      foundry.utils.deepClone(BECMI_CREATURE_DEFAULTS),
+      existing
+    );
+
+    actor.updateSource({ system });
+  }
 });
