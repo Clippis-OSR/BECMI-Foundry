@@ -185,12 +185,14 @@ Hooks.once("init", async function () {
 
   Actors.registerSheet("becmi-foundry", BECMICharacterSheet, {
     types: ["character"],
-    makeDefault: true
+    makeDefault: true,
+    label: "BECMI Character Sheet"
   });
 
   Actors.registerSheet("becmi-foundry", BECMICreatureSheet, {
     types: ["monster", "retainer"],
-    makeDefault: true
+    makeDefault: true,
+    label: "BECMI Monster/Retainer Sheet"
   });
 });
 
@@ -202,7 +204,14 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
       existing
     );
 
-    actor.updateSource({ system });
+    actor.updateSource({
+      system,
+      flags: {
+        core: {
+          sheetClass: BECMI_CHARACTER_SHEET_ID
+        }
+      }
+    });
     return;
   }
 
@@ -213,6 +222,30 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
       existing
     );
 
-    actor.updateSource({ system });
+    actor.updateSource({
+      system,
+      flags: {
+        core: {
+          sheetClass: BECMI_CREATURE_SHEET_ID
+        }
+      }
+    });
+  }
+});
+
+Hooks.once("ready", async () => {
+  if (!game.user?.isGM) return;
+
+  for (const actor of game.actors ?? []) {
+    const currentSheet = actor.getFlag("core", "sheetClass");
+
+    if (actor.type === "character" && currentSheet !== BECMI_CHARACTER_SHEET_ID) {
+      await actor.setFlag("core", "sheetClass", BECMI_CHARACTER_SHEET_ID);
+      continue;
+    }
+
+    if ((actor.type === "monster" || actor.type === "retainer") && currentSheet !== BECMI_CREATURE_SHEET_ID) {
+      await actor.setFlag("core", "sheetClass", BECMI_CREATURE_SHEET_ID);
+    }
   }
 });
