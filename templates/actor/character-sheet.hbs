@@ -106,21 +106,6 @@
 </div>
 
 <div>
-  Attack Modifier:
-  <input type="number" name="system.combat.attackModifier" value="{{system.combat.attackModifier}}" />
-</div>
-
-<div>
-  Damage Roll:
-  <input type="text" name="system.combat.damageRoll" value="{{system.combat.damageRoll}}" />
-</div>
-
-<div>
-  Damage Modifier:
-  <input type="number" name="system.combat.damageModifier" value="{{system.combat.damageModifier}}" />
-</div>
-
-<div>
   Wrestling Rating:
   <input type="number" name="system.combat.wrestlingRating" value="{{system.combat.wrestlingRating}}" />
 </div>
@@ -149,32 +134,38 @@
       <th>Attack Mod</th>
       <th>Damage</th>
       <th>Damage Mod</th>
+      <th>Remove</th>
     </tr>
   </thead>
   <tbody>
-    {{#each system.attacks as |attack i|}}
+    {{#each attacks as |attack index|}}
     <tr>
       <td>
-        <button type="button" class="roll-weapon-attack" data-index="{{i}}">
+        <button type="button" class="roll-weapon-attack" data-index="{{index}}">
           Roll
         </button>
       </td>
       <td>
-        <input type="text" name="system.attacks.{{i}}.name" value="{{attack.name}}" />
+        <input type="text" name="attack-name-{{index}}" value="{{attack.name}}" data-action="change-character-attack-field" data-index="{{index}}" data-field="name" />
       </td>
       <td>
-        <input type="number" name="system.attacks.{{i}}.attackModifier" value="{{attack.attackModifier}}" />
+        <input type="number" name="attack-mod-{{index}}" value="{{attack.attackMod}}" data-action="change-character-attack-field" data-index="{{index}}" data-field="attackMod" />
       </td>
       <td>
-        <input type="text" name="system.attacks.{{i}}.damageRoll" value="{{attack.damageRoll}}" />
+        <input type="text" name="attack-damage-{{index}}" value="{{attack.damage}}" data-action="change-character-attack-field" data-index="{{index}}" data-field="damage" />
       </td>
       <td>
-        <input type="number" name="system.attacks.{{i}}.damageModifier" value="{{attack.damageModifier}}" />
+        <input type="number" name="attack-damage-mod-{{index}}" value="{{attack.damageMod}}" data-action="change-character-attack-field" data-index="{{index}}" data-field="damageMod" />
+      </td>
+      <td>
+        <button type="button" data-action="remove-character-attack" data-index="{{index}}">Remove</button>
       </td>
     </tr>
     {{/each}}
   </tbody>
 </table>
+
+<button type="button" data-action="add-character-attack">Add Attack</button>
 
 <hr>
 
