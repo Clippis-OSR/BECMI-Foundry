@@ -53,6 +53,31 @@ export class BECMICreatureSheet extends ActorSheet {
       await this.actor.update({ [input.name]: input.value });
     });
 
+    html.find('[data-action="change-attack-field"]').on("change", async (event) => {
+      event.preventDefault();
+
+      const input = event.currentTarget;
+      const index = Number(input.dataset.index);
+      const field = input.dataset.field;
+
+      if (!Number.isInteger(index) || !field) return;
+
+      const attacks = foundry.utils.deepClone(this.actor.system.attacks || []);
+
+      if (!attacks[index]) return;
+
+      let value = input.value;
+      if (field === "attackBonus") {
+        value = Number(value || 0);
+      }
+
+      attacks[index][field] = value;
+
+      await this.actor.update({
+        "system.attacks": attacks
+      });
+    });
+
     html.find('[data-action="add-attack"]').on("click", async (event) => {
       event.preventDefault();
 
