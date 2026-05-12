@@ -2,6 +2,7 @@
   "id": "elf",
   "name": "Elf",
   "type": "class",
+  "thac0Profile": "fighter",
   "hitDie": "d6",
   "hitDiceMaxLevel": 10,
   "hitPointProgressionAfterMaxLevel": 2,
