@@ -27,7 +27,7 @@ const BECMI_CREATURE_DEFAULTS = {
   ac: 9,
   thac0: 19,
   morale: 7,
-  saveAs: {
+  savesAs: {
     class: "fighter",
     level: 1
   },

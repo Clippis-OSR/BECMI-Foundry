@@ -253,7 +253,8 @@
           "breath": null,
           "spells": null
         },
-        "hitDice": null
+        "hitDice": null,
+        "savesAs": null
       }
     }
   }

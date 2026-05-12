@@ -1,28 +1,17 @@
-import {
-  getActorTHAC0,
-  getActorSaves,
-  actorHasSpellcasting,
-  getSpellSlots,
-  getSpellsKnown,
-  actorHasThiefSkills,
-  getThiefSkills,
-  actorHasTurnUndead,
-  getTurnUndead
-} from "../rules/index.mjs";
+import { getActorTHAC0, getActorSaves } from "../rules/index.mjs";
 
 export class BECMIActor extends Actor {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    if (this.type === "character") {
-      this._prepareCharacterDerivedData();
-    }
+    if (this.type === "character") this._prepareCharacterDerivedData();
 
     if (this.type === "creature" || this.type === "monster" || this.type === "npc") {
-      this._prepareMonsterDerivedData();
+      this._prepareCreatureDerivedData();
     }
 
-    if (game.settings.get("becmi-foundry", "debugDerivedData")) {
+    const debugDerivedData = game?.settings?.get?.("becmi-foundry", "debugDerivedData") ?? false;
+    if (debugDerivedData) {
       console.debug("BECMI derived data prepared", {
         name: this.name,
         type: this.type,
@@ -33,40 +22,41 @@ export class BECMIActor extends Actor {
 
   _prepareCharacterDerivedData() {
     const system = this.system;
-    const classId = system.class;
-    const level = system.level;
 
-    system.derived = system.derived || {};
+    const existingDerived = system.derived ?? {};
+    const calculatedSaves = getActorSaves(this) ?? {};
 
-    system.derived.thac0 = getActorTHAC0(this);
-    system.derived.saves = getActorSaves(this);
-
-    system.derived.hasSpellcasting = actorHasSpellcasting(this);
-    system.derived.hasThiefSkills = actorHasThiefSkills(this);
-    system.derived.hasTurnUndead = actorHasTurnUndead(this);
-
-    if (system.derived.hasSpellcasting) {
-      system.derived.spellSlots = getSpellSlots(classId, level);
-      system.derived.spellsKnown = getSpellsKnown(classId, level);
-    }
-
-    if (system.derived.hasThiefSkills) {
-      system.derived.thiefSkills = getThiefSkills(classId, level);
-    }
-
-    if (system.derived.hasTurnUndead) {
-      system.derived.turnUndead = getTurnUndead(classId, level);
-    }
+    system.derived = {
+      ...existingDerived,
+      thac0: getActorTHAC0(this) ?? null,
+      saves: {
+        death: calculatedSaves.death ?? null,
+        wands: calculatedSaves.wands ?? null,
+        paralysis: calculatedSaves.paralysis ?? null,
+        breath: calculatedSaves.breath ?? null,
+        spells: calculatedSaves.spells ?? null
+      }
+    };
   }
 
-  _prepareMonsterDerivedData() {
+  _prepareCreatureDerivedData() {
     const system = this.system;
-    const hd = system.hd ?? system.hitDice;
 
-    system.derived = system.derived || {};
+    const existingDerived = system.derived ?? {};
+    const calculatedSaves = getActorSaves(this) ?? {};
 
-    system.derived.thac0 = getActorTHAC0(this);
-    system.derived.saves = getActorSaves(this);
-    system.derived.hitDice = hd;
+    system.derived = {
+      ...existingDerived,
+      thac0: getActorTHAC0(this) ?? null,
+      saves: {
+        death: calculatedSaves.death ?? null,
+        wands: calculatedSaves.wands ?? null,
+        paralysis: calculatedSaves.paralysis ?? null,
+        breath: calculatedSaves.breath ?? null,
+        spells: calculatedSaves.spells ?? null
+      },
+      hitDice: system.hd ?? system.hitDice ?? null,
+      savesAs: system.savesAs ?? null
+    };
   }
 }
