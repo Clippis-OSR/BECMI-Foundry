@@ -1,9 +1,9 @@
 import {
   rollAbilityCheck,
+  rollCharacterAttack,
   rollInitiative,
   rollSavingThrow,
-  rollThiefSkill,
-  rollWeaponAttack
+  rollThiefSkill
 } from "../rolls/becmi-rolls.mjs";
 
 export class BECMICharacterSheet extends ActorSheet {
@@ -67,8 +67,24 @@ export class BECMICharacterSheet extends ActorSheet {
     html.find(".roll-save").click(this._onRollSave.bind(this));
     html.find(".roll-ability").click(this._onRollAbility.bind(this));
     html.find(".roll-thief-skill").click(this._onRollThiefSkill.bind(this));
-    html.find(".roll-weapon-attack").click(this._onRollWeaponAttack.bind(this));
     html.find(".roll-initiative").click(this._onRollInitiative.bind(this));
+    html.find('[data-action="roll-character-attack"]').on("click", async (event) => {
+      event.preventDefault();
+
+      const index = Number(event.currentTarget.dataset.index);
+
+      if (!Number.isInteger(index)) return;
+
+      const attacks = Array.isArray(this.actor.system.attacks)
+        ? this.actor.system.attacks
+        : [];
+
+      const attack = attacks[index];
+
+      if (!attack) return;
+
+      await rollCharacterAttack(this.actor, attack);
+    });
 
     html.find('[data-action="add-character-attack"]').on("click", async (event) => {
       event.preventDefault();
@@ -168,14 +184,6 @@ export class BECMICharacterSheet extends ActorSheet {
     const label = button.dataset.label;
 
     await rollThiefSkill(this.actor, skillKey, label);
-  }
-
-  async _onRollWeaponAttack(event) {
-    event.preventDefault();
-
-    const index = Number(event.currentTarget.dataset.index);
-
-    await rollWeaponAttack(this.actor, index);
   }
 
   async _onRollInitiative(event) {
