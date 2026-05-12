@@ -1,8 +1,39 @@
 import { compareHitDiceToBracket, normalizeHitDice } from "./hit-dice.mjs";
+
+function normalizeActorClassIdValue(classId) {
+  if (typeof classId !== "string") return classId;
+  if (classId === "magicUser") return "magic-user";
+  return classId;
+}
+
 function normalizeClassId(classId) {
+  classId = normalizeActorClassIdValue(classId);
   if (typeof classId !== "string") return classId;
   if (classId === "magic-user") return "magicUser";
   return classId;
+}
+
+export function getActorClassId(actor) {
+  const actorSystem = actor?.system ?? {};
+  const classId =
+    actorSystem.class ??
+    actorSystem.classId ??
+    actorSystem.details?.class ??
+    actorSystem.class?.value;
+
+  if (classId === undefined || classId === null || classId === "") return null;
+  return normalizeActorClassIdValue(classId);
+}
+
+export function getActorLevel(actor) {
+  const actorSystem = actor?.system ?? {};
+  const rawLevel = actorSystem.level ?? actorSystem.level?.value ?? actorSystem.details?.level;
+  if (rawLevel === undefined || rawLevel === null || rawLevel === "") return null;
+
+  const numericLevel = Number(rawLevel);
+  if (Number.isFinite(numericLevel)) return numericLevel;
+
+  return String(rawLevel);
 }
 
 export function getClassTable(classId) {

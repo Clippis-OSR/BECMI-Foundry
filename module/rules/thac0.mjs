@@ -1,5 +1,5 @@
 import { compareHitDiceToBracket, normalizeHitDice } from "./hit-dice.mjs";
-import { getClassTable } from "./lookups.mjs";
+import { getActorClassId, getActorLevel, getClassTable } from "./lookups.mjs";
 
 function parseLevelBand(label, index = 0) {
   if (typeof label !== "string") return null;
@@ -129,7 +129,10 @@ export function getActorTHAC0(actor) {
   const actorSystem = actor.system;
 
   if (actorType === "character") {
-    return getCharacterTHAC0(actorSystem?.class, actorSystem?.level);
+    const classId = getActorClassId(actor);
+    const level = getActorLevel(actor);
+    if (classId === null || level === null) return null;
+    return getCharacterTHAC0(classId, level);
   }
 
   if (actorType === "creature" || actorType === "monster" || actorType === "npc") {

@@ -1,7 +1,19 @@
+import { getActorClassId, getActorLevel } from "./lookups.mjs";
+
 function normalizeClassId(classId) {
+  if (classId === "magicUser") classId = "magic-user";
   if (typeof classId !== "string") return classId;
   if (classId === "magic-user") return "magicUser";
   return classId;
+}
+
+function isDebugDerivedDataEnabled() {
+  return game?.settings?.get?.("becmi-foundry", "debugDerivedData") ?? false;
+}
+
+function debugDerivedDataLog(message, data) {
+  if (!isDebugDerivedDataEnabled()) return;
+  console.debug(message, data);
 }
 
 function toNumericValue(value) {
@@ -60,6 +72,14 @@ export function getCharacterSaves(classId, level) {
     );
     return null;
   }
+
+  debugDerivedDataLog("[BECMI] getCharacterSaves resolved.", {
+    detectedClassId: classId,
+    detectedLevel: level,
+    resolvedClassTableId: normalizedClassId,
+    resolvedLevelData: levelData,
+    resolvedSaves: saves
+  });
 
   return saves;
 }
@@ -174,15 +194,32 @@ export function getActorSaves(actor) {
   }
 
   const actorType = actor.type;
-  const actorSystem = actor.system ?? {};
 
   if (actorType === "character") {
-    if (actorSystem.class === undefined || actorSystem.level === undefined) {
-      console.warn("[BECMI] Character actor is missing system.class or system.level for save lookup.");
+    const classId = getActorClassId(actor);
+    const level = getActorLevel(actor);
+
+    const resolvedClassTableId = normalizeClassId(classId);
+    const levelKey = String(level);
+    const resolvedLevelData = CONFIG?.BECMI?.classTables?.[resolvedClassTableId]?.levels?.[levelKey];
+    const resolvedSaves = toSaveObject(resolvedLevelData?.saves);
+
+    debugDerivedDataLog("[BECMI] Character save resolution context.", {
+      actorName: actor.name ?? actor.id ?? "Unknown",
+      actorType,
+      detectedClassId: classId,
+      detectedLevel: level,
+      resolvedClassTableId,
+      resolvedLevelData,
+      resolvedSaves
+    });
+
+    if (classId === null || level === null) {
+      console.warn("[BECMI] Character actor is missing class or level data for save lookup.");
       return null;
     }
 
-    return getCharacterSaves(actorSystem.class, actorSystem.level);
+    return getCharacterSaves(classId, level);
   }
 
   if (actorType === "creature" || actorType === "monster" || actorType === "npc") {

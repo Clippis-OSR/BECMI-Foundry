@@ -1,4 +1,5 @@
 import { getActorTHAC0, getActorSaves } from "../rules/index.mjs";
+import { getActorClassId, getActorLevel } from "../rules/lookups.mjs";
 
 export class BECMIActor extends Actor {
   prepareDerivedData() {
@@ -22,6 +23,8 @@ export class BECMIActor extends Actor {
 
   _prepareCharacterDerivedData() {
     const system = this.system;
+    const classId = getActorClassId(this);
+    const level = getActorLevel(this);
 
     const existingDerived = system.derived ?? {};
     const calculatedSaves = getActorSaves(this) ?? {};
@@ -37,6 +40,16 @@ export class BECMIActor extends Actor {
         spells: calculatedSaves.spells ?? null
       }
     };
+
+    const debugDerivedData = game?.settings?.get?.("becmi-foundry", "debugDerivedData") ?? false;
+    if (debugDerivedData) {
+      console.debug("[BECMI] Character derived inputs.", {
+        actorName: this.name,
+        actorType: this.type,
+        detectedClassId: classId,
+        detectedLevel: level
+      });
+    }
   }
 
   _prepareCreatureDerivedData() {
