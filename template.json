@@ -220,7 +220,12 @@
         "level": 1
       },
       "attacks": [],
-      "specialNotes": ""
+      "specialNotes": "",
+      "movement": "",
+      "alignment": "",
+      "xp": 0,
+      "treasureType": "",
+      "numberAppearing": ""
     }
   }
 }
