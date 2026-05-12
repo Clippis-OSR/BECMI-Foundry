@@ -132,7 +132,7 @@ export function getActorTHAC0(actor) {
     return getCharacterTHAC0(actorSystem?.class, actorSystem?.level);
   }
 
-  if (actorType === "monster" || actorType === "npc") {
+  if (actorType === "creature" || actorType === "monster" || actorType === "npc") {
     return getMonsterTHAC0(actorSystem?.hd ?? actorSystem?.hitDice);
   }
 
