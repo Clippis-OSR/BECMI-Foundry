@@ -1,3 +1,4 @@
+import { BECMIActor } from "./module/actors/becmi-actor.mjs";
 import { BECMICharacterSheet } from "./module/actors/character-sheet.mjs";
 import { BECMICreatureSheet } from "./module/actors/creature-sheet.mjs";
 import { loadClassData, loadMonsterProgression } from "./module/utils/rules-data.mjs";
@@ -34,6 +35,18 @@ Hooks.once("init", async function () {
   CONFIG.BECMI = CONFIG.BECMI || {};
   CONFIG.BECMI.classTables = {};
   CONFIG.BECMI.monsterProgression = {};
+
+  CONFIG.Actor = CONFIG.Actor || {};
+  CONFIG.Actor.documentClass = BECMIActor;
+
+  game.settings.register("becmi-foundry", "debugDerivedData", {
+    name: "Debug Derived Data",
+    hint: "Log BECMI actor derived data preparation to the console.",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: false
+  });
 
   Actors.unregisterSheet("core", ActorSheet);
 
