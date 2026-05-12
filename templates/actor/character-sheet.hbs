@@ -17,8 +17,8 @@
 
 <div class="tab" data-group="primary" data-tab="main">
   <h2>Details</h2>
-  <div>Class: <input type="text" name="system.details.class" value="{{system.details.class}}" /></div>
-  <div>Level: <input type="number" name="system.details.level" value="{{system.details.level}}" /></div>
+  <div>Class: <input type="text" name="system.class" value="{{system.class}}" /></div>
+  <div>Level: <input type="number" name="system.level" value="{{system.level}}" /></div>
   <div>XP: <input type="number" name="system.details.xp" value="{{system.details.xp}}" /></div>
   <div>Alignment: <input type="text" name="system.details.alignment" value="{{system.details.alignment}}" /></div>
 
@@ -96,7 +96,7 @@
 
 <div>
   THAC0:
-  <input type="number" name="system.combat.thac0" value="{{system.combat.thac0}}" />
+  <span>{{system.derived.thac0}}</span>
 </div>
 
 <div>
@@ -211,30 +211,6 @@
   <span>{{system.derived.saves.spells}}</span>
 </div>
 
-<hr>
-<h2>Temporary / Debug Derived Data</h2>
-<div>Derived THAC0: {{system.derived.thac0}}</div>
-<div>Derived Saves:</div>
-<div>Death: {{system.derived.saves.death}}</div>
-<div>Wands: {{system.derived.saves.wands}}</div>
-<div>Paralysis: {{system.derived.saves.paralysis}}</div>
-<div>Breath: {{system.derived.saves.breath}}</div>
-<div>Spells: {{system.derived.saves.spells}}</div>
-
-{{#if system.derived.hasSpellcasting}}
-<div>Spell Slots: {{system.derived.spellSlots}}</div>
-{{/if}}
-
-{{#if system.derived.hasThiefSkills}}
-<div>Thief Skills: {{system.derived.thiefSkills}}</div>
-{{/if}}
-
-{{#if system.derived.hasTurnUndead}}
-<div>Turn Undead: {{system.derived.turnUndead}}</div>
-{{/if}}
-
-<hr>
-
 <h2>Weapon Mastery</h2>
 
 <table>
@@ -288,55 +264,57 @@
   </tbody>
 </table>
 
+    {{#if system.derived.hasThiefSkills}}
     <h2>Thief Skills</h2>
 
 <div>
   <button type="button" class="roll-thief-skill" data-skill="openLocks" data-label="Open Locks">Roll</button>
   Open Locks:
-  <input type="number" name="system.thiefSkills.openLocks" value="{{system.thiefSkills.openLocks}}" /> %
+  <span>{{system.derived.thiefSkills.openLocks}}</span> %
 </div>
 
 <div>
   <button type="button" class="roll-thief-skill" data-skill="findTraps" data-label="Find Traps">Roll</button>
   Find Traps:
-  <input type="number" name="system.thiefSkills.findTraps" value="{{system.thiefSkills.findTraps}}" /> %
+  <span>{{system.derived.thiefSkills.findTraps}}</span> %
 </div>
 
 <div>
   <button type="button" class="roll-thief-skill" data-skill="removeTraps" data-label="Remove Traps">Roll</button>
   Remove Traps:
-  <input type="number" name="system.thiefSkills.removeTraps" value="{{system.thiefSkills.removeTraps}}" /> %
+  <span>{{system.derived.thiefSkills.removeTraps}}</span> %
 </div>
 
 <div>
   <button type="button" class="roll-thief-skill" data-skill="climbWalls" data-label="Climb Walls">Roll</button>
   Climb Walls:
-  <input type="number" name="system.thiefSkills.climbWalls" value="{{system.thiefSkills.climbWalls}}" /> %
+  <span>{{system.derived.thiefSkills.climbWalls}}</span> %
 </div>
 
 <div>
   <button type="button" class="roll-thief-skill" data-skill="moveSilently" data-label="Move Silently">Roll</button>
   Move Silently:
-  <input type="number" name="system.thiefSkills.moveSilently" value="{{system.thiefSkills.moveSilently}}" /> %
+  <span>{{system.derived.thiefSkills.moveSilently}}</span> %
 </div>
 
 <div>
   <button type="button" class="roll-thief-skill" data-skill="hideInShadows" data-label="Hide in Shadows">Roll</button>
   Hide in Shadows:
-  <input type="number" name="system.thiefSkills.hideInShadows" value="{{system.thiefSkills.hideInShadows}}" /> %
+  <span>{{system.derived.thiefSkills.hideInShadows}}</span> %
 </div>
 
 <div>
   <button type="button" class="roll-thief-skill" data-skill="pickPockets" data-label="Pick Pockets">Roll</button>
   Pick Pockets:
-  <input type="number" name="system.thiefSkills.pickPockets" value="{{system.thiefSkills.pickPockets}}" /> %
+  <span>{{system.derived.thiefSkills.pickPockets}}</span> %
 </div>
 
 <div>
   <button type="button" class="roll-thief-skill" data-skill="hearNoise" data-label="Hear Noise">Roll</button>
   Hear Noise:
-  <input type="number" name="system.thiefSkills.hearNoise" value="{{system.thiefSkills.hearNoise}}" /> %
+  <span>{{system.derived.thiefSkills.hearNoise}}</span> %
 </div>
+{{/if}}
 </div>
 
 <div class="tab" data-group="primary" data-tab="equipment">
@@ -438,121 +416,23 @@
 
 </div>
 
+{{#if system.derived.hasSpellcasting}}
 <div class="tab" data-group="primary" data-tab="magic">
 <hr>
 
-<h2>Magic-User Spells</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Spell Level</th>
-      <th>Max Slots</th>
-      <th>Used Slots</th>
-      <th>Known Spells</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each system.spells.magicUser.slots as |slot lvl|}}
-    <tr>
-      <td>{{lvl}}</td>
-      <td>
-        <input type="number" name="system.spells.magicUser.slots.{{lvl}}.max" value="{{slot.max}}" />
-      </td>
-      <td>
-        <input type="number" name="system.spells.magicUser.slots.{{lvl}}.used" value="{{slot.used}}" />
-      </td>
-      <td>
-        <textarea name="system.spells.magicUser.known.{{lvl}}" rows="2">{{lookup ../system.spells.magicUser.known lvl}}</textarea>
-      </td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
-
-<hr>
-
-<h2>Elf Spells</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Spell Level</th>
-      <th>Max Slots</th>
-      <th>Used Slots</th>
-      <th>Known Spells</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each system.spells.elf.slots as |slot lvl|}}
-    <tr>
-      <td>{{lvl}}</td>
-      <td>
-        <input type="number" name="system.spells.elf.slots.{{lvl}}.max" value="{{slot.max}}" />
-      </td>
-      <td>
-        <input type="number" name="system.spells.elf.slots.{{lvl}}.used" value="{{slot.used}}" />
-      </td>
-      <td>
-        <textarea name="system.spells.elf.known.{{lvl}}" rows="2">{{lookup ../system.spells.elf.known lvl}}</textarea>
-      </td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
+<h2>Spell Slots (Derived)</h2>
+<pre>{{system.derived.spellSlots}}</pre>
 </div>
+{{/if}}
 
+{{#if system.derived.hasTurnUndead}}
 <div class="tab" data-group="primary" data-tab="cleric">
 <hr>
 
-<h2>Cleric Spells</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Spell Level</th>
-      <th>Max Slots</th>
-      <th>Used Slots</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each system.spells.cleric.slots as |slot lvl|}}
-    <tr>
-      <td>{{lvl}}</td>
-      <td>
-        <input type="number" name="system.spells.cleric.slots.{{lvl}}.max" value="{{slot.max}}" />
-      </td>
-      <td>
-        <input type="number" name="system.spells.cleric.slots.{{lvl}}.used" value="{{slot.used}}" />
-      </td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
-
-<hr>
-
-<h2>Cleric Turn Undead</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Undead Type</th>
-      <th>Target</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>Skeleton</td><td><input type="text" name="system.turnUndead.skeleton" value="{{system.turnUndead.skeleton}}" /></td></tr>
-    <tr><td>Zombie</td><td><input type="text" name="system.turnUndead.zombie" value="{{system.turnUndead.zombie}}" /></td></tr>
-    <tr><td>Ghoul</td><td><input type="text" name="system.turnUndead.ghoul" value="{{system.turnUndead.ghoul}}" /></td></tr>
-    <tr><td>Wight</td><td><input type="text" name="system.turnUndead.wight" value="{{system.turnUndead.wight}}" /></td></tr>
-    <tr><td>Wraith</td><td><input type="text" name="system.turnUndead.wraith" value="{{system.turnUndead.wraith}}" /></td></tr>
-    <tr><td>Mummy</td><td><input type="text" name="system.turnUndead.mummy" value="{{system.turnUndead.mummy}}" /></td></tr>
-    <tr><td>Spectre</td><td><input type="text" name="system.turnUndead.spectre" value="{{system.turnUndead.spectre}}" /></td></tr>
-    <tr><td>Vampire</td><td><input type="text" name="system.turnUndead.vampire" value="{{system.turnUndead.vampire}}" /></td></tr>
-    <tr><td>Phantom</td><td><input type="text" name="system.turnUndead.phantom" value="{{system.turnUndead.phantom}}" /></td></tr>
-    <tr><td>Haunt</td><td><input type="text" name="system.turnUndead.haunt" value="{{system.turnUndead.haunt}}" /></td></tr>
-    <tr><td>Spirit</td><td><input type="text" name="system.turnUndead.spirit" value="{{system.turnUndead.spirit}}" /></td></tr>
-    <tr><td>Nightshade</td><td><input type="text" name="system.turnUndead.nightshade" value="{{system.turnUndead.nightshade}}" /></td></tr>
-  </tbody>
-</table>
+<h2>Turn Undead (Derived)</h2>
+<pre>{{system.derived.turnUndead}}</pre>
 </div>
+{{/if}}
 
  </section>
 
