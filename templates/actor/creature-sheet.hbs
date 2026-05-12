@@ -81,6 +81,7 @@
     <label>Damage</label>
     <input type="text" name="attack-damage-{{index}}" value="{{attack.damage}}" data-action="change-attack-field" data-index="{{index}}" data-field="damage"/>
 
+    <button type="button" data-action="roll-creature-attack" data-index="{{index}}">Attack</button>
     <button type="button" data-action="remove-attack" data-index="{{index}}">Remove</button>
     {{/each}}
 

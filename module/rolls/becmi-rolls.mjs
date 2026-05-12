@@ -122,6 +122,36 @@ export async function rollMorale(actor) {
 }
 
 
+
+export async function rollCreatureAttack(actor, attack) {
+  if (!actor || !attack) return;
+
+  const attackName = (attack.name || "").trim() || "Attack";
+  const thac0 = Number(actor.system?.thac0 ?? 19);
+  const attackBonus = Number(attack.attackBonus ?? 0);
+  const formula = attackBonus === 0 ? "1d20" : `1d20 + ${attackBonus}`;
+
+  try {
+    const roll = await new Roll(formula).evaluate();
+    const total = roll.total;
+    const acHit = thac0 - total;
+
+    await roll.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor }),
+      flavor: `
+        <h2>${actor.name} — ${attackName}</h2>
+        <p><strong>Roll:</strong> ${total}${attackBonus !== 0 ? ` (${attackBonus >= 0 ? "+" : ""}${attackBonus})` : ""}</p>
+        <p><strong>THAC0:</strong> ${thac0}</p>
+        <p><strong>Attack Bonus:</strong> ${attackBonus >= 0 ? "+" : ""}${attackBonus}</p>
+        <p><strong>AC Hit:</strong> ${acHit}</p>
+      `
+    });
+  } catch (error) {
+    console.error(error);
+    ui.notifications.error(`Failed to roll creature attack for ${attackName}.`);
+  }
+}
+
 export async function rollMonsterAttack(actor, attack) {
   if (!actor || !attack) return;
 
