@@ -73,13 +73,13 @@
 
     {{#each attacks as |attack index|}}
     <label>Attack Name</label>
-    <input type="text" name="system.attacks.{{index}}.name" value="{{attack.name}}" data-action="change-attack-field" data-index="{{index}}" data-field="name"/>
+    <input type="text" name="attack-name-{{index}}" value="{{attack.name}}" data-action="change-attack-field" data-index="{{index}}" data-field="name"/>
 
     <label>Attack Bonus</label>
-    <input type="number" name="system.attacks.{{index}}.attackBonus" value="{{attack.attackBonus}}" data-action="change-attack-field" data-index="{{index}}" data-field="attackBonus"/>
+    <input type="number" name="attack-bonus-{{index}}" value="{{attack.attackBonus}}" data-action="change-attack-field" data-index="{{index}}" data-field="attackBonus"/>
 
     <label>Damage</label>
-    <input type="text" name="system.attacks.{{index}}.damage" value="{{attack.damage}}" data-action="change-attack-field" data-index="{{index}}" data-field="damage"/>
+    <input type="text" name="attack-damage-{{index}}" value="{{attack.damage}}" data-action="change-attack-field" data-index="{{index}}" data-field="damage"/>
 
     <button type="button" data-action="remove-attack" data-index="{{index}}">Remove</button>
     {{/each}}
