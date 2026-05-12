@@ -50,21 +50,27 @@ export class BECMICreatureSheet extends ActorSheet {
     html.find('[data-action="change-creature-field"]').on("change", async (event) => {
       event.preventDefault();
       const input = event.currentTarget;
+      if (input.name?.startsWith("system.attacks.")) return;
       await this.actor.update({ [input.name]: input.value });
     });
 
     html.find('[data-action="change-attack-field"]').on("change", async (event) => {
       event.preventDefault();
+      event.stopPropagation();
 
       const input = event.currentTarget;
       const index = Number(input.dataset.index);
       const field = input.dataset.field;
 
-      if (!Number.isInteger(index) || !field) return;
+      if (!Number.isInteger(index)) return;
+      if (!["name", "attackBonus", "damage"].includes(field)) return;
 
-      const attacks = foundry.utils.deepClone(this.actor.system.attacks || []);
+      const current = this.actor.system.attacks;
+      const attacks = Array.isArray(current) ? foundry.utils.deepClone(current) : [];
 
-      if (!attacks[index]) return;
+      if (!attacks[index]) {
+        attacks[index] = { name: "Attack", attackBonus: 0, damage: "1d6" };
+      }
 
       let value = input.value;
       if (field === "attackBonus") {
@@ -81,7 +87,8 @@ export class BECMICreatureSheet extends ActorSheet {
     html.find('[data-action="add-attack"]').on("click", async (event) => {
       event.preventDefault();
 
-      const attacks = foundry.utils.deepClone(this.actor.system.attacks || []);
+      const current = this.actor.system.attacks;
+      const attacks = Array.isArray(current) ? foundry.utils.deepClone(current) : [];
 
       attacks.push({
         name: "Attack",
@@ -99,7 +106,8 @@ export class BECMICreatureSheet extends ActorSheet {
 
       const index = Number(event.currentTarget.dataset.index);
 
-      const attacks = foundry.utils.deepClone(this.actor.system.attacks || []);
+      const current = this.actor.system.attacks;
+      const attacks = Array.isArray(current) ? foundry.utils.deepClone(current) : [];
 
       attacks.splice(index, 1);
 
