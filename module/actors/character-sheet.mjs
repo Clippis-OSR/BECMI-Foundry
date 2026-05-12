@@ -51,6 +51,25 @@ export class BECMICharacterSheet extends ActorSheet {
     const system = context.system ?? {};
     const attacks = Array.isArray(system.attacks) ? system.attacks : [];
     context.attacks = attacks;
+
+    const derived = system.derived ?? {};
+    const spellSlots = derived.spellSlots;
+    const spellsKnown = derived.spellsKnown;
+
+    context.spellSlotsList = spellSlots && typeof spellSlots === "object" && !Array.isArray(spellSlots)
+      ? Object.entries(spellSlots).map(([level, slots]) => ({ level, slots }))
+      : [];
+
+    context.spellsKnownList = spellsKnown && typeof spellsKnown === "object" && !Array.isArray(spellsKnown)
+      ? Object.entries(spellsKnown).map(([level, known]) => ({ level, known }))
+      : [];
+
+    context.hasSpellsKnownData = context.spellsKnownList.length > 0;
+    const turnUndead = derived.turnUndead;
+    context.turnUndeadList = turnUndead && typeof turnUndead === "object" && !Array.isArray(turnUndead)
+      ? Object.entries(turnUndead).map(([target, score]) => ({ target, score }))
+      : [];
+
     console.warn("BECMICharacterSheet getData");
     console.warn("BECMI sheet debug", {
       actorName: this.actor?.name,

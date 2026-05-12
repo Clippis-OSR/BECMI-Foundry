@@ -430,7 +430,44 @@
 <hr>
 
 <h2>Spell Slots (Derived)</h2>
-<pre>{{system.derived.spellSlots}}</pre>
+<table>
+  <thead>
+    <tr>
+      <th>Spell Level</th>
+      <th>Slots</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each spellSlotsList}}
+    <tr>
+      <td>Level {{this.level}}</td>
+      <td>{{this.slots}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<h2>Spells Known (Derived)</h2>
+{{#if hasSpellsKnownData}}
+<table>
+  <thead>
+    <tr>
+      <th>Spell Level</th>
+      <th>Known</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each spellsKnownList}}
+    <tr>
+      <td>Level {{this.level}}</td>
+      <td>{{this.known}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{else}}
+<p>Spells known are not tracked yet.</p>
+{{/if}}
 </div>
 {{/if}}
 
@@ -439,7 +476,22 @@
 <hr>
 
 <h2>Turn Undead (Derived)</h2>
-<pre>{{system.derived.turnUndead}}</pre>
+<table>
+  <thead>
+    <tr>
+      <th>Target</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each turnUndeadList}}
+    <tr>
+      <td>{{this.target}}</td>
+      <td>{{this.score}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
 </div>
 {{/if}}
 
