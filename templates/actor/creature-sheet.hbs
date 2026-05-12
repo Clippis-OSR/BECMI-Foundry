@@ -17,39 +17,57 @@
     <h2>Core Stats</h2>
 
     <label>HD</label>
-    <input type="text" name="system.hd" value="{{system.hd}}"/>
+    <input type="text" name="system.hd" value="{{system.hd}}" data-action="change-creature-field"/>
 
     <label>HP</label>
-    <input type="number" name="system.hp.value" value="{{system.hp.value}}"/>
+    <input type="number" name="system.hp.value" value="{{system.hp.value}}" data-action="change-creature-field"/>
 
     <label>Max HP</label>
-    <input type="number" name="system.hp.max" value="{{system.hp.max}}"/>
+    <input type="number" name="system.hp.max" value="{{system.hp.max}}" data-action="change-creature-field"/>
 
     <label>AC</label>
-    <input type="number" name="system.ac" value="{{system.ac}}"/>
+    <input type="number" name="system.ac" value="{{system.ac}}" data-action="change-creature-field"/>
 
     <label>THAC0</label>
-    <input type="number" name="system.thac0" value="{{system.thac0}}"/>
+    <input type="number" name="system.thac0" value="{{system.thac0}}" data-action="change-creature-field"/>
 
     <label>Morale</label>
-    <input type="number" name="system.morale" value="{{system.morale}}"/>
+    <input type="number" name="system.morale" value="{{system.morale}}" data-action="change-creature-field"/>
 
     <label>Movement</label>
-    <input type="text" name="system.movement" value="{{system.movement}}"/>
+    <input type="text" name="system.movement" value="{{system.movement}}" data-action="change-creature-field"/>
 
     <label>Alignment</label>
-    <input type="text" name="system.alignment" value="{{system.alignment}}"/>
+    <input type="text" name="system.alignment" value="{{system.alignment}}" data-action="change-creature-field"/>
 
     <label>XP</label>
-    <input type="number" name="system.xp" value="{{system.xp}}"/>
+    <input type="number" name="system.xp" value="{{system.xp}}" data-action="change-creature-field"/>
 
     <label>Treasure Type</label>
-    <input type="text" name="system.treasureType" value="{{system.treasureType}}"/>
+    <input type="text" name="system.treasureType" value="{{system.treasureType}}" data-action="change-creature-field"/>
 
     <label>Number Appearing</label>
-    <input type="text" name="system.numberAppearing" value="{{system.numberAppearing}}"/>
+    <input type="text" name="system.numberAppearing" value="{{system.numberAppearing}}" data-action="change-creature-field"/>
 
     <label>Special Notes</label>
-    <textarea name="system.specialNotes">{{system.specialNotes}}</textarea>
+    <textarea name="system.specialNotes" data-action="change-creature-field">{{system.specialNotes}}</textarea>
+
+    <h2>Save As</h2>
+
+    <label>Class</label>
+    <select name="system.saveAs.class" data-action="change-creature-field">
+      <option value="fighter" {{saveAsClassSelected.fighter}}>Fighter</option>
+      <option value="cleric" {{saveAsClassSelected.cleric}}>Cleric</option>
+      <option value="magic-user" {{saveAsClassSelected.magicUser}}>Magic-User</option>
+      <option value="thief" {{saveAsClassSelected.thief}}>Thief</option>
+      <option value="dwarf" {{saveAsClassSelected.dwarf}}>Dwarf</option>
+      <option value="elf" {{saveAsClassSelected.elf}}>Elf</option>
+      <option value="halfling" {{saveAsClassSelected.halfling}}>Halfling</option>
+      <option value="normal-man" {{saveAsClassSelected.normalMan}}>Normal Man</option>
+    </select>
+
+    <label>Level</label>
+    <input type="number" name="system.saveAs.level" value="{{saveAs.level}}" data-action="change-creature-field"/>
+
   </section>
 </form>
