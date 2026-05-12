@@ -37,3 +37,15 @@ Many values are intentionally `null` placeholders right now, including progressi
 ## Current implementation direction
 
 Use `module/rules` helpers as the canonical rules interface and keep all computed results under `system.derived`, with sheets acting as consumers of those derived fields.
+
+## TODO: class XP progression tables
+
+- TODO: Populate exact BECMI XP thresholds for levels 2+ in:
+  - `data/classes/fighter.json`
+  - `data/classes/cleric.json`
+  - `data/classes/magic-user.json`
+  - `data/classes/thief.json`
+  - `data/classes/dwarf.json`
+  - `data/classes/elf.json`
+  - `data/classes/halfling.json`
+- Current state: levels 2-36 are present with `"xp": null` placeholders because exact per-level source tables were not found in this repository.
