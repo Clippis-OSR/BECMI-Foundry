@@ -18,18 +18,17 @@ export class BECMICreatureSheet extends ActorSheet {
     data.system = system;
     const attacks = Array.isArray(system.attacks) ? system.attacks : [];
     data.attacks = attacks;
-    const saveAs = system.saveAs ?? { class: "fighter", level: 1 };
-    const saveAsClass = saveAs.class || "fighter";
-    data.saveAs = saveAs;
+    const savesAs = system.savesAs ?? system.saveAs ?? { class: "fighter", level: 1 };
+    const savesAsClass = savesAs.class || "fighter";
+    data.savesAs = savesAs;
     data.saveAsClassSelected = {
-      fighter: saveAsClass === "fighter" ? "selected" : "",
-      cleric: saveAsClass === "cleric" ? "selected" : "",
-      magicUser: saveAsClass === "magic-user" ? "selected" : "",
-      thief: saveAsClass === "thief" ? "selected" : "",
-      dwarf: saveAsClass === "dwarf" ? "selected" : "",
-      elf: saveAsClass === "elf" ? "selected" : "",
-      halfling: saveAsClass === "halfling" ? "selected" : "",
-      normalMan: saveAsClass === "normal-man" ? "selected" : ""
+      fighter: savesAsClass === "fighter" ? "selected" : "",
+      cleric: savesAsClass === "cleric" ? "selected" : "",
+      magicUser: savesAsClass === "magic-user" ? "selected" : "",
+      thief: savesAsClass === "thief" ? "selected" : "",
+      dwarf: savesAsClass === "dwarf" ? "selected" : "",
+      elf: savesAsClass === "elf" ? "selected" : "",
+      halfling: savesAsClass === "halfling" ? "selected" : ""
     };
     data.creatureRole = creatureRole;
     data.creatureRoleSelected = {

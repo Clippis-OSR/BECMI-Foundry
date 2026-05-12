@@ -63,8 +63,8 @@
 
     <h2>Save As</h2>
 
-    <label>Class</label>
-    <select name="system.saveAs.class" data-action="change-creature-field">
+    <label>Save As Class</label>
+    <select name="system.savesAs.class" data-action="change-creature-field">
       <option value="fighter" {{saveAsClassSelected.fighter}}>Fighter</option>
       <option value="cleric" {{saveAsClassSelected.cleric}}>Cleric</option>
       <option value="magic-user" {{saveAsClassSelected.magicUser}}>Magic-User</option>
@@ -72,11 +72,10 @@
       <option value="dwarf" {{saveAsClassSelected.dwarf}}>Dwarf</option>
       <option value="elf" {{saveAsClassSelected.elf}}>Elf</option>
       <option value="halfling" {{saveAsClassSelected.halfling}}>Halfling</option>
-      <option value="normal-man" {{saveAsClassSelected.normalMan}}>Normal Man</option>
     </select>
 
-    <label>Level</label>
-    <input type="number" name="system.saveAs.level" value="{{saveAs.level}}" data-action="change-creature-field"/>
+    <label>Save As Level</label>
+    <input type="number" name="system.savesAs.level" value="{{savesAs.level}}" data-action="change-creature-field"/>
 
     <h2>Attacks</h2>
 
