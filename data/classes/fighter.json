@@ -2,6 +2,7 @@
   "id": "fighter",
   "name": "Fighter",
   "type": "class",
+  "thac0Profile": "fighter",
   "hitDie": "d8",
   "primeRequisite": [
     "str"

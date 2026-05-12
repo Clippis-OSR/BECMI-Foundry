@@ -2,6 +2,7 @@
   "id": "halfling",
   "name": "Halfling",
   "type": "class",
+  "thac0Profile": "fighter",
   "hitDie": "d6",
   "hitDiceMaxLevel": 8,
   "hitPointProgressionAfterMaxLevel": 2,

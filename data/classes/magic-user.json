@@ -2,6 +2,7 @@
   "id": "magic-user",
   "name": "Magic-User",
   "type": "class",
+  "thac0Profile": "magic-user",
   "hitDie": "d4",
   "primeRequisite": [
     "int"

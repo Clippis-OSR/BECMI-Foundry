@@ -2,6 +2,7 @@
   "id": "thief",
   "name": "Thief",
   "type": "class",
+  "thac0Profile": "thief",
   "hitDie": "d4",
   "primeRequisite": [
     "dex"

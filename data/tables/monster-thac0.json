@@ -1,0 +1,63 @@
+{
+  "id": "monster-thac0",
+  "name": "Monster THAC0 Progression",
+  "type": "monsterThac0Table",
+  "hitDice": {
+    "0": {
+      "label": "Up to 1",
+      "thac0": 19
+    },
+    "1": {
+      "label": "1+ to 2",
+      "thac0": 18
+    },
+    "2": {
+      "label": "2+ to 3",
+      "thac0": 17
+    },
+    "3": {
+      "label": "3+ to 4",
+      "thac0": 16
+    },
+    "4": {
+      "label": "4+ to 5",
+      "thac0": 15
+    },
+    "5": {
+      "label": "5+ to 6",
+      "thac0": 14
+    },
+    "6": {
+      "label": "6+ to 7",
+      "thac0": 13
+    },
+    "7": {
+      "label": "7+ to 8",
+      "thac0": 12
+    },
+    "8": {
+      "label": "8+ to 9",
+      "thac0": 11
+    },
+    "9": {
+      "label": "9+ to 11",
+      "thac0": 10
+    },
+    "10": {
+      "label": "11+ to 13",
+      "thac0": 9
+    },
+    "11": {
+      "label": "13+ to 15",
+      "thac0": 8
+    },
+    "12": {
+      "label": "15+ to 17",
+      "thac0": 7
+    },
+    "13": {
+      "label": "17+ and up",
+      "thac0": 6
+    }
+  }
+}

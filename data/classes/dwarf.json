@@ -2,6 +2,7 @@
   "id": "dwarf",
   "name": "Dwarf",
   "type": "class",
+  "thac0Profile": "fighter",
   "hitDie": "d8",
   "hitDiceMaxLevel": 12,
   "hitPointProgressionAfterMaxLevel": 3,

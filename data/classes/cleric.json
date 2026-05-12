@@ -2,6 +2,7 @@
   "id": "cleric",
   "name": "Cleric",
   "type": "class",
+  "thac0Profile": "cleric",
   "hitDie": "d6",
   "primeRequisite": [
     "wis"
