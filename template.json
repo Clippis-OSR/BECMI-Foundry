@@ -204,6 +204,23 @@
         "haunt": "",
         "spirit": "",
         "nightshade": ""
+      },
+      "derived": {
+        "thac0": null,
+        "saves": {
+          "death": null,
+          "wands": null,
+          "paralysis": null,
+          "breath": null,
+          "spells": null
+        },
+        "hasSpellcasting": false,
+        "spellSlots": null,
+        "spellsKnown": null,
+        "hasThiefSkills": false,
+        "thiefSkills": null,
+        "hasTurnUndead": false,
+        "turnUndead": null
       }
     },
     "creature": {
@@ -226,7 +243,18 @@
       "alignment": "",
       "xp": 0,
       "treasureType": "",
-      "numberAppearing": ""
+      "numberAppearing": "",
+      "derived": {
+        "thac0": null,
+        "saves": {
+          "death": null,
+          "wands": null,
+          "paralysis": null,
+          "breath": null,
+          "spells": null
+        },
+        "hitDice": null
+      }
     }
   }
 }
