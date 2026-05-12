@@ -13,7 +13,8 @@ export const BECMI_RULES_DATA_PATHS = {
   },
   tables: {
     characterThac0: "systems/becmi-foundry/data/tables/character-thac0.json",
-    monsterThac0: "systems/becmi-foundry/data/tables/monster-thac0.json"
+    monsterThac0: "systems/becmi-foundry/data/tables/monster-thac0.json",
+    monsterSaves: "systems/becmi-foundry/data/tables/monster-saves.json"
   }
 };
 
@@ -51,4 +52,8 @@ export async function loadCharacterTHAC0() {
 
 export async function loadMonsterTHAC0() {
   return await loadJSON(BECMI_RULES_DATA_PATHS.tables.monsterThac0);
+}
+
+export async function loadMonsterSaves() {
+  return await loadJSON(BECMI_RULES_DATA_PATHS.tables.monsterSaves);
 }
