@@ -2,20 +2,24 @@
   "id": "halfling",
   "name": "Halfling",
   "type": "class",
-  "hitDie": null,
-  "primeRequisite": [],
-  "armor": {},
-  "weapons": {},
+  "hitDie": "d6",
+  "hitDiceMaxLevel": 8,
+  "hitPointProgressionAfterMaxLevel": 2,
+  "primeRequisite": [
+    "str",
+    "dex"
+  ],
   "levels": {
     "1": {
       "xp": 0,
+      "title": "Halfling Veteran",
       "thac0": null,
       "saves": {
-        "death": null,
-        "wands": null,
-        "paralysis": null,
-        "breath": null,
-        "spells": null
+        "death": 8,
+        "wands": 9,
+        "paralysis": 10,
+        "breath": 13,
+        "spells": 12
       },
       "features": [],
       "spellcasting": {
@@ -25,109 +29,130 @@
       "turnUndead": null
     },
     "2": {
-      "xp": null
+      "xp": 2000,
+      "title": "Halfling Warrior",
+      "thac0": null,
+      "saves": {
+        "death": 8,
+        "wands": 9,
+        "paralysis": 10,
+        "breath": 13,
+        "spells": 12
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "3": {
-      "xp": null
+      "xp": 4000,
+      "title": "Halfling Swordmaster",
+      "thac0": null,
+      "saves": {
+        "death": 8,
+        "wands": 9,
+        "paralysis": 10,
+        "breath": 13,
+        "spells": 12
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "4": {
-      "xp": null
+      "xp": 8000,
+      "title": "Halfling Hero",
+      "thac0": null,
+      "saves": {
+        "death": 5,
+        "wands": 6,
+        "paralysis": 7,
+        "breath": 9,
+        "spells": 8
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "5": {
-      "xp": null
+      "xp": 16000,
+      "title": "Halfling Swashbuckler",
+      "thac0": null,
+      "saves": {
+        "death": 5,
+        "wands": 6,
+        "paralysis": 7,
+        "breath": 9,
+        "spells": 8
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "6": {
-      "xp": null
+      "xp": 32000,
+      "title": "Halfling Myrmidon",
+      "thac0": null,
+      "saves": {
+        "death": 5,
+        "wands": 6,
+        "paralysis": 7,
+        "breath": 9,
+        "spells": 8
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "7": {
-      "xp": null
+      "xp": 64000,
+      "title": "Halfling Champion",
+      "thac0": null,
+      "saves": {
+        "death": 2,
+        "wands": 3,
+        "paralysis": 4,
+        "breath": 5,
+        "spells": 4
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "8": {
-      "xp": null
-    },
-    "9": {
-      "xp": null
-    },
-    "10": {
-      "xp": null
-    },
-    "11": {
-      "xp": null
-    },
-    "12": {
-      "xp": null
-    },
-    "13": {
-      "xp": null
-    },
-    "14": {
-      "xp": null
-    },
-    "15": {
-      "xp": null
-    },
-    "16": {
-      "xp": null
-    },
-    "17": {
-      "xp": null
-    },
-    "18": {
-      "xp": null
-    },
-    "19": {
-      "xp": null
-    },
-    "20": {
-      "xp": null
-    },
-    "21": {
-      "xp": null
-    },
-    "22": {
-      "xp": null
-    },
-    "23": {
-      "xp": null
-    },
-    "24": {
-      "xp": null
-    },
-    "25": {
-      "xp": null
-    },
-    "26": {
-      "xp": null
-    },
-    "27": {
-      "xp": null
-    },
-    "28": {
-      "xp": null
-    },
-    "29": {
-      "xp": null
-    },
-    "30": {
-      "xp": null
-    },
-    "31": {
-      "xp": null
-    },
-    "32": {
-      "xp": null
-    },
-    "33": {
-      "xp": null
-    },
-    "34": {
-      "xp": null
-    },
-    "35": {
-      "xp": null
-    },
-    "36": {
-      "xp": null
+      "xp": 120000,
+      "title": "Halfling Sheriff",
+      "thac0": null,
+      "saves": {
+        "death": 2,
+        "wands": 3,
+        "paralysis": 4,
+        "breath": 5,
+        "spells": 4
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     }
   }
 }
