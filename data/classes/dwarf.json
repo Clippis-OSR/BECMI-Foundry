@@ -1,0 +1,28 @@
+{
+  "id": "dwarf",
+  "name": "Dwarf",
+  "type": "class",
+  "hitDie": null,
+  "primeRequisite": [],
+  "armor": {},
+  "weapons": {},
+  "levels": {
+    "1": {
+      "xp": 0,
+      "thac0": null,
+      "saves": {
+        "death": null,
+        "wands": null,
+        "paralysis": null,
+        "breath": null,
+        "spells": null
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    }
+  }
+}

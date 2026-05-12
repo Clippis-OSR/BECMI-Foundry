@@ -1,0 +1,45 @@
+{
+  "id": "elf",
+  "name": "Elf",
+  "type": "class",
+  "hitDie": null,
+  "primeRequisite": [],
+  "armor": {},
+  "weapons": {},
+  "levels": {
+    "1": {
+      "xp": 0,
+      "thac0": null,
+      "saves": {
+        "death": null,
+        "wands": null,
+        "paralysis": null,
+        "breath": null,
+        "spells": null
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "arcane",
+        "slots": {
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null,
+          "5": null,
+          "6": null
+        },
+        "spellsKnown": {
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null,
+          "5": null,
+          "6": null
+        }
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    }
+  }
+}
