@@ -1,5 +1,5 @@
 export async function rollSavingThrow(actor, saveKey, label) {
-  const target = Number(actor.system.saves?.[saveKey] ?? 20);
+  const target = Number(actor.system.derived?.saves?.[saveKey] ?? actor.system.saves?.[saveKey] ?? 20);
 
   const roll = await new Roll("1d20").evaluate();
 
