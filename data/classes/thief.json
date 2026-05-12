@@ -201,7 +201,7 @@
     },
     "8": {
       "xp": 80000,
-      "title": "Master Thief",
+      "title": "Thief",
       "thac0": null,
       "saves": {
         "death": 11,
@@ -228,7 +228,7 @@
     },
     "9": {
       "xp": 160000,
-      "title": "Guild Master Thief",
+      "title": "Master Thief",
       "thac0": null,
       "saves": {
         "death": 9,
@@ -255,7 +255,7 @@
     },
     "10": {
       "xp": 280000,
-      "title": "10th Level Thief",
+      "title": "10th Level Master Thief",
       "thac0": null,
       "saves": {
         "death": 9,
@@ -282,7 +282,7 @@
     },
     "11": {
       "xp": 400000,
-      "title": "11th Level Thief",
+      "title": "11th Level Master Thief",
       "thac0": null,
       "saves": {
         "death": 9,
@@ -309,7 +309,7 @@
     },
     "12": {
       "xp": 520000,
-      "title": "12th Level Thief",
+      "title": "12th Level Master Thief",
       "thac0": null,
       "saves": {
         "death": 9,
@@ -336,7 +336,7 @@
     },
     "13": {
       "xp": 640000,
-      "title": "13th Level Thief",
+      "title": "13th Level Master Thief",
       "thac0": null,
       "saves": {
         "death": 7,
@@ -363,7 +363,7 @@
     },
     "14": {
       "xp": 760000,
-      "title": "14th Level Thief",
+      "title": "14th Level Master Thief",
       "thac0": null,
       "saves": {
         "death": 7,
@@ -388,110 +388,599 @@
       },
       "turnUndead": null
     },
-    "2": {
-      "xp": null
-    },
-    "3": {
-      "xp": null
-    },
-    "4": {
-      "xp": null
-    },
-    "5": {
-      "xp": null
-    },
-    "6": {
-      "xp": null
-    },
-    "7": {
-      "xp": null
-    },
-    "8": {
-      "xp": null
-    },
-    "9": {
-      "xp": null
-    },
-    "10": {
-      "xp": null
-    },
-    "11": {
-      "xp": null
-    },
-    "12": {
-      "xp": null
-    },
-    "13": {
-      "xp": null
-    },
-    "14": {
-      "xp": null
-    },
     "15": {
-      "xp": null
+      "xp": 880000,
+      "title": "15th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "16": {
-      "xp": null
+      "xp": 1000000,
+      "title": "16th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "17": {
-      "xp": null
+      "xp": 1120000,
+      "title": "17th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "18": {
-      "xp": null
+      "xp": 1240000,
+      "title": "18th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "19": {
-      "xp": null
+      "xp": 1360000,
+      "title": "19th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "20": {
-      "xp": null
+      "xp": 1480000,
+      "title": "20th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "21": {
-      "xp": null
+      "xp": 1600000,
+      "title": "21th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "22": {
-      "xp": null
+      "xp": 1720000,
+      "title": "22th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "23": {
-      "xp": null
+      "xp": 1840000,
+      "title": "23th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "24": {
-      "xp": null
+      "xp": 1960000,
+      "title": "24th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "25": {
-      "xp": null
+      "xp": 2080000,
+      "title": "25th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "26": {
-      "xp": null
+      "xp": 2200000,
+      "title": "26th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "27": {
-      "xp": null
+      "xp": 2320000,
+      "title": "27th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "28": {
-      "xp": null
+      "xp": 2440000,
+      "title": "28th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "29": {
-      "xp": null
+      "xp": 2560000,
+      "title": "29th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "30": {
-      "xp": null
+      "xp": 2680000,
+      "title": "30th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "31": {
-      "xp": null
+      "xp": 2800000,
+      "title": "31th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "32": {
-      "xp": null
+      "xp": 2920000,
+      "title": "32th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "33": {
-      "xp": null
+      "xp": 3040000,
+      "title": "33th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "34": {
-      "xp": null
+      "xp": 3160000,
+      "title": "34th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "35": {
-      "xp": null
+      "xp": 3280000,
+      "title": "35th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     },
     "36": {
-      "xp": null
+      "xp": 3400000,
+      "title": "36th Level Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
     }
   },
   "hitDiceMaxLevel": 9,

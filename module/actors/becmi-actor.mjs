@@ -18,7 +18,7 @@ export class BECMIActor extends Actor {
       this._prepareCharacterDerivedData();
     }
 
-    if (this.type === "monster" || this.type === "npc") {
+    if (this.type === "creature" || this.type === "monster" || this.type === "npc") {
       this._prepareMonsterDerivedData();
     }
 

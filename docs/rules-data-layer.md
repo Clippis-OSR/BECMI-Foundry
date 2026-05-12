@@ -49,3 +49,13 @@ Use `module/rules` helpers as the canonical rules interface and keep all compute
   - `data/classes/elf.json`
   - `data/classes/halfling.json`
 - Current state: levels 2-36 are present with `"xp": null` placeholders because exact per-level source tables were not found in this repository.
+
+
+### THAC0 source of truth
+
+THAC0 is centralized and must be resolved from table data, not per-level class entries:
+- `data/tables/character-thac0.json` for character progression by profile.
+- `data/tables/monster-thac0.json` for monster progression by HD bracket.
+
+Class level `thac0` fields are retained for backward compatibility and may intentionally be `null`.
+
