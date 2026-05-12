@@ -86,6 +86,40 @@ export async function rollWeaponAttack(actor, attackIndex) {
   });
 }
 
+export async function rollCharacterAttack(actor, attack) {
+  if (!actor || !attack) return;
+
+  const attackName = (attack.name || "").trim() || "Attack";
+  const thac0 = Number(actor.system?.thac0 ?? 19);
+  const attackMod = Number(attack.attackMod ?? 0);
+  const formula = attackMod === 0
+    ? "1d20"
+    : attackMod > 0
+      ? `1d20 + ${attackMod}`
+      : `1d20 - ${Math.abs(attackMod)}`;
+
+  try {
+    const roll = await new Roll(formula).evaluate();
+    const total = roll.total;
+    const acHit = thac0 - total;
+
+    await roll.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor }),
+      flavor: `
+        <h2>${actor.name} — ${attackName}</h2>
+        <p><strong>Formula:</strong> ${formula}</p>
+        <p><strong>Total:</strong> ${total}</p>
+        <p><strong>THAC0:</strong> ${thac0}</p>
+        <p><strong>Attack Modifier:</strong> ${attackMod >= 0 ? "+" : ""}${attackMod}</p>
+        <p><strong>AC Hit:</strong> ${acHit}</p>
+      `
+    });
+  } catch (error) {
+    console.error(error);
+    ui.notifications.error(`Failed to roll attack for ${attackName}.`);
+  }
+}
+
 export async function rollInitiative(actor) {
   const modifier = Number(actor.system.combat?.initiative ?? 0);
 
