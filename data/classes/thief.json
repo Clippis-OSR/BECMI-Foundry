@@ -2,36 +2,392 @@
   "id": "thief",
   "name": "Thief",
   "type": "class",
-  "hitDie": null,
-  "primeRequisite": [],
+  "hitDie": "d4",
+  "primeRequisite": [
+    "dex"
+  ],
   "armor": {},
   "weapons": {},
   "levels": {
     "1": {
       "xp": 0,
+      "title": "Apprentice",
       "thac0": null,
       "saves": {
-        "death": null,
-        "wands": null,
-        "paralysis": null,
-        "breath": null,
-        "spells": null
+        "death": 13,
+        "wands": 14,
+        "paralysis": 13,
+        "breath": 16,
+        "spells": 15
       },
       "features": [],
       "spellcasting": {
         "enabled": false
       },
       "thiefSkills": {
-        "openLocks": null,
-        "findTraps": null,
-        "removeTraps": null,
-        "climbWalls": null,
-        "moveSilently": null,
-        "hideInShadows": null,
-        "pickPockets": null,
-        "hearNoise": null
+        "openLocks": 15,
+        "findTraps": 10,
+        "removeTraps": 10,
+        "climbWalls": 87,
+        "moveSilently": 20,
+        "hideInShadows": 10,
+        "pickPockets": 20,
+        "hearNoise": "1-2"
+      },
+      "turnUndead": null
+    },
+    "2": {
+      "xp": 1200,
+      "title": "Footpad",
+      "thac0": null,
+      "saves": {
+        "death": 13,
+        "wands": 14,
+        "paralysis": 13,
+        "breath": 16,
+        "spells": 15
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 20,
+        "findTraps": 15,
+        "removeTraps": 15,
+        "climbWalls": 88,
+        "moveSilently": 25,
+        "hideInShadows": 15,
+        "pickPockets": 25,
+        "hearNoise": "1-2"
+      },
+      "turnUndead": null
+    },
+    "3": {
+      "xp": 2400,
+      "title": "Robber",
+      "thac0": null,
+      "saves": {
+        "death": 13,
+        "wands": 14,
+        "paralysis": 13,
+        "breath": 16,
+        "spells": 15
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 25,
+        "findTraps": 20,
+        "removeTraps": 20,
+        "climbWalls": 89,
+        "moveSilently": 30,
+        "hideInShadows": 20,
+        "pickPockets": 30,
+        "hearNoise": "1-3"
+      },
+      "turnUndead": null
+    },
+    "4": {
+      "xp": 4800,
+      "title": "Burglar",
+      "thac0": null,
+      "saves": {
+        "death": 13,
+        "wands": 14,
+        "paralysis": 13,
+        "breath": 16,
+        "spells": 15
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 30,
+        "findTraps": 25,
+        "removeTraps": 25,
+        "climbWalls": 90,
+        "moveSilently": 35,
+        "hideInShadows": 25,
+        "pickPockets": 35,
+        "hearNoise": "1-3"
+      },
+      "turnUndead": null
+    },
+    "5": {
+      "xp": 9600,
+      "title": "Cutpurse",
+      "thac0": null,
+      "saves": {
+        "death": 11,
+        "wands": 12,
+        "paralysis": 11,
+        "breath": 14,
+        "spells": 13
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 35,
+        "findTraps": 30,
+        "removeTraps": 30,
+        "climbWalls": 91,
+        "moveSilently": 40,
+        "hideInShadows": 30,
+        "pickPockets": 40,
+        "hearNoise": "1-3"
+      },
+      "turnUndead": null
+    },
+    "6": {
+      "xp": 20000,
+      "title": "Sharper",
+      "thac0": null,
+      "saves": {
+        "death": 11,
+        "wands": 12,
+        "paralysis": 11,
+        "breath": 14,
+        "spells": 13
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 45,
+        "findTraps": 40,
+        "removeTraps": 40,
+        "climbWalls": 92,
+        "moveSilently": 45,
+        "hideInShadows": 35,
+        "pickPockets": 45,
+        "hearNoise": "1-3"
+      },
+      "turnUndead": null
+    },
+    "7": {
+      "xp": 40000,
+      "title": "Pilferer",
+      "thac0": null,
+      "saves": {
+        "death": 11,
+        "wands": 12,
+        "paralysis": 11,
+        "breath": 14,
+        "spells": 13
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 55,
+        "findTraps": 50,
+        "removeTraps": 50,
+        "climbWalls": 93,
+        "moveSilently": 55,
+        "hideInShadows": 45,
+        "pickPockets": 55,
+        "hearNoise": "1-4"
+      },
+      "turnUndead": null
+    },
+    "8": {
+      "xp": 80000,
+      "title": "Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 11,
+        "wands": 12,
+        "paralysis": 11,
+        "breath": 14,
+        "spells": 13
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 65,
+        "findTraps": 60,
+        "removeTraps": 60,
+        "climbWalls": 94,
+        "moveSilently": 65,
+        "hideInShadows": 55,
+        "pickPockets": 65,
+        "hearNoise": "1-4"
+      },
+      "turnUndead": null
+    },
+    "9": {
+      "xp": 160000,
+      "title": "Guild Master Thief",
+      "thac0": null,
+      "saves": {
+        "death": 9,
+        "wands": 10,
+        "paralysis": 9,
+        "breath": 12,
+        "spells": 11
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 75,
+        "findTraps": 70,
+        "removeTraps": 70,
+        "climbWalls": 95,
+        "moveSilently": 75,
+        "hideInShadows": 65,
+        "pickPockets": 75,
+        "hearNoise": "1-4"
+      },
+      "turnUndead": null
+    },
+    "10": {
+      "xp": 280000,
+      "title": "10th Level Thief",
+      "thac0": null,
+      "saves": {
+        "death": 9,
+        "wands": 10,
+        "paralysis": 9,
+        "breath": 12,
+        "spells": 11
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 85,
+        "findTraps": 80,
+        "removeTraps": 80,
+        "climbWalls": 96,
+        "moveSilently": 85,
+        "hideInShadows": 75,
+        "pickPockets": 85,
+        "hearNoise": "1-4"
+      },
+      "turnUndead": null
+    },
+    "11": {
+      "xp": 400000,
+      "title": "11th Level Thief",
+      "thac0": null,
+      "saves": {
+        "death": 9,
+        "wands": 10,
+        "paralysis": 9,
+        "breath": 12,
+        "spells": 11
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 95,
+        "findTraps": 90,
+        "removeTraps": 90,
+        "climbWalls": 97,
+        "moveSilently": 95,
+        "hideInShadows": 85,
+        "pickPockets": 95,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
+    },
+    "12": {
+      "xp": 520000,
+      "title": "12th Level Thief",
+      "thac0": null,
+      "saves": {
+        "death": 9,
+        "wands": 10,
+        "paralysis": 9,
+        "breath": 12,
+        "spells": 11
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 96,
+        "findTraps": 95,
+        "removeTraps": 95,
+        "climbWalls": 98,
+        "moveSilently": 96,
+        "hideInShadows": 90,
+        "pickPockets": 105,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
+    },
+    "13": {
+      "xp": 640000,
+      "title": "13th Level Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 97,
+        "findTraps": 97,
+        "removeTraps": 97,
+        "climbWalls": 99,
+        "moveSilently": 98,
+        "hideInShadows": 95,
+        "pickPockets": 115,
+        "hearNoise": "1-5"
+      },
+      "turnUndead": null
+    },
+    "14": {
+      "xp": 760000,
+      "title": "14th Level Thief",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 7,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": {
+        "openLocks": 99,
+        "findTraps": 99,
+        "removeTraps": 99,
+        "climbWalls": 99,
+        "moveSilently": 99,
+        "hideInShadows": 99,
+        "pickPockets": 125,
+        "hearNoise": "1-5"
       },
       "turnUndead": null
     }
-  }
+  },
+  "hitDiceMaxLevel": 9,
+  "hitPointProgressionAfterMaxLevel": 2
 }

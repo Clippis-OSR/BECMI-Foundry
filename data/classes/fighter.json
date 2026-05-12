@@ -2,20 +2,275 @@
   "id": "fighter",
   "name": "Fighter",
   "type": "class",
-  "hitDie": null,
-  "primeRequisite": [],
+  "hitDie": "d8",
+  "primeRequisite": [
+    "str"
+  ],
   "armor": {},
   "weapons": {},
   "levels": {
     "1": {
       "xp": 0,
+      "title": "Veteran",
       "thac0": null,
       "saves": {
-        "death": null,
-        "wands": null,
-        "paralysis": null,
-        "breath": null,
-        "spells": null
+        "death": 12,
+        "wands": 13,
+        "paralysis": 14,
+        "breath": 15,
+        "spells": 16
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "2": {
+      "xp": 2000,
+      "title": "Warrior",
+      "thac0": null,
+      "saves": {
+        "death": 12,
+        "wands": 13,
+        "paralysis": 14,
+        "breath": 15,
+        "spells": 16
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "3": {
+      "xp": 4000,
+      "title": "Swordmaster",
+      "thac0": null,
+      "saves": {
+        "death": 12,
+        "wands": 13,
+        "paralysis": 14,
+        "breath": 15,
+        "spells": 16
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "4": {
+      "xp": 8000,
+      "title": "Hero",
+      "thac0": null,
+      "saves": {
+        "death": 10,
+        "wands": 11,
+        "paralysis": 12,
+        "breath": 13,
+        "spells": 14
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "5": {
+      "xp": 16000,
+      "title": "Swashbuckler",
+      "thac0": null,
+      "saves": {
+        "death": 10,
+        "wands": 11,
+        "paralysis": 12,
+        "breath": 13,
+        "spells": 14
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "6": {
+      "xp": 32000,
+      "title": "Myrmidon",
+      "thac0": null,
+      "saves": {
+        "death": 10,
+        "wands": 11,
+        "paralysis": 12,
+        "breath": 13,
+        "spells": 14
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "7": {
+      "xp": 64000,
+      "title": "Champion",
+      "thac0": null,
+      "saves": {
+        "death": 8,
+        "wands": 9,
+        "paralysis": 10,
+        "breath": 11,
+        "spells": 12
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "8": {
+      "xp": 120000,
+      "title": "Superhero",
+      "thac0": null,
+      "saves": {
+        "death": 8,
+        "wands": 9,
+        "paralysis": 10,
+        "breath": 11,
+        "spells": 12
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "9": {
+      "xp": 240000,
+      "title": "Lord",
+      "thac0": null,
+      "saves": {
+        "death": 8,
+        "wands": 9,
+        "paralysis": 10,
+        "breath": 11,
+        "spells": 12
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "10": {
+      "xp": 360000,
+      "title": "10th Level Lord",
+      "thac0": null,
+      "saves": {
+        "death": 6,
+        "wands": 7,
+        "paralysis": 8,
+        "breath": 9,
+        "spells": 10
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "11": {
+      "xp": 480000,
+      "title": "11th Level Lord",
+      "thac0": null,
+      "saves": {
+        "death": 6,
+        "wands": 7,
+        "paralysis": 8,
+        "breath": 9,
+        "spells": 10
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "12": {
+      "xp": 600000,
+      "title": "12th Level Lord",
+      "thac0": null,
+      "saves": {
+        "death": 6,
+        "wands": 7,
+        "paralysis": 8,
+        "breath": 9,
+        "spells": 10
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "13": {
+      "xp": 720000,
+      "title": "13th Level Lord",
+      "thac0": null,
+      "saves": {
+        "death": 4,
+        "wands": 5,
+        "paralysis": 6,
+        "breath": 7,
+        "spells": 8
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "14": {
+      "xp": 840000,
+      "title": "14th Level Lord",
+      "thac0": null,
+      "saves": {
+        "death": 4,
+        "wands": 5,
+        "paralysis": 6,
+        "breath": 7,
+        "spells": 8
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "15": {
+      "xp": null,
+      "title": null,
+      "thac0": null,
+      "saves": {
+        "death": 4,
+        "wands": 5,
+        "paralysis": 6,
+        "breath": 7,
+        "spells": 8
       },
       "features": [],
       "spellcasting": {
@@ -24,5 +279,7 @@
       "thiefSkills": null,
       "turnUndead": null
     }
-  }
+  },
+  "hitDiceMaxLevel": 9,
+  "hitPointProgressionAfterMaxLevel": 2
 }

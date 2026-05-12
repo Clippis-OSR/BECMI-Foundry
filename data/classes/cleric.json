@@ -2,57 +2,532 @@
   "id": "cleric",
   "name": "Cleric",
   "type": "class",
-  "hitDie": null,
-  "primeRequisite": [],
+  "hitDie": "d6",
+  "primeRequisite": [
+    "wis"
+  ],
   "armor": {},
   "weapons": {},
   "levels": {
     "1": {
       "xp": 0,
+      "title": "Acolyte",
       "thac0": null,
       "saves": {
-        "death": null,
-        "wands": null,
-        "paralysis": null,
-        "breath": null,
-        "spells": null
+        "death": 11,
+        "wands": 12,
+        "paralysis": 14,
+        "breath": 16,
+        "spells": 15
       },
       "features": [],
       "spellcasting": {
         "enabled": true,
         "type": "divine",
         "slots": {
-          "1": null,
-          "2": null,
-          "3": null,
-          "4": null,
-          "5": null,
-          "6": null
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
         },
-        "spellsKnown": {
-          "1": null,
-          "2": null,
-          "3": null,
-          "4": null,
-          "5": null,
-          "6": null
-        }
+        "spellsKnown": null
       },
       "thiefSkills": null,
       "turnUndead": {
-        "skeleton": null,
-        "zombie": null,
-        "ghoul": null,
+        "skeleton": 7,
+        "zombie": 9,
+        "ghoul": 11,
         "wight": null,
         "wraith": null,
         "mummy": null,
         "spectre": null,
-        "vampire": null,
-        "phantom": null,
-        "haunt": null,
-        "spirit": null,
-        "nightshade": null
+        "vampire": null
+      }
+    },
+    "2": {
+      "xp": 1500,
+      "title": "Adept",
+      "thac0": null,
+      "saves": {
+        "death": 11,
+        "wands": 12,
+        "paralysis": 14,
+        "breath": 16,
+        "spells": 15
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "divine",
+        "slots": {
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": {
+        "skeleton": "T",
+        "zombie": 7,
+        "ghoul": 9,
+        "wight": 11,
+        "wraith": null,
+        "mummy": null,
+        "spectre": null,
+        "vampire": null
+      }
+    },
+    "3": {
+      "xp": 3000,
+      "title": "Priest",
+      "thac0": null,
+      "saves": {
+        "death": 11,
+        "wands": 12,
+        "paralysis": 14,
+        "breath": 16,
+        "spells": 15
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "divine",
+        "slots": {
+          "1": 2,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": {
+        "skeleton": "T",
+        "zombie": "T",
+        "ghoul": 7,
+        "wight": 9,
+        "wraith": 11,
+        "mummy": null,
+        "spectre": null,
+        "vampire": null
+      }
+    },
+    "4": {
+      "xp": 6000,
+      "title": "Vicar",
+      "thac0": null,
+      "saves": {
+        "death": 11,
+        "wands": 12,
+        "paralysis": 14,
+        "breath": 16,
+        "spells": 15
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "divine",
+        "slots": {
+          "1": 2,
+          "2": 1,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": {
+        "skeleton": "D",
+        "zombie": "T",
+        "ghoul": "T",
+        "wight": 7,
+        "wraith": 9,
+        "mummy": 11,
+        "spectre": null,
+        "vampire": null
+      }
+    },
+    "5": {
+      "xp": 12000,
+      "title": "Curate",
+      "thac0": null,
+      "saves": {
+        "death": 9,
+        "wands": 10,
+        "paralysis": 12,
+        "breath": 14,
+        "spells": 13
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "divine",
+        "slots": {
+          "1": 2,
+          "2": 2,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": {
+        "skeleton": "D",
+        "zombie": "D",
+        "ghoul": "T",
+        "wight": "T",
+        "wraith": 7,
+        "mummy": 9,
+        "spectre": 11,
+        "vampire": null
+      }
+    },
+    "6": {
+      "xp": 25000,
+      "title": "Elder",
+      "thac0": null,
+      "saves": {
+        "death": 9,
+        "wands": 10,
+        "paralysis": 12,
+        "breath": 14,
+        "spells": 13
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "divine",
+        "slots": {
+          "1": 2,
+          "2": 2,
+          "3": 1,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": {
+        "skeleton": "D",
+        "zombie": "D",
+        "ghoul": "D",
+        "wight": "T",
+        "wraith": "T",
+        "mummy": 7,
+        "spectre": 9,
+        "vampire": 11
+      }
+    },
+    "7": {
+      "xp": 50000,
+      "title": "Bishop",
+      "thac0": null,
+      "saves": {
+        "death": 9,
+        "wands": 10,
+        "paralysis": 12,
+        "breath": 14,
+        "spells": 13
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "divine",
+        "slots": {
+          "1": 3,
+          "2": 2,
+          "3": 2,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": {
+        "skeleton": "D",
+        "zombie": "D",
+        "ghoul": "D",
+        "wight": "D",
+        "wraith": "T",
+        "mummy": "T",
+        "spectre": 7,
+        "vampire": 9
+      }
+    },
+    "8": {
+      "xp": 100000,
+      "title": "Lama",
+      "thac0": null,
+      "saves": {
+        "death": 9,
+        "wands": 10,
+        "paralysis": 12,
+        "breath": 14,
+        "spells": 13
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "divine",
+        "slots": {
+          "1": 3,
+          "2": 3,
+          "3": 2,
+          "4": 1,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": {
+        "skeleton": "D",
+        "zombie": "D",
+        "ghoul": "D",
+        "wight": "D",
+        "wraith": "D",
+        "mummy": "T",
+        "spectre": "T",
+        "vampire": 7
+      }
+    },
+    "9": {
+      "xp": 200000,
+      "title": "Patriarch",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 10,
+        "breath": 12,
+        "spells": 11
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "divine",
+        "slots": {
+          "1": 3,
+          "2": 3,
+          "3": 3,
+          "4": 2,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": {
+        "skeleton": "D",
+        "zombie": "D",
+        "ghoul": "D",
+        "wight": "D",
+        "wraith": "D",
+        "mummy": "D",
+        "spectre": "T",
+        "vampire": "T"
+      }
+    },
+    "10": {
+      "xp": 300000,
+      "title": "10th Level Patriarch",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 10,
+        "breath": 12,
+        "spells": 11
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "divine",
+        "slots": {
+          "1": 4,
+          "2": 4,
+          "3": 3,
+          "4": 2,
+          "5": 1,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": {
+        "skeleton": "D",
+        "zombie": "D",
+        "ghoul": "D",
+        "wight": "D",
+        "wraith": "D",
+        "mummy": "D",
+        "spectre": "T",
+        "vampire": "T"
+      }
+    },
+    "11": {
+      "xp": 400000,
+      "title": "11th Level Patriarch",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 10,
+        "breath": 12,
+        "spells": 11
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "divine",
+        "slots": {
+          "1": 4,
+          "2": 4,
+          "3": 3,
+          "4": 3,
+          "5": 2,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": {
+        "skeleton": "D+",
+        "zombie": "D",
+        "ghoul": "D",
+        "wight": "D",
+        "wraith": "D",
+        "mummy": "D",
+        "spectre": "D",
+        "vampire": "T"
+      }
+    },
+    "12": {
+      "xp": 500000,
+      "title": "12th Level Patriarch",
+      "thac0": null,
+      "saves": {
+        "death": 7,
+        "wands": 8,
+        "paralysis": 10,
+        "breath": 12,
+        "spells": 11
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "divine",
+        "slots": {
+          "1": 4,
+          "2": 4,
+          "3": 4,
+          "4": 3,
+          "5": 2,
+          "6": 1
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": {
+        "skeleton": "D+",
+        "zombie": "D",
+        "ghoul": "D",
+        "wight": "D",
+        "wraith": "D",
+        "mummy": "D",
+        "spectre": "D",
+        "vampire": "T"
+      }
+    },
+    "13": {
+      "xp": 600000,
+      "title": "13th Level Patriarch",
+      "thac0": null,
+      "saves": {
+        "death": 5,
+        "wands": 6,
+        "paralysis": 8,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "divine",
+        "slots": {
+          "1": 5,
+          "2": 5,
+          "3": 4,
+          "4": 3,
+          "5": 2,
+          "6": 2
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": {
+        "skeleton": "D+",
+        "zombie": "D+",
+        "ghoul": "D",
+        "wight": "D",
+        "wraith": "D",
+        "mummy": "D",
+        "spectre": "D",
+        "vampire": "D"
+      }
+    },
+    "14": {
+      "xp": 700000,
+      "title": "14th Level Patriarch",
+      "thac0": null,
+      "saves": {
+        "death": 5,
+        "wands": 6,
+        "paralysis": 8,
+        "breath": 10,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "divine",
+        "slots": {
+          "1": 5,
+          "2": 5,
+          "3": 5,
+          "4": 3,
+          "5": 3,
+          "6": 2
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": {
+        "skeleton": "D+",
+        "zombie": "D+",
+        "ghoul": "D",
+        "wight": "D",
+        "wraith": "D",
+        "mummy": "D",
+        "spectre": "D",
+        "vampire": "D"
       }
     }
-  }
+  },
+  "hitDiceMaxLevel": 9,
+  "hitPointProgressionAfterMaxLevel": 1
 }

@@ -2,44 +2,406 @@
   "id": "magic-user",
   "name": "Magic-User",
   "type": "class",
-  "hitDie": null,
-  "primeRequisite": [],
+  "hitDie": "d4",
+  "primeRequisite": [
+    "int"
+  ],
   "armor": {},
   "weapons": {},
   "levels": {
     "1": {
       "xp": 0,
+      "title": "Medium",
       "thac0": null,
       "saves": {
-        "death": null,
-        "wands": null,
-        "paralysis": null,
-        "breath": null,
-        "spells": null
+        "death": 13,
+        "wands": 14,
+        "paralysis": 13,
+        "breath": 16,
+        "spells": 15
       },
       "features": [],
       "spellcasting": {
         "enabled": true,
         "type": "arcane",
         "slots": {
-          "1": null,
-          "2": null,
-          "3": null,
-          "4": null,
-          "5": null,
-          "6": null
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
         },
-        "spellsKnown": {
-          "1": null,
-          "2": null,
-          "3": null,
-          "4": null,
-          "5": null,
-          "6": null
-        }
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "2": {
+      "xp": 2500,
+      "title": "Seer",
+      "thac0": null,
+      "saves": {
+        "death": 13,
+        "wands": 14,
+        "paralysis": 13,
+        "breath": 16,
+        "spells": 15
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "arcane",
+        "slots": {
+          "1": 2,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "3": {
+      "xp": 5000,
+      "title": "Conjurer",
+      "thac0": null,
+      "saves": {
+        "death": 13,
+        "wands": 14,
+        "paralysis": 13,
+        "breath": 16,
+        "spells": 15
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "arcane",
+        "slots": {
+          "1": 2,
+          "2": 1,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "4": {
+      "xp": 10000,
+      "title": "Magician",
+      "thac0": null,
+      "saves": {
+        "death": 13,
+        "wands": 14,
+        "paralysis": 13,
+        "breath": 16,
+        "spells": 15
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "arcane",
+        "slots": {
+          "1": 2,
+          "2": 2,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "5": {
+      "xp": 20000,
+      "title": "Enchanter",
+      "thac0": null,
+      "saves": {
+        "death": 13,
+        "wands": 14,
+        "paralysis": 13,
+        "breath": 16,
+        "spells": 15
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "arcane",
+        "slots": {
+          "1": 2,
+          "2": 2,
+          "3": 1,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "6": {
+      "xp": 40000,
+      "title": "Warlock",
+      "thac0": null,
+      "saves": {
+        "death": 11,
+        "wands": 12,
+        "paralysis": 11,
+        "breath": 14,
+        "spells": 12
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "arcane",
+        "slots": {
+          "1": 3,
+          "2": 2,
+          "3": 2,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "7": {
+      "xp": 80000,
+      "title": "Sorcerer",
+      "thac0": null,
+      "saves": {
+        "death": 11,
+        "wands": 12,
+        "paralysis": 11,
+        "breath": 14,
+        "spells": 12
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "arcane",
+        "slots": {
+          "1": 3,
+          "2": 2,
+          "3": 2,
+          "4": 1,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "8": {
+      "xp": 150000,
+      "title": "Necromancer",
+      "thac0": null,
+      "saves": {
+        "death": 11,
+        "wands": 12,
+        "paralysis": 11,
+        "breath": 14,
+        "spells": 12
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "arcane",
+        "slots": {
+          "1": 3,
+          "2": 3,
+          "3": 2,
+          "4": 2,
+          "5": 0,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "9": {
+      "xp": 300000,
+      "title": "Wizard",
+      "thac0": null,
+      "saves": {
+        "death": 11,
+        "wands": 12,
+        "paralysis": 11,
+        "breath": 14,
+        "spells": 12
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "arcane",
+        "slots": {
+          "1": 3,
+          "2": 3,
+          "3": 3,
+          "4": 2,
+          "5": 1,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "10": {
+      "xp": 450000,
+      "title": "10th Level Wizard",
+      "thac0": null,
+      "saves": {
+        "death": 11,
+        "wands": 12,
+        "paralysis": 11,
+        "breath": 14,
+        "spells": 12
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "arcane",
+        "slots": {
+          "1": 4,
+          "2": 3,
+          "3": 3,
+          "4": 2,
+          "5": 2,
+          "6": 0
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "11": {
+      "xp": 600000,
+      "title": "11th Level Wizard",
+      "thac0": null,
+      "saves": {
+        "death": 9,
+        "wands": 10,
+        "paralysis": 9,
+        "breath": 12,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "arcane",
+        "slots": {
+          "1": 4,
+          "2": 4,
+          "3": 3,
+          "4": 3,
+          "5": 2,
+          "6": 1
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "12": {
+      "xp": 750000,
+      "title": "12th Level Wizard",
+      "thac0": null,
+      "saves": {
+        "death": 9,
+        "wands": 10,
+        "paralysis": 9,
+        "breath": 12,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "arcane",
+        "slots": {
+          "1": 4,
+          "2": 4,
+          "3": 4,
+          "4": 3,
+          "5": 3,
+          "6": 2
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "13": {
+      "xp": 900000,
+      "title": "13th Level Wizard",
+      "thac0": null,
+      "saves": {
+        "death": 9,
+        "wands": 10,
+        "paralysis": 9,
+        "breath": 12,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "arcane",
+        "slots": {
+          "1": 5,
+          "2": 4,
+          "3": 4,
+          "4": 3,
+          "5": 3,
+          "6": 2
+        },
+        "spellsKnown": null
+      },
+      "thiefSkills": null,
+      "turnUndead": null
+    },
+    "14": {
+      "xp": 1050000,
+      "title": "14th Level Wizard",
+      "thac0": null,
+      "saves": {
+        "death": 9,
+        "wands": 10,
+        "paralysis": 9,
+        "breath": 12,
+        "spells": 9
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": true,
+        "type": "arcane",
+        "slots": {
+          "1": 5,
+          "2": 5,
+          "3": 4,
+          "4": 4,
+          "5": 3,
+          "6": 3
+        },
+        "spellsKnown": null
       },
       "thiefSkills": null,
       "turnUndead": null
     }
-  }
+  },
+  "hitDiceMaxLevel": 9,
+  "hitPointProgressionAfterMaxLevel": 1
 }
