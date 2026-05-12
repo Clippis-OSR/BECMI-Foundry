@@ -2,20 +2,23 @@
   "id": "dwarf",
   "name": "Dwarf",
   "type": "class",
-  "hitDie": null,
-  "primeRequisite": [],
-  "armor": {},
-  "weapons": {},
+  "hitDie": "d8",
+  "hitDiceMaxLevel": 12,
+  "hitPointProgressionAfterMaxLevel": 3,
+  "primeRequisite": [
+    "str"
+  ],
   "levels": {
     "1": {
       "xp": 0,
+      "title": "Dwarven Veteran",
       "thac0": null,
       "saves": {
-        "death": null,
-        "wands": null,
-        "paralysis": null,
-        "breath": null,
-        "spells": null
+        "death": 8,
+        "wands": 9,
+        "paralysis": 10,
+        "breath": 13,
+        "spells": 12
       },
       "features": [],
       "spellcasting": {
@@ -25,109 +28,202 @@
       "turnUndead": null
     },
     "2": {
-      "xp": null
+      "xp": 2200,
+      "title": "Dwarven Warrior",
+      "thac0": null,
+      "saves": {
+        "death": 8,
+        "wands": 9,
+        "paralysis": 10,
+        "breath": 13,
+        "spells": 12
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "3": {
-      "xp": null
+      "xp": 4400,
+      "title": "Dwarven Swordmaster",
+      "thac0": null,
+      "saves": {
+        "death": 8,
+        "wands": 9,
+        "paralysis": 10,
+        "breath": 13,
+        "spells": 12
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "4": {
-      "xp": null
+      "xp": 8800,
+      "title": "Dwarven Hero",
+      "thac0": null,
+      "saves": {
+        "death": 6,
+        "wands": 7,
+        "paralysis": 8,
+        "breath": 10,
+        "spells": 10
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "5": {
-      "xp": null
+      "xp": 17000,
+      "title": "Dwarven Swashbuckler",
+      "thac0": null,
+      "saves": {
+        "death": 6,
+        "wands": 7,
+        "paralysis": 8,
+        "breath": 10,
+        "spells": 10
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "6": {
-      "xp": null
+      "xp": 35000,
+      "title": "Dwarven Myrmidon",
+      "thac0": null,
+      "saves": {
+        "death": 6,
+        "wands": 7,
+        "paralysis": 8,
+        "breath": 10,
+        "spells": 10
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "7": {
-      "xp": null
+      "xp": 70000,
+      "title": "Dwarven Champion",
+      "thac0": null,
+      "saves": {
+        "death": 4,
+        "wands": 5,
+        "paralysis": 6,
+        "breath": 7,
+        "spells": 8
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "8": {
-      "xp": null
+      "xp": 140000,
+      "title": "Dwarven Superhero",
+      "thac0": null,
+      "saves": {
+        "death": 4,
+        "wands": 5,
+        "paralysis": 6,
+        "breath": 7,
+        "spells": 8
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "9": {
-      "xp": null
+      "xp": 270000,
+      "title": "Dwarven Lord",
+      "thac0": null,
+      "saves": {
+        "death": 4,
+        "wands": 5,
+        "paralysis": 6,
+        "breath": 7,
+        "spells": 8
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "10": {
-      "xp": null
+      "xp": 400000,
+      "title": "10th Level Dwarven Lord",
+      "thac0": null,
+      "saves": {
+        "death": 2,
+        "wands": 3,
+        "paralysis": 4,
+        "breath": 4,
+        "spells": 6
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "11": {
-      "xp": null
+      "xp": 530000,
+      "title": "11th Level Dwarven Lord",
+      "thac0": null,
+      "saves": {
+        "death": 2,
+        "wands": 3,
+        "paralysis": 4,
+        "breath": 4,
+        "spells": 6
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     },
     "12": {
-      "xp": null
-    },
-    "13": {
-      "xp": null
-    },
-    "14": {
-      "xp": null
-    },
-    "15": {
-      "xp": null
-    },
-    "16": {
-      "xp": null
-    },
-    "17": {
-      "xp": null
-    },
-    "18": {
-      "xp": null
-    },
-    "19": {
-      "xp": null
-    },
-    "20": {
-      "xp": null
-    },
-    "21": {
-      "xp": null
-    },
-    "22": {
-      "xp": null
-    },
-    "23": {
-      "xp": null
-    },
-    "24": {
-      "xp": null
-    },
-    "25": {
-      "xp": null
-    },
-    "26": {
-      "xp": null
-    },
-    "27": {
-      "xp": null
-    },
-    "28": {
-      "xp": null
-    },
-    "29": {
-      "xp": null
-    },
-    "30": {
-      "xp": null
-    },
-    "31": {
-      "xp": null
-    },
-    "32": {
-      "xp": null
-    },
-    "33": {
-      "xp": null
-    },
-    "34": {
-      "xp": null
-    },
-    "35": {
-      "xp": null
-    },
-    "36": {
-      "xp": null
+      "xp": 660000,
+      "title": "12th Level Dwarven Lord",
+      "thac0": null,
+      "saves": {
+        "death": 2,
+        "wands": 3,
+        "paralysis": 4,
+        "breath": 4,
+        "spells": 6
+      },
+      "features": [],
+      "spellcasting": {
+        "enabled": false
+      },
+      "thiefSkills": null,
+      "turnUndead": null
     }
   }
 }
