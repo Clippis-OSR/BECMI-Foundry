@@ -1,6 +1,7 @@
 import { BECMICharacterSheet } from "./module/actors/character-sheet.mjs";
 import { BECMICreatureSheet } from "./module/actors/creature-sheet.mjs";
 import { loadClassData, loadMonsterProgression } from "./module/utils/rules-data.mjs";
+import * as becmiRules from "./module/rules/index.mjs";
 import {
   validateClassTable,
   validateMonsterProgression
@@ -104,4 +105,10 @@ Hooks.on("preCreateActor", (actor) => {
       }
     });
   }
+});
+
+
+Hooks.once("ready", function () {
+  game.becmi = game.becmi || {};
+  game.becmi.rules = becmiRules;
 });
