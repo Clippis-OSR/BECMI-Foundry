@@ -33,6 +33,11 @@ export class BECMICreatureSheet extends ActorSheet {
       const value = event.currentTarget.value || "monster";
       await this.actor.update({ "system.creatureRole": value });
     });
+
+    html.find("[name^='system.']").on("change", async (event) => {
+      const input = event.currentTarget;
+      await this.actor.update({ [input.name]: input.value });
+    });
   }
 
 }
