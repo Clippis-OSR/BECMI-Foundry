@@ -1,0 +1,196 @@
+{
+  "id": "monster-progression",
+  "name": "Monster Progression",
+  "type": "monsterProgression",
+  "hitDice": {
+    "0": {
+      "hd": "0",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "1": {
+      "hd": "1",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "2": {
+      "hd": "2",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "3": {
+      "hd": "3",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "4": {
+      "hd": "4",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "5": {
+      "hd": "5",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "6": {
+      "hd": "6",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "7": {
+      "hd": "7",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "8": {
+      "hd": "8",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "9": {
+      "hd": "9",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "10": {
+      "hd": "10",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "11": {
+      "hd": "11",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "12": {
+      "hd": "12",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "13": {
+      "hd": "13",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "14": {
+      "hd": "14",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "15": {
+      "hd": "15",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "16": {
+      "hd": "16",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "17": {
+      "hd": "17",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "18": {
+      "hd": "18",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "19": {
+      "hd": "19",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    },
+    "20": {
+      "hd": "20",
+      "thac0": null,
+      "savesAs": {
+        "class": "fighter",
+        "level": null
+      },
+      "morale": null
+    }
+  }
+}
