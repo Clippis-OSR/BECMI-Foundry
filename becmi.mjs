@@ -5,6 +5,7 @@ import {
   loadCharacterTHAC0,
   loadClassData,
   loadMonsterProgression,
+  loadMonsterSaves,
   loadMonsterTHAC0
 } from "./module/utils/rules-data.mjs";
 import * as becmiRules from "./module/rules/index.mjs";
@@ -42,6 +43,7 @@ Hooks.once("init", async function () {
   CONFIG.BECMI.monsterProgression = {};
   CONFIG.BECMI.characterThac0 = {};
   CONFIG.BECMI.monsterThac0 = {};
+  CONFIG.BECMI.monsterSaves = {};
 
   CONFIG.Actor = CONFIG.Actor || {};
   CONFIG.Actor.documentClass = BECMIActor;
@@ -73,11 +75,13 @@ Hooks.once("init", async function () {
   const monsterProgression = await loadMonsterProgression();
   const characterThac0 = await loadCharacterTHAC0();
   const monsterThac0 = await loadMonsterTHAC0();
+  const monsterSaves = await loadMonsterSaves();
 
   CONFIG.BECMI.classTables = classTables ?? {};
   CONFIG.BECMI.monsterProgression = monsterProgression ?? {};
   CONFIG.BECMI.characterThac0 = characterThac0 ?? {};
   CONFIG.BECMI.monsterThac0 = monsterThac0 ?? {};
+  CONFIG.BECMI.monsterSaves = monsterSaves ?? {};
 
   for (const [classId, classData] of Object.entries(CONFIG.BECMI.classTables)) {
     const warnings = validateClassTable(classData);
@@ -95,7 +99,8 @@ Hooks.once("init", async function () {
     classTables: Object.keys(CONFIG.BECMI.classTables),
     hasMonsterProgression: Object.keys(CONFIG.BECMI.monsterProgression?.hitDice ?? {}).length > 0,
     hasCharacterThac0: Object.keys(CONFIG.BECMI.characterThac0?.entries ?? {}).length > 0,
-    hasMonsterThac0: Object.keys(CONFIG.BECMI.monsterThac0?.hitDice ?? {}).length > 0
+    hasMonsterThac0: Object.keys(CONFIG.BECMI.monsterThac0?.hitDice ?? {}).length > 0,
+    hasMonsterSaves: Object.keys(CONFIG.BECMI.monsterSaves ?? {}).length > 0
   });
 
   console.log("BECMI Foundry | Character THAC0 table loaded", {
@@ -106,6 +111,11 @@ Hooks.once("init", async function () {
   console.log("BECMI Foundry | Monster THAC0 table loaded", {
     id: CONFIG.BECMI.monsterThac0?.id,
     hasHitDice: Object.keys(CONFIG.BECMI.monsterThac0?.hitDice ?? {}).length > 0
+  });
+
+  console.log("BECMI Foundry | Monster saves table loaded", {
+    id: CONFIG.BECMI.monsterSaves?.id,
+    hasEntries: Object.keys(CONFIG.BECMI.monsterSaves?.entries ?? {}).length > 0
   });
 
   console.warn("BECMI init complete");
