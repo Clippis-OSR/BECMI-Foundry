@@ -31,7 +31,8 @@ export function getClassLevelData(classId, level) {
   }
 
   const levelKey = String(level);
-  const levelData = classTable?.[levelKey];
+  const levels = classTable?.levels;
+  const levelData = levels?.[levelKey];
 
   if (!levelData) {
     console.warn(

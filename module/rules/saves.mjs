@@ -71,19 +71,25 @@ function getMonsterSaveEntry(hd) {
     return null;
   }
 
+  const monsterSaveEntries = monsterSaves?.entries;
+  if (!monsterSaveEntries || typeof monsterSaveEntries !== "object") {
+    console.warn("[BECMI] Missing CONFIG.BECMI.monsterSaves.entries.");
+    return null;
+  }
+
   const hdValue = toNumericValue(hd);
   if (hdValue === null) {
     console.warn(`[BECMI] Invalid monster HD value \"${hd}\" while resolving monster saves.`);
     return null;
   }
 
-  const brackets = Object.entries(monsterSaves)
+  const brackets = Object.entries(monsterSaveEntries)
     .map(([key, value]) => ({ key, value, num: toNumericValue(key) }))
     .filter((entry) => entry.num !== null)
     .sort((a, b) => a.num - b.num);
 
   if (!brackets.length) {
-    console.warn("[BECMI] CONFIG.BECMI.monsterSaves has no numeric HD brackets.");
+    console.warn("[BECMI] CONFIG.BECMI.monsterSaves.entries has no numeric HD brackets.");
     return null;
   }
 

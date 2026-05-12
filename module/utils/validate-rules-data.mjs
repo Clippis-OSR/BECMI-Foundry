@@ -20,7 +20,13 @@ export function validateClassTable(classData) {
     }
 
     if (!("xp" in levelData)) warnings.push(`Class '${classData.id ?? "unknown"}' level '${levelKey}' is missing field: xp.`);
-    if (!("thac0" in levelData)) warnings.push(`Class '${classData.id ?? "unknown"}' level '${levelKey}' is missing field: thac0.`);
+    // `levelData.thac0` is intentionally deprecated as a runtime source.
+    // Keep the field for backward compatibility, but allow explicit `null` values.
+    if (!("thac0" in levelData)) {
+      warnings.push(`Class '${classData.id ?? "unknown"}' level '${levelKey}' is missing field: thac0.`);
+    } else if (levelData.thac0 !== null && typeof levelData.thac0 !== "number") {
+      warnings.push(`Class '${classData.id ?? "unknown"}' level '${levelKey}' has invalid thac0; expected number or null.`);
+    }
     if (!("saves" in levelData)) warnings.push(`Class '${classData.id ?? "unknown"}' level '${levelKey}' is missing field: saves.`);
   }
 
