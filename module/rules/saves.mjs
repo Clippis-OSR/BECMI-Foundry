@@ -130,6 +130,43 @@ export function getMonsterSaves(hd) {
   return null;
 }
 
+export function getCreatureSaves(actor) {
+  if (!actor) {
+    console.warn("[BECMI] Cannot resolve creature saves: actor is missing.");
+    return null;
+  }
+
+  const savesAs = actor.system?.savesAs;
+  if (!savesAs) return null;
+
+  const classId = savesAs.classId ?? savesAs.class;
+  const level = savesAs.level;
+
+  if (classId === undefined || classId === null || classId === "") {
+    console.warn(
+      `[BECMI] Creature actor "${actor.name ?? actor.id ?? "Unknown"}" is missing system.savesAs.class for save lookup.`
+    );
+    return null;
+  }
+
+  if (level === undefined || level === null || level === "") {
+    console.warn(
+      `[BECMI] Creature actor "${actor.name ?? actor.id ?? "Unknown"}" is missing system.savesAs.level for save lookup.`
+    );
+    return null;
+  }
+
+  const saves = getCharacterSaves(classId, level);
+  if (!saves) {
+    console.warn(
+      `[BECMI] Creature actor "${actor.name ?? actor.id ?? "Unknown"}" could not resolve saves for class "${classId}" level "${level}".`
+    );
+    return null;
+  }
+
+  return saves;
+}
+
 export function getActorSaves(actor) {
   if (!actor) {
     console.warn("[BECMI] Cannot resolve actor saves: actor is missing.");
@@ -148,14 +185,8 @@ export function getActorSaves(actor) {
     return getCharacterSaves(actorSystem.class, actorSystem.level);
   }
 
-  if (actorType === "monster" || actorType === "npc") {
-    const hd = actorSystem.hd ?? actorSystem.hitDice;
-    if (hd === undefined) {
-      console.warn("[BECMI] Monster/NPC actor is missing system.hd/system.hitDice for save lookup.");
-      return null;
-    }
-
-    return getMonsterSaves(hd);
+  if (actorType === "creature" || actorType === "monster" || actorType === "npc") {
+    return getCreatureSaves(actor);
   }
 
   console.warn(`[BECMI] Unsupported actor type \"${actorType}\" for save lookup.`);
