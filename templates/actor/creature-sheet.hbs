@@ -29,7 +29,14 @@
     <input type="number" name="system.ac" value="{{system.ac}}" data-action="change-creature-field"/>
 
     <label>THAC0</label>
-    <input type="number" name="system.thac0" value="{{system.thac0}}" data-action="change-creature-field"/>
+    <span>{{system.derived.thac0}}</span>
+
+    <h2>Saving Throws</h2>
+    <div>Death: <span>{{system.derived.saves.death}}</span></div>
+    <div>Wands: <span>{{system.derived.saves.wands}}</span></div>
+    <div>Paralysis: <span>{{system.derived.saves.paralysis}}</span></div>
+    <div>Breath: <span>{{system.derived.saves.breath}}</span></div>
+    <div>Spells: <span>{{system.derived.saves.spells}}</span></div>
 
     <h3>Temporary / Debug Derived Data</h3>
     <div>HD: {{system.derived.hitDice}}</div>
