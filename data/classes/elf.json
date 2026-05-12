@@ -6,7 +6,10 @@
   "hitDie": "d6",
   "hitDiceMaxLevel": 10,
   "hitPointProgressionAfterMaxLevel": 2,
-  "primeRequisite": ["str", "int"],
+  "primeRequisite": [
+    "str",
+    "int"
+  ],
   "levels": {
     "1": {
       "xp": 0,

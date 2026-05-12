@@ -1,5 +1,14 @@
 import { compareHitDiceToBracket, normalizeHitDice } from "./hit-dice.mjs";
 
+function isDebugDerivedDataEnabled() {
+  return game?.settings?.get?.("becmi-foundry", "debugDerivedData") ?? false;
+}
+
+function debugDerivedDataLog(message, data) {
+  if (!isDebugDerivedDataEnabled()) return;
+  console.log(message, data);
+}
+
 function normalizeActorClassIdValue(classId) {
   if (typeof classId !== "string") return classId;
   if (classId === "magicUser") return "magic-user";
@@ -41,27 +50,51 @@ export function getActorLevel(actor) {
 }
 
 export function getCharacterLevelFromXP(classId, xp) {
-  const classTable = getClassTable(classId);
-  if (!classTable) return null;
-
-  const xpValue = Number(xp);
-  if (!Number.isFinite(xpValue) || xpValue < 0) return 1;
-
+  const normalizedClassId = normalizeClassId(classId);
+  const classTable = CONFIG?.BECMI?.classTables?.[normalizedClassId];
   const levels = classTable?.levels;
-  if (!levels || typeof levels !== "object") return null;
+
+  if (!classTable || !levels || typeof levels !== "object") {
+    debugDerivedDataLog("[BECMI] getCharacterLevelFromXP unresolved (missing class table or levels).", {
+      classId,
+      xp,
+      resolvedLevel: null,
+      availableLevelKeys: []
+    });
+    return null;
+  }
+
+  const currentXP = Number(xp);
+  if (!Number.isFinite(currentXP) || currentXP < 0) {
+    debugDerivedDataLog("[BECMI] getCharacterLevelFromXP resolved (invalid or empty XP).", {
+      classId,
+      xp,
+      resolvedLevel: 1,
+      availableLevelKeys: Object.keys(levels)
+    });
+    return 1;
+  }
 
   const sortedLevelEntries = Object.entries(levels)
-    .map(([level, data]) => ({ level: Number(level), xp: Number(data?.xp) }))
-    .filter((entry) => Number.isFinite(entry.level) && Number.isFinite(entry.xp))
+    .map(([levelKey, levelData]) => ({
+      level: Number(levelKey),
+      xp: levelData?.xp
+    }))
+    .filter((entry) => Number.isFinite(entry.level) && typeof entry.xp === "number" && Number.isFinite(entry.xp))
     .sort((a, b) => a.level - b.level);
-
-  if (!sortedLevelEntries.length) return 1;
 
   let resolvedLevel = 1;
   for (const entry of sortedLevelEntries) {
-    if (xpValue >= entry.xp) resolvedLevel = entry.level;
+    if (currentXP >= entry.xp) resolvedLevel = entry.level;
     else break;
   }
+
+  debugDerivedDataLog("[BECMI] getCharacterLevelFromXP resolved.", {
+    classId,
+    xp,
+    resolvedLevel,
+    availableLevelKeys: Object.keys(levels)
+  });
 
   return resolvedLevel;
 }

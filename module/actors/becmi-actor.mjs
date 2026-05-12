@@ -1,5 +1,5 @@
 import { getActorTHAC0, getActorSaves, getCharacterSaves, getCharacterTHAC0 } from "../rules/index.mjs";
-import { getActorClassId, getActorLevel, getCharacterLevelFromXP } from "../rules/lookups.mjs";
+import { getActorClassId, getActorLevel, getCharacterLevelFromXP, getClassLevelData } from "../rules/lookups.mjs";
 
 export class BECMIActor extends Actor {
   prepareDerivedData() {
@@ -32,6 +32,11 @@ export class BECMIActor extends Actor {
     const existingDerived = system.derived ?? {};
     const calculatedSaves = classId !== null && level !== null ? getCharacterSaves(classId, level) ?? {} : {};
     const calculatedThac0 = classId !== null && level !== null ? getCharacterTHAC0(classId, level) : null;
+    const levelData = classId !== null && derivedLevel !== null ? getClassLevelData(classId, derivedLevel) : null;
+    const spellcastingData = levelData?.spellcasting;
+    const hasSpellcasting = spellcastingData?.enabled === true;
+    const hasThiefSkills = !!levelData?.thiefSkills && typeof levelData.thiefSkills === "object";
+    const hasTurnUndead = !!levelData?.turnUndead && typeof levelData.turnUndead === "object";
 
     system.derived = {
       ...existingDerived,
@@ -43,7 +48,14 @@ export class BECMIActor extends Actor {
         paralysis: calculatedSaves.paralysis ?? null,
         breath: calculatedSaves.breath ?? null,
         spells: calculatedSaves.spells ?? null
-      }
+      },
+      hasSpellcasting,
+      spellSlots: hasSpellcasting ? spellcastingData?.slots ?? null : null,
+      spellsKnown: hasSpellcasting ? spellcastingData?.spellsKnown ?? null : null,
+      hasThiefSkills,
+      thiefSkills: hasThiefSkills ? levelData?.thiefSkills ?? null : null,
+      hasTurnUndead,
+      turnUndead: hasTurnUndead ? levelData?.turnUndead ?? null : null
     };
 
     const debugDerivedData = game?.settings?.get?.("becmi-foundry", "debugDerivedData") ?? false;
