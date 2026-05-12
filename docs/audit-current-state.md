@@ -1,0 +1,221 @@
+
+## JSON validation audit (2026-05-12 11:45 UTC)
+- JSON files scanned: 15
+- JSON parse failures: 0
+- Class files checked: 7
+- Missing class top-level keys: 0
+- Level field issues: 105
+  - `('data/classes/magic-user.json', 'missing_level_fields', '2', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '3', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '4', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '5', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '6', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '7', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '8', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '9', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '10', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '11', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '12', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '13', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '14', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '15', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '16', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '17', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '18', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '19', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '20', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '21', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '22', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '23', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '24', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '25', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '26', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '27', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '28', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '29', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '30', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '31', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '32', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '33', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '34', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '35', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/magic-user.json', 'missing_level_fields', '36', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '2', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '3', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '4', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '5', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '6', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '7', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '8', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '9', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '10', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '11', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '12', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '13', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '14', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '15', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '16', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '17', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '18', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '19', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '20', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '21', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '22', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '23', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '24', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '25', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '26', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '27', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '28', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '29', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '30', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '31', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '32', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '33', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '34', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '35', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/cleric.json', 'missing_level_fields', '36', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '2', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '3', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '4', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '5', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '6', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '7', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '8', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '9', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '10', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '11', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '12', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '13', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '14', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '15', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '16', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '17', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '18', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '19', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '20', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '21', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '22', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '23', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '24', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '25', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '26', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '27', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '28', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '29', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '30', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '31', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '32', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '33', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '34', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '35', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+  - `('data/classes/thief.json', 'missing_level_fields', '36', ['features', 'saves', 'spellcasting', 'thac0', 'thiefSkills', 'title', 'turnUndead'])`
+- Saving throw key consistency issues: 105
+  - `('data/classes/magic-user.json', '2', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '3', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '4', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '5', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '6', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '7', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '8', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '9', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '10', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '11', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '12', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '13', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '14', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '15', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '16', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '17', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '18', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '19', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '20', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '21', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '22', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '23', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '24', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '25', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '26', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '27', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '28', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '29', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '30', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '31', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '32', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '33', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '34', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '35', 'saves_not_object')`
+  - `('data/classes/magic-user.json', '36', 'saves_not_object')`
+  - `('data/classes/cleric.json', '2', 'saves_not_object')`
+  - `('data/classes/cleric.json', '3', 'saves_not_object')`
+  - `('data/classes/cleric.json', '4', 'saves_not_object')`
+  - `('data/classes/cleric.json', '5', 'saves_not_object')`
+  - `('data/classes/cleric.json', '6', 'saves_not_object')`
+  - `('data/classes/cleric.json', '7', 'saves_not_object')`
+  - `('data/classes/cleric.json', '8', 'saves_not_object')`
+  - `('data/classes/cleric.json', '9', 'saves_not_object')`
+  - `('data/classes/cleric.json', '10', 'saves_not_object')`
+  - `('data/classes/cleric.json', '11', 'saves_not_object')`
+  - `('data/classes/cleric.json', '12', 'saves_not_object')`
+  - `('data/classes/cleric.json', '13', 'saves_not_object')`
+  - `('data/classes/cleric.json', '14', 'saves_not_object')`
+  - `('data/classes/cleric.json', '15', 'saves_not_object')`
+  - `('data/classes/cleric.json', '16', 'saves_not_object')`
+  - `('data/classes/cleric.json', '17', 'saves_not_object')`
+  - `('data/classes/cleric.json', '18', 'saves_not_object')`
+  - `('data/classes/cleric.json', '19', 'saves_not_object')`
+  - `('data/classes/cleric.json', '20', 'saves_not_object')`
+  - `('data/classes/cleric.json', '21', 'saves_not_object')`
+  - `('data/classes/cleric.json', '22', 'saves_not_object')`
+  - `('data/classes/cleric.json', '23', 'saves_not_object')`
+  - `('data/classes/cleric.json', '24', 'saves_not_object')`
+  - `('data/classes/cleric.json', '25', 'saves_not_object')`
+  - `('data/classes/cleric.json', '26', 'saves_not_object')`
+  - `('data/classes/cleric.json', '27', 'saves_not_object')`
+  - `('data/classes/cleric.json', '28', 'saves_not_object')`
+  - `('data/classes/cleric.json', '29', 'saves_not_object')`
+  - `('data/classes/cleric.json', '30', 'saves_not_object')`
+  - `('data/classes/cleric.json', '31', 'saves_not_object')`
+  - `('data/classes/cleric.json', '32', 'saves_not_object')`
+  - `('data/classes/cleric.json', '33', 'saves_not_object')`
+  - `('data/classes/cleric.json', '34', 'saves_not_object')`
+  - `('data/classes/cleric.json', '35', 'saves_not_object')`
+  - `('data/classes/cleric.json', '36', 'saves_not_object')`
+  - `('data/classes/thief.json', '2', 'saves_not_object')`
+  - `('data/classes/thief.json', '3', 'saves_not_object')`
+  - `('data/classes/thief.json', '4', 'saves_not_object')`
+  - `('data/classes/thief.json', '5', 'saves_not_object')`
+  - `('data/classes/thief.json', '6', 'saves_not_object')`
+  - `('data/classes/thief.json', '7', 'saves_not_object')`
+  - `('data/classes/thief.json', '8', 'saves_not_object')`
+  - `('data/classes/thief.json', '9', 'saves_not_object')`
+  - `('data/classes/thief.json', '10', 'saves_not_object')`
+  - `('data/classes/thief.json', '11', 'saves_not_object')`
+  - `('data/classes/thief.json', '12', 'saves_not_object')`
+  - `('data/classes/thief.json', '13', 'saves_not_object')`
+  - `('data/classes/thief.json', '14', 'saves_not_object')`
+  - `('data/classes/thief.json', '15', 'saves_not_object')`
+  - `('data/classes/thief.json', '16', 'saves_not_object')`
+  - `('data/classes/thief.json', '17', 'saves_not_object')`
+  - `('data/classes/thief.json', '18', 'saves_not_object')`
+  - `('data/classes/thief.json', '19', 'saves_not_object')`
+  - `('data/classes/thief.json', '20', 'saves_not_object')`
+  - `('data/classes/thief.json', '21', 'saves_not_object')`
+  - `('data/classes/thief.json', '22', 'saves_not_object')`
+  - `('data/classes/thief.json', '23', 'saves_not_object')`
+  - `('data/classes/thief.json', '24', 'saves_not_object')`
+  - `('data/classes/thief.json', '25', 'saves_not_object')`
+  - `('data/classes/thief.json', '26', 'saves_not_object')`
+  - `('data/classes/thief.json', '27', 'saves_not_object')`
+  - `('data/classes/thief.json', '28', 'saves_not_object')`
+  - `('data/classes/thief.json', '29', 'saves_not_object')`
+  - `('data/classes/thief.json', '30', 'saves_not_object')`
+  - `('data/classes/thief.json', '31', 'saves_not_object')`
+  - `('data/classes/thief.json', '32', 'saves_not_object')`
+  - `('data/classes/thief.json', '33', 'saves_not_object')`
+  - `('data/classes/thief.json', '34', 'saves_not_object')`
+  - `('data/classes/thief.json', '35', 'saves_not_object')`
+  - `('data/classes/thief.json', '36', 'saves_not_object')`
+- Spell slot key type issues: 0
+- Range level keys (e.g., 1-3): 0
+- Non-numeric level keys: 0
