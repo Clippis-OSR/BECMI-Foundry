@@ -1,3 +1,5 @@
+import { rollCreatureAttack } from "../rolls/becmi-rolls.mjs";
+
 export class BECMICreatureSheet extends ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -101,6 +103,24 @@ export class BECMICreatureSheet extends ActorSheet {
       });
     });
 
+
+    html.find('[data-action="roll-creature-attack"]').on("click", async (event) => {
+      event.preventDefault();
+
+      const index = Number(event.currentTarget.dataset.index);
+
+      if (!Number.isInteger(index)) return;
+
+      const attacks = Array.isArray(this.actor.system.attacks)
+        ? this.actor.system.attacks
+        : [];
+
+      const attack = attacks[index];
+
+      if (!attack) return;
+
+      await rollCreatureAttack(this.actor, attack);
+    });
     html.find('[data-action="remove-attack"]').on("click", async (event) => {
       event.preventDefault();
 
