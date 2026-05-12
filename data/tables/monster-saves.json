@@ -1,0 +1,119 @@
+{
+  "id": "monster-saves",
+  "name": "Monster Saving Throws",
+  "type": "monsterSaveTable",
+  "hitDice": {
+    "0": {
+      "label": "Up to 1",
+      "savesAs": {
+        "class": "fighter",
+        "level": 1
+      },
+      "saves": null
+    },
+    "1": {
+      "label": "1+ to 2",
+      "savesAs": {
+        "class": "fighter",
+        "level": 2
+      },
+      "saves": null
+    },
+    "2": {
+      "label": "2+ to 3",
+      "savesAs": {
+        "class": "fighter",
+        "level": 3
+      },
+      "saves": null
+    },
+    "3": {
+      "label": "3+ to 4",
+      "savesAs": {
+        "class": "fighter",
+        "level": 4
+      },
+      "saves": null
+    },
+    "4": {
+      "label": "4+ to 5",
+      "savesAs": {
+        "class": "fighter",
+        "level": 5
+      },
+      "saves": null
+    },
+    "5": {
+      "label": "5+ to 6",
+      "savesAs": {
+        "class": "fighter",
+        "level": 6
+      },
+      "saves": null
+    },
+    "6": {
+      "label": "6+ to 7",
+      "savesAs": {
+        "class": "fighter",
+        "level": 7
+      },
+      "saves": null
+    },
+    "7": {
+      "label": "7+ to 8",
+      "savesAs": {
+        "class": "fighter",
+        "level": 8
+      },
+      "saves": null
+    },
+    "8": {
+      "label": "8+ to 9",
+      "savesAs": {
+        "class": "fighter",
+        "level": 9
+      },
+      "saves": null
+    },
+    "9": {
+      "label": "9+ to 11",
+      "savesAs": {
+        "class": "fighter",
+        "level": 10
+      },
+      "saves": null
+    },
+    "10": {
+      "label": "11+ to 13",
+      "savesAs": {
+        "class": "fighter",
+        "level": 12
+      },
+      "saves": null
+    },
+    "11": {
+      "label": "13+ to 15",
+      "savesAs": {
+        "class": "fighter",
+        "level": 14
+      },
+      "saves": null
+    },
+    "12": {
+      "label": "15+ to 17",
+      "savesAs": {
+        "class": "fighter",
+        "level": 16
+      },
+      "saves": null
+    },
+    "13": {
+      "label": "17+ and up",
+      "savesAs": {
+        "class": "fighter",
+        "level": 18
+      },
+      "saves": null
+    }
+  }
+}
