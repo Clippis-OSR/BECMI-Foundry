@@ -47,6 +47,9 @@ export class BECMICharacterSheet extends ActorSheet {
 
     const context = super.getData();
     context.system = this.actor.system;
+    const system = context.system ?? {};
+    const attacks = Array.isArray(system.attacks) ? system.attacks : [];
+    context.attacks = attacks;
     console.warn("BECMICharacterSheet getData");
     console.warn("BECMI sheet debug", {
       actorName: this.actor?.name,
@@ -66,6 +69,75 @@ export class BECMICharacterSheet extends ActorSheet {
     html.find(".roll-thief-skill").click(this._onRollThiefSkill.bind(this));
     html.find(".roll-weapon-attack").click(this._onRollWeaponAttack.bind(this));
     html.find(".roll-initiative").click(this._onRollInitiative.bind(this));
+
+    html.find('[data-action="add-character-attack"]').on("click", async (event) => {
+      event.preventDefault();
+
+      const current = this.actor.system.attacks;
+      const attacks = Array.isArray(current) ? foundry.utils.deepClone(current) : [];
+
+      attacks.push({
+        name: "Weapon",
+        attackMod: 0,
+        damage: "1d6",
+        damageMod: 0
+      });
+
+      await this.actor.update({
+        "system.attacks": attacks
+      });
+    });
+
+    html.find('[data-action="remove-character-attack"]').on("click", async (event) => {
+      event.preventDefault();
+
+      const index = Number(event.currentTarget.dataset.index);
+      if (!Number.isInteger(index)) return;
+
+      const current = this.actor.system.attacks;
+      const attacks = Array.isArray(current) ? foundry.utils.deepClone(current) : [];
+
+      attacks.splice(index, 1);
+
+      await this.actor.update({
+        "system.attacks": attacks
+      });
+    });
+
+    html.find('[data-action="change-character-attack-field"]').on("change", async (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const input = event.currentTarget;
+      const index = Number(input.dataset.index);
+      const field = input.dataset.field;
+
+      if (!Number.isInteger(index)) return;
+      if (!["name", "attackMod", "damage", "damageMod"].includes(field)) return;
+
+      const current = this.actor.system.attacks;
+      const attacks = Array.isArray(current) ? foundry.utils.deepClone(current) : [];
+
+      if (!attacks[index]) {
+        attacks[index] = {
+          name: "Weapon",
+          attackMod: 0,
+          damage: "1d6",
+          damageMod: 0
+        };
+      }
+
+      let value = input.value;
+      if (["attackMod", "damageMod"].includes(field)) {
+        value = Number(value || 0);
+      }
+
+      attacks[index][field] = value;
+
+      await this.actor.update({
+        "system.attacks": attacks
+      });
+    });
   }
 
   async _onRollSave(event) {

@@ -46,6 +46,7 @@
         "thac0": 19,
         "initiative": 1
       },
+      "attacks": [],
       "hp": {
         "value": 4,
         "max": 4,
