@@ -69,5 +69,24 @@
     <label>Level</label>
     <input type="number" name="system.saveAs.level" value="{{saveAs.level}}" data-action="change-creature-field"/>
 
+    <h2>Attacks</h2>
+
+    {{#each attacks as |attack index|}}
+    <label>Attack Name</label>
+    <input type="text" name="system.attacks.{{index}}.name" value="{{attack.name}}" data-action="change-creature-field"/>
+
+    <label>Attack Bonus</label>
+    <input type="number" name="system.attacks.{{index}}.attackBonus" value="{{attack.attackBonus}}" data-action="change-creature-field"/>
+
+    <label>Damage</label>
+    <input type="text" name="system.attacks.{{index}}.damage" value="{{attack.damage}}" data-action="change-creature-field"/>
+
+    <button type="button" data-action="remove-attack" data-index="{{index}}">Remove</button>
+    {{/each}}
+
+    <button type="button" data-action="add-attack">
+      Add Attack
+    </button>
+
   </section>
 </form>

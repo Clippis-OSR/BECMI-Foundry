@@ -14,7 +14,8 @@ export class BECMICreatureSheet extends ActorSheet {
     const system = data.actor?.system ?? {};
     const creatureRole = system.creatureRole || "monster";
     data.system = system;
-    data.attacks = Array.isArray(system.attacks) ? system.attacks : [];
+    const attacks = Array.isArray(system.attacks) ? system.attacks : [];
+    data.attacks = attacks;
     const saveAs = system.saveAs ?? { class: "fighter", level: 1 };
     const saveAsClass = saveAs.class || "fighter";
     data.saveAs = saveAs;
@@ -50,6 +51,36 @@ export class BECMICreatureSheet extends ActorSheet {
       event.preventDefault();
       const input = event.currentTarget;
       await this.actor.update({ [input.name]: input.value });
+    });
+
+    html.find('[data-action="add-attack"]').on("click", async (event) => {
+      event.preventDefault();
+
+      const attacks = foundry.utils.deepClone(this.actor.system.attacks || []);
+
+      attacks.push({
+        name: "Attack",
+        attackBonus: 0,
+        damage: "1d6"
+      });
+
+      await this.actor.update({
+        "system.attacks": attacks
+      });
+    });
+
+    html.find('[data-action="remove-attack"]').on("click", async (event) => {
+      event.preventDefault();
+
+      const index = Number(event.currentTarget.dataset.index);
+
+      const attacks = foundry.utils.deepClone(this.actor.system.attacks || []);
+
+      attacks.splice(index, 1);
+
+      await this.actor.update({
+        "system.attacks": attacks
+      });
     });
   }
 
