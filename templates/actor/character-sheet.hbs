@@ -17,9 +17,18 @@
 
 <div class="tab" data-group="primary" data-tab="main">
   <h2>Details</h2>
-  <div>Class: <input type="text" name="system.class" value="{{system.class}}" /></div>
-  <div>Level: <input type="number" name="system.level" value="{{system.level}}" /></div>
-  <div>XP: <input type="number" name="system.details.xp" value="{{system.details.xp}}" /></div>
+  <div>Class: <select name="system.class">
+    <option value="fighter" {{#if (eq system.class "fighter")}}selected{{/if}}>Fighter</option>
+    <option value="cleric" {{#if (eq system.class "cleric")}}selected{{/if}}>Cleric</option>
+    <option value="magic-user" {{#if (eq system.class "magic-user")}}selected{{/if}}>Magic-User</option>
+    <option value="thief" {{#if (eq system.class "thief")}}selected{{/if}}>Thief</option>
+    <option value="dwarf" {{#if (eq system.class "dwarf")}}selected{{/if}}>Dwarf</option>
+    <option value="elf" {{#if (eq system.class "elf")}}selected{{/if}}>Elf</option>
+    <option value="halfling" {{#if (eq system.class "halfling")}}selected{{/if}}>Halfling</option>
+  </select></div>
+  <div>Level: {{system.derived.level}}</div>
+  <input type="hidden" name="system.level" value="{{system.level}}" />
+  <div>XP: <input type="number" name="system.experience.current" value="{{system.experience.current}}" /></div>
   <div>Alignment: <input type="text" name="system.details.alignment" value="{{system.details.alignment}}" /></div>
 
   <hr>

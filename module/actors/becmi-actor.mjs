@@ -1,5 +1,5 @@
-import { getActorTHAC0, getActorSaves } from "../rules/index.mjs";
-import { getActorClassId, getActorLevel } from "../rules/lookups.mjs";
+import { getActorTHAC0, getActorSaves, getCharacterSaves, getCharacterTHAC0 } from "../rules/index.mjs";
+import { getActorClassId, getActorLevel, getCharacterLevelFromXP } from "../rules/lookups.mjs";
 
 export class BECMIActor extends Actor {
   prepareDerivedData() {
@@ -24,14 +24,19 @@ export class BECMIActor extends Actor {
   _prepareCharacterDerivedData() {
     const system = this.system;
     const classId = getActorClassId(this);
-    const level = getActorLevel(this);
+    const xp = system.experience?.current ?? system.experience ?? system.xp;
+    const fallbackLevel = getActorLevel(this);
+    const derivedLevel = getCharacterLevelFromXP(classId, xp);
+    const level = derivedLevel ?? fallbackLevel;
 
     const existingDerived = system.derived ?? {};
-    const calculatedSaves = getActorSaves(this) ?? {};
+    const calculatedSaves = classId !== null && level !== null ? getCharacterSaves(classId, level) ?? {} : {};
+    const calculatedThac0 = classId !== null && level !== null ? getCharacterTHAC0(classId, level) : null;
 
     system.derived = {
       ...existingDerived,
-      thac0: getActorTHAC0(this) ?? null,
+      level,
+      thac0: calculatedThac0 ?? null,
       saves: {
         death: calculatedSaves.death ?? null,
         wands: calculatedSaves.wands ?? null,
@@ -47,7 +52,9 @@ export class BECMIActor extends Actor {
         actorName: this.name,
         actorType: this.type,
         detectedClassId: classId,
-        detectedLevel: level
+        detectedXP: xp,
+        detectedLevel: level,
+        fallbackLevel
       });
     }
   }

@@ -27,13 +27,43 @@ export function getActorClassId(actor) {
 
 export function getActorLevel(actor) {
   const actorSystem = actor?.system ?? {};
-  const rawLevel = actorSystem.level ?? actorSystem.level?.value ?? actorSystem.details?.level;
+  const rawLevel =
+    actorSystem.derived?.level ??
+    actorSystem.level ??
+    actorSystem.level?.value ??
+    actorSystem.details?.level;
   if (rawLevel === undefined || rawLevel === null || rawLevel === "") return null;
 
   const numericLevel = Number(rawLevel);
   if (Number.isFinite(numericLevel)) return numericLevel;
 
   return String(rawLevel);
+}
+
+export function getCharacterLevelFromXP(classId, xp) {
+  const classTable = getClassTable(classId);
+  if (!classTable) return null;
+
+  const xpValue = Number(xp);
+  if (!Number.isFinite(xpValue) || xpValue < 0) return 1;
+
+  const levels = classTable?.levels;
+  if (!levels || typeof levels !== "object") return null;
+
+  const sortedLevelEntries = Object.entries(levels)
+    .map(([level, data]) => ({ level: Number(level), xp: Number(data?.xp) }))
+    .filter((entry) => Number.isFinite(entry.level) && Number.isFinite(entry.xp))
+    .sort((a, b) => a.level - b.level);
+
+  if (!sortedLevelEntries.length) return 1;
+
+  let resolvedLevel = 1;
+  for (const entry of sortedLevelEntries) {
+    if (xpValue >= entry.xp) resolvedLevel = entry.level;
+    else break;
+  }
+
+  return resolvedLevel;
 }
 
 export function getClassTable(classId) {
