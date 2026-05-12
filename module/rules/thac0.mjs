@@ -1,3 +1,4 @@
+import { compareHitDiceToBracket, normalizeHitDice } from "./hit-dice.mjs";
 import { getClassTable } from "./lookups.mjs";
 
 function parseLevelBand(label, index = 0) {
@@ -104,70 +105,20 @@ export function getMonsterTHAC0(hd) {
     return null;
   }
 
-  const normalizedHd = normalizeMonsterHD(hd);
-  if (normalizedHd === null) {
+  const normalizedHd = normalizeHitDice(hd);
+  if (!normalizedHd) {
     console.warn(`[BECMI] Cannot resolve monster THAC0: invalid HD value "${hd}".`);
     return null;
   }
 
   for (const entry of Object.values(monsterThac0.hitDice)) {
-    const range = parseMonsterHdBand(entry?.label);
-    if (!range) continue;
-
-    if (normalizedHd >= range.min && normalizedHd <= range.max) {
-      return typeof entry?.thac0 === "number" ? entry.thac0 : null;
-    }
+    if (!compareHitDiceToBracket(normalizedHd.numeric, entry?.label)) continue;
+    return typeof entry?.thac0 === "number" ? entry.thac0 : null;
   }
 
   console.warn(
-    `[BECMI] Cannot resolve monster THAC0: no matching HD bracket for HD "${hd}" (normalized: ${normalizedHd}).`
+    `[BECMI] Cannot resolve monster THAC0: no matching HD bracket for HD "${hd}" (normalized: ${normalizedHd.numeric}).`
   );
-  return null;
-}
-
-function normalizeMonsterHD(hd) {
-  if (typeof hd === "number") return Number.isFinite(hd) ? hd : null;
-  if (typeof hd !== "string") return null;
-
-  const value = hd.trim().toLowerCase();
-  if (!value) return null;
-
-  if (value.includes("/")) {
-    const [num, den] = value.split("/").map((part) => Number(part.trim()));
-    if (Number.isFinite(num) && Number.isFinite(den) && den > 0) return num / den;
-    return null;
-  }
-
-  if (/^\d+\s*-\s*\d+$/.test(value)) {
-    const [whole, sub] = value.split("-").map((part) => Number(part.trim()));
-    if (Number.isFinite(whole) && Number.isFinite(sub)) return Math.max(whole - 1 + sub / 8, 0);
-    return null;
-  }
-
-  if (/^\d+\s*\+\s*\d+$/.test(value)) {
-    const [whole, bonus] = value.split("+").map((part) => Number(part.trim()));
-    if (Number.isFinite(whole) && Number.isFinite(bonus)) return whole + bonus / 8;
-    return null;
-  }
-
-  const numeric = Number(value);
-  return Number.isFinite(numeric) ? numeric : null;
-}
-
-function parseMonsterHdBand(label) {
-  if (typeof label !== "string") return null;
-  const text = label.trim().toLowerCase();
-  if (!text) return null;
-
-  const upToMatch = text.match(/^up to\s+(\d+(?:\.\d+)?)$/);
-  if (upToMatch) return { min: Number.NEGATIVE_INFINITY, max: Number(upToMatch[1]) };
-
-  const andUpMatch = text.match(/^(\d+(?:\.\d+)?)\+\s+and up$/);
-  if (andUpMatch) return { min: Number(andUpMatch[1]), max: Number.POSITIVE_INFINITY };
-
-  const rangeMatch = text.match(/^(\d+(?:\.\d+)?)\+\s+to\s+(\d+(?:\.\d+)?)$/);
-  if (rangeMatch) return { min: Number(rangeMatch[1]), max: Number(rangeMatch[2]) };
-
   return null;
 }
 

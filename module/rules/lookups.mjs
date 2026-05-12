@@ -1,3 +1,4 @@
+import { compareHitDiceToBracket, normalizeHitDice } from "./hit-dice.mjs";
 function normalizeClassId(classId) {
   if (typeof classId !== "string") return classId;
   if (classId === "magic-user") return "magicUser";
@@ -43,16 +44,26 @@ export function getClassLevelData(classId, level) {
 }
 
 export function getMonsterHDData(hd) {
-  const monsterProgression = CONFIG?.BECMI?.monsterProgression;
-  const hdKey = String(hd);
-  const hdData = monsterProgression?.[hdKey];
-
-  if (!hdData) {
-    console.warn(
-      `[BECMI] Missing monster progression data for HD "${hdKey}" in CONFIG.BECMI.monsterProgression.`
-    );
+  const monsterProgression = CONFIG?.BECMI?.monsterProgression?.hitDice;
+  if (!monsterProgression || typeof monsterProgression !== "object") {
+    console.warn("[BECMI] Missing CONFIG.BECMI.monsterProgression.hitDice.");
     return null;
   }
 
-  return hdData;
+  const normalizedHd = normalizeHitDice(hd);
+  if (!normalizedHd) {
+    console.warn(`[BECMI] Invalid monster HD value "${hd}".`);
+    return null;
+  }
+
+  for (const entry of Object.values(monsterProgression)) {
+    const bracket = entry?.hd ?? entry?.label;
+    if (!compareHitDiceToBracket(normalizedHd.numeric, bracket)) continue;
+    return entry;
+  }
+
+  console.warn(
+    `[BECMI] Missing monster progression data for HD "${hd}" (normalized: ${normalizedHd.numeric}) in CONFIG.BECMI.monsterProgression.`
+  );
+  return null;
 }
