@@ -46,7 +46,8 @@ export class BECMICharacterSheet extends ActorSheet {
     }
 
     const context = super.getData();
-    context.system = this.actor.system;
+    context.system = context.system ?? this.actor?.system ?? {};
+    context.actor = context.actor ?? this.actor ?? null;
     const system = context.system ?? {};
     const attacks = Array.isArray(system.attacks) ? system.attacks : [];
     context.attacks = attacks;
