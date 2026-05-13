@@ -205,6 +205,29 @@ Hooks.on("preCreateActor", (actor) => {
 });
 
 
+
+async function maybePromptInitiativeMode(combat) {
+  if (!game.user?.isGM) return;
+  if (!combat) return;
+
+  const existingMode = combat.getFlag("becmi-foundry", "initiativeMode");
+  if (existingMode === "group" || existingMode === "individual") return;
+
+  try {
+    await game.becmi?.combat?.chooseInitiativeMode?.(combat);
+  } catch (error) {
+    console.warn("BECMI Foundry | Failed to prompt initiative mode.", { error, combatId: combat?.id });
+  }
+}
+
+Hooks.on("createCombat", async (combat) => {
+  await maybePromptInitiativeMode(combat);
+});
+
+Hooks.on("combatStart", async (combat) => {
+  await maybePromptInitiativeMode(combat);
+});
+
 Hooks.once("ready", async function () {
   game.becmi = game.becmi || {};
   game.becmi.rules = becmiRules;
