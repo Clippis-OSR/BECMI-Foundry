@@ -42,7 +42,12 @@ export function resolveMorale(moraleScore, moraleRoll) {
  */
 export async function rollMorale({ actor, moraleScore = null, modifier = 0, reason = null, postToChat = true } = {}) {
   if (!actor) {
-    console.warn("[BECMI Combat] rollMorale called without actor.");
+    ui.notifications.warn("Select a creature token first.");
+    return null;
+  }
+
+  if (actor.type !== "creature") {
+    ui.notifications.warn("Morale checks are only used for creatures.");
     return null;
   }
 

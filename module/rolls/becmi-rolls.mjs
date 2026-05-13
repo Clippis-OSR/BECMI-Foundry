@@ -142,7 +142,17 @@ export async function rollInitiative(actor) {
 
 
 export async function rollMorale(actor) {
-  const morale = Number(actor.system.combat?.morale ?? 8);
+  if (!actor) {
+    ui.notifications.warn("Select a creature token first.");
+    return null;
+  }
+
+  if (actor.type !== "creature") {
+    ui.notifications.warn("Morale checks are only used for creatures.");
+    return null;
+  }
+
+  const morale = Number(actor.system.combat?.morale ?? actor.system?.morale ?? 8);
   const roll = await new Roll("2d6").evaluate();
   const total = roll.total;
   const success = total <= morale;
