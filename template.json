@@ -147,14 +147,6 @@
       },
       "spells": {
         "magicUser": {
-          "known": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": ""
-          },
           "slots": {
             "1": 0,
             "2": 0,
@@ -175,13 +167,6 @@
           }
         },
         "elf": {
-          "known": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": ""
-          },
           "slots": {
             "1": 0,
             "2": 0,
@@ -216,11 +201,18 @@
         },
         "hasSpellcasting": false,
         "spellSlots": null,
-        "spellsKnown": null,
         "hasThiefSkills": false,
         "thiefSkills": null,
         "hasTurnUndead": false,
         "turnUndead": null
+      },
+      "spellsKnown": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": []
       }
     },
     "creature": {

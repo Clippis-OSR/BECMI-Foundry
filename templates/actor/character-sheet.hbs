@@ -430,44 +430,62 @@
 <hr>
 
 <h2>Spell Slots (Derived)</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Spell Level</th>
-      <th>Slots</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each spellSlotsList}}
-    <tr>
-      <td>Level {{this.level}}</td>
-      <td>{{this.slots}}</td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{#each spellSlotsList}}
+<div>
+  <strong>Level {{this.level}}</strong>: <span>{{this.slots}}</span>
+</div>
+{{/each}}
 
-<h2>Spells Known (Derived)</h2>
-{{#if hasSpellsKnownData}}
-<table>
-  <thead>
-    <tr>
-      <th>Spell Level</th>
-      <th>Known</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each spellsKnownList}}
-    <tr>
-      <td>Level {{this.level}}</td>
-      <td>{{this.known}}</td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
-{{else}}
-<p>Spells known are not tracked yet.</p>
-{{/if}}
+<h2>Spells Known</h2>
+{{#each spellsKnownGroups as |group|}}
+<section>
+  <h3>Level {{group.level}}</h3>
+
+  {{#if group.spells.length}}
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Prepared</th>
+        <th>Source</th>
+        <th>Notes</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each group.spells as |spell|}}
+      <tr>
+        <td>
+          <input type="text" name="system.spellsKnown.{{group.level}}.{{spell.index}}.name" value="{{spell.name}}" />
+          <input type="hidden" name="system.spellsKnown.{{group.level}}.{{spell.index}}.id" value="{{spell.id}}" />
+          <input type="hidden" name="system.spellsKnown.{{group.level}}.{{spell.index}}.level" value="{{spell.level}}" />
+          <input type="hidden" name="system.spellsKnown.{{group.level}}.{{spell.index}}.type" value="{{spell.type}}" />
+          <input type="hidden" name="system.spellsKnown.{{group.level}}.{{spell.index}}.itemUuid" value="{{spell.itemUuid}}" />
+        </td>
+        <td>
+          <input type="checkbox" name="system.spellsKnown.{{group.level}}.{{spell.index}}.prepared" {{checked spell.prepared}} />
+        </td>
+        <td>
+          <span>{{spell.source}}</span>
+          <input type="hidden" name="system.spellsKnown.{{group.level}}.{{spell.index}}.source" value="{{spell.source}}" />
+        </td>
+        <td>
+          <input type="text" name="system.spellsKnown.{{group.level}}.{{spell.index}}.notes" value="{{spell.notes}}" />
+        </td>
+        <td>
+          <button type="button" class="remove-known-spell" data-level="{{group.level}}" data-index="{{spell.index}}">Remove</button>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{else}}
+  <p>No known spells at this level.</p>
+  {{/if}}
+
+  <button type="button" class="add-known-spell" data-level="{{group.level}}">Add Manual Spell</button>
+</section>
+{{/each}}
 </div>
 {{/if}}
 
