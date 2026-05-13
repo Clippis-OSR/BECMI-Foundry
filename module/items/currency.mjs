@@ -8,7 +8,7 @@ const CURRENCY_VALUE_IN_GP = {
   pp: 5
 };
 
-const DEFAULT_COIN_WEIGHT = 0.02;
+const DEFAULT_COIN_WEIGHT = 1;
 
 function toNumber(value, fallback = 0) {
   const parsed = Number(value);
@@ -67,7 +67,8 @@ export async function createCurrencyItem(actor, denomination, quantity = 0) {
     system: {
       denomination: normalizedDenomination,
       quantity: safeQuantity,
-      weightPerUnit: DEFAULT_COIN_WEIGHT
+      weightPerUnit: DEFAULT_COIN_WEIGHT,
+      weight: 0
     }
   }]);
 
