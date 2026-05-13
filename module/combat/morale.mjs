@@ -20,7 +20,7 @@ export function resolveMorale(moraleScore, moraleRoll) {
 }
 
 /**
- * Roll and resolve a BECMI monster morale check.
+ * Roll and resolve a BECMI morale check.
  *
  * Success/hold occurs when finalTotal <= moraleScore.
  *
@@ -29,6 +29,7 @@ export function resolveMorale(moraleScore, moraleRoll) {
  * @param {number|null} [params.moraleScore=null] Explicit morale score override.
  * @param {number} [params.modifier=0] Modifier applied to the roll total.
  * @param {string|null} [params.reason=null] Optional reason/context label.
+ * @param {boolean} [params.postToChat=true] Whether to post a morale result card.
  * @returns {Promise<{
  *   actor: object,
  *   moraleScore: number,
@@ -39,27 +40,31 @@ export function resolveMorale(moraleScore, moraleRoll) {
  *   success: boolean
  * }>}
  */
-export async function rollMorale({ actor, moraleScore = null, modifier = 0, reason = null } = {}) {
-  if (!actor) throw new Error("[BECMI Combat] rollMorale requires actor.");
+export async function rollMorale({ actor, moraleScore = null, modifier = 0, reason = null, postToChat = true } = {}) {
+  if (!actor) {
+    console.warn("[BECMI Combat] rollMorale called without actor.");
+    return null;
+  }
 
   const resolvedMoraleScore = Number(
     moraleScore
     ?? actor?.system?.morale?.value
     ?? actor?.system?.morale
-    ?? 7
+    ?? actor?.system?.attributes?.morale?.value
   );
 
-  if (moraleScore == null && actor?.system?.morale == null) {
-    console.warn("[BECMI Combat] Missing actor morale score; using fallback moraleScore=7.", { actor });
+  if (!Number.isFinite(resolvedMoraleScore)) {
+    console.warn("[BECMI Combat] Missing actor morale score; could not resolve morale check.", { actor, moraleScore });
+    return null;
   }
 
-  const flatModifier = Number(modifier);
+  const flatModifier = Number(modifier) || 0;
   const roll = await (new Roll("2d6")).evaluate();
   const rollTotal = Number(roll.total);
   const finalTotal = rollTotal + flatModifier;
   const success = finalTotal <= resolvedMoraleScore;
 
-  return {
+  const moraleResult = {
     actor,
     moraleScore: resolvedMoraleScore,
     reason,
@@ -68,6 +73,48 @@ export async function rollMorale({ actor, moraleScore = null, modifier = 0, reas
     finalTotal,
     success
   };
+
+  if (postToChat) {
+    try {
+      await renderMoraleCard({ moraleResult });
+    } catch (error) {
+      console.warn("[BECMI Combat] Failed to post morale check to chat.", { error, moraleResult });
+    }
+  }
+
+  return moraleResult;
+}
+
+export async function renderMoraleCard({ moraleResult } = {}) {
+  if (!moraleResult) throw new Error("[BECMI Combat] renderMoraleCard requires moraleResult.");
+
+  const templatePath = "systems/becmi-foundry/templates/chat/morale-card.hbs";
+  const context = {
+    actorName: moraleResult?.actor?.name ?? "Unknown Creature",
+    moraleScore: moraleResult?.moraleScore ?? "-",
+    reason: moraleResult?.reason,
+    rollTotal: moraleResult?.rollTotal ?? "-",
+    modifier: moraleResult?.modifier ?? 0,
+    finalTotal: moraleResult?.finalTotal ?? "-",
+    success: Boolean(moraleResult?.success)
+  };
+
+  let content;
+  try {
+    content = await renderTemplate(templatePath, context);
+  } catch (error) {
+    console.warn("[BECMI Combat] Failed to render morale card template; using fallback content.", { error, templatePath, context });
+    content = `<div class=\"becmi-chat-card becmi-morale-card\">${context.actorName} morale check: 2d6 ${context.modifier >= 0 ? "+" : ""}${context.modifier} = ${context.finalTotal}; morale ${context.moraleScore}; ${context.success ? "Holds" : "Fails"}</div>`;
+  }
+
+  let message = null;
+  try {
+    message = await ChatMessage.create({ content });
+  } catch (error) {
+    console.warn("[BECMI Combat] Failed to create chat message for morale card.", { error, content });
+  }
+
+  return { content, message };
 }
 
 /**
