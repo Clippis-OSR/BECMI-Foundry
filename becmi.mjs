@@ -326,17 +326,45 @@ function injectBECMICombatTrackerControls(app, html) {
   anchor.prepend(controls);
 }
 
-Hooks.on("renderCombatTracker", injectBECMICombatTrackerControls);
-Hooks.on("renderApplication", (app, html) => {
-  if (app?.constructor?.name !== "CombatTracker") return;
-  injectBECMICombatTrackerControls(app, html);
-});
+function isCombatTrackerApplication(app, html) {
+  const constructorName = app?.constructor?.name;
+  const appId = app?.id;
+  const optionsId = app?.options?.id;
+  const tabName = app?.tabName;
+  const category = app?.category;
 
-Hooks.on("renderCombatTrackerConfig", (app, html) => {
-  console.log("BECMI | Combat Tracker Config render hook fired", app, html);
-});
+  if (constructorName === "CombatTracker") return true;
+  if (appId === "combat" || optionsId === "combat") return true;
+  if (tabName === "combat" || category === "combat") return true;
+
+  const root = getCombatTrackerRoot(html);
+  if (!root) return false;
+  return Boolean(root.querySelector(".combat-tracker") || root.classList?.contains("combat"));
+}
+
+function handleCombatTrackerRender(hookName, app, html) {
+  console.log(`BECMI | ${hookName} fired`, app);
+  if (!isCombatTrackerApplication(app, html)) return;
+  injectBECMICombatTrackerControls(app, html);
+}
 
 Hooks.once("ready", async function () {
+  console.log("BECMI | Registering combat tracker hooks");
+  Hooks.on("renderCombatTracker", (app, html) => {
+    handleCombatTrackerRender("renderCombatTracker", app, html);
+  });
+
+  Hooks.on("renderCombatTrackerConfig", (app, html) => {
+    handleCombatTrackerRender("renderCombatTrackerConfig", app, html);
+  });
+
+  Hooks.on("renderSidebarTab", (app, html) => {
+    handleCombatTrackerRender("renderSidebarTab", app, html);
+  });
+
+  Hooks.on("renderApplication", (app, html) => {
+    handleCombatTrackerRender("renderApplication", app, html);
+  });
   game.becmi = game.becmi || {};
   game.becmi.rules = becmiRules;
   game.becmi.inventory = inventoryManager;
