@@ -414,6 +414,7 @@
 </div>
 
 {{#each inventoryGroups as |group|}}
+<section class="inventory-group" data-container-id="{{group.containerId}}">
 <h3>{{group.label}}</h3>
 {{#if group.hasContainer}}
 <p><em>Container-linked group.</em></p>
@@ -495,6 +496,8 @@
     {{/if}}
   </tbody>
 </table>
+<div class="inventory-drop-hint"><small>Drop item here to add to this group.</small></div>
+</section>
 {{/each}}
 
 </div>

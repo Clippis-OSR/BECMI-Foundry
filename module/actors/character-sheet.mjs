@@ -652,29 +652,75 @@ export class BECMICharacterSheet extends ActorSheet {
       return super._onDrop(event);
     }
 
-    let droppedItem = null;
-
-    if (data.uuid) {
-      droppedItem = await fromUuid(data.uuid);
+    let sourceItem = null;
+    try {
+      sourceItem = await Item.fromDropData(data);
+    } catch (error) {
+      console.warn("BECMI drop failed to resolve Item", { data, error });
+      return super._onDrop(event);
     }
 
-    if (!droppedItem && data.data) {
-      droppedItem = data.data;
-    }
-
-    if (!droppedItem || droppedItem.type !== "spell") {
+    if (!sourceItem) {
+      console.warn("BECMI drop ignored unsupported Item data", data);
       return super._onDrop(event);
     }
 
     const droppedInSpellsTab = event.target instanceof Element
       && event.target.closest(".tab[data-tab=\"spells\"]");
+    if (sourceItem.type === "spell" && droppedInSpellsTab) {
+      await this._addKnownSpellFromItem(sourceItem);
+      return true;
+    }
 
-    if (!droppedInSpellsTab) {
+    const supportedTypes = new Set(["equipment", "weapon", "armor", "container", "currency", "treasure", "consumable"]);
+    if (!supportedTypes.has(sourceItem.type)) {
       return super._onDrop(event);
     }
 
-    await this._addKnownSpellFromItem(droppedItem);
+    const dropContainerId = this._getDropContainerId(event);
+    await this._importLibraryItemToActor(sourceItem, dropContainerId);
+    this.render(false);
     return true;
+  }
+
+  _getDropContainerId(event) {
+    if (!(event?.target instanceof Element)) return "";
+    const containerElement = event.target.closest("[data-container-id]");
+    const containerId = normalizeContainerId(containerElement?.dataset?.containerId ?? "");
+    if (!containerId) return "";
+    return this.actor.items.get(containerId) ? containerId : "";
+  }
+
+  async _importLibraryItemToActor(sourceItem, targetContainerId = "") {
+    const normalizedContainerId = normalizeContainerId(targetContainerId);
+    let createData = sourceItem.toObject();
+    delete createData._id;
+    createData.system = {
+      ...(createData.system ?? {}),
+      containerId: normalizedContainerId
+    };
+
+    if (sourceItem.type === "currency") {
+      const denomination = currencyHelpers.normalizeCurrencyDenomination(createData?.system?.denomination);
+      const quantity = Math.max(0, Math.floor(Number(createData?.system?.quantity ?? 0) || 0));
+      if (denomination && quantity > 0) {
+        await currencyHelpers.addCurrency(this.actor, denomination, quantity);
+        return;
+      }
+      createData.system.weightPerUnit = Number.isFinite(Number(createData?.system?.weightPerUnit))
+        ? Number(createData.system.weightPerUnit)
+        : 1;
+    }
+
+    if (sourceItem.type === "container" && normalizedContainerId) {
+      if (sourceItem.id && sourceItem.id === normalizedContainerId) {
+        createData.system.containerId = "";
+      } else if (this._wouldCreateCircularContainment(sourceItem.id, normalizedContainerId)) {
+        createData.system.containerId = "";
+      }
+    }
+
+    await this.actor.createEmbeddedDocuments("Item", [createData]);
   }
 
 
