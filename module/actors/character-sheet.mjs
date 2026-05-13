@@ -17,6 +17,11 @@ import { calculateTotalEncumbrance } from "../items/encumbrance.mjs";
 import * as currencyHelpers from "../items/currency.mjs";
 import * as treasureHelpers from "../items/treasure.mjs";
 
+const DEBUG_INVENTORY = false;
+const debugInventory = (...args) => {
+  if (DEBUG_INVENTORY) console.debug("[BECMI inventory]", ...args);
+};
+
 export class BECMICharacterSheet extends ActorSheet {
 
   static get defaultOptions() {
@@ -107,14 +112,6 @@ export class BECMICharacterSheet extends ActorSheet {
     context.encumbranceSummary = this._buildEncumbranceSummary();
     context.inventoryMoveTargets = this._buildInventoryMoveTargets();
 
-    console.warn("BECMICharacterSheet getData");
-    console.warn("BECMI sheet debug", {
-      actorName: this.actor?.name,
-      actorType: this.actor?.type,
-      sheetClass: this.constructor.name,
-      template: this.template,
-      system: this.actor?.system
-    });
     return context;
   }
 
@@ -296,6 +293,7 @@ export class BECMICharacterSheet extends ActorSheet {
 
     html.find('[data-action="change-currency-quantity"]').on("change", this._onCurrencyQuantityChange.bind(this));
     html.find('[data-action="update-inventory-item"]').on("change", this._onUpdateInventoryItem.bind(this));
+    html.find('[data-action="update-inventory-item"]').on("click", (event) => event.stopPropagation());
     html.find('[data-action="create-inventory-item"]').on("click", this._onCreateInventoryItem.bind(this));
   }
 
@@ -520,7 +518,13 @@ export class BECMICharacterSheet extends ActorSheet {
       containerId: normalizedContainerId
     };
 
-    await this.actor.createEmbeddedDocuments("Item", [createData]);
+    const created = await this.actor.createEmbeddedDocuments("Item", [createData]);
+    const createdItem = Array.isArray(created) ? created[0] : null;
+    debugInventory("create item", {
+      itemId: createdItem?.id ?? null,
+      itemType,
+      system: foundry.utils.deepClone(createdItem?.system ?? createData.system ?? {})
+    });
     this.render(false);
   }
 
@@ -546,12 +550,19 @@ export class BECMICharacterSheet extends ActorSheet {
       value = String(input.value ?? "");
     }
 
+    debugInventory("inline field change", { itemId, field, parsedValue: value });
+
     if (field === "system.containerId") {
       value = normalizeContainerId(value);
       if (!this._canMoveItemToContainer(item, value)) return;
     }
 
     await item.update({ [field]: value });
+    const updated = this.actor.items.get(item.id);
+    const updatedValue = field === "name"
+      ? updated?.name
+      : foundry.utils.getProperty(updated, field);
+    debugInventory("post item.update", { itemId, field, updatedValue });
     this.render(false);
   }
 
@@ -598,10 +609,21 @@ export class BECMICharacterSheet extends ActorSheet {
       ...group,
       hasContainer: Boolean(group.containerId),
       items: (group.items ?? []).map((item) => {
-        const quantity = Number(item?.system?.quantity ?? 1) || 1;
-        const weight = Number(item?.system?.weight ?? 0) || 0;
+        const quantityRaw = item?.system?.quantity;
+        const weightRaw = item?.system?.weight;
+        const valueRaw = item?.system?.value;
+        const quantity = Number(quantityRaw ?? 1);
+        const weight = Number(weightRaw ?? 0);
         const totalWeight = getItemTotalWeight(item);
-        const value = Number(item?.system?.value ?? 0) || 0;
+        const value = Number(valueRaw ?? 0);
+        debugInventory("build inventory row", {
+          itemId: item?.id ?? null,
+          quantity,
+          weight,
+          value,
+          source: { quantity: quantityRaw, weight: weightRaw, value: valueRaw }
+        });
+
         return {
           id: item.id,
           name: item.name,
@@ -609,7 +631,7 @@ export class BECMICharacterSheet extends ActorSheet {
           weight,
           totalWeight,
           value,
-          estimatedValue: Number(item?.system?.estimatedValue ?? 0) || 0,
+          estimatedValue: Number(item?.system?.estimatedValue ?? 0),
           denomination: String(item?.system?.denomination ?? ""),
           containerId: String(item?.system?.containerId ?? ""),
           equipped: Boolean(item?.system?.equipped),
