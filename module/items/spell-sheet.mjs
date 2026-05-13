@@ -14,7 +14,7 @@ export class BECMISpellItemSheet extends ItemSheet {
     const effects = this.item.system?.effects;
 
     context.traditionOptions = ["arcane", "divine"];
-    context.saveTypeOptions = ["death", "wands", "paralysis", "breath", "spells"];
+    context.saveTypeOptions = ["deathRayPoison", "magicWands", "paralysisTurnStone", "dragonBreath", "rodStaffSpell"];
     context.systemEffectsJson = JSON.stringify(Array.isArray(effects) ? effects : [], null, 2);
 
     return context;

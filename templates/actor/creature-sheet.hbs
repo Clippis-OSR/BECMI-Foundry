@@ -32,22 +32,11 @@
     <span>{{system.derived.thac0}}</span>
 
     <h2>Saving Throws</h2>
-    <div>Death Ray / Poison: <span>{{system.derived.saves.deathRayPoison}}</span></div>
-    <div>Magic Wands: <span>{{system.derived.saves.magicWands}}</span></div>
-    <div>Paralysis / Turn to Stone: <span>{{system.derived.saves.paralysisTurnStone}}</span></div>
-    <div>Dragon Breath: <span>{{system.derived.saves.dragonBreath}}</span></div>
-    <div>Rod / Staff / Spell: <span>{{system.derived.saves.rodStaffSpell}}</span></div>
-
-    <h3>Temporary / Debug Derived Data</h3>
-    <div>HD: {{system.derived.hitDice}}</div>
-    <div>Saves As: {{system.derived.savesAs.class}} {{system.derived.savesAs.level}}</div>
-    <div>Derived THAC0: {{system.derived.thac0}}</div>
-    <div>Derived Saves:</div>
-    <div>Death Ray / Poison: {{system.derived.saves.deathRayPoison}}</div>
-    <div>Magic Wands: {{system.derived.saves.magicWands}}</div>
-    <div>Paralysis / Turn to Stone: {{system.derived.saves.paralysisTurnStone}}</div>
-    <div>Dragon Breath: {{system.derived.saves.dragonBreath}}</div>
-    <div>Rod / Staff / Spell: {{system.derived.saves.rodStaffSpell}}</div>
+    <div>Death Ray / Poison: <span>{{system.saves.deathRayPoison.value}}</span></div>
+    <div>Magic Wands: <span>{{system.saves.magicWands.value}}</span></div>
+    <div>Paralysis / Turn to Stone: <span>{{system.saves.paralysisTurnStone.value}}</span></div>
+    <div>Dragon Breath: <span>{{system.saves.dragonBreath.value}}</span></div>
+    <div>Rod / Staff / Spell: <span>{{system.saves.rodStaffSpell.value}}</span></div>
 
     <label>Morale</label>
     <input type="number" name="system.morale" value="{{system.morale}}" data-action="change-creature-field"/>

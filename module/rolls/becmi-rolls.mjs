@@ -2,7 +2,6 @@ export async function rollSavingThrow(actor, saveKey, label) {
   const target = Number(
     actor.system.saves?.[saveKey]?.value
       ?? actor.system.derived?.saves?.[saveKey]
-      ?? actor.system.saves?.[saveKey]
       ?? 20
   );
 
