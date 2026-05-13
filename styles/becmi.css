@@ -115,6 +115,8 @@
 .becmi-combat-tracker-controls {
   display: flex;
   gap: 4px;
+  border: 1px solid red;
+  padding: 4px;
   margin: 4px 0;
 }
 

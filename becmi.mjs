@@ -237,6 +237,25 @@ function getCombatTrackerRoot(html) {
   return null;
 }
 
+function findCombatTrackerInsertionTarget(root) {
+  if (!root) return null;
+
+  const selectors = [
+    ".combat-tracker",
+    ".directory-list",
+    ".combatants",
+    ".directory-footer",
+    "footer"
+  ];
+
+  for (const selector of selectors) {
+    const target = root.querySelector(selector);
+    if (target) return target;
+  }
+
+  return null;
+}
+
 async function runTrackerInitiativeRoll(mode) {
   const methodName = mode === "group" ? "rollGroupInitiative" : "rollIndividualInitiative";
 
@@ -255,17 +274,27 @@ async function runTrackerInitiativeRoll(mode) {
 }
 
 Hooks.on("renderCombatTracker", (app, html) => {
+  console.log("BECMI | Combat Tracker render hook fired", app, html);
   if (!game.user?.isGM) return;
 
+  if (!game.becmi?.combat) {
+    console.error("BECMI Foundry | Combat tracker controls not rendered: game.becmi.combat is missing.");
+    return;
+  }
+
   const root = getCombatTrackerRoot(html);
-  if (!root) return;
+  if (!root) {
+    console.error("BECMI Foundry | Combat tracker controls not rendered: unsupported html payload.", { html });
+    return;
+  }
 
-  const trackerDirectory = root.querySelector(".directory-list");
-  const trackerFooter = root.querySelector(".directory-footer");
-  const anchor = trackerFooter ?? trackerDirectory;
-  if (!anchor) return;
+  if (root.querySelector(".becmi-combat-tracker-controls")) return;
 
-  root.querySelector(".becmi-combat-tracker-controls")?.remove();
+  const anchor = findCombatTrackerInsertionTarget(root);
+  if (!anchor) {
+    console.error("BECMI Foundry | Combat tracker controls not rendered: no insertion target found.", { root });
+    return;
+  }
 
   const controls = document.createElement("div");
   controls.className = "becmi-combat-tracker-controls";
@@ -297,7 +326,27 @@ Hooks.on("renderCombatTracker", (app, html) => {
     }
   });
 
+  if (html?.jquery) {
+    const $root = html;
+    const $anchor = $root.find(".directory-footer, .directory-list, .combatants, .combat-tracker, footer").first();
+    if (!$anchor.length) {
+      console.error("BECMI Foundry | Combat tracker controls not rendered: jQuery insertion target not found.", { html });
+      return;
+    }
+    $anchor.before(controls);
+    return;
+  }
+
   anchor.insertAdjacentElement("beforebegin", controls);
+});
+
+Hooks.on("renderCombatTrackerConfig", (app, html) => {
+  console.log("BECMI | Combat Tracker Config render hook fired", app, html);
+});
+
+Hooks.on("renderApplication", (app, html) => {
+  if (app?.constructor?.name !== "CombatTracker") return;
+  console.log("BECMI | renderApplication hook fired for CombatTracker", app, html);
 });
 Hooks.once("ready", async function () {
   game.becmi = game.becmi || {};
