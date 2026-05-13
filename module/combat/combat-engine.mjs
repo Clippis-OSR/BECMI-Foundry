@@ -22,7 +22,7 @@ import { resolveMorale, rollMorale, shouldCheckMorale } from "./morale.mjs";
  * - Monster abilities: inject special hit effects after attackResult.
  * - Equipment modifiers: precompute bonuses and place on attackData.
  */
-export async function rollAttack({ attacker, target, attackData, rollDamageOnHit = true } = {}) {
+export async function rollAttack({ attacker, target, attackData, rollDamageOnHit = true, postToChat = true } = {}) {
   if (!attacker) throw new Error("[BECMI Combat] rollAttack requires an attacker.");
   if (!target) throw new Error("[BECMI Combat] rollAttack requires a target.");
   if (!attackData || typeof attackData !== "object") throw new Error("[BECMI Combat] rollAttack requires attackData.");
@@ -34,12 +34,20 @@ export async function rollAttack({ attacker, target, attackData, rollDamageOnHit
     damageResult = await rollDamage({ attacker, target, attackData });
   }
 
+  if (postToChat) {
+    try {
+      await renderAttackCard({ attackResult, damageResult });
+    } catch (error) {
+      console.warn("[BECMI Combat] Failed to post attack result to chat.", { error, attackResult, damageResult });
+    }
+  }
+
   return { attackResult, damageResult };
 }
 
 export async function renderAttackCard({ attackResult, damageResult = null } = {}) {
   if (!attackResult) throw new Error("[BECMI Combat] renderAttackCard requires attackResult.");
-  const templatePath = "templates/chat/attack-card.hbs";
+  const templatePath = "systems/becmi-foundry/templates/chat/attack-card.hbs";
   const context = {
     attackerName: attackResult?.attacker?.name ?? "Unknown Attacker",
     targetName: attackResult?.target?.name ?? "Unknown Target",
