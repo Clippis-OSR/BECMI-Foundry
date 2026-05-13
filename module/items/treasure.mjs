@@ -1,3 +1,5 @@
+import { getItemLocation } from "./inventory-manager.mjs";
+
 function toNumber(value, fallback = 0) {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : fallback;
@@ -42,6 +44,7 @@ export function getTreasureTotalValue(actor, identifiedOnly = false) {
 
 export function getTreasureWeight(actor) {
   return getTreasureItems(actor).reduce((sum, item) => {
+    if (getItemLocation(item) === "storage") return sum;
     const quantity = Math.max(0, toNumber(item?.system?.quantity, 0));
     const rawWeight = item?.system?.weight;
     const parsedWeight = Number(rawWeight);

@@ -7,6 +7,7 @@ import {
 } from "../rolls/becmi-rolls.mjs";
 import {
   getActorItems,
+  getItemLocation,
   getItemTotalWeight,
   normalizeContainerId,
   normalizeItemLocation
@@ -422,11 +423,18 @@ export class BECMICharacterSheet extends ActorSheet {
     }
 
     if (field === "system.location") {
+      const isTreasure = item.type === "treasure";
       value = normalizeItemLocation(value);
+      if (isTreasure && value !== "storage") value = "treasure";
+      if (!isTreasure && value === "treasure") {
+        console.warn("Rejected non-treasure move into treasure location", { itemId, attemptedLocation: value });
+        return;
+      }
       const syncMap = {
         equipped: { "system.equipped": true, "system.worn": false },
         worn: { "system.equipped": false, "system.worn": true },
-        storage: { "system.equipped": false, "system.worn": false }
+        storage: { "system.equipped": false, "system.worn": false },
+        treasure: { "system.equipped": false, "system.worn": false }
       };
       await item.update({ [field]: value, ...(syncMap[value] ?? {}) });
       this.render(false);
@@ -446,6 +454,7 @@ export class BECMICharacterSheet extends ActorSheet {
     // Placeholder for future slot enforcement, e.g. rings: 2, amulet: 1, belt: 1, gloves: 1, boots/shoes: 1, helmet: 1.
     const items = getActorItems(this.actor);
     const groupDefinitions = [
+      { key: "treasure", label: "Treasure" },
       { key: "equipped", label: "Equipped" },
       { key: "worn", label: "Worn" },
       { key: "storage", label: "Storage" }
@@ -454,7 +463,12 @@ export class BECMICharacterSheet extends ActorSheet {
     const groups = groupDefinitions.map((group) => ({
       ...group,
       sectionLocation: group.key,
-      items: items.filter((item) => normalizeItemLocation(item?.system?.location) === group.key).map((item) => {
+      items: items.filter((item) => {
+        const location = getItemLocation(item);
+        if (group.key === "equipped" || group.key === "worn") return item?.type !== "treasure" && location === group.key;
+        if (group.key === "treasure") return item?.type === "treasure" && location === "treasure";
+        return location === group.key;
+      }).map((item) => {
         const quantityRaw = item?.system?.quantity;
         const weightRaw = item?.system?.weight;
         const valueRaw = item?.system?.value;
@@ -478,9 +492,10 @@ export class BECMICharacterSheet extends ActorSheet {
           totalWeight,
           value,
           estimatedValue: Number(item?.system?.estimatedValue ?? 0),
+          treasureType: String(item?.system?.treasureType ?? ""),
           denomination: String(item?.system?.denomination ?? ""),
           containerId: String(item?.system?.containerId ?? ""),
-          location: normalizeItemLocation(item?.system?.location),
+          location: getItemLocation(item),
           identified: Boolean(item?.system?.identified),
           notes: String(item?.system?.notes ?? ""),
           type: item?.type ?? ""
@@ -534,6 +549,10 @@ export class BECMICharacterSheet extends ActorSheet {
     }
 
     const dropLocation = this._getDropLocation(event);
+    if (dropLocation === "treasure" && sourceItem.type !== "treasure") {
+      console.warn("Rejected non-treasure item dropped into treasure section", { itemType: sourceItem.type });
+      return false;
+    }
     await importItemToActor(this.actor, sourceItem, { location: dropLocation });
     this.render(false);
     return true;
@@ -542,6 +561,7 @@ export class BECMICharacterSheet extends ActorSheet {
   _getDropLocation(event) {
     if (!(event?.target instanceof Element)) return "worn";
     const sectionElement = event.target.closest("[data-location]");
+    if (!sectionElement) return "treasure";
     return normalizeItemLocation(sectionElement?.dataset?.location ?? "worn");
   }
 
