@@ -13,6 +13,7 @@ import {
 import * as becmiRules from "./module/rules/index.mjs";
 import * as inventoryManager from "./module/items/inventory-manager.mjs";
 import * as encumbrance from "./module/items/encumbrance.mjs";
+import * as combatEngine from "./module/combat/combat-engine.mjs";
 import {
   validateClassTable,
   validateMonsterProgression
@@ -41,6 +42,9 @@ const BECMI_CREATURE_DEFAULTS = {
 
 Hooks.once("init", async function () {
   console.log("BECMI Foundry | Init");
+  game.becmi = game.becmi || {};
+  game.becmi.combat = combatEngine;
+  console.log("BECMI Foundry | Combat engine registered at game.becmi.combat");
 
   CONFIG.BECMI = CONFIG.BECMI || {};
   CONFIG.BECMI.classTables = {};
