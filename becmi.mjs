@@ -243,9 +243,7 @@ function findCombatTrackerInsertionTarget(root) {
   const selectors = [
     ".combat-tracker",
     ".directory-list",
-    ".combatants",
-    ".directory-footer",
-    "footer"
+    ".window-content"
   ];
 
   for (const selector of selectors) {
@@ -256,119 +254,88 @@ function findCombatTrackerInsertionTarget(root) {
   return null;
 }
 
-async function runTrackerInitiativeRoll(mode) {
-  const methodName = mode === "group" ? "rollGroupInitiative" : "rollIndividualInitiative";
-
+async function runBECMICombatTrackerAction(action) {
   try {
-    const combat = await game.becmi?.combat?.getOrCreateCombatWithSelectedTokens?.(game.combat);
-    if (!combat) return;
+    if (action === "group-initiative") {
+      await game.becmi.combat.rollGroupInitiative({
+        combat: game.combat,
+        postToChat: true
+      });
+      return;
+    }
 
-    await game.becmi.combat[methodName]({
-      combat,
-      postToChat: true
-    });
+    if (action === "individual-initiative") {
+      await game.becmi.combat.rollIndividualInitiative({
+        combat: game.combat,
+        postToChat: true
+      });
+      return;
+    }
+
+    if (action === "morale") {
+      await game.becmi.combat.rollMoraleForSelectedCreatures({
+        reason: "Manual morale check",
+        postToChat: true
+      });
+    }
   } catch (error) {
-    console.error("BECMI Foundry | Failed to roll initiative from Combat Tracker.", { error, mode });
-    ui.notifications.error("BECMI initiative roll failed. Check console for details.");
+    console.error("BECMI | Combat tracker action failed", error);
+    ui.notifications.error(error.message ?? "BECMI combat tracker action failed.");
   }
 }
 
-async function runTrackerMoraleRoll() {
-  try {
-    await game.becmi?.combat?.rollMoraleForSelectedCreatures?.({
-      reason: "Manual morale check",
-      postToChat: true
-    });
-  } catch (error) {
-    console.error("BECMI Foundry | Failed to roll morale from Combat Tracker.", { error });
-    ui.notifications.error("BECMI morale roll failed. Check console for details.");
-  }
-}
-
-Hooks.on("renderCombatTracker", (app, html) => {
-  console.log("BECMI | Combat Tracker render hook fired", app, html);
+function injectBECMICombatTrackerControls(app, html) {
+  console.log("BECMI | Combat Tracker hook fired");
   if (!game.user?.isGM) return;
-
-  if (!game.becmi?.combat) {
-    console.error("BECMI Foundry | Combat tracker controls not rendered: game.becmi.combat is missing.");
-    return;
-  }
+  if (!game.becmi?.combat) return;
 
   const root = getCombatTrackerRoot(html);
-  if (!root) {
-    console.error("BECMI Foundry | Combat tracker controls not rendered: unsupported html payload.", { html });
-    return;
-  }
+  if (!root) return;
 
-  if (root.querySelector(".becmi-combat-tracker-controls")) return;
+  const existing = html?.jquery
+    ? html.find(".becmi-combat-tracker-controls").length > 0
+    : root.querySelector(".becmi-combat-tracker-controls");
+  if (existing) return;
 
-  const anchor = findCombatTrackerInsertionTarget(root);
-  if (!anchor) {
-    console.error("BECMI Foundry | Combat tracker controls not rendered: no insertion target found.", { root });
-    return;
-  }
+  const anchor = findCombatTrackerInsertionTarget(root) ?? root;
+  if (!anchor) return;
 
+  console.log("BECMI | Injecting combat tracker controls");
   const controls = document.createElement("div");
   controls.className = "becmi-combat-tracker-controls";
   controls.innerHTML = `
-    <button type="button" class="becmi-init-button" data-action="becmi-group-initiative" title="Roll BECMI group initiative">
-      <i class="fas fa-users" aria-hidden="true"></i>
-      <span>Group Init</span>
+    <button type="button" class="becmi-tracker-button" data-becmi-action="group-initiative">
+      <i class="fas fa-users"></i> Group Init
     </button>
-    <button type="button" class="becmi-init-button" data-action="becmi-individual-initiative" title="Roll BECMI individual initiative">
-      <i class="fas fa-dice-d20" aria-hidden="true"></i>
-      <span>Individual Init</span>
+    <button type="button" class="becmi-tracker-button" data-becmi-action="individual-initiative">
+      <i class="fas fa-dice-d20"></i> Individual Init
     </button>
-    <button type="button" class="becmi-init-button becmi-roll-morale" data-action="becmi-roll-morale" title="Roll BECMI morale for selected creatures">
-      <i class="fas fa-dragon" aria-hidden="true"></i>
-      <span>Morale</span>
+    <button type="button" class="becmi-tracker-button" data-becmi-action="morale">
+      <i class="fas fa-skull"></i> Morale
     </button>
   `;
 
   controls.addEventListener("click", async (event) => {
-    const button = event.target.closest("button[data-action]");
+    const button = event.target.closest("button[data-becmi-action]");
     if (!button) return;
-
     event.preventDefault();
     event.stopPropagation();
-
-    if (button.dataset.action === "becmi-group-initiative") {
-      await runTrackerInitiativeRoll("group");
-      return;
-    }
-
-    if (button.dataset.action === "becmi-individual-initiative") {
-      await runTrackerInitiativeRoll("individual");
-      return;
-    }
-
-    if (button.dataset.action === "becmi-roll-morale") {
-      await runTrackerMoraleRoll();
-    }
+    await runBECMICombatTrackerAction(button.dataset.becmiAction);
   });
 
-  if (html?.jquery) {
-    const $root = html;
-    const $anchor = $root.find(".directory-footer, .directory-list, .combatants, .combat-tracker, footer").first();
-    if (!$anchor.length) {
-      console.error("BECMI Foundry | Combat tracker controls not rendered: jQuery insertion target not found.", { html });
-      return;
-    }
-    $anchor.before(controls);
-    return;
-  }
+  anchor.prepend(controls);
+}
 
-  anchor.insertAdjacentElement("beforebegin", controls);
+Hooks.on("renderCombatTracker", injectBECMICombatTrackerControls);
+Hooks.on("renderApplication", (app, html) => {
+  if (app?.constructor?.name !== "CombatTracker") return;
+  injectBECMICombatTrackerControls(app, html);
 });
 
 Hooks.on("renderCombatTrackerConfig", (app, html) => {
   console.log("BECMI | Combat Tracker Config render hook fired", app, html);
 });
 
-Hooks.on("renderApplication", (app, html) => {
-  if (app?.constructor?.name !== "CombatTracker") return;
-  console.log("BECMI | renderApplication hook fired for CombatTracker", app, html);
-});
 Hooks.once("ready", async function () {
   game.becmi = game.becmi || {};
   game.becmi.rules = becmiRules;

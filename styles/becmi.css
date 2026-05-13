@@ -114,24 +114,24 @@
 /* BECMI Combat Tracker controls */
 .becmi-combat-tracker-controls {
   display: flex;
+  flex-direction: column;
   gap: 4px;
-  border: 1px solid red;
-  padding: 4px;
-  margin: 4px 0;
+  margin: 6px;
+  padding: 6px;
+  border: 1px solid var(--color-border-light-primary);
 }
 
-.becmi-combat-tracker-controls .becmi-init-button {
-  flex: 1;
+.becmi-combat-tracker-controls .becmi-tracker-button {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 4px;
-  min-height: 24px;
-  padding: 2px 6px;
+  min-height: 28px;
+  padding: 4px 8px;
   font-size: 12px;
   line-height: 1.1;
 }
 
-.becmi-combat-tracker-controls .becmi-init-button i {
+.becmi-combat-tracker-controls .becmi-tracker-button i {
   font-size: 11px;
 }
