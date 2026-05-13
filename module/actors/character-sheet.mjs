@@ -397,10 +397,10 @@ export class BECMICharacterSheet extends ActorSheet {
       for (const row of rows) {
         const item = byDenomination.get(row.denomination);
         const quantity = Math.max(0, Number(item?.system?.quantity ?? 0) || 0);
-        const weightPerUnit = Number(item?.system?.weightPerUnit ?? 0.02);
+        const weightPerUnit = Number(item?.system?.weightPerUnit ?? 1);
         row.quantity = quantity;
         row.valueGp = quantity * (values[row.denomination] ?? 0);
-        row.weightCn = quantity * (Number.isFinite(weightPerUnit) ? weightPerUnit : 0.02);
+        row.weightCn = quantity * (Number.isFinite(weightPerUnit) ? weightPerUnit : 1);
       }
 
       const getCurrencyTotalValue = currencyHelpers?.getCurrencyTotalValue;
@@ -476,6 +476,7 @@ export class BECMICharacterSheet extends ActorSheet {
     const button = event.currentTarget;
     const itemType = String(button?.dataset?.itemType ?? "").trim();
     const containerId = String(button?.dataset?.containerId ?? "").trim();
+    const normalizedContainerId = normalizeContainerId(containerId);
     if (!itemType) return;
 
     const sharedDefaults = {
@@ -496,8 +497,17 @@ export class BECMICharacterSheet extends ActorSheet {
       armor: { name: "New Armor", type: "armor", system: { ...sharedDefaults } },
       container: { name: "New Container", type: "container", system: { ...sharedDefaults, capacity: 0 } },
       consumable: { name: "New Consumable", type: "consumable", system: { ...sharedDefaults, uses: 1, maxUses: 1 } },
-      treasure: { name: "New Treasure", type: "treasure", system: { ...sharedDefaults, identified: true } },
-      currency: { name: "New Currency", type: "currency", system: { ...sharedDefaults, quantity: 0, denomination: "gp", weightPerUnit: 0.02 } }
+      treasure: {
+        name: "New Treasure",
+        type: "treasure",
+        system: {
+          ...sharedDefaults,
+          identified: true,
+          treasureType: "gem",
+          weight: treasureHelpers.getDefaultTreasureWeight("gem")
+        }
+      },
+      currency: { name: "New Currency", type: "currency", system: { ...sharedDefaults, quantity: 0, denomination: "gp", weightPerUnit: 1, weight: 0 } }
     };
 
     const baseData = defaults[itemType];
@@ -506,7 +516,7 @@ export class BECMICharacterSheet extends ActorSheet {
     const createData = foundry.utils.deepClone(baseData);
     createData.system = {
       ...(createData.system ?? {}),
-      containerId: containerId || ""
+      containerId: normalizedContainerId
     };
 
     await this.actor.createEmbeddedDocuments("Item", [createData]);

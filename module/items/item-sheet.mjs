@@ -19,7 +19,10 @@ export class BECMIItemSheet extends ItemSheet {
       classes: ["becmi", "sheet", "item", "inventory-item"],
       template: "systems/becmi-foundry/templates/item/item-sheet.hbs",
       width: 640,
-      height: 720
+      height: 720,
+      submitOnChange: true,
+      submitOnClose: true,
+      closeOnSubmit: false
     });
   }
 
