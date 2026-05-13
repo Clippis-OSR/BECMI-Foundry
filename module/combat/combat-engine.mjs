@@ -1,0 +1,120 @@
+/**
+ * @file High-level orchestration for combat flow.
+ */
+
+import {
+  resolveAttack,
+  getActorTHAC0,
+  getTargetAC,
+  calculateRequiredRoll,
+  isAttackHit
+} from "./attack.mjs";
+import { rollDamage, finalizeDamage } from "./damage.mjs";
+import { rollInitiative, rollGroupInitiative, rollActorInitiative, compareInitiative } from "./initiative.mjs";
+import { SAVE_TYPES, getSaveTarget, resolveSave, rollSave } from "./saves.mjs";
+import { resolveMorale, rollMorale, shouldCheckMorale } from "./morale.mjs";
+
+/**
+ * Execute attack flow: resolve attack, then optionally roll damage on hit.
+ *
+ * Hook points:
+ * - Weapon Mastery: enrich/transform attackData before resolveAttack.
+ * - Monster abilities: inject special hit effects after attackResult.
+ * - Equipment modifiers: precompute bonuses and place on attackData.
+ */
+export async function rollAttack({ attacker, target, attackData, rollDamageOnHit = true } = {}) {
+  if (!attacker) throw new Error("[BECMI Combat] rollAttack requires an attacker.");
+  if (!target) throw new Error("[BECMI Combat] rollAttack requires a target.");
+  if (!attackData || typeof attackData !== "object") throw new Error("[BECMI Combat] rollAttack requires attackData.");
+
+  const attackResult = await resolveAttack({ attacker, target, attackData });
+  let damageResult = null;
+
+  if (attackResult.hit && rollDamageOnHit) {
+    damageResult = await rollDamage({ attacker, target, attackData });
+  }
+
+  return { attackResult, damageResult };
+}
+
+export async function renderAttackCard({ attackResult, damageResult = null } = {}) {
+  if (!attackResult) throw new Error("[BECMI Combat] renderAttackCard requires attackResult.");
+  const templatePath = "templates/chat/attack-card.hbs";
+  const context = {
+    attackerName: attackResult?.attacker?.name ?? "Unknown Attacker",
+    targetName: attackResult?.target?.name ?? "Unknown Target",
+    attackName: attackResult?.attackName ?? "Attack",
+    d20: attackResult?.d20 ?? "-",
+    modifiers: attackResult?.modifiers ?? 0,
+    total: attackResult?.total ?? "-",
+    targetAC: attackResult?.targetAC ?? "-",
+    requiredRoll: attackResult?.requiredRoll ?? "-",
+    hit: Boolean(attackResult?.hit),
+    damageResult
+  };
+
+  let content;
+  try {
+    content = await renderTemplate(templatePath, context);
+  } catch (error) {
+    console.warn("[BECMI Combat] Failed to render attack card template; using fallback content.", { error, templatePath, context });
+    const resultText = context.hit ? "HIT" : "MISS";
+    const damageText = damageResult ? ` | Damage: ${damageResult.total}` : "";
+    content = `<div class=\"becmi-chat-card becmi-attack-card\">${context.attackerName} attacks ${context.targetName} with ${context.attackName}: d20 ${context.d20} ${context.modifiers >= 0 ? '+' : ''}${context.modifiers} = ${context.total}; AC ${context.targetAC}; need ${context.requiredRoll}; ${resultText}${damageText}</div>`;
+  }
+
+  let message = null;
+  try {
+    message = await ChatMessage.create({ content });
+  } catch (error) {
+    console.warn("[BECMI Combat] Failed to create chat message for attack card.", { error, content });
+  }
+
+  return { content, message };
+}
+
+export function createCombatEngine() {
+  return {
+    rollAttack,
+    resolveAttack,
+    rollDamage,
+    rollSave,
+    rollGroupInitiative,
+    rollActorInitiative,
+    rollMorale,
+    renderAttackCard,
+    rollInitiative,
+    compareInitiative,
+    getActorTHAC0,
+    getTargetAC,
+    calculateRequiredRoll,
+    isAttackHit,
+    finalizeDamage,
+    SAVE_TYPES,
+    getSaveTarget,
+    resolveSave,
+    resolveMorale,
+    shouldCheckMorale
+  };
+}
+
+export {
+  resolveAttack,
+  rollDamage,
+  rollSave,
+  rollGroupInitiative,
+  rollActorInitiative,
+  rollMorale,
+  rollInitiative,
+  compareInitiative,
+  getActorTHAC0,
+  getTargetAC,
+  calculateRequiredRoll,
+  isAttackHit,
+  finalizeDamage,
+  SAVE_TYPES,
+  getSaveTarget,
+  resolveSave,
+  resolveMorale,
+  shouldCheckMorale
+};
