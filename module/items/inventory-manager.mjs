@@ -11,7 +11,7 @@ function toArray(collection) {
   return Array.from(collection);
 }
 
-function normalizeContainerId(value) {
+export function normalizeContainerId(value) {
   if (typeof value !== "string") return "";
   return value.trim();
 }
@@ -56,7 +56,11 @@ export function getWornItems(actor) {
 }
 
 export function getCarriedItems(actor) {
-  return getActorItems(actor).filter((item) => !item?.system?.equipped && !item?.system?.worn);
+  return getActorItems(actor).filter((item) => {
+    const containerId = normalizeContainerId(item?.system?.containerId);
+    if (containerId) return false;
+    return !item?.system?.equipped && !item?.system?.worn;
+  });
 }
 
 export function getItemTotalWeight(item) {
@@ -96,6 +100,7 @@ export async function moveItemToContainer(item, containerId) {
 
   // Never allow an item to contain itself.
   if (itemId && targetContainerId === itemId) {
+    console.warn("Ignoring self-containment move attempt", { itemId, targetContainerId });
     return item;
   }
 
