@@ -1,8 +1,33 @@
 <div class="becmi-chat-card becmi-initiative-card becmi-initiative-individual-card">
   <h3>BECMI Individual Initiative</h3>
+  <p><strong>Initial Rolls</strong></p>
   <ul>
-    {{#each results}}
+    {{#each initialResults}}
       <li><strong>{{name}}:</strong> {{roll}} ({{modifierLabel}}) = <strong>{{total}}</strong></li>
     {{/each}}
   </ul>
+  {{#if tieHistory.length}}
+    <p><strong>Tie-break Rerolls</strong></p>
+    <ul>
+      {{#each tieHistory}}
+        <li>
+          Round {{round}}
+          <ul>
+            {{#each rerolls}}
+              <li><strong>{{name}}:</strong> {{roll}} ({{modifierLabel}}) = <strong>{{total}}</strong></li>
+            {{/each}}
+          </ul>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+  <p><strong>Final Order</strong></p>
+  <ol>
+    {{#each results}}
+      <li><strong>{{name}}:</strong> {{total}}</li>
+    {{/each}}
+  </ol>
+  {{#if fallbackApplied}}
+    <p><strong>Warning:</strong> {{fallbackWarning}}</p>
+  {{/if}}
 </div>
