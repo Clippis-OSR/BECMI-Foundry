@@ -65,3 +65,48 @@
 .becmi.sheet.actor .encumbrance-summary {
   margin: 4px 0 8px;
 }
+
+/* BECMI combat chat cards */
+.becmi-chat-card {
+  border: 1px solid #6f5a3a;
+  border-radius: 4px;
+  padding: 8px 10px;
+  margin: 2px 0;
+  background: rgba(248, 243, 230, 0.6);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.becmi-attack-card {
+  font-family: "Signika", "Palatino Linotype", serif;
+}
+
+.becmi-chat-header {
+  margin: 0 0 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #b9a582;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.becmi-chat-result {
+  margin-top: 6px;
+  padding-top: 4px;
+  border-top: 1px dashed #b9a582;
+  font-weight: 700;
+}
+
+.becmi-hit {
+  color: #2f5d2f;
+}
+
+.becmi-miss {
+  color: #7a2b2b;
+}
+
+.becmi-damage {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px dotted #b9a582;
+  font-weight: 600;
+}

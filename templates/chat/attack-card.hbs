@@ -1,0 +1,23 @@
+<div class="becmi-chat-card becmi-attack-card">
+  <header class="becmi-chat-header">
+    <strong>{{attackName}}</strong>
+  </header>
+
+  <div class="becmi-attack-card__row"><span>Attacker:</span> <span>{{attackerName}}</span></div>
+  <div class="becmi-attack-card__row"><span>Target:</span> <span>{{targetName}}</span></div>
+  <div class="becmi-attack-card__row"><span>d20:</span> <span>{{d20}}</span></div>
+  <div class="becmi-attack-card__row"><span>Modifiers:</span> <span>{{modifiers}}</span></div>
+  <div class="becmi-attack-card__row"><span>Total:</span> <span>{{total}}</span></div>
+  <div class="becmi-attack-card__row"><span>Target AC:</span> <span>{{targetAC}}</span></div>
+  <div class="becmi-attack-card__row"><span>Required Roll:</span> <span>{{requiredRoll}}</span></div>
+
+  <div class="becmi-chat-result {{#if hit}}becmi-hit{{else}}becmi-miss{{/if}}">
+    {{#if hit}}HIT{{else}}MISS{{/if}}
+  </div>
+
+  {{#if damageResult}}
+    <div class="becmi-damage">
+      Damage: {{damageResult.total}} ({{damageResult.formula}}{{#if damageResult.bonus}} + {{damageResult.bonus}}{{/if}})
+    </div>
+  {{/if}}
+</div>
