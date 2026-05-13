@@ -11,7 +11,7 @@ import {
 } from "./attack.mjs";
 import { rollDamage, finalizeDamage } from "./damage.mjs";
 import { rollInitiative, rollGroupInitiative, rollActorInitiative, compareInitiative } from "./initiative.mjs";
-import { SAVE_TYPES, getSaveTarget, resolveSave, rollSave } from "./saves.mjs";
+import { SAVE_TYPES, getSaveTarget, resolveSave, rollSave, renderSaveCard } from "./saves.mjs";
 import { resolveMorale, rollMorale, shouldCheckMorale } from "./morale.mjs";
 
 /**
@@ -87,6 +87,7 @@ export function createCombatEngine() {
     resolveAttack,
     rollDamage,
     rollSave,
+    renderSaveCard,
     rollGroupInitiative,
     rollActorInitiative,
     rollMorale,
@@ -110,6 +111,7 @@ export {
   resolveAttack,
   rollDamage,
   rollSave,
+  renderSaveCard,
   rollGroupInitiative,
   rollActorInitiative,
   rollMorale,
