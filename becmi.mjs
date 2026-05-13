@@ -228,6 +228,77 @@ Hooks.on("combatStart", async (combat) => {
   await maybePromptInitiativeMode(combat);
 });
 
+
+
+function getCombatTrackerRoot(html) {
+  if (!html) return null;
+  if (html instanceof HTMLElement) return html;
+  if (html[0] instanceof HTMLElement) return html[0];
+  return null;
+}
+
+async function runTrackerInitiativeRoll(mode) {
+  const methodName = mode === "group" ? "rollGroupInitiative" : "rollIndividualInitiative";
+
+  try {
+    const combat = await game.becmi?.combat?.getOrCreateCombatWithSelectedTokens?.(game.combat);
+    if (!combat) return;
+
+    await game.becmi.combat[methodName]({
+      combat,
+      postToChat: true
+    });
+  } catch (error) {
+    console.error("BECMI Foundry | Failed to roll initiative from Combat Tracker.", { error, mode });
+    ui.notifications.error("BECMI initiative roll failed. Check console for details.");
+  }
+}
+
+Hooks.on("renderCombatTracker", (app, html) => {
+  if (!game.user?.isGM) return;
+
+  const root = getCombatTrackerRoot(html);
+  if (!root) return;
+
+  const trackerDirectory = root.querySelector(".directory-list");
+  const trackerFooter = root.querySelector(".directory-footer");
+  const anchor = trackerFooter ?? trackerDirectory;
+  if (!anchor) return;
+
+  root.querySelector(".becmi-combat-tracker-controls")?.remove();
+
+  const controls = document.createElement("div");
+  controls.className = "becmi-combat-tracker-controls";
+  controls.innerHTML = `
+    <button type="button" class="becmi-init-button" data-action="becmi-group-initiative" title="Roll BECMI group initiative">
+      <i class="fas fa-users" aria-hidden="true"></i>
+      <span>Group Init</span>
+    </button>
+    <button type="button" class="becmi-init-button" data-action="becmi-individual-initiative" title="Roll BECMI individual initiative">
+      <i class="fas fa-dice-d20" aria-hidden="true"></i>
+      <span>Individual Init</span>
+    </button>
+  `;
+
+  controls.addEventListener("click", async (event) => {
+    const button = event.target.closest("button[data-action]");
+    if (!button) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (button.dataset.action === "becmi-group-initiative") {
+      await runTrackerInitiativeRoll("group");
+      return;
+    }
+
+    if (button.dataset.action === "becmi-individual-initiative") {
+      await runTrackerInitiativeRoll("individual");
+    }
+  });
+
+  anchor.insertAdjacentElement("beforebegin", controls);
+});
 Hooks.once("ready", async function () {
   game.becmi = game.becmi || {};
   game.becmi.rules = becmiRules;
