@@ -88,6 +88,10 @@
         }
       ],
       "generalSkills": "",
+      "currencyStorage": {
+        "note": "",
+        "gpValue": 0
+      },
       "coinage": {
         "carried": {
           "pp": 0,
