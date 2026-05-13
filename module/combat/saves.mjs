@@ -85,7 +85,7 @@ export async function rollSave({ actor, saveType, modifier = 0, label = null } =
     ?? 20
   );
 
-  const roll = await (new Roll("1d20")).evaluate({ async: true });
+  const roll = await (new Roll("1d20")).evaluate();
   const d20 = Number(roll.total);
   const flatModifier = Number(modifier);
   const total = d20 + flatModifier;

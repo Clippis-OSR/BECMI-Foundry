@@ -19,7 +19,7 @@ export async function rollGroupInitiative({ groupName, modifier = 0 } = {}) {
   if (!groupName) throw new Error("[BECMI Combat] rollGroupInitiative requires groupName.");
 
   const flatModifier = Number(modifier);
-  const roll = await (new Roll("1d12")).evaluate({ async: true });
+  const roll = await (new Roll("1d12")).evaluate();
   const d12 = Number(roll.total);
   const total = d12 + flatModifier;
 
@@ -45,7 +45,7 @@ export async function rollActorInitiative({ actor, modifier = 0 } = {}) {
   if (!actor) throw new Error("[BECMI Combat] rollActorInitiative requires actor.");
 
   const flatModifier = Number(modifier);
-  const roll = await (new Roll("1d12")).evaluate({ async: true });
+  const roll = await (new Roll("1d12")).evaluate();
   const d12 = Number(roll.total);
   const total = d12 + flatModifier;
 

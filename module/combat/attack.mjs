@@ -99,7 +99,7 @@ export async function resolveAttack({ attacker, target, attackData = {} }) {
   const targetAC = getTargetAC(target);
   const modifiers = Number(attackData?.attackBonus ?? 0);
 
-  const roll = await (new Roll("1d20")).evaluate({ async: true });
+  const roll = await (new Roll("1d20")).evaluate();
   const d20 = Number(roll.total);
   const total = d20 + modifiers;
   const requiredRoll = calculateRequiredRoll(thac0, targetAC);
