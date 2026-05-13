@@ -107,6 +107,7 @@ export class BECMICharacterSheet extends ActorSheet {
       ? Object.entries(turnUndead).map(([target, score]) => ({ target, score }))
       : [];
     context.inventoryGroups = this._buildInventoryGroups();
+    context.treasureGroup = this._buildTreasureGroup();
     context.currencySummary = this._buildCurrencySummary();
     context.treasureSummary = this._buildTreasureSummary();
     context.encumbranceSummary = this._buildEncumbranceSummary();
@@ -450,11 +451,61 @@ export class BECMICharacterSheet extends ActorSheet {
     this.render(false);
   }
 
+  _buildTreasureGroup() {
+    const items = getActorItems(this.actor).filter((item) => item?.type === "treasure");
+    const mapped = items.map((item) => this._mapInventoryItem(item));
+    const containedWeight = mapped
+      .filter((item) => item.location !== "storage")
+      .reduce((sum, item) => sum + (Number(item.totalWeight) || 0), 0);
+
+    return {
+      key: "treasure",
+      label: "Treasure",
+      sectionLocation: "treasure",
+      items: mapped,
+      itemCount: mapped.length,
+      containedWeight,
+      sectionSummary: `Treasure — ${mapped.length} items — ${containedWeight} cn carried`
+    };
+  }
+
+  _mapInventoryItem(item) {
+    const quantityRaw = item?.system?.quantity;
+    const weightRaw = item?.system?.weight;
+    const valueRaw = item?.system?.value;
+    const quantity = Number(quantityRaw ?? 1);
+    const weight = Number(weightRaw ?? 0);
+    const totalWeight = getItemTotalWeight(item);
+    const value = Number(valueRaw ?? 0);
+    debugInventory("build inventory row", {
+      itemId: item?.id ?? null,
+      quantity,
+      weight,
+      value,
+      source: { quantity: quantityRaw, weight: weightRaw, value: valueRaw }
+    });
+
+    return {
+      id: item.id,
+      name: item.name,
+      quantity,
+      weight,
+      totalWeight,
+      value,
+      estimatedValue: Number(item?.system?.estimatedValue ?? 0),
+      treasureType: String(item?.system?.treasureType ?? ""),
+      denomination: String(item?.system?.denomination ?? ""),
+      containerId: String(item?.system?.containerId ?? ""),
+      location: getItemLocation(item),
+      identified: Boolean(item?.system?.identified),
+      notes: String(item?.system?.notes ?? ""),
+      type: item?.type ?? ""
+    };
+  }
+
   _buildInventoryGroups() {
-    // Placeholder for future slot enforcement, e.g. rings: 2, amulet: 1, belt: 1, gloves: 1, boots/shoes: 1, helmet: 1.
-    const items = getActorItems(this.actor);
+    const items = getActorItems(this.actor).filter((item) => item?.type !== "currency" && item?.type !== "treasure");
     const groupDefinitions = [
-      { key: "treasure", label: "Treasure" },
       { key: "equipped", label: "Equipped" },
       { key: "worn", label: "Worn" },
       { key: "storage", label: "Storage" }
@@ -463,44 +514,9 @@ export class BECMICharacterSheet extends ActorSheet {
     const groups = groupDefinitions.map((group) => ({
       ...group,
       sectionLocation: group.key,
-      items: items.filter((item) => {
-        const location = getItemLocation(item);
-        if (group.key === "equipped" || group.key === "worn") return item?.type !== "treasure" && location === group.key;
-        if (group.key === "treasure") return item?.type === "treasure" && location === "treasure";
-        return location === group.key;
-      }).map((item) => {
-        const quantityRaw = item?.system?.quantity;
-        const weightRaw = item?.system?.weight;
-        const valueRaw = item?.system?.value;
-        const quantity = Number(quantityRaw ?? 1);
-        const weight = Number(weightRaw ?? 0);
-        const totalWeight = getItemTotalWeight(item);
-        const value = Number(valueRaw ?? 0);
-        debugInventory("build inventory row", {
-          itemId: item?.id ?? null,
-          quantity,
-          weight,
-          value,
-          source: { quantity: quantityRaw, weight: weightRaw, value: valueRaw }
-        });
-
-        return {
-          id: item.id,
-          name: item.name,
-          quantity,
-          weight,
-          totalWeight,
-          value,
-          estimatedValue: Number(item?.system?.estimatedValue ?? 0),
-          treasureType: String(item?.system?.treasureType ?? ""),
-          denomination: String(item?.system?.denomination ?? ""),
-          containerId: String(item?.system?.containerId ?? ""),
-          location: getItemLocation(item),
-          identified: Boolean(item?.system?.identified),
-          notes: String(item?.system?.notes ?? ""),
-          type: item?.type ?? ""
-        };
-      })
+      items: items
+        .filter((item) => getItemLocation(item) === group.key)
+        .map((item) => this._mapInventoryItem(item))
     }));
 
     return groups.map((group) => {
@@ -548,7 +564,7 @@ export class BECMICharacterSheet extends ActorSheet {
       return super._onDrop(event);
     }
 
-    const dropLocation = this._getDropLocation(event);
+    const dropLocation = sourceItem.type === "currency" ? "worn" : this._getDropLocation(event);
     if (dropLocation === "treasure" && sourceItem.type !== "treasure") {
       console.warn("Rejected non-treasure item dropped into treasure section", { itemType: sourceItem.type });
       return false;

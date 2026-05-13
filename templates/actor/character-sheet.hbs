@@ -364,6 +364,57 @@
 <div><strong>Identified treasure value:</strong> {{treasureSummary.identifiedValue}} gp</div>
 <div><strong>Carried treasure weight:</strong> {{treasureSummary.totalWeight}} cn</div>
 
+<section class="inventory-group inventory-section inventory-drop-zone" data-location="treasure">
+<div class="inventory-section-header">
+  <h3>{{treasureGroup.sectionSummary}}</h3>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Treasure Type</th>
+      <th>Qty</th>
+      <th>Wt</th>
+      <th>Total Wt</th>
+      <th>Value</th>
+      <th>Est. Value</th>
+      <th>Identified</th>
+      <th>Location</th>
+      <th>Controls</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#if treasureGroup.items.length}}
+      {{#each treasureGroup.items as |item|}}
+      <tr class="inventory-item-row {{#if (eq item.location "storage")}}item-in-storage{{/if}}">
+        <td><input type="text" value="{{item.name}}" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="name" /></td>
+        <td>{{item.treasureType}}</td>
+        <td><input type="number" value="{{item.quantity}}" min="0" step="1" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.quantity" /></td>
+        <td><input type="number" value="{{item.weight}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.weight" /></td>
+        <td>{{item.totalWeight}}</td>
+        <td><input type="number" value="{{item.value}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.value" /></td>
+        <td><input type="number" value="{{item.estimatedValue}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.estimatedValue" /></td>
+        <td><input type="checkbox" {{checked item.identified}} data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.identified" /></td>
+        <td>
+          <select data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.location">
+            <option value="treasure" {{#if (eq item.location "treasure")}}selected{{/if}}>Treasure</option>
+            <option value="storage" {{#if (eq item.location "storage")}}selected{{/if}}>Storage</option>
+          </select>
+        </td>
+        <td>
+          <button type="button" data-action="item-edit" data-item-id="{{item.id}}">Edit</button>
+          <button type="button" data-action="item-delete" data-item-id="{{item.id}}">Delete</button>
+        </td>
+      </tr>
+      {{/each}}
+    {{else}}
+      <tr><td colspan="10"><em>No treasure items.</em></td></tr>
+    {{/if}}
+  </tbody>
+</table>
+<div class="inventory-drop-hint"><small>Drop item here to add to this group.</small></div>
+</section>
+
 <hr>
 
 <h2>Encumbrance & Movement (Calculated)</h2>
@@ -411,12 +462,11 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>{{#if (eq group.key "treasure")}}Treasure Type{{else}}Type{{/if}}</th>
+      <th>Type</th>
       <th>Qty</th>
       <th>Wt</th>
       <th>Total Wt</th>
       <th>Value</th>
-      {{#if (eq group.key "treasure")}}<th>Est. Value</th><th>Identified</th>{{/if}}
       <th>Location</th>
       <th>Controls</th>
     </tr>
@@ -428,7 +478,7 @@
         <td>
           <input type="text" value="{{item.name}}" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="name" />
         </td>
-        <td>{{#if (eq group.key "treasure")}}{{item.treasureType}}{{else}}{{item.type}}{{/if}}</td>
+        <td>{{item.type}}</td>
         <td>
           <input type="number" value="{{item.quantity}}" min="0" step="1" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.quantity" />
         </td>
@@ -438,28 +488,12 @@
         <td>{{item.totalWeight}}</td>
         <td>
           <input type="number" value="{{item.value}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.value" />
-          {{#if (eq item.type "currency")}}
-            <div><small>Denom: {{item.denomination}}</small></div>
-          {{/if}}
         </td>
-        {{#if (eq group.key "treasure")}}
-        <td>
-          <input type="number" value="{{item.estimatedValue}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.estimatedValue" />
-        </td>
-        <td>
-          <input type="checkbox" {{checked item.identified}} data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.identified" />
-        </td>
-        {{/if}}
         <td>
           <select data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.location">
-            {{#if (eq item.type "treasure")}}
-            <option value="treasure" {{#if (eq item.location "treasure")}}selected{{/if}}>Treasure</option>
-            <option value="storage" {{#if (eq item.location "storage")}}selected{{/if}}>Storage</option>
-            {{else}}
             <option value="equipped" {{#if (eq item.location "equipped")}}selected{{/if}}>Equipped</option>
             <option value="worn" {{#if (eq item.location "worn")}}selected{{/if}}>Worn</option>
             <option value="storage" {{#if (eq item.location "storage")}}selected{{/if}}>Storage</option>
-            {{/if}}
           </select>
         </td>
         <td>
@@ -470,7 +504,7 @@
       {{/each}}
     {{else}}
       <tr>
-        <td colspan="{{#if (eq group.key "treasure")}}10{{else}}8{{/if}}"><em>No items in {{group.label}}.</em></td>
+        <td colspan="8"><em>No items in {{group.label}}.</em></td>
       </tr>
     {{/if}}
   </tbody>
