@@ -330,42 +330,40 @@
 
 <hr>
 
-<h2>Coinage</h2>
+<h2>Currency</h2>
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th>PP</th>
-      <th>GP</th>
-      <th>EP</th>
-      <th>SP</th>
-      <th>CP</th>
+      <th>Denomination</th>
+      <th>Quantity</th>
+      <th>Value (gp)</th>
+      <th>Weight (cn)</th>
     </tr>
   </thead>
   <tbody>
+    {{#each currencySummary.rows as |coin|}}
     <tr>
-      <td>Carried</td>
-      <td><input type="number" name="system.coinage.carried.pp" value="{{system.coinage.carried.pp}}" /></td>
-      <td><input type="number" name="system.coinage.carried.gp" value="{{system.coinage.carried.gp}}" /></td>
-      <td><input type="number" name="system.coinage.carried.ep" value="{{system.coinage.carried.ep}}" /></td>
-      <td><input type="number" name="system.coinage.carried.sp" value="{{system.coinage.carried.sp}}" /></td>
-      <td><input type="number" name="system.coinage.carried.cp" value="{{system.coinage.carried.cp}}" /></td>
+      <td>{{coin.denomination}}</td>
+      <td>
+        <input type="number" value="{{coin.quantity}}" min="0" step="1" data-action="change-currency-quantity" data-denomination="{{coin.denomination}}" />
+      </td>
+      <td>{{coin.valueGp}}</td>
+      <td>{{coin.weightCn}}</td>
     </tr>
-    <tr>
-      <td>Treasure Hoard</td>
-      <td><input type="number" name="system.coinage.hoard.pp" value="{{system.coinage.hoard.pp}}" /></td>
-      <td><input type="number" name="system.coinage.hoard.gp" value="{{system.coinage.hoard.gp}}" /></td>
-      <td><input type="number" name="system.coinage.hoard.ep" value="{{system.coinage.hoard.ep}}" /></td>
-      <td><input type="number" name="system.coinage.hoard.sp" value="{{system.coinage.hoard.sp}}" /></td>
-      <td><input type="number" name="system.coinage.hoard.cp" value="{{system.coinage.hoard.cp}}" /></td>
-    </tr>
+    {{/each}}
   </tbody>
 </table>
+<div><strong>Total currency value:</strong> {{currencySummary.totalValueGp}} gp</div>
+<div><strong>Total currency weight:</strong> {{currencySummary.totalWeightCn}} cn</div>
 
 <hr>
 
 <h2>Treasure</h2>
 <textarea name="system.treasure" rows="4">{{system.treasure}}</textarea>
+<div><strong>Treasure items:</strong> {{treasureSummary.count}}</div>
+<div><strong>Total treasure value:</strong> {{treasureSummary.totalValue}} gp</div>
+<div><strong>Identified treasure value:</strong> {{treasureSummary.identifiedValue}} gp</div>
+<div><strong>Total treasure weight:</strong> {{treasureSummary.totalWeight}} cn</div>
 
 <hr>
 
@@ -405,16 +403,34 @@
 
 <h2>Inventory</h2>
 <button type="button" data-action="create-default-containers">Create Default Containers</button>
+<div>
+  <button type="button" data-action="create-inventory-item" data-item-type="equipment" data-container-id="">Add Equipment</button>
+  <button type="button" data-action="create-inventory-item" data-item-type="weapon" data-container-id="">Add Weapon</button>
+  <button type="button" data-action="create-inventory-item" data-item-type="armor" data-container-id="">Add Armor</button>
+  <button type="button" data-action="create-inventory-item" data-item-type="container" data-container-id="">Add Container</button>
+  <button type="button" data-action="create-inventory-item" data-item-type="consumable" data-container-id="">Add Consumable</button>
+  <button type="button" data-action="create-inventory-item" data-item-type="treasure" data-container-id="">Add Treasure</button>
+  <button type="button" data-action="create-inventory-item" data-item-type="currency" data-container-id="">Add Currency</button>
+</div>
 
 {{#each inventoryGroups as |group|}}
 <h3>{{group.label}}</h3>
 {{#if group.hasContainer}}
 <p><em>Container-linked group.</em></p>
+<div>
+  <button type="button" data-action="create-inventory-item" data-item-type="equipment" data-container-id="{{group.containerId}}">Add Equipment</button>
+  <button type="button" data-action="create-inventory-item" data-item-type="weapon" data-container-id="{{group.containerId}}">Add Weapon</button>
+  <button type="button" data-action="create-inventory-item" data-item-type="armor" data-container-id="{{group.containerId}}">Add Armor</button>
+  <button type="button" data-action="create-inventory-item" data-item-type="consumable" data-container-id="{{group.containerId}}">Add Consumable</button>
+  <button type="button" data-action="create-inventory-item" data-item-type="treasure" data-container-id="{{group.containerId}}">Add Treasure</button>
+  <button type="button" data-action="create-inventory-item" data-item-type="currency" data-container-id="{{group.containerId}}">Add Currency</button>
+</div>
 {{/if}}
 <table>
   <thead>
     <tr>
       <th>Name</th>
+      <th>Type</th>
       <th>Qty</th>
       <th>Wt</th>
       <th>Total Wt</th>
@@ -427,6 +443,7 @@
       {{#each group.items as |item|}}
       <tr>
         <td>{{item.name}}</td>
+        <td>{{item.type}}</td>
         <td>{{item.quantity}}</td>
         <td>{{item.weight}}</td>
         <td>{{item.totalWeight}}</td>
@@ -445,7 +462,7 @@
       {{/each}}
     {{else}}
       <tr>
-        <td colspan="6"><em>No items.</em></td>
+        <td colspan="7"><em>No items.</em></td>
       </tr>
     {{/if}}
   </tbody>

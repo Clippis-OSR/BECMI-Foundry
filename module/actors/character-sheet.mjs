@@ -9,10 +9,13 @@ import {
   getActorItems,
   getItemsInContainer,
   getItemTotalWeight,
-  moveItemToContainer
+  moveItemToContainer,
+  normalizeContainerId
 } from "../items/inventory-manager.mjs";
 import { ensureDefaultContainers } from "../items/default-containers.mjs";
 import { calculateTotalEncumbrance } from "../items/encumbrance.mjs";
+import * as currencyHelpers from "../items/currency.mjs";
+import * as treasureHelpers from "../items/treasure.mjs";
 
 export class BECMICharacterSheet extends ActorSheet {
 
@@ -99,6 +102,8 @@ export class BECMICharacterSheet extends ActorSheet {
       ? Object.entries(turnUndead).map(([target, score]) => ({ target, score }))
       : [];
     context.inventoryGroups = this._buildInventoryGroups();
+    context.currencySummary = this._buildCurrencySummary();
+    context.treasureSummary = this._buildTreasureSummary();
     context.encumbranceSummary = this._buildEncumbranceSummary();
     context.inventoryMoveTargets = this._buildInventoryMoveTargets();
 
@@ -288,6 +293,9 @@ export class BECMICharacterSheet extends ActorSheet {
       await moveItemToContainer(item, targetContainerId);
       this.render(false);
     });
+
+    html.find('[data-action="change-currency-quantity"]').on("change", this._onCurrencyQuantityChange.bind(this));
+    html.find('[data-action="create-inventory-item"]').on("click", this._onCreateInventoryItem.bind(this));
   }
 
 
@@ -306,27 +314,37 @@ export class BECMICharacterSheet extends ActorSheet {
 
   _canMoveItemToContainer(item, targetContainerId) {
     const itemId = item?.id ?? "";
-    const targetId = String(targetContainerId ?? "").trim();
+    const targetId = normalizeContainerId(targetContainerId);
 
     if (!targetId) return true;
     if (!itemId) return false;
     if (itemId === targetId) return false;
 
     // Prevent obvious circular containment when moving containers.
-    if (item?.type === "container") {
-      let cursor = this.actor.items.get(targetId);
-      const visited = new Set();
-
-      while (cursor && !visited.has(cursor.id)) {
-        if (cursor.id === itemId) return false;
-        visited.add(cursor.id);
-        const parentId = String(cursor?.system?.containerId ?? "").trim();
-        if (!parentId) break;
-        cursor = this.actor.items.get(parentId);
-      }
+    if (item?.type === "container" && this._wouldCreateCircularContainment(itemId, targetId)) {
+      return false;
     }
 
     return true;
+  }
+
+  _wouldCreateCircularContainment(itemId, targetContainerId) {
+    if (!itemId || !targetContainerId) return false;
+    let cursor = this.actor.items.get(targetContainerId);
+    const visited = new Set();
+
+    while (cursor && !visited.has(cursor.id)) {
+      if (cursor.id === itemId) {
+        console.warn("Ignoring circular containment move attempt", { itemId, targetContainerId });
+        return true;
+      }
+      visited.add(cursor.id);
+      const parentId = normalizeContainerId(cursor?.system?.containerId);
+      if (!parentId) break;
+      cursor = this.actor.items.get(parentId);
+    }
+
+    return false;
   }
 
   _buildEncumbranceSummary() {
@@ -352,10 +370,152 @@ export class BECMICharacterSheet extends ActorSheet {
       return { total: 0, bracket: "0-400", normalSpeed: 0, encounterSpeed: 0, containers: [] };
     }
   }
+
+  _buildCurrencySummary() {
+    const denominations = ["cp", "sp", "ep", "gp", "pp"];
+    const values = { cp: 0.01, sp: 0.1, ep: 0.5, gp: 1, pp: 5 };
+    const rows = denominations.map((denomination) => ({
+      denomination,
+      quantity: 0,
+      valueGp: 0,
+      weightCn: 0
+    }));
+
+    try {
+      const getCurrencyItems = currencyHelpers?.getCurrencyItems;
+      if (typeof getCurrencyItems !== "function") {
+        return { rows, totalValueGp: 0, totalWeightCn: 0 };
+      }
+
+      const byDenomination = new Map();
+      for (const item of getCurrencyItems(this.actor)) {
+        const key = String(item?.system?.denomination ?? "").trim().toLowerCase();
+        if (!denominations.includes(key)) continue;
+        byDenomination.set(key, item);
+      }
+
+      for (const row of rows) {
+        const item = byDenomination.get(row.denomination);
+        const quantity = Math.max(0, Number(item?.system?.quantity ?? 0) || 0);
+        const weightPerUnit = Number(item?.system?.weightPerUnit ?? 0.02);
+        row.quantity = quantity;
+        row.valueGp = quantity * (values[row.denomination] ?? 0);
+        row.weightCn = quantity * (Number.isFinite(weightPerUnit) ? weightPerUnit : 0.02);
+      }
+
+      const getCurrencyTotalValue = currencyHelpers?.getCurrencyTotalValue;
+      const getCurrencyWeight = currencyHelpers?.getCurrencyWeight;
+      const totalValueGp = typeof getCurrencyTotalValue === "function"
+        ? Number(getCurrencyTotalValue(this.actor)) || 0
+        : rows.reduce((sum, row) => sum + row.valueGp, 0);
+      const totalWeightCn = typeof getCurrencyWeight === "function"
+        ? Number(getCurrencyWeight(this.actor)) || 0
+        : rows.reduce((sum, row) => sum + row.weightCn, 0);
+
+      return { rows, totalValueGp, totalWeightCn };
+    } catch (error) {
+      console.warn("BECMI currency summary failed", error);
+      return { rows, totalValueGp: 0, totalWeightCn: 0 };
+    }
+  }
+
+  _buildTreasureSummary() {
+    const empty = { totalValue: 0, identifiedValue: 0, totalWeight: 0, count: 0 };
+    try {
+      const getTreasureItems = treasureHelpers?.getTreasureItems;
+      const getTreasureTotalValue = treasureHelpers?.getTreasureTotalValue;
+      const getTreasureWeight = treasureHelpers?.getTreasureWeight;
+      if (typeof getTreasureItems !== "function") return empty;
+
+      const items = getTreasureItems(this.actor);
+      return {
+        count: Array.isArray(items) ? items.length : 0,
+        totalValue: typeof getTreasureTotalValue === "function" ? Number(getTreasureTotalValue(this.actor, false)) || 0 : 0,
+        identifiedValue: typeof getTreasureTotalValue === "function" ? Number(getTreasureTotalValue(this.actor, true)) || 0 : 0,
+        totalWeight: typeof getTreasureWeight === "function" ? Number(getTreasureWeight(this.actor)) || 0 : 0
+      };
+    } catch (error) {
+      console.warn("BECMI treasure summary failed", error);
+      return empty;
+    }
+  }
+
+  async _onCurrencyQuantityChange(event) {
+    event.preventDefault();
+    const input = event.currentTarget;
+    const denomination = String(input?.dataset?.denomination ?? "").toLowerCase();
+    const normalize = currencyHelpers?.normalizeCurrencyDenomination;
+    const safeDenomination = typeof normalize === "function" ? normalize(denomination) : null;
+    if (!safeDenomination) return;
+
+    const requestedQuantity = Math.max(0, Math.floor(Number(input?.value ?? 0) || 0));
+    const items = typeof currencyHelpers?.getCurrencyItems === "function"
+      ? currencyHelpers.getCurrencyItems(this.actor)
+      : [];
+    const existing = items.find((item) => String(item?.system?.denomination ?? "").toLowerCase() === safeDenomination);
+    const currentQuantity = Math.max(0, Math.floor(Number(existing?.system?.quantity ?? 0) || 0));
+    const delta = requestedQuantity - currentQuantity;
+    if (delta === 0) return;
+
+    if (delta > 0 && typeof currencyHelpers?.addCurrency === "function") {
+      await currencyHelpers.addCurrency(this.actor, safeDenomination, delta);
+    } else if (delta < 0 && typeof currencyHelpers?.removeCurrency === "function") {
+      await currencyHelpers.removeCurrency(this.actor, safeDenomination, Math.abs(delta));
+    } else if (!existing && requestedQuantity > 0 && typeof currencyHelpers?.createCurrencyItem === "function") {
+      await currencyHelpers.createCurrencyItem(this.actor, safeDenomination, requestedQuantity);
+    } else if (existing?.update) {
+      // Safer/simple path: keep currency items with quantity 0 rather than deleting items.
+      await existing.update({ "system.quantity": requestedQuantity });
+    }
+
+    this.render(false);
+  }
+
+  async _onCreateInventoryItem(event) {
+    event.preventDefault();
+    const button = event.currentTarget;
+    const itemType = String(button?.dataset?.itemType ?? "").trim();
+    const containerId = String(button?.dataset?.containerId ?? "").trim();
+    if (!itemType) return;
+
+    const sharedDefaults = {
+      description: "",
+      quantity: 1,
+      weight: 0,
+      value: 0,
+      identified: false,
+      containerId: "",
+      equipped: false,
+      worn: false,
+      tags: []
+    };
+
+    const defaults = {
+      equipment: { name: "New Equipment", type: "equipment", system: { ...sharedDefaults } },
+      weapon: { name: "New Weapon", type: "weapon", system: { ...sharedDefaults } },
+      armor: { name: "New Armor", type: "armor", system: { ...sharedDefaults } },
+      container: { name: "New Container", type: "container", system: { ...sharedDefaults, capacity: 0 } },
+      consumable: { name: "New Consumable", type: "consumable", system: { ...sharedDefaults, uses: 1, maxUses: 1 } },
+      treasure: { name: "New Treasure", type: "treasure", system: { ...sharedDefaults, identified: true } },
+      currency: { name: "New Currency", type: "currency", system: { ...sharedDefaults, quantity: 0, denomination: "gp", weightPerUnit: 0.02 } }
+    };
+
+    const baseData = defaults[itemType];
+    if (!baseData || !this.actor?.createEmbeddedDocuments) return;
+
+    const createData = foundry.utils.deepClone(baseData);
+    createData.system = {
+      ...(createData.system ?? {}),
+      containerId: containerId || ""
+    };
+
+    await this.actor.createEmbeddedDocuments("Item", [createData]);
+    this.render(false);
+  }
   _buildInventoryGroups() {
     const items = getActorItems(this.actor);
     const containers = items.filter((item) => item?.type === "container");
-    const rootItems = items.filter((item) => !item?.system?.containerId);
+    const rootItems = items.filter((item) => !normalizeContainerId(item?.system?.containerId));
 
     const findContainerId = ({ containerType, names = [] }) => {
       const byType = containers.find((container) => container?.system?.containerType === containerType);
