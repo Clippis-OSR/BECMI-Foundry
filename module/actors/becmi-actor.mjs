@@ -43,11 +43,11 @@ export class BECMIActor extends Actor {
       level,
       thac0: calculatedThac0 ?? null,
       saves: {
-        death: calculatedSaves.death ?? null,
-        wands: calculatedSaves.wands ?? null,
-        paralysis: calculatedSaves.paralysis ?? null,
-        breath: calculatedSaves.breath ?? null,
-        spells: calculatedSaves.spells ?? null
+        deathRayPoison: calculatedSaves.deathRayPoison ?? null,
+        magicWands: calculatedSaves.magicWands ?? null,
+        paralysisTurnStone: calculatedSaves.paralysisTurnStone ?? null,
+        dragonBreath: calculatedSaves.dragonBreath ?? null,
+        rodStaffSpell: calculatedSaves.rodStaffSpell ?? null
       },
       hasSpellcasting,
       spellSlots: hasSpellcasting ? spellcastingData?.slots ?? null : null,
@@ -81,11 +81,11 @@ export class BECMIActor extends Actor {
       ...existingDerived,
       thac0: getActorTHAC0(this) ?? null,
       saves: {
-        death: calculatedSaves.death ?? null,
-        wands: calculatedSaves.wands ?? null,
-        paralysis: calculatedSaves.paralysis ?? null,
-        breath: calculatedSaves.breath ?? null,
-        spells: calculatedSaves.spells ?? null
+        deathRayPoison: calculatedSaves.deathRayPoison ?? null,
+        magicWands: calculatedSaves.magicWands ?? null,
+        paralysisTurnStone: calculatedSaves.paralysisTurnStone ?? null,
+        dragonBreath: calculatedSaves.dragonBreath ?? null,
+        rodStaffSpell: calculatedSaves.rodStaffSpell ?? null
       },
       hitDice: system.hd ?? system.hitDice ?? null,
       savesAs: system.savesAs ?? null

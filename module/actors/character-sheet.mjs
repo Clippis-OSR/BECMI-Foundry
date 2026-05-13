@@ -664,7 +664,8 @@ export class BECMICharacterSheet extends ActorSheet {
     event.preventDefault();
 
     const button = event.currentTarget;
-    const saveKey = button.dataset.save;
+    const saveKey = button.dataset.saveType;
+    console.log("BECMI saves data", this.actor?.system?.saves);
     const label = button.dataset.label;
 
     await rollSavingThrow(this.actor, saveKey, label);

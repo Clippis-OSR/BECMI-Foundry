@@ -85,6 +85,7 @@ export async function rollSave({ actor, saveType, modifier = 0, label = null, po
     throw new Error(`[BECMI Combat] Unknown save type '${saveType}'. Expected one of: ${SAVE_TYPES.join(", ")}.`);
   }
 
+  console.log("BECMI saves data", actor?.system?.saves);
   const rawTarget = actor?.system?.saves?.[saveType]?.value;
   const target = Number(rawTarget);
 
