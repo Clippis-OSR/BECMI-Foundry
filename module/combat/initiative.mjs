@@ -111,8 +111,26 @@ export function getInitiativeMode(combat) {
 }
 
 export async function chooseInitiativeMode(combat) {
-  assertValidCombat(combat);
   assertGM();
+
+  const runModeSelection = async (mode) => {
+    try {
+      const resolvedCombat = await getOrCreateCombatWithSelectedTokens(combat);
+      if (!resolvedCombat) return null;
+
+      if (mode === INITIATIVE_MODE.GROUP) {
+        await setInitiativeMode(resolvedCombat, INITIATIVE_MODE.GROUP);
+        return rollGroupInitiative({ combat: resolvedCombat, postToChat: true });
+      }
+
+      await setInitiativeMode(resolvedCombat, INITIATIVE_MODE.INDIVIDUAL);
+      return rollIndividualInitiative({ combat: resolvedCombat, postToChat: true });
+    } catch (error) {
+      console.error("BECMI Foundry | Failed to choose and roll initiative mode.", { error, combatId: combat?.id, mode });
+      ui.notifications.error("BECMI initiative mode selection failed. Check console for details.");
+      return null;
+    }
+  };
 
   return Dialog.wait({
     title: "Choose BECMI Initiative Mode",
@@ -120,15 +138,15 @@ export async function chooseInitiativeMode(combat) {
     buttons: {
       group: {
         label: "Group Initiative",
-        callback: async () => setInitiativeMode(combat, INITIATIVE_MODE.GROUP)
+        callback: async () => runModeSelection(INITIATIVE_MODE.GROUP)
       },
       individual: {
         label: "Individual Initiative",
-        callback: async () => setInitiativeMode(combat, INITIATIVE_MODE.INDIVIDUAL)
+        callback: async () => runModeSelection(INITIATIVE_MODE.INDIVIDUAL)
       }
     },
     default: "group",
-    close: async () => setInitiativeMode(combat, INITIATIVE_MODE.GROUP)
+    close: async () => null
   });
 }
 
