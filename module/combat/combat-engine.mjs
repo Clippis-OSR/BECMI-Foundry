@@ -15,7 +15,8 @@ import {
   setInitiativeMode,
   getInitiativeMode,
   rollGroupInitiative,
-  rollIndividualInitiative
+  rollIndividualInitiative,
+  getOrCreateCombatWithSelectedTokens
 } from "./initiative.mjs";
 import { SAVE_TYPES, getSaveTarget, resolveSave, rollSave, renderSaveCard } from "./saves.mjs";
 import { resolveMorale, rollMorale, shouldCheckMorale } from "./morale.mjs";
@@ -99,6 +100,7 @@ export function createCombatEngine() {
     getInitiativeMode,
     rollGroupInitiative,
     rollIndividualInitiative,
+    getOrCreateCombatWithSelectedTokens,
     rollMorale,
     renderAttackCard,
     getActorTHAC0,
@@ -124,6 +126,7 @@ export {
   getInitiativeMode,
   rollGroupInitiative,
   rollIndividualInitiative,
+  getOrCreateCombatWithSelectedTokens,
   rollMorale,
   getActorTHAC0,
   getTargetAC,

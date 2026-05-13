@@ -110,3 +110,26 @@
   border-top: 1px dotted #b9a582;
   font-weight: 600;
 }
+
+/* BECMI Combat Tracker controls */
+.becmi-combat-tracker-controls {
+  display: flex;
+  gap: 4px;
+  margin: 4px 0;
+}
+
+.becmi-combat-tracker-controls .becmi-init-button {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 24px;
+  padding: 2px 6px;
+  font-size: 12px;
+  line-height: 1.1;
+}
+
+.becmi-combat-tracker-controls .becmi-init-button i {
+  font-size: 11px;
+}
