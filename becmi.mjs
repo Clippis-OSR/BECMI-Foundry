@@ -1,6 +1,7 @@
 import { BECMIActor } from "./module/actors/becmi-actor.mjs";
 import { BECMICharacterSheet } from "./module/actors/character-sheet.mjs";
 import { BECMICreatureSheet } from "./module/actors/creature-sheet.mjs";
+import { BECMIItemSheet } from "./module/items/item-sheet.mjs";
 import { BECMISpellItemSheet } from "./module/items/spell-sheet.mjs";
 import {
   loadCharacterTHAC0,
@@ -70,6 +71,12 @@ Hooks.once("init", async function () {
     types: ["creature"],
     makeDefault: true,
     label: "BECMI Creature Sheet"
+  });
+
+  Items.registerSheet("becmi-foundry", BECMIItemSheet, {
+    types: ["weapon", "armor", "equipment", "treasure"],
+    makeDefault: true,
+    label: "BECMI Item Sheet"
   });
 
   Items.registerSheet("becmi-foundry", BECMISpellItemSheet, {
