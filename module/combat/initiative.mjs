@@ -4,6 +4,7 @@
 
 const MODULE_ID = "becmi-foundry";
 const FLAG_INITIATIVE_MODE = "initiativeMode";
+const MAX_TIEBREAKER_ROUNDS = 20;
 
 export const INITIATIVE_MODE = Object.freeze({
   GROUP: "group",
@@ -192,6 +193,108 @@ export async function applyGroupInitiativeToTracker({ combat, winner, partyTotal
 
   await Promise.all(updates);
 }
+
+export function hasGroupTie(partyTotal, monsterTotal) {
+  return Number(partyTotal) === Number(monsterTotal);
+}
+
+export async function resolveGroupInitiativeTie({ partyModifier = 0, monsterModifier = 0 } = {}) {
+  const partyMod = Number(partyModifier) || 0;
+  const monsterMod = Number(monsterModifier) || 0;
+  const rounds = [];
+
+  for (let round = 1; round <= MAX_TIEBREAKER_ROUNDS; round += 1) {
+    const partyRoll = await (new Roll("1d6")).evaluate();
+    const monsterRoll = await (new Roll("1d6")).evaluate();
+    const partyTotal = Number(partyRoll.total) + partyMod;
+    const monsterTotal = Number(monsterRoll.total) + monsterMod;
+    const tie = hasGroupTie(partyTotal, monsterTotal);
+    const winner = tie ? "tie" : (partyTotal > monsterTotal ? "party" : "monster");
+
+    rounds.push({
+      round,
+      party: { roll: Number(partyRoll.total), total: partyTotal },
+      monsters: { roll: Number(monsterRoll.total), total: monsterTotal },
+      winner
+    });
+
+    if (!tie) {
+      return { rounds, resolved: true, fallbackApplied: false };
+    }
+  }
+
+  const lastRound = rounds[rounds.length - 1];
+  const winner = lastRound.party.total >= lastRound.monsters.total ? "party" : "monster";
+  return {
+    rounds,
+    resolved: false,
+    fallbackApplied: true,
+    fallbackWarning: `Group initiative remained tied after ${MAX_TIEBREAKER_ROUNDS} tie-break rounds. Using fallback winner: ${winner}.`
+  };
+}
+
+export function findTiedIndividualInitiatives(results = []) {
+  const totalsToIds = new Map();
+  for (const result of results) {
+    const bucket = totalsToIds.get(result.total) ?? [];
+    bucket.push(result.combatantId);
+    totalsToIds.set(result.total, bucket);
+  }
+  return Array.from(totalsToIds.values()).filter((group) => group.length > 1);
+}
+
+export async function resolveIndividualInitiativeTies(results = []) {
+  const resolvedResults = results.map((result) => ({ ...result }));
+  const rounds = [];
+
+  for (let round = 1; round <= MAX_TIEBREAKER_ROUNDS; round += 1) {
+    const tiedGroups = findTiedIndividualInitiatives(resolvedResults);
+    if (tiedGroups.length === 0) {
+      return { results: resolvedResults, rounds, resolved: true, fallbackApplied: false };
+    }
+
+    const tiedIds = new Set(tiedGroups.flat());
+    const roundRerolls = [];
+    for (const entry of resolvedResults) {
+      if (!tiedIds.has(entry.combatantId)) continue;
+      const roll = await (new Roll("1d12")).evaluate();
+      entry.roll = Number(roll.total);
+      entry.total = Number(roll.total) + entry.modifier;
+      entry.rerollCount = (entry.rerollCount ?? 0) + 1;
+      roundRerolls.push({
+        combatantId: entry.combatantId,
+        name: entry.name,
+        roll: entry.roll,
+        modifier: entry.modifier,
+        modifierLabel: entry.modifierLabel,
+        total: entry.total
+      });
+    }
+
+    rounds.push({
+      round,
+      tiedGroups: tiedGroups.map((group) => group.map((id) => resolvedResults.find((r) => r.combatantId === id)?.name ?? id)),
+      rerolls: roundRerolls
+    });
+  }
+
+  const warning = `Individual initiative ties remained after ${MAX_TIEBREAKER_ROUNDS} tie-break rounds. Applying decimal fallback offsets.`;
+  console.warn(`BECMI Foundry | ${warning}`);
+  ui.notifications.warn(warning);
+
+  const tiedGroups = findTiedIndividualInitiatives(resolvedResults);
+  for (const group of tiedGroups) {
+    const sorted = group
+      .map((id) => resolvedResults.find((entry) => entry.combatantId === id))
+      .filter(Boolean)
+      .sort((a, b) => String(a.name).localeCompare(String(b.name)));
+    sorted.forEach((entry, idx) => {
+      entry.total = Number(entry.total) - (idx * 0.001);
+    });
+  }
+
+  return { results: resolvedResults, rounds, resolved: false, fallbackApplied: true, fallbackWarning: warning };
+}
 export async function rollGroupInitiative({ combat, partyModifier = 0, monsterModifier = 0, postToChat = true } = {}) {
   combat = await getOrCreateCombatWithSelectedTokens(combat);
   if (!combat) return null;
@@ -201,15 +304,14 @@ export async function rollGroupInitiative({ combat, partyModifier = 0, monsterMo
   const partyMod = Number(partyModifier) || 0;
   const monsterMod = Number(monsterModifier) || 0;
 
-  const partyRoll = await (new Roll("1d6")).evaluate();
-  const monsterRoll = await (new Roll("1d6")).evaluate();
-
-  const partyTotal = Number(partyRoll.total) + partyMod;
-  const monsterTotal = Number(monsterRoll.total) + monsterMod;
-
-  const winner = partyTotal === monsterTotal
-    ? "tie"
-    : partyTotal > monsterTotal ? "party" : "monster";
+  const tieResolution = await resolveGroupInitiativeTie({ partyModifier: partyMod, monsterModifier: monsterMod });
+  const initialRound = tieResolution.rounds[0];
+  const finalRound = tieResolution.rounds[tieResolution.rounds.length - 1];
+  const partyTotal = finalRound.party.total;
+  const monsterTotal = finalRound.monsters.total;
+  const winner = tieResolution.fallbackApplied
+    ? (partyTotal >= monsterTotal ? "party" : "monster")
+    : finalRound.winner;
 
   const winnerLabel = winner === "party" ? "Party" : winner === "monster" ? "Monsters" : "Tie";
 
@@ -217,8 +319,24 @@ export async function rollGroupInitiative({ combat, partyModifier = 0, monsterMo
 
   const result = {
     mode: INITIATIVE_MODE.GROUP,
-    party: { roll: Number(partyRoll.total), modifier: partyMod, modifierLabel: `${partyMod >= 0 ? "+" : ""}${partyMod}`, total: partyTotal },
-    monsters: { roll: Number(monsterRoll.total), modifier: monsterMod, modifierLabel: `${monsterMod >= 0 ? "+" : ""}${monsterMod}`, total: monsterTotal },
+    party: { roll: initialRound.party.roll, modifier: partyMod, modifierLabel: `${partyMod >= 0 ? "+" : ""}${partyMod}`, total: initialRound.party.total },
+    monsters: { roll: initialRound.monsters.roll, modifier: monsterMod, modifierLabel: `${monsterMod >= 0 ? "+" : ""}${monsterMod}`, total: initialRound.monsters.total },
+    tieHistory: tieResolution.rounds.slice(1).map((round) => ({
+      round: round.round,
+      partyRoll: round.party.roll,
+      partyTotal: round.party.total,
+      monsterRoll: round.monsters.roll,
+      monsterTotal: round.monsters.total,
+      winner: round.winner
+    })),
+    final: {
+      partyRoll: finalRound.party.roll,
+      partyTotal: finalRound.party.total,
+      monsterRoll: finalRound.monsters.roll,
+      monsterTotal: finalRound.monsters.total
+    },
+    fallbackApplied: tieResolution.fallbackApplied,
+    fallbackWarning: tieResolution.fallbackWarning,
     winner,
     winnerLabel
   };
@@ -228,8 +346,8 @@ export async function rollGroupInitiative({ combat, partyModifier = 0, monsterMo
     const content = await renderTemplate(templatePath, result);
     await ChatMessage.create({ content });
 
-    if (winner === "tie") {
-      await ChatMessage.create({ content: "<p><strong>BECMI Initiative:</strong> Tie detected. Combat Tracker order is unchanged.</p>" });
+    if (tieResolution.fallbackApplied) {
+      await ChatMessage.create({ content: `<p><strong>BECMI Initiative:</strong> ${tieResolution.fallbackWarning}</p>` });
     }
   }
 
@@ -243,15 +361,13 @@ export async function rollIndividualInitiative({ combat, postToChat = true } = {
   console.log("BECMI | Combatants", combat.combatants.contents);
   const combatants = Array.from(combat.combatants ?? []);
 
-  const results = [];
+  const initialResults = [];
   for (const combatant of combatants) {
     const modifier = getActorInitiativeModifier(combatant.actor);
     const roll = await (new Roll("1d12")).evaluate();
     const total = Number(roll.total) + modifier;
 
-    await combat.setInitiative(combatant.id, total);
-
-    results.push({
+    initialResults.push({
       combatantId: combatant.id,
       name: combatant.name ?? combatant.actor?.name ?? "Unknown Combatant",
       roll: Number(roll.total),
@@ -261,9 +377,20 @@ export async function rollIndividualInitiative({ combat, postToChat = true } = {
     });
   }
 
+  const tieResolution = await resolveIndividualInitiativeTies(initialResults);
+  const finalResults = tieResolution.results;
+
+  for (const result of finalResults) {
+    await combat.setInitiative(result.combatantId, result.total);
+  }
+
   const result = {
     mode: INITIATIVE_MODE.INDIVIDUAL,
-    results: results.sort((a, b) => b.total - a.total)
+    initialResults: initialResults.map((entry) => ({ ...entry })),
+    tieHistory: tieResolution.rounds,
+    fallbackApplied: tieResolution.fallbackApplied,
+    fallbackWarning: tieResolution.fallbackWarning,
+    results: finalResults.sort((a, b) => b.total - a.total)
   };
 
   if (postToChat) {

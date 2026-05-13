@@ -1,6 +1,19 @@
 <div class="becmi-chat-card becmi-initiative-card becmi-initiative-group-card">
   <h3>BECMI Group Initiative</h3>
+  <p><strong>Initial Roll</strong></p>
   <p><strong>Party:</strong> {{party.roll}} ({{party.modifierLabel}}) = <strong>{{party.total}}</strong></p>
   <p><strong>Monsters:</strong> {{monsters.roll}} ({{monsters.modifierLabel}}) = <strong>{{monsters.total}}</strong></p>
+  {{#if tieHistory.length}}
+    <p><strong>Tie-break Rerolls</strong></p>
+    <ul>
+      {{#each tieHistory}}
+        <li>Round {{round}}: Party {{partyRoll}} = {{partyTotal}}, Monsters {{monsterRoll}} = {{monsterTotal}}</li>
+      {{/each}}
+    </ul>
+  {{/if}}
+  <p><strong>Final Roll:</strong> Party {{final.partyRoll}} = {{final.partyTotal}}, Monsters {{final.monsterRoll}} = {{final.monsterTotal}}</p>
   <p><strong>Winner:</strong> {{winnerLabel}}</p>
+  {{#if fallbackApplied}}
+    <p><strong>Warning:</strong> {{fallbackWarning}}</p>
+  {{/if}}
 </div>
