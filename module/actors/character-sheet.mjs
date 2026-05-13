@@ -295,6 +295,7 @@ export class BECMICharacterSheet extends ActorSheet {
     });
 
     html.find('[data-action="change-currency-quantity"]').on("change", this._onCurrencyQuantityChange.bind(this));
+    html.find('[data-action="update-inventory-item"]').on("change", this._onUpdateInventoryItem.bind(this));
     html.find('[data-action="create-inventory-item"]').on("click", this._onCreateInventoryItem.bind(this));
   }
 
@@ -522,6 +523,38 @@ export class BECMICharacterSheet extends ActorSheet {
     await this.actor.createEmbeddedDocuments("Item", [createData]);
     this.render(false);
   }
+
+  async _onUpdateInventoryItem(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const input = event.currentTarget;
+    const itemId = input?.dataset?.itemId;
+    const field = input?.dataset?.field;
+    if (!itemId || !field) return;
+
+    const item = this.actor.items.get(itemId);
+    if (!item) return;
+
+    let value;
+    if (input.type === "checkbox") {
+      value = Boolean(input.checked);
+    } else if (input.type === "number") {
+      const parsed = Number(input.value);
+      value = Number.isNaN(parsed) ? 0 : parsed;
+    } else {
+      value = String(input.value ?? "");
+    }
+
+    if (field === "system.containerId") {
+      value = normalizeContainerId(value);
+      if (!this._canMoveItemToContainer(item, value)) return;
+    }
+
+    await item.update({ [field]: value });
+    this.render(false);
+  }
+
   _buildInventoryGroups() {
     const items = getActorItems(this.actor);
     const containers = items.filter((item) => item?.type === "container");
@@ -576,7 +609,13 @@ export class BECMICharacterSheet extends ActorSheet {
           weight,
           totalWeight,
           value,
+          estimatedValue: Number(item?.system?.estimatedValue ?? 0) || 0,
+          denomination: String(item?.system?.denomination ?? ""),
           containerId: String(item?.system?.containerId ?? ""),
+          equipped: Boolean(item?.system?.equipped),
+          worn: Boolean(item?.system?.worn),
+          identified: Boolean(item?.system?.identified),
+          notes: String(item?.system?.notes ?? ""),
           type: item?.type ?? "",
           canMoveToGroup: group.key !== "equipped"
         };
