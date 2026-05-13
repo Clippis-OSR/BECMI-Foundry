@@ -68,6 +68,40 @@ export function isAttackHit(attackTotal, requiredRoll) {
 }
 
 /**
+ * Convert a weapon Item document into combat-engine attackData.
+ *
+ * Kept intentionally generic so actor sheets, macros, and future monster
+ * actions can all share the same mapping logic.
+ *
+ * @param {object} item Foundry Item document.
+ * @returns {{
+ *   id: string|null,
+ *   name: string,
+ *   type: string,
+ *   attackBonus: number,
+ *   damage: string,
+ *   damageBonus: number,
+ *   range: object|null,
+ *   tags: string[]
+ * }}
+ */
+export function weaponItemToAttackData(item) {
+  const system = item?.system ?? {};
+  const rawTags = Array.isArray(system?.tags) ? system.tags : [];
+
+  return {
+    id: item?.id ?? null,
+    name: item?.name ?? "Weapon",
+    type: system?.weaponType ?? "melee",
+    attackBonus: Number(system?.attackBonus ?? 0),
+    damage: system?.damage ?? "1d4",
+    damageBonus: Number(system?.damageBonus ?? 0),
+    range: system?.range ?? null,
+    tags: ["weapon", ...rawTags]
+  };
+}
+
+/**
  * Resolve an attack roll using BECMI THAC0 + descending AC logic.
  *
  * Notes:
