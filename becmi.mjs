@@ -377,12 +377,14 @@ Hooks.once("ready", async function () {
     if (!canonicalSaves) continue;
 
     await actor.update({
-      "system.saves": canonicalSaves,
-      "system.saves.-=death": null,
-      "system.saves.-=wands": null,
-      "system.saves.-=paralysis": null,
-      "system.saves.-=breath": null,
-      "system.saves.-=spells": null
+      "system.saves": {
+        ...canonicalSaves,
+        death: foundry.data.operators.ForcedDeletion,
+        wands: foundry.data.operators.ForcedDeletion,
+        paralysis: foundry.data.operators.ForcedDeletion,
+        breath: foundry.data.operators.ForcedDeletion,
+        spells: foundry.data.operators.ForcedDeletion
+      }
     });
   }
 });
