@@ -5,6 +5,14 @@ import {
   rollSavingThrow,
   rollThiefSkill
 } from "../rolls/becmi-rolls.mjs";
+import {
+  getActorItems,
+  getItemsInContainer,
+  getItemTotalWeight,
+  moveItemToContainer
+} from "../items/inventory-manager.mjs";
+import { ensureDefaultContainers } from "../items/default-containers.mjs";
+import { calculateTotalEncumbrance } from "../items/encumbrance.mjs";
 
 export class BECMICharacterSheet extends ActorSheet {
 
@@ -90,6 +98,9 @@ export class BECMICharacterSheet extends ActorSheet {
     context.turnUndeadList = turnUndead && typeof turnUndead === "object" && !Array.isArray(turnUndead)
       ? Object.entries(turnUndead).map(([target, score]) => ({ target, score }))
       : [];
+    context.inventoryGroups = this._buildInventoryGroups();
+    context.encumbranceSummary = this._buildEncumbranceSummary();
+    context.inventoryMoveTargets = this._buildInventoryMoveTargets();
 
     console.warn("BECMICharacterSheet getData");
     console.warn("BECMI sheet debug", {
@@ -238,6 +249,169 @@ export class BECMICharacterSheet extends ActorSheet {
         "system.spellsKnown": spellsKnown
       });
     });
+
+    html.find('[data-action="item-edit"]').on("click", (event) => {
+      event.preventDefault();
+      const item = this.actor.items.get(event.currentTarget.dataset.itemId);
+      item?.sheet?.render(true);
+    });
+
+    html.find('[data-action="item-delete"]').on("click", async (event) => {
+      event.preventDefault();
+      const itemId = event.currentTarget.dataset.itemId;
+      if (!itemId) return;
+      await this.actor.deleteEmbeddedDocuments("Item", [itemId]);
+    });
+
+    html.find('[data-action="create-default-containers"]').on("click", async (event) => {
+      event.preventDefault();
+      const result = await ensureDefaultContainers(this.actor);
+      if (result.skipped) return;
+      const count = Array.isArray(result.created) ? result.created.length : 0;
+      if (count > 0) {
+        ui.notifications?.info(`Created ${count} default container${count === 1 ? "" : "s"}.`);
+      } else {
+        ui.notifications?.info("Default containers already exist.");
+      }
+      this.render(false);
+    });
+
+    html.find('[data-action="move-item"]').on("click", async (event) => {
+      event.preventDefault();
+      const itemId = event.currentTarget.dataset.itemId;
+      const row = event.currentTarget.closest("tr");
+      const select = row?.querySelector('[data-field="move-target-container"]');
+      const targetContainerId = select?.value ?? "";
+      const item = this.actor.items.get(itemId);
+      if (!item) return;
+      if (!this._canMoveItemToContainer(item, targetContainerId)) return;
+      await moveItemToContainer(item, targetContainerId);
+      this.render(false);
+    });
+  }
+
+
+
+  _buildInventoryMoveTargets() {
+    const groups = this._buildInventoryGroups();
+    const targets = [{ value: "", label: "None / Carried" }];
+
+    for (const group of groups) {
+      if (!group?.containerId) continue;
+      targets.push({ value: group.containerId, label: group.label });
+    }
+
+    return targets;
+  }
+
+  _canMoveItemToContainer(item, targetContainerId) {
+    const itemId = item?.id ?? "";
+    const targetId = String(targetContainerId ?? "").trim();
+
+    if (!targetId) return true;
+    if (!itemId) return false;
+    if (itemId === targetId) return false;
+
+    // Prevent obvious circular containment when moving containers.
+    if (item?.type === "container") {
+      let cursor = this.actor.items.get(targetId);
+      const visited = new Set();
+
+      while (cursor && !visited.has(cursor.id)) {
+        if (cursor.id === itemId) return false;
+        visited.add(cursor.id);
+        const parentId = String(cursor?.system?.containerId ?? "").trim();
+        if (!parentId) break;
+        cursor = this.actor.items.get(parentId);
+      }
+    }
+
+    return true;
+  }
+
+  _buildEncumbranceSummary() {
+    try {
+      const result = calculateTotalEncumbrance(this.actor) ?? {};
+      const total = Number.isFinite(Number(result.total)) ? Number(result.total) : 0;
+      const bracket = result.bracket ?? "0-400";
+      const normalSpeed = Number.isFinite(Number(result.normalSpeed)) ? Number(result.normalSpeed) : 0;
+      const encounterSpeed = Number.isFinite(Number(result.encounterSpeed)) ? Number(result.encounterSpeed) : 0;
+      const containers = Array.isArray(result.containers)
+        ? result.containers.map((entry) => ({
+          containerId: entry?.containerId ?? "",
+          containerWeight: Number.isFinite(Number(entry?.containerWeight)) ? Number(entry.containerWeight) : 0,
+          contentsWeight: Number.isFinite(Number(entry?.contentsWeight)) ? Number(entry.contentsWeight) : 0,
+          total: Number.isFinite(Number(entry?.total)) ? Number(entry.total) : 0,
+          itemCount: Number.isFinite(Number(entry?.itemCount)) ? Number(entry.itemCount) : 0
+        }))
+        : [];
+
+      return { total, bracket, normalSpeed, encounterSpeed, containers };
+    } catch (error) {
+      console.warn("BECMI encumbrance summary failed", error);
+      return { total: 0, bracket: "0-400", normalSpeed: 0, encounterSpeed: 0, containers: [] };
+    }
+  }
+  _buildInventoryGroups() {
+    const items = getActorItems(this.actor);
+    const containers = items.filter((item) => item?.type === "container");
+    const rootItems = items.filter((item) => !item?.system?.containerId);
+
+    const findContainerId = ({ containerType, names = [] }) => {
+      const byType = containers.find((container) => container?.system?.containerType === containerType);
+      if (byType?.id) return byType.id;
+
+      const normalizedNames = names.map((name) => String(name).toLowerCase());
+      const byName = containers.find((container) => normalizedNames.includes(String(container?.name ?? "").toLowerCase()));
+      return byName?.id ?? "";
+    };
+
+    const beltPouchId = findContainerId({ containerType: "belt-pouch", names: ["belt pouch"] });
+    const backpackId = findContainerId({ containerType: "backpack", names: ["backpack"] });
+    const sackIds = containers
+      .filter((container) => container?.system?.containerType === "sack" || String(container?.name ?? "").toLowerCase().includes("sack"))
+      .map((container) => container.id)
+      .slice(0, 2);
+
+    const equippedOrWorn = rootItems.filter((item) => Boolean(item?.system?.equipped) || Boolean(item?.system?.worn));
+
+    const assignedContainerIds = new Set([beltPouchId, backpackId, ...sackIds].filter(Boolean));
+    const otherCarried = rootItems.filter((item) => {
+      if (item?.type === "container") return false;
+      if (Boolean(item?.system?.equipped) || Boolean(item?.system?.worn)) return false;
+      return !assignedContainerIds.has(item.id);
+    });
+
+    const groupDefinitions = [
+      { key: "equipped", label: "Equipped / Worn", items: equippedOrWorn, containerId: "" },
+      { key: "belt", label: "Belt Pouch", items: beltPouchId ? getItemsInContainer(this.actor, beltPouchId) : [], containerId: beltPouchId },
+      { key: "backpack", label: "Backpack", items: backpackId ? getItemsInContainer(this.actor, backpackId) : [], containerId: backpackId },
+      { key: "sack1", label: "Sack #1", items: sackIds[0] ? getItemsInContainer(this.actor, sackIds[0]) : [], containerId: sackIds[0] ?? "" },
+      { key: "sack2", label: "Sack #2", items: sackIds[1] ? getItemsInContainer(this.actor, sackIds[1]) : [], containerId: sackIds[1] ?? "" },
+      { key: "other", label: "Other Carried Items", items: otherCarried, containerId: "" }
+    ];
+
+    return groupDefinitions.map((group) => ({
+      ...group,
+      hasContainer: Boolean(group.containerId),
+      items: (group.items ?? []).map((item) => {
+        const quantity = Number(item?.system?.quantity ?? 1) || 1;
+        const weight = Number(item?.system?.weight ?? 0) || 0;
+        const totalWeight = getItemTotalWeight(item);
+        const value = Number(item?.system?.value ?? 0) || 0;
+        return {
+          id: item.id,
+          name: item.name,
+          quantity,
+          weight,
+          totalWeight,
+          value,
+          containerId: String(item?.system?.containerId ?? ""),
+          type: item?.type ?? "",
+          canMoveToGroup: group.key !== "equipped"
+        };
+      })
+    }));
   }
 
   async _onDrop(event) {

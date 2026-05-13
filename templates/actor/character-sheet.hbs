@@ -369,59 +369,88 @@
 
 <hr>
 
-<h2>Encumbrance & Movement</h2>
-<div>Total Encumbrance Carried:
-  <input type="number" name="system.encumbrance.total" value="{{system.encumbrance.total}}" />
-</div>
-<div>Without Backpack:
-  <input type="number" name="system.encumbrance.withoutBackpack" value="{{system.encumbrance.withoutBackpack}}" />
-</div>
-<div>Without Sack(s):
-  <input type="number" name="system.encumbrance.withoutSacks" value="{{system.encumbrance.withoutSacks}}" />
-</div>
-<div>Only Belt Pouch & Items Worn:
-  <input type="number" name="system.encumbrance.beltPouchAndWorn" value="{{system.encumbrance.beltPouchAndWorn}}" />
-</div>
-<div>Normal Speed:
-  <input type="number" name="system.encumbrance.normalSpeed" value="{{system.encumbrance.normalSpeed}}" />
-</div>
-<div>Encounter Speed:
-  <input type="number" name="system.encumbrance.encounterSpeed" value="{{system.encumbrance.encounterSpeed}}" />
-</div>
+<h2>Encumbrance & Movement (Calculated)</h2>
+<div><strong>Total carried encumbrance:</strong> {{encumbranceSummary.total}} cn</div>
+<div><strong>Encumbrance bracket:</strong> {{encumbranceSummary.bracket}}</div>
+<div><strong>Normal movement:</strong> {{encumbranceSummary.normalSpeed}}</div>
+<div><strong>Encounter movement:</strong> {{encumbranceSummary.encounterSpeed}}</div>
+
+{{#if encumbranceSummary.containers.length}}
+<h3>Container Encumbrance Summary</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Container ID</th>
+      <th>Container Wt (cn)</th>
+      <th>Contents Wt (cn)</th>
+      <th>Total (cn)</th>
+      <th>Items</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each encumbranceSummary.containers as |container|}}
+    <tr>
+      <td>{{container.containerId}}</td>
+      <td>{{container.containerWeight}}</td>
+      <td>{{container.contentsWeight}}</td>
+      <td>{{container.total}}</td>
+      <td>{{container.itemCount}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{/if}}
 
 <hr>
 
-<h2>Equipment Containers</h2>
+<h2>Inventory</h2>
+<button type="button" data-action="create-default-containers">Create Default Containers</button>
 
-<h3>Items in Belt Pouch</h3>
-<textarea name="system.containers.beltPouch.items" rows="4">{{system.containers.beltPouch.items}}</textarea>
-<div>Enc:
-  <input type="number" name="system.containers.beltPouch.enc" value="{{system.containers.beltPouch.enc}}" />
-</div>
-
-<h3>Items Worn</h3>
-<textarea name="system.containers.worn.items" rows="4">{{system.containers.worn.items}}</textarea>
-<div>Enc:
-  <input type="number" name="system.containers.worn.enc" value="{{system.containers.worn.enc}}" />
-</div>
-
-<h3>Items in Backpack</h3>
-<textarea name="system.containers.backpack.items" rows="6">{{system.containers.backpack.items}}</textarea>
-<div>Enc:
-  <input type="number" name="system.containers.backpack.enc" value="{{system.containers.backpack.enc}}" />
-</div>
-
-<h3>Items in Sack #1</h3>
-<textarea name="system.containers.sack1.items" rows="5">{{system.containers.sack1.items}}</textarea>
-<div>Enc:
-  <input type="number" name="system.containers.sack1.enc" value="{{system.containers.sack1.enc}}" />
-</div>
-
-<h3>Items in Sack #2</h3>
-<textarea name="system.containers.sack2.items" rows="5">{{system.containers.sack2.items}}</textarea>
-<div>Enc:
-  <input type="number" name="system.containers.sack2.enc" value="{{system.containers.sack2.enc}}" />
-</div>
+{{#each inventoryGroups as |group|}}
+<h3>{{group.label}}</h3>
+{{#if group.hasContainer}}
+<p><em>Container-linked group.</em></p>
+{{/if}}
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Qty</th>
+      <th>Wt</th>
+      <th>Total Wt</th>
+      <th>Value</th>
+      <th>Controls</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#if group.items.length}}
+      {{#each group.items as |item|}}
+      <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.weight}}</td>
+        <td>{{item.totalWeight}}</td>
+        <td>{{item.value}}</td>
+        <td>
+          <button type="button" data-action="item-edit" data-item-id="{{item.id}}">Edit</button>
+          <button type="button" data-action="item-delete" data-item-id="{{item.id}}">Delete</button>
+          <select data-field="move-target-container">
+            {{#each ../../inventoryMoveTargets as |target|}}
+              <option value="{{target.value}}" {{#if (eq target.value ../containerId)}}selected{{/if}}>{{target.label}}</option>
+            {{/each}}
+          </select>
+          <button type="button" data-action="move-item" data-item-id="{{item.id}}">Move</button>
+        </td>
+      </tr>
+      {{/each}}
+    {{else}}
+      <tr>
+        <td colspan="6"><em>No items.</em></td>
+      </tr>
+    {{/if}}
+  </tbody>
+</table>
+{{/each}}
 
 </div>
 
