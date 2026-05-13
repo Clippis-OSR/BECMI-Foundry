@@ -49,12 +49,19 @@ export function getContainers(actor) {
 
 export function normalizeItemLocation(value) {
   const location = String(value ?? "").trim().toLowerCase();
-  if (["equipped", "worn", "storage"].includes(location)) return location;
+  if (["equipped", "worn", "storage", "treasure"].includes(location)) return location;
   return "worn";
 }
 
 export function getItemLocation(item) {
-  return normalizeItemLocation(item?.system?.location);
+  const normalized = normalizeItemLocation(item?.system?.location);
+  if (item?.type === "treasure") {
+    if (normalized === "storage") return "storage";
+    return "treasure";
+  }
+
+  if (normalized === "treasure") return "worn";
+  return normalized;
 }
 
 export function getEquippedItems(actor) {
@@ -68,7 +75,7 @@ export function getWornItems(actor) {
 export function getCarriedItems(actor) {
   return getActorItems(actor).filter((item) => {
     const location = getItemLocation(item);
-    return location === "equipped" || location === "worn";
+    return location === "equipped" || location === "worn" || location === "treasure";
   });
 }
 

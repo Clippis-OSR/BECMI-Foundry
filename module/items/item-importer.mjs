@@ -38,7 +38,10 @@ function isDescendantContainer(actor, childContainerId, ancestorContainerId) {
 
 export function cloneItemDataForActor(sourceItem, options = {}) {
   const containerId = normalizeContainerId(options.containerId ?? "");
-  const location = normalizeItemLocation(options.location ?? "worn");
+  const requestedLocation = normalizeItemLocation(options.location ?? "worn");
+  const location = sourceItem?.type === "treasure" && requestedLocation !== "storage"
+    ? "treasure"
+    : requestedLocation;
   const createData = sourceItem?.toObject ? sourceItem.toObject() : foundry.utils.deepClone(sourceItem ?? {});
 
   delete createData._id;

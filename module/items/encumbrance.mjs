@@ -22,7 +22,7 @@ function normalizeContainerId(value) {
 function shouldCountItem(item) {
   if (isStoredItem(item)) return false;
   const location = getItemLocation(item);
-  return location === "equipped" || location === "worn";
+  return location === "equipped" || location === "worn" || location === "treasure";
 }
 
 export function calculateContainerEncumbrance(actor, containerId) {
