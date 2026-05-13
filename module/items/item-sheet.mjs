@@ -28,6 +28,8 @@ export class BECMIItemSheet extends ItemSheet {
 
   getData(options = {}) {
     const context = super.getData(options);
+    context.item = context.item ?? this.item ?? null;
+    context.system = context.system ?? context.item?.system ?? this.item?.system ?? {};
     const system = context.system ?? {};
 
     context.safeSystem = {
@@ -38,6 +40,10 @@ export class BECMIItemSheet extends ItemSheet {
     context.tagsString = Array.isArray(context.safeSystem.tags)
       ? context.safeSystem.tags.join(", ")
       : "";
+
+    context.effectDataString = typeof context.safeSystem.effectData === "string"
+      ? context.safeSystem.effectData
+      : JSON.stringify(context.safeSystem.effectData ?? "", null, 2);
 
     context.isWeapon = this.item.type === "weapon";
     context.isArmor = this.item.type === "armor";
@@ -61,6 +67,21 @@ export class BECMIItemSheet extends ItemSheet {
         .split(",")
         .map((tag) => tag.trim())
         .filter((tag) => tag.length > 0);
+    }
+
+    const effectDataInput = expanded.system?.effectData;
+    if (typeof effectDataInput === "string") {
+      const trimmed = effectDataInput.trim();
+
+      if (trimmed.length === 0) {
+        updates["system.effectData"] = "";
+      } else {
+        try {
+          updates["system.effectData"] = JSON.parse(trimmed);
+        } catch (_error) {
+          updates["system.effectData"] = effectDataInput;
+        }
+      }
     }
 
     await this.item.update(updates);
