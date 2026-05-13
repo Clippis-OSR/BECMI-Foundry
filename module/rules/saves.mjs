@@ -29,11 +29,11 @@ function toNumericValue(value) {
 function toSaveObject(source) {
   if (!source || typeof source !== "object") return null;
 
-  const deathRayPoison = source.deathRayPoison ?? source.death;
-  const magicWands = source.magicWands ?? source.wands;
-  const paralysisTurnStone = source.paralysisTurnStone ?? source.paralysis;
-  const dragonBreath = source.dragonBreath ?? source.breath;
-  const rodStaffSpell = source.rodStaffSpell ?? source.spells;
+  const deathRayPoison = source.deathRayPoison;
+  const magicWands = source.magicWands;
+  const paralysisTurnStone = source.paralysisTurnStone;
+  const dragonBreath = source.dragonBreath;
+  const rodStaffSpell = source.rodStaffSpell;
 
   if (
     deathRayPoison === undefined ||

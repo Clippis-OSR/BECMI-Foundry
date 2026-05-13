@@ -40,6 +40,36 @@ const BECMI_CREATURE_DEFAULTS = {
   specialNotes: ""
 };
 
+const CANONICAL_SAVE_LABELS = {
+  deathRayPoison: "Death Ray / Poison",
+  magicWands: "Magic Wands",
+  paralysisTurnStone: "Paralysis / Turn to Stone",
+  dragonBreath: "Dragon Breath",
+  rodStaffSpell: "Rod / Staff / Spell"
+};
+
+function canonicalizeActorSavesForMigration(saves) {
+  if (!saves || typeof saves !== "object") return null;
+
+  const mapped = {
+    deathRayPoison: saves.deathRayPoison?.value ?? saves.deathRayPoison ?? saves.death,
+    magicWands: saves.magicWands?.value ?? saves.magicWands ?? saves.wands,
+    paralysisTurnStone: saves.paralysisTurnStone?.value ?? saves.paralysisTurnStone ?? saves.paralysis,
+    dragonBreath: saves.dragonBreath?.value ?? saves.dragonBreath ?? saves.breath,
+    rodStaffSpell: saves.rodStaffSpell?.value ?? saves.rodStaffSpell ?? saves.spells
+  };
+
+  const hasAnyValue = Object.values(mapped).some((value) => value !== undefined && value !== null && value !== "");
+  if (!hasAnyValue) return null;
+
+  return Object.fromEntries(
+    Object.entries(mapped).map(([key, value]) => {
+      const numeric = Number(value);
+      return [key, { value: Number.isFinite(numeric) ? numeric : null, label: CANONICAL_SAVE_LABELS[key] }];
+    })
+  );
+}
+
 Hooks.once("init", async function () {
   console.log("BECMI Foundry | Init");
   game.becmi = game.becmi || {};
@@ -175,9 +205,25 @@ Hooks.on("preCreateActor", (actor) => {
 });
 
 
-Hooks.once("ready", function () {
+Hooks.once("ready", async function () {
   game.becmi = game.becmi || {};
   game.becmi.rules = becmiRules;
   game.becmi.inventory = inventoryManager;
   game.becmi.encumbrance = encumbrance;
+
+  const actors = game.actors?.contents ?? [];
+  for (const actor of actors) {
+    const legacySaves = actor.system?.saves;
+    const canonicalSaves = canonicalizeActorSavesForMigration(legacySaves);
+    if (!canonicalSaves) continue;
+
+    await actor.update({
+      "system.saves": canonicalSaves,
+      "system.saves.-=death": null,
+      "system.saves.-=wands": null,
+      "system.saves.-=paralysis": null,
+      "system.saves.-=breath": null,
+      "system.saves.-=spells": null
+    });
+  }
 });

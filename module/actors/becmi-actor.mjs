@@ -37,17 +37,26 @@ export class BECMIActor extends Actor {
     const hasSpellcasting = spellcastingData?.enabled === true;
     const hasThiefSkills = !!levelData?.thiefSkills && typeof levelData.thiefSkills === "object";
     const hasTurnUndead = !!levelData?.turnUndead && typeof levelData.turnUndead === "object";
+    const canonicalSaves = {
+      deathRayPoison: { value: calculatedSaves.deathRayPoison ?? null, label: "Death Ray / Poison" },
+      magicWands: { value: calculatedSaves.magicWands ?? null, label: "Magic Wands" },
+      paralysisTurnStone: { value: calculatedSaves.paralysisTurnStone ?? null, label: "Paralysis / Turn to Stone" },
+      dragonBreath: { value: calculatedSaves.dragonBreath ?? null, label: "Dragon Breath" },
+      rodStaffSpell: { value: calculatedSaves.rodStaffSpell ?? null, label: "Rod / Staff / Spell" }
+    };
+
+    system.saves = canonicalSaves;
 
     system.derived = {
       ...existingDerived,
       level,
       thac0: calculatedThac0 ?? null,
       saves: {
-        deathRayPoison: calculatedSaves.deathRayPoison ?? null,
-        magicWands: calculatedSaves.magicWands ?? null,
-        paralysisTurnStone: calculatedSaves.paralysisTurnStone ?? null,
-        dragonBreath: calculatedSaves.dragonBreath ?? null,
-        rodStaffSpell: calculatedSaves.rodStaffSpell ?? null
+        deathRayPoison: canonicalSaves.deathRayPoison.value,
+        magicWands: canonicalSaves.magicWands.value,
+        paralysisTurnStone: canonicalSaves.paralysisTurnStone.value,
+        dragonBreath: canonicalSaves.dragonBreath.value,
+        rodStaffSpell: canonicalSaves.rodStaffSpell.value
       },
       hasSpellcasting,
       spellSlots: hasSpellcasting ? spellcastingData?.slots ?? null : null,
@@ -76,16 +85,25 @@ export class BECMIActor extends Actor {
 
     const existingDerived = system.derived ?? {};
     const calculatedSaves = getActorSaves(this) ?? {};
+    const canonicalSaves = {
+      deathRayPoison: { value: calculatedSaves.deathRayPoison ?? null, label: "Death Ray / Poison" },
+      magicWands: { value: calculatedSaves.magicWands ?? null, label: "Magic Wands" },
+      paralysisTurnStone: { value: calculatedSaves.paralysisTurnStone ?? null, label: "Paralysis / Turn to Stone" },
+      dragonBreath: { value: calculatedSaves.dragonBreath ?? null, label: "Dragon Breath" },
+      rodStaffSpell: { value: calculatedSaves.rodStaffSpell ?? null, label: "Rod / Staff / Spell" }
+    };
+
+    system.saves = canonicalSaves;
 
     system.derived = {
       ...existingDerived,
       thac0: getActorTHAC0(this) ?? null,
       saves: {
-        deathRayPoison: calculatedSaves.deathRayPoison ?? null,
-        magicWands: calculatedSaves.magicWands ?? null,
-        paralysisTurnStone: calculatedSaves.paralysisTurnStone ?? null,
-        dragonBreath: calculatedSaves.dragonBreath ?? null,
-        rodStaffSpell: calculatedSaves.rodStaffSpell ?? null
+        deathRayPoison: canonicalSaves.deathRayPoison.value,
+        magicWands: canonicalSaves.magicWands.value,
+        paralysisTurnStone: canonicalSaves.paralysisTurnStone.value,
+        dragonBreath: canonicalSaves.dragonBreath.value,
+        rodStaffSpell: canonicalSaves.rodStaffSpell.value
       },
       hitDice: system.hd ?? system.hitDice ?? null,
       savesAs: system.savesAs ?? null

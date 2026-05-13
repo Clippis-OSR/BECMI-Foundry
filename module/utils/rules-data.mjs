@@ -34,9 +34,41 @@ export async function loadJSON(path) {
 }
 
 export async function loadClassData() {
+  const toCanonicalSaveProfile = (saves) => {
+    if (!saves || typeof saves !== "object") return saves;
+    return {
+      deathRayPoison: saves.deathRayPoison ?? saves.death,
+      magicWands: saves.magicWands ?? saves.wands,
+      paralysisTurnStone: saves.paralysisTurnStone ?? saves.paralysis,
+      dragonBreath: saves.dragonBreath ?? saves.breath,
+      rodStaffSpell: saves.rodStaffSpell ?? saves.spells
+    };
+  };
+
+  const normalizeClassSaves = (classData) => {
+    if (!classData || typeof classData !== "object") return classData;
+    const levels = classData.levels;
+    if (!levels || typeof levels !== "object") return classData;
+
+    const normalizedLevels = Object.fromEntries(
+      Object.entries(levels).map(([levelKey, levelData]) => {
+        if (!levelData || typeof levelData !== "object") return [levelKey, levelData];
+        return [
+          levelKey,
+          {
+            ...levelData,
+            saves: toCanonicalSaveProfile(levelData.saves)
+          }
+        ];
+      })
+    );
+
+    return { ...classData, levels: normalizedLevels };
+  };
+
   const classEntries = Object.entries(BECMI_RULES_DATA_PATHS.classes);
   const results = await Promise.all(
-    classEntries.map(async ([classId, path]) => [classId, await loadJSON(path)])
+    classEntries.map(async ([classId, path]) => [classId, normalizeClassSaves(await loadJSON(path))])
   );
 
   return Object.fromEntries(results);
@@ -55,5 +87,30 @@ export async function loadMonsterTHAC0() {
 }
 
 export async function loadMonsterSaves() {
-  return await loadJSON(BECMI_RULES_DATA_PATHS.tables.monsterSaves);
+  const data = await loadJSON(BECMI_RULES_DATA_PATHS.tables.monsterSaves);
+  if (!data || typeof data !== "object") return data;
+
+  const toCanonicalSaveProfile = (saves) => {
+    if (!saves || typeof saves !== "object") return saves;
+    return {
+      deathRayPoison: saves.deathRayPoison ?? saves.death,
+      magicWands: saves.magicWands ?? saves.wands,
+      paralysisTurnStone: saves.paralysisTurnStone ?? saves.paralysis,
+      dragonBreath: saves.dragonBreath ?? saves.breath,
+      rodStaffSpell: saves.rodStaffSpell ?? saves.spells
+    };
+  };
+
+  const entries = data.entries;
+  if (!entries || typeof entries !== "object") return data;
+
+  const normalizedEntries = Object.fromEntries(
+    Object.entries(entries).map(([hd, entry]) => {
+      if (!entry || typeof entry !== "object") return [hd, entry];
+      if (entry.saves) return [hd, { ...entry, saves: toCanonicalSaveProfile(entry.saves) }];
+      return [hd, toCanonicalSaveProfile(entry)];
+    })
+  );
+
+  return { ...data, entries: normalizedEntries };
 }
