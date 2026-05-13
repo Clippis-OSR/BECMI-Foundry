@@ -65,7 +65,7 @@
       <div class="form-group"><label>Uses</label><input type="number" name="system.uses" value="{{safeSystem.uses}}" step="1" /></div>
       <div class="form-group"><label>Max Uses</label><input type="number" name="system.maxUses" value="{{safeSystem.maxUses}}" step="1" /></div>
       <div class="form-group"><label>Consumed On Use</label><input type="checkbox" name="system.consumedOnUse" {{checked safeSystem.consumedOnUse}} /></div>
-      <div class="form-group"><label>Effect Data</label><textarea name="system.effectData" rows="4">{{safeSystem.effectData}}</textarea></div>
+      <div class="form-group"><label>Effect Data</label><textarea name="system.effectData" rows="4">{{effectDataString}}</textarea></div>
     {{/if}}
   </section>
 </form>
