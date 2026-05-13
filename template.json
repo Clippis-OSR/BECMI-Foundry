@@ -258,10 +258,18 @@
       "equipment",
       "treasure"
     ],
-    "weapon": {},
-    "armor": {},
-    "equipment": {},
-    "treasure": {},
+    "weapon": {
+      "actions": []
+    },
+    "armor": {
+      "actions": []
+    },
+    "equipment": {
+      "actions": []
+    },
+    "treasure": {
+      "actions": []
+    },
     "spell": {
       "level": 1,
       "tradition": "arcane",
@@ -282,7 +290,8 @@
         "by": null
       },
       "effects": [],
-      "description": ""
+      "description": "",
+      "actions": []
     }
   }
 }
