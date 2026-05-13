@@ -1,6 +1,7 @@
 import { BECMIActor } from "./module/actors/becmi-actor.mjs";
 import { BECMICharacterSheet } from "./module/actors/character-sheet.mjs";
 import { BECMICreatureSheet } from "./module/actors/creature-sheet.mjs";
+import { BECMISpellItemSheet } from "./module/items/spell-sheet.mjs";
 import {
   loadCharacterTHAC0,
   loadClassData,
@@ -69,6 +70,12 @@ Hooks.once("init", async function () {
     types: ["creature"],
     makeDefault: true,
     label: "BECMI Creature Sheet"
+  });
+
+  Items.registerSheet("becmi-foundry", BECMISpellItemSheet, {
+    types: ["spell"],
+    makeDefault: true,
+    label: "BECMI Spell Item Sheet"
   });
 
   const classTables = await loadClassData();

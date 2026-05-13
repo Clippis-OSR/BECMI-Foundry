@@ -261,6 +261,13 @@ export class BECMICharacterSheet extends ActorSheet {
       return super._onDrop(event);
     }
 
+    const droppedInSpellsTab = event.target instanceof Element
+      && event.target.closest(".tab[data-tab=\"spells\"]");
+
+    if (!droppedInSpellsTab) {
+      return super._onDrop(event);
+    }
+
     await this._addKnownSpellFromItem(droppedItem);
     return true;
   }
@@ -292,7 +299,7 @@ export class BECMICharacterSheet extends ActorSheet {
       id: item?.id ?? null,
       name: item?.name ?? "",
       level,
-      type: item?.system?.type ?? item?.system?.tradition ?? null,
+      type: item?.system?.tradition ?? null,
       source: item?.pack || item?.compendium ? "compendium" : "item",
       itemUuid: item?.uuid ?? null,
       prepared: false,
