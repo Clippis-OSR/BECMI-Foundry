@@ -28,3 +28,40 @@
 .becmi.sheet.actor table {
   width: 100%;
 }
+
+.becmi.sheet.actor .inventory-section {
+  border: 1px solid #bbb;
+  padding: 6px;
+  margin: 8px 0;
+}
+
+.becmi.sheet.actor .inventory-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.becmi.sheet.actor .inventory-drop-zone {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.becmi.sheet.actor .inventory-item-row td {
+  vertical-align: middle;
+}
+
+.becmi.sheet.actor .inventory-create-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 4px 0 8px;
+}
+
+.becmi.sheet.actor .over-capacity {
+  border-color: #a94442;
+  background: rgba(169, 68, 66, 0.08);
+}
+
+.becmi.sheet.actor .encumbrance-summary {
+  margin: 4px 0 8px;
+}
