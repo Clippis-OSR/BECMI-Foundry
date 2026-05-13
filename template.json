@@ -53,11 +53,26 @@
         "wounds": 0
       },
       "saves": {
-        "death": 12,
-        "wands": 13,
-        "paralysis": 14,
-        "breath": 15,
-        "spells": 16
+        "deathRayPoison": {
+          "value": 13,
+          "label": "Death Ray / Poison"
+        },
+        "magicWands": {
+          "value": 14,
+          "label": "Magic Wands"
+        },
+        "paralysisTurnStone": {
+          "value": 13,
+          "label": "Paralysis / Turn to Stone"
+        },
+        "dragonBreath": {
+          "value": 16,
+          "label": "Dragon Breath"
+        },
+        "rodStaffSpell": {
+          "value": 15,
+          "label": "Rod / Staff / Spell"
+        }
       },
       "languages": "",
       "specialAbilities": "",
@@ -197,11 +212,11 @@
       "derived": {
         "thac0": null,
         "saves": {
-          "death": null,
-          "wands": null,
-          "paralysis": null,
-          "breath": null,
-          "spells": null
+          "deathRayPoison": null,
+          "magicWands": null,
+          "paralysisTurnStone": null,
+          "dragonBreath": null,
+          "rodStaffSpell": null
         },
         "hasSpellcasting": false,
         "spellSlots": null,
@@ -243,11 +258,11 @@
       "derived": {
         "thac0": null,
         "saves": {
-          "death": null,
-          "wands": null,
-          "paralysis": null,
-          "breath": null,
-          "spells": null
+          "deathRayPoison": null,
+          "magicWands": null,
+          "paralysisTurnStone": null,
+          "dragonBreath": null,
+          "rodStaffSpell": null
         },
         "hitDice": null,
         "savesAs": null

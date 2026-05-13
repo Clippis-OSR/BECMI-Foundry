@@ -29,19 +29,23 @@ function toNumericValue(value) {
 function toSaveObject(source) {
   if (!source || typeof source !== "object") return null;
 
-  const { death, wands, paralysis, breath, spells } = source;
+  const deathRayPoison = source.deathRayPoison ?? source.death;
+  const magicWands = source.magicWands ?? source.wands;
+  const paralysisTurnStone = source.paralysisTurnStone ?? source.paralysis;
+  const dragonBreath = source.dragonBreath ?? source.breath;
+  const rodStaffSpell = source.rodStaffSpell ?? source.spells;
 
   if (
-    death === undefined ||
-    wands === undefined ||
-    paralysis === undefined ||
-    breath === undefined ||
-    spells === undefined
+    deathRayPoison === undefined ||
+    magicWands === undefined ||
+    paralysisTurnStone === undefined ||
+    dragonBreath === undefined ||
+    rodStaffSpell === undefined
   ) {
     return null;
   }
 
-  return { death, wands, paralysis, breath, spells };
+  return { deathRayPoison, magicWands, paralysisTurnStone, dragonBreath, rodStaffSpell };
 }
 
 export function getCharacterSaves(classId, level) {
