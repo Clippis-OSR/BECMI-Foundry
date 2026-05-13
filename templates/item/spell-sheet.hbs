@@ -1,0 +1,57 @@
+<form class="becmi-spell-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <h1><input type="text" name="name" value="{{item.name}}" placeholder="Spell Name" /></h1>
+  </header>
+
+  <section class="sheet-body">
+    <div class="form-group">
+      <label>Level</label>
+      <input type="number" name="system.level" value="{{system.level}}" min="1" step="1" />
+    </div>
+
+    <div class="form-group">
+      <label>Tradition</label>
+      <select name="system.tradition">
+        {{#each traditionOptions as |tradition|}}
+          <option value="{{tradition}}" {{#if (eq ../system.tradition tradition)}}selected{{/if}}>{{tradition}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="form-group"><label>Range</label><input type="text" name="system.range" value="{{system.range}}" /></div>
+    <div class="form-group"><label>Duration</label><input type="text" name="system.duration" value="{{system.duration}}" /></div>
+    <div class="form-group"><label>Area</label><input type="text" name="system.area" value="{{system.area}}" /></div>
+
+    <div class="form-group"><label>Targeting Type</label><input type="text" name="system.targeting.type" value="{{system.targeting.type}}" /></div>
+    <div class="form-group"><label>Targeting Count</label><input type="number" name="system.targeting.count" value="{{system.targeting.count}}" /></div>
+
+    <div class="form-group">
+      <label>Save Required</label>
+      <input type="checkbox" name="system.save.required" {{checked system.save.required}} />
+    </div>
+
+    <div class="form-group">
+      <label>Save Type</label>
+      <select name="system.save.type">
+        <option value="" {{#unless system.save.type}}selected{{/unless}}></option>
+        {{#each saveTypeOptions as |saveType|}}
+          <option value="{{saveType}}" {{#if (eq ../system.save.type saveType)}}selected{{/if}}>{{saveType}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="form-group"><label>Save Effect</label><input type="text" name="system.save.effect" value="{{system.save.effect}}" /></div>
+    <div class="form-group"><label>Scaling Mode</label><input type="text" name="system.scaling.mode" value="{{system.scaling.mode}}" /></div>
+    <div class="form-group"><label>Scaling By</label><input type="text" name="system.scaling.by" value="{{system.scaling.by}}" /></div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea name="system.description" rows="6">{{system.description}}</textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Effects (JSON Array)</label>
+      <textarea name="system.effectsJson" rows="10">{{systemEffectsJson}}</textarea>
+    </div>
+  </section>
+</form>

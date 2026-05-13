@@ -249,5 +249,40 @@
         "savesAs": null
       }
     }
+  },
+  "Item": {
+    "types": [
+      "weapon",
+      "armor",
+      "spell",
+      "equipment",
+      "treasure"
+    ],
+    "weapon": {},
+    "armor": {},
+    "equipment": {},
+    "treasure": {},
+    "spell": {
+      "level": 1,
+      "tradition": "arcane",
+      "range": "",
+      "duration": "",
+      "area": "",
+      "targeting": {
+        "type": "",
+        "count": null
+      },
+      "save": {
+        "required": false,
+        "type": null,
+        "effect": ""
+      },
+      "scaling": {
+        "mode": "none",
+        "by": null
+      },
+      "effects": [],
+      "description": ""
+    }
   }
 }
