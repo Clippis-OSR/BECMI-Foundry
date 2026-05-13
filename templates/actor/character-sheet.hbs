@@ -435,6 +435,9 @@
       <th>Wt</th>
       <th>Total Wt</th>
       <th>Value</th>
+      <th>Container</th>
+      <th>Flags</th>
+      <th>Notes</th>
       <th>Controls</th>
     </tr>
   </thead>
@@ -442,12 +445,37 @@
     {{#if group.items.length}}
       {{#each group.items as |item|}}
       <tr>
-        <td>{{item.name}}</td>
+        <td>
+          <input type="text" value="{{item.name}}" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="name" />
+        </td>
         <td>{{item.type}}</td>
-        <td>{{item.quantity}}</td>
-        <td>{{item.weight}}</td>
+        <td>
+          <input type="number" value="{{item.quantity}}" min="0" step="1" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.quantity" />
+        </td>
+        <td>
+          <input type="number" value="{{item.weight}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.weight" />
+        </td>
         <td>{{item.totalWeight}}</td>
-        <td>{{item.value}}</td>
+        <td>
+          <input type="number" value="{{item.value}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.value" />
+          {{#if (eq item.type "treasure")}}
+            <div><small>Est: <input type="number" value="{{item.estimatedValue}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.estimatedValue" /></small></div>
+          {{/if}}
+          {{#if (eq item.type "currency")}}
+            <div><small>Denom: {{item.denomination}}</small></div>
+          {{/if}}
+        </td>
+        <td>
+          <input type="text" value="{{item.containerId}}" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.containerId" />
+        </td>
+        <td>
+          <label><input type="checkbox" {{checked item.equipped}} data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.equipped" />Eq</label>
+          <label><input type="checkbox" {{checked item.worn}} data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.worn" />Worn</label>
+          <label><input type="checkbox" {{checked item.identified}} data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.identified" />Id</label>
+        </td>
+        <td>
+          <input type="text" value="{{item.notes}}" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.notes" />
+        </td>
         <td>
           <button type="button" data-action="item-edit" data-item-id="{{item.id}}">Edit</button>
           <button type="button" data-action="item-delete" data-item-id="{{item.id}}">Delete</button>
@@ -462,7 +490,7 @@
       {{/each}}
     {{else}}
       <tr>
-        <td colspan="7"><em>No items.</em></td>
+        <td colspan="10"><em>No items.</em></td>
       </tr>
     {{/if}}
   </tbody>
