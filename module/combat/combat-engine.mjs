@@ -21,6 +21,35 @@ import {
 import { SAVE_TYPES, getSaveTarget, resolveSave, rollSave, renderSaveCard } from "./saves.mjs";
 import { resolveMorale, rollMorale, renderMoraleCard, shouldCheckMorale } from "./morale.mjs";
 
+export async function rollMoraleForSelectedCreatures({ reason = "Manual morale check", postToChat = true } = {}) {
+  const selectedTokens = Array.from(canvas?.tokens?.controlled ?? []);
+  const selectedCreatureTokens = selectedTokens.filter((token) => token?.actor?.type === "creature");
+  const ignoredCount = selectedTokens.length - selectedCreatureTokens.length;
+
+  if (selectedCreatureTokens.length === 0) {
+    ui.notifications.warn("Select one or more creature tokens to roll morale.");
+    return [];
+  }
+
+  if (ignoredCount > 0) {
+    ui.notifications.warn("Morale only applies to creatures. Ignored non-creature tokens.");
+  }
+
+  console.log("BECMI | Rolling morale for selected creatures", selectedCreatureTokens);
+
+  const results = [];
+  for (const token of selectedCreatureTokens) {
+    const moraleResult = await rollMorale({
+      actor: token.actor,
+      reason,
+      postToChat
+    });
+    results.push({ token, moraleResult });
+  }
+
+  return results;
+}
+
 /**
  * Execute attack flow: resolve attack, then optionally roll damage on hit.
  *
@@ -102,6 +131,7 @@ export function createCombatEngine() {
     rollIndividualInitiative,
     getOrCreateCombatWithSelectedTokens,
     rollMorale,
+    rollMoraleForSelectedCreatures,
     renderMoraleCard,
     renderAttackCard,
     getActorTHAC0,
@@ -129,6 +159,7 @@ export {
   rollIndividualInitiative,
   getOrCreateCombatWithSelectedTokens,
   rollMorale,
+  rollMoraleForSelectedCreatures,
   renderMoraleCard,
   getActorTHAC0,
   getTargetAC,
