@@ -312,6 +312,20 @@ export class BECMICharacterSheet extends ActorSheet {
     return targets;
   }
 
+  _buildItemMoveTargets(item, groups) {
+    const itemId = item?.id ?? "";
+    const targets = [{ value: "", label: "Root / Other Carried Items" }];
+
+    for (const group of groups) {
+      if (!group?.containerId) continue;
+      if (item?.type === "container" && group.containerId === itemId) continue;
+      if (item?.type === "container" && this._wouldCreateCircularContainment(itemId, group.containerId)) continue;
+      targets.push({ value: group.containerId, label: group.label });
+    }
+
+    return targets;
+  }
+
   _canMoveItemToContainer(item, targetContainerId) {
     const itemId = item?.id ?? "";
     const targetId = normalizeContainerId(targetContainerId);
@@ -598,7 +612,7 @@ export class BECMICharacterSheet extends ActorSheet {
     });
 
     const groupDefinitions = [
-      { key: "equipped", label: "Equipped / Worn", items: equippedOrWorn, containerId: "" },
+      { key: "equipped", label: "Worn Items", items: equippedOrWorn, containerId: "" },
       { key: "belt", label: "Belt Pouch", items: beltPouchId ? getItemsInContainer(this.actor, beltPouchId) : [], containerId: beltPouchId },
       { key: "backpack", label: "Backpack", items: backpackId ? getItemsInContainer(this.actor, backpackId) : [], containerId: backpackId },
       { key: "sack1", label: "Sack #1", items: sackIds[0] ? getItemsInContainer(this.actor, sackIds[0]) : [], containerId: sackIds[0] ?? "" },
@@ -606,7 +620,7 @@ export class BECMICharacterSheet extends ActorSheet {
       { key: "other", label: "Other Carried Items", items: otherCarried, containerId: "" }
     ];
 
-    return groupDefinitions.map((group) => ({
+    const groups = groupDefinitions.map((group) => ({
       ...group,
       hasContainer: Boolean(group.containerId),
       items: (group.items ?? []).map((item) => {
@@ -643,6 +657,34 @@ export class BECMICharacterSheet extends ActorSheet {
           canMoveToGroup: group.key !== "equipped"
         };
       })
+    }));
+
+    return groups.map((group) => {
+      const containedWeight = (group.items ?? []).reduce((sum, item) => sum + (Number(item.totalWeight) || 0), 0);
+      const capacityRaw = group.containerId ? this.actor.items.get(group.containerId)?.system?.capacity : null;
+      const capacity = Number.isFinite(Number(capacityRaw)) ? Number(capacityRaw) : 0;
+      const hasCapacity = capacity > 0;
+      const remainingCapacity = hasCapacity ? capacity - containedWeight : null;
+      const sectionSummary = hasCapacity
+        ? `${group.label} — ${(group.items ?? []).length} items — ${containedWeight} / ${capacity} cn`
+        : `${group.label} — ${(group.items ?? []).length} items — ${containedWeight} cn`;
+
+      return {
+        ...group,
+        itemCount: (group.items ?? []).length,
+        containedWeight,
+        capacity,
+        hasCapacity,
+        remainingCapacity,
+        isOverCapacity: hasCapacity && remainingCapacity < 0,
+        sectionSummary
+      };
+    }).map((group) => ({
+      ...group,
+      items: (group.items ?? []).map((item) => ({
+        ...item,
+        moveTargets: this._buildItemMoveTargets(item, groups)
+      }))
     }));
   }
 
