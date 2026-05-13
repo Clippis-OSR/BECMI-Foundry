@@ -65,6 +65,13 @@ export class BECMICharacterSheet extends ActorSheet {
     context.system = context.system ?? this.actor?.system ?? {};
     context.actor = context.actor ?? this.actor ?? null;
     const system = context.system ?? {};
+    const currencyStorage = system.currencyStorage && typeof system.currencyStorage === "object" && !Array.isArray(system.currencyStorage)
+      ? system.currencyStorage
+      : {};
+    context.system.currencyStorage = {
+      note: typeof currencyStorage.note === "string" ? currencyStorage.note : "",
+      gpValue: Number(currencyStorage.gpValue ?? 0) || 0
+    };
     const attacks = Array.isArray(system.attacks) ? system.attacks : [];
     context.attacks = attacks;
 
@@ -308,7 +315,7 @@ export class BECMICharacterSheet extends ActorSheet {
     try {
       const getCurrencyItems = currencyHelpers?.getCurrencyItems;
       if (typeof getCurrencyItems !== "function") {
-        return { rows, totalValueGp: 0, totalWeightCn: 0 };
+        return { rows, totalValueGp: 0, totalWeightCn: 0, storedValueGp: 0, combinedValueGp: 0 };
       }
 
       const byDenomination = new Map();
@@ -336,10 +343,17 @@ export class BECMICharacterSheet extends ActorSheet {
         ? Number(getCurrencyWeight(this.actor)) || 0
         : rows.reduce((sum, row) => sum + row.weightCn, 0);
 
-      return { rows, totalValueGp, totalWeightCn };
+      const storedValueGp = Math.max(0, Number(this.actor?.system?.currencyStorage?.gpValue ?? 0) || 0);
+      return {
+        rows,
+        totalValueGp,
+        totalWeightCn,
+        storedValueGp,
+        combinedValueGp: totalValueGp + storedValueGp
+      };
     } catch (error) {
       console.warn("BECMI currency summary failed", error);
-      return { rows, totalValueGp: 0, totalWeightCn: 0 };
+      return { rows, totalValueGp: 0, totalWeightCn: 0, storedValueGp: 0, combinedValueGp: 0 };
     }
   }
 

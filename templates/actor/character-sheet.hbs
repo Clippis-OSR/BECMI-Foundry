@@ -353,8 +353,20 @@
     {{/each}}
   </tbody>
 </table>
-<div><strong>Total currency value:</strong> {{currencySummary.totalValueGp}} gp</div>
-<div><strong>Total currency weight:</strong> {{currencySummary.totalWeightCn}} cn</div>
+<div><strong>Total carried currency value:</strong> {{currencySummary.totalValueGp}} gp</div>
+<div><strong>Total carried currency weight:</strong> {{currencySummary.totalWeightCn}} cn</div>
+
+<h3>Stored Currency</h3>
+<div>
+  <label for="currency-storage-note"><strong>Stored currency notes</strong></label><br />
+  <textarea id="currency-storage-note" name="system.currencyStorage.note" rows="2">{{system.currencyStorage.note}}</textarea>
+</div>
+<div>
+  <label for="currency-storage-gp"><strong>Stored value (gp)</strong></label>
+  <input id="currency-storage-gp" type="number" name="system.currencyStorage.gpValue" min="0" step="0.01" value="{{system.currencyStorage.gpValue}}" />
+</div>
+<div><strong>Stored currency value:</strong> {{currencySummary.storedValueGp}} gp</div>
+<div><strong>Combined currency value:</strong> {{currencySummary.combinedValueGp}} gp</div>
 
 <hr>
 
