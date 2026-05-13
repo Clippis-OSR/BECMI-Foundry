@@ -273,6 +273,18 @@ async function runTrackerInitiativeRoll(mode) {
   }
 }
 
+async function runTrackerMoraleRoll() {
+  try {
+    await game.becmi?.combat?.rollMoraleForSelectedCreatures?.({
+      reason: "Manual morale check",
+      postToChat: true
+    });
+  } catch (error) {
+    console.error("BECMI Foundry | Failed to roll morale from Combat Tracker.", { error });
+    ui.notifications.error("BECMI morale roll failed. Check console for details.");
+  }
+}
+
 Hooks.on("renderCombatTracker", (app, html) => {
   console.log("BECMI | Combat Tracker render hook fired", app, html);
   if (!game.user?.isGM) return;
@@ -307,6 +319,10 @@ Hooks.on("renderCombatTracker", (app, html) => {
       <i class="fas fa-dice-d20" aria-hidden="true"></i>
       <span>Individual Init</span>
     </button>
+    <button type="button" class="becmi-init-button becmi-roll-morale" data-action="becmi-roll-morale" title="Roll BECMI morale for selected creatures">
+      <i class="fas fa-dragon" aria-hidden="true"></i>
+      <span>Morale</span>
+    </button>
   `;
 
   controls.addEventListener("click", async (event) => {
@@ -323,6 +339,11 @@ Hooks.on("renderCombatTracker", (app, html) => {
 
     if (button.dataset.action === "becmi-individual-initiative") {
       await runTrackerInitiativeRoll("individual");
+      return;
+    }
+
+    if (button.dataset.action === "becmi-roll-morale") {
+      await runTrackerMoraleRoll();
     }
   });
 
