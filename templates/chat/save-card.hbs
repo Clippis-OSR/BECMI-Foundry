@@ -1,0 +1,13 @@
+<div class="becmi-chat-card becmi-save-card">
+  <header class="becmi-chat-card__header">
+    <h3>{{label}}</h3>
+    <p>{{actorName}}</p>
+  </header>
+
+  <section class="becmi-chat-card__body">
+    <p><strong>Type:</strong> {{saveType}}</p>
+    <p><strong>Roll:</strong> {{d20}} {{#if (gte modifier 0)}}+{{/if}}{{modifier}} = {{total}}</p>
+    <p><strong>Target:</strong> {{target}}</p>
+    <p><strong>Result:</strong> {{#if success}}Success{{else}}Failure{{/if}}</p>
+  </section>
+</div>
