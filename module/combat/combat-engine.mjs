@@ -159,7 +159,6 @@ export {
   rollIndividualInitiative,
   getOrCreateCombatWithSelectedTokens,
   rollMorale,
-  rollMoraleForSelectedCreatures,
   renderMoraleCard,
   getActorTHAC0,
   getTargetAC,
