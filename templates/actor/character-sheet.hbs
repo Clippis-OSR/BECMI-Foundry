@@ -402,42 +402,12 @@
 <hr>
 
 <h2>Inventory</h2>
-<button type="button" data-action="create-default-containers">Create Default Containers</button>
-<div class="inventory-create-buttons">
-  <button type="button" data-action="create-inventory-item" data-item-type="equipment" data-container-id="">+ Equipment</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="weapon" data-container-id="">+ Weapon</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="armor" data-container-id="">+ Armor</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="container" data-container-id="">+ Container</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="consumable" data-container-id="">+ Consumable</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="treasure" data-container-id="">+ Treasure</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="currency" data-container-id="">+ Currency</button>
-</div>
 
 {{#each inventoryGroups as |group|}}
-<section class="inventory-group inventory-section inventory-drop-zone {{#if group.isOverCapacity}}over-capacity{{/if}}" data-container-id="{{group.containerId}}">
+<section class="inventory-group inventory-section inventory-drop-zone" data-location="{{group.sectionLocation}}">
 <div class="inventory-section-header">
   <h3>{{group.sectionSummary}}</h3>
-  {{#if group.hasCapacity}}<small>Remaining: {{group.remainingCapacity}} cn</small>{{/if}}
 </div>
-{{#if group.hasContainer}}
-<div class="inventory-create-buttons">
-  <button type="button" data-action="create-inventory-item" data-item-type="equipment" data-container-id="{{group.containerId}}">+ Equipment</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="weapon" data-container-id="{{group.containerId}}">+ Weapon</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="armor" data-container-id="{{group.containerId}}">+ Armor</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="consumable" data-container-id="{{group.containerId}}">+ Consumable</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="treasure" data-container-id="{{group.containerId}}">+ Treasure</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="currency" data-container-id="{{group.containerId}}">+ Currency</button>
-</div>
-{{else}}
-<div class="inventory-create-buttons">
-  <button type="button" data-action="create-inventory-item" data-item-type="equipment" data-container-id="">+ Equipment</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="weapon" data-container-id="">+ Weapon</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="armor" data-container-id="">+ Armor</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="consumable" data-container-id="">+ Consumable</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="treasure" data-container-id="">+ Treasure</button>
-  <button type="button" data-action="create-inventory-item" data-item-type="currency" data-container-id="">+ Currency</button>
-</div>
-{{/if}}
 <table>
   <thead>
     <tr>
@@ -447,9 +417,7 @@
       <th>Wt</th>
       <th>Total Wt</th>
       <th>Value</th>
-      <th>Move Target</th>
-      <th>Equipped</th>
-      <th>Worn</th>
+      <th>Location</th>
       <th>Controls</th>
     </tr>
   </thead>
@@ -478,16 +446,13 @@
           {{/if}}
         </td>
         <td>
-          <select data-field="move-target-container">
-            {{#each item.moveTargets as |target|}}
-              <option value="{{target.value}}" {{#if (eq target.value ../containerId)}}selected{{/if}}>{{target.label}}</option>
-            {{/each}}
+          <select data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.location">
+            <option value="equipped" {{#if (eq item.location "equipped")}}selected{{/if}}>Equipped</option>
+            <option value="worn" {{#if (eq item.location "worn")}}selected{{/if}}>Worn</option>
+            <option value="storage" {{#if (eq item.location "storage")}}selected{{/if}}>Storage</option>
           </select>
         </td>
-        <td><input type="checkbox" {{checked item.equipped}} data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.equipped" /></td>
-        <td><input type="checkbox" {{checked item.worn}} data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.worn" /></td>
         <td>
-          <button type="button" data-action="move-item" data-item-id="{{item.id}}">Move</button>
           <button type="button" data-action="item-edit" data-item-id="{{item.id}}">Edit</button>
           <button type="button" data-action="item-delete" data-item-id="{{item.id}}">Delete</button>
         </td>
@@ -495,7 +460,7 @@
       {{/each}}
     {{else}}
       <tr>
-        <td colspan="9"><em>{{#if group.hasContainer}}No items in {{group.label}}.{{else}}No loose carried items.{{/if}}</em></td>
+        <td colspan="8"><em>No items in {{group.label}}.</em></td>
       </tr>
     {{/if}}
   </tbody>

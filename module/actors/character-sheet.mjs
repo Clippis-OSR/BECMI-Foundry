@@ -7,12 +7,10 @@ import {
 } from "../rolls/becmi-rolls.mjs";
 import {
   getActorItems,
-  getItemsInContainer,
   getItemTotalWeight,
-  moveItemToContainer,
-  normalizeContainerId
+  normalizeContainerId,
+  normalizeItemLocation
 } from "../items/inventory-manager.mjs";
-import { ensureDefaultContainers } from "../items/default-containers.mjs";
 import { calculateTotalEncumbrance } from "../items/encumbrance.mjs";
 import * as currencyHelpers from "../items/currency.mjs";
 import * as treasureHelpers from "../items/treasure.mjs";
@@ -111,7 +109,6 @@ export class BECMICharacterSheet extends ActorSheet {
     context.currencySummary = this._buildCurrencySummary();
     context.treasureSummary = this._buildTreasureSummary();
     context.encumbranceSummary = this._buildEncumbranceSummary();
-    context.inventoryMoveTargets = this._buildInventoryMoveTargets();
 
     return context;
   }
@@ -266,100 +263,11 @@ export class BECMICharacterSheet extends ActorSheet {
       await this.actor.deleteEmbeddedDocuments("Item", [itemId]);
     });
 
-    html.find('[data-action="create-default-containers"]').on("click", async (event) => {
-      event.preventDefault();
-      const result = await ensureDefaultContainers(this.actor);
-      if (result.skipped) return;
-      const count = Array.isArray(result.created) ? result.created.length : 0;
-      if (count > 0) {
-        ui.notifications?.info(`Created ${count} default container${count === 1 ? "" : "s"}.`);
-      } else {
-        ui.notifications?.info("Default containers already exist.");
-      }
-      this.render(false);
-    });
-
-    html.find('[data-action="move-item"]').on("click", async (event) => {
-      event.preventDefault();
-      const itemId = event.currentTarget.dataset.itemId;
-      const row = event.currentTarget.closest("tr");
-      const select = row?.querySelector('[data-field="move-target-container"]');
-      const targetContainerId = select?.value ?? "";
-      const item = this.actor.items.get(itemId);
-      if (!item) return;
-      if (!this._canMoveItemToContainer(item, targetContainerId)) return;
-      await moveItemToContainer(item, targetContainerId);
-      this.render(false);
-    });
-
     html.find('[data-action="change-currency-quantity"]').on("change", this._onCurrencyQuantityChange.bind(this));
     html.find('[data-action="update-inventory-item"]').on("change", this._onUpdateInventoryItem.bind(this));
     html.find('[data-action="update-inventory-item"]').on("click", (event) => event.stopPropagation());
-    html.find('[data-action="create-inventory-item"]').on("click", this._onCreateInventoryItem.bind(this));
   }
 
-
-
-  _buildInventoryMoveTargets() {
-    const groups = this._buildInventoryGroups();
-    const targets = [{ value: "", label: "None / Carried" }];
-
-    for (const group of groups) {
-      if (!group?.containerId) continue;
-      targets.push({ value: group.containerId, label: group.label });
-    }
-
-    return targets;
-  }
-
-  _buildItemMoveTargets(item, groups) {
-    const itemId = item?.id ?? "";
-    const targets = [{ value: "", label: "Root / Other Carried Items" }];
-
-    for (const group of groups) {
-      if (!group?.containerId) continue;
-      if (item?.type === "container" && group.containerId === itemId) continue;
-      if (item?.type === "container" && this._wouldCreateCircularContainment(itemId, group.containerId)) continue;
-      targets.push({ value: group.containerId, label: group.label });
-    }
-
-    return targets;
-  }
-
-  _canMoveItemToContainer(item, targetContainerId) {
-    const itemId = item?.id ?? "";
-    const targetId = normalizeContainerId(targetContainerId);
-
-    if (!targetId) return true;
-    if (!itemId) return false;
-    if (itemId === targetId) return false;
-
-    // Prevent obvious circular containment when moving containers.
-    if (item?.type === "container" && this._wouldCreateCircularContainment(itemId, targetId)) {
-      return false;
-    }
-
-    return true;
-  }
-
-  _wouldCreateCircularContainment(itemId, targetContainerId) {
-    if (!itemId || !targetContainerId) return false;
-    let cursor = this.actor.items.get(targetContainerId);
-    const visited = new Set();
-
-    while (cursor && !visited.has(cursor.id)) {
-      if (cursor.id === itemId) {
-        console.warn("Ignoring circular containment move attempt", { itemId, targetContainerId });
-        return true;
-      }
-      visited.add(cursor.id);
-      const parentId = normalizeContainerId(cursor?.system?.containerId);
-      if (!parentId) break;
-      cursor = this.actor.items.get(parentId);
-    }
-
-    return false;
-  }
 
   _buildEncumbranceSummary() {
     try {
@@ -485,64 +393,6 @@ export class BECMICharacterSheet extends ActorSheet {
     this.render(false);
   }
 
-  async _onCreateInventoryItem(event) {
-    event.preventDefault();
-    const button = event.currentTarget;
-    const itemType = String(button?.dataset?.itemType ?? "").trim();
-    const containerId = String(button?.dataset?.containerId ?? "").trim();
-    const normalizedContainerId = normalizeContainerId(containerId);
-    if (!itemType) return;
-
-    const sharedDefaults = {
-      description: "",
-      quantity: 1,
-      weight: 0,
-      value: 0,
-      identified: false,
-      containerId: "",
-      equipped: false,
-      worn: false,
-      tags: []
-    };
-
-    const defaults = {
-      equipment: { name: "New Equipment", type: "equipment", system: { ...sharedDefaults } },
-      weapon: { name: "New Weapon", type: "weapon", system: { ...sharedDefaults } },
-      armor: { name: "New Armor", type: "armor", system: { ...sharedDefaults } },
-      container: { name: "New Container", type: "container", system: { ...sharedDefaults, capacity: 0 } },
-      consumable: { name: "New Consumable", type: "consumable", system: { ...sharedDefaults, uses: 1, maxUses: 1 } },
-      treasure: {
-        name: "New Treasure",
-        type: "treasure",
-        system: {
-          ...sharedDefaults,
-          identified: true,
-          treasureType: "gem",
-          weight: treasureHelpers.getDefaultTreasureWeight("gem")
-        }
-      },
-      currency: { name: "New Currency", type: "currency", system: { ...sharedDefaults, quantity: 0, denomination: "gp", weightPerUnit: 1, weight: 0 } }
-    };
-
-    const baseData = defaults[itemType];
-    if (!baseData || !this.actor?.createEmbeddedDocuments) return;
-
-    const createData = foundry.utils.deepClone(baseData);
-    createData.system = {
-      ...(createData.system ?? {}),
-      containerId: normalizedContainerId
-    };
-
-    const created = await this.actor.createEmbeddedDocuments("Item", [createData]);
-    const createdItem = Array.isArray(created) ? created[0] : null;
-    debugInventory("create item", {
-      itemId: createdItem?.id ?? null,
-      itemType,
-      system: foundry.utils.deepClone(createdItem?.system ?? createData.system ?? {})
-    });
-    this.render(false);
-  }
-
   async _onUpdateInventoryItem(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -569,7 +419,18 @@ export class BECMICharacterSheet extends ActorSheet {
 
     if (field === "system.containerId") {
       value = normalizeContainerId(value);
-      if (!this._canMoveItemToContainer(item, value)) return;
+    }
+
+    if (field === "system.location") {
+      value = normalizeItemLocation(value);
+      const syncMap = {
+        equipped: { "system.equipped": true, "system.worn": false },
+        worn: { "system.equipped": false, "system.worn": true },
+        storage: { "system.equipped": false, "system.worn": false }
+      };
+      await item.update({ [field]: value, ...(syncMap[value] ?? {}) });
+      this.render(false);
+      return;
     }
 
     await item.update({ [field]: value });
@@ -582,48 +443,18 @@ export class BECMICharacterSheet extends ActorSheet {
   }
 
   _buildInventoryGroups() {
+    // Placeholder for future slot enforcement, e.g. rings: 2, amulet: 1, belt: 1, gloves: 1, boots/shoes: 1, helmet: 1.
     const items = getActorItems(this.actor);
-    const containers = items.filter((item) => item?.type === "container");
-    const rootItems = items.filter((item) => !normalizeContainerId(item?.system?.containerId));
-
-    const findContainerId = ({ containerType, names = [] }) => {
-      const byType = containers.find((container) => container?.system?.containerType === containerType);
-      if (byType?.id) return byType.id;
-
-      const normalizedNames = names.map((name) => String(name).toLowerCase());
-      const byName = containers.find((container) => normalizedNames.includes(String(container?.name ?? "").toLowerCase()));
-      return byName?.id ?? "";
-    };
-
-    const beltPouchId = findContainerId({ containerType: "belt-pouch", names: ["belt pouch"] });
-    const backpackId = findContainerId({ containerType: "backpack", names: ["backpack"] });
-    const sackIds = containers
-      .filter((container) => container?.system?.containerType === "sack" || String(container?.name ?? "").toLowerCase().includes("sack"))
-      .map((container) => container.id)
-      .slice(0, 2);
-
-    const equippedOrWorn = rootItems.filter((item) => Boolean(item?.system?.equipped) || Boolean(item?.system?.worn));
-
-    const assignedContainerIds = new Set([beltPouchId, backpackId, ...sackIds].filter(Boolean));
-    const otherCarried = rootItems.filter((item) => {
-      if (item?.type === "container") return false;
-      if (Boolean(item?.system?.equipped) || Boolean(item?.system?.worn)) return false;
-      return !assignedContainerIds.has(item.id);
-    });
-
     const groupDefinitions = [
-      { key: "equipped", label: "Worn Items", items: equippedOrWorn, containerId: "" },
-      { key: "belt", label: "Belt Pouch", items: beltPouchId ? getItemsInContainer(this.actor, beltPouchId) : [], containerId: beltPouchId },
-      { key: "backpack", label: "Backpack", items: backpackId ? getItemsInContainer(this.actor, backpackId) : [], containerId: backpackId },
-      { key: "sack1", label: "Sack #1", items: sackIds[0] ? getItemsInContainer(this.actor, sackIds[0]) : [], containerId: sackIds[0] ?? "" },
-      { key: "sack2", label: "Sack #2", items: sackIds[1] ? getItemsInContainer(this.actor, sackIds[1]) : [], containerId: sackIds[1] ?? "" },
-      { key: "other", label: "Other Carried Items", items: otherCarried, containerId: "" }
+      { key: "equipped", label: "Equipped" },
+      { key: "worn", label: "Worn" },
+      { key: "storage", label: "Storage" }
     ];
 
     const groups = groupDefinitions.map((group) => ({
       ...group,
-      hasContainer: Boolean(group.containerId),
-      items: (group.items ?? []).map((item) => {
+      sectionLocation: group.key,
+      items: items.filter((item) => normalizeItemLocation(item?.system?.location) === group.key).map((item) => {
         const quantityRaw = item?.system?.quantity;
         const weightRaw = item?.system?.weight;
         const valueRaw = item?.system?.value;
@@ -649,43 +480,25 @@ export class BECMICharacterSheet extends ActorSheet {
           estimatedValue: Number(item?.system?.estimatedValue ?? 0),
           denomination: String(item?.system?.denomination ?? ""),
           containerId: String(item?.system?.containerId ?? ""),
-          equipped: Boolean(item?.system?.equipped),
-          worn: Boolean(item?.system?.worn),
+          location: normalizeItemLocation(item?.system?.location),
           identified: Boolean(item?.system?.identified),
           notes: String(item?.system?.notes ?? ""),
-          type: item?.type ?? "",
-          canMoveToGroup: group.key !== "equipped"
+          type: item?.type ?? ""
         };
       })
     }));
 
     return groups.map((group) => {
       const containedWeight = (group.items ?? []).reduce((sum, item) => sum + (Number(item.totalWeight) || 0), 0);
-      const capacityRaw = group.containerId ? this.actor.items.get(group.containerId)?.system?.capacity : null;
-      const capacity = Number.isFinite(Number(capacityRaw)) ? Number(capacityRaw) : 0;
-      const hasCapacity = capacity > 0;
-      const remainingCapacity = hasCapacity ? capacity - containedWeight : null;
-      const sectionSummary = hasCapacity
-        ? `${group.label} — ${(group.items ?? []).length} items — ${containedWeight} / ${capacity} cn`
-        : `${group.label} — ${(group.items ?? []).length} items — ${containedWeight} cn`;
+      const sectionSummary = `${group.label} — ${(group.items ?? []).length} items — ${containedWeight} cn`;
 
       return {
         ...group,
         itemCount: (group.items ?? []).length,
         containedWeight,
-        capacity,
-        hasCapacity,
-        remainingCapacity,
-        isOverCapacity: hasCapacity && remainingCapacity < 0,
         sectionSummary
       };
-    }).map((group) => ({
-      ...group,
-      items: (group.items ?? []).map((item) => ({
-        ...item,
-        moveTargets: this._buildItemMoveTargets(item, groups)
-      }))
-    }));
+    });
   }
 
   async _onDrop(event) {
@@ -720,18 +533,16 @@ export class BECMICharacterSheet extends ActorSheet {
       return super._onDrop(event);
     }
 
-    const dropContainerId = this._getDropContainerId(event);
-    await importItemToActor(this.actor, sourceItem, { containerId: dropContainerId });
+    const dropLocation = this._getDropLocation(event);
+    await importItemToActor(this.actor, sourceItem, { location: dropLocation });
     this.render(false);
     return true;
   }
 
-  _getDropContainerId(event) {
-    if (!(event?.target instanceof Element)) return "";
-    const containerElement = event.target.closest("[data-container-id]");
-    const containerId = normalizeContainerId(containerElement?.dataset?.containerId ?? "");
-    if (!containerId) return "";
-    return this.actor.items.get(containerId) ? containerId : "";
+  _getDropLocation(event) {
+    if (!(event?.target instanceof Element)) return "worn";
+    const sectionElement = event.target.closest("[data-location]");
+    return normalizeItemLocation(sectionElement?.dataset?.location ?? "worn");
   }
 
 

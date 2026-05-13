@@ -1,10 +1,19 @@
-import { normalizeContainerId } from "./inventory-manager.mjs";
+import { normalizeContainerId, normalizeItemLocation } from "./inventory-manager.mjs";
 import { addCurrency, getCurrencyItems, normalizeCurrencyDenomination } from "./currency.mjs";
 
-function normalizeSystemForActorCopy(systemData = {}, containerId = "") {
+function normalizeSystemForActorCopy(systemData = {}, containerId = "", location = "worn") {
+  const normalizedLocation = normalizeItemLocation(location);
+  const syncMap = {
+    equipped: { equipped: true, worn: false },
+    worn: { equipped: false, worn: true },
+    storage: { equipped: false, worn: false }
+  };
+
   return {
     ...systemData,
-    containerId: normalizeContainerId(containerId)
+    containerId: normalizeContainerId(containerId),
+    location: normalizedLocation,
+    ...(syncMap[normalizedLocation] ?? {})
   };
 }
 
@@ -29,10 +38,11 @@ function isDescendantContainer(actor, childContainerId, ancestorContainerId) {
 
 export function cloneItemDataForActor(sourceItem, options = {}) {
   const containerId = normalizeContainerId(options.containerId ?? "");
+  const location = normalizeItemLocation(options.location ?? "worn");
   const createData = sourceItem?.toObject ? sourceItem.toObject() : foundry.utils.deepClone(sourceItem ?? {});
 
   delete createData._id;
-  createData.system = normalizeSystemForActorCopy(createData.system ?? {}, containerId);
+  createData.system = normalizeSystemForActorCopy(createData.system ?? {}, containerId, location);
 
   if (createData.type === "currency") {
     createData.system.weightPerUnit = 1;
@@ -73,7 +83,7 @@ export async function importItemToActor(actor, sourceItem, options = {}) {
     }
   }
 
-  const createData = cloneItemDataForActor(sourceItem, { containerId: safeContainerId });
+  const createData = cloneItemDataForActor(sourceItem, { containerId: safeContainerId, location: options.location ?? "worn" });
 
   if (sourceItem.type === "currency") {
     const merged = await mergeCurrencyItem(actor, createData);
