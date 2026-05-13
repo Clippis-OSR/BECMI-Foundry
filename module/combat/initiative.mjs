@@ -132,6 +132,48 @@ export async function chooseInitiativeMode(combat) {
   });
 }
 
+
+
+export function getCombatantSide(combatant) {
+  const actor = combatant?.actor;
+  const actorType = String(actor?.type ?? "").toLowerCase();
+  const creatureRole = String(actor?.system?.creatureRole ?? "").toLowerCase();
+
+  if (actorType === "character") return "party";
+  if (actorType === "creature" || creatureRole === "monster") return "monster";
+
+  const disposition = Number(combatant?.token?.disposition ?? combatant?.token?.document?.disposition ?? 0);
+  if (disposition === CONST.TOKEN_DISPOSITIONS.FRIENDLY) return "party";
+  if (disposition === CONST.TOKEN_DISPOSITIONS.HOSTILE) return "monster";
+
+  return "monster";
+}
+
+export async function applyGroupInitiativeToTracker({ combat, winner, partyTotal, monsterTotal } = {}) {
+  if (!combat) return;
+
+  // Group initiative in BECMI is rolled once per side. These tracker initiative values are
+  // artificial numbers used only to force side-based sort order in the Combat Tracker UI.
+  if (winner === "tie" || partyTotal === monsterTotal) return;
+
+  const combatants = Array.from(combat.combatants ?? []);
+  const partyCombatants = combatants.filter((combatant) => getCombatantSide(combatant) === "party");
+  const monsterCombatants = combatants.filter((combatant) => getCombatantSide(combatant) !== "party");
+
+  const winningSide = winner === "party" ? partyCombatants : monsterCombatants;
+  const losingSide = winner === "party" ? monsterCombatants : partyCombatants;
+
+  const updates = [];
+  for (const [index, combatant] of winningSide.entries()) {
+    updates.push(combat.setInitiative(combatant.id, 20 - (index * 0.01)));
+  }
+
+  for (const [index, combatant] of losingSide.entries()) {
+    updates.push(combat.setInitiative(combatant.id, 10 - (index * 0.01)));
+  }
+
+  await Promise.all(updates);
+}
 export async function rollGroupInitiative({ combat, partyModifier = 0, monsterModifier = 0, postToChat = true } = {}) {
   combat = await getOrCreateCombatWithSelectedTokens(combat);
   if (!combat) return null;
@@ -153,6 +195,8 @@ export async function rollGroupInitiative({ combat, partyModifier = 0, monsterMo
 
   const winnerLabel = winner === "party" ? "Party" : winner === "monster" ? "Monsters" : "Tie";
 
+  await applyGroupInitiativeToTracker({ combat, winner, partyTotal, monsterTotal });
+
   const result = {
     mode: INITIATIVE_MODE.GROUP,
     party: { roll: Number(partyRoll.total), modifier: partyMod, modifierLabel: `${partyMod >= 0 ? "+" : ""}${partyMod}`, total: partyTotal },
@@ -165,6 +209,10 @@ export async function rollGroupInitiative({ combat, partyModifier = 0, monsterMo
     const templatePath = "systems/becmi-foundry/templates/chat/initiative-group-card.hbs";
     const content = await renderTemplate(templatePath, result);
     await ChatMessage.create({ content });
+
+    if (winner === "tie") {
+      await ChatMessage.create({ content: "<p><strong>BECMI Initiative:</strong> Tie detected. Combat Tracker order is unchanged.</p>" });
+    }
   }
 
   return result;
