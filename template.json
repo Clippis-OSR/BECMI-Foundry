@@ -295,9 +295,16 @@
       "tags": [],
       "notes": "",
       "actions": [],
-      "damage": "",
+      "damage": "1d8",
+      "attackBonus": 0,
+      "damageBonus": 0,
       "damageType": "",
-      "range": "",
+      "weaponType": "melee",
+      "range": {
+        "short": null,
+        "medium": null,
+        "long": null
+      },
       "twoHanded": false,
       "ammoType": "",
       "weaponMastery": "",

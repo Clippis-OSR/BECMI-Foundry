@@ -4,6 +4,7 @@
 
 import {
   resolveAttack,
+  weaponItemToAttackData,
   getActorTHAC0,
   getTargetAC,
   calculateRequiredRoll,
@@ -121,6 +122,7 @@ export function createCombatEngine() {
   return {
     rollAttack,
     resolveAttack,
+    weaponItemToAttackData,
     rollDamage,
     rollSave,
     renderSaveCard,
@@ -149,6 +151,7 @@ export function createCombatEngine() {
 
 export {
   resolveAttack,
+  weaponItemToAttackData,
   rollDamage,
   rollSave,
   renderSaveCard,

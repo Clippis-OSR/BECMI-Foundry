@@ -414,6 +414,16 @@
           </select>
         </td>
         <td>
+          {{#if (eq item.type "weapon")}}
+          <button
+            type="button"
+            class="becmi-weapon-attack"
+            data-item-id="{{item.id}}"
+            {{#unless item.equipped}}disabled{{/unless}}
+          >
+            Attack
+          </button>
+          {{/if}}
           <button type="button" data-action="item-edit" data-item-id="{{item.id}}">Edit</button>
           <button type="button" data-action="item-delete" data-item-id="{{item.id}}">Delete</button>
         </td>

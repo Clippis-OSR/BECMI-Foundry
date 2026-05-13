@@ -13,6 +13,18 @@ const SHARED_SYSTEM_DEFAULTS = {
   notes: ""
 };
 
+const WEAPON_SYSTEM_DEFAULTS = {
+  damage: "1d8",
+  attackBonus: 0,
+  damageBonus: 0,
+  weaponType: "melee",
+  range: {
+    short: null,
+    medium: null,
+    long: null
+  }
+};
+
 export class BECMIItemSheet extends ItemSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -32,10 +44,12 @@ export class BECMIItemSheet extends ItemSheet {
     context.system = context.system ?? context.item?.system ?? this.item?.system ?? {};
     const system = context.system ?? {};
 
-    context.safeSystem = {
-      ...SHARED_SYSTEM_DEFAULTS,
-      ...system
-    };
+    const weaponDefaults = this.item.type === "weapon" ? WEAPON_SYSTEM_DEFAULTS : {};
+    context.safeSystem = foundry.utils.mergeObject(
+      foundry.utils.deepClone({ ...SHARED_SYSTEM_DEFAULTS, ...weaponDefaults }),
+      system,
+      { inplace: false }
+    );
 
     context.tagsString = Array.isArray(context.safeSystem.tags)
       ? context.safeSystem.tags.join(", ")

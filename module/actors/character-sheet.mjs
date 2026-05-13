@@ -5,6 +5,7 @@ import {
   rollSavingThrow,
   rollThiefSkill
 } from "../rolls/becmi-rolls.mjs";
+import { weaponItemToAttackData } from "../combat/attack.mjs";
 import {
   getActorItems,
   getItemLocation,
@@ -145,6 +146,31 @@ export class BECMICharacterSheet extends ActorSheet {
       if (!attack) return;
 
       await rollCharacterAttack(this.actor, attack);
+    });
+
+    html.find(".becmi-weapon-attack").on("click", async (event) => {
+      event.preventDefault();
+
+      const itemId = event.currentTarget?.dataset?.itemId;
+      if (!itemId) return;
+
+      const item = this.actor.items.get(itemId);
+      if (!item || item.type !== "weapon") return;
+
+      const targetToken = game.user?.targets?.first?.();
+      const targetActor = targetToken?.actor;
+      if (!targetActor) {
+        ui.notifications?.warn("Target a token before making a weapon attack.");
+        return;
+      }
+
+      await game.becmi.combat.rollAttack({
+        attacker: this.actor,
+        target: targetActor,
+        attackData: weaponItemToAttackData(item),
+        rollDamageOnHit: true,
+        postToChat: true
+      });
     });
 
     html.find('[data-action="add-character-attack"]').on("click", async (event) => {
@@ -512,6 +538,7 @@ export class BECMICharacterSheet extends ActorSheet {
       containerId: String(item?.system?.containerId ?? ""),
       location: getItemLocation(item),
       identified: Boolean(item?.system?.identified),
+      equipped: Boolean(item?.system?.equipped),
       notes: String(item?.system?.notes ?? ""),
       type: item?.type ?? ""
     };
