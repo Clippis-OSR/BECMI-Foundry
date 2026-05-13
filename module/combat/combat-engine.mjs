@@ -19,7 +19,7 @@ import {
   getOrCreateCombatWithSelectedTokens
 } from "./initiative.mjs";
 import { SAVE_TYPES, getSaveTarget, resolveSave, rollSave, renderSaveCard } from "./saves.mjs";
-import { resolveMorale, rollMorale, shouldCheckMorale } from "./morale.mjs";
+import { resolveMorale, rollMorale, renderMoraleCard, shouldCheckMorale } from "./morale.mjs";
 
 /**
  * Execute attack flow: resolve attack, then optionally roll damage on hit.
@@ -102,6 +102,7 @@ export function createCombatEngine() {
     rollIndividualInitiative,
     getOrCreateCombatWithSelectedTokens,
     rollMorale,
+    renderMoraleCard,
     renderAttackCard,
     getActorTHAC0,
     getTargetAC,
@@ -128,6 +129,7 @@ export {
   rollIndividualInitiative,
   getOrCreateCombatWithSelectedTokens,
   rollMorale,
+  renderMoraleCard,
   getActorTHAC0,
   getTargetAC,
   calculateRequiredRoll,

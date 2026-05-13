@@ -1,0 +1,13 @@
+<div class="becmi-chat-card becmi-morale-card">
+  <header class="becmi-chat-card__header">
+    <h3>Morale Check</h3>
+    <p>{{actorName}}</p>
+  </header>
+
+  <section class="becmi-chat-card__body">
+    {{#if reason}}<p><strong>Reason:</strong> {{reason}}</p>{{/if}}
+    <p><strong>Roll:</strong> {{rollTotal}} {{#if (gte modifier 0)}}+{{/if}}{{modifier}} = {{finalTotal}}</p>
+    <p><strong>Morale:</strong> {{moraleScore}}</p>
+    <p><strong>Result:</strong> {{#if success}}Success{{else}}Failure{{/if}}</p>
+  </section>
+</div>
