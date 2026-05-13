@@ -38,7 +38,7 @@ export async function rollDamage({ attacker, target, attackData = {} }) {
 
   let roll;
   try {
-    roll = await (new Roll(formula)).evaluate({ async: true });
+    roll = await (new Roll(formula)).evaluate();
   } catch (error) {
     console.warn("[BECMI Combat] Invalid damage formula; defaulting to 1.", {
       formula,
@@ -47,7 +47,7 @@ export async function rollDamage({ attacker, target, attackData = {} }) {
       attacker,
       target
     });
-    roll = await (new Roll("1")).evaluate({ async: true });
+    roll = await (new Roll("1")).evaluate();
   }
 
   const total = Number(roll.total) + bonus;

@@ -54,7 +54,7 @@ export async function rollMorale({ actor, moraleScore = null, modifier = 0, reas
   }
 
   const flatModifier = Number(modifier);
-  const roll = await (new Roll("2d6")).evaluate({ async: true });
+  const roll = await (new Roll("2d6")).evaluate();
   const rollTotal = Number(roll.total);
   const finalTotal = rollTotal + flatModifier;
   const success = finalTotal <= resolvedMoraleScore;
