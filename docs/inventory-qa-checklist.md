@@ -339,3 +339,87 @@ Use this as a 5–10 minute final validation after changes:
 
 **Smoke-test expected result:**
 - All above actions complete without breakage, totals stay coherent, and no console errors occur.
+
+---
+
+## 10) Library Item → Actor Copy Tests
+
+### 10.1 Equipment copy independence
+**Steps**
+1. Create a standalone Item in the Items sidebar named `Iron Spike` (type: Equipment).
+2. Set description, quantity, stackable, weight, value, rarity, tags, notes, and identified.
+3. Drag/drop `Iron Spike` onto actor sheet root.
+4. Edit actor-owned copy quantity and notes.
+
+**Expected results**
+- Actor receives a new embedded Item copy.
+- Actor copy edits do not mutate the source/library `Iron Spike`.
+- Source item fields remain unchanged.
+
+### 10.2 Source edits do not retroactively mutate actor copies
+**Steps**
+1. After step 10.1, edit the source/library `Iron Spike` item.
+2. Change quantity, description, and notes on the source item.
+
+**Expected results**
+- Existing actor-owned copy remains unchanged.
+- No live reference behavior is observed between source and actor item.
+
+### 10.3 Weapon data preservation
+**Steps**
+1. Create a library Weapon with `damage`, `range`, and `magicalBonus` set.
+2. Drop it to actor root and open actor-owned copy.
+
+**Expected results**
+- Actor-owned weapon preserves `name`, `type`, `img`, and all shared/system fields.
+- Weapon-specific fields (`damage`, `range`, `magicalBonus`) are preserved.
+
+### 10.4 Armor data preservation
+**Steps**
+1. Create a library Armor with `armorClass`, `shieldBonus`, and `magicalBonus`.
+2. Drop onto actor.
+
+**Expected results**
+- Actor-owned armor preserves armor-specific fields and common fields.
+
+### 10.5 Currency merge and source immutability
+**Steps**
+1. Ensure actor has `gp` quantity `10`.
+2. Create/drop a library `gp` currency item with quantity `5`.
+
+**Expected results**
+- Actor has one `gp` row with quantity `15` (merged, not duplicated).
+- `weightPerUnit` is `1` for actor-owned currency.
+- Source/library currency item is unchanged.
+
+### 10.6 Treasure value preservation
+**Steps**
+1. Create a library Treasure item with `treasureType` and `estimatedValue`.
+2. Drop onto actor.
+
+**Expected results**
+- Actor-owned treasure preserves `treasureType`, `estimatedValue`, and shared fields.
+
+### 10.7 Container placement and circular safety
+**Steps**
+1. Drop generic item on sheet root.
+2. Drop generic item onto Backpack group.
+3. Drop generic item onto Sack group.
+4. Attempt to drop/move a container into itself.
+5. Attempt to create circular A→B and B→A containment.
+
+**Expected results**
+- Root drop uses no container (`containerId` empty/normalized).
+- Backpack/Sack drops resolve to the targeted container item id.
+- Self/circular containment is blocked safely with warning; no crash.
+
+### 10.8 Encumbrance after drop/edit
+**Steps**
+1. Drop item with weight `50` and quantity `2`.
+2. Verify encumbrance increases by `100 cn`.
+3. Drop `10 gp`.
+
+**Expected results**
+- Encumbrance increases by `10 cn` for currency.
+- Container contents are not double-counted.
+

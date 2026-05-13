@@ -16,6 +16,7 @@ import { ensureDefaultContainers } from "../items/default-containers.mjs";
 import { calculateTotalEncumbrance } from "../items/encumbrance.mjs";
 import * as currencyHelpers from "../items/currency.mjs";
 import * as treasureHelpers from "../items/treasure.mjs";
+import { importItemToActor } from "../items/item-importer.mjs";
 
 const DEBUG_INVENTORY = false;
 const debugInventory = (...args) => {
@@ -678,7 +679,7 @@ export class BECMICharacterSheet extends ActorSheet {
     }
 
     const dropContainerId = this._getDropContainerId(event);
-    await this._importLibraryItemToActor(sourceItem, dropContainerId);
+    await importItemToActor(this.actor, sourceItem, { containerId: dropContainerId });
     this.render(false);
     return true;
   }
@@ -691,37 +692,7 @@ export class BECMICharacterSheet extends ActorSheet {
     return this.actor.items.get(containerId) ? containerId : "";
   }
 
-  async _importLibraryItemToActor(sourceItem, targetContainerId = "") {
-    const normalizedContainerId = normalizeContainerId(targetContainerId);
-    let createData = sourceItem.toObject();
-    delete createData._id;
-    createData.system = {
-      ...(createData.system ?? {}),
-      containerId: normalizedContainerId
-    };
 
-    if (sourceItem.type === "currency") {
-      const denomination = currencyHelpers.normalizeCurrencyDenomination(createData?.system?.denomination);
-      const quantity = Math.max(0, Math.floor(Number(createData?.system?.quantity ?? 0) || 0));
-      if (denomination && quantity > 0) {
-        await currencyHelpers.addCurrency(this.actor, denomination, quantity);
-        return;
-      }
-      createData.system.weightPerUnit = Number.isFinite(Number(createData?.system?.weightPerUnit))
-        ? Number(createData.system.weightPerUnit)
-        : 1;
-    }
-
-    if (sourceItem.type === "container" && normalizedContainerId) {
-      if (sourceItem.id && sourceItem.id === normalizedContainerId) {
-        createData.system.containerId = "";
-      } else if (this._wouldCreateCircularContainment(sourceItem.id, normalizedContainerId)) {
-        createData.system.containerId = "";
-      }
-    }
-
-    await this.actor.createEmbeddedDocuments("Item", [createData]);
-  }
 
 
   _createManualKnownSpell(level) {
