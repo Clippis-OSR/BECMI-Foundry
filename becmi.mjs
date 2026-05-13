@@ -11,6 +11,8 @@ import {
   loadMonsterTHAC0
 } from "./module/utils/rules-data.mjs";
 import * as becmiRules from "./module/rules/index.mjs";
+import * as inventoryManager from "./module/items/inventory-manager.mjs";
+import * as encumbrance from "./module/items/encumbrance.mjs";
 import {
   validateClassTable,
   validateMonsterProgression
@@ -74,7 +76,9 @@ Hooks.once("init", async function () {
   });
 
   Items.registerSheet("becmi-foundry", BECMIItemSheet, {
-    types: ["weapon", "armor", "equipment", "treasure"],
+    // First-pass BECMI inventory architecture: a single sheet handles all non-spell item types
+    // while data relationships are modeled via system.containerId only.
+    types: ["equipment", "weapon", "armor", "container", "currency", "treasure", "consumable"],
     makeDefault: true,
     label: "BECMI Item Sheet"
   });
@@ -170,4 +174,6 @@ Hooks.on("preCreateActor", (actor) => {
 Hooks.once("ready", function () {
   game.becmi = game.becmi || {};
   game.becmi.rules = becmiRules;
+  game.becmi.inventory = inventoryManager;
+  game.becmi.encumbrance = encumbrance;
 });

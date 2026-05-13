@@ -1,0 +1,71 @@
+<form class="becmi-item-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <h1><input type="text" name="name" value="{{item.name}}" placeholder="Item Name" /></h1>
+    <p>Type: {{item.type}}</p>
+  </header>
+
+  <section class="sheet-body">
+    <h2>Shared</h2>
+    <div class="form-group"><label>Description</label><textarea name="system.description" rows="4">{{safeSystem.description}}</textarea></div>
+    <div class="form-group"><label>Quantity</label><input type="number" name="system.quantity" value="{{safeSystem.quantity}}" step="1" /></div>
+    <div class="form-group"><label>Stackable</label><input type="checkbox" name="system.stackable" {{checked safeSystem.stackable}} /></div>
+    <div class="form-group"><label>Weight</label><input type="number" name="system.weight" value="{{safeSystem.weight}}" step="0.01" /></div>
+    <div class="form-group"><label>Value</label><input type="number" name="system.value" value="{{safeSystem.value}}" step="0.01" /></div>
+    <div class="form-group"><label>Identified</label><input type="checkbox" name="system.identified" {{checked safeSystem.identified}} /></div>
+    <div class="form-group"><label>Container ID</label><input type="text" name="system.containerId" value="{{safeSystem.containerId}}" /></div>
+    <div class="form-group"><label>Equipped</label><input type="checkbox" name="system.equipped" {{checked safeSystem.equipped}} /></div>
+    <div class="form-group"><label>Worn</label><input type="checkbox" name="system.worn" {{checked safeSystem.worn}} /></div>
+    <div class="form-group"><label>Rarity</label><input type="text" name="system.rarity" value="{{safeSystem.rarity}}" /></div>
+    <div class="form-group"><label>Tags (comma-separated)</label><input type="text" name="system.tagsString" value="{{tagsString}}" /></div>
+    <div class="form-group"><label>Notes</label><textarea name="system.notes" rows="3">{{safeSystem.notes}}</textarea></div>
+
+    {{#if isWeapon}}
+      <h2>Weapon</h2>
+      <div class="form-group"><label>Damage</label><input type="text" name="system.damage" value="{{safeSystem.damage}}" /></div>
+      <div class="form-group"><label>Damage Type</label><input type="text" name="system.damageType" value="{{safeSystem.damageType}}" /></div>
+      <div class="form-group"><label>Range</label><input type="text" name="system.range" value="{{safeSystem.range}}" /></div>
+      <div class="form-group"><label>Two-Handed</label><input type="checkbox" name="system.twoHanded" {{checked safeSystem.twoHanded}} /></div>
+      <div class="form-group"><label>Ammo Type</label><input type="text" name="system.ammoType" value="{{safeSystem.ammoType}}" /></div>
+      <div class="form-group"><label>Weapon Mastery</label><input type="text" name="system.weaponMastery" value="{{safeSystem.weaponMastery}}" /></div>
+      <div class="form-group"><label>Magical Bonus</label><input type="number" name="system.magicalBonus" value="{{safeSystem.magicalBonus}}" step="1" /></div>
+    {{/if}}
+
+    {{#if isArmor}}
+      <h2>Armor</h2>
+      <div class="form-group"><label>Armor Class</label><input type="number" name="system.armorClass" value="{{safeSystem.armorClass}}" step="1" /></div>
+      <div class="form-group"><label>Shield Bonus</label><input type="number" name="system.shieldBonus" value="{{safeSystem.shieldBonus}}" step="1" /></div>
+      <div class="form-group"><label>Max Dex Bonus</label><input type="number" name="system.maxDexBonus" value="{{safeSystem.maxDexBonus}}" step="1" /></div>
+      <div class="form-group"><label>Magical Bonus</label><input type="number" name="system.magicalBonus" value="{{safeSystem.magicalBonus}}" step="1" /></div>
+    {{/if}}
+
+    {{#if isContainer}}
+      <h2>Container</h2>
+      <div class="form-group"><label>Capacity</label><input type="number" name="system.capacity" value="{{safeSystem.capacity}}" step="0.01" /></div>
+      <div class="form-group"><label>Container Type</label><input type="text" name="system.containerType" value="{{safeSystem.containerType}}" /></div>
+      <div class="form-group"><label>Contained Weight</label><input type="number" name="system.containedWeight" value="{{safeSystem.containedWeight}}" step="0.01" /></div>
+      <div class="form-group"><label>Weight Reduction</label><input type="number" name="system.weightReduction" value="{{safeSystem.weightReduction}}" step="0.01" /></div>
+      <div class="form-group"><label>Slots</label><input type="number" name="system.slots" value="{{safeSystem.slots}}" step="1" /></div>
+    {{/if}}
+
+    {{#if isCurrency}}
+      <h2>Currency</h2>
+      <div class="form-group"><label>Denomination</label><input type="text" name="system.denomination" value="{{safeSystem.denomination}}" /></div>
+      <div class="form-group"><label>Exchange Value</label><input type="number" name="system.exchangeValue" value="{{safeSystem.exchangeValue}}" step="0.01" /></div>
+      <div class="form-group"><label>Weight Per Unit</label><input type="number" name="system.weightPerUnit" value="{{safeSystem.weightPerUnit}}" step="0.01" /></div>
+    {{/if}}
+
+    {{#if isTreasure}}
+      <h2>Treasure</h2>
+      <div class="form-group"><label>Treasure Type</label><input type="text" name="system.treasureType" value="{{safeSystem.treasureType}}" /></div>
+      <div class="form-group"><label>Estimated Value</label><input type="number" name="system.estimatedValue" value="{{safeSystem.estimatedValue}}" step="0.01" /></div>
+    {{/if}}
+
+    {{#if isConsumable}}
+      <h2>Consumable</h2>
+      <div class="form-group"><label>Uses</label><input type="number" name="system.uses" value="{{safeSystem.uses}}" step="1" /></div>
+      <div class="form-group"><label>Max Uses</label><input type="number" name="system.maxUses" value="{{safeSystem.maxUses}}" step="1" /></div>
+      <div class="form-group"><label>Consumed On Use</label><input type="checkbox" name="system.consumedOnUse" {{checked safeSystem.consumedOnUse}} /></div>
+      <div class="form-group"><label>Effect Data</label><textarea name="system.effectData" rows="4">{{safeSystem.effectData}}</textarea></div>
+    {{/if}}
+  </section>
+</form>

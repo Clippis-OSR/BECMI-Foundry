@@ -26,11 +26,14 @@
       "creature": {}
     },
     "Item": {
+      "equipment": {},
       "weapon": {},
       "armor": {},
-      "spell": {},
-      "equipment": {},
-      "treasure": {}
+      "container": {},
+      "currency": {},
+      "treasure": {},
+      "consumable": {},
+      "spell": {}
     }
   }
 }
