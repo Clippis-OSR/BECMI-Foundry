@@ -47,19 +47,28 @@ export function getContainers(actor) {
   return getActorItems(actor).filter((item) => item?.type === "container");
 }
 
+export function normalizeItemLocation(value) {
+  const location = String(value ?? "").trim().toLowerCase();
+  if (["equipped", "worn", "storage"].includes(location)) return location;
+  return "worn";
+}
+
+export function getItemLocation(item) {
+  return normalizeItemLocation(item?.system?.location);
+}
+
 export function getEquippedItems(actor) {
-  return getActorItems(actor).filter((item) => Boolean(item?.system?.equipped));
+  return getActorItems(actor).filter((item) => getItemLocation(item) === "equipped");
 }
 
 export function getWornItems(actor) {
-  return getActorItems(actor).filter((item) => Boolean(item?.system?.worn));
+  return getActorItems(actor).filter((item) => getItemLocation(item) === "worn");
 }
 
 export function getCarriedItems(actor) {
   return getActorItems(actor).filter((item) => {
-    const containerId = normalizeContainerId(item?.system?.containerId);
-    if (containerId) return false;
-    return !item?.system?.equipped && !item?.system?.worn;
+    const location = getItemLocation(item);
+    return location === "equipped" || location === "worn";
   });
 }
 

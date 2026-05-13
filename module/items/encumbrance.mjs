@@ -2,7 +2,8 @@ import {
   getActorItems,
   getContainers,
   getItemTotalWeight,
-  getItemsInContainer
+  getItemsInContainer,
+  getItemLocation
 } from "./inventory-manager.mjs";
 
 function isStoredItem(item) {
@@ -19,7 +20,9 @@ function normalizeContainerId(value) {
 }
 
 function shouldCountItem(item) {
-  return !isStoredItem(item);
+  if (isStoredItem(item)) return false;
+  const location = getItemLocation(item);
+  return location === "equipped" || location === "worn";
 }
 
 export function calculateContainerEncumbrance(actor, containerId) {
