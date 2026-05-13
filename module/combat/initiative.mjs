@@ -31,6 +31,70 @@ function getActorInitiativeModifier(actor) {
   return Number.isFinite(value) ? value : 0;
 }
 
+function getSelectedTokens() {
+  return Array.from(canvas?.tokens?.controlled ?? []);
+}
+
+function buildCombatantData(token) {
+  const actor = token?.actor;
+  if (!token?.id || !actor?.id) return null;
+
+  return {
+    tokenId: token.id,
+    sceneId: token.scene?.id ?? canvas?.scene?.id,
+    actorId: actor.id,
+    name: token.name ?? actor.name,
+    img: token.document?.texture?.src ?? actor.img
+  };
+}
+
+export async function ensureCombatants(combat) {
+  if (!combat) return null;
+  if (combat.combatants?.size > 0) return combat;
+
+  const selectedTokens = getSelectedTokens();
+  if (selectedTokens.length === 0) return combat;
+
+  const existingTokenIds = new Set(Array.from(combat.combatants ?? []).map((c) => c.tokenId));
+  const combatantData = selectedTokens
+    .filter((token) => !existingTokenIds.has(token.id))
+    .map((token) => buildCombatantData(token))
+    .filter(Boolean);
+
+  if (combatantData.length > 0) {
+    await combat.createEmbeddedDocuments("Combatant", combatantData);
+  }
+
+  return combat;
+}
+
+export async function getOrCreateCombatWithSelectedTokens(existingCombat = null) {
+  let combat = existingCombat ?? game.combat;
+
+  if (combat) {
+    combat = await ensureCombatants(combat);
+  } else {
+    const selectedTokens = getSelectedTokens();
+    if (selectedTokens.length > 0) {
+      const scene = canvas?.scene;
+      if (scene) {
+        combat = await Combat.create({
+          scene: scene.id,
+          active: true
+        });
+        combat = await ensureCombatants(combat);
+      }
+    }
+  }
+
+  if (!(combat?.combatants?.size > 0)) {
+    ui.notifications.warn("Select tokens and add them to combat, or select tokens before rolling initiative.");
+    return null;
+  }
+
+  return combat;
+}
+
 export async function setInitiativeMode(combat, mode) {
   assertValidCombat(combat);
   assertGM();
@@ -69,8 +133,10 @@ export async function chooseInitiativeMode(combat) {
 }
 
 export async function rollGroupInitiative({ combat, partyModifier = 0, monsterModifier = 0, postToChat = true } = {}) {
-  assertValidCombat(combat);
-  if (!(combat.combatants?.size > 0)) throw new Error("[BECMI Combat] Cannot roll initiative: no combatants.");
+  combat = await getOrCreateCombatWithSelectedTokens(combat);
+  if (!combat) return null;
+  console.log("BECMI | Using combat", combat);
+  console.log("BECMI | Combatants", combat.combatants.contents);
 
   const partyMod = Number(partyModifier) || 0;
   const monsterMod = Number(monsterModifier) || 0;
@@ -105,9 +171,11 @@ export async function rollGroupInitiative({ combat, partyModifier = 0, monsterMo
 }
 
 export async function rollIndividualInitiative({ combat, postToChat = true } = {}) {
-  assertValidCombat(combat);
+  combat = await getOrCreateCombatWithSelectedTokens(combat);
+  if (!combat) return null;
+  console.log("BECMI | Using combat", combat);
+  console.log("BECMI | Combatants", combat.combatants.contents);
   const combatants = Array.from(combat.combatants ?? []);
-  if (combatants.length === 0) throw new Error("[BECMI Combat] Cannot roll initiative: no combatants.");
 
   const results = [];
   for (const combatant of combatants) {
