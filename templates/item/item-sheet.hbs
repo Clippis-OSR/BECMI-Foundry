@@ -9,27 +9,23 @@
     <div class="form-group"><label>Description</label><textarea name="system.description" rows="4">{{safeSystem.description}}</textarea></div>
     <div class="form-group"><label>Quantity</label><input type="number" name="system.quantity" value="{{safeSystem.quantity}}" step="1" /></div>
     <div class="form-group"><label>Stackable</label><input type="checkbox" name="system.stackable" {{checked safeSystem.stackable}} /></div>
-    <div class="form-group"><label>Weight</label><input type="number" name="system.weight" value="{{safeSystem.weight}}" step="0.01" /></div>
+    <div class="form-group"><label>Encumbrance (cn)</label><input type="number" name="system.weight" value="{{safeSystem.weight}}" step="0.01" /></div>
     <div class="form-group"><label>Value</label><input type="number" name="system.value" value="{{safeSystem.value}}" step="0.01" /></div>
     <div class="form-group"><label>Identified</label><input type="checkbox" name="system.identified" {{checked safeSystem.identified}} /></div>
-    <div class="form-group"><label>Container ID</label><input type="text" name="system.containerId" value="{{safeSystem.containerId}}" /></div>
-    <div class="form-group"><label>Equipped</label><input type="checkbox" name="system.equipped" {{checked safeSystem.equipped}} /></div>
+        <div class="form-group"><label>Equipped</label><input type="checkbox" name="system.equipped" {{checked safeSystem.equipped}} /></div>
     <div class="form-group">
       <label>Equip Slot</label>
       <select name="system.slot">
-        {{#each equipSlotOptions as |slot|}}
-          <option value="{{slot}}" {{#if (eq ../safeSystem.slot slot)}}selected{{/if}}>{{slot}}</option>
-        {{/each}}
+        {{#if isArmor}}{{#each armorEquipSlotOptions as |slot|}}<option value="{{slot}}" {{#if (eq ../safeSystem.slot slot)}}selected{{/if}}>{{slot}}</option>{{/each}}{{else if isWeapon}}{{#each weaponEquipSlotOptions as |slot|}}<option value="{{slot}}" {{#if (eq ../safeSystem.slot slot)}}selected{{/if}}>{{slot}}</option>{{/each}}{{else}}{{#each equipSlotOptions as |slot|}}<option value="{{slot}}" {{#if (eq ../safeSystem.slot slot)}}selected{{/if}}>{{slot}}</option>{{/each}}{{/if}}
       </select>
     </div>
-    {{#unless isArmor}}
-      <div class="form-group"><label>AC Bonus</label><input type="number" name="system.acBonus" value="{{safeSystem.acBonus}}" step="1" /></div>
-    {{/unless}}
     <div class="form-group"><label>Tags (comma-separated)</label><input type="text" name="system.tagsString" value="{{tagsString}}" /></div>
     <div class="form-group"><label>Notes</label><textarea name="system.notes" rows="3">{{safeSystem.notes}}</textarea></div>
 
     {{#if isWeapon}}
       <h2>Weapon</h2>
+            <div class="form-group"><label>Weapon</label><select name="system.weaponKey"><option value="custom">Custom</option>{{#each weaponOptions as |weapon|}}<option value="{{weapon.id}}" {{#if (eq ../safeSystem.weaponKey weapon.id)}}selected{{/if}}>{{weapon.label}}</option>{{/each}}</select></div>
+      <div class="form-group"><label>Hands</label><select name="system.hands"><option value="none" {{#if (eq safeSystem.hands "none")}}selected{{/if}}>None</option><option value="one" {{#if (eq safeSystem.hands "one")}}selected{{/if}}>One</option><option value="two" {{#if (eq safeSystem.hands "two")}}selected{{/if}}>Two</option></select></div>
       <div class="form-group"><label>Damage</label><input type="text" name="system.damage" value="{{safeSystem.damage}}" /></div>
       <div class="form-group">
         <label>Weapon Type</label>
@@ -39,13 +35,12 @@
           <option value="natural" {{#if (eq safeSystem.weaponType "natural")}}selected{{/if}}>Natural</option>
         </select>
       </div>
-      <div class="form-group"><label>Damage Types</label><input type="text" name="system.damageTypesString" value="{{damageTypesString}}" placeholder="fire, silver, magical" /></div>
+      <div class="form-group"><label>Damage Types</label><select name="system.damageTypes" multiple>{{selectOptions damageTypeOptions selected=safeSystem.damageTypes}}</select></div>
       {{#if (eq safeSystem.weaponType "missile")}}
       <div class="form-group"><label>Range Short</label><input type="number" name="system.range.short" value="{{safeSystem.range.short}}" step="1" /></div>
       <div class="form-group"><label>Range Medium</label><input type="number" name="system.range.medium" value="{{safeSystem.range.medium}}" step="1" /></div>
       <div class="form-group"><label>Range Long</label><input type="number" name="system.range.long" value="{{safeSystem.range.long}}" step="1" /></div>
-      <div class="form-group"><label>Two-Handed</label><input type="checkbox" name="system.twoHanded" {{checked safeSystem.twoHanded}} /></div>
-      <div class="form-group"><label>Ammo</label><input type="text" name="system.ammo" value="{{safeSystem.ammo}}" /></div>
+      <div class="form-group"><label>Ammo Type</label><select name="system.ammoType"><option value="" {{#if (eq safeSystem.ammoType "")}}selected{{/if}}>None</option><option value="arrow" {{#if (eq safeSystem.ammoType "arrow")}}selected{{/if}}>Arrow</option><option value="quarrel" {{#if (eq safeSystem.ammoType "quarrel")}}selected{{/if}}>Quarrel</option><option value="slingStone" {{#if (eq safeSystem.ammoType "slingStone")}}selected{{/if}}>Sling Stone</option><option value="custom" {{#if (eq safeSystem.ammoType "custom")}}selected{{/if}}>Custom</option></select></div>
       {{/if}}
     {{/if}}
 
@@ -84,6 +79,16 @@
       <h2>Treasure</h2>
       <div class="form-group"><label>Treasure Type</label><input type="text" name="system.treasureType" value="{{safeSystem.treasureType}}" /></div>
       <div class="form-group"><label>Estimated Value</label><input type="number" name="system.estimatedValue" value="{{safeSystem.estimatedValue}}" step="0.01" /></div>
+    {{/if}}
+
+    {{#if isAmmo}}
+      <h2>Ammunition</h2>
+      <div class="form-group"><label>Ammo Type</label><select name="system.ammoType">{{#each ammoTypeOptions as |atype|}}<option value="{{atype}}" {{#if (eq ../safeSystem.ammoType atype)}}selected{{/if}}>{{atype}}</option>{{/each}}</select></div>
+      <div class="form-group"><label>Quantity</label><input type="number" name="system.quantity" value="{{safeSystem.quantity}}" step="1" /></div>
+      <div class="form-group"><label>Encumbrance (cn)</label><input type="number" name="system.weight" value="{{safeSystem.weight}}" step="0.01" /></div>
+      <div class="form-group"><label>Value</label><input type="number" name="system.value" value="{{safeSystem.value}}" step="0.01" /></div>
+      <div class="form-group"><label>Damage Types</label><select name="system.damageTypes" multiple>{{selectOptions damageTypeOptions selected=safeSystem.damageTypes}}</select></div>
+      <div class="form-group"><label>Notes</label><textarea name="system.notes" rows="3">{{safeSystem.notes}}</textarea></div>
     {{/if}}
 
     {{#if isConsumable}}

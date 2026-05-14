@@ -330,12 +330,13 @@
       "container",
       "currency",
       "treasure",
+      "ammo",
       "consumable",
       "spell"
     ],
     "weapon": {
       "description": "",
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -357,14 +358,16 @@
         "medium": null,
         "long": null
       },
-      "twoHanded": false,
       "ammo": "",
-      "slot": "weapon",
-      "acBonus": 0
+      "slot": "weaponMain",
+      "acBonus": 0,
+      "weaponKey": "",
+      "hands": "one",
+      "ammoType": null
     },
     "armor": {
       "description": "",
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -382,7 +385,7 @@
     },
     "equipment": {
       "description": "",
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -400,7 +403,7 @@
     },
     "treasure": {
       "description": "",
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -440,7 +443,7 @@
       "effects": [],
       "description": "",
       "actions": [],
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -457,7 +460,7 @@
     },
     "container": {
       "description": "",
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -480,7 +483,7 @@
     },
     "currency": {
       "description": "",
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -501,7 +504,7 @@
     },
     "consumable": {
       "description": "",
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -520,6 +523,25 @@
       "effectData": "",
       "slot": "weapon",
       "acBonus": 0
+    },
+    "ammo": {
+      "description": "",
+      "quantity": 20,
+      "stackable": true,
+      "weight": 0,
+      "encumbrance": 0,
+      "value": 0,
+      "identified": false,
+      "containerId": "",
+      "location": "worn",
+      "equipped": false,
+      "tags": [],
+      "notes": "",
+      "ammoType": "arrow",
+      "damageTypes": [
+        "normal"
+      ],
+      "slot": ""
     }
   }
 }
