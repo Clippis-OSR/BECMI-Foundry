@@ -24,3 +24,7 @@ Tested with Foundry VTT v14 build 361.
 - THAC0
 - Exploration-first design
 - Dungeon turns, hexcrawl, morale and reaction rolls later
+
+## Architecture audit
+
+The canonical current architecture audit is `docs/full-system-audit-2026-05-14-consolidated.md`.
