@@ -67,14 +67,14 @@ Regression risk: schema drift introduces alias values that break combat/equipmen
 ## Run
 
 ```bash
-node --test tests/**/*.test.mjs
+npm test
 ```
 
 ## Suggested CI integration
 
 - Add a fast unit-test step in CI:
   - install dependencies (if any)
-  - run `node --test tests/**/*.test.mjs`
+  - run `npm test`
 - Keep this suite required for merges touching `module/combat`, `module/items`, or `module/utils/schema-validation.mjs`.
 - Optionally split by path filters for focused jobs:
   - combat path changes -> combat tests
