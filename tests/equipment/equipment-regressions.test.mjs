@@ -36,6 +36,17 @@ describe('equipment regressions', () => {
     expect(actor.system.equipmentSlots.weaponMain).toBe('w2h');
     expect(bite.system.equipped).toBe(true);
     expect(bite.system.slot).toBe('natural');
+    expect(bite.system.inventory.location).toBe('worn');
+  });
+
+  it('equipment slot and inventory location remain separate concepts', async () => {
+    const sword = createItem({ id: 'w1', type: 'weapon', system: { slot: 'weaponMain', hands: 'one', weaponType: 'melee', inventory: { location: 'backpack' } } });
+    const actor = createActor({ items: [sword] });
+    await equipItem(actor, sword);
+
+    expect(sword.system.slot).toBe('weaponMain');
+    expect(sword.system.inventory.location).toBe('worn');
+    expect(actor.system.equipmentSlots.weaponMain).toBe('w1');
   });
 
   it('ammo linkage validation requires matching ammo type with quantity', () => {

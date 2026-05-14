@@ -87,7 +87,7 @@ export function getItemLocation(item) {
 }
 
 export function getEquippedItems(actor) {
-  return getActorItems(actor).filter((item) => getItemLocation(item) === "equipped");
+  return getActorItems(actor).filter((item) => item?.system?.equipped === true || getItemLocation(item) === "worn");
 }
 
 export function getWornItems(actor) {
@@ -97,7 +97,7 @@ export function getWornItems(actor) {
 export function getCarriedItems(actor) {
   return getActorItems(actor).filter((item) => {
     const location = getItemLocation(item);
-    return ["worn", "beltPouch", "backpack", "sack1", "sack2", "carried", "treasureHorde"].includes(location);
+    return ["worn", "beltPouch", "backpack", "sack1", "sack2", "carried"].includes(location);
   });
 }
 

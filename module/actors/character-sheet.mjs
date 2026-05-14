@@ -425,22 +425,14 @@ export class BECMICharacterSheet extends ActorSheet {
     if (field === "system.inventory.location" || field === "system.location") {
       const isTreasure = item.type === "treasure";
       value = normalizeItemLocation(value);
-      if (isTreasure && value !== "storage") value = "treasure";
-      if (!isTreasure && value === "treasure") {
-        console.warn("Rejected non-treasure move into treasure location", { itemId, attemptedLocation: value });
-        return;
-      }
+      if (isTreasure && value === "stored") value = "treasureHorde";
 
       validateItemContainerAssignment(this.actor, item, { location: value });
-      if (value === "equipped") {
-        await equipItem(this.actor, item);
-      } else {
-        if (item.system?.equipped) {
-          await unequipItem(this.actor, item);
-        }
-        const worn = value === "worn";
-        await item.update({ "system.inventory.location": value, "system.location": value, "system.equipped": false, "system.worn": worn });
+      if (item.system?.equipped) {
+        await unequipItem(this.actor, item);
       }
+      const worn = value === "worn";
+      await item.update({ "system.inventory.location": value, "system.location": value, "system.equipped": false, "system.worn": worn });
       this.render(false);
       return;
     }
