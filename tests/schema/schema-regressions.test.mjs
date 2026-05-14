@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { validateActorSchema, validateItemSchema } from '../../module/utils/schema-validation.mjs';
 import { createActor, createItem } from '../helpers/foundry-test-helpers.mjs';
 import { validateItemContainerAssignment } from '../../module/items/inventory-manager.mjs';
+import { validateMonsterProgression } from '../../module/utils/validate-rules-data.mjs';
 
 describe('schema regressions', () => {
   it('canonical slot enforcement rejects non-canonical item slots', () => {
@@ -28,5 +29,10 @@ describe('schema regressions', () => {
 
     expect(() => validateItemContainerAssignment(actor, rope, { containerId: 'rope' })).toThrow(/inside itself/);
     expect(() => validateItemContainerAssignment(actor, packA, { containerId: 'packB' })).toThrow(/Circular container reference/);
+  });
+
+  it('accepts monster progression that references external lookup tables', () => {
+    const warnings = validateMonsterProgression({ id: 'monster-progression', name: 'Monster Progression', uses: { thac0: 'monster-thac0', saves: 'monster-saves' } });
+    expect(warnings).toEqual([]);
   });
 });

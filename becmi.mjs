@@ -21,6 +21,7 @@ import {
   validateMonsterProgression
 } from "./module/utils/validate-rules-data.mjs";
 import { validateActorSchema, validateItemSchema, validateItemSlot } from "./module/utils/schema-validation.mjs";
+import { isCanonicalSlot, normalizeLegacyItemSlotForMigration } from "./module/items/legacy-slot-migration.mjs";
 
 const BECMI_CREATURE_SHEET_ID = "becmi-foundry.BECMICreatureSheet";
 const BECMI_CHARACTER_SHEET_ID = "becmi-foundry.BECMICharacterSheet";
@@ -70,16 +71,6 @@ async function migrateLegacyActorTypes() {
 }
 
 
-function canonicalizeLegacyItemSlot(slot) {
-  const normalized = String(slot ?? "").trim();
-  if (!normalized) return normalized;
-  if (normalized === "weapon" || normalized === "bothHands") {
-    console.info(`[BECMI Migration] Converting legacy item slot "${normalized}" -> "weaponMain".`);
-    return "weaponMain";
-  }
-  return normalized;
-}
-
 async function migrateLegacyEquipmentSlots() {
   if (!game.user?.isGM) return;
   const actors = game.actors?.contents ?? [];
@@ -93,10 +84,13 @@ async function migrateLegacyEquipmentSlots() {
     }
 
     for (const item of actor.items ?? []) {
-      const slot = canonicalizeLegacyItemSlot(item.system?.slot);
-      if (slot !== item.system?.slot) {
-        validateItemSlot(slot, `legacy migration for item "${item.name}"`);
-        await item.update({ "system.slot": slot });
+      const migration = normalizeLegacyItemSlotForMigration(item);
+      const previousSlot = String(item.system?.slot ?? "").trim();
+      if (migration.slot !== previousSlot) {
+        if (migration.shouldValidate && isCanonicalSlot(migration.slot)) {
+          validateItemSlot(migration.slot, `legacy migration for item "${item.name}"`);
+        }
+        await item.update({ "system.slot": migration.slot });
       }
     }
 
@@ -269,9 +263,7 @@ Hooks.once("init", async function () {
     hasEntries: Object.keys(CONFIG.BECMI.monsterSaves?.entries ?? {}).length > 0
   });
 
-  console.warn("BECMI init complete");
-  console.warn("BECMI Actor templates", game.system.template?.Actor);
-  console.warn("BECMI sheet classes", CONFIG.Actor.sheetClasses);
+  console.info("BECMI init complete");
 });
 
 Hooks.on("preCreateActor", (actor) => {
@@ -347,7 +339,7 @@ Hooks.on("combatStart", async (combat) => {
   await maybePromptInitiativeMode(combat);
 });
 
-Hooks.on("renderChatMessage", (message, html) => {
+Hooks.on("renderChatMessageHTML", (message, html) => {
   const root = html?.[0];
   if (!root) return;
 

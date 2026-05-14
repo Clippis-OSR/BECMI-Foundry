@@ -44,10 +44,15 @@ export function validateMonsterProgression(monsterData) {
   if (!monsterData.id) warnings.push("Monster progression is missing required field: id.");
   if (!monsterData.name) warnings.push("Monster progression is missing required field: name.");
 
-  if (!monsterData.hitDice || typeof monsterData.hitDice !== "object") {
+  const hasDirectHitDice = monsterData.hitDice && typeof monsterData.hitDice === "object";
+  const hasLookupRefs = monsterData.uses && typeof monsterData.uses === "object" && monsterData.uses.thac0 && monsterData.uses.saves;
+
+  if (!hasDirectHitDice && !hasLookupRefs) {
     warnings.push("Monster progression is missing required field: hitDice.");
     return warnings;
   }
+
+  if (!hasDirectHitDice) return warnings;
 
   for (const [hdKey, hdData] of Object.entries(monsterData.hitDice)) {
     if (!hdData || typeof hdData !== "object") {
