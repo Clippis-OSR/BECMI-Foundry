@@ -232,6 +232,33 @@
         "4": [],
         "5": [],
         "6": []
+      },
+      "equipmentSlots": {
+        "armor": null,
+        "shield": null,
+        "ringLeft": null,
+        "ringRight": null,
+        "amulet": null,
+        "cloak": null,
+        "boots": null,
+        "gloves": null,
+        "belt": null,
+        "weaponMain": null,
+        "weaponOffhand": null
+      },
+      "ac": {
+        "base": 9,
+        "value": 9,
+        "armor": 9,
+        "shieldBonus": 0,
+        "dexBonus": 0,
+        "magicBonus": 0,
+        "temporaryBonus": 0,
+        "masteryBonus": 0,
+        "breakdown": []
+      },
+      "buffs": {
+        "ac": []
       }
     },
     "creature": {
@@ -241,7 +268,17 @@
         "value": 1,
         "max": 1
       },
-      "ac": 9,
+      "ac": {
+        "base": 9,
+        "value": 9,
+        "armor": 9,
+        "shieldBonus": 0,
+        "dexBonus": 0,
+        "magicBonus": 0,
+        "temporaryBonus": 0,
+        "masteryBonus": 0,
+        "breakdown": []
+      },
       "thac0": 19,
       "morale": 7,
       "savesAs": {
@@ -266,6 +303,22 @@
         },
         "hitDice": null,
         "savesAs": null
+      },
+      "equipmentSlots": {
+        "armor": null,
+        "shield": null,
+        "ringLeft": null,
+        "ringRight": null,
+        "amulet": null,
+        "cloak": null,
+        "boots": null,
+        "gloves": null,
+        "belt": null,
+        "weaponMain": null,
+        "weaponOffhand": null
+      },
+      "buffs": {
+        "ac": []
       }
     }
   },
@@ -308,7 +361,9 @@
       "twoHanded": false,
       "ammoType": "",
       "weaponMastery": "",
-      "magicalBonus": 0
+      "magicalBonus": 0,
+      "slot": null,
+      "acBonus": 0
     },
     "armor": {
       "description": "",
@@ -328,7 +383,9 @@
       "armorClass": 0,
       "shieldBonus": 0,
       "maxDexBonus": 0,
-      "magicalBonus": 0
+      "magicalBonus": 0,
+      "slot": null,
+      "acBonus": 0
     },
     "equipment": {
       "description": "",
@@ -344,7 +401,9 @@
       "rarity": "",
       "tags": [],
       "notes": "",
-      "actions": []
+      "actions": [],
+      "slot": null,
+      "acBonus": 0
     },
     "treasure": {
       "description": "",
@@ -362,7 +421,9 @@
       "notes": "",
       "actions": [],
       "treasureType": "",
-      "estimatedValue": 0
+      "estimatedValue": 0,
+      "slot": null,
+      "acBonus": 0
     },
     "spell": {
       "level": 1,
@@ -397,7 +458,9 @@
       "worn": false,
       "rarity": "",
       "tags": [],
-      "notes": ""
+      "notes": "",
+      "slot": null,
+      "acBonus": 0
     },
     "container": {
       "description": "",
@@ -418,7 +481,9 @@
       "containerType": "",
       "containedWeight": 0,
       "weightReduction": 0,
-      "slots": 0
+      "slots": 0,
+      "slot": null,
+      "acBonus": 0
     },
     "currency": {
       "description": "",
@@ -437,7 +502,9 @@
       "actions": [],
       "denomination": "",
       "exchangeValue": 0,
-      "weightPerUnit": 0
+      "weightPerUnit": 0,
+      "slot": null,
+      "acBonus": 0
     },
     "consumable": {
       "description": "",
@@ -457,7 +524,9 @@
       "uses": 0,
       "maxUses": 0,
       "consumedOnUse": false,
-      "effectData": ""
+      "effectData": "",
+      "slot": null,
+      "acBonus": 0
     }
   }
 }

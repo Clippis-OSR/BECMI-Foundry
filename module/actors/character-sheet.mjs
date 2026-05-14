@@ -17,6 +17,7 @@ import { calculateTotalEncumbrance } from "../items/encumbrance.mjs";
 import * as currencyHelpers from "../items/currency.mjs";
 import * as treasureHelpers from "../items/treasure.mjs";
 import { importItemToActor } from "../items/item-importer.mjs";
+import { ensureActorEquipmentSlots, equipItem, unequipItem } from "../items/equipment-slots.mjs";
 
 const DEBUG_INVENTORY = false;
 const debugInventory = (...args) => {
@@ -122,6 +123,7 @@ export class BECMICharacterSheet extends ActorSheet {
     context.turnUndeadList = turnUndead && typeof turnUndead === "object" && !Array.isArray(turnUndead)
       ? Object.entries(turnUndead).map(([target, score]) => ({ target, score }))
       : [];
+    context.equipmentSlots = ensureActorEquipmentSlots(this.actor);
     context.inventoryGroups = this._buildInventoryGroups();
     context.treasureGroup = this._buildTreasureGroup();
     context.currencySummary = this._buildCurrencySummary();
@@ -291,6 +293,22 @@ export class BECMICharacterSheet extends ActorSheet {
       await this.actor.update({
         "system.spellsKnown": spellsKnown
       });
+    });
+
+    html.find('[data-action="toggle-equip-item"]').on("click", async (event) => {
+      event.preventDefault();
+      const itemId = event.currentTarget?.dataset?.itemId;
+      if (!itemId) return;
+      const item = this.actor.items.get(itemId);
+      if (!item) return;
+
+      if (item.system?.equipped) {
+        await unequipItem(this.actor, item);
+      } else {
+        await equipItem(this.actor, item);
+      }
+
+      this.render(false);
     });
 
     html.find('[data-action="item-edit"]').on("click", (event) => {
@@ -479,13 +497,15 @@ export class BECMICharacterSheet extends ActorSheet {
         console.warn("Rejected non-treasure move into treasure location", { itemId, attemptedLocation: value });
         return;
       }
-      const syncMap = {
-        equipped: { "system.equipped": true, "system.worn": false },
-        worn: { "system.equipped": false, "system.worn": true },
-        storage: { "system.equipped": false, "system.worn": false },
-        treasure: { "system.equipped": false, "system.worn": false }
-      };
-      await item.update({ [field]: value, ...(syncMap[value] ?? {}) });
+      if (value === "equipped") {
+        await equipItem(this.actor, item);
+      } else {
+        if (item.system?.equipped) {
+          await unequipItem(this.actor, item);
+        }
+        const worn = value === "worn";
+        await item.update({ [field]: value, "system.equipped": false, "system.worn": worn });
+      }
       this.render(false);
       return;
     }
@@ -547,6 +567,7 @@ export class BECMICharacterSheet extends ActorSheet {
       location: getItemLocation(item),
       identified: Boolean(item?.system?.identified),
       equipped: Boolean(item?.system?.equipped),
+      slot: String(item?.system?.slot ?? ""),
       notes: String(item?.system?.notes ?? ""),
       type: item?.type ?? ""
     };

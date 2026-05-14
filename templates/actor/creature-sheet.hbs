@@ -25,8 +25,12 @@
     <label>Max HP</label>
     <input type="number" name="system.hp.max" value="{{system.hp.max}}" data-action="change-creature-field"/>
 
-    <label>AC</label>
-    <input type="number" name="system.ac" value="{{system.ac}}" data-action="change-creature-field"/>
+    <label>AC (Base)</label>
+    <input type="number" name="system.ac.base" value="{{system.ac.base}}" data-action="change-creature-field"/>
+
+    <label>AC (Final)</label>
+    <input type="number" name="system.ac.value" value="{{system.ac.value}}" readonly/>
+    {{#if system.ac.breakdown.length}}<details><summary>AC Breakdown</summary><ul>{{#each system.ac.breakdown as |part|}}<li>{{part.label}} {{#if part.value}}: {{part.value}}{{/if}}{{#if part.modifier}} ({{part.modifier}}){{/if}}</li>{{/each}}</ul></details>{{/if}}
 
     <label>THAC0</label>
     <span>{{system.derived.thac0}}</span>

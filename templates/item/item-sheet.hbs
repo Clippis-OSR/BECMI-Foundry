@@ -14,6 +14,8 @@
     <div class="form-group"><label>Identified</label><input type="checkbox" name="system.identified" {{checked safeSystem.identified}} /></div>
     <div class="form-group"><label>Container ID</label><input type="text" name="system.containerId" value="{{safeSystem.containerId}}" /></div>
     <div class="form-group"><label>Equipped</label><input type="checkbox" name="system.equipped" {{checked safeSystem.equipped}} /></div>
+    <div class="form-group"><label>Equip Slot</label><input type="text" name="system.slot" value="{{safeSystem.slot}}" placeholder="armor, shield, ring..." /></div>
+    <div class="form-group"><label>AC Bonus</label><input type="number" name="system.acBonus" value="{{safeSystem.acBonus}}" step="1" /></div>
     <div class="form-group"><label>Worn</label><input type="checkbox" name="system.worn" {{checked safeSystem.worn}} /></div>
     <div class="form-group"><label>Rarity</label><input type="text" name="system.rarity" value="{{safeSystem.rarity}}" /></div>
     <div class="form-group"><label>Tags (comma-separated)</label><input type="text" name="system.tagsString" value="{{tagsString}}" /></div>
