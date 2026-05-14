@@ -1,11 +1,13 @@
 import { VALID_ITEM_EQUIP_SLOTS } from "./equipment-slots.mjs";
 import { BECMI_ARMOR_TYPES } from "../rules/armor-types.mjs";
+import { BECMI_DAMAGE_TYPES, BECMI_WEAPONS } from "../rules/weapons.mjs";
 
 const SHARED_SYSTEM_DEFAULTS = {
   description: "",
-  quantity: 0,
+  quantity: 1,
   stackable: false,
   weight: 0,
+  encumbrance: 0,
   value: 0,
   identified: false,
   containerId: "",
@@ -15,9 +17,11 @@ const SHARED_SYSTEM_DEFAULTS = {
 };
 
 const WEAPON_SYSTEM_DEFAULTS = {
+  weaponKey: "",
   damage: "1d8",
-  damageTypes: [],
+  damageTypes: ["normal"],
   weaponType: "melee",
+  hands: "one",
   masteryOverride: null,
   range: {
     short: null,
@@ -55,9 +59,9 @@ export class BECMIItemSheet extends ItemSheet {
     context.tagsString = Array.isArray(context.safeSystem.tags)
       ? context.safeSystem.tags.join(", ")
       : "";
-    context.damageTypesString = Array.isArray(context.safeSystem.damageTypes)
-      ? context.safeSystem.damageTypes.join(", ")
-      : "";
+    context.damageTypeOptions = BECMI_DAMAGE_TYPES;
+    context.weaponOptions = Object.values(BECMI_WEAPONS);
+    context.selectedDamageTypes = new Set(Array.isArray(context.safeSystem.damageTypes) ? context.safeSystem.damageTypes : []);
 
     context.effectDataString = typeof context.safeSystem.effectData === "string"
       ? context.safeSystem.effectData
@@ -70,6 +74,8 @@ export class BECMIItemSheet extends ItemSheet {
     context.isTreasure = this.item.type === "treasure";
     context.isConsumable = this.item.type === "consumable";
     context.equipSlotOptions = VALID_ITEM_EQUIP_SLOTS;
+    context.weaponEquipSlotOptions = ["weaponMain", "weaponOffhand", "bothHands", "natural", "missile"];
+    context.armorEquipSlotOptions = ["armor", "shield"];
     context.armorTypeOptions = Object.entries(BECMI_ARMOR_TYPES).map(([key, value]) => ({ key, ...value }));
     const selectedArmorType = context.safeSystem.armorType ?? "none";
     context.selectedArmorTypeData = BECMI_ARMOR_TYPES[selectedArmorType] ?? BECMI_ARMOR_TYPES.none;
@@ -83,8 +89,7 @@ export class BECMIItemSheet extends ItemSheet {
 
     const tagsString = expanded.system?.tagsString;
     delete updates["system.tagsString"];
-    const damageTypesString = expanded.system?.damageTypesString;
-    delete updates["system.damageTypesString"];
+    const damageTypes = expanded.system?.damageTypes;
 
     if (typeof tagsString === "string") {
       updates["system.tags"] = tagsString
@@ -92,12 +97,7 @@ export class BECMIItemSheet extends ItemSheet {
         .map((tag) => tag.trim())
         .filter((tag) => tag.length > 0);
     }
-    if (typeof damageTypesString === "string") {
-      updates["system.damageTypes"] = damageTypesString
-        .split(",")
-        .map((tag) => tag.trim())
-        .filter((tag) => tag.length > 0);
-    }
+    updates["system.damageTypes"] = Array.isArray(damageTypes) ? damageTypes.filter(Boolean) : (damageTypes ? [damageTypes] : []);
 
     const effectDataInput = expanded.system?.effectData;
     if (typeof effectDataInput === "string") {
@@ -111,6 +111,27 @@ export class BECMIItemSheet extends ItemSheet {
         } catch (_error) {
           updates["system.effectData"] = effectDataInput;
         }
+      }
+    }
+
+
+    if (this.item.type === "weapon") {
+      const weaponKey = String(expanded.system?.weaponKey ?? "").trim();
+      const definition = BECMI_WEAPONS[weaponKey];
+      if (definition) {
+        // Standard BECMI weapons are rule-driven and auto-fill core fields.
+        updates["system.weaponKey"] = definition.id;
+        updates["system.damage"] = definition.damage;
+        updates["system.encumbrance"] = definition.encumbrance;
+        updates["system.weight"] = definition.encumbrance;
+        updates["system.value"] = definition.value;
+        updates["system.weaponType"] = definition.weaponType;
+        updates["system.hands"] = definition.hands;
+        updates["system.damageTypes"] = Array.from(definition.damageTypes ?? []);
+        updates["system.ammoType"] = definition.ammoType ?? "";
+        updates["system.ammo"] = definition.ammoType ?? "";
+        updates["system.range"] = definition.range ?? { short: null, medium: null, long: null };
+        updates["system.slot"] = definition.weaponType === "natural" ? "natural" : (definition.hands === "two" ? "bothHands" : (expanded.system?.slot || "weaponMain"));
       }
     }
 

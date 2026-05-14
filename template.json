@@ -335,7 +335,7 @@
     ],
     "weapon": {
       "description": "",
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -357,14 +357,16 @@
         "medium": null,
         "long": null
       },
-      "twoHanded": false,
       "ammo": "",
-      "slot": "weapon",
-      "acBonus": 0
+      "slot": "weaponMain",
+      "acBonus": 0,
+      "weaponKey": "",
+      "hands": "one",
+      "ammoType": ""
     },
     "armor": {
       "description": "",
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -382,7 +384,7 @@
     },
     "equipment": {
       "description": "",
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -400,7 +402,7 @@
     },
     "treasure": {
       "description": "",
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -440,7 +442,7 @@
       "effects": [],
       "description": "",
       "actions": [],
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -457,7 +459,7 @@
     },
     "container": {
       "description": "",
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -480,7 +482,7 @@
     },
     "currency": {
       "description": "",
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
@@ -501,7 +503,7 @@
     },
     "consumable": {
       "description": "",
-      "quantity": 0,
+      "quantity": 1,
       "stackable": false,
       "weight": 0,
       "value": 0,
