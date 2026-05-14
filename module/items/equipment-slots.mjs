@@ -12,6 +12,21 @@ const DEFAULT_EQUIPMENT_SLOTS = {
   weaponOffhand: null
 };
 
+export const VALID_ITEM_EQUIP_SLOTS = [
+  "armor",
+  "shield",
+  "helmet",
+  "cloak",
+  "boots",
+  "gloves",
+  "ring",
+  "amulet",
+  "belt",
+  "weaponMain",
+  "weaponOffhand",
+  "weapon"
+];
+
 const SLOT_TO_ACTOR_KEYS = {
   armor: ["armor"],
   shield: ["shield"],
