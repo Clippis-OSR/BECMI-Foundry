@@ -159,4 +159,32 @@ export function validateActorSchema(actorData, context = "actor validation") {
       }
     }
   }
+
+  const actorType = String(actorData?.type ?? "").trim().toLowerCase();
+  const monster = actorData?.system?.monster;
+  if (actorType === "creature") {
+    const hitDice = String(monster?.hitDice ?? "").trim();
+    if (!hitDice) {
+      throw new Error(`[BECMI Schema] actor.system.monster.hitDice must not be empty for creature actors in ${context}.`);
+    }
+
+    for (const numericKey of ["morale", "xp"]) {
+      const value = monster?.[numericKey];
+      if (value === undefined || value === null || value === "") continue;
+      const numeric = Number(value);
+      if (!Number.isFinite(numeric)) {
+        throw new Error(`[BECMI Schema] actor.system.monster.${numericKey} must be numeric in ${context}.`);
+      }
+    }
+
+    const treasureType = monster?.treasureType;
+    if (treasureType !== undefined && treasureType !== null && !Array.isArray(treasureType) && typeof treasureType !== "string") {
+      throw new Error(`[BECMI Schema] actor.system.monster.treasureType must be a string or an array in ${context}.`);
+    }
+
+    const movement = monster?.movement;
+    if (!movement || typeof movement !== "object" || !movement.land || typeof movement.land !== "object") {
+      throw new Error(`[BECMI Schema] actor.system.monster.movement must include structured land movement data in ${context}.`);
+    }
+  }
 }

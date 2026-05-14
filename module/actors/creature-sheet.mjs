@@ -18,9 +18,11 @@ export class BECMICreatureSheet extends ActorSheet {
     // Attacks are item-driven. weaponType is the canonical weapon classification field.
     // Legacy actor.system.attacks is intentionally ignored for UI actions.
     data.attacks = getActorAttackSources(this.actor).map((item) => ({ itemId: item.id, ...weaponItemToAttackData(item) }));
-    const savesAs = system.savesAs ?? system.saveAs ?? { class: "fighter", level: 1 };
+    const monster = system.monster ?? {};
+    const savesAs = monster.saveAs ?? { class: "fighter", level: 1 };
     const savesAsClass = savesAs.class || "fighter";
     data.savesAs = savesAs;
+    data.monster = monster;
     data.saveAsClassSelected = {
       fighter: savesAsClass === "fighter" ? "selected" : "",
       cleric: savesAsClass === "cleric" ? "selected" : "",
