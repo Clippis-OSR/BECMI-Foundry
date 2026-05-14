@@ -74,7 +74,8 @@ export class BECMICharacterSheet extends ActorSheet {
       note: typeof currencyStorage.note === "string" ? currencyStorage.note : "",
       gpValue: Number(currencyStorage.gpValue ?? 0) || 0
     };
-    // Attacks are item-driven. Ignore legacy actor.system.attacks for active attack actions.
+    // Attacks are item-driven. weaponType is the canonical weapon classification field.
+    // Ignore legacy actor.system.attacks for active attack actions.
     const equippedWeaponAttacks = getActorAttackSources(this.actor).map((item) => ({
       itemId: item.id,
       ...weaponItemToAttackData(item)

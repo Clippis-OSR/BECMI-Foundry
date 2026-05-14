@@ -144,9 +144,9 @@
     <tr>
       <th>Roll</th>
       <th>Weapon</th>
-      <th>Attack Bonus</th>
+      <th>Type</th>
       <th>Damage</th>
-      <th>Damage Bonus</th>
+      <th>Damage Types</th>
     </tr>
   </thead>
   <tbody>
@@ -156,9 +156,13 @@
         <button type="button" class="becmi-weapon-attack" data-item-id="{{attack.itemId}}">Attack</button>
       </td>
       <td>{{attack.name}}</td>
-      <td>{{attack.attackBonus}}</td>
+      <td>{{attack.type}}</td>
       <td>{{attack.damage}}</td>
-      <td>{{attack.damageBonus}}</td>
+      <td>
+        {{#if attack.damageTypes.length}}
+          {{#each attack.damageTypes as |tag idx|}}{{#if idx}}, {{/if}}{{tag}}{{/each}}
+        {{else}}-{{/if}}
+      </td>
     </tr>
     {{/each}}
   </tbody>
