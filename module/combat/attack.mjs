@@ -34,7 +34,10 @@ export function getActorTHAC0(actor) {
  * @returns {number}
  */
 export function getTargetAC(target) {
-  const ac = target?.system?.combat?.ac
+  const ac = target?.system?.ac?.value
+    ?? target?.system?.ac?.base
+    ?? target?.system?.ac
+    ?? target?.system?.combat?.ac
     ?? target?.system?.attributes?.ac
     ?? target?.ac
     ?? 9;

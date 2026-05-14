@@ -1,4 +1,4 @@
-import { getActorTHAC0, getActorSaves, getCharacterSaves, getCharacterTHAC0 } from "../rules/index.mjs";
+import { calculateActorAC, getActorTHAC0, getActorSaves, getCharacterSaves, getCharacterTHAC0 } from "../rules/index.mjs";
 import { getActorClassId, getActorLevel, getCharacterLevelFromXP, getClassLevelData } from "../rules/lookups.mjs";
 
 export class BECMIActor extends Actor {
@@ -47,6 +47,9 @@ export class BECMIActor extends Actor {
 
     system.saves = canonicalSaves;
 
+    const calculatedAC = calculateActorAC(this);
+    system.ac = { ...(system.ac ?? {}), ...calculatedAC };
+
     system.derived = {
       ...existingDerived,
       level,
@@ -94,6 +97,9 @@ export class BECMIActor extends Actor {
     };
 
     system.saves = canonicalSaves;
+
+    const calculatedAC = calculateActorAC(this);
+    system.ac = { ...(system.ac ?? {}), ...calculatedAC };
 
     system.derived = {
       ...existingDerived,

@@ -100,7 +100,9 @@
 
 <div>
   AC:
-  <input type="number" name="system.combat.ac" value="{{system.combat.ac}}" />
+  <input type="number" name="system.ac.value" value="{{system.ac.value}}" readonly />
+  <div><small>Base: {{system.ac.base}}</small></div>
+  {{#if system.ac.breakdown.length}}<details><summary>AC Breakdown</summary><ul>{{#each system.ac.breakdown as |part|}}<li>{{part.label}} {{#if part.value}}: {{part.value}}{{/if}}{{#if part.modifier}} ({{part.modifier}}){{/if}}</li>{{/each}}</ul></details>{{/if}}
 </div>
 
 <div>
@@ -424,6 +426,8 @@
       <th>Est. Value</th>
       <th>Identified</th>
       <th>Location</th>
+      <th>Slot</th>
+      <th>Equipped</th>
       <th>Controls</th>
     </tr>
   </thead>
@@ -507,6 +511,21 @@
 
 <h2>Inventory</h2>
 
+<h2>Equipped Slots</h2>
+<ul>
+  <li>Armor: {{equipmentSlots.armor}}</li>
+  <li>Shield: {{equipmentSlots.shield}}</li>
+  <li>Main Weapon: {{equipmentSlots.weaponMain}}</li>
+  <li>Offhand Weapon: {{equipmentSlots.weaponOffhand}}</li>
+  <li>Ring (L): {{equipmentSlots.ringLeft}}</li>
+  <li>Ring (R): {{equipmentSlots.ringRight}}</li>
+  <li>Amulet: {{equipmentSlots.amulet}}</li>
+  <li>Cloak: {{equipmentSlots.cloak}}</li>
+  <li>Boots: {{equipmentSlots.boots}}</li>
+  <li>Gloves: {{equipmentSlots.gloves}}</li>
+  <li>Belt: {{equipmentSlots.belt}}</li>
+</ul>
+
 {{#each inventoryGroups as |group|}}
 <section class="inventory-group inventory-section inventory-drop-zone" data-location="{{group.sectionLocation}}">
 <div class="inventory-section-header">
@@ -522,6 +541,8 @@
       <th>Total Wt</th>
       <th>Value</th>
       <th>Location</th>
+      <th>Slot</th>
+      <th>Equipped</th>
       <th>Controls</th>
     </tr>
   </thead>
@@ -550,7 +571,10 @@
             <option value="storage" {{#if (eq item.location "storage")}}selected{{/if}}>Storage</option>
           </select>
         </td>
+        <td><input type="text" value="{{item.slot}}" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.slot" placeholder="weapon/armor/ring" /></td>
+        <td>{{#if item.equipped}}✅{{else}}—{{/if}}</td>
         <td>
+          <button type="button" data-action="toggle-equip-item" data-item-id="{{item.id}}">{{#if item.equipped}}Unequip{{else}}Equip{{/if}}</button>
           <button type="button" data-action="item-edit" data-item-id="{{item.id}}">Edit</button>
           <button type="button" data-action="item-delete" data-item-id="{{item.id}}">Delete</button>
         </td>
@@ -558,7 +582,7 @@
       {{/each}}
     {{else}}
       <tr>
-        <td colspan="8"><em>No items in {{group.label}}.</em></td>
+        <td colspan="10"><em>No items in {{group.label}}.</em></td>
       </tr>
     {{/if}}
   </tbody>
