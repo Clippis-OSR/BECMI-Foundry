@@ -1,0 +1,1285 @@
+[
+  {
+    "id": "animal-herd-goat",
+    "name": "Animal Herd, Goat",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "1",
+    "movement": "240(80)",
+    "attacks": [
+      {
+        "type": "butt",
+        "count": 1,
+        "raw": "1 Butt"
+      }
+    ],
+    "damage": "1d2",
+    "numberAppearing": "",
+    "saveAs": "F1",
+    "morale": 5,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 10,
+    "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
+    "notes": "On failed morale, 40% Stampede 1d20 dmg.",
+    "actorType": "creature"
+  },
+  {
+    "id": "animal-herd-antelope-deer",
+    "name": "Animal Herd, Antelope/Deer",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "2",
+    "movement": "240(80)",
+    "attacks": [
+      {
+        "type": "butt",
+        "count": 1,
+        "raw": "1 Butt"
+      }
+    ],
+    "damage": "1d4",
+    "numberAppearing": "",
+    "saveAs": "F1",
+    "morale": 5,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 20,
+    "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
+    "notes": "On failed morale, 40% Stampede 1d20 dmg.",
+    "actorType": "creature"
+  },
+  {
+    "id": "animal-herd-caribou-oxen",
+    "name": "Animal Herd, Caribou/Oxen",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "3",
+    "movement": "240(80)",
+    "attacks": [
+      {
+        "type": "butt",
+        "count": 1,
+        "raw": "1 Butt"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "",
+    "saveAs": "F1",
+    "morale": 5,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 35,
+    "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
+    "notes": "On failed morale, 40% Stampede 1d20 dmg.",
+    "actorType": "creature"
+  },
+  {
+    "id": "animal-herd-elk-moose",
+    "name": "Animal Herd, Elk/Moose",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "4",
+    "movement": "240(80)",
+    "attacks": [
+      {
+        "type": "butt",
+        "count": 1,
+        "raw": "1 Butt"
+      }
+    ],
+    "damage": "1d8",
+    "numberAppearing": "",
+    "saveAs": "F1",
+    "morale": 5,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 75,
+    "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
+    "notes": "On failed morale, 40% Stampede 1d20 dmg.",
+    "actorType": "creature"
+  },
+  {
+    "id": "basilisk",
+    "name": "Basilisk",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "6 +1**",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      },
+      {
+        "type": "gaze",
+        "count": 1,
+        "raw": "1 Gaze"
+      }
+    ],
+    "damage": "1d10 + Petrification/Save VS Petri",
+    "numberAppearing": "",
+    "saveAs": "F6",
+    "morale": 9,
+    "treasureType": "F",
+    "alignment": "Neutral",
+    "xp": 950,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "black-pudding",
+    "name": "Black Pudding*",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "10*",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "3d8",
+    "numberAppearing": "",
+    "saveAs": "F5",
+    "morale": 12,
+    "treasureType": "5d4 Gems",
+    "alignment": "Neutral",
+    "xp": 1750,
+    "specialAbilities": "Only take FIRE dmg, Splits if hit by anything else.",
+    "notes": "Only take FIRE dmg, Splits if hit by anything else.",
+    "actorType": "creature"
+  },
+  {
+    "id": "blink-dog",
+    "name": "Blink Dog",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "4*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "",
+    "saveAs": "F4",
+    "morale": 6,
+    "treasureType": "C",
+    "alignment": "Lawful",
+    "xp": 125,
+    "specialAbilities": "blink in to attack then blink away 10-40'",
+    "notes": "blink in to attack then blink away 10-40'",
+    "actorType": "creature"
+  },
+  {
+    "id": "caecilia",
+    "name": "Caecilia",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "6*",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "bite + swallow",
+        "count": 1,
+        "raw": "1 Bite + Swallow(19)"
+      }
+    ],
+    "damage": "1d8",
+    "numberAppearing": "",
+    "saveAs": "F3",
+    "morale": 9,
+    "treasureType": "B",
+    "alignment": "Neutral",
+    "xp": 500,
+    "specialAbilities": "Subterranian",
+    "notes": "Subterranian",
+    "actorType": "creature"
+  },
+  {
+    "id": "camel",
+    "name": "Camel",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "2",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "biite",
+        "count": 1,
+        "raw": "1 Biite"
+      },
+      {
+        "type": "hoof",
+        "count": 1,
+        "raw": "1 Hoof"
+      }
+    ],
+    "damage": "1/1d4",
+    "numberAppearing": "",
+    "saveAs": "F1",
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 20,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "centaur",
+    "name": "Centaur",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "4",
+    "movement": "180(60)",
+    "attacks": [
+      {
+        "type": "hooves",
+        "count": 2,
+        "raw": "2 Hooves"
+      },
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon(Club, Lance, Bow)"
+      }
+    ],
+    "damage": "1d6/1d6/By weapon",
+    "numberAppearing": "",
+    "saveAs": "F4",
+    "morale": 8,
+    "treasureType": "A",
+    "alignment": "Neutral",
+    "xp": 75,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "centaur-young",
+    "name": "Centaur, Young",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "2",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "hooves",
+        "count": 2,
+        "raw": "2 Hooves"
+      },
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon(Club)"
+      }
+    ],
+    "damage": "1d2/1d2/1d4",
+    "numberAppearing": "",
+    "saveAs": "F2",
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 20,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "chimera",
+    "name": "Chimera",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "9**",
+    "movement": "120(40)",
+    "attacks": [],
+    "damage": "",
+    "numberAppearing": "",
+    "saveAs": "",
+    "morale": null,
+    "treasureType": "",
+    "alignment": "",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "cockatrice",
+    "name": "Cockatrice",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "5**",
+    "movement": "M: 90(30)",
+    "attacks": [],
+    "damage": "",
+    "numberAppearing": "",
+    "saveAs": "",
+    "morale": null,
+    "treasureType": "",
+    "alignment": "",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "crab-giant",
+    "name": "Crab, Giant",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 2,
+    "hitDice": "3",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "pincers",
+        "count": 2,
+        "raw": "2 Pincers"
+      }
+    ],
+    "damage": "2d6/2d6",
+    "numberAppearing": "",
+    "saveAs": "F2",
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 35,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "crocodile",
+    "name": "Crocodile",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "2",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d8",
+    "numberAppearing": "",
+    "saveAs": "F1",
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 35,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "crocodile-large",
+    "name": "Crocodile, Large",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 3,
+    "hitDice": "6",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "2d8",
+    "numberAppearing": "",
+    "saveAs": "F3",
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 275,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "crocodile-giant",
+    "name": "Crocodile, Giant",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 1,
+    "hitDice": "15",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "3d8",
+    "numberAppearing": "",
+    "saveAs": "F8",
+    "morale": 9,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 1350,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "cyclops",
+    "name": "Cyclops",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "13*",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "club or stone throw",
+        "count": 1,
+        "raw": "1 Club or Stone throw"
+      }
+    ],
+    "damage": "3d10 or 3d6",
+    "numberAppearing": "",
+    "saveAs": "F13",
+    "morale": 9,
+    "treasureType": "E + 5000gp",
+    "alignment": "Chaotic",
+    "xp": 2300,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "devil-swine",
+    "name": "Devil Swine*",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 3,
+    "hitDice": "9*",
+    "movement": "180(60)",
+    "attacks": [
+      {
+        "type": "gore",
+        "count": 1,
+        "raw": "1 Gore"
+      }
+    ],
+    "damage": "2d6",
+    "numberAppearing": "",
+    "saveAs": "F9",
+    "morale": 10,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "xp": 1600,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "displacer-beast",
+    "name": "Displacer Beast",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "6*",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "tentacles",
+        "count": 2,
+        "raw": "2 Tentacles"
+      }
+    ],
+    "damage": "2d4/2d4",
+    "numberAppearing": "",
+    "saveAs": "F6",
+    "morale": 8,
+    "treasureType": "D",
+    "alignment": "Neutral",
+    "xp": 500,
+    "specialAbilities": "-2 To hit and +2 save throws. Gain 1 bite when hp =6 or lower. (Bite +2hit 1d6 dmg)",
+    "notes": "-2 To hit and +2 save throws. Gain 1 bite when hp =6 or lower. (Bite +2hit 1d6 dmg)",
+    "actorType": "creature"
+  },
+  {
+    "id": "djinni-lesser",
+    "name": "Djinni(Lesser)*",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "7+1*",
+    "movement": "M: 90(30)",
+    "attacks": [],
+    "damage": "",
+    "numberAppearing": "",
+    "saveAs": "",
+    "morale": null,
+    "treasureType": "",
+    "alignment": "",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "dryad",
+    "name": "Dryad",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "2*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "charm person",
+        "count": 1,
+        "raw": "Charm person"
+      }
+    ],
+    "damage": "Spell charm person with -2 to Save",
+    "numberAppearing": "",
+    "saveAs": "Elf4",
+    "morale": 6,
+    "treasureType": "D",
+    "alignment": "Neutral",
+    "xp": 25,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "efreeti-lesser",
+    "name": "Efreeti(Lesser)*",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 3,
+    "hitDice": "10*",
+    "movement": "M: 90(30)",
+    "attacks": [],
+    "damage": "",
+    "numberAppearing": "",
+    "saveAs": "",
+    "morale": null,
+    "treasureType": "",
+    "alignment": "",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "elemental-air-staff",
+    "name": "Elemental* Air, staff",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 2,
+    "hitDice": "8",
+    "movement": "F:360(120)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "1d8",
+    "numberAppearing": "",
+    "saveAs": "F8",
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 650,
+    "specialAbilities": "Does +1d8 in its element.",
+    "notes": "Does +1d8 in its element.",
+    "actorType": "creature"
+  },
+  {
+    "id": "elemental-air-device",
+    "name": "Elemental* Air, device",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 0,
+    "hitDice": "12",
+    "movement": "F:360(120)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "2d8",
+    "numberAppearing": "",
+    "saveAs": "F12",
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 1250,
+    "specialAbilities": "Does +1d8 in its element.",
+    "notes": "Does +1d8 in its element.",
+    "actorType": "creature"
+  },
+  {
+    "id": "elemental-air-spell",
+    "name": "Elemental* Air, spell",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": -2,
+    "hitDice": "16",
+    "movement": "F:360(120)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "3d8",
+    "numberAppearing": "",
+    "saveAs": "F16",
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 1850,
+    "specialAbilities": "Does +1d8 in its element.",
+    "notes": "Does +1d8 in its element.",
+    "actorType": "creature"
+  },
+  {
+    "id": "elemental-earth-staff",
+    "name": "Elemental* Earth, staff",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 2,
+    "hitDice": "8",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "1d8",
+    "numberAppearing": "",
+    "saveAs": "F8",
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 650,
+    "specialAbilities": "Does +1d8 in its element.",
+    "notes": "Does +1d8 in its element.",
+    "actorType": "creature"
+  },
+  {
+    "id": "elemental-earth-device",
+    "name": "Elemental* Earth, device",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 0,
+    "hitDice": "12",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "2d8",
+    "numberAppearing": "",
+    "saveAs": "F12",
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 1250,
+    "specialAbilities": "Does +1d8 in its element.",
+    "notes": "Does +1d8 in its element.",
+    "actorType": "creature"
+  },
+  {
+    "id": "elemental-earth-spell",
+    "name": "Elemental* Earth, spell",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": -2,
+    "hitDice": "16",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "3d8",
+    "numberAppearing": "",
+    "saveAs": "F16",
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 1850,
+    "specialAbilities": "Does +1d8 in its element.",
+    "notes": "Does +1d8 in its element.",
+    "actorType": "creature"
+  },
+  {
+    "id": "elemental-fire-staff",
+    "name": "Elemental* Fire, staff",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 2,
+    "hitDice": "8",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "1d8",
+    "numberAppearing": "",
+    "saveAs": "F8",
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 650,
+    "specialAbilities": "Does +1d8 in its element.",
+    "notes": "Does +1d8 in its element.",
+    "actorType": "creature"
+  },
+  {
+    "id": "elemental-fire-device",
+    "name": "Elemental* Fire, device",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 0,
+    "hitDice": "12",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "2d8",
+    "numberAppearing": "",
+    "saveAs": "F12",
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 1250,
+    "specialAbilities": "Does +1d8 in its element.",
+    "notes": "Does +1d8 in its element.",
+    "actorType": "creature"
+  },
+  {
+    "id": "elemental-fire-spell",
+    "name": "Elemental* Fire, spell",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": -2,
+    "hitDice": "16",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "3d8",
+    "numberAppearing": "",
+    "saveAs": "F16",
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 1850,
+    "specialAbilities": "Does +1d8 in its element.",
+    "notes": "Does +1d8 in its element.",
+    "actorType": "creature"
+  },
+  {
+    "id": "elemental-water-staff",
+    "name": "Elemental* Water, staff",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 2,
+    "hitDice": "8",
+    "movement": "M: 60(20)",
+    "attacks": [],
+    "damage": "",
+    "numberAppearing": "",
+    "saveAs": "",
+    "morale": null,
+    "treasureType": "",
+    "alignment": "",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "elemental-water-device",
+    "name": "Elemental* Water, device",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 0,
+    "hitDice": "12",
+    "movement": "M: 60(20)",
+    "attacks": [],
+    "damage": "",
+    "numberAppearing": "",
+    "saveAs": "",
+    "morale": null,
+    "treasureType": "",
+    "alignment": "",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "elemental-water-spell",
+    "name": "Elemental* Water, spell",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": -2,
+    "hitDice": "16",
+    "movement": "M: 60(20)",
+    "attacks": [],
+    "damage": "",
+    "numberAppearing": "",
+    "saveAs": "",
+    "morale": null,
+    "treasureType": "",
+    "alignment": "",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "elephant",
+    "name": "Elephant",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "9",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "tusks or 1 trample",
+        "count": 2,
+        "raw": "2 Tusks(75%) OR 1 Trample(25%)"
+      }
+    ],
+    "damage": "2d4/2d4 OR 4d8",
+    "numberAppearing": "",
+    "saveAs": "F5",
+    "morale": 8,
+    "treasureType": "Tusk 1d6 x100gp",
+    "alignment": "Neutral",
+    "xp": 900,
+    "specialAbilities": "Tries to charge first round",
+    "notes": "Tries to charge first round",
+    "actorType": "creature"
+  },
+  {
+    "id": "elephant-prehistoric",
+    "name": "Elephant, Prehistoric",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 3,
+    "hitDice": "15",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "tusks or 1 trample",
+        "count": 2,
+        "raw": "2 Tusks(75%) OR 1 Trample(25%)"
+      }
+    ],
+    "damage": "2d6/2d6 OR 4d8",
+    "numberAppearing": "",
+    "saveAs": "F8",
+    "morale": 8,
+    "treasureType": "Tusk 2d4 x100gp",
+    "alignment": "Neutral",
+    "xp": 1650,
+    "specialAbilities": "Tries to charge first round",
+    "notes": "Tries to charge first round",
+    "actorType": "creature"
+  },
+  {
+    "id": "fish-giant-bass",
+    "name": "Fish, Giant Bass",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "2",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "",
+    "saveAs": "F1",
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 20,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "fish-giant-rockfish",
+    "name": "Fish, Giant Rockfish",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "5+5*",
+    "movement": "180(60)",
+    "attacks": [
+      {
+        "type": "spines + poison",
+        "count": 4,
+        "raw": "4 Spines + Poison"
+      }
+    ],
+    "damage": "1d4 each Spine + Save VS Poison(3)",
+    "numberAppearing": "",
+    "saveAs": "F3",
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 400,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "fish-giant-sturgeon",
+    "name": "Fish, Giant Sturgeon",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 0,
+    "hitDice": "10+2*",
+    "movement": "180(60)",
+    "attacks": [
+      {
+        "type": "bite + swallow",
+        "count": 1,
+        "raw": "1 Bite + Swallow(18)"
+      }
+    ],
+    "damage": "2d10 (Swallow 2d6)",
+    "numberAppearing": "",
+    "saveAs": "F5",
+    "morale": 9,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 1900,
+    "specialAbilities": "Swalloed victim save VS Death Ray or be paralysed",
+    "notes": "Swalloed victim save VS Death Ray or be paralysed",
+    "actorType": "creature"
+  },
+  {
+    "id": "giant-hill",
+    "name": "Giant, Hill",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "8",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "weapon or throw rock",
+        "count": 1,
+        "raw": "1 Weapon OR Throw Rock"
+      }
+    ],
+    "damage": "2d8 OR 3d6",
+    "numberAppearing": "",
+    "saveAs": "F8",
+    "morale": 8,
+    "treasureType": "E + 5000gp",
+    "alignment": "Chaotic",
+    "xp": 650,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "giant-stone",
+    "name": "Giant, Stone",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "9",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "weapon or throw rock",
+        "count": 1,
+        "raw": "1 Weapon OR Throw Rock"
+      }
+    ],
+    "damage": "3d6 OR 3d6",
+    "numberAppearing": "",
+    "saveAs": "F9",
+    "morale": 9,
+    "treasureType": "E + 5000gp",
+    "alignment": "Neutral",
+    "xp": 900,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "giant-frost",
+    "name": "Giant, Frost",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "10+1*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "weapon or throw rock",
+        "count": 1,
+        "raw": "1 Weapon OR Throw Rock"
+      }
+    ],
+    "damage": "4d6 OR 3d6",
+    "numberAppearing": "",
+    "saveAs": "F10",
+    "morale": 9,
+    "treasureType": "E + 5000gp",
+    "alignment": "Chaotic",
+    "xp": 1900,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "giant-fire",
+    "name": "Giant, Fire",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "11+2*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "weapon or throw rock",
+        "count": 1,
+        "raw": "1 Weapon OR Throw Rock"
+      }
+    ],
+    "damage": "5d6 OR 3d6",
+    "numberAppearing": "",
+    "saveAs": "F11",
+    "morale": 9,
+    "treasureType": "E + 5000gp",
+    "alignment": "Chaotic",
+    "xp": 2100,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "giant-cloud",
+    "name": "Giant, Cloud",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "13*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "weapon or throw rock",
+        "count": 1,
+        "raw": "1 Weapon OR Throw Rock"
+      }
+    ],
+    "damage": "6d6 OR 3d6",
+    "numberAppearing": "",
+    "saveAs": "F12",
+    "morale": 10,
+    "treasureType": "E + 5000gp",
+    "alignment": "Neutral",
+    "xp": 2300,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "giant-storm",
+    "name": "Giant, Storm",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 2,
+    "hitDice": "15**",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "weapon + special",
+        "count": 1,
+        "raw": "1 Weapon + Special"
+      }
+    ],
+    "damage": "8d6",
+    "numberAppearing": "",
+    "saveAs": "",
+    "morale": null,
+    "treasureType": "",
+    "alignment": "",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "golem-wood",
+    "name": "Golem* , Wood",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "2+2*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "fist",
+        "count": 1,
+        "raw": "1 Fist"
+      }
+    ],
+    "damage": "1d8",
+    "numberAppearing": "",
+    "saveAs": "F1",
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 35,
+    "specialAbilities": "-1 to INIT, -2 To Save VS Fire and takes +1 dmg per die.",
+    "notes": "-1 to INIT, -2 To Save VS Fire and takes +1 dmg per die.",
+    "actorType": "creature"
+  },
+  {
+    "id": "golem-bone",
+    "name": "Golem* , Bone",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 2,
+    "hitDice": "6*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "weapons",
+        "count": 4,
+        "raw": "4 Weapons( 4x 1h or 2x 2h)"
+      }
+    ],
+    "damage": "By weapons",
+    "numberAppearing": "",
+    "saveAs": "F4",
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 500,
+    "specialAbilities": "Immune fire, cold, electricity",
+    "notes": "Immune fire, cold, electricity",
+    "actorType": "creature"
+  },
+  {
+    "id": "golem-amber",
+    "name": "Golem* , Amber",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "10*",
+    "movement": "180(60)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "2d6/2d6/2d10",
+    "numberAppearing": "",
+    "saveAs": "F5",
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 1750,
+    "specialAbilities": "Detect invis 60'",
+    "notes": "Detect invis 60'",
+    "actorType": "creature"
+  },
+  {
+    "id": "golem-bronze",
+    "name": "Golem* , Bronze",
+    "sourceBook": "Expert",
+    "sourcePage": null,
+    "armorClass": 0,
+    "hitDice": "20**",
+    "movement": "240(80)",
+    "attacks": [
+      {
+        "type": "fist + special",
+        "count": 1,
+        "raw": "1 Fist + Special"
+      }
+    ],
+    "damage": "3d10 +1d10Fire",
+    "numberAppearing": "",
+    "saveAs": "F10",
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 5975,
+    "specialAbilities": "Flaming fists +1d10FIre",
+    "notes": "Flaming fists +1d10FIre",
+    "actorType": "creature"
+  }
+]
