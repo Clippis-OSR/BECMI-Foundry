@@ -1,15 +1,15 @@
 import { calculateActorAC, getActorTHAC0, getActorSaves, getCharacterSaves, getCharacterTHAC0 } from "../rules/index.mjs";
 import { getActorClassId, getActorLevel, getCharacterLevelFromXP, getClassLevelData } from "../rules/lookups.mjs";
+import { assertCanonicalActorType } from "./actor-types.mjs";
 
 export class BECMIActor extends Actor {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    if (this.type === "character") this._prepareCharacterDerivedData();
+    const actorType = assertCanonicalActorType(this.type, `prepareDerivedData for actor "${this.name ?? this.id ?? "Unknown"}"`);
 
-    if (this.type === "creature" || this.type === "monster" || this.type === "npc") {
-      this._prepareCreatureDerivedData();
-    }
+    if (actorType === "character") this._prepareCharacterDerivedData();
+    if (actorType === "creature") this._prepareCreatureDerivedData();
 
     const debugDerivedData = game?.settings?.get?.("becmi-foundry", "debugDerivedData") ?? false;
     if (debugDerivedData) {

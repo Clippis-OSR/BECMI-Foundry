@@ -236,15 +236,17 @@
       "equipmentSlots": {
         "armor": null,
         "shield": null,
-        "ringLeft": null,
-        "ringRight": null,
+        "helmet": null,
+        "ring": null,
         "amulet": null,
         "cloak": null,
         "boots": null,
         "gloves": null,
         "belt": null,
         "weaponMain": null,
-        "weaponOffhand": null
+        "weaponOffhand": null,
+        "natural": null,
+        "missile": null
       },
       "ac": {
         "base": 9,
@@ -262,7 +264,7 @@
       }
     },
     "creature": {
-      "creatureRole": "monster",
+      "creatureRole": "creature",
       "hd": "1",
       "hp": {
         "value": 1,
@@ -307,15 +309,17 @@
       "equipmentSlots": {
         "armor": null,
         "shield": null,
-        "ringLeft": null,
-        "ringRight": null,
+        "helmet": null,
+        "ring": null,
         "amulet": null,
         "cloak": null,
         "boots": null,
         "gloves": null,
         "belt": null,
         "weaponMain": null,
-        "weaponOffhand": null
+        "weaponOffhand": null,
+        "natural": null,
+        "missile": null
       },
       "buffs": {
         "ac": []
@@ -418,7 +422,7 @@
       "actions": [],
       "treasureType": "",
       "estimatedValue": 0,
-      "slot": "weapon",
+      "slot": "weaponMain",
       "acBonus": 0
     },
     "spell": {
@@ -455,7 +459,7 @@
       "rarity": "",
       "tags": [],
       "notes": "",
-      "slot": "weapon",
+      "slot": "weaponMain",
       "acBonus": 0
     },
     "container": {
@@ -478,7 +482,7 @@
       "containedWeight": 0,
       "weightReduction": 0,
       "slots": 0,
-      "slot": "weapon",
+      "slot": "weaponMain",
       "acBonus": 0
     },
     "currency": {
@@ -499,7 +503,7 @@
       "denomination": "",
       "exchangeValue": 0,
       "weightPerUnit": 0,
-      "slot": "weapon",
+      "slot": "weaponMain",
       "acBonus": 0
     },
     "consumable": {
@@ -521,7 +525,7 @@
       "maxUses": 0,
       "consumedOnUse": false,
       "effectData": "",
-      "slot": "weapon",
+      "slot": "weaponMain",
       "acBonus": 0
     },
     "ammo": {

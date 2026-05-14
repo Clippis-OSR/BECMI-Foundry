@@ -29,8 +29,7 @@ export function getEquippedDefensiveItems(actor) {
   const slottedIds = [
     slots.armor,
     slots.shield,
-    slots.ringLeft,
-    slots.ringRight,
+    slots.ring,
     slots.amulet,
     slots.cloak
   ].filter(Boolean);

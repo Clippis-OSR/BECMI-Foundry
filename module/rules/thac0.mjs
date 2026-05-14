@@ -1,3 +1,4 @@
+import { assertCanonicalActorType } from "../actors/actor-types.mjs";
 import { compareHitDiceToBracket, normalizeHitDice } from "./hit-dice.mjs";
 import { getActorClassId, getActorLevel, getClassTable } from "./lookups.mjs";
 
@@ -48,84 +49,10 @@ function getProfileEntries(characterThac0, profile) {
   return null;
 }
 
-export function getCharacterTHAC0(classId, level) {
-  const classTable = getClassTable(classId);
-  if (!classTable) {
-    console.warn(`[BECMI] Cannot resolve character THAC0: missing class table for classId "${classId}".`);
-    return null;
-  }
-
-  const thac0Profile = classTable.thac0Profile;
-  if (!thac0Profile) {
-    console.warn(
-      `[BECMI] Cannot resolve character THAC0: missing thac0Profile in CONFIG.BECMI.classTables["${classId}"].`
-    );
-    return null;
-  }
-
-  const levelNumber = Number(level);
-  if (!Number.isFinite(levelNumber) || levelNumber < 1) {
-    console.warn(`[BECMI] Cannot resolve character THAC0: invalid level "${level}" for classId "${classId}".`);
-    return null;
-  }
-
-  const characterThac0 = CONFIG?.BECMI?.characterThac0;
-  if (!characterThac0) {
-    console.warn("[BECMI] Cannot resolve character THAC0: CONFIG.BECMI.characterThac0 is missing.");
-    return null;
-  }
-
-  const profileData = getProfileEntries(characterThac0, thac0Profile);
-  if (!profileData?.entries) {
-    console.warn(
-      `[BECMI] Cannot resolve character THAC0: no entries found for thac0Profile "${thac0Profile}" in CONFIG.BECMI.characterThac0.`
-    );
-    return null;
-  }
-
-  for (const entry of Object.values(profileData.entries)) {
-    const range = parseLevelBand(entry?.label, profileData.profileBandIndex);
-    if (!range) continue;
-
-    if (levelNumber >= range.min && levelNumber <= range.max) {
-      return typeof entry?.thac0 === "number" ? entry.thac0 : null;
-    }
-  }
-
-  console.warn(
-    `[BECMI] Cannot resolve character THAC0: no matching level band for profile "${thac0Profile}" at level ${levelNumber}.`
-  );
-  return null;
-}
-
-export function getMonsterTHAC0(hd) {
-  const monsterThac0 = CONFIG?.BECMI?.monsterThac0;
-  if (!monsterThac0?.hitDice) {
-    console.warn("[BECMI] Cannot resolve monster THAC0: CONFIG.BECMI.monsterThac0.hitDice is missing.");
-    return null;
-  }
-
-  const normalizedHd = normalizeHitDice(hd);
-  if (!normalizedHd) {
-    console.warn(`[BECMI] Cannot resolve monster THAC0: invalid HD value "${hd}".`);
-    return null;
-  }
-
-  for (const entry of Object.values(monsterThac0.hitDice)) {
-    if (!compareHitDiceToBracket(normalizedHd.numeric, entry?.label)) continue;
-    return typeof entry?.thac0 === "number" ? entry.thac0 : null;
-  }
-
-  console.warn(
-    `[BECMI] Cannot resolve monster THAC0: no matching HD bracket for HD "${hd}" (normalized: ${normalizedHd.numeric}).`
-  );
-  return null;
-}
-
 export function getActorTHAC0(actor) {
   if (!actor) return null;
 
-  const actorType = actor.type;
+  const actorType = assertCanonicalActorType(actor.type, `getActorTHAC0 for actor "${actor?.name ?? actor?.id ?? "Unknown"}"`);
   const actorSystem = actor.system;
 
   if (actorType === "character") {
@@ -135,9 +62,9 @@ export function getActorTHAC0(actor) {
     return getCharacterTHAC0(classId, level);
   }
 
-  if (actorType === "creature" || actorType === "monster" || actorType === "npc") {
+  if (actorType === "creature") {
     return getMonsterTHAC0(actorSystem?.hd ?? actorSystem?.hitDice);
   }
 
-  return null;
+  throw new Error(`[BECMI] Unsupported actor type "${actorType}" for THAC0 resolution.`);
 }

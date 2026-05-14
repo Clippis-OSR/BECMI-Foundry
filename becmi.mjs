@@ -1,4 +1,5 @@
 import { BECMIActor } from "./module/actors/becmi-actor.mjs";
+import { assertCanonicalActorType } from "./module/actors/actor-types.mjs";
 import { BECMICharacterSheet } from "./module/actors/character-sheet.mjs";
 import { BECMICreatureSheet } from "./module/actors/creature-sheet.mjs";
 import { BECMIItemSheet } from "./module/items/item-sheet.mjs";
@@ -24,7 +25,7 @@ const BECMI_CREATURE_SHEET_ID = "becmi-foundry.BECMICreatureSheet";
 const BECMI_CHARACTER_SHEET_ID = "becmi-foundry.BECMICharacterSheet";
 
 const BECMI_CREATURE_DEFAULTS = {
-  creatureRole: "monster",
+  creatureRole: "creature",
   hd: "1",
   hp: {
     value: 1,
@@ -48,6 +49,54 @@ const CANONICAL_SAVE_LABELS = {
   dragonBreath: "Dragon Breath",
   rodStaffSpell: "Rod / Staff / Spell"
 };
+
+
+const LEGACY_ACTOR_TYPE_MAP = Object.freeze({ monster: "creature", npc: "creature" });
+
+async function migrateLegacyActorTypes() {
+  if (!game.user?.isGM) return;
+  const alreadyMigrated = game.settings.get("becmi-foundry", "actorTypeMigrationVersion");
+  if (alreadyMigrated === "1") return;
+
+  const worldActors = Array.from(game.actors ?? []);
+  for (const actor of worldActors) {
+    const legacyTarget = LEGACY_ACTOR_TYPE_MAP[String(actor.type ?? "").toLowerCase()];
+    if (!legacyTarget) continue;
+    throw new Error(`[BECMI Migration] Actor "${actor.name}" uses legacy type "${actor.type}". Recreate it as type "${legacyTarget}" before continuing.`);
+  }
+
+  await game.settings.set("becmi-foundry", "actorTypeMigrationVersion", "1");
+}
+
+
+function canonicalizeLegacyItemSlot(slot) {
+  const normalized = String(slot ?? "").trim();
+  if (!normalized) return normalized;
+  if (normalized === "weapon") return "weaponMain";
+  if (normalized === "bothHands") return "weaponMain";
+  return normalized;
+}
+
+async function migrateLegacyEquipmentSlots() {
+  if (!game.user?.isGM) return;
+  const actors = game.actors?.contents ?? [];
+  for (const actor of actors) {
+    const updates = {};
+    const eq = actor.system?.equipmentSlots ?? {};
+    if (eq.ringLeft || eq.ringRight) {
+      updates["system.equipmentSlots.ring"] = eq.ringLeft ?? eq.ringRight ?? null;
+      updates["system.equipmentSlots.-=ringLeft"] = null;
+      updates["system.equipmentSlots.-=ringRight"] = null;
+    }
+
+    for (const item of actor.items ?? []) {
+      const slot = canonicalizeLegacyItemSlot(item.system?.slot);
+      if (slot !== item.system?.slot) await item.update({ "system.slot": slot });
+    }
+
+    if (Object.keys(updates).length > 0) await actor.update(updates);
+  }
+}
 
 function canonicalizeActorSavesForMigration(saves) {
   if (!saves || typeof saves !== "object") return null;
@@ -95,6 +144,8 @@ Hooks.once("init", async function () {
     type: Boolean,
     default: false
   });
+
+  game.settings.register("becmi-foundry", "actorTypeMigrationVersion", { name: "Actor Type Migration Version", scope: "world", config: false, type: String, default: "0" });
 
   Actors.unregisterSheet("core", ActorSheet);
 
@@ -177,6 +228,12 @@ Hooks.once("init", async function () {
 });
 
 Hooks.on("preCreateActor", (actor) => {
+  const legacyType = LEGACY_ACTOR_TYPE_MAP[String(actor.type ?? "").toLowerCase()];
+  if (legacyType) {
+    throw new Error(`[BECMI] Legacy actor type "${actor.type}" is no longer supported. Create actors as type "${legacyType}".`);
+  }
+  assertCanonicalActorType(actor.type, `preCreateActor for actor "${actor.name ?? "Unknown"}"`);
+
   if (actor.type === "creature") {
     const existing = actor.system ?? {};
     const system = foundry.utils.mergeObject(
@@ -397,6 +454,9 @@ Hooks.once("ready", async function () {
   game.becmi.rules = becmiRules;
   game.becmi.inventory = inventoryManager;
   game.becmi.encumbrance = encumbrance;
+
+  await migrateLegacyActorTypes();
+  await migrateLegacyEquipmentSlots();
 
   const actors = game.actors?.contents ?? [];
   for (const actor of actors) {
