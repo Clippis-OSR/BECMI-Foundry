@@ -2,7 +2,9 @@ import { calculateActorAC, getActorTHAC0, getActorSaves, getCharacterSaves, getC
 import { getActorClassId, getActorLevel, getCharacterLevelFromXP, getClassLevelData } from "../rules/lookups.mjs";
 import { assertCanonicalActorType } from "./actor-types.mjs";
 import { calculateTotalEncumbrance } from "../items/encumbrance.mjs";
-
+import { migrateActorSpellcasting } from "./spellcasting/spellcasting-migration.js";
+import { validateActorSpellcasting } from "./spellcasting/spellcasting-validation.js";
+import { prepareSpellcastingData } from "./spellcasting/spellcasting-data.js";
 
 
 function applyEncumbranceDerivedData(system, actor) {
@@ -56,8 +58,11 @@ export class BECMIActor extends Actor {
     const calculatedSaves = classId !== null && level !== null ? getCharacterSaves(classId, level) ?? {} : {};
     const calculatedThac0 = classId !== null && level !== null ? getCharacterTHAC0(classId, level) : null;
     const levelData = classId !== null && derivedLevel !== null ? getClassLevelData(classId, derivedLevel) : null;
+    migrateActorSpellcasting(this);
+    validateActorSpellcasting(this);
+    const actorSpellcasting = this.system?.spellcasting;
     const spellcastingData = levelData?.spellcasting;
-    const hasSpellcasting = spellcastingData?.enabled === true;
+    const hasSpellcasting = spellcastingData?.enabled === true || Object.values(actorSpellcasting?.casters ?? {}).some((c) => c?.enabled === true);
     const hasThiefSkills = !!levelData?.thiefSkills && typeof levelData.thiefSkills === "object";
     const hasTurnUndead = !!levelData?.turnUndead && typeof levelData.turnUndead === "object";
     const canonicalSaves = {
@@ -85,8 +90,7 @@ export class BECMIActor extends Actor {
         rodStaffSpell: canonicalSaves.rodStaffSpell.value
       },
       hasSpellcasting,
-      spellSlots: hasSpellcasting ? spellcastingData?.slots ?? null : null,
-      spellsKnown: hasSpellcasting ? spellcastingData?.spellsKnown ?? null : null,
+      spellcasting: prepareSpellcastingData(this),
       hasThiefSkills,
       thiefSkills: hasThiefSkills ? levelData?.thiefSkills ?? null : null,
       hasTurnUndead,

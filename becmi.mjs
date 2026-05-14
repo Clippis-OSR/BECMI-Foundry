@@ -5,6 +5,8 @@ import { BECMICreatureSheet } from "./module/actors/creature-sheet.mjs";
 import { BECMIItemSheet } from "./module/items/item-sheet.mjs";
 import { BECMISpellItemSheet } from "./module/items/spell/spell-sheet.js";
 import { registerSpellValidationHooks } from "./module/items/spell/spell-validation.js";
+import { normalizeActorSpellcasting } from "./module/actors/spellcasting/spellcasting-normalization.js";
+import { validateActorSpellcasting } from "./module/actors/spellcasting/spellcasting-validation.js";
 import {
   loadCharacterTHAC0,
   loadClassData,
@@ -230,6 +232,19 @@ Hooks.once("init", async function () {
   game.settings.register("becmi-foundry", "inventoryModelMigrationVersion", { name: "Inventory Model Migration Version", scope: "world", config: false, type: String, default: "0" });
 
   registerSpellValidationHooks();
+
+  Hooks.on("preCreateActor", (actor) => {
+    if (actor.type !== "character") return;
+    normalizeActorSpellcasting(actor.system);
+    validateActorSpellcasting(actor);
+  });
+
+  Hooks.on("preUpdateActor", (actor, changes) => {
+    if (actor.type !== "character") return;
+    const merged = foundry.utils.mergeObject(actor.toObject(), changes, { inplace: false });
+    normalizeActorSpellcasting(merged.system);
+    validateActorSpellcasting(merged);
+  });
 
   Actors.unregisterSheet("core", ActorSheet);
 

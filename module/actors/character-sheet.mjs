@@ -103,39 +103,8 @@ export class BECMICharacterSheet extends ActorSheet {
     context.combat.weaponAttacks = equippedWeaponAttacks;
 
     const derived = system.derived ?? {};
-    const spellSlots = derived.spellSlots;
-    const spellsKnown = system.spellsKnown;
-    const spellLevels = ["1", "2", "3", "4", "5", "6"];
-
-    context.spellSlotsList = spellLevels.map((level) => ({
-      level,
-      slots: spellSlots && typeof spellSlots === "object" && !Array.isArray(spellSlots)
-        ? spellSlots[level] ?? 0
-        : 0
-    }));
-
-    context.spellsKnownGroups = spellLevels.map((level) => {
-      const levelEntries = spellsKnown && typeof spellsKnown === "object" && !Array.isArray(spellsKnown)
-        ? spellsKnown[level]
-        : [];
-
-      const spells = Array.isArray(levelEntries)
-        ? levelEntries.map((entry, index) => {
-          const normalized = this._normalizeKnownSpellEntry(entry, Number(level));
-          return {
-            index,
-            id: normalized.id,
-            name: normalized.name,
-            prepared: normalized.prepared,
-            source: normalized.source,
-            itemUuid: normalized.itemUuid,
-            notes: normalized.notes
-          };
-        })
-        : [];
-
-      return { level, spells };
-    });
+    context.spellcasting = system.spellcasting ?? { casters: {} };
+    context.spellcastingDerived = derived.spellcasting ?? {};
     const turnUndead = derived.turnUndead;
     context.turnUndeadList = turnUndead && typeof turnUndead === "object" && !Array.isArray(turnUndead)
       ? Object.entries(turnUndead).map(([target, score]) => ({ target, score }))
@@ -178,49 +147,6 @@ export class BECMICharacterSheet extends ActorSheet {
         attackData: weaponItemToAttackData(item),
         rollDamageOnHit: true,
         postToChat: true
-      });
-    });
-
-    html.find(".add-known-spell").on("click", async (event) => {
-      event.preventDefault();
-
-      const level = String(event.currentTarget.dataset.level ?? "");
-      if (!level) return;
-
-      const current = this.actor.system.spellsKnown;
-      const spellsKnown = current && typeof current === "object" && !Array.isArray(current)
-        ? foundry.utils.deepClone(current)
-        : {};
-
-      const levelEntries = Array.isArray(spellsKnown[level]) ? spellsKnown[level] : [];
-      levelEntries.push(this._createManualKnownSpell(level));
-      spellsKnown[level] = levelEntries;
-
-      await this.actor.update({
-        "system.spellsKnown": spellsKnown
-      });
-    });
-
-    html.find(".remove-known-spell").on("click", async (event) => {
-      event.preventDefault();
-
-      const level = String(event.currentTarget.dataset.level ?? "");
-      const index = Number(event.currentTarget.dataset.index ?? -1);
-      if (!level || !Number.isInteger(index) || index < 0) return;
-
-      const current = this.actor.system.spellsKnown;
-      const spellsKnown = current && typeof current === "object" && !Array.isArray(current)
-        ? foundry.utils.deepClone(current)
-        : {};
-
-      const levelEntries = Array.isArray(spellsKnown[level]) ? spellsKnown[level] : [];
-      if (!levelEntries[index]) return;
-
-      levelEntries.splice(index, 1);
-      spellsKnown[level] = levelEntries;
-
-      await this.actor.update({
-        "system.spellsKnown": spellsKnown
       });
     });
 
@@ -582,67 +508,7 @@ export class BECMICharacterSheet extends ActorSheet {
 
 
 
-  _createManualKnownSpell(level) {
-    const numericLevel = Number(level);
-    return {
-      id: null,
-      name: "",
-      level: Number.isFinite(numericLevel) ? numericLevel : 1,
-      type: this.actor.system.derived?.spellcastingType ?? this.actor.system.class ?? null,
-      source: "manual",
-      itemUuid: null,
-      prepared: false,
-      notes: ""
-    };
-  }
 
-  async _addKnownSpellFromItem(item) {
-    const level = Number(item?.system?.level);
-
-    if (!Number.isFinite(level) || level <= 0) {
-      ui.notifications?.warn("Dropped spell is missing a valid spell level and was not added.");
-      return;
-    }
-
-    const knownSpell = {
-      id: item?.id ?? null,
-      name: item?.name ?? "",
-      level,
-      type: item?.system?.tradition ?? null,
-      source: item?.pack || item?.compendium ? "compendium" : "item",
-      itemUuid: item?.uuid ?? null,
-      prepared: false,
-      notes: ""
-    };
-
-    const current = this.actor.system.spellsKnown;
-    const spellsKnown = current && typeof current === "object" && !Array.isArray(current)
-      ? foundry.utils.deepClone(current)
-      : {};
-
-    const levelKey = String(level);
-    const entries = Array.isArray(spellsKnown[levelKey]) ? spellsKnown[levelKey] : [];
-    entries.push(knownSpell);
-    spellsKnown[levelKey] = entries;
-
-    await this.actor.update({
-      "system.spellsKnown": spellsKnown
-    });
-  }
-
-  _normalizeKnownSpellEntry(entry, level) {
-    const numericLevel = Number.isInteger(level) && level > 0 ? level : 1;
-    return {
-      id: entry?.id ?? null,
-      name: entry?.name ?? "",
-      level: Number.isInteger(entry?.level) ? entry.level : numericLevel,
-      type: entry?.type ?? null,
-      source: entry?.source ?? "manual",
-      itemUuid: entry?.itemUuid ?? null,
-      prepared: Boolean(entry?.prepared),
-      notes: entry?.notes ?? ""
-    };
-  }
 
   async _onRollSave(event) {
     event.preventDefault();
