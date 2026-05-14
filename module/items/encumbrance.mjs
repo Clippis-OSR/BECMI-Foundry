@@ -7,7 +7,7 @@ import {
 } from "./inventory-manager.mjs";
 import { BECMI_ENCUMBRANCE_RULES, getMovementTierByEncumbrance } from "../rules/encumbrance.mjs";
 
-const CARRIED_LOCATIONS = Object.freeze(["worn", "beltPouch", "backpack", "sack1", "sack2", "carried", "treasureHorde"]);
+const CARRIED_LOCATIONS = Object.freeze(["worn", "beltPouch", "backpack", "sack1", "sack2", "carried"]);
 const COIN_KEYS = Object.freeze(["pp", "gp", "ep", "sp", "cp"]);
 
 function toSafeCoinCount(value) {
