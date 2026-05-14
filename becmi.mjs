@@ -14,6 +14,7 @@ import * as becmiRules from "./module/rules/index.mjs";
 import * as inventoryManager from "./module/items/inventory-manager.mjs";
 import * as encumbrance from "./module/items/encumbrance.mjs";
 import * as combatEngine from "./module/combat/combat-engine.mjs";
+import { applyDamageFromMessage } from "./module/combat/damage-application.mjs";
 import {
   validateClassTable,
   validateMonsterProgression
@@ -226,6 +227,33 @@ Hooks.on("createCombat", async (combat) => {
 
 Hooks.on("combatStart", async (combat) => {
   await maybePromptInitiativeMode(combat);
+});
+
+Hooks.on("renderChatMessage", (message, html) => {
+  const root = html?.[0];
+  if (!root) return;
+
+  const button = root.querySelector(".becmi-apply-damage");
+  if (!button) return;
+
+  const alreadyApplied = message.getFlag("becmi-foundry", "damageApplied") === true;
+  if (alreadyApplied) {
+    button.disabled = true;
+    button.style.display = "none";
+    return;
+  }
+
+  button.addEventListener("click", async () => {
+    button.disabled = true;
+    try {
+      await applyDamageFromMessage(message);
+      button.style.display = "none";
+    } catch (error) {
+      console.warn("BECMI Foundry | Failed to apply damage from chat card.", { error, messageId: message?.id });
+      ui.notifications.error("Failed to apply damage.");
+      button.disabled = false;
+    }
+  });
 });
 
 
