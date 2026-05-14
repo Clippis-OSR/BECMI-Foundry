@@ -5,7 +5,7 @@ import {
   rollSavingThrow,
   rollThiefSkill
 } from "../rolls/becmi-rolls.mjs";
-import { weaponItemToAttackData } from "../combat/attack.mjs";
+import { getActorAttackSources, weaponItemToAttackData } from "../combat/attack.mjs";
 import {
   getActorItems,
   getItemLocation,
@@ -74,14 +74,11 @@ export class BECMICharacterSheet extends ActorSheet {
       note: typeof currencyStorage.note === "string" ? currencyStorage.note : "",
       gpValue: Number(currencyStorage.gpValue ?? 0) || 0
     };
-    const attacks = Array.isArray(system.attacks) ? system.attacks : [];
-    context.attacks = attacks;
-    const equippedWeaponAttacks = this.actor.items
-      .filter((item) => item?.type === "weapon" && item?.system?.equipped === true)
-      .map((item) => ({
-        itemId: item.id,
-        ...weaponItemToAttackData(item)
-      }));
+    // Attacks are item-driven. Ignore legacy actor.system.attacks for active attack actions.
+    const equippedWeaponAttacks = getActorAttackSources(this.actor).map((item) => ({
+      itemId: item.id,
+      ...weaponItemToAttackData(item)
+    }));
     context.combat = context.combat ?? {};
     context.combat.weaponAttacks = equippedWeaponAttacks;
 
@@ -140,24 +137,6 @@ export class BECMICharacterSheet extends ActorSheet {
     html.find(".roll-ability").click(this._onRollAbility.bind(this));
     html.find(".roll-thief-skill").click(this._onRollThiefSkill.bind(this));
     html.find(".roll-initiative").click(this._onRollInitiative.bind(this));
-    html.find('[data-action="roll-character-attack"]').on("click", async (event) => {
-      event.preventDefault();
-
-      const index = Number(event.currentTarget.dataset.index);
-
-      if (!Number.isInteger(index)) return;
-
-      const attacks = Array.isArray(this.actor.system.attacks)
-        ? this.actor.system.attacks
-        : [];
-
-      const attack = attacks[index];
-
-      if (!attack) return;
-
-      await rollCharacterAttack(this.actor, attack);
-    });
-
     html.find(".becmi-weapon-attack").on("click", async (event) => {
       event.preventDefault();
 
@@ -180,75 +159,6 @@ export class BECMICharacterSheet extends ActorSheet {
         attackData: weaponItemToAttackData(item),
         rollDamageOnHit: true,
         postToChat: true
-      });
-    });
-
-    html.find('[data-action="add-character-attack"]').on("click", async (event) => {
-      event.preventDefault();
-
-      const current = this.actor.system.attacks;
-      const attacks = Array.isArray(current) ? foundry.utils.deepClone(current) : [];
-
-      attacks.push({
-        name: "Weapon",
-        attackMod: 0,
-        damage: "1d6",
-        damageMod: 0
-      });
-
-      await this.actor.update({
-        "system.attacks": attacks
-      });
-    });
-
-    html.find('[data-action="remove-character-attack"]').on("click", async (event) => {
-      event.preventDefault();
-
-      const index = Number(event.currentTarget.dataset.index);
-      if (!Number.isInteger(index)) return;
-
-      const current = this.actor.system.attacks;
-      const attacks = Array.isArray(current) ? foundry.utils.deepClone(current) : [];
-
-      attacks.splice(index, 1);
-
-      await this.actor.update({
-        "system.attacks": attacks
-      });
-    });
-
-    html.find('[data-action="change-character-attack-field"]').on("change", async (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-
-      const input = event.currentTarget;
-      const index = Number(input.dataset.index);
-      const field = input.dataset.field;
-
-      if (!Number.isInteger(index)) return;
-      if (!["name", "attackMod", "damage", "damageMod"].includes(field)) return;
-
-      const current = this.actor.system.attacks;
-      const attacks = Array.isArray(current) ? foundry.utils.deepClone(current) : [];
-
-      if (!attacks[index]) {
-        attacks[index] = {
-          name: "Weapon",
-          attackMod: 0,
-          damage: "1d6",
-          damageMod: 0
-        };
-      }
-
-      let value = input.value;
-      if (["attackMod", "damageMod"].includes(field)) {
-        value = Number(value || 0);
-      }
-
-      attacks[index][field] = value;
-
-      await this.actor.update({
-        "system.attacks": attacks
       });
     });
 

@@ -167,48 +167,6 @@
 <p>No equipped weapons.</p>
 {{/if}}
 
-<hr>
-
-<table>
-  <thead>
-    <tr>
-      <th>Roll</th>
-      <th>Name</th>
-      <th>Attack Mod</th>
-      <th>Damage</th>
-      <th>Damage Mod</th>
-      <th>Remove</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each attacks as |attack index|}}
-    <tr>
-      <td>
-        <button type="button" data-action="roll-character-attack" data-index="{{index}}">
-          Attack
-        </button>
-      </td>
-      <td>
-        <input type="text" name="attack-name-{{index}}" value="{{attack.name}}" data-action="change-character-attack-field" data-index="{{index}}" data-field="name" />
-      </td>
-      <td>
-        <input type="number" name="attack-mod-{{index}}" value="{{attack.attackMod}}" data-action="change-character-attack-field" data-index="{{index}}" data-field="attackMod" />
-      </td>
-      <td>
-        <input type="text" name="attack-damage-{{index}}" value="{{attack.damage}}" data-action="change-character-attack-field" data-index="{{index}}" data-field="damage" />
-      </td>
-      <td>
-        <input type="number" name="attack-damage-mod-{{index}}" value="{{attack.damageMod}}" data-action="change-character-attack-field" data-index="{{index}}" data-field="damageMod" />
-      </td>
-      <td>
-        <button type="button" data-action="remove-character-attack" data-index="{{index}}">Remove</button>
-      </td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
-
-<button type="button" data-action="add-character-attack">Add Attack</button>
 
 <hr>
 
