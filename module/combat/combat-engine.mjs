@@ -5,7 +5,6 @@
 import {
   resolveAttack,
   weaponItemToAttackData,
-  getWeaponMasteryClass,
   getActorTHAC0,
   getTargetAC,
   calculateRequiredRoll,
@@ -56,10 +55,21 @@ export async function rollMoraleForSelectedCreatures({ reason = "Manual morale c
 /**
  * Execute attack flow: resolve attack, then optionally roll damage on hit.
  *
- * Hook points:
- * - Weapon Mastery: enrich/transform attackData before resolveAttack.
- * - Monster abilities: inject special hit effects after attackResult.
- * - Equipment modifiers: precompute bonuses and place on attackData.
+ * Modifier flow policy:
+ * 1) Item defines base attack shape (name/type/damage/tags).
+ * 2) Calling system computes composite internal modifiers.
+ * 3) resolveAttack reads only attackData.attackBonus.
+ * 4) rollDamage reads only attackData.damageBonus.
+ *
+ * attackBonus and damageBonus are internal hooks, not primary editable UI
+ * gameplay systems. Weapon Mastery is intentionally deferred: future mastery
+ * should compose into these hooks (or equivalent pre-resolution transforms)
+ * after a complete rules implementation exists.
+ *
+ * Extension points:
+ * - Magical weapons / spell buffs / conditions / monster abilities:
+ *   compute modifier totals before calling rollAttack.
+ * - Post-hit effects: apply after attackResult / damageResult are returned.
  */
 export async function rollAttack({ attacker, target, attackData, rollDamageOnHit = true, postToChat = true } = {}) {
   if (!attacker) throw new Error("[BECMI Combat] rollAttack requires an attacker.");
@@ -140,7 +150,6 @@ export function createCombatEngine() {
     rollAttack,
     resolveAttack,
     weaponItemToAttackData,
-    getWeaponMasteryClass,
     rollDamage,
     rollSave,
     renderSaveCard,
@@ -170,7 +179,6 @@ export function createCombatEngine() {
 export {
   resolveAttack,
   weaponItemToAttackData,
-  getWeaponMasteryClass,
   rollDamage,
   rollSave,
   renderSaveCard,

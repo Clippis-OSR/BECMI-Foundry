@@ -13,7 +13,8 @@
  * @param {object} [params.attackData={}] Attack metadata/config.
  * @param {string} [params.attackData.name] Attack display name.
  * @param {string} [params.attackData.damage] Dice formula such as "1d8" or "1d6+1".
- * @param {number} [params.attackData.damageBonus=0] Flat damage modifier.
+ * @param {number} [params.attackData.damageBonus=0] Internal flat damage modifier hook.
+ *   Extension systems should compose their final value before calling rollDamage.
  * @returns {Promise<{
  *   attacker: object,
  *   target: object,
