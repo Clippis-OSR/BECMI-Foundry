@@ -25,7 +25,7 @@ Cat Greater, Lion;6;5;20;15;150(50);2 Claws/1 Bite;1d4+1/1d4+1/1d10;1-4(1-8);F3;
 Cat Greater, Tiger;6;6;24;14;150(50);2 Claws/1 Bite;1d6/1d6/2d6;1(1-3);F3;9;U;Neutral;275;Animal;
 Cat Greater, Sabre-tooth Tiger;6;8;32;12;150(50);2 Claws/1 Bite;1d8/1d8/2d8;1-4(1-4);F4;10;V;Neutral;650;Animal;
 Centipede, Giant;9;02-Jan;2;19;60(20);1 Bite;Poison (24h illness 1/2 move);2-8(1-8);Normal man;7;Nil;Neutral;6;Insect;
-Doppleganger;5;4*;16;16;90(30);1;1d12;1-6(1-6);F8*;8;E;Chaotic;125;Humanoid;
+Doppleganger;5;4*;16;16;90(30);1;1d12;1-6(1-6);F8;8;E;Chaotic;125;Humanoid;
 Dragon, White (S);3;6**;24;14;"Move 90(30)
 Fly 240(80)";2 Claws/1 Bite OR Breath;1d4/1d4/2d8;1-4(1-4);F6;8;H;Neutral;725;Dragon;
 Dragon, Black (S);2;7**;28;13;"Move 90(30)
