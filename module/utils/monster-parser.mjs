@@ -102,13 +102,54 @@ export function parseMonsterAttacks(input) {
 }
 
 export function parseMonsterMovement(input) {
-  return String(input || '').replace(/\s+/g, ' ').trim();
+  const raw = String(input || '').replace(/\s+/g, ' ').trim();
+  const modePatterns = [
+    { key: 'move', rx: /(?:^|\b)(?:move|mv)?\s*[:=]?\s*(\d+(?:\s*\(\s*\d+\s*\))?)/i },
+    { key: 'fly', rx: /\bfly\s*[:=]?\s*(\d+(?:\s*\(\s*\d+\s*\))?)/i },
+    { key: 'swim', rx: /\bswim\s*[:=]?\s*(\d+(?:\s*\(\s*\d+\s*\))?)/i },
+    { key: 'burrow', rx: /\bburrow\s*[:=]?\s*(\d+(?:\s*\(\s*\d+\s*\))?)/i },
+    { key: 'climb', rx: /\bclimb\s*[:=]?\s*(\d+(?:\s*\(\s*\d+\s*\))?)/i }
+  ];
+  const modes = {};
+  for (const { key, rx } of modePatterns) {
+    const m = raw.match(rx);
+    if (m) modes[key] = m[1].replace(/\s+/g, '');
+  }
+
+  if (!modes.move) {
+    const base = raw.match(/^\d+(?:\s*\(\s*\d+\s*\))?/);
+    if (base) modes.move = base[0].replace(/\s+/g, '');
+  }
+
+  return { raw, modes };
 }
 export function parseMonsterAlignment(input) { return String(input || '').trim(); }
 export function parseMonsterTreasureType(input) { return String(input || '').trim(); }
 export function parseMonsterHitDice(input) { return String(input || '').trim(); }
 
 function toInt(v) { const n = Number.parseInt(String(v).trim(), 10); return Number.isNaN(n) ? null : n; }
+
+export function parseMonsterDamage(input) {
+  const raw = String(input || '').trim();
+  const segments = raw.split(/[/;,]|\bor\b/i).map((s) => s.trim()).filter(Boolean);
+  const parsed = segments.map((segment) => {
+    const diceMatch = segment.match(/\d+d\d+(?:\s*[x×*]\s*\d+)?(?:\s*[+-]\s*\d+)?/i);
+    const dice = diceMatch ? diceMatch[0].replace(/\s+/g, '') : null;
+    const rider = dice ? segment.replace(diceMatch[0], '').replace(/^[+\-,:\s]+|[+\-,:\s]+$/g, '').trim() : segment;
+    return { raw: segment, dice, rider: rider || null };
+  });
+  return { raw, parsed };
+}
+
+export function parseMonsterTreasure(input) {
+  const raw = String(input || '').trim();
+  const normalizedCodes = [];
+  for (const token of raw.split(/[+,]/).map((t) => t.trim()).filter(Boolean)) {
+    const matches = token.match(/\b[A-P]\b|\([A-P]\)/gi) || [];
+    for (const code of matches) normalizedCodes.push(code.replace(/[()]/g, '').toUpperCase());
+  }
+  return { raw, normalizedCodes };
+}
 
 export function normalizeMonsterRow(row, { sourceBook, onWarning = () => {} } = {}) {
   const name = row.Name?.trim();
@@ -124,6 +165,10 @@ export function normalizeMonsterRow(row, { sourceBook, onWarning = () => {} } = 
     onWarning(`Malformed attack row for ${name}`);
   }
 
+  const movement = parseMonsterMovement(row.Move);
+  const damage = parseMonsterDamage(row.Damage);
+  const treasure = parseMonsterTreasure(row['Tresure Type'] || row['Treasure Type']);
+
   return {
     id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
     name,
@@ -131,13 +176,16 @@ export function normalizeMonsterRow(row, { sourceBook, onWarning = () => {} } = 
     sourcePage: null,
     armorClass,
     hitDice,
-    movement: parseMonsterMovement(row.Move),
+    movement: movement.raw,
+    movementModes: movement.modes,
     attacks,
-    damage: String(row.Damage || '').trim(),
+    damage: damage.raw,
+    damageParts: damage.parsed,
     numberAppearing: String(row['No. Appering '] || row['No. Appearing'] || '').trim(),
     saveAs: String(row['Save As'] || '').trim(),
     morale: toInt(row.Morale),
     treasureType: parseMonsterTreasureType(row['Tresure Type'] || row['Treasure Type']),
+    treasure,
     alignment: parseMonsterAlignment(row.Aligment || row.Alignment),
     xp: toInt(row['XP Value']),
     specialAbilities: String(row.Special || '').trim(),

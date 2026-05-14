@@ -7,6 +7,9 @@
     "armorClass": 7,
     "hitDice": "1",
     "movement": "240(80)",
+    "movementModes": {
+      "move": "240(80)"
+    },
     "attacks": [
       {
         "type": "butt",
@@ -15,10 +18,21 @@
       }
     ],
     "damage": "1d2",
+    "damageParts": [
+      {
+        "raw": "1d2",
+        "dice": "1d2",
+        "rider": null
+      }
+    ],
     "numberAppearing": "0(3-30)",
     "saveAs": "F1",
     "morale": 5,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 10,
     "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
@@ -33,6 +47,9 @@
     "armorClass": 7,
     "hitDice": "2",
     "movement": "240(80)",
+    "movementModes": {
+      "move": "240(80)"
+    },
     "attacks": [
       {
         "type": "butt",
@@ -41,10 +58,21 @@
       }
     ],
     "damage": "1d4",
+    "damageParts": [
+      {
+        "raw": "1d4",
+        "dice": "1d4",
+        "rider": null
+      }
+    ],
     "numberAppearing": "0(3-30)",
     "saveAs": "F1",
     "morale": 5,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 20,
     "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
@@ -59,6 +87,9 @@
     "armorClass": 7,
     "hitDice": "3",
     "movement": "240(80)",
+    "movementModes": {
+      "move": "240(80)"
+    },
     "attacks": [
       {
         "type": "butt",
@@ -67,10 +98,21 @@
       }
     ],
     "damage": "1d6",
+    "damageParts": [
+      {
+        "raw": "1d6",
+        "dice": "1d6",
+        "rider": null
+      }
+    ],
     "numberAppearing": "0(3-30)",
     "saveAs": "F1",
     "morale": 5,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 35,
     "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
@@ -85,6 +127,9 @@
     "armorClass": 7,
     "hitDice": "4",
     "movement": "240(80)",
+    "movementModes": {
+      "move": "240(80)"
+    },
     "attacks": [
       {
         "type": "butt",
@@ -93,10 +138,21 @@
       }
     ],
     "damage": "1d8",
+    "damageParts": [
+      {
+        "raw": "1d8",
+        "dice": "1d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "0(3-30)",
     "saveAs": "F1",
     "morale": 5,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 75,
     "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
@@ -111,6 +167,9 @@
     "armorClass": 4,
     "hitDice": "6 +1**",
     "movement": "60(20)",
+    "movementModes": {
+      "move": "60(20)"
+    },
     "attacks": [
       {
         "type": "bite",
@@ -124,10 +183,28 @@
       }
     ],
     "damage": "1d10 + Petrification/Save VS Petri",
+    "damageParts": [
+      {
+        "raw": "1d10 + Petrification",
+        "dice": "1d10",
+        "rider": "Petrification"
+      },
+      {
+        "raw": "Save VS Petri",
+        "dice": null,
+        "rider": "Save VS Petri"
+      }
+    ],
     "numberAppearing": "1-6(1-6)",
     "saveAs": "F6",
     "morale": 9,
     "treasureType": "F",
+    "treasure": {
+      "raw": "F",
+      "normalizedCodes": [
+        "F"
+      ]
+    },
     "alignment": "Neutral",
     "xp": 950,
     "specialAbilities": "",
@@ -142,6 +219,9 @@
     "armorClass": 6,
     "hitDice": "10*",
     "movement": "60(20)",
+    "movementModes": {
+      "move": "60(20)"
+    },
     "attacks": [
       {
         "type": "1",
@@ -150,10 +230,21 @@
       }
     ],
     "damage": "3d8",
+    "damageParts": [
+      {
+        "raw": "3d8",
+        "dice": "3d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(0)",
     "saveAs": "F5",
     "morale": 12,
     "treasureType": "5d4 Gems",
+    "treasure": {
+      "raw": "5d4 Gems",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 1750,
     "specialAbilities": "Only take FIRE dmg, Splits if hit by anything else. Split: 2HD Blob, 1d8 dmg.",
@@ -168,6 +259,9 @@
     "armorClass": 5,
     "hitDice": "4*",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "bite",
@@ -176,10 +270,23 @@
       }
     ],
     "damage": "1d6",
+    "damageParts": [
+      {
+        "raw": "1d6",
+        "dice": "1d6",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1-6(4-9)",
     "saveAs": "F4",
     "morale": 6,
     "treasureType": "C",
+    "treasure": {
+      "raw": "C",
+      "normalizedCodes": [
+        "C"
+      ]
+    },
     "alignment": "Lawful",
     "xp": 125,
     "specialAbilities": "Blink in to attack then blink away 10-40'",
@@ -194,6 +301,9 @@
     "armorClass": 6,
     "hitDice": "6*",
     "movement": "60(20)",
+    "movementModes": {
+      "move": "60(20)"
+    },
     "attacks": [
       {
         "type": "bite",
@@ -207,10 +317,23 @@
       }
     ],
     "damage": "1d8",
+    "damageParts": [
+      {
+        "raw": "1d8",
+        "dice": "1d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1-3(1-3)",
     "saveAs": "F3",
     "morale": 9,
     "treasureType": "B",
+    "treasure": {
+      "raw": "B",
+      "normalizedCodes": [
+        "B"
+      ]
+    },
     "alignment": "Neutral",
     "xp": 500,
     "specialAbilities": "Subterranean",
@@ -225,6 +348,9 @@
     "armorClass": 7,
     "hitDice": "2",
     "movement": "150(50)",
+    "movementModes": {
+      "move": "150(50)"
+    },
     "attacks": [
       {
         "type": "bite",
@@ -238,10 +364,26 @@
       }
     ],
     "damage": "1/1d4",
+    "damageParts": [
+      {
+        "raw": "1",
+        "dice": null,
+        "rider": "1"
+      },
+      {
+        "raw": "1d4",
+        "dice": "1d4",
+        "rider": null
+      }
+    ],
     "numberAppearing": "0(2-8)",
     "saveAs": "F1",
     "morale": 7,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 20,
     "specialAbilities": "",
@@ -256,6 +398,9 @@
     "armorClass": 5,
     "hitDice": "4",
     "movement": "180(60)",
+    "movementModes": {
+      "move": "180(60)"
+    },
     "attacks": [
       {
         "type": "hooves",
@@ -269,10 +414,33 @@
       }
     ],
     "damage": "1d6/1d6/By weapon",
+    "damageParts": [
+      {
+        "raw": "1d6",
+        "dice": "1d6",
+        "rider": null
+      },
+      {
+        "raw": "1d6",
+        "dice": "1d6",
+        "rider": null
+      },
+      {
+        "raw": "By weapon",
+        "dice": null,
+        "rider": "By weapon"
+      }
+    ],
     "numberAppearing": "0(2-20)",
     "saveAs": "F4",
     "morale": 8,
     "treasureType": "A",
+    "treasure": {
+      "raw": "A",
+      "normalizedCodes": [
+        "A"
+      ]
+    },
     "alignment": "Neutral",
     "xp": 75,
     "specialAbilities": "",
@@ -287,6 +455,9 @@
     "armorClass": 5,
     "hitDice": "2",
     "movement": "150(50)",
+    "movementModes": {
+      "move": "150(50)"
+    },
     "attacks": [
       {
         "type": "hooves",
@@ -300,10 +471,31 @@
       }
     ],
     "damage": "1d2/1d2/1d4",
+    "damageParts": [
+      {
+        "raw": "1d2",
+        "dice": "1d2",
+        "rider": null
+      },
+      {
+        "raw": "1d2",
+        "dice": "1d2",
+        "rider": null
+      },
+      {
+        "raw": "1d4",
+        "dice": "1d4",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1/2 of Centaur",
     "saveAs": "F2",
     "morale": 8,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 20,
     "specialAbilities": "",
@@ -318,6 +510,10 @@
     "armorClass": 4,
     "hitDice": "9**",
     "movement": "120(40) Fly: 180(60)",
+    "movementModes": {
+      "move": "120(40)",
+      "fly": "180(60)"
+    },
     "attacks": [
       {
         "type": "claws",
@@ -336,10 +532,48 @@
       }
     ],
     "damage": "1d3/1d3/2d4/1d10/3d4 OR 3d6",
+    "damageParts": [
+      {
+        "raw": "1d3",
+        "dice": "1d3",
+        "rider": null
+      },
+      {
+        "raw": "1d3",
+        "dice": "1d3",
+        "rider": null
+      },
+      {
+        "raw": "2d4",
+        "dice": "2d4",
+        "rider": null
+      },
+      {
+        "raw": "1d10",
+        "dice": "1d10",
+        "rider": null
+      },
+      {
+        "raw": "3d4",
+        "dice": "3d4",
+        "rider": null
+      },
+      {
+        "raw": "3d6",
+        "dice": "3d6",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1-2(1-4)",
     "saveAs": "F9",
     "morale": 9,
     "treasureType": "F",
+    "treasure": {
+      "raw": "F",
+      "normalizedCodes": [
+        "F"
+      ]
+    },
     "alignment": "Chaotic",
     "xp": 2300,
     "specialAbilities": "",
@@ -354,6 +588,9 @@
     "armorClass": 6,
     "hitDice": "5**",
     "movement": "M: 90(30) F: 180(60)",
+    "movementModes": {
+      "move": "90(30)"
+    },
     "attacks": [
       {
         "type": "beak",
@@ -362,10 +599,23 @@
       }
     ],
     "damage": "1d6 + Petrification",
+    "damageParts": [
+      {
+        "raw": "1d6 + Petrification",
+        "dice": "1d6",
+        "rider": "Petrification"
+      }
+    ],
     "numberAppearing": "1-4(2-8)",
     "saveAs": "F5",
     "morale": 7,
     "treasureType": "D",
+    "treasure": {
+      "raw": "D",
+      "normalizedCodes": [
+        "D"
+      ]
+    },
     "alignment": "Neutral",
     "xp": 425,
     "specialAbilities": "",
@@ -380,6 +630,9 @@
     "armorClass": 2,
     "hitDice": "3",
     "movement": "60(20)",
+    "movementModes": {
+      "move": "60(20)"
+    },
     "attacks": [
       {
         "type": "pincers",
@@ -388,10 +641,26 @@
       }
     ],
     "damage": "2d6/2d6",
+    "damageParts": [
+      {
+        "raw": "2d6",
+        "dice": "2d6",
+        "rider": null
+      },
+      {
+        "raw": "2d6",
+        "dice": "2d6",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1-2(1-6)",
     "saveAs": "F2",
     "morale": 7,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 35,
     "specialAbilities": "",
@@ -406,6 +675,9 @@
     "armorClass": 5,
     "hitDice": "2",
     "movement": "90(30)",
+    "movementModes": {
+      "move": "90(30)"
+    },
     "attacks": [
       {
         "type": "bite",
@@ -414,10 +686,21 @@
       }
     ],
     "damage": "1d8",
+    "damageParts": [
+      {
+        "raw": "1d8",
+        "dice": "1d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "0(1-8)",
     "saveAs": "F1",
     "morale": 7,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 35,
     "specialAbilities": "",
@@ -432,6 +715,9 @@
     "armorClass": 3,
     "hitDice": "6",
     "movement": "90(30)",
+    "movementModes": {
+      "move": "90(30)"
+    },
     "attacks": [
       {
         "type": "bite",
@@ -440,10 +726,21 @@
       }
     ],
     "damage": "2d8",
+    "damageParts": [
+      {
+        "raw": "2d8",
+        "dice": "2d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "0(1-4)",
     "saveAs": "F3",
     "morale": 7,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 275,
     "specialAbilities": "",
@@ -458,6 +755,9 @@
     "armorClass": 1,
     "hitDice": "15",
     "movement": "90(30)",
+    "movementModes": {
+      "move": "90(30)"
+    },
     "attacks": [
       {
         "type": "bite",
@@ -466,10 +766,21 @@
       }
     ],
     "damage": "3d8",
+    "damageParts": [
+      {
+        "raw": "3d8",
+        "dice": "3d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "0(1-3)",
     "saveAs": "F8",
     "morale": 9,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 1350,
     "specialAbilities": "",
@@ -484,6 +795,9 @@
     "armorClass": 5,
     "hitDice": "13*",
     "movement": "90(30)",
+    "movementModes": {
+      "move": "90(30)"
+    },
     "attacks": [
       {
         "type": "club or stone throw",
@@ -492,10 +806,28 @@
       }
     ],
     "damage": "3d10 or 3d6",
+    "damageParts": [
+      {
+        "raw": "3d10",
+        "dice": "3d10",
+        "rider": null
+      },
+      {
+        "raw": "3d6",
+        "dice": "3d6",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1-4)",
     "saveAs": "F13",
     "morale": 9,
     "treasureType": "E + 5000gp",
+    "treasure": {
+      "raw": "E + 5000gp",
+      "normalizedCodes": [
+        "E"
+      ]
+    },
     "alignment": "Chaotic",
     "xp": 2300,
     "specialAbilities": "",
@@ -510,6 +842,9 @@
     "armorClass": 3,
     "hitDice": "9*",
     "movement": "180(60)",
+    "movementModes": {
+      "move": "180(60)"
+    },
     "attacks": [
       {
         "type": "gore",
@@ -518,10 +853,23 @@
       }
     ],
     "damage": "2d6",
+    "damageParts": [
+      {
+        "raw": "2d6",
+        "dice": "2d6",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1-3(1-4)",
     "saveAs": "F9",
     "morale": 10,
     "treasureType": "C",
+    "treasure": {
+      "raw": "C",
+      "normalizedCodes": [
+        "C"
+      ]
+    },
     "alignment": "Chaotic",
     "xp": 1600,
     "specialAbilities": "",
@@ -536,6 +884,9 @@
     "armorClass": 4,
     "hitDice": "6*",
     "movement": "150(50)",
+    "movementModes": {
+      "move": "150(50)"
+    },
     "attacks": [
       {
         "type": "tentacles",
@@ -544,10 +895,28 @@
       }
     ],
     "damage": "2d4/2d4",
+    "damageParts": [
+      {
+        "raw": "2d4",
+        "dice": "2d4",
+        "rider": null
+      },
+      {
+        "raw": "2d4",
+        "dice": "2d4",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1-4(1-4)",
     "saveAs": "F6",
     "morale": 8,
     "treasureType": "D",
+    "treasure": {
+      "raw": "D",
+      "normalizedCodes": [
+        "D"
+      ]
+    },
     "alignment": "Neutral",
     "xp": 500,
     "specialAbilities": "-2 To hit and +2 save throws. Gain 1 bite when hp = 6 or lower. (Bite +2 hit 1d6 dmg)",
@@ -562,6 +931,9 @@
     "armorClass": 5,
     "hitDice": "7+1*",
     "movement": "M: 90(30) F: 240(80)",
+    "movementModes": {
+      "move": "90(30)"
+    },
     "attacks": [
       {
         "type": "fist or whirlwind",
@@ -575,10 +947,26 @@
       }
     ],
     "damage": "2d8 or 2d6",
+    "damageParts": [
+      {
+        "raw": "2d8",
+        "dice": "2d8",
+        "rider": null
+      },
+      {
+        "raw": "2d6",
+        "dice": "2d6",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F14",
     "morale": 12,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Chaotic",
     "xp": 1025,
     "specialAbilities": "A djinni can use each of its seven powers 3 times each day. These powers are: create food and drink (as a 7th level cleric); create metallic objects of up to 1,000 cn weight (of temporary duration, varying by type: gold = 1 day, iron = 1 round); create soft goods and wooden objects of up to 1,000 cn weight which are permanent; become invisible; assume gaseous form; form a whirlwind; create illusions (which affect both sight and hearing, lasting until touched or magically dispelled - the djinni need not concentrate to maintain them).",
@@ -593,6 +981,9 @@
     "armorClass": 5,
     "hitDice": "2*",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "charm person",
@@ -601,10 +992,23 @@
       }
     ],
     "damage": "Spell charm person with -2 to Save",
+    "damageParts": [
+      {
+        "raw": "Spell charm person with -2 to Save",
+        "dice": null,
+        "rider": "Spell charm person with -2 to Save"
+      }
+    ],
     "numberAppearing": "0(1-6)",
     "saveAs": "Elf4",
     "morale": 6,
     "treasureType": "D",
+    "treasure": {
+      "raw": "D",
+      "normalizedCodes": [
+        "D"
+      ]
+    },
     "alignment": "Neutral",
     "xp": 25,
     "specialAbilities": "",
@@ -619,6 +1023,9 @@
     "armorClass": 3,
     "hitDice": "10*",
     "movement": "M: 90(30) F: 240(80)",
+    "movementModes": {
+      "move": "90(30)"
+    },
     "attacks": [
       {
         "type": "fist",
@@ -632,10 +1039,21 @@
       }
     ],
     "damage": "2d8 +(1d8)",
+    "damageParts": [
+      {
+        "raw": "2d8 +(1d8)",
+        "dice": "2d8",
+        "rider": "(1d8)"
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F15",
     "morale": 12,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Chaotic",
     "xp": 1750,
     "specialAbilities": "An efreeti can create objects, create illusions, and turn invisible like a djinni. It can cast a wall of fire spell 3 times per day. An efreeti may also transform itself into a pillar of flame that will set fire to all flammable items within 5 feet. It can retain the flame shape for up to 3 rounds. When in this form, the fire adds 1-8 points of damage to each of the efreeti's blows.",
@@ -650,6 +1068,9 @@
     "armorClass": 2,
     "hitDice": "8",
     "movement": "F:360(120)",
+    "movementModes": {
+      "move": "360(120)"
+    },
     "attacks": [
       {
         "type": "1",
@@ -658,10 +1079,21 @@
       }
     ],
     "damage": "1d8",
+    "damageParts": [
+      {
+        "raw": "1d8",
+        "dice": "1d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F8",
     "morale": 10,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 650,
     "specialAbilities": "Does +1d8 in its element.",
@@ -676,6 +1108,9 @@
     "armorClass": 0,
     "hitDice": "12",
     "movement": "F:360(120)",
+    "movementModes": {
+      "move": "360(120)"
+    },
     "attacks": [
       {
         "type": "1",
@@ -684,10 +1119,21 @@
       }
     ],
     "damage": "2d8",
+    "damageParts": [
+      {
+        "raw": "2d8",
+        "dice": "2d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F12",
     "morale": 10,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 1250,
     "specialAbilities": "Does +1d8 in its element.",
@@ -702,6 +1148,9 @@
     "armorClass": -2,
     "hitDice": "16",
     "movement": "F:360(120)",
+    "movementModes": {
+      "move": "360(120)"
+    },
     "attacks": [
       {
         "type": "1",
@@ -710,10 +1159,21 @@
       }
     ],
     "damage": "3d8",
+    "damageParts": [
+      {
+        "raw": "3d8",
+        "dice": "3d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F16",
     "morale": 10,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 1850,
     "specialAbilities": "Does +1d8 in its element.",
@@ -728,6 +1188,9 @@
     "armorClass": 2,
     "hitDice": "8",
     "movement": "60(20)",
+    "movementModes": {
+      "move": "60(20)"
+    },
     "attacks": [
       {
         "type": "1",
@@ -736,10 +1199,21 @@
       }
     ],
     "damage": "1d8",
+    "damageParts": [
+      {
+        "raw": "1d8",
+        "dice": "1d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F8",
     "morale": 10,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 650,
     "specialAbilities": "Does +1d8 in its element.",
@@ -754,6 +1228,9 @@
     "armorClass": 0,
     "hitDice": "12",
     "movement": "60(20)",
+    "movementModes": {
+      "move": "60(20)"
+    },
     "attacks": [
       {
         "type": "1",
@@ -762,10 +1239,21 @@
       }
     ],
     "damage": "2d8",
+    "damageParts": [
+      {
+        "raw": "2d8",
+        "dice": "2d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F12",
     "morale": 10,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 1250,
     "specialAbilities": "Does +1d8 in its element.",
@@ -780,6 +1268,9 @@
     "armorClass": -2,
     "hitDice": "16",
     "movement": "60(20)",
+    "movementModes": {
+      "move": "60(20)"
+    },
     "attacks": [
       {
         "type": "1",
@@ -788,10 +1279,21 @@
       }
     ],
     "damage": "3d8",
+    "damageParts": [
+      {
+        "raw": "3d8",
+        "dice": "3d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F16",
     "morale": 10,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 1850,
     "specialAbilities": "Does +1d8 in its element.",
@@ -806,6 +1308,9 @@
     "armorClass": 2,
     "hitDice": "8",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "1",
@@ -814,10 +1319,21 @@
       }
     ],
     "damage": "1d8",
+    "damageParts": [
+      {
+        "raw": "1d8",
+        "dice": "1d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F8",
     "morale": 10,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 650,
     "specialAbilities": "Does +1d8 in its element.",
@@ -832,6 +1348,9 @@
     "armorClass": 0,
     "hitDice": "12",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "1",
@@ -840,10 +1359,21 @@
       }
     ],
     "damage": "2d8",
+    "damageParts": [
+      {
+        "raw": "2d8",
+        "dice": "2d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F12",
     "morale": 10,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 1250,
     "specialAbilities": "Does +1d8 in its element.",
@@ -858,6 +1388,9 @@
     "armorClass": -2,
     "hitDice": "16",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "1",
@@ -866,10 +1399,21 @@
       }
     ],
     "damage": "3d8",
+    "damageParts": [
+      {
+        "raw": "3d8",
+        "dice": "3d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F16",
     "morale": 10,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 1850,
     "specialAbilities": "Does +1d8 in its element.",
@@ -884,6 +1428,9 @@
     "armorClass": 2,
     "hitDice": "8",
     "movement": "M: 60(20) S: 180(60)",
+    "movementModes": {
+      "move": "60(20)"
+    },
     "attacks": [
       {
         "type": "1",
@@ -892,10 +1439,21 @@
       }
     ],
     "damage": "1d8",
+    "damageParts": [
+      {
+        "raw": "1d8",
+        "dice": "1d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F8",
     "morale": 10,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 650,
     "specialAbilities": "Does +1d8 in its element.",
@@ -910,6 +1468,9 @@
     "armorClass": 0,
     "hitDice": "12",
     "movement": "M: 60(20) S: 180(60)",
+    "movementModes": {
+      "move": "60(20)"
+    },
     "attacks": [
       {
         "type": "1",
@@ -918,10 +1479,21 @@
       }
     ],
     "damage": "2d8",
+    "damageParts": [
+      {
+        "raw": "2d8",
+        "dice": "2d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F12",
     "morale": 10,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 1250,
     "specialAbilities": "Does +1d8 in its element.",
@@ -936,6 +1508,9 @@
     "armorClass": -2,
     "hitDice": "16",
     "movement": "M: 60(20) S: 180(60)",
+    "movementModes": {
+      "move": "60(20)"
+    },
     "attacks": [
       {
         "type": "1",
@@ -944,10 +1519,21 @@
       }
     ],
     "damage": "3d8",
+    "damageParts": [
+      {
+        "raw": "3d8",
+        "dice": "3d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F16",
     "morale": 10,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 1850,
     "specialAbilities": "Does +1d8 in its element.",
@@ -962,6 +1548,9 @@
     "armorClass": 5,
     "hitDice": "9",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "tusks or 1 trample",
@@ -970,10 +1559,31 @@
       }
     ],
     "damage": "2d4/2d4 OR 4d8",
+    "damageParts": [
+      {
+        "raw": "2d4",
+        "dice": "2d4",
+        "rider": null
+      },
+      {
+        "raw": "2d4",
+        "dice": "2d4",
+        "rider": null
+      },
+      {
+        "raw": "4d8",
+        "dice": "4d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "0(1-20)",
     "saveAs": "F5",
     "morale": 8,
     "treasureType": "Tusk 1d6 x100gp",
+    "treasure": {
+      "raw": "Tusk 1d6 x100gp",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 900,
     "specialAbilities": "Tries to charge first round",
@@ -988,6 +1598,9 @@
     "armorClass": 3,
     "hitDice": "15",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "tusks or 1 trample",
@@ -996,10 +1609,31 @@
       }
     ],
     "damage": "2d6/2d6 OR 4d8",
+    "damageParts": [
+      {
+        "raw": "2d6",
+        "dice": "2d6",
+        "rider": null
+      },
+      {
+        "raw": "2d6",
+        "dice": "2d6",
+        "rider": null
+      },
+      {
+        "raw": "4d8",
+        "dice": "4d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "0(2-16)",
     "saveAs": "F8",
     "morale": 8,
     "treasureType": "Tusk 2d4 x100gp",
+    "treasure": {
+      "raw": "Tusk 2d4 x100gp",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 1650,
     "specialAbilities": "Tries to charge first round",
@@ -1014,6 +1648,9 @@
     "armorClass": 7,
     "hitDice": "2",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "bite",
@@ -1022,10 +1659,21 @@
       }
     ],
     "damage": "1d6",
+    "damageParts": [
+      {
+        "raw": "1d6",
+        "dice": "1d6",
+        "rider": null
+      }
+    ],
     "numberAppearing": "0(2-8)",
     "saveAs": "F1",
     "morale": 8,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 20,
     "specialAbilities": "",
@@ -1040,6 +1688,9 @@
     "armorClass": 7,
     "hitDice": "5+5*",
     "movement": "180(60)",
+    "movementModes": {
+      "move": "180(60)"
+    },
     "attacks": [
       {
         "type": "spines",
@@ -1053,10 +1704,21 @@
       }
     ],
     "damage": "1d4 each Spine + Save VS Poison(3)",
+    "damageParts": [
+      {
+        "raw": "1d4 each Spine + Save VS Poison(3)",
+        "dice": "1d4",
+        "rider": "each Spine + Save VS Poison(3)"
+      }
+    ],
     "numberAppearing": "0(2-8)",
     "saveAs": "F3",
     "morale": 8,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 400,
     "specialAbilities": "",
@@ -1071,6 +1733,9 @@
     "armorClass": 0,
     "hitDice": "10+2*",
     "movement": "180(60)",
+    "movementModes": {
+      "move": "180(60)"
+    },
     "attacks": [
       {
         "type": "bite",
@@ -1084,10 +1749,21 @@
       }
     ],
     "damage": "2d10 (Swallow 2d6)",
+    "damageParts": [
+      {
+        "raw": "2d10 (Swallow 2d6)",
+        "dice": "2d10",
+        "rider": "(Swallow 2d6)"
+      }
+    ],
     "numberAppearing": "0(1-2)",
     "saveAs": "F5",
     "morale": 9,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 1900,
     "specialAbilities": "Swallowed victim save VS Death Ray or be paralyzed",
@@ -1102,6 +1778,9 @@
     "armorClass": 4,
     "hitDice": "8",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "weapon or throw rock",
@@ -1110,10 +1789,28 @@
       }
     ],
     "damage": "2d8 OR 3d6",
+    "damageParts": [
+      {
+        "raw": "2d8",
+        "dice": "2d8",
+        "rider": null
+      },
+      {
+        "raw": "3d6",
+        "dice": "3d6",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1-4(2d8)",
     "saveAs": "F8",
     "morale": 8,
     "treasureType": "E + 5000gp",
+    "treasure": {
+      "raw": "E + 5000gp",
+      "normalizedCodes": [
+        "E"
+      ]
+    },
     "alignment": "Chaotic",
     "xp": 650,
     "specialAbilities": "",
@@ -1128,6 +1825,9 @@
     "armorClass": 4,
     "hitDice": "9",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "weapon or throw rock",
@@ -1136,10 +1836,28 @@
       }
     ],
     "damage": "3d6 OR 3d6",
+    "damageParts": [
+      {
+        "raw": "3d6",
+        "dice": "3d6",
+        "rider": null
+      },
+      {
+        "raw": "3d6",
+        "dice": "3d6",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1-2(1-6)",
     "saveAs": "F9",
     "morale": 9,
     "treasureType": "E + 5000gp",
+    "treasure": {
+      "raw": "E + 5000gp",
+      "normalizedCodes": [
+        "E"
+      ]
+    },
     "alignment": "Neutral",
     "xp": 900,
     "specialAbilities": "",
@@ -1154,6 +1872,9 @@
     "armorClass": 4,
     "hitDice": "10+1*",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "weapon or throw rock",
@@ -1162,10 +1883,28 @@
       }
     ],
     "damage": "4d6 OR 3d6",
+    "damageParts": [
+      {
+        "raw": "4d6",
+        "dice": "4d6",
+        "rider": null
+      },
+      {
+        "raw": "3d6",
+        "dice": "3d6",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1-2(1-4)",
     "saveAs": "F10",
     "morale": 9,
     "treasureType": "E + 5000gp",
+    "treasure": {
+      "raw": "E + 5000gp",
+      "normalizedCodes": [
+        "E"
+      ]
+    },
     "alignment": "Chaotic",
     "xp": 1900,
     "specialAbilities": "",
@@ -1180,6 +1919,9 @@
     "armorClass": 4,
     "hitDice": "11+2*",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "weapon or throw rock",
@@ -1188,10 +1930,28 @@
       }
     ],
     "damage": "5d6 OR 3d6",
+    "damageParts": [
+      {
+        "raw": "5d6",
+        "dice": "5d6",
+        "rider": null
+      },
+      {
+        "raw": "3d6",
+        "dice": "3d6",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1-2(1-3)",
     "saveAs": "F11",
     "morale": 9,
     "treasureType": "E + 5000gp",
+    "treasure": {
+      "raw": "E + 5000gp",
+      "normalizedCodes": [
+        "E"
+      ]
+    },
     "alignment": "Chaotic",
     "xp": 2100,
     "specialAbilities": "",
@@ -1206,6 +1966,9 @@
     "armorClass": 4,
     "hitDice": "13*",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "weapon or throw rock",
@@ -1214,10 +1977,28 @@
       }
     ],
     "damage": "6d6 OR 3d6",
+    "damageParts": [
+      {
+        "raw": "6d6",
+        "dice": "6d6",
+        "rider": null
+      },
+      {
+        "raw": "3d6",
+        "dice": "3d6",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1-2(1-3)",
     "saveAs": "F12",
     "morale": 10,
     "treasureType": "E + 5000gp",
+    "treasure": {
+      "raw": "E + 5000gp",
+      "normalizedCodes": [
+        "E"
+      ]
+    },
     "alignment": "Neutral",
     "xp": 2300,
     "specialAbilities": "",
@@ -1232,6 +2013,9 @@
     "armorClass": 2,
     "hitDice": "15**",
     "movement": "150(50)",
+    "movementModes": {
+      "move": "150(50)"
+    },
     "attacks": [
       {
         "type": "weapon",
@@ -1245,10 +2029,38 @@
       }
     ],
     "damage": "8d6 (Call lightning bolt, once every 5 rounds, current hp dmg Save vs Spells for 1/2 dmg)",
+    "damageParts": [
+      {
+        "raw": "8d6 (Call lightning bolt",
+        "dice": "8d6",
+        "rider": "(Call lightning bolt"
+      },
+      {
+        "raw": "once every 5 rounds",
+        "dice": null,
+        "rider": "once every 5 rounds"
+      },
+      {
+        "raw": "current hp dmg Save vs Spells for 1",
+        "dice": null,
+        "rider": "current hp dmg Save vs Spells for 1"
+      },
+      {
+        "raw": "2 dmg)",
+        "dice": null,
+        "rider": "2 dmg)"
+      }
+    ],
     "numberAppearing": "1(1-3)",
     "saveAs": "F15",
     "morale": 10,
     "treasureType": "E + 5000gp",
+    "treasure": {
+      "raw": "E + 5000gp",
+      "normalizedCodes": [
+        "E"
+      ]
+    },
     "alignment": "Lawful",
     "xp": 3750,
     "specialAbilities": "",
@@ -1263,6 +2075,9 @@
     "armorClass": 7,
     "hitDice": "2+2*",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "fist",
@@ -1271,10 +2086,21 @@
       }
     ],
     "damage": "1d8",
+    "damageParts": [
+      {
+        "raw": "1d8",
+        "dice": "1d8",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F1",
     "morale": 12,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 35,
     "specialAbilities": "-1 to INIT, -2 To Save VS Fire and takes +1 dmg per die.",
@@ -1289,6 +2115,9 @@
     "armorClass": 2,
     "hitDice": "6*",
     "movement": "120(40)",
+    "movementModes": {
+      "move": "120(40)"
+    },
     "attacks": [
       {
         "type": "weapons",
@@ -1297,10 +2126,21 @@
       }
     ],
     "damage": "By weapons",
+    "damageParts": [
+      {
+        "raw": "By weapons",
+        "dice": null,
+        "rider": "By weapons"
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F4",
     "morale": 12,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 500,
     "specialAbilities": "Immune fire, cold, electricity",
@@ -1315,6 +2155,9 @@
     "armorClass": 6,
     "hitDice": "10*",
     "movement": "180(60)",
+    "movementModes": {
+      "move": "180(60)"
+    },
     "attacks": [
       {
         "type": "claws",
@@ -1328,10 +2171,31 @@
       }
     ],
     "damage": "2d6/2d6/2d10",
+    "damageParts": [
+      {
+        "raw": "2d6",
+        "dice": "2d6",
+        "rider": null
+      },
+      {
+        "raw": "2d6",
+        "dice": "2d6",
+        "rider": null
+      },
+      {
+        "raw": "2d10",
+        "dice": "2d10",
+        "rider": null
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F5",
     "morale": 12,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 1750,
     "specialAbilities": "Detect invis 60'",
@@ -1346,6 +2210,9 @@
     "armorClass": 0,
     "hitDice": "20**",
     "movement": "240(80)",
+    "movementModes": {
+      "move": "240(80)"
+    },
     "attacks": [
       {
         "type": "fist",
@@ -1359,10 +2226,21 @@
       }
     ],
     "damage": "3d10 +1d10 Fire",
+    "damageParts": [
+      {
+        "raw": "3d10 +1d10 Fire",
+        "dice": "3d10+1",
+        "rider": "d10 Fire"
+      }
+    ],
     "numberAppearing": "1(1)",
     "saveAs": "F10",
     "morale": 12,
     "treasureType": "Nil",
+    "treasure": {
+      "raw": "Nil",
+      "normalizedCodes": []
+    },
     "alignment": "Neutral",
     "xp": 5975,
     "specialAbilities": "Flaming fists +1d10 Fire",

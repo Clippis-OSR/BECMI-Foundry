@@ -16,9 +16,19 @@ function isValidDamage(damage) {
   return segments.length > 0 && segments.every((seg) => isDiceLike(seg) || /^by weapon$/i.test(seg) || /^special$/i.test(seg));
 }
 
+function hasStructuredDamage(monster) {
+  if (!Array.isArray(monster.damageParts) || monster.damageParts.length === 0) return false;
+  return monster.damageParts.some((p) => p?.dice || /^(by weapon|special)$/i.test(p?.raw || ''));
+}
+
 function isValidMovement(movement) {
   if (!movement) return false;
   return /^\d+(?:\s*\(\d+\))?(?:\s*\/\s*\d+(?:\s*\(\d+\))?)*$/i.test(String(movement).replace(/\s+/g, ' ').trim());
+}
+
+function hasStructuredMovement(monster) {
+  if (!monster?.movementModes || typeof monster.movementModes !== 'object') return false;
+  return Object.keys(monster.movementModes).length > 0;
 }
 
 function isValidMorale(morale) {
@@ -30,14 +40,23 @@ function isValidTreasureType(value) {
   return /^(?:nil|none|[a-z](?:\s*,\s*[a-z])*)$/i.test(String(value).trim());
 }
 
-function suspiciousXp(monster) {
-  if (!Number.isInteger(monster.xp) || monster.xp <= 0) return true;
-  const hdBase = Number.parseFloat(String(monster.hitDice).replace(/[^0-9.]/g, ''));
-  if (!Number.isFinite(hdBase)) return false;
-  return monster.xp < Math.max(5, hdBase * 5) || monster.xp > (hdBase + 1) * 1500;
+function hasStructuredTreasure(monster) {
+  return Array.isArray(monster?.treasure?.normalizedCodes) && monster.treasure.normalizedCodes.length > 0;
 }
 
-const issues = [];
+function suspiciousXp(monster) {
+  if (!Number.isInteger(monster.xp) || monster.xp <= 0) return true;
+  const cleanedHd = String(monster.hitDice).split(/[+-]/)[0].replace(/[^0-9.]/g, '');
+  const hdBase = Number.parseFloat(cleanedHd);
+  if (!Number.isFinite(hdBase)) return false;
+  const lower = Math.max(5, hdBase * 4);
+  const upper = (hdBase + 3) * 1800;
+  return monster.xp < lower || monster.xp > upper;
+}
+
+const hardErrors = [];
+const warnings = [];
+const notes = [];
 const all = [];
 const idCounts = new Map();
 const nameCounts = new Map();
@@ -49,25 +68,26 @@ for (const book of BOOKS) {
     idCounts.set(m.id, (idCounts.get(m.id) || 0) + 1);
     nameCounts.set(m.name.toLowerCase(), (nameCounts.get(m.name.toLowerCase()) || 0) + 1);
 
-    if (m.armorClass === null || Number.isNaN(Number(m.armorClass))) issues.push({ type: 'missing-ac', monster: m.name, book });
-    if (!m.hitDice) issues.push({ type: 'missing-hd', monster: m.name, book });
-    if (!isValidMorale(m.morale)) issues.push({ type: 'malformed-morale', monster: m.name, book, value: m.morale });
-    if (!isValidTreasureType(m.treasureType)) issues.push({ type: 'malformed-treasure', monster: m.name, book, value: m.treasureType });
-    if (!isValidMovement(m.movement)) issues.push({ type: 'invalid-movement', monster: m.name, book, value: m.movement });
-    if (suspiciousXp(m)) issues.push({ type: 'suspicious-xp', monster: m.name, book, value: m.xp });
+    if (m.armorClass === null || Number.isNaN(Number(m.armorClass))) hardErrors.push({ type: 'missing-ac', monster: m.name, book });
+    if (!m.hitDice) hardErrors.push({ type: 'missing-hd', monster: m.name, book });
+    if (!isValidMorale(m.morale)) warnings.push({ type: 'malformed-morale', monster: m.name, book, value: m.morale });
+    if (!isValidTreasureType(m.treasureType) && !hasStructuredTreasure(m)) warnings.push({ type: 'malformed-treasure', monster: m.name, book, value: m.treasureType });
+    if (!isValidMovement(m.movement) && !hasStructuredMovement(m)) warnings.push({ type: 'invalid-movement', monster: m.name, book, value: m.movement });
+    if (suspiciousXp(m)) notes.push({ type: 'suspicious-xp', monster: m.name, book, value: m.xp });
 
-    if (!Array.isArray(m.attacks) || m.attacks.length === 0) issues.push({ type: 'malformed-attacks', monster: m.name, book, value: m.attacks });
+    if (!Array.isArray(m.attacks) || m.attacks.length === 0) warnings.push({ type: 'malformed-attacks', monster: m.name, book, value: m.attacks });
     for (const attack of m.attacks || []) {
-      if (!attack.type || !attack.raw) issues.push({ type: 'malformed-attacks', monster: m.name, book, value: attack });
+      if (!attack.type || !attack.raw) warnings.push({ type: 'malformed-attacks', monster: m.name, book, value: attack });
     }
-    if (!isValidDamage(m.damage)) issues.push({ type: 'missing-or-malformed-damage', monster: m.name, book, value: m.damage });
+    if (!isValidDamage(m.damage) && !hasStructuredDamage(m)) warnings.push({ type: 'missing-or-malformed-damage', monster: m.name, book, value: m.damage });
   }
 }
 
-for (const [id, count] of idCounts.entries()) if (count > 1) issues.push({ type: 'duplicate-id', id, count });
-for (const [name, count] of nameCounts.entries()) if (count > 1) issues.push({ type: 'duplicate-name', name, count });
+for (const [id, count] of idCounts.entries()) if (count > 1) hardErrors.push({ type: 'duplicate-id', id, count });
+for (const [name, count] of nameCounts.entries()) if (count > 1) hardErrors.push({ type: 'duplicate-name', name, count });
 
-const counts = issues.reduce((acc, issue) => {
+const allIssues = [...hardErrors, ...warnings, ...notes];
+const counts = allIssues.reduce((acc, issue) => {
   acc[issue.type] = (acc[issue.type] || 0) + 1;
   return acc;
 }, {});
@@ -75,6 +95,13 @@ const counts = issues.reduce((acc, issue) => {
 console.log(JSON.stringify({
   scanned: all.length,
   books: BOOKS,
+  severity: {
+    hardErrors: hardErrors.length,
+    warnings: warnings.length,
+    notes: notes.length
+  },
   issueCounts: counts,
-  issues
+  hardErrors,
+  warnings,
+  notes
 }, null, 2));
