@@ -1,53 +1,27 @@
-Name;AC;Hit Dice;HP (Avg);THAC0;Move;Attack;Damage;No. Appering ;Save As;Morale;Tresure Type;Aligment;XP Value;Type;Special
+Name;AC;Hit Dice;HP (Avg);THAC0;Move;Attack;Damage;No. Appearing;Save As;Morale;Treasure Type;Alignment;XP Value;Type;Special
 Animal Herd, Goat;7;1;4;19;240(80);1 Butt;1d2;0(3-30);F1;5;Nil;Neutral;10;Animal;On failed morale, 40% Stampede 1d20 dmg.
 Animal Herd, Antelope/Deer;7;2;8;18;240(80);1 Butt;1d4;0(3-30);F1;5;Nil;Neutral;20;Animal;On failed morale, 40% Stampede 1d20 dmg.
 Animal Herd, Caribou/Oxen;7;3;12;17;240(80);1 Butt;1d6;0(3-30);F1;5;Nil;Neutral;35;Animal;On failed morale, 40% Stampede 1d20 dmg.
 Animal Herd, Elk/Moose;7;4;16;16;240(80);1 Butt;1d8;0(3-30);F1;5;Nil;Neutral;75;Animal;On failed morale, 40% Stampede 1d20 dmg.
 Basilisk;4;6 +1**;25;13;60(20);1 Bite/1 Gaze;1d10 + Petrification/Save VS Petri;1-6(1-6);F6;9;F;Neutral;950;Magical Monster;
-Black Pudding*;6;10*;40;10;60(20);1;3d8;1(0);F5;12;5d4 Gems;Neutral;1750;Slime;"Only take FIRE dmg, Splits if hit by anything else.
-Split: 2HD Blob, 1d8 dmg."
-Blink Dog;5;4*;20;16;120(40);1 Bite;1d6;1-6(4-9);F4;6;C;Lawful;125;Animal;blink in to attack then blink away 10-40'
-Caecilia;6;6*;24;14;60(20);1 Bite + Swallow(19);1d8;1-3(1-3);F3;9;B;Neutral;500;Animal;Subterranian
-Camel;7;2;8;18;150(50);1 Biite/1 Hoof;1/1d4;0(2-8);F1;7;Nil;Neutral;20;Animal;
+Black Pudding*;6;10*;40;10;60(20);1;3d8;1(0);F5;12;5d4 Gems;Neutral;1750;Slime;"Only take FIRE dmg, Splits if hit by anything else. Split: 2HD Blob, 1d8 dmg."
+Blink Dog;5;4*;20;16;120(40);1 Bite;1d6;1-6(4-9);F4;6;C;Lawful;125;Animal;Blink in to attack then blink away 10-40'
+Caecilia;6;6*;24;14;60(20);1 Bite + Swallow(19);1d8;1-3(1-3);F3;9;B;Neutral;500;Animal;Subterranean
+Camel;7;2;8;18;150(50);1 Bite/1 Hoof;1/1d4;0(2-8);F1;7;Nil;Neutral;20;Animal;
 Centaur;5;4;16;16;180(60);2 Hooves/1 Weapon(Club, Lance, Bow);1d6/1d6/By weapon;0(2-20);F4;8;A;Neutral;75;Demihuman;
 Centaur, Young;5;2;8;18;150(50);2 Hooves/1 Weapon(Club);1d2/1d2/1d4;1/2 of Centaur;F2;8;Nil;Neutral;20;Demihuman;
-Chimera;4;9**;36;11;"120(40)
-Fly: 180(60)";2 Claws/3 Heads + Breath(50%);1d3/1d3/2d4/1d10/3d4 OR 3d6;1-2(1-4);F9;9;F;Chaotic;2300;Magical Monster;
-Cockatrice;6;5**;20;15;"M: 90(30)
-F: 180(60)";1 Beak;1d6 + Petrification;1-4(2-8);F5;7;D;Neutral;425;Magical Monster;
+Chimera;4;9**;36;11;"120(40) Fly: 180(60)";2 Claws/3 Heads + Breath(50%);1d3/1d3/2d4/1d10/3d4 OR 3d6;1-2(1-4);F9;9;F;Chaotic;2300;Magical Monster;
+Cockatrice;6;5**;20;15;"M: 90(30) F: 180(60)";1 Beak;1d6 + Petrification;1-4(2-8);F5;7;D;Neutral;425;Magical Monster;
 Crab, Giant;2;3;12;17;60(20);2 Pincers;2d6/2d6;1-2(1-6);F2;7;Nil;Neutral;35;Animal;
 Crocodile;5;2;8;18;90(30);1 Bite;1d8;0(1-8);F1;7;Nil;Neutral;35;Animal;
 Crocodile, Large;3;6;24;14;90(30);1 Bite;2d8;0(1-4);F3;7;Nil;Neutral;275;Animal;
 Crocodile, Giant;1;15;60;8;90(30);1 Bite;3d8;0(1-3);F8;9;Nil;Neutral;1350;Animal;
 Cyclops;5;13*;52;9;90(30);1 Club or Stone throw;3d10 or 3d6;1(1-4);F13;9;E + 5000gp;Chaotic;2300;Giant;
 Devil Swine*;3;9*;36;11;180(60);1 Gore;2d6;1-3(1-4);F9;10;C;Chaotic;1600;Lycanthrope;
-Displacer Beast;4;6*;24;14;150(50);2 Tentacles;2d4/2d4;1-4(1-4);F6;8;D;Neutral;500;Magical Monster;-2 To hit and +2 save throws. Gain 1 bite when hp =6 or lower. (Bite +2hit 1d6 dmg)
-Djinni(Lesser)*;5;7+1*;29;12;"M: 90(30)
-F: 240(80)";1 fist OR whirlwind +special;2d8 or 2d6;1(1);F14;12;Nil;Chaotic;1025;Magical Monster;"A djinni can use each of its seven powers 
-3 times each day. These powers are: create 
-food and drink (as a 7th level cleric); create 
-metallic objects of up to 1,000 cn weight (of 
-temporary duration, varying by type: gold 
-= 1 day, iron = 1 round); create soft goods 
-and wooden objects of up to 1,000 cn weight 
-which are permanent; become invisible; as- 
-sume gaseous form; form a whirlwind; create 
-illzcsions (which affect both sight and hear- 
-ing, lasting until touched or magically dis- 
-pelled - the djinni need not concentrate to 
-maintain them)."
+Displacer Beast;4;6*;24;14;150(50);2 Tentacles;2d4/2d4;1-4(1-4);F6;8;D;Neutral;500;Magical Monster;-2 To hit and +2 save throws. Gain 1 bite when hp = 6 or lower. (Bite +2 hit 1d6 dmg)
+Djinni(Lesser)*;5;7+1*;29;12;"M: 90(30) F: 240(80)";1 fist OR whirlwind +special;2d8 or 2d6;1(1);F14;12;Nil;Chaotic;1025;Magical Monster;"A djinni can use each of its seven powers 3 times each day. These powers are: create food and drink (as a 7th level cleric); create metallic objects of up to 1,000 cn weight (of temporary duration, varying by type: gold = 1 day, iron = 1 round); create soft goods and wooden objects of up to 1,000 cn weight which are permanent; become invisible; assume gaseous form; form a whirlwind; create illusions (which affect both sight and hearing, lasting until touched or magically dispelled - the djinni need not concentrate to maintain them)."
 Dryad;5;2*;8;18;120(40);Charm person;Spell charm person with -2 to Save;0(1-6);Elf4;6;D;Neutral;25;Magical Monster;
-Efreeti(Lesser)*;3;10*;40;10;"M: 90(30)
-F: 240(80)";1 Fist +(Flames);2d8 +(1d8);1(1);F15;12;Nil;Chaotic;1750;Magical Monster;"An efreeti can create objects, create illusions, 
-and turn invisible like a djinni. It can cast a 
-wall of fire spell 3 times per day. An efreeti 
-may also transform itself into apillar offlame 
-that will set fire to all flammable items 
-within 5 feet. It can retain the flame shape 
-48 
-for up to 3 rounds. When in this form, the 
-fire adds 1-8 points of damage to each of the 
-efreeti's blows"
+Efreeti(Lesser)*;3;10*;40;10;"M: 90(30) F: 240(80)";1 Fist +(Flames);2d8 +(1d8);1(1);F15;12;Nil;Chaotic;1750;Magical Monster;"An efreeti can create objects, create illusions, and turn invisible like a djinni. It can cast a wall of fire spell 3 times per day. An efreeti may also transform itself into a pillar of flame that will set fire to all flammable items within 5 feet. It can retain the flame shape for up to 3 rounds. When in this form, the fire adds 1-8 points of damage to each of the efreeti's blows."
 Elemental* Air, staff;2;8;32;12;F:360(120);1;1d8;1(1);F8;10;Nil;Neutral;650;Elemental;Does +1d8 in its element.
 Elemental* Air, device;0;12;48;9;F:360(120);1;2d8;1(1);F12;10;Nil;Neutral;1250;Elemental;Does +1d8 in its element.
 Elemental* Air, spell;-2;16;64;7;F:360(120);1;3d8;1(1);F16;10;Nil;Neutral;1850;Elemental;Does +1d8 in its element.
@@ -57,26 +31,21 @@ Elemental* Earth, spell;-2;16;64;7;60(20);1;3d8;1(1);F16;10;Nil;Neutral;1850;Ele
 Elemental* Fire, staff;2;8;32;12;120(40);1;1d8;1(1);F8;10;Nil;Neutral;650;Elemental;Does +1d8 in its element.
 Elemental* Fire, device;0;12;48;9;120(40);1;2d8;1(1);F12;10;Nil;Neutral;1250;Elemental;Does +1d8 in its element.
 Elemental* Fire, spell;-2;16;64;7;120(40);1;3d8;1(1);F16;10;Nil;Neutral;1850;Elemental;Does +1d8 in its element.
-Elemental* Water, staff;2;8;32;12;"M: 60(20)
-S: 180(60)";1;1d8;1(1);F8;10;Nil;Neutral;650;Elemental;Does +1d8 in its element.
-Elemental* Water, device;0;12;48;9;"M: 60(20)
-S: 180(60)";1;2d8;1(1);F12;10;Nil;Neutral;1250;Elemental;Does +1d8 in its element.
-Elemental* Water, spell;-2;16;64;7;"M: 60(20)
-S: 180(60)";1;3d8;1(1);F16;10;Nil;Neutral;1850;Elemental;Does +1d8 in its element.
+Elemental* Water, staff;2;8;32;12;"M: 60(20) S: 180(60)";1;1d8;1(1);F8;10;Nil;Neutral;650;Elemental;Does +1d8 in its element.
+Elemental* Water, device;0;12;48;9;"M: 60(20) S: 180(60)";1;2d8;1(1);F12;10;Nil;Neutral;1250;Elemental;Does +1d8 in its element.
+Elemental* Water, spell;-2;16;64;7;"M: 60(20) S: 180(60)";1;3d8;1(1);F16;10;Nil;Neutral;1850;Elemental;Does +1d8 in its element.
 Elephant;5;9;36;11;120(40);2 Tusks(75%) OR 1 Trample(25%);2d4/2d4 OR 4d8;0(1-20);F5;8;Tusk 1d6 x100gp;Neutral;900;Animal;Tries to charge first round
 Elephant, Prehistoric;3;15;60;7;120(40);2 Tusks(75%) OR 1 Trample(25%);2d6/2d6 OR 4d8;0(2-16);F8;8;Tusk 2d4 x100gp;Neutral;1650;Animal;Tries to charge first round
 Fish, Giant Bass;7;2;8;18;120(40);1 Bite;1d6;0(2-8);F1;8;Nil;Neutral;20;Fish;
 Fish, Giant Rockfish;7;5+5*;25;14;180(60);4 Spines + Poison;1d4 each Spine + Save VS Poison(3);0(2-8);F3;8;Nil;Neutral;400;Fish;
-Fish, Giant Sturgeon;0;10+2*;42;10;180(60);1 Bite + Swallow(18);2d10 (Swallow 2d6);0(1-2);F5;9;Nil;Neutral;1900;Fish;Swalloed victim save VS Death Ray or be paralysed
+Fish, Giant Sturgeon;0;10+2*;42;10;180(60);1 Bite + Swallow(18);2d10 (Swallow 2d6);0(1-2);F5;9;Nil;Neutral;1900;Fish;Swallowed victim save VS Death Ray or be paralyzed
 Giant, Hill;4;8;32;12;120(40);1 Weapon OR Throw Rock;2d8 OR 3d6;1-4(2d8);F8;8;E + 5000gp;Chaotic;650;Giant;
 Giant, Stone;4;9;36;11;120(40);1 Weapon OR Throw Rock;3d6 OR 3d6;1-2(1-6);F9;9;E + 5000gp;Neutral;900;Giant;
 Giant, Frost;4;10+1*;41;10;120(40);1 Weapon OR Throw Rock;4d6 OR 3d6;1-2(1-4);F10;9;E + 5000gp;Chaotic;1900;Giant;
 Giant, Fire;4;11+2*;46;9;120(40);1 Weapon OR Throw Rock;5d6 OR 3d6;1-2(1-3);F11;9;E + 5000gp;Chaotic;2100;Giant;
 Giant, Cloud;4;13*;52;9;120(40);1 Weapon OR Throw Rock;6d6 OR 3d6;1-2(1-3);F12;10;E + 5000gp;Neutral;2300;Giant;
-Giant, Storm;2;15**;60;8;150(50);1 Weapon + Special;"8d6
-(Call lightning bolt, once every 5 rounds, current hp dmg Save vs Spells for 1/2 dmg";1(1-3);F15;10;E + 5000gp;Lawful;3750;Giant;
-Golem* , Wood;7;2+2*;10;17;120(40);1 Fist;1d8;1(1);F1;12;Nil;Neutral;35;Construct;-1 to INIT, -2 To Save VS Fire and takes +1 dmg per die.
-Golem* , Bone;2;6*;24;14;120(40);4 Weapons( 4x 1h or 2x 2h);By weapons ;1(1);F4;12;Nil;Neutral;500;Construct;Immune fire, cold, electricity
-Golem* , Amber;6;10*;40;10;180(60);2 Claws/1 Bite;2d6/2d6/2d10;1(1);F5;12;Nil;Neutral;1750;Construct;Detect invis 60'
-Golem* , Bronze;0;20**;80;5;240(80);1 Fist + Special;3d10 +1d10Fire;1(1);F10;12;Nil;Neutral;5975;Construct;"Flaming fists +1d10FIre
-"
+Giant, Storm;2;15**;60;8;150(50);1 Weapon + Special;"8d6 (Call lightning bolt, once every 5 rounds, current hp dmg Save vs Spells for 1/2 dmg)";1(1-3);F15;10;E + 5000gp;Lawful;3750;Giant;
+Golem*, Wood;7;2+2*;10;17;120(40);1 Fist;1d8;1(1);F1;12;Nil;Neutral;35;Construct;-1 to INIT, -2 To Save VS Fire and takes +1 dmg per die.
+Golem*, Bone;2;6*;24;14;120(40);4 Weapons( 4x 1h or 2x 2h);By weapons;1(1);F4;12;Nil;Neutral;500;Construct;Immune fire, cold, electricity
+Golem*, Amber;6;10*;40;10;180(60);2 Claws/1 Bite;2d6/2d6/2d10;1(1);F5;12;Nil;Neutral;1750;Construct;Detect invis 60'
+Golem*, Bronze;0;20**;80;5;240(80);1 Fist + Special;3d10 +1d10 Fire;1(1);F10;12;Nil;Neutral;5975;Construct;Flaming fists +1d10 Fire
