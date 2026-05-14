@@ -77,7 +77,6 @@ export async function equipItem(actor, item) {
   const pendingUnequipIds = new Set();
 
   const slot = resolveItemSlot(item);
-  const weaponType = item?.system?.weaponType;
   const hands = String(item?.system?.hands ?? "one").toLowerCase();
 
   const mainItem = slots.weaponMain ? actor.items.get(slots.weaponMain) : null;

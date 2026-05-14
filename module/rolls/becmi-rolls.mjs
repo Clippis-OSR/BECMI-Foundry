@@ -240,7 +240,7 @@ export async function rollMonsterDamage(actor, attack) {
   let roll;
   try {
     roll = await new Roll(damageFormula).evaluate();
-  } catch (error) {
+  } catch {
     ui.notifications.warn(`Invalid damage formula for ${attackName}: ${damageFormula}`);
     return;
   }

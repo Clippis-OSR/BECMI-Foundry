@@ -111,7 +111,7 @@ export class BECMIItemSheet extends ItemSheet {
       } else {
         try {
           updates["system.effectData"] = JSON.parse(trimmed);
-        } catch (_error) {
+        } catch {
           updates["system.effectData"] = effectDataInput;
         }
       }

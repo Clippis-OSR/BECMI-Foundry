@@ -1,6 +1,5 @@
 import {
   rollAbilityCheck,
-  rollCharacterAttack,
   rollInitiative,
   rollSavingThrow,
   rollThiefSkill

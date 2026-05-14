@@ -39,7 +39,7 @@ export class BECMISpellItemSheet extends ItemSheet {
             return;
           }
           updates["system.effects"] = parsed;
-        } catch (err) {
+        } catch {
           ui.notifications?.error("Invalid JSON in effects field.");
           return;
         }
