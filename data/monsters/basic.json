@@ -1,0 +1,3052 @@
+[
+  {
+    "id": "ant-giant",
+    "name": "Ant, Giant",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 3,
+    "hitDice": "4*",
+    "movement": "1 Bite",
+    "attacks": [
+      {
+        "type": "2d6",
+        "count": 1,
+        "raw": "2d6"
+      }
+    ],
+    "damage": "2-8 (4-24)",
+    "numberAppearing": "F2",
+    "saveAs": "7",
+    "morale": null,
+    "treasureType": "Neutral",
+    "alignment": "125",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "ape-white",
+    "name": "Ape, White",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "4",
+    "movement": "2 Claw",
+    "attacks": [
+      {
+        "type": "1d4",
+        "count": 1,
+        "raw": "1d4"
+      },
+      {
+        "type": "1d4",
+        "count": 1,
+        "raw": "1d4"
+      }
+    ],
+    "damage": "1-6 (2-8)",
+    "numberAppearing": "F2",
+    "saveAs": "7",
+    "morale": null,
+    "treasureType": "Neutral",
+    "alignment": "75",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "baboon-rock",
+    "name": "Baboon, Rock",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "2",
+    "movement": "1 Club / 1 Bite",
+    "attacks": [
+      {
+        "type": "1d6",
+        "count": 1,
+        "raw": "1d6"
+      },
+      {
+        "type": "1d3",
+        "count": 1,
+        "raw": "1d3"
+      }
+    ],
+    "damage": "2-12 (5-30)",
+    "numberAppearing": "F2",
+    "saveAs": "8",
+    "morale": null,
+    "treasureType": "Neutral",
+    "alignment": "20",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "bat-normal",
+    "name": "Bat, normal",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "1 / 4",
+    "movement": "Confusion",
+    "attacks": [
+      {
+        "type": "nil",
+        "count": 1,
+        "raw": "Nil"
+      }
+    ],
+    "damage": "1-100(1-100)",
+    "numberAppearing": "Normal man",
+    "saveAs": "6",
+    "morale": null,
+    "treasureType": "Neutral",
+    "alignment": "5",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "bat-giant",
+    "name": "Bat, Giant",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "2",
+    "movement": "1 Bite",
+    "attacks": [
+      {
+        "type": "1d4",
+        "count": 1,
+        "raw": "1d4"
+      }
+    ],
+    "damage": "1-10(1-10)",
+    "numberAppearing": "F1",
+    "saveAs": "8",
+    "morale": null,
+    "treasureType": "Neutral",
+    "alignment": "20",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "bandit",
+    "name": "Bandit",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "1",
+    "movement": "1 Wep (Club/Dagger/Short Bow/Short sword/Axe)",
+    "attacks": [
+      {
+        "type": "1d4 or 1d6",
+        "count": 1,
+        "raw": "1d4 OR 1d6"
+      }
+    ],
+    "damage": "1-8(3-30)",
+    "numberAppearing": "T1",
+    "saveAs": "8",
+    "morale": null,
+    "treasureType": "Chaotic or Neutral",
+    "alignment": "10",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "bear-black",
+    "name": "Bear, Black",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "4",
+    "movement": "2 Claws/1 Bite + Bearhug(if both claws hit add 2d8)",
+    "attacks": [
+      {
+        "type": "1d3",
+        "count": 1,
+        "raw": "1d3"
+      },
+      {
+        "type": "1d3",
+        "count": 1,
+        "raw": "1d3"
+      },
+      {
+        "type": "1d6",
+        "count": 1,
+        "raw": "1d6"
+      }
+    ],
+    "damage": "1-4(1-4)",
+    "numberAppearing": "F2",
+    "saveAs": "7",
+    "morale": null,
+    "treasureType": "Neutral",
+    "alignment": "75",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "bear-grizzly",
+    "name": "Bear, Grizzly",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 8,
+    "hitDice": "5",
+    "movement": "2 Claws/1 Bite + Bearhug(if both claws hit add 2d8)",
+    "attacks": [
+      {
+        "type": "1d8",
+        "count": 1,
+        "raw": "1d8"
+      },
+      {
+        "type": "1d8",
+        "count": 1,
+        "raw": "1d8"
+      },
+      {
+        "type": "1d10",
+        "count": 1,
+        "raw": "1d10"
+      }
+    ],
+    "damage": "1(1-4)",
+    "numberAppearing": "F4",
+    "saveAs": "10",
+    "morale": null,
+    "treasureType": "Neutral",
+    "alignment": "175",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "bear-polar",
+    "name": "Bear, Polar",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "6",
+    "movement": "2 Claws/1 Bite + Bearhug(if both claws hit add 2d8)",
+    "attacks": [
+      {
+        "type": "1d6",
+        "count": 1,
+        "raw": "1d6"
+      },
+      {
+        "type": "1d6",
+        "count": 1,
+        "raw": "1d6"
+      },
+      {
+        "type": "1d10",
+        "count": 1,
+        "raw": "1d10"
+      }
+    ],
+    "damage": "1(1-2)",
+    "numberAppearing": "F3",
+    "saveAs": "8",
+    "morale": null,
+    "treasureType": "Neutral",
+    "alignment": "275",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "bear-cave",
+    "name": "Bear, Cave",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "7",
+    "movement": "2 Claws/1 Bite + Bearhug(if both claws hit add 2d8)",
+    "attacks": [
+      {
+        "type": "2d4",
+        "count": 1,
+        "raw": "2d4"
+      },
+      {
+        "type": "2d4",
+        "count": 1,
+        "raw": "2d4"
+      },
+      {
+        "type": "2d6",
+        "count": 1,
+        "raw": "2d6"
+      }
+    ],
+    "damage": "1-2(1-2)",
+    "numberAppearing": "F4",
+    "saveAs": "9",
+    "morale": null,
+    "treasureType": "Neutral",
+    "alignment": "450",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "bee-giant",
+    "name": "Bee, Giant",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "1/2*",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "sting",
+        "count": 1,
+        "raw": "1 Sting"
+      }
+    ],
+    "damage": "1d3 + Poison(1)",
+    "numberAppearing": "1-6(5-30)",
+    "saveAs": "F1",
+    "morale": 9,
+    "treasureType": "Healing honey 1d4",
+    "alignment": "Neutral",
+    "xp": 6,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "bee-guard",
+    "name": "Bee, Guard",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "1*",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "sting",
+        "count": 1,
+        "raw": "1 Sting"
+      }
+    ],
+    "damage": "1d3 + Poison(1)",
+    "numberAppearing": "4 per 10 normal bee",
+    "saveAs": "F1",
+    "morale": 9,
+    "treasureType": "Healing honey 1d4",
+    "alignment": "Neutral",
+    "xp": 13,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "bee-queen",
+    "name": "Bee, Queen",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "2*",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "sting",
+        "count": 1,
+        "raw": "1 Sting"
+      }
+    ],
+    "damage": "1d3 + Poison(1)",
+    "numberAppearing": "1 per 10 normal",
+    "saveAs": "F1",
+    "morale": 9,
+    "treasureType": "Healing honey 1d4",
+    "alignment": "Neutral",
+    "xp": 25,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "beetle-giant-fire",
+    "name": "Beetle Giant, Fire",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "1 +2",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "2d4",
+    "numberAppearing": "1-8(2-12)",
+    "saveAs": "F1",
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 15,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "beetle-giant-tiger",
+    "name": "Beetle Giant, Tiger",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "2*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "1-8(2-12)",
+    "saveAs": "F1",
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 25,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "beetle-giant-oil",
+    "name": "Beetle Giant, Oil",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 3,
+    "hitDice": "3 +1",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "bite + special",
+        "count": 1,
+        "raw": "1 Bite + Special"
+      }
+    ],
+    "damage": "2d6 + Spray Oil, -2 to Hit rolls",
+    "numberAppearing": "1-6(2-8)",
+    "saveAs": "F2",
+    "morale": 9,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "xp": 50,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "berserker",
+    "name": "Berserker",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "1 +1*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "wep",
+        "count": 1,
+        "raw": "1 Wep"
+      }
+    ],
+    "damage": "1d4 or 1d6 or 1d8",
+    "numberAppearing": "1-6(3-30)",
+    "saveAs": "F1",
+    "morale": 12,
+    "treasureType": "(P)B",
+    "alignment": "Neutral",
+    "xp": 19,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "boar",
+    "name": "Boar",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "3",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "tusk",
+        "count": 1,
+        "raw": "1 Tusk"
+      }
+    ],
+    "damage": "2d4",
+    "numberAppearing": "1-6(1-6)",
+    "saveAs": "F2",
+    "morale": 9,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 35,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "bugbear",
+    "name": "Bugbear",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "3 +1",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "wep",
+        "count": 1,
+        "raw": "1 Wep"
+      }
+    ],
+    "damage": "1d4+1 or 1d6+1 or 1d8+1",
+    "numberAppearing": "2-8(5-20)",
+    "saveAs": "F3",
+    "morale": 9,
+    "treasureType": "(P+Q)B",
+    "alignment": "Chaotic",
+    "xp": 75,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "carrion-crawler",
+    "name": "Carrion Crawler",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "3 +1*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "tentacles",
+        "count": 8,
+        "raw": "8 Tentacles"
+      }
+    ],
+    "damage": "Paralysis",
+    "numberAppearing": "1-4(0)",
+    "saveAs": "F2",
+    "morale": 9,
+    "treasureType": "B",
+    "alignment": "Neutral",
+    "xp": 75,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "cat-greater-mountain-lion",
+    "name": "Cat Greater, Mountain Lion",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "3 +2",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d3/1d3/1d6",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F2",
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "xp": 50,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "cat-greater-panther",
+    "name": "Cat Greater, Panther",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "4",
+    "movement": "210(70)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d4/1d4/1d8",
+    "numberAppearing": "1-2(1-6)",
+    "saveAs": "F2",
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "xp": 75,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "cat-greater-lion",
+    "name": "Cat Greater, Lion",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "5",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d4+1/1d4+1/1d10",
+    "numberAppearing": "1-4(1-8)",
+    "saveAs": "F3",
+    "morale": 9,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "xp": 175,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "cat-greater-tiger",
+    "name": "Cat Greater, Tiger",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "6",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d6/1d6/2d6",
+    "numberAppearing": "1(1-3)",
+    "saveAs": "F3",
+    "morale": 9,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "xp": 275,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "cat-greater-sabre-tooth-tiger",
+    "name": "Cat Greater, Sabre-tooth Tiger",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "8",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d8/1d8/2d8",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F4",
+    "morale": 10,
+    "treasureType": "V",
+    "alignment": "Neutral",
+    "xp": 650,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "centipede-giant",
+    "name": "Centipede, Giant",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 9,
+    "hitDice": "1/2",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "Poison (24h illness 1/2 move)",
+    "numberAppearing": "2-8(1-8)",
+    "saveAs": "Normal man",
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 6,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "doppleganger",
+    "name": "Doppleganger",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "4*",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "1d12",
+    "numberAppearing": "1-6(1-6)",
+    "saveAs": "F8*",
+    "morale": 8,
+    "treasureType": "E",
+    "alignment": "Chaotic",
+    "xp": 125,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "dragon-white-s",
+    "name": "Dragon, White (S)",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 3,
+    "hitDice": "6**",
+    "movement": "Move 90(30) Fly 240(80)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite or breath",
+        "count": 1,
+        "raw": "1 Bite OR Breath"
+      }
+    ],
+    "damage": "1d4/1d4/2d8",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F6",
+    "morale": 8,
+    "treasureType": "H",
+    "alignment": "Neutral",
+    "xp": 725,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "dragon-black-s",
+    "name": "Dragon, Black (S)",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 2,
+    "hitDice": "7**",
+    "movement": "Move 90(30) Fly 240(80)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite or breath",
+        "count": 1,
+        "raw": "1 Bite OR Breath"
+      }
+    ],
+    "damage": "1d4+1/1d4+1/2d10",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F7",
+    "morale": 8,
+    "treasureType": "H",
+    "alignment": "Chaotic",
+    "xp": 1250,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "dragon-green-s",
+    "name": "Dragon, Green (S)",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 1,
+    "hitDice": "8**",
+    "movement": "Move 90(30) Fly 240(80)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite or breath",
+        "count": 1,
+        "raw": "1 Bite OR Breath"
+      }
+    ],
+    "damage": "1d6/1d6/3d8",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F8",
+    "morale": 9,
+    "treasureType": "H",
+    "alignment": "Chaotic",
+    "xp": 1750,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "dragon-blue-s",
+    "name": "Dragon, Blue (S)",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 0,
+    "hitDice": "9**",
+    "movement": "Move 90(30) Fly 240(80)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite or breath",
+        "count": 1,
+        "raw": "1 Bite OR Breath"
+      }
+    ],
+    "damage": "1d6+1/1d6+1/3d10",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F9",
+    "morale": 9,
+    "treasureType": "H",
+    "alignment": "Neutral",
+    "xp": 2300,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "dragon-red-s",
+    "name": "Dragon, Red (S)",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": -1,
+    "hitDice": "10**",
+    "movement": "Move 90(30) Fly 240(80)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite or breath",
+        "count": 1,
+        "raw": "1 Bite OR Breath"
+      }
+    ],
+    "damage": "1d8/1d8/4d8",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F10",
+    "morale": 10,
+    "treasureType": "H",
+    "alignment": "Chaotic",
+    "xp": 2300,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "dragon-gold-s",
+    "name": "Dragon, Gold (S)",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": -2,
+    "hitDice": "11**",
+    "movement": "Move 90(30) Fly 240(80)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite or breath",
+        "count": 1,
+        "raw": "1 Bite OR Breath"
+      }
+    ],
+    "damage": "2d4/2d4/6d6",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F11",
+    "morale": 10,
+    "treasureType": "H",
+    "alignment": "Lawful",
+    "xp": 2700,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "dwarf",
+    "name": "Dwarf",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "1",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "weapon (axe",
+        "count": 1,
+        "raw": "1 Weapon (Axe"
+      },
+      {
+        "type": "club",
+        "count": 1,
+        "raw": "Club"
+      },
+      {
+        "type": "mace",
+        "count": 1,
+        "raw": "Mace"
+      },
+      {
+        "type": "l.xbow)",
+        "count": 1,
+        "raw": "L.xbow)"
+      }
+    ],
+    "damage": "1d6 or 1d4 or 1d6 or 1d6",
+    "numberAppearing": "1-6(5-40)",
+    "saveAs": "Dwarf 1",
+    "morale": 8,
+    "treasureType": "(Q + S) G",
+    "alignment": "Lawful or Neutral",
+    "xp": 10,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "elf",
+    "name": "Elf",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "1*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "weapon (s.sword",
+        "count": 1,
+        "raw": "1 Weapon (S.Sword"
+      },
+      {
+        "type": "spear",
+        "count": 1,
+        "raw": "Spear"
+      },
+      {
+        "type": "short or longbow)",
+        "count": 1,
+        "raw": "Short or Longbow)"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "1-4(2-24)",
+    "saveAs": "Elf 1",
+    "morale": 8,
+    "treasureType": "(S + T) E",
+    "alignment": "Neutral",
+    "xp": 13,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "ferret-giant",
+    "name": "Ferret, Giant",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "1 +1",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d8",
+    "numberAppearing": "1-8(1-12)",
+    "saveAs": "F1",
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 15,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "gargoyle",
+    "name": "Gargoyle*",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "4**",
+    "movement": "Move 90(30) Fly 150(50)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      },
+      {
+        "type": "horn",
+        "count": 1,
+        "raw": "1 Horn"
+      }
+    ],
+    "damage": "1d3/1d3/1d6/1d4",
+    "numberAppearing": "1-6(2-8)",
+    "saveAs": "F8",
+    "morale": 11,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "xp": 175,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "gelatinous-cube",
+    "name": "Gelatinous Cube*",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 8,
+    "hitDice": "4*",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "2d4 + Paralysis",
+    "numberAppearing": "1(1-4)",
+    "saveAs": "F2",
+    "morale": 12,
+    "treasureType": "(V)",
+    "alignment": "Neutral",
+    "xp": 125,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "ghoul",
+    "name": "Ghoul",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "2*",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d3/1d3/1d3+Paralysis",
+    "numberAppearing": "1-6(2-16)",
+    "saveAs": "F2",
+    "morale": 9,
+    "treasureType": "B",
+    "alignment": "Chaotic",
+    "xp": 25,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "gnoll",
+    "name": "Gnoll",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "2",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d6+1 or 1d8+1",
+    "numberAppearing": "1-6(3-18)",
+    "saveAs": "F2",
+    "morale": 8,
+    "treasureType": "(P)D",
+    "alignment": "Chaotic",
+    "xp": 20,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "gnoll-leader",
+    "name": "Gnoll, leader",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "3",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d6+1 or 1d8+1",
+    "numberAppearing": "1-6(3-18)",
+    "saveAs": "F2",
+    "morale": 8,
+    "treasureType": "(P)D",
+    "alignment": "Chaotic",
+    "xp": 20,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "gnome",
+    "name": "Gnome",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "1",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "warhammer or crossbow",
+        "count": 1,
+        "raw": "Warhammer or Crossbow"
+      }
+    ],
+    "damage": "1d6 or 1d6",
+    "numberAppearing": "1-8(5-40)",
+    "saveAs": "Dwarf 1",
+    "morale": 8,
+    "treasureType": "(P)C",
+    "alignment": "Lawful or Neutral",
+    "xp": 10,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "gnome-leader",
+    "name": "Gnome, Leader",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "2",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "warhammer or crossbow",
+        "count": 1,
+        "raw": "Warhammer or Crossbow"
+      }
+    ],
+    "damage": "1d6 or 1d6",
+    "numberAppearing": "1-8(5-40)",
+    "saveAs": "Dwarf 1",
+    "morale": 8,
+    "treasureType": "(P)C",
+    "alignment": "Lawful or Neutral",
+    "xp": 20,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "gnome-clan-chieftan",
+    "name": "Gnome, Clan Chieftan",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "4",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "warhammer or crossbow",
+        "count": 1,
+        "raw": "Warhammer or Crossbow"
+      }
+    ],
+    "damage": "1d6+1 or 1d6",
+    "numberAppearing": "1-8(5-40)",
+    "saveAs": "Dwarf 1",
+    "morale": 8,
+    "treasureType": "(P)C",
+    "alignment": "Lawful or Neutral",
+    "xp": 100,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "gnome-body-guard",
+    "name": "Gnome, Body guard",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "3",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "warhammer or crossbow",
+        "count": 1,
+        "raw": "Warhammer or Crossbow"
+      }
+    ],
+    "damage": "1d6 or 1d6",
+    "numberAppearing": "1-8(5-40)",
+    "saveAs": "Dwarf 1",
+    "morale": 8,
+    "treasureType": "(P)C",
+    "alignment": "Lawful or Neutral",
+    "xp": 35,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "goblin",
+    "name": "Goblin",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "1-1",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d4 or 1d6",
+    "numberAppearing": "2-8(6-60)",
+    "saveAs": "Normal man",
+    "morale": 7,
+    "treasureType": "(R)C",
+    "alignment": "Chaotic",
+    "xp": 5,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "goblin-body-guard",
+    "name": "Goblin, Body Guard",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "2",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "2-12 Only w/King in Lair",
+    "saveAs": "Normal man",
+    "morale": 7,
+    "treasureType": "(R)C",
+    "alignment": "Chaotic",
+    "xp": 20,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "goblin-king",
+    "name": "Goblin, King",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "3",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d6+1",
+    "numberAppearing": "1",
+    "saveAs": "Normal man",
+    "morale": 9,
+    "treasureType": "(R)C",
+    "alignment": "Chaotic",
+    "xp": 35,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "gray-ooze",
+    "name": "Gray Ooze",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 8,
+    "hitDice": "3*",
+    "movement": "10(3)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "2d8",
+    "numberAppearing": "1-4(1-2)",
+    "saveAs": "F2",
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 50,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "hafling",
+    "name": "Hafling",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "1-1",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "3-18(5-40)",
+    "saveAs": "Halfling 1",
+    "morale": 7,
+    "treasureType": "(P+S)B",
+    "alignment": "Lawful",
+    "xp": 5,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "halfling-militia",
+    "name": "Halfling, Militia",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "2",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "5-20 Only in village/lair",
+    "saveAs": "Halfling 1",
+    "morale": 7,
+    "treasureType": "Lawful",
+    "alignment": "20",
+    "xp": null,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "harpy",
+    "name": "Harpy",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "3*",
+    "movement": "M: 60(20) F: 150(50)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "weapon + charm song",
+        "count": 1,
+        "raw": "1 weapon + Charm song"
+      }
+    ],
+    "damage": "1d4/1d4/1d6",
+    "numberAppearing": "1-6(2-8)",
+    "saveAs": "F6",
+    "morale": 7,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "xp": 50,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "hobgoblin",
+    "name": "Hobgoblin",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "1+1",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "1-6(4-24)",
+    "saveAs": "F1",
+    "morale": 8,
+    "treasureType": "(Q)D",
+    "alignment": "Chaotic",
+    "xp": 15,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "hobgoblin-king",
+    "name": "Hobgoblin, King",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "Special",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d8+2",
+    "numberAppearing": "1",
+    "saveAs": "F1",
+    "morale": 8,
+    "treasureType": "(Q)D",
+    "alignment": "Chaotic",
+    "xp": 175,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "hobgoblin-body-guard",
+    "name": "Hobgoblin, Body Guard",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "Special",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "1-4 Only w/King",
+    "saveAs": "F1",
+    "morale": 8,
+    "treasureType": "(Q)D",
+    "alignment": "Chaotic",
+    "xp": 75,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "kobold",
+    "name": "Kobold",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "1/2",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d4",
+    "numberAppearing": "4-16(6-60)",
+    "saveAs": "Normal man",
+    "morale": 6,
+    "treasureType": "(P)+J",
+    "alignment": "Chaotic",
+    "xp": 5,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "kobold-king",
+    "name": "Kobold, King",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "Special",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "1",
+    "saveAs": "Normal man",
+    "morale": 6,
+    "treasureType": "(P)+J",
+    "alignment": "Chaotic",
+    "xp": 5,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "kobold-body-gurad",
+    "name": "Kobold, Body Gurad",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "Special",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d4",
+    "numberAppearing": "1-6 Only w/King",
+    "saveAs": "Normal man",
+    "morale": 6,
+    "treasureType": "(P)+J",
+    "alignment": "Chaotic",
+    "xp": 5,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "living-statue-crystal",
+    "name": "Living Statue, Crystal",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "3",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "fists",
+        "count": 2,
+        "raw": "2 Fists"
+      }
+    ],
+    "damage": "1d6/1d6",
+    "numberAppearing": "1-6(1-6)",
+    "saveAs": "F3",
+    "morale": 11,
+    "treasureType": "Nil",
+    "alignment": "Lawful",
+    "xp": 35,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "living-statue-iron",
+    "name": "Living Statue, Iron",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 2,
+    "hitDice": "4*",
+    "movement": "30(10)",
+    "attacks": [
+      {
+        "type": "fists + special",
+        "count": 2,
+        "raw": "2 Fists + Special( Metal weapon Save VS Spells)"
+      }
+    ],
+    "damage": "1d8/1d8",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F4",
+    "morale": 11,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 125,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "living-statue-rock",
+    "name": "Living Statue, Rock",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "5*",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "lava rays",
+        "count": 2,
+        "raw": "2 Lava rays"
+      }
+    ],
+    "damage": "2d6/2d6",
+    "numberAppearing": "1-3(1-3)",
+    "saveAs": "F5",
+    "morale": 11,
+    "treasureType": "Nil",
+    "alignment": "Chaotic",
+    "xp": 300,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "lizard-giant-gecko",
+    "name": "Lizard, Giant Gecko",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "3+1",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d8",
+    "numberAppearing": "1-6(1-10)",
+    "saveAs": "F2",
+    "morale": 7,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "xp": 50,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "lizard-giant-draco",
+    "name": "Lizard, Giant Draco",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "4+2",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d10",
+    "numberAppearing": "1-4(1-8)",
+    "saveAs": "F3",
+    "morale": 7,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "xp": 125,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "lizard-giant-horned-chameleon",
+    "name": "Lizard, Giant Horned Chameleon",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 2,
+    "hitDice": "5*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      },
+      {
+        "type": "horn",
+        "count": 1,
+        "raw": "1 Horn"
+      }
+    ],
+    "damage": "2d4/1d6",
+    "numberAppearing": "1-3(1-6)",
+    "saveAs": "F3",
+    "morale": 7,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "xp": 300,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "lizard-giant-tuatara",
+    "name": "Lizard, Giant Tuatara",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "6",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d4/1d4/2d6",
+    "numberAppearing": "1-2(1-4)",
+    "saveAs": "F3",
+    "morale": 6,
+    "treasureType": "V",
+    "alignment": "Neutral",
+    "xp": 275,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "lizard-man",
+    "name": "Lizard Man",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "2+1",
+    "movement": "Move 60(20) Swim 120(40)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon (Spear or mace)"
+      }
+    ],
+    "damage": "1d6+1",
+    "numberAppearing": "2-8(6-36)",
+    "saveAs": "F2",
+    "morale": 12,
+    "treasureType": "D",
+    "alignment": "Neutral",
+    "xp": 25,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "locust-giant",
+    "name": "Locust, Giant",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "2**",
+    "movement": "M 60(20) Fly 180(60)",
+    "attacks": [
+      {
+        "type": "bite or 1 spit or 1 bump",
+        "count": 1,
+        "raw": "1 Bite or 1 Spit or 1 Bump"
+      }
+    ],
+    "damage": "1d2 or 1d4 or 1d4",
+    "numberAppearing": "2-20(0)",
+    "saveAs": "F2",
+    "morale": 5,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 30,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "lycanthrope-wererat",
+    "name": "Lycanthrope, WereRat",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "3*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "bite or 1 weapon",
+        "count": 1,
+        "raw": "1 Bite or 1 Weapon"
+      }
+    ],
+    "damage": "1d4 or Weapon",
+    "numberAppearing": "1-8(2-16)",
+    "saveAs": "F3",
+    "morale": 8,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "xp": 50,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "lycanthrope-werewolf",
+    "name": "Lycanthrope, WereWolf",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "4*",
+    "movement": "180(60)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "2d4",
+    "numberAppearing": "1-6(2-12)",
+    "saveAs": "F4",
+    "morale": 8,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "xp": 125,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "lycanthrope-werewolf-leader",
+    "name": "Lycanthrope, WereWolf Leader",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "5*",
+    "movement": "180(60)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "2d4+2",
+    "numberAppearing": "1 per 5 werewolfs",
+    "saveAs": "F4",
+    "morale": 8,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "xp": 300,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "lycanthrope-wereboar",
+    "name": "Lycanthrope, WereBoar",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "4+1*",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "tusk-bite",
+        "count": 1,
+        "raw": "1 Tusk-bite"
+      }
+    ],
+    "damage": "2d6",
+    "numberAppearing": "1-4(2-8)",
+    "saveAs": "F4",
+    "morale": 9,
+    "treasureType": "C",
+    "alignment": "Neutral",
+    "xp": 200,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "lycanthrope-weretiger",
+    "name": "Lycanthrope, WereTiger",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 3,
+    "hitDice": "5*",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d6/1d6/2d6",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F5",
+    "morale": 9,
+    "treasureType": "C",
+    "alignment": "Neutral",
+    "xp": 300,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "lycanthrope-werebear",
+    "name": "Lycanthrope, WereBear",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 2,
+    "hitDice": "6*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite + bearhug",
+        "count": 1,
+        "raw": "1 Bite + Bearhug(if both claws hit add 2d8)"
+      }
+    ],
+    "damage": "2d4/2d4/2d8",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F6",
+    "morale": 10,
+    "treasureType": "C",
+    "alignment": "Neutral",
+    "xp": 500,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "medusa",
+    "name": "Medusa",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 8,
+    "hitDice": "4**",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "snakebite + special",
+        "count": 1,
+        "raw": "1 Snakebite + Special"
+      }
+    ],
+    "damage": "1d6 + Poison (2)",
+    "numberAppearing": "1-3(1-4)",
+    "saveAs": "F4",
+    "morale": 8,
+    "treasureType": "(V)F",
+    "alignment": "Chaotic",
+    "xp": 175,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "minotaur",
+    "name": "Minotaur",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "6",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "gore",
+        "count": 1,
+        "raw": "1 Gore"
+      },
+      {
+        "type": "bite or 1 weapon",
+        "count": 1,
+        "raw": "1 Bite or 1 Weapon"
+      }
+    ],
+    "damage": "1d6/1d6 or 1d6+2",
+    "numberAppearing": "1-6(1-8)",
+    "saveAs": "F6",
+    "morale": 12,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "xp": 275,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "mule",
+    "name": "Mule",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "2",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "kick or 1 bite",
+        "count": 1,
+        "raw": "1 Kick or 1 Bite"
+      }
+    ],
+    "damage": "1d4 or 1d3",
+    "numberAppearing": "1-2(2-12)",
+    "saveAs": "Normal man",
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 20,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "neaderthal",
+    "name": "Neaderthal",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 8,
+    "hitDice": "2",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d4+1",
+    "numberAppearing": "1-10(10-40)",
+    "saveAs": "F2",
+    "morale": 7,
+    "treasureType": "C",
+    "alignment": "Lawful",
+    "xp": 20,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "neaderthal-king-queen",
+    "name": "Neaderthal, King/Queen",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 8,
+    "hitDice": "6",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d4+1",
+    "numberAppearing": "2 Leaders in a lair",
+    "saveAs": "F6",
+    "morale": 7,
+    "treasureType": "C",
+    "alignment": "Lawful",
+    "xp": 275,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "normal-human",
+    "name": "Normal Human",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 9,
+    "hitDice": "1",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d4",
+    "numberAppearing": "1-4(1-50)",
+    "saveAs": "Normal man",
+    "morale": 6,
+    "treasureType": "(P)U",
+    "alignment": "Any",
+    "xp": 5,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "ochre-jelly",
+    "name": "Ochre Jelly",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 8,
+    "hitDice": "5*",
+    "movement": "30(10)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "2d6",
+    "numberAppearing": "1(0)",
+    "saveAs": "F3",
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 300,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "ogre",
+    "name": "Ogre",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "4+1",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "club",
+        "count": 1,
+        "raw": "1 Club"
+      }
+    ],
+    "damage": "1d8+2",
+    "numberAppearing": "1-6(2-12)",
+    "saveAs": "F4",
+    "morale": 10,
+    "treasureType": "(S x 10) S x 100 + C",
+    "alignment": "Chaotic",
+    "xp": 125,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "orc",
+    "name": "Orc",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "1",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "2-8(10-60)",
+    "saveAs": "F1",
+    "morale": 8,
+    "treasureType": "(P)D",
+    "alignment": "Chaotic",
+    "xp": 10,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "orc-leader",
+    "name": "Orc, Leader",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "1",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d6+1",
+    "numberAppearing": "1 per 8 Orcs",
+    "saveAs": "F1",
+    "morale": 8,
+    "treasureType": "(P)D",
+    "alignment": "Chaotic",
+    "xp": 15,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "orc-chieftain",
+    "name": "Orc, Chieftain",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "1",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d6+2",
+    "numberAppearing": "1 per Lair",
+    "saveAs": "F1",
+    "morale": 8,
+    "treasureType": "(P)D",
+    "alignment": "Chaotic",
+    "xp": 75,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "owl-bear",
+    "name": "Owl bear",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "5",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite + bearhug",
+        "count": 1,
+        "raw": "1 Bite + Bearhug(if both claws hit add 2d8)"
+      }
+    ],
+    "damage": "1d8/1d8/1d8",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F3",
+    "morale": 9,
+    "treasureType": "C",
+    "alignment": "Neutral",
+    "xp": 175,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "pixie",
+    "name": "Pixie",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 3,
+    "hitDice": "1***",
+    "movement": "M: 90(30) F: 180(60)",
+    "attacks": [
+      {
+        "type": "dagger",
+        "count": 1,
+        "raw": "1 Dagger"
+      }
+    ],
+    "damage": "1d4",
+    "numberAppearing": "2-8(10-40)",
+    "saveAs": "Elf 1",
+    "morale": 7,
+    "treasureType": "R + S",
+    "alignment": "Neutral",
+    "xp": 19,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "rat-normal",
+    "name": "Rat, Normal",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 9,
+    "hitDice": "0",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "bite per pack",
+        "count": 1,
+        "raw": "1 Bite per pack"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "5-50(2-20)",
+    "saveAs": "Normal man",
+    "morale": 5,
+    "treasureType": "L",
+    "alignment": "Neutral",
+    "xp": 5,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "rat-giant",
+    "name": "Rat, Giant",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "1/2",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "bite each",
+        "count": 1,
+        "raw": "1 Bite each"
+      }
+    ],
+    "damage": "1d3",
+    "numberAppearing": "3-18(3-30)",
+    "saveAs": "Normal man",
+    "morale": 8,
+    "treasureType": "C",
+    "alignment": "Neutral",
+    "xp": 5,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "robber-fly",
+    "name": "Robber Fly",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "2",
+    "movement": "90(30) Fly 180(60)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d8",
+    "numberAppearing": "1-6(2-12)",
+    "saveAs": "F1",
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "xp": 20,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "rust-monster",
+    "name": "Rust Monster",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 2,
+    "hitDice": "5*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "tentacle",
+        "count": 1,
+        "raw": "1 Tentacle"
+      }
+    ],
+    "damage": "On hit rust metall, magic stuff gets 10% resist per +.",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F3",
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 300,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "shadow",
+    "name": "Shadow*",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "2+2*",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "1d4 + Drain 1 STR",
+    "numberAppearing": "1-8(1-12)",
+    "saveAs": "F2",
+    "morale": 12,
+    "treasureType": "F",
+    "alignment": "Chaotic",
+    "xp": 35,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "shrew-giant",
+    "name": "Shrew, Giant",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 4,
+    "hitDice": "1*",
+    "movement": "180(60)",
+    "attacks": [
+      {
+        "type": "bites",
+        "count": 2,
+        "raw": "2 Bites"
+      }
+    ],
+    "damage": "1d6/1d6",
+    "numberAppearing": "1-8(1-4)",
+    "saveAs": "F1",
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 13,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "shrieker",
+    "name": "Shrieker",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "3",
+    "movement": "9(3)",
+    "attacks": [
+      {
+        "type": "scream for 1d3 rounds",
+        "count": 1,
+        "raw": "Scream for 1d3 rounds"
+      }
+    ],
+    "damage": "1d6 (On 4+ wandering monster)",
+    "numberAppearing": "1-8(0)",
+    "saveAs": "F2",
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 35,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "skeleton",
+    "name": "Skeleton",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "1",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": "1d4 or 1d6",
+    "numberAppearing": "3-12(3-30)",
+    "saveAs": "F1",
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Chaotic",
+    "xp": 10,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "snake-spitting-cobra",
+    "name": "Snake, Spitting Cobra",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "1*",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "bite or 1 spit",
+        "count": 1,
+        "raw": "1 Bite or 1 Spit"
+      }
+    ],
+    "damage": "1d3+Poison (1) OR Save VS Blind",
+    "numberAppearing": "1-6(1-6)",
+    "saveAs": "F1",
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 13,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "snake-giant-racer",
+    "name": "Snake, Giant Racer",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "2",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "1-6(1-8)",
+    "saveAs": "F1",
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 20,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "snake-pit-viper",
+    "name": "Snake, Pit Viper",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "2*",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d4 + Poison(2)",
+    "numberAppearing": "1-8(1-8)",
+    "saveAs": "F1",
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 25,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "snake-sea-snake",
+    "name": "Snake, Sea Snake",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "3*",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1 + Poison(2)",
+    "numberAppearing": "0(1-8)",
+    "saveAs": "F1",
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 50,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "snake-giant-rattler",
+    "name": "Snake, Giant Rattler",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "4*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "bites",
+        "count": 2,
+        "raw": "2 Bites"
+      }
+    ],
+    "damage": "1d4 + Poison(2)",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F2",
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "xp": 125,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "snake-rock-python",
+    "name": "Snake, Rock Python",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "5*",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      },
+      {
+        "type": "squeeze",
+        "count": 1,
+        "raw": "1 squeeze"
+      }
+    ],
+    "damage": "1d4 + 2d4 if a hit i scored",
+    "numberAppearing": "1-3(1-3)",
+    "saveAs": "F2",
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "xp": 300,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "spider-giant-crab-spider",
+    "name": "Spider, Giant Crab Spider",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "2*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d8 + Poison(1)",
+    "numberAppearing": "1-4(1-4)",
+    "saveAs": "F1",
+    "morale": 7,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "xp": 25,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "spider-giant-black-widow",
+    "name": "Spider, Giant Black Widow",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "3*",
+    "movement": "60(20)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "2d6 + Poison(2)",
+    "numberAppearing": "1-3(1-3)",
+    "saveAs": "F2",
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "xp": 50,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "spider-giant-tarantella",
+    "name": "Spider, Giant Tarantella",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "4*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d8 + Poison(Starts dancing on fail 2-12 turns)",
+    "numberAppearing": "1-3(1-3)",
+    "saveAs": "F2",
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "xp": 125,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "strige",
+    "name": "Strige",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "1*",
+    "movement": "30(10) Fly: 180(60)",
+    "attacks": [
+      {
+        "type": "beak, auto hit if first attack lands",
+        "count": 1,
+        "raw": "1 Beak, Auto hit if first attack lands"
+      }
+    ],
+    "damage": "1d3",
+    "numberAppearing": "1-10(3-36)",
+    "saveAs": "F2",
+    "morale": 9,
+    "treasureType": "L",
+    "alignment": "Neutral",
+    "xp": 13,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "thoul",
+    "name": "Thoul",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "3**",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "claws or 1 weapon",
+        "count": 2,
+        "raw": "2 Claws or 1 Weapon"
+      }
+    ],
+    "damage": "1d3/1d3+Paralyse or Weapon",
+    "numberAppearing": "1-6(1-10)",
+    "saveAs": "F3",
+    "morale": 10,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "xp": 65,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "troglodyte",
+    "name": "Troglodyte",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "2*",
+    "movement": "120(40)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d4/1d4/1d4",
+    "numberAppearing": "1-8(5-40)",
+    "saveAs": "F2",
+    "morale": 9,
+    "treasureType": "A",
+    "alignment": "Chaotic",
+    "xp": 30,
+    "specialAbilities": "Aura, Save vs Poison in melee. -2 To hit if failed.",
+    "notes": "Aura, Save vs Poison in melee. -2 To hit if failed.",
+    "actorType": "creature"
+  },
+  {
+    "id": "wight",
+    "name": "Wight*",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 5,
+    "hitDice": "3*",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "Energy drain 1",
+    "numberAppearing": "1-6(1-8)",
+    "saveAs": "F3",
+    "morale": 12,
+    "treasureType": "B",
+    "alignment": "Chaotic",
+    "xp": 50,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "wolf",
+    "name": "Wolf",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 7,
+    "hitDice": "2+2",
+    "movement": "180(60)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "1d6",
+    "numberAppearing": "2-12(3-18)",
+    "saveAs": "F1",
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 25,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "wolf-dire",
+    "name": "Wolf, Dire",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 6,
+    "hitDice": "4+1",
+    "movement": "150(50)",
+    "attacks": [
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      }
+    ],
+    "damage": "2d4",
+    "numberAppearing": "1-4(2-8)",
+    "saveAs": "F2",
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 125,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  },
+  {
+    "id": "zombie",
+    "name": "Zombie",
+    "sourceBook": "Basic",
+    "sourcePage": null,
+    "armorClass": 8,
+    "hitDice": "2",
+    "movement": "90(30)",
+    "attacks": [
+      {
+        "type": "claw or 1 weapon",
+        "count": 1,
+        "raw": "1 Claw or 1 Weapon"
+      }
+    ],
+    "damage": "1d8 or Weapon",
+    "numberAppearing": "2-8(2-24)",
+    "saveAs": "F1",
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Chaotic",
+    "xp": 20,
+    "specialAbilities": "",
+    "notes": "",
+    "actorType": "creature"
+  }
+]
