@@ -5,5 +5,6 @@ export * from "./spells.mjs";
 export * from "./thief-skills.mjs";
 export * from "./turn-undead.mjs";
 export * from "./hit-dice.mjs";
+export * from "./armor-types.mjs";
 
 export * from "./ac.mjs";

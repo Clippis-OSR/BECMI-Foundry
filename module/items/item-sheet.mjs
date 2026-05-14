@@ -1,3 +1,6 @@
+import { VALID_ITEM_EQUIP_SLOTS } from "./equipment-slots.mjs";
+import { BECMI_ARMOR_TYPES } from "../rules/armor-types.mjs";
+
 const SHARED_SYSTEM_DEFAULTS = {
   description: "",
   quantity: 0,
@@ -7,8 +10,6 @@ const SHARED_SYSTEM_DEFAULTS = {
   identified: false,
   containerId: "",
   equipped: false,
-  worn: false,
-  rarity: "",
   tags: [],
   notes: ""
 };
@@ -68,6 +69,10 @@ export class BECMIItemSheet extends ItemSheet {
     context.isCurrency = this.item.type === "currency";
     context.isTreasure = this.item.type === "treasure";
     context.isConsumable = this.item.type === "consumable";
+    context.equipSlotOptions = VALID_ITEM_EQUIP_SLOTS;
+    context.armorTypeOptions = Object.entries(BECMI_ARMOR_TYPES).map(([key, value]) => ({ key, ...value }));
+    const selectedArmorType = context.safeSystem.armorType ?? "none";
+    context.selectedArmorTypeData = BECMI_ARMOR_TYPES[selectedArmorType] ?? BECMI_ARMOR_TYPES.none;
 
     return context;
   }
@@ -107,6 +112,16 @@ export class BECMIItemSheet extends ItemSheet {
           updates["system.effectData"] = effectDataInput;
         }
       }
+    }
+
+    if (this.item.type === "armor") {
+      const armorType = String(expanded.system?.armorType ?? "none").trim().toLowerCase();
+      const armorData = BECMI_ARMOR_TYPES[armorType] ?? BECMI_ARMOR_TYPES.none;
+      updates["system.armorType"] = armorType;
+      updates["system.slot"] = armorData.slot;
+      updates["system.weight"] = armorData.encumbrance;
+      updates["system.baseAC"] = Number.isFinite(armorData.baseAC) ? armorData.baseAC : 9;
+      updates["system.acBonus"] = Number.isFinite(armorData.acBonus) ? armorData.acBonus : 0;
     }
 
     await this.item.update(updates);

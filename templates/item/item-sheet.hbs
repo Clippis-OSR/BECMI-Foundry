@@ -14,10 +14,17 @@
     <div class="form-group"><label>Identified</label><input type="checkbox" name="system.identified" {{checked safeSystem.identified}} /></div>
     <div class="form-group"><label>Container ID</label><input type="text" name="system.containerId" value="{{safeSystem.containerId}}" /></div>
     <div class="form-group"><label>Equipped</label><input type="checkbox" name="system.equipped" {{checked safeSystem.equipped}} /></div>
-    <div class="form-group"><label>Equip Slot</label><input type="text" name="system.slot" value="{{safeSystem.slot}}" placeholder="armor, shield, ring..." /></div>
-    <div class="form-group"><label>AC Bonus</label><input type="number" name="system.acBonus" value="{{safeSystem.acBonus}}" step="1" /></div>
-    <div class="form-group"><label>Worn</label><input type="checkbox" name="system.worn" {{checked safeSystem.worn}} /></div>
-    <div class="form-group"><label>Rarity</label><input type="text" name="system.rarity" value="{{safeSystem.rarity}}" /></div>
+    <div class="form-group">
+      <label>Equip Slot</label>
+      <select name="system.slot">
+        {{#each equipSlotOptions as |slot|}}
+          <option value="{{slot}}" {{#if (eq ../safeSystem.slot slot)}}selected{{/if}}>{{slot}}</option>
+        {{/each}}
+      </select>
+    </div>
+    {{#unless isArmor}}
+      <div class="form-group"><label>AC Bonus</label><input type="number" name="system.acBonus" value="{{safeSystem.acBonus}}" step="1" /></div>
+    {{/unless}}
     <div class="form-group"><label>Tags (comma-separated)</label><input type="text" name="system.tagsString" value="{{tagsString}}" /></div>
     <div class="form-group"><label>Notes</label><textarea name="system.notes" rows="3">{{safeSystem.notes}}</textarea></div>
 
@@ -44,11 +51,17 @@
 
     {{#if isArmor}}
       <h2>Armor</h2>
-      <div class="form-group"><label>Base AC (descending)</label><input type="number" name="system.baseAC" value="{{safeSystem.baseAC}}" step="1" /></div>
-      <div class="form-group"><label>Legacy Armor Class</label><input type="number" name="system.armorClass" value="{{safeSystem.armorClass}}" step="1" /></div>
-      <div class="form-group"><label>Shield Bonus (legacy)</label><input type="number" name="system.shieldBonus" value="{{safeSystem.shieldBonus}}" step="1" /></div>
-      <div class="form-group"><label>Max Dex Bonus</label><input type="number" name="system.maxDexBonus" value="{{safeSystem.maxDexBonus}}" step="1" /></div>
-      <div class="form-group"><label>Magical Bonus</label><input type="number" name="system.magicalBonus" value="{{safeSystem.magicalBonus}}" step="1" /></div>
+      <div class="form-group">
+        <label>Armor Type</label>
+        <select name="system.armorType">
+          {{#each armorTypeOptions as |armorType|}}
+            <option value="{{armorType.key}}" {{#if (eq ../safeSystem.armorType armorType.key)}}selected{{/if}}>{{armorType.label}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group"><label>Derived Base AC (descending)</label><input type="number" value="{{safeSystem.baseAC}}" readonly /></div>
+      <div class="form-group"><label>Derived Shield AC Bonus</label><input type="number" value="{{safeSystem.acBonus}}" readonly /></div>
+      <div class="form-group"><label>Derived Encumbrance</label><input type="number" value="{{safeSystem.weight}}" readonly /></div>
     {{/if}}
 
     {{#if isContainer}}
