@@ -81,28 +81,53 @@ export function isAttackHit(attackTotal, requiredRoll) {
  *   id: string|null,
  *   name: string,
  *   type: string,
- *   attackBonus: number,
  *   damage: string,
- *   damageBonus: number,
  *   range: object|null,
+ *   ammo: string|null,
+ *   damageTypes: string[],
  *   tags: string[]
  * }}
  */
 export function weaponItemToAttackData(item) {
   const system = item?.system ?? {};
+  // BECMI weapon items stay lightweight: core modifiers are derived elsewhere
+  // (abilities, mastery, buffs, situational effects), not stored on each weapon.
   const rawTags = Array.isArray(system?.tags) ? system.tags : [];
+  const damageTypes = Array.isArray(system?.damageTypes) ? system.damageTypes : [];
+  const weaponType = system?.weaponType ?? "melee";
 
   return {
     id: item?.id ?? null,
     name: item?.name ?? "Weapon",
-    type: system?.weaponCategory ?? system?.weaponType ?? "melee",
-    attackBonus: Number(system?.attackBonus ?? 0),
+    type: weaponType,
     damage: system?.damage ?? "1d4",
-    damageBonus: Number(system?.damageBonus ?? 0),
-    range: system?.range ?? null,
-    weaponMasteryClass: system?.weaponMasteryClass ?? "H",
-    tags: ["weapon", (system?.weaponCategory ?? system?.weaponType ?? "melee"), ...rawTags]
+    range: weaponType === "missile" ? (system?.range ?? null) : null,
+    ammo: weaponType === "missile" ? (system?.ammo ?? null) : null,
+    damageTypes,
+    weaponMasteryClass: getWeaponMasteryClass(item),
+    tags: ["weapon", weaponType, ...damageTypes, ...rawTags]
   };
+}
+
+/**
+ * Canonical weapon classification helper used for deriving mastery class.
+ * weaponType is the single source of truth for weapon behavior classification.
+ *
+ * @param {object} item Foundry Item document.
+ * @returns {"H"|"M"|"A"}
+ */
+export function getWeaponMasteryClass(item) {
+  const weaponType = item?.system?.weaponType ?? "melee";
+  const override = item?.system?.masteryOverride;
+
+  if (typeof override === "string" && override.trim().length > 0) {
+    return override.trim();
+  }
+
+  if (weaponType === "melee") return "H";
+  if (weaponType === "missile") return "M";
+  if (weaponType === "natural") return "M";
+  return "A";
 }
 
 
@@ -125,7 +150,7 @@ export function getActorAttackSources(actor) {
   if (actor?.type === "creature") {
     return items.filter((item) => item?.type === "weapon" && (
       item?.system?.equipped === true
-      || item?.system?.weaponCategory === "natural"
+      || item?.system?.weaponType === "natural"
     ));
   }
 

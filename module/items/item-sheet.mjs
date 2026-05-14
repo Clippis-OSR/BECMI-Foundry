@@ -15,9 +15,9 @@ const SHARED_SYSTEM_DEFAULTS = {
 
 const WEAPON_SYSTEM_DEFAULTS = {
   damage: "1d8",
-  attackBonus: 0,
-  damageBonus: 0,
+  damageTypes: [],
   weaponType: "melee",
+  masteryOverride: null,
   range: {
     short: null,
     medium: null,
@@ -54,6 +54,9 @@ export class BECMIItemSheet extends ItemSheet {
     context.tagsString = Array.isArray(context.safeSystem.tags)
       ? context.safeSystem.tags.join(", ")
       : "";
+    context.damageTypesString = Array.isArray(context.safeSystem.damageTypes)
+      ? context.safeSystem.damageTypes.join(", ")
+      : "";
 
     context.effectDataString = typeof context.safeSystem.effectData === "string"
       ? context.safeSystem.effectData
@@ -75,9 +78,17 @@ export class BECMIItemSheet extends ItemSheet {
 
     const tagsString = expanded.system?.tagsString;
     delete updates["system.tagsString"];
+    const damageTypesString = expanded.system?.damageTypesString;
+    delete updates["system.damageTypesString"];
 
     if (typeof tagsString === "string") {
       updates["system.tags"] = tagsString
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter((tag) => tag.length > 0);
+    }
+    if (typeof damageTypesString === "string") {
+      updates["system.damageTypes"] = damageTypesString
         .split(",")
         .map((tag) => tag.trim())
         .filter((tag) => tag.length > 0);

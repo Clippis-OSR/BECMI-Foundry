@@ -24,23 +24,22 @@
     {{#if isWeapon}}
       <h2>Weapon</h2>
       <div class="form-group"><label>Damage</label><input type="text" name="system.damage" value="{{safeSystem.damage}}" /></div>
-      <div class="form-group"><label>Attack Bonus</label><input type="number" name="system.attackBonus" value="{{safeSystem.attackBonus}}" step="1" /></div>
-      <div class="form-group"><label>Damage Bonus</label><input type="number" name="system.damageBonus" value="{{safeSystem.damageBonus}}" step="1" /></div>
       <div class="form-group">
         <label>Weapon Type</label>
         <select name="system.weaponType">
           <option value="melee" {{#if (eq safeSystem.weaponType "melee")}}selected{{/if}}>Melee</option>
-          <option value="ranged" {{#if (eq safeSystem.weaponType "ranged")}}selected{{/if}}>Ranged</option>
+          <option value="missile" {{#if (eq safeSystem.weaponType "missile")}}selected{{/if}}>Missile</option>
+          <option value="natural" {{#if (eq safeSystem.weaponType "natural")}}selected{{/if}}>Natural</option>
         </select>
       </div>
-      <div class="form-group"><label>Damage Type</label><input type="text" name="system.damageType" value="{{safeSystem.damageType}}" /></div>
+      <div class="form-group"><label>Damage Types</label><input type="text" name="system.damageTypesString" value="{{damageTypesString}}" placeholder="fire, silver, magical" /></div>
+      {{#if (eq safeSystem.weaponType "missile")}}
       <div class="form-group"><label>Range Short</label><input type="number" name="system.range.short" value="{{safeSystem.range.short}}" step="1" /></div>
       <div class="form-group"><label>Range Medium</label><input type="number" name="system.range.medium" value="{{safeSystem.range.medium}}" step="1" /></div>
       <div class="form-group"><label>Range Long</label><input type="number" name="system.range.long" value="{{safeSystem.range.long}}" step="1" /></div>
       <div class="form-group"><label>Two-Handed</label><input type="checkbox" name="system.twoHanded" {{checked safeSystem.twoHanded}} /></div>
-      <div class="form-group"><label>Ammo Type</label><input type="text" name="system.ammoType" value="{{safeSystem.ammoType}}" /></div>
-      <div class="form-group"><label>Weapon Mastery</label><input type="text" name="system.weaponMastery" value="{{safeSystem.weaponMastery}}" /></div>
-      <div class="form-group"><label>Magical Bonus</label><input type="number" name="system.magicalBonus" value="{{safeSystem.magicalBonus}}" step="1" /></div>
+      <div class="form-group"><label>Ammo</label><input type="text" name="system.ammo" value="{{safeSystem.ammo}}" /></div>
+      {{/if}}
     {{/if}}
 
     {{#if isArmor}}
