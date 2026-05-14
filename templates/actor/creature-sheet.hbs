@@ -78,19 +78,36 @@
     <label>Save As Level</label>
     <input type="number" name="system.monster.saveAs.level" value="{{savesAs.level}}" data-action="change-creature-field"/>
 
-    <h2>Attacks</h2>
+    <h2>Natural Attacks</h2>
+    <button type="button" data-action="create-natural-attack">+ Add Natural Attack</button>
 
-    {{#if attacks.length}}
-    {{#each attacks as |attack|}}
+    <p><strong>Attack Summary:</strong> {{monsterAttackSummary}}</p>
+
+    {{#if naturalAttacks.length}}
+    {{#each naturalAttacks as |attack|}}
     <div>
-      <strong>{{attack.name}}</strong>
-      ({{attack.type}})
+      <strong>{{attack.attackLabel}}</strong>
+      x{{attack.attackCount}}
       DMG {{attack.damage}}
       <button type="button" class="becmi-creature-attack" data-item-id="{{attack.itemId}}">Attack</button>
+      <button type="button" data-action="edit-attack-item" data-item-id="{{attack.itemId}}">Edit</button>
     </div>
     {{/each}}
     {{else}}
-    <p>No equipped or natural weapon items.</p>
+    <p>No natural attack items.</p>
+    {{/if}}
+
+    <h2>Special Actions / Abilities</h2>
+    {{#if monsterActions.length}}
+    <ul>
+      {{#each monsterActions as |action|}}
+      <li>
+        <strong>{{action.label}}</strong> ({{action.type}}): {{action.description}}
+      </li>
+      {{/each}}
+    </ul>
+    {{else}}
+    <p>No monster action descriptors.</p>
     {{/if}}
 
   </section>
