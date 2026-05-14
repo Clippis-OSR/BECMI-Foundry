@@ -353,6 +353,8 @@
       "damageBonus": 0,
       "damageType": "",
       "weaponType": "melee",
+      "weaponCategory": "melee",
+      "weaponMasteryClass": "H",
       "range": {
         "short": null,
         "medium": null,
@@ -362,7 +364,7 @@
       "ammoType": "",
       "weaponMastery": "",
       "magicalBonus": 0,
-      "slot": null,
+      "slot": "weapon",
       "acBonus": 0
     },
     "armor": {
@@ -384,7 +386,7 @@
       "shieldBonus": 0,
       "maxDexBonus": 0,
       "magicalBonus": 0,
-      "slot": null,
+      "slot": "weapon",
       "acBonus": 0
     },
     "equipment": {
@@ -402,7 +404,7 @@
       "tags": [],
       "notes": "",
       "actions": [],
-      "slot": null,
+      "slot": "weapon",
       "acBonus": 0
     },
     "treasure": {
@@ -422,7 +424,7 @@
       "actions": [],
       "treasureType": "",
       "estimatedValue": 0,
-      "slot": null,
+      "slot": "weapon",
       "acBonus": 0
     },
     "spell": {
@@ -459,7 +461,7 @@
       "rarity": "",
       "tags": [],
       "notes": "",
-      "slot": null,
+      "slot": "weapon",
       "acBonus": 0
     },
     "container": {
@@ -482,7 +484,7 @@
       "containedWeight": 0,
       "weightReduction": 0,
       "slots": 0,
-      "slot": null,
+      "slot": "weapon",
       "acBonus": 0
     },
     "currency": {
@@ -503,7 +505,7 @@
       "denomination": "",
       "exchangeValue": 0,
       "weightPerUnit": 0,
-      "slot": null,
+      "slot": "weapon",
       "acBonus": 0
     },
     "consumable": {
@@ -525,7 +527,7 @@
       "maxUses": 0,
       "consumedOnUse": false,
       "effectData": "",
-      "slot": null,
+      "slot": "weapon",
       "acBonus": 0
     }
   }

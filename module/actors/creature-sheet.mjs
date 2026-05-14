@@ -1,4 +1,4 @@
-import { rollCreatureAttack } from "../rolls/becmi-rolls.mjs";
+import { getActorAttackSources, weaponItemToAttackData } from "../combat/attack.mjs";
 
 export class BECMICreatureSheet extends ActorSheet {
   static get defaultOptions() {
@@ -11,13 +11,12 @@ export class BECMICreatureSheet extends ActorSheet {
   }
 
   getData(options = {}) {
-    console.warn("BECMICreatureSheet getData");
     const data = super.getData(options);
     const system = data.actor?.system ?? {};
     const creatureRole = system.creatureRole || "monster";
     data.system = system;
-    const attacks = Array.isArray(system.attacks) ? system.attacks : [];
-    data.attacks = attacks;
+    // Attacks are item-driven. Legacy actor.system.attacks is intentionally ignored for UI actions.
+    data.attacks = getActorAttackSources(this.actor).map((item) => ({ itemId: item.id, ...weaponItemToAttackData(item) }));
     const savesAs = system.savesAs ?? system.saveAs ?? { class: "fighter", level: 1 };
     const savesAsClass = savesAs.class || "fighter";
     data.savesAs = savesAs;
@@ -51,89 +50,32 @@ export class BECMICreatureSheet extends ActorSheet {
     html.find('[data-action="change-creature-field"]').on("change", async (event) => {
       event.preventDefault();
       const input = event.currentTarget;
-      if (input.name?.startsWith("system.attacks.")) return;
       await this.actor.update({ [input.name]: input.value });
     });
 
-    html.find('[data-action="change-attack-field"]').on("change", async (event) => {
+    html.find('.becmi-creature-attack').on("click", async (event) => {
       event.preventDefault();
-      event.stopPropagation();
 
-      const input = event.currentTarget;
-      const index = Number(input.dataset.index);
-      const field = input.dataset.field;
+      const itemId = event.currentTarget?.dataset?.itemId;
+      if (!itemId) return;
 
-      if (!Number.isInteger(index)) return;
-      if (!["name", "attackBonus", "damage"].includes(field)) return;
+      const item = this.actor.items.get(itemId);
+      if (!item || item.type !== "weapon") return;
 
-      const current = this.actor.system.attacks;
-      const attacks = Array.isArray(current) ? foundry.utils.deepClone(current) : [];
-
-      if (!attacks[index]) {
-        attacks[index] = { name: "Attack", attackBonus: 0, damage: "1d6" };
+      const targetToken = game.user?.targets?.first?.();
+      const targetActor = targetToken?.actor;
+      if (!targetActor) {
+        ui.notifications?.warn("Target a token before attacking.");
+        return;
       }
 
-      let value = input.value;
-      if (field === "attackBonus") {
-        value = Number(value || 0);
-      }
-
-      attacks[index][field] = value;
-
-      await this.actor.update({
-        "system.attacks": attacks
-      });
-    });
-
-    html.find('[data-action="add-attack"]').on("click", async (event) => {
-      event.preventDefault();
-
-      const current = this.actor.system.attacks;
-      const attacks = Array.isArray(current) ? foundry.utils.deepClone(current) : [];
-
-      attacks.push({
-        name: "Attack",
-        attackBonus: 0,
-        damage: "1d6"
-      });
-
-      await this.actor.update({
-        "system.attacks": attacks
-      });
-    });
-
-
-    html.find('[data-action="roll-creature-attack"]').on("click", async (event) => {
-      event.preventDefault();
-
-      const index = Number(event.currentTarget.dataset.index);
-
-      if (!Number.isInteger(index)) return;
-
-      const attacks = Array.isArray(this.actor.system.attacks)
-        ? this.actor.system.attacks
-        : [];
-
-      const attack = attacks[index];
-
-      if (!attack) return;
-
-      await rollCreatureAttack(this.actor, attack);
-    });
-    html.find('[data-action="remove-attack"]').on("click", async (event) => {
-      event.preventDefault();
-
-      const index = Number(event.currentTarget.dataset.index);
-
-      const current = this.actor.system.attacks;
-      const attacks = Array.isArray(current) ? foundry.utils.deepClone(current) : [];
-
-      attacks.splice(index, 1);
-
-      await this.actor.update({
-        "system.attacks": attacks
+      await game.becmi.combat.rollAttack({
+        attacker: this.actor,
+        target: targetActor,
+        attackData: weaponItemToAttackData(item),
+        rollDamageOnHit: true,
+        postToChat: true
       });
     });
   }
-
 }

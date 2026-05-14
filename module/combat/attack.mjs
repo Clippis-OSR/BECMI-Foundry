@@ -95,15 +95,42 @@ export function weaponItemToAttackData(item) {
   return {
     id: item?.id ?? null,
     name: item?.name ?? "Weapon",
-    type: system?.weaponType ?? "melee",
+    type: system?.weaponCategory ?? system?.weaponType ?? "melee",
     attackBonus: Number(system?.attackBonus ?? 0),
     damage: system?.damage ?? "1d4",
     damageBonus: Number(system?.damageBonus ?? 0),
     range: system?.range ?? null,
-    tags: rawTags
+    weaponMasteryClass: system?.weaponMasteryClass ?? "H",
+    tags: ["weapon", (system?.weaponCategory ?? system?.weaponType ?? "melee"), ...rawTags]
   };
 }
 
+
+/**
+ * Get item-driven attack sources for an actor.
+ *
+ * IMPORTANT: attacks are item-driven now. We intentionally ignore legacy
+ * actor.system.attacks values when building actionable attack options.
+ *
+ * @param {object} actor Foundry Actor document.
+ * @returns {object[]} Weapon items that can be used as attack sources.
+ */
+export function getActorAttackSources(actor) {
+  const items = Array.from(actor?.items ?? []);
+
+  if (actor?.type === "character") {
+    return items.filter((item) => item?.type === "weapon" && item?.system?.equipped === true);
+  }
+
+  if (actor?.type === "creature") {
+    return items.filter((item) => item?.type === "weapon" && (
+      item?.system?.equipped === true
+      || item?.system?.weaponCategory === "natural"
+    ));
+  }
+
+  return [];
+}
 /**
  * Resolve an attack roll using BECMI THAC0 + descending AC logic.
  *

@@ -81,23 +81,18 @@
 
     <h2>Attacks</h2>
 
-    {{#each attacks as |attack index|}}
-    <label>Attack Name</label>
-    <input type="text" name="attack-name-{{index}}" value="{{attack.name}}" data-action="change-attack-field" data-index="{{index}}" data-field="name"/>
-
-    <label>Attack Bonus</label>
-    <input type="number" name="attack-bonus-{{index}}" value="{{attack.attackBonus}}" data-action="change-attack-field" data-index="{{index}}" data-field="attackBonus"/>
-
-    <label>Damage</label>
-    <input type="text" name="attack-damage-{{index}}" value="{{attack.damage}}" data-action="change-attack-field" data-index="{{index}}" data-field="damage"/>
-
-    <button type="button" data-action="roll-creature-attack" data-index="{{index}}">Attack</button>
-    <button type="button" data-action="remove-attack" data-index="{{index}}">Remove</button>
+    {{#if attacks.length}}
+    {{#each attacks as |attack|}}
+    <div>
+      <strong>{{attack.name}}</strong>
+      ({{attack.type}})
+      ATK {{attack.attackBonus}} | DMG {{attack.damage}}{{#if attack.damageBonus}} + {{attack.damageBonus}}{{/if}}
+      <button type="button" class="becmi-creature-attack" data-item-id="{{attack.itemId}}">Attack</button>
+    </div>
     {{/each}}
-
-    <button type="button" data-action="add-attack">
-      Add Attack
-    </button>
+    {{else}}
+    <p>No equipped or natural weapon items.</p>
+    {{/if}}
 
   </section>
 </form>
