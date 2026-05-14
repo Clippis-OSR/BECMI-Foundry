@@ -33,7 +33,7 @@ export function getTreasureItems(actor) {
 
 export function getTreasureTotalValue(actor, identifiedOnly = false) {
   return getTreasureItems(actor).reduce((sum, item) => {
-    if (identifiedOnly && !Boolean(item?.system?.identified)) return sum;
+    if (identifiedOnly && !item?.system?.identified) return sum;
     const quantity = Math.max(0, toNumber(item?.system?.quantity, 0));
     const explicitValue = toNumber(item?.system?.value, NaN);
     const estimatedValue = toNumber(item?.system?.estimatedValue, 0);

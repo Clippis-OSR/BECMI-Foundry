@@ -124,7 +124,7 @@ export async function renderAttackCard({ attackResult, damageResult = null } = {
     console.warn("[BECMI Combat] Failed to render attack card template; using fallback content.", { error, templatePath, context });
     const resultText = context.hit ? "HIT" : "MISS";
     const damageText = damageResult ? ` | Damage: ${damageResult.total}` : "";
-    content = `<div class=\"becmi-chat-card becmi-attack-card\">${context.attackerName} attacks ${context.targetName} with ${context.attackName}: d20 ${context.d20} ${context.modifiers >= 0 ? '+' : ''}${context.modifiers} = ${context.total}; AC ${context.targetAC}; need ${context.requiredRoll}; ${resultText}${damageText}</div>`;
+    content = `<div class="becmi-chat-card becmi-attack-card">${context.attackerName} attacks ${context.targetName} with ${context.attackName}: d20 ${context.d20} ${context.modifiers >= 0 ? '+' : ''}${context.modifiers} = ${context.total}; AC ${context.targetAC}; need ${context.requiredRoll}; ${resultText}${damageText}</div>`;
   }
 
   let message = null;
