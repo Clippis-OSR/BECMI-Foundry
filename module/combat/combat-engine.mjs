@@ -95,7 +95,8 @@ export async function renderAttackCard({ attackResult, damageResult = null } = {
     targetAC: attackResult?.targetAC ?? "-",
     requiredRoll: attackResult?.requiredRoll ?? "-",
     hit: Boolean(attackResult?.hit),
-    damageResult
+    damageResult,
+    damageApplied: false
   };
 
   let content;
@@ -110,7 +111,15 @@ export async function renderAttackCard({ attackResult, damageResult = null } = {
 
   let message = null;
   try {
-    message = await ChatMessage.create({ content });
+    const flags = {
+      "becmi-foundry": {
+        damageApplied: false,
+        damageTotal: Number(damageResult?.total ?? 0),
+        damageTargetUuid: attackResult?.target?.uuid ?? attackResult?.target?.actor?.uuid ?? null
+      }
+    };
+
+    message = await ChatMessage.create({ content, flags });
   } catch (error) {
     console.warn("[BECMI Combat] Failed to create chat message for attack card.", { error, content });
   }

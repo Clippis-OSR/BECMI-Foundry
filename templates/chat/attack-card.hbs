@@ -15,6 +15,9 @@
   {{#if hit}}
     {{#if damageResult}}
       <div class="becmi-damage">Damage: {{damageResult.total}}</div>
+      {{#unless damageApplied}}
+        <button type="button" class="becmi-apply-damage" data-action="apply-damage">Apply Damage</button>
+      {{/unless}}
     {{/if}}
   {{/if}}
 </div>
