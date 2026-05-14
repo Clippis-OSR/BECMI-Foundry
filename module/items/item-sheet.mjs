@@ -17,7 +17,7 @@ const SHARED_SYSTEM_DEFAULTS = {
 };
 
 const WEAPON_SYSTEM_DEFAULTS = {
-  weaponKey: "",
+  weaponKey: "custom",
   damage: "1d8",
   damageTypes: ["normal"],
   weaponType: "melee",
@@ -116,22 +116,22 @@ export class BECMIItemSheet extends ItemSheet {
 
 
     if (this.item.type === "weapon") {
-      const weaponKey = String(expanded.system?.weaponKey ?? "").trim();
+      const weaponKey = String(expanded.system?.weaponKey ?? "custom").trim();
       const definition = BECMI_WEAPONS[weaponKey];
-      if (definition) {
+      if (weaponKey !== "custom" && definition) {
         // Standard BECMI weapons are rule-driven and auto-fill core fields.
         updates["system.weaponKey"] = definition.id;
         updates["system.damage"] = definition.damage;
         updates["system.encumbrance"] = definition.encumbrance;
         updates["system.weight"] = definition.encumbrance;
-        updates["system.value"] = definition.value;
+        updates["system.cost"] = definition.cost;
+        updates["system.value"] = definition.cost;
         updates["system.weaponType"] = definition.weaponType;
-        updates["system.hands"] = definition.hands;
         updates["system.damageTypes"] = Array.from(definition.damageTypes ?? []);
-        updates["system.ammoType"] = definition.ammoType ?? "";
-        updates["system.ammo"] = definition.ammoType ?? "";
         updates["system.range"] = definition.range ?? { short: null, medium: null, long: null };
-        updates["system.slot"] = definition.weaponType === "natural" ? "natural" : (definition.hands === "two" ? "bothHands" : (expanded.system?.slot || "weaponMain"));
+        const hands = definition.hands === "oneOrTwo" ? "one" : definition.hands;
+        updates["system.hands"] = hands;
+        updates["system.slot"] = hands === "two" ? "bothHands" : (expanded.system?.slot || "weaponMain");
       }
     }
 

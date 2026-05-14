@@ -24,7 +24,7 @@
 
     {{#if isWeapon}}
       <h2>Weapon</h2>
-            <div class="form-group"><label>Weapon Kind</label><select name="system.weaponKey"><option value="">Custom</option>{{#each weaponOptions as |weapon|}}<option value="{{weapon.id}}" {{#if (eq ../safeSystem.weaponKey weapon.id)}}selected{{/if}}>{{weapon.label}}</option>{{/each}}</select></div>
+            <div class="form-group"><label>Weapon</label><select name="system.weaponKey"><option value="custom">Custom</option>{{#each weaponOptions as |weapon|}}<option value="{{weapon.id}}" {{#if (eq ../safeSystem.weaponKey weapon.id)}}selected{{/if}}>{{weapon.label}}</option>{{/each}}</select></div>
       <div class="form-group"><label>Hands</label><select name="system.hands"><option value="none" {{#if (eq safeSystem.hands "none")}}selected{{/if}}>None</option><option value="one" {{#if (eq safeSystem.hands "one")}}selected{{/if}}>One</option><option value="two" {{#if (eq safeSystem.hands "two")}}selected{{/if}}>Two</option></select></div>
       <div class="form-group"><label>Damage</label><input type="text" name="system.damage" value="{{safeSystem.damage}}" /></div>
       <div class="form-group">
