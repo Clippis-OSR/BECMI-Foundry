@@ -196,9 +196,14 @@
     "movement": "60(20)",
     "attacks": [
       {
-        "type": "bite + swallow",
+        "type": "bite",
         "count": 1,
-        "raw": "1 Bite + Swallow(19)"
+        "raw": "1 Bite"
+      },
+      {
+        "type": "swallow",
+        "count": 1,
+        "raw": "Swallow(19)"
       }
     ],
     "damage": "1d8",
@@ -320,9 +325,14 @@
         "raw": "2 Claws"
       },
       {
-        "type": "heads + breath",
+        "type": "heads",
         "count": 3,
-        "raw": "3 Heads + Breath(50%)"
+        "raw": "3 Heads"
+      },
+      {
+        "type": "breath",
+        "count": 1,
+        "raw": "Breath(50%)"
       }
     ],
     "damage": "1d3/1d3/2d4/1d10/3d4 OR 3d6",
@@ -554,9 +564,14 @@
     "movement": "M: 90(30) F: 240(80)",
     "attacks": [
       {
-        "type": "fist or whirlwind +special",
+        "type": "fist or whirlwind",
         "count": 1,
-        "raw": "1 fist OR whirlwind +special"
+        "raw": "1 fist OR whirlwind"
+      },
+      {
+        "type": "special",
+        "count": 1,
+        "raw": "special"
       }
     ],
     "damage": "2d8 or 2d6",
@@ -606,9 +621,14 @@
     "movement": "M: 90(30) F: 240(80)",
     "attacks": [
       {
-        "type": "fist +",
+        "type": "fist",
         "count": 1,
-        "raw": "1 Fist +(Flames)"
+        "raw": "1 Fist"
+      },
+      {
+        "type": "",
+        "count": 1,
+        "raw": "(Flames)"
       }
     ],
     "damage": "2d8 +(1d8)",
@@ -1022,9 +1042,14 @@
     "movement": "180(60)",
     "attacks": [
       {
-        "type": "spines + poison",
+        "type": "spines",
         "count": 4,
-        "raw": "4 Spines + Poison"
+        "raw": "4 Spines"
+      },
+      {
+        "type": "poison",
+        "count": 1,
+        "raw": "Poison"
       }
     ],
     "damage": "1d4 each Spine + Save VS Poison(3)",
@@ -1048,9 +1073,14 @@
     "movement": "180(60)",
     "attacks": [
       {
-        "type": "bite + swallow",
+        "type": "bite",
         "count": 1,
-        "raw": "1 Bite + Swallow(18)"
+        "raw": "1 Bite"
+      },
+      {
+        "type": "swallow",
+        "count": 1,
+        "raw": "Swallow(18)"
       }
     ],
     "damage": "2d10 (Swallow 2d6)",
@@ -1204,9 +1234,14 @@
     "movement": "150(50)",
     "attacks": [
       {
-        "type": "weapon + special",
+        "type": "weapon",
         "count": 1,
-        "raw": "1 Weapon + Special"
+        "raw": "1 Weapon"
+      },
+      {
+        "type": "special",
+        "count": 1,
+        "raw": "Special"
       }
     ],
     "damage": "8d6 (Call lightning bolt, once every 5 rounds, current hp dmg Save vs Spells for 1/2 dmg)",
@@ -1313,9 +1348,14 @@
     "movement": "240(80)",
     "attacks": [
       {
-        "type": "fist + special",
+        "type": "fist",
         "count": 1,
-        "raw": "1 Fist + Special"
+        "raw": "1 Fist"
+      },
+      {
+        "type": "special",
+        "count": 1,
+        "raw": "Special"
       }
     ],
     "damage": "3d10 +1d10 Fire",

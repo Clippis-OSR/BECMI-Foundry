@@ -82,4 +82,25 @@ describe('monster builder', () => {
     expect(calls.update).toBe(1);
     expect(calls.replace).toBe(1);
   });
+
+  it('natural attacks are canonical and have no ammo/encumbrance burden', () => {
+    const [item] = buildMonsterItemData({ ...sampleMonster, attacks: [{ type: 'claw', count: 1 }] });
+    expect(item.system.weaponType).toBe('natural');
+    expect(item.system.slot).toBe('natural');
+    expect(item.system.equipped).toBe(true);
+    expect(item.system.inventory.location).toBe('worn');
+    expect(item.system.inventory.countsTowardEncumbrance).toBe(false);
+    expect(item.system).not.toHaveProperty('ammo');
+  });
+
+  it('repeated imports do not duplicate actors when updateExisting is false', async () => {
+    const created = [];
+    const createdSet = new Set();
+    const actorApi = { async createActor(data) { created.push(data); createdSet.add(data.flags.becmi.sourceMonsterId); return { id: data.flags.becmi.sourceMonsterId }; } };
+    const findExistingActor = async (monster) => (createdSet.has(monster.id) ? { id: monster.id, items: [] } : null);
+
+    await importMonsterCollection([sampleMonster], { dryRun: false, actorApi, findExistingActor });
+    await importMonsterCollection([sampleMonster], { dryRun: false, actorApi, findExistingActor });
+    expect(created).toHaveLength(1);
+  });
 });

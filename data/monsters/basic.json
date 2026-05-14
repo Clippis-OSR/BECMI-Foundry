@@ -175,9 +175,14 @@
         "raw": "2 Claws"
       },
       {
-        "type": "bite + bearhug",
+        "type": "bite",
         "count": 1,
-        "raw": "1 Bite + Bearhug"
+        "raw": "1 Bite"
+      },
+      {
+        "type": "bearhug",
+        "count": 1,
+        "raw": "Bearhug"
       }
     ],
     "damage": "1d3 / 1d3 / 1d6",
@@ -206,9 +211,14 @@
         "raw": "2 Claws"
       },
       {
-        "type": "bite + bearhug",
+        "type": "bite",
         "count": 1,
-        "raw": "1 Bite + Bearhug"
+        "raw": "1 Bite"
+      },
+      {
+        "type": "bearhug",
+        "count": 1,
+        "raw": "Bearhug"
       }
     ],
     "damage": "1d8 / 1d8 / 1d10",
@@ -237,9 +247,14 @@
         "raw": "2 Claws"
       },
       {
-        "type": "bite + bearhug",
+        "type": "bite",
         "count": 1,
-        "raw": "1 Bite + Bearhug"
+        "raw": "1 Bite"
+      },
+      {
+        "type": "bearhug",
+        "count": 1,
+        "raw": "Bearhug"
       }
     ],
     "damage": "1d6 / 1d6 / 1d10",
@@ -268,9 +283,14 @@
         "raw": "2 Claws"
       },
       {
-        "type": "bite + bearhug",
+        "type": "bite",
         "count": 1,
-        "raw": "1 Bite + Bearhug"
+        "raw": "1 Bite"
+      },
+      {
+        "type": "bearhug",
+        "count": 1,
+        "raw": "Bearhug"
       }
     ],
     "damage": "2d4 / 2d4 / 2d6",
@@ -424,9 +444,14 @@
     "movement": "150 (50)",
     "attacks": [
       {
-        "type": "bite + special",
+        "type": "bite",
         "count": 1,
-        "raw": "1 Bite + Special"
+        "raw": "1 Bite"
+      },
+      {
+        "type": "special",
+        "count": 1,
+        "raw": "Special"
       }
     ],
     "damage": "2d6 + Spray Oil (-2 to Hit)",
@@ -1490,9 +1515,14 @@
         "raw": "2 Claws"
       },
       {
-        "type": "weapon + charm song",
+        "type": "weapon",
         "count": 1,
-        "raw": "1 Weapon + Charm song"
+        "raw": "1 Weapon"
+      },
+      {
+        "type": "charm song",
+        "count": 1,
+        "raw": "Charm song"
       }
     ],
     "damage": "1d4 / 1d4 / 1d6",
@@ -1698,9 +1728,14 @@
     "movement": "30 (10)",
     "attacks": [
       {
-        "type": "fists + special",
+        "type": "fists",
         "count": 2,
-        "raw": "2 Fists + Special"
+        "raw": "2 Fists"
+      },
+      {
+        "type": "special",
+        "count": 1,
+        "raw": "Special"
       }
     ],
     "damage": "1d8 / 1d8",
@@ -2056,9 +2091,14 @@
         "raw": "2 Claws"
       },
       {
-        "type": "bite + bearhug",
+        "type": "bite",
         "count": 1,
-        "raw": "1 Bite + Bearhug"
+        "raw": "1 Bite"
+      },
+      {
+        "type": "bearhug",
+        "count": 1,
+        "raw": "Bearhug"
       }
     ],
     "damage": "2d4 / 2d4 / 2d8",
@@ -2082,9 +2122,14 @@
     "movement": "90 (30)",
     "attacks": [
       {
-        "type": "snakebite + special",
+        "type": "snakebite",
         "count": 1,
-        "raw": "1 Snakebite + Special"
+        "raw": "1 Snakebite"
+      },
+      {
+        "type": "special",
+        "count": 1,
+        "raw": "Special"
       }
     ],
     "damage": "1d6 + Poison (2)",
@@ -2378,9 +2423,14 @@
         "raw": "2 Claws"
       },
       {
-        "type": "bite + bearhug",
+        "type": "bite",
         "count": 1,
-        "raw": "1 Bite + Bearhug"
+        "raw": "1 Bite"
+      },
+      {
+        "type": "bearhug",
+        "count": 1,
+        "raw": "Bearhug"
       }
     ],
     "damage": "1d8 / 1d8 / 1d8",
