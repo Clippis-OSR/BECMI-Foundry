@@ -107,7 +107,7 @@
         "note": "",
         "gpValue": 0
       },
-      "coinage": {
+      "currency": {
         "carried": {
           "pp": 0,
           "gp": 0,
@@ -115,7 +115,7 @@
           "sp": 0,
           "cp": 0
         },
-        "hoard": {
+        "treasureHorde": {
           "pp": 0,
           "gp": 0,
           "ep": 0,
@@ -123,7 +123,9 @@
           "cp": 0
         }
       },
-      "treasure": "",
+      "treasure": {
+        "notes": ""
+      },
       "encumbrance": {
         "total": 0,
         "withoutBackpack": 0,

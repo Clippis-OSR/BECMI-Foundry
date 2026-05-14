@@ -16,6 +16,13 @@ export const BECMI_ENCUMBRANCE_MOVEMENT_TABLE = Object.freeze([
   Object.freeze({ id: "2401+", min: 2401, max: Number.POSITIVE_INFINITY, normalFeetPerTurn: 0, encounterFeetPerRound: 0 })
 ]);
 
+export const BECMI_ENCUMBRANCE_RULES = Object.freeze({
+  currency: Object.freeze({
+    /** Number of coins that equal 1 cn of encumbrance. */
+    coinsPerCn: 10
+  })
+});
+
 export function getMovementTierByEncumbrance(totalCn) {
   const value = Number.isFinite(Number(totalCn)) ? Number(totalCn) : 0;
   const tier = BECMI_ENCUMBRANCE_MOVEMENT_TABLE.find((entry) => value >= entry.min && value <= entry.max);

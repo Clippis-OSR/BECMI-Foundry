@@ -5,9 +5,24 @@ import {
   getItemsInContainer,
   getItemLocation
 } from "./inventory-manager.mjs";
-import { getMovementTierByEncumbrance } from "../rules/encumbrance.mjs";
+import { BECMI_ENCUMBRANCE_RULES, getMovementTierByEncumbrance } from "../rules/encumbrance.mjs";
 
 const CARRIED_LOCATIONS = Object.freeze(["worn", "beltPouch", "backpack", "sack1", "sack2", "carried", "treasureHorde"]);
+const COIN_KEYS = Object.freeze(["pp", "gp", "ep", "sp", "cp"]);
+
+function toSafeCoinCount(value) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric) || numeric <= 0) return 0;
+  return Math.floor(numeric);
+}
+
+function getCarriedCoinEncumbrance(actor) {
+  const coinsPerCn = Number(BECMI_ENCUMBRANCE_RULES?.currency?.coinsPerCn ?? 10);
+  const divisor = Number.isFinite(coinsPerCn) && coinsPerCn > 0 ? coinsPerCn : 10;
+  const carried = actor?.system?.currency?.carried ?? {};
+  const totalCoins = COIN_KEYS.reduce((sum, key) => sum + toSafeCoinCount(carried?.[key]), 0);
+  return totalCoins / divisor;
+}
 
 function isStoredItem(item) {
   return getItemLocation(item) === "stored";
@@ -92,10 +107,11 @@ export function calculateContainerEncumbrance(actor, containerId) {
  * - onlyWornAndBeltPouch: includes worn gear + belt pouch only.
  */
 export function calculateTotalEncumbrance(actor) {
-  const total = calculateScopedEncumbrance(actor, CARRIED_LOCATIONS);
-  const withoutBackpack = calculateScopedEncumbrance(actor, CARRIED_LOCATIONS.filter((loc) => loc !== "backpack"));
-  const withoutSacks = calculateScopedEncumbrance(actor, CARRIED_LOCATIONS.filter((loc) => loc !== "sack1" && loc !== "sack2"));
-  const onlyWornAndBeltPouch = calculateScopedEncumbrance(actor, ["worn", "beltPouch"]);
+  const coinEncumbrance = getCarriedCoinEncumbrance(actor);
+  const total = calculateScopedEncumbrance(actor, CARRIED_LOCATIONS) + coinEncumbrance;
+  const withoutBackpack = calculateScopedEncumbrance(actor, CARRIED_LOCATIONS.filter((loc) => loc !== "backpack")) + coinEncumbrance;
+  const withoutSacks = calculateScopedEncumbrance(actor, CARRIED_LOCATIONS.filter((loc) => loc !== "sack1" && loc !== "sack2")) + coinEncumbrance;
+  const onlyWornAndBeltPouch = calculateScopedEncumbrance(actor, ["worn", "beltPouch"]) + coinEncumbrance;
 
   const movementTier = getMovementTierByEncumbrance(total);
 
