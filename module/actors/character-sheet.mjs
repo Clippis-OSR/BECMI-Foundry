@@ -11,7 +11,8 @@ import {
   getItemLocation,
   getItemTotalWeight,
   normalizeContainerId,
-  normalizeItemLocation
+  normalizeItemLocation,
+  validateItemContainerAssignment
 } from "../items/inventory-manager.mjs";
 import { calculateTotalEncumbrance } from "../items/encumbrance.mjs";
 import * as currencyHelpers from "../items/currency.mjs";
@@ -398,6 +399,7 @@ export class BECMICharacterSheet extends ActorSheet {
 
     if (field === "system.containerId") {
       value = normalizeContainerId(value);
+      validateItemContainerAssignment(this.actor, item, { containerId: value });
     }
 
     if (field === "system.location") {
@@ -408,6 +410,8 @@ export class BECMICharacterSheet extends ActorSheet {
         console.warn("Rejected non-treasure move into treasure location", { itemId, attemptedLocation: value });
         return;
       }
+
+      validateItemContainerAssignment(this.actor, item, { location: value });
       if (value === "equipped") {
         await equipItem(this.actor, item);
       } else {

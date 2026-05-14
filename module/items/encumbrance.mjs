@@ -42,6 +42,15 @@ export function calculateContainerEncumbrance(actor, containerId) {
 
   const allItems = getActorItems(actor).filter(shouldCountItem);
   const container = allItems.find((item) => getItemId(item) === targetContainerId);
+  if (!container || !shouldCountItem(container)) {
+    return {
+      containerId: targetContainerId,
+      containerWeight: 0,
+      contentsWeight: 0,
+      total: 0,
+      itemCount: 0
+    };
+  }
   const contents = getItemsInContainer(actor, targetContainerId).filter(shouldCountItem);
 
   const containerWeight = container ? getItemTotalWeight(container) : 0;

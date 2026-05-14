@@ -24,6 +24,8 @@ export function getActorItems(actor) {
   return toArray(actor?.items);
 }
 
+export const LOGICAL_CONTAINER_LOCATIONS = Object.freeze(["beltPouch", "backpack", "sack1", "sack2"]);
+
 export function getRootItems(actor) {
   return getActorItems(actor).filter((item) => !normalizeContainerId(item?.system?.containerId));
 }
@@ -43,8 +45,21 @@ export function getItemsInContainer(actor, containerId) {
   });
 }
 
+export function getInventoryItems(actor) {
+  return getActorItems(actor).filter((item) => item?.type !== "currency");
+}
+
+export function getItemsByLocation(actor, location) {
+  const normalized = normalizeItemLocation(location);
+  return getInventoryItems(actor).filter((item) => getItemLocation(item) === normalized);
+}
+
+export function getContainerContents(actor, containerId) {
+  return getItemsInContainer(actor, containerId);
+}
+
 export function getContainers(actor) {
-  return getActorItems(actor).filter((item) => item?.type === "container");
+  return getInventoryItems(actor).filter((item) => item?.type === "container");
 }
 
 export const CANONICAL_INVENTORY_LOCATIONS = Object.freeze(["worn", "beltPouch", "backpack", "sack1", "sack2", "carried", "treasureHorde", "stored"]);
@@ -113,6 +128,54 @@ export function getContainerTotalWeight(actor, containerId) {
   const container = getActorItems(actor).find((item) => getItemId(item) === normalizeContainerId(containerId));
   if (!container) return getContainerContentsWeight(actor, containerId);
   return getItemTotalWeight(container) + getContainerContentsWeight(actor, containerId);
+}
+
+export function canItemFitInContainer(item, container, actor = null) {
+  if (!item || !container) return false;
+  const capacity = Number(container?.system?.capacity ?? container?.system?.inventory?.containerCapacity ?? 0);
+  if (!Number.isFinite(capacity) || capacity <= 0) return false;
+
+  const itemWeight = getItemTotalWeight(item);
+  const containerId = getItemId(container);
+  const currentLoad = actor && containerId ? getContainerContentsWeight(actor, containerId) : 0;
+  return (currentLoad + itemWeight) <= capacity;
+}
+
+export function validateItemContainerAssignment(actor, item, { containerId, location } = {}) {
+  const nextContainerId = normalizeContainerId(containerId ?? item?.system?.containerId);
+  const nextLocation = location !== undefined ? String(location).trim() : getItemLocation(item);
+  const itemId = getItemId(item);
+  const items = getActorItems(actor);
+
+  if (!CANONICAL_INVENTORY_LOCATIONS.includes(nextLocation)) {
+    throw new Error(`[BECMI Inventory] Invalid location "${nextLocation}".`);
+  }
+
+  if (!nextContainerId) return true;
+  if (itemId && nextContainerId === itemId) {
+    throw new Error("[BECMI Inventory] Item cannot be stored inside itself.");
+  }
+
+  const byId = new Map(items.map((owned) => [getItemId(owned), owned]));
+  const target = byId.get(nextContainerId);
+  if (!target || target.type !== "container") {
+    throw new Error(`[BECMI Inventory] Invalid containerId "${nextContainerId}".`);
+  }
+
+  let cursor = target;
+  const visited = new Set();
+  while (cursor) {
+    const cursorId = getItemId(cursor);
+    if (!cursorId || visited.has(cursorId)) break;
+    if (itemId && cursorId === itemId) {
+      throw new Error("[BECMI Inventory] Circular container reference is not allowed.");
+    }
+    visited.add(cursorId);
+    const parentId = normalizeContainerId(cursor?.system?.containerId);
+    cursor = parentId ? byId.get(parentId) : null;
+  }
+
+  return true;
 }
 
 export async function moveItemToContainer(item, containerId) {

@@ -134,24 +134,38 @@
       },
       "containers": {
         "beltPouch": {
-          "items": "",
-          "enc": 0
-        },
-        "worn": {
-          "items": "",
-          "enc": 0
+          "containerId": "",
+          "capacity": 100,
+          "currentContents": 0,
+          "totalEncumbrance": 0,
+          "countsTowardEncumbrance": true
         },
         "backpack": {
-          "items": "",
-          "enc": 0
+          "containerId": "",
+          "capacity": 400,
+          "currentContents": 0,
+          "totalEncumbrance": 0,
+          "countsTowardEncumbrance": true
         },
         "sack1": {
-          "items": "",
-          "enc": 0
+          "containerId": "",
+          "capacity": 600,
+          "currentContents": 0,
+          "totalEncumbrance": 0,
+          "countsTowardEncumbrance": true
         },
         "sack2": {
-          "items": "",
-          "enc": 0
+          "containerId": "",
+          "capacity": 600,
+          "currentContents": 0,
+          "totalEncumbrance": 0,
+          "countsTowardEncumbrance": true
+        },
+        "future": {
+          "chest": null,
+          "mule": null,
+          "cart": null,
+          "wagon": null
         }
       },
       "thiefSkills": {
