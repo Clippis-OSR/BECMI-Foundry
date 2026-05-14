@@ -28,21 +28,50 @@ const BECMI_CHARACTER_SHEET_ID = "becmi-foundry.BECMICharacterSheet";
 
 const BECMI_CREATURE_DEFAULTS = {
   creatureRole: "creature",
-  hd: "1",
+  monster: {
+    hitDice: "1",
+    armorClass: 9,
+    movement: {
+      land: { feetPerTurn: 120, feetPerRound: 40 },
+      special: ""
+    },
+    attacksSummary: "",
+    morale: 7,
+    numberAppearing: "",
+    saveAs: { class: "fighter", level: 1 },
+    treasureType: "",
+    alignment: "",
+    xp: 0,
+    specialAbilities: "",
+    habitatOrTerrain: "",
+    source: "",
+    notes: ""
+  },
   hp: {
     value: 1,
     max: 1
   },
   ac: 9,
   thac0: 19,
-  morale: 7,
-  savesAs: {
-    class: "fighter",
-    level: 1
-  },
   attacks: [],
   specialNotes: ""
 };
+
+function buildCanonicalMonsterData(system = {}) {
+  const current = system.monster ?? {};
+  return foundry.utils.mergeObject(foundry.utils.deepClone(BECMI_CREATURE_DEFAULTS.monster), {
+    ...current,
+    hitDice: current.hitDice ?? system.hd ?? system.hitDice ?? "1",
+    armorClass: current.armorClass ?? system.ac?.base ?? 9,
+    morale: current.morale ?? system.morale ?? 7,
+    numberAppearing: current.numberAppearing ?? system.numberAppearing ?? "",
+    saveAs: current.saveAs ?? system.savesAs ?? system.saveAs ?? { class: "fighter", level: 1 },
+    treasureType: current.treasureType ?? system.treasureType ?? "",
+    alignment: current.alignment ?? system.alignment ?? "",
+    xp: current.xp ?? system.xp ?? 0,
+    notes: current.notes ?? system.specialNotes ?? ""
+  }, { inplace: false });
+}
 
 const CANONICAL_SAVE_LABELS = {
   deathRayPoison: "Death Ray / Poison",
@@ -136,6 +165,17 @@ async function migrateCanonicalInventoryModel() {
   }
 
   await game.settings.set("becmi-foundry", "inventoryModelMigrationVersion", "1");
+}
+
+async function migrateCreatureMonsterSchema() {
+  if (!game.user?.isGM) return;
+  const actors = game.actors?.contents ?? [];
+  for (const actor of actors) {
+    if (actor.type !== "creature") continue;
+    const system = actor.system ?? {};
+    const canonicalMonster = buildCanonicalMonsterData(system);
+    await actor.update({ "system.monster": canonicalMonster });
+  }
 }
 
 function canonicalizeActorSavesForMigration(saves) {
@@ -280,6 +320,7 @@ Hooks.on("preCreateActor", (actor) => {
       foundry.utils.deepClone(BECMI_CREATURE_DEFAULTS),
       existing
     );
+    system.monster = buildCanonicalMonsterData(existing);
 
     actor.updateSource({
       system,
@@ -511,6 +552,7 @@ Hooks.once("ready", async function () {
   await migrateLegacyActorTypes();
   await migrateLegacyEquipmentSlots();
   await migrateCanonicalInventoryModel();
+  await migrateCreatureMonsterSchema();
 
   const actors = game.actors?.contents ?? [];
   for (const actor of actors) {

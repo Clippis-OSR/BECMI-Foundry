@@ -291,7 +291,31 @@
     },
     "creature": {
       "creatureRole": "creature",
-      "hd": "1",
+      "monster": {
+        "hitDice": "1",
+        "armorClass": 9,
+        "movement": {
+          "land": {
+            "feetPerTurn": 120,
+            "feetPerRound": 40
+          },
+          "special": ""
+        },
+        "attacksSummary": "",
+        "morale": 7,
+        "numberAppearing": "",
+        "saveAs": {
+          "class": "fighter",
+          "level": 1
+        },
+        "treasureType": "",
+        "alignment": "",
+        "xp": 0,
+        "specialAbilities": "",
+        "habitatOrTerrain": "",
+        "source": "",
+        "notes": ""
+      },
       "hp": {
         "value": 1,
         "max": 1
@@ -308,18 +332,7 @@
         "breakdown": []
       },
       "thac0": 19,
-      "morale": 7,
-      "savesAs": {
-        "class": "fighter",
-        "level": 1
-      },
       "attacks": [],
-      "specialNotes": "",
-      "movement": "",
-      "alignment": "",
-      "xp": 0,
-      "treasureType": "",
-      "numberAppearing": "",
       "derived": {
         "thac0": null,
         "encumbrance": {
@@ -340,7 +353,12 @@
           "rodStaffSpell": null
         },
         "hitDice": null,
-        "savesAs": null
+        "savesAs": null,
+        "monster": {
+          "movement": {
+            "summary": ""
+          }
+        }
       },
       "equipmentSlots": {
         "armor": null,

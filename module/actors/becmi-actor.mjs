@@ -108,6 +108,7 @@ export class BECMIActor extends Actor {
 
   _prepareCreatureDerivedData() {
     const system = this.system;
+    const monster = system.monster ?? {};
 
     const existingDerived = system.derived ?? {};
     const calculatedSaves = getActorSaves(this) ?? {};
@@ -134,8 +135,17 @@ export class BECMIActor extends Actor {
         dragonBreath: canonicalSaves.dragonBreath.value,
         rodStaffSpell: canonicalSaves.rodStaffSpell.value
       },
-      hitDice: system.hd ?? system.hitDice ?? null,
-      savesAs: system.savesAs ?? null
+      hitDice: monster.hitDice ?? null,
+      savesAs: monster.saveAs ?? null,
+      monster: {
+        movement: {
+          summary: [monster.movement?.land?.feetPerTurn, monster.movement?.land?.feetPerRound]
+            .map((n) => Number(n) || 0)
+            .some((n) => n > 0)
+            ? `${Number(monster.movement?.land?.feetPerTurn) || 0}'/turn (${Number(monster.movement?.land?.feetPerRound) || 0}'/round)`
+            : String(monster.movement?.special ?? "")
+        }
+      }
     };
 
   }

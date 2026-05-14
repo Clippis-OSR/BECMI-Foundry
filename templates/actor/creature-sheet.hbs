@@ -16,7 +16,7 @@
     <h2>Core Stats</h2>
 
     <label>HD</label>
-    <input type="text" name="system.hd" value="{{system.hd}}" data-action="change-creature-field"/>
+    <input type="text" name="system.monster.hitDice" value="{{monster.hitDice}}" data-action="change-creature-field"/>
 
     <label>HP</label>
     <input type="number" name="system.hp.value" value="{{system.hp.value}}" data-action="change-creature-field"/>
@@ -42,30 +42,30 @@
     <div>Rod / Staff / Spell: <span>{{system.saves.rodStaffSpell.value}}</span></div>
 
     <label>Morale</label>
-    <input type="number" name="system.morale" value="{{system.morale}}" data-action="change-creature-field"/>
+    <input type="number" name="system.monster.morale" value="{{monster.morale}}" data-action="change-creature-field"/>
 
     <label>Movement</label>
-    <input type="text" name="system.movement" value="{{system.movement}}" data-action="change-creature-field"/>
+    <input type="text" name="system.monster.movement.special" value="{{monster.movement.special}}" data-action="change-creature-field"/>
 
     <label>Alignment</label>
-    <input type="text" name="system.alignment" value="{{system.alignment}}" data-action="change-creature-field"/>
+    <input type="text" name="system.monster.alignment" value="{{monster.alignment}}" data-action="change-creature-field"/>
 
     <label>XP</label>
-    <input type="number" name="system.xp" value="{{system.xp}}" data-action="change-creature-field"/>
+    <input type="number" name="system.monster.xp" value="{{monster.xp}}" data-action="change-creature-field"/>
 
     <label>Treasure Type</label>
-    <input type="text" name="system.treasureType" value="{{system.treasureType}}" data-action="change-creature-field"/>
+    <input type="text" name="system.monster.treasureType" value="{{monster.treasureType}}" data-action="change-creature-field"/>
 
     <label>Number Appearing</label>
-    <input type="text" name="system.numberAppearing" value="{{system.numberAppearing}}" data-action="change-creature-field"/>
+    <input type="text" name="system.monster.numberAppearing" value="{{monster.numberAppearing}}" data-action="change-creature-field"/>
 
     <label>Special Notes</label>
-    <textarea name="system.specialNotes" data-action="change-creature-field">{{system.specialNotes}}</textarea>
+    <textarea name="system.monster.notes" data-action="change-creature-field">{{monster.notes}}</textarea>
 
     <h2>Save As</h2>
 
     <label>Save As Class</label>
-    <select name="system.savesAs.class" data-action="change-creature-field">
+    <select name="system.monster.saveAs.class" data-action="change-creature-field">
       <option value="fighter" {{saveAsClassSelected.fighter}}>Fighter</option>
       <option value="cleric" {{saveAsClassSelected.cleric}}>Cleric</option>
       <option value="magic-user" {{saveAsClassSelected.magicUser}}>Magic-User</option>
@@ -76,7 +76,7 @@
     </select>
 
     <label>Save As Level</label>
-    <input type="number" name="system.savesAs.level" value="{{savesAs.level}}" data-action="change-creature-field"/>
+    <input type="number" name="system.monster.saveAs.level" value="{{savesAs.level}}" data-action="change-creature-field"/>
 
     <h2>Attacks</h2>
 
