@@ -1,127 +1,114 @@
-Name;AC;Hit Dice;HP (Avg);THAC0;Move;Attack;Damage;No. Appering ;Save As;Morale;Tresure Type;Aligment;XP Value;Type;Special
-Ant, Giant;3;4*;;16;180 (60);1 Bite;2d6;2-8 (4-24);F2;7;U;Neutral;125;Insect;
-Ape, White;6;4;;16;120 (40);2 Claw;1d4/1d4;1-6 (2-8);F2;7;Nil;Neutral;75;Animal;
-Baboon, Rock;6;2;;18;120 (40);1 Club / 1 Bite;1d6 / 1d3;2-12 (5-30);F2;8;U;Neutral;20;Animal;
-Bat, normal;6;04-Jan;;19;Fly: 120(40);Confusion;Nil;1-100(1-100);Normal man;6;Nil;Neutral;5;Animal;
-Bat, Giant;6;2;;18;Fly: 180(60);1 Bite;1d4;1-10(1-10);F1;8;Nil;Neutral;20;Animal;
-Bandit;6;1;;19;90(30);1 Wep;By wep;1-8(3-30);T1;8;(U) A;Neutral;10;Human;
-Bear, Black;6;4;;16;120(40);2 Claws/1 Bite + Bearhug(if both claws hit add 2d8);1d3/1d3/1d6;1-4(1-4);F2;7;U;Neutral;75;Animal;
-Bear, Grizzly;8;5;;15;120(40);2 Claws/1 Bite + Bearhug(if both claws hit add 2d8);1d8/1d8/1d10;1(1-4);F4;10;U;Neutral;175;Animal;
-Bear, Polar;6;6;;14;120(40);2 Claws/1 Bite + Bearhug(if both claws hit add 2d8);1d6/1d6/1d10;1(1-2);F3;8;U;Neutral;275;Animal;
-Bear, Cave;5;7;;13;120(40);2 Claws/1 Bite + Bearhug(if both claws hit add 2d8);2d4/2d4/2d6;1-2(1-2);F4;9;V;Neutral;450;Animal;
-Bee, Giant;7;1/2*;2;19;150(50);1 Sting;1d3 + Poison(1);1-6(5-30);F1;9;Healing honey 1d4;Neutral;6;Insect;
-Bee, Guard;7;1*;4;19;150(50);1 Sting;1d3 + Poison(1);4 per 10 normal bee;F1;9;Healing honey 1d4;Neutral;13;Insect;
-Bee, Queen;7;2*;8;18;150(50);1 Sting;1d3 + Poison(1);1 per 10 normal;F1;9;Healing honey 1d4;Neutral;25;Insect;
-Beetle Giant, Fire;4;1 +2;6;18;120(40);1 Bite;2d4;1-8(2-12);F1;7;Nil;Neutral;15;Insect;
-Beetle Giant, Tiger;4;2*;8;18;120(40);1 Bite;1d6;1-8(2-12);F1;8;Nil;Neutral;25;Insect;
-Beetle Giant, Oil;3;3 +1;13;16;150(50);1 Bite + Special;2d6 + Spray Oil, -2 to Hit rolls ;1-6(2-8);F2;9;U;Neutral;50;Insect;
-Berserker;7;1 +1*;5;18;120(40);1 Wep;1d4 or 1d6 or 1d8;1-6(3-30);F1;12;(P)B;Neutral;19;Human;
-Boar;7;3;12;17;90(30);1 Tusk;2d4;1-6(1-6);F2;9;Nil;Neutral;35;Animal;
-Bugbear;5;3 +1;13;16;90(30);1 Wep;1d4+1 or 1d6+1 or 1d8+1;2-8(5-20);F3;9;(P+Q)B;Chaotic;75;Humanoid;
-Carrion Crawler;7;3 +1*;13;16;120(40);8 Tentacles;Paralysis;1-4(0);F2;9;B;Neutral;75;Insect;
-Cat Greater, Mountain Lion;6;3 +2;14;16;150(50);2 Claws/1 Bite;1d3/1d3/1d6;1-4(1-4);F2;8;U;Neutral;50;Animal;
-Cat Greater, Panther;4;4;16;16;210(70);2 Claws/1 Bite;1d4/1d4/1d8;1-2(1-6);F2;8;U;Neutral;75;Animal;
-Cat Greater, Lion;6;5;20;15;150(50);2 Claws/1 Bite;1d4+1/1d4+1/1d10;1-4(1-8);F3;9;U;Neutral;175;Animal;
-Cat Greater, Tiger;6;6;24;14;150(50);2 Claws/1 Bite;1d6/1d6/2d6;1(1-3);F3;9;U;Neutral;275;Animal;
-Cat Greater, Sabre-tooth Tiger;6;8;32;12;150(50);2 Claws/1 Bite;1d8/1d8/2d8;1-4(1-4);F4;10;V;Neutral;650;Animal;
-Centipede, Giant;9;02-Jan;2;19;60(20);1 Bite;Poison (24h illness 1/2 move);2-8(1-8);Normal man;7;Nil;Neutral;6;Insect;
-Doppleganger;5;4*;16;16;90(30);1;1d12;1-6(1-6);F8;8;E;Chaotic;125;Humanoid;
-Dragon, White (S);3;6**;24;14;"Move 90(30)
-Fly 240(80)";2 Claws/1 Bite OR Breath;1d4/1d4/2d8;1-4(1-4);F6;8;H;Neutral;725;Dragon;
-Dragon, Black (S);2;7**;28;13;"Move 90(30)
-Fly 240(80)";2 Claws/1 Bite OR Breath;1d4+1/1d4+1/2d10;1-4(1-4);F7;8;H;Chaotic;1250;Dragon;
-Dragon, Green (S);1;8**;32;12;"Move 90(30)
-Fly 240(80)";2 Claws/1 Bite OR Breath;1d6/1d6/3d8;1-4(1-4);F8;9;H;Chaotic;1750;Dragon;
-Dragon, Blue (S);0;9**;36;11;"Move 90(30)
-Fly 240(80)";2 Claws/1 Bite OR Breath;1d6+1/1d6+1/3d10;1-4(1-4);F9;9;H;Neutral;2300;Dragon;
-Dragon, Red (S);-1;10**;40;10;"Move 90(30)
-Fly 240(80)";2 Claws/1 Bite OR Breath;1d8/1d8/4d8;1-4(1-4);F10;10;H;Chaotic;2300;Dragon;
-Dragon, Gold (S);-2;11**;44;10;"Move 90(30)
-Fly 240(80)";2 Claws/1 Bite OR Breath;2d4/2d4/6d6;1-4(1-4);F11;10;H;Lawful;2700;Dragon;
-Dwarf;4;1;4;19;60(20);1 Weapon (Axe/Club/Mace/L.xbow);1d6 or 1d4 or 1d6 or 1d6;1-6(5-40);Dwarf 1;8 or 10;(Q + S) G;Lawful or Neutral;10;Demihuman;
-Elf;5;1*;4;19;120(40);1 Weapon (S.Sword/Spear/Short or Longbow);1d6;1-4(2-24);Elf 1;8 or 10;(S + T) E;Neutral;13;Demihuman;
-Ferret, Giant;5;1 +1;5;18;150(50);1 Bite;1d8;1-8(1-12);F1;8;Nil;Neutral;15;Animal;
-Gargoyle*;5;4**;16;16;"Move 90(30)
-Fly 150(50)";2 Claws/1 Bite/1 Horn;1d3/1d3/1d6/1d4;1-6(2-8);F8;11;C;Chaotic;175;Magical Monster;
-Gelatinous Cube*;8;4*;16;16;60(20);1;2d4 + Paralysis;1(1-4);F2;12;(V);Neutral;125;Magical Monster;
-Ghoul;6;2*;8;18;90(30);2 Claws/1 Bite;1d3/1d3/1d3+Paralysis;1-6(2-16);F2;9;B;Chaotic;25;Undead;
-Gnoll;5;2;8;18;90(30);1 Weapon;1d6+1 or 1d8+1;1-6(3-18);F2;8;(P)D;Chaotic;20;Humanoid;
-Gnoll, leader;5;3;16;17;90(30);1 Weapon;1d6+1 or 1d8+1;1-6(3-18);F2;8;(P)D;Chaotic;20;Humanoid;
-Gnome;5;1;4;19;60(20);Warhammer or Crossbow;1d6 or 1d6;1-8(5-40);Dwarf 1;8 or 10;(P)C;Lawful or Neutral;10;Demihuman;
-Gnome, Leader;5;2;11;18;60(20);Warhammer or Crossbow;1d6 or 1d6;1-8(5-40);Dwarf 1;8 or 10;(P)C;Lawful or Neutral;20;Demihuman;
-Gnome, Clan Chieftan;5;4;18;16;60(20);Warhammer or Crossbow;1d6+1 or 1d6;1-8(5-40);Dwarf 1;8 or 10;(P)C;Lawful or Neutral;100;Demihuman;
-Gnome, Body guard;5;3;11;17;60(20);Warhammer or Crossbow;1d6 or 1d6;1-8(5-40);Dwarf 1;8 or 10;(P)C;Lawful or Neutral;35;Demihuman;
-Goblin;6;01-Jan;3;19;90(30);1 Weapon;1d4 or 1d6;2-8(6-60);Normal man;7 or 9;(R)C;Chaotic;5;Humanoid;
-Goblin, Body Guard;6;2;2d6 or 6;18;90(30);1 Weapon;1d6;2-12 Only w/King in Lair ;Normal man;7 or 9;(R)C;Chaotic;20;Humanoid;
-Goblin, King;6;3;15;17;90(30);1 Weapon;1d6+1;1;Normal man;9;(R)C;Chaotic;35;Humanoid;
-Gray Ooze;8;3*;12;17;10(3);1;2d8;1-4(1-2);F2;12;Nil;Neutral;50;Ooze;
-Green Slime;Nil;2**;8;18;3(1);1;Kills after 6 rounds;1(0);F1;7;(P+S)B;Lawful;30;Slime;
-Hafling;7;01-Jan;3;19;90(30);1 Weapon;1d6;3-18(5-40);Halfling 1;7;(P+S)B;Lawful;5;Demihuman;
-Halfling, Militia;6;2;8;18;90(30);1 Weapon;1d6;5-20 Only in village/lair;Halfling 1;7;;Lawful;20;Demihuman;
-Harpy;7;3*;12;17;"M: 60(20)
-F: 150(50)";2 Claws/1 weapon + Charm song;1d4/1d4/1d6;1-6(2-8);F6;7;C;Chaotic;50;Monstrous humaniod;
-Hobgoblin;6;1+1;5;18;90(30);1 Weapon;1d6;1-6(4-24);F1;8 or 10;(Q)D;Chaotic;15;Humanoid;
-Hobgoblin, King;6;Special;22;15;90(30);1 Weapon;1d8+2;1;F1;8 or 10;(Q)D;Chaotic;175;Humanoid;
-Hobgoblin, Body Guard;6;Special;3-18 or 11;16;90(30);1 Weapon;1d6;1-4 Only w/King;F1;8 or 10;(Q)D;Chaotic;75;Humanoid;
-Kobold;7;02-Jan;2;19;90(30);1 Weapon;1d4;4-16(6-60);Normal man;6 or 8;(P)+J;Chaotic;5;Humanoid;
-Kobold, King;7;Special;9;18;90(30);1 Weapon;1d6;1;Normal man;6 or 8;(P)+J;Chaotic;5;Humanoid;
-Kobold, Body Gurad;7;Special;6;18;90(30);1 Weapon;1d4;1-6 Only w/King;Normal man;6 or 8;(P)+J;Chaotic;5;Humanoid;
-Living Statue, Crystal;4;3;12;17;90(30);2 Fists;1d6/1d6;1-6(1-6);F3;11;Nil;Lawful;35;Construct;
-Living Statue, Iron;2;4*;16;16;30(10);2 Fists + Special( Metal weapon Save VS Spells);1d8/1d8;1-4(1-4);F4;11;Nil;Neutral;125;Construct;
-Living Statue, Rock;4;5*;20;15;60(20);2 Lava rays;2d6/2d6;1-3(1-3);F5;11;Nil;Chaotic;300;Construct;
-Lizard, Giant Gecko;5;3+1;13;16;120(40);1 Bite;1d8;1-6(1-10);F2;7;U;Neutral;50;Animal;
-Lizard, Giant Draco;5;4+2;18;15;120(40);1 Bite;1d10;1-4(1-8);F3;7;U;Neutral;125;Animal;
-Lizard, Giant Horned Chameleon;2;5*;20;15;120(40);1 Bite/1 Horn;2d4/1d6;1-3(1-6);F3;7;U;Neutral;300;Animal;
-Lizard, Giant Tuatara;4;6;24;14;90(30);2 Claws/1 Bite;1d4/1d4/2d6;1-2(1-4);F3;6;V;Neutral;275;Animal;
-Lizard Man;5;2+1;9;17;"Move 60(20) 
-Swim 120(40)";1 Weapon (Spear or mace);1d6+1;2-8(6-36);F2;12;D;Neutral;25;Humanoid;
-Locust, Giant;4;2**;8;18;"M 60(20) 
-Fly 180(60)";1 Bite or 1 Spit or 1 Bump;1d2 or 1d4 or 1d4;2-20(0);F2;5;Nil;Neutral;30;Insect;
-Lycanthrope, WereRat;7;3*;12;17;120(40);1 Bite or 1 Weapon;1d4 or Weapon;1-8(2-16);F3;8;C;Chaotic;50;Lycanthrope;
-Lycanthrope, WereWolf;5;4*;16;16;180(60);1 Bite;2d4;1-6(2-12);F4;8;C;Chaotic;125;Lycanthrope;
-Lycanthrope, WereWolf Leader;5;5*;30;15;180(60);1 Bite;2d4+2;1 per 5 werewolfs;F4;8;C;Chaotic;300;Lycanthrope;
-Lycanthrope, WereBoar;4;4+1*;17;15;150(50);1 Tusk-bite;2d6;1-4(2-8);F4;9;C;Neutral;200;Lycanthrope;
-Lycanthrope, WereTiger;3;5*;20;15;150(50);2 Claws/1 Bite;1d6/1d6/2d6;1-4(1-4);F5;9;C;Neutral;300;Lycanthrope;
-Lycanthrope, WereBear;2;6*;24;14;120(40);2 Claws/1 Bite + Bearhug(if both claws hit add 2d8);2d4/2d4/2d8;1-4(1-4);F6;10;C;Neutral;500;Lycanthrope;
-Medusa;8;4**;16;16;90(30);1 Snakebite + Special;1d6 + Poison (2);1-3(1-4);F4;8;(V)F;Chaotic;175;Monstrous humaniod;
-Minotaur;6;6;24;14;120(40);1 Gore/1 Bite or 1 Weapon;1d6/1d6 or 1d6+2;1-6(1-8);F6;12;C;Chaotic;275;Monstrous humaniod;
-Mule;7;2;8;18;120(40);1 Kick or 1 Bite;1d4 or 1d3;1-2(2-12);Normal man;8;Nil;Neutral;20;Animal;
-Neaderthal;8;2;8;18;120(40);1 Weapon;1d4+1;1-10(10-40);F2;7;C;Lawful;20;Humanoid;
-Neaderthal, King/Queen;8;6;24;14;120(40);1 Weapon;1d4+1;2 Leaders in a lair;F6;7;C;Lawful;275;Humanoid;
-Normal Human;9;1;4;19;120(40);1 Weapon;1d4;1-4(1-50);Normal man;6;(P)U;Any;5;Human;
-Ochre Jelly;8;5*;20;15;30(10);1;2d6;1(0);F3;12;Nil;Neutral;300;Slime;
-Ogre;5;4+1;17;15;90(30);1 Club;1d8+2;1-6(2-12);F4;10;(S x 10) S x 100 + C;Chaotic;125;Humanoid;
-Orc;6;1;4;19;120(40);1 Weapon;1d6;2-8(10-60);F1;8 or 6;(P)D;Chaotic;10;Humanoid;
-Orc, Leader;6;1;8;19;120(40);1 Weapon;1d6+1;1 per 8 Orcs;F1;8;(P)D;Chaotic;15;Humanoid;
-Orc, Chieftain;6;1;15;16;120(40);1 Weapon;1d6+2;1 per Lair;F1;8;(P)D;Chaotic;75;Humanoid;
-Owl bear;5;5;20;15;120(40);2 Claws/1 Bite + Bearhug(if both claws hit add 2d8);1d8/1d8/1d8;1-4(1-4);F3;9;C;Neutral;175;Monstrous Creature;
-Pixie;3;1***;4;19;"M: 90(30)
-F: 180(60)";1 Dagger;1d4;2-8(10-40);Elf 1;7;R + S;Neutral;19;Demihuman;
-Rat, Normal;9;0;1;19;60(20);1 Bite per pack;1d6;5-50(2-20);Normal man;5;L;Neutral;5;Animal;
-Rat, Giant;7;02-Jan;2;19;120(40);1 Bite each;1d3;3-18(3-30);Normal man;8;C;Neutral;5;Animal;
-Robber Fly;6;2;8;18;"90(30)
-Fly 180(60)";1 Bite;1d8;1-6(2-12);F1;8;U;Neutral;20;Insect;
-Rust Monster;2;5*;20;15;120(40);1 Tentacle;On hit rust metall, magic stuff gets 10% resist per +.;1-4(1-4);F3;7;Nil;Neutral;300;Magical Monster;
-Shadow*;7;2+2*;10;17;90(30);1;1d4 + Drain 1 STR;1-8(1-12);F2;12;F;Chaotic;35;Magical Monster;
-Shrew, Giant;4;1*;4;19;180(60);2 Bites;1d6/1d6;1-8(1-4);F1;10;Nil;Neutral;13;Animal;
-Shrieker;7;3;12;17;9(3);Scream for 1d3 rounds;1d6 (On 4+ wandering monster);1-8(0);F2;12;Nil;Neutral;35;Plant;
-Skeleton;7;1;4;19;60(20);1 Weapon;1d4 or 1d6;3-12(3-30);F1;12;Nil;Chaotic;10;Undead;
-Snake, Spitting Cobra;7;1*;4;19;90(30);1 Bite or 1 Spit;1d3+Poison (1) OR Save VS Blind;1-6(1-6);F1;7;Nil;Neutral;13;Reptile;
-Snake, Giant Racer;5;2;8;18;120(40);1 Bite;1d6;1-6(1-8);F1;7;Nil;Neutral;20;Reptile;
-Snake, Pit Viper;6;2*;8;18;90(30);1 Bite;1d4 + Poison(2);1-8(1-8);F1;7;Nil;Neutral;25;Reptile;
-Snake, Sea Snake;6;3*;12;17;90(30);1 Bite;1 + Poison(2);0(1-8);F1;7;Nil;Neutral;50;Reptile;
-Snake, Giant Rattler;5;4*;16;16;120(40);2 Bites;1d4 + Poison(2) ;1-4(1-4);F2;8;U;Neutral;125;Reptile;
-Snake, Rock Python;6;5*;20;15;90(30);1 Bite/1 squeeze;1d4 + 2d4 if a hit i scored;1-3(1-3);F2;8;U;Neutral;300;Reptile;
-Spider, Giant Crab Spider;7;2*;8;18;120(40);1 Bite;1d8 + Poison(1);1-4(1-4);F1;7;U;Neutral;25;Insect;
-Spider, Giant Black Widow;6;3*;12;17;60(20);1 Bite;2d6 + Poison(2);1-3(1-3);F2;8;U;Neutral;50;Insect;
-Spider, Giant Tarantella;5;4*;16;16;120(40);1 Bite;1d8 + Poison(Starts dancing on fail 2-12 turns);1-3(1-3);F2;8;U;Neutral;125;Insect;
-Sprite;Nil;1/2*;2;19;60(20);1 Spell (Magical practical joke);-;1-18(5-40);Elf 1;7;S;Neutral;6;Magical Monster;
-Strige;7;1*;4;19;"30(10)
-Fly: 180(60)";1 Beak, Auto hit if first attack lands;1d3;1-10(3-36);F2;9;L;Neutral;13;Animal;
-Thoul;6;3**;12;17;120(40);2 Claws or 1 Weapon;1d3/1d3+Paralyse or Weapon;1-6(1-10);F3;10;C;Chaotic;65;Magical Monster;
-Troglodyte;5;2*;8;18;120(40);2 Claws/1 Bite;1d4/1d4/1d4;1-8(5-40);F2;9;A;Chaotic;30;Humanoid;Aura, Save vs Poison in melee. -2 To hit if failed.
-Wight*;5;3*;12;17;90(30);1;Energy drain 1;1-6(1-8);F3;12;B;Chaotic;50;Undead;
-Wolf;7;2+2;10;17;180(60);1 Bite;1d6;2-12(3-18);F1;8 or 6;Nil;Neutral;25;Animal;
-Wolf, Dire;6;4+1;17;15;150(50);1 Bite;2d4;1-4(2-8);F2;8;Nil;Neutral;125;Animal;
-Yellow Mold;Nil;2*;8;Nil;0;Spore (50% when hit);1d6 Save vs Death ray;1-8(1-4);F2;Nil;Nil;Neutral;25;Plant;
-Zombie;8;2;8;18;90(30);1 Claw or 1 Weapon;1d8 or Weapon;2-8(2-24);F1;12;Nil;Chaotic;20;Undead;
+Name,AC,Hit Dice,HP (Avg),THAC0,Move,Attack,Damage,No. Appearing,Save As,Morale,Treasure Type,Alignment,XP Value,Type,Special
+Ant - Giant,3,4*,18,16,"180 (60)","1 Bite","2d6","2-8 (4-24)","F2",7,"U","Neutral",125,"Insect",""
+Ape - White,6,4,16,16,"120 (40)","2 Claw","1d4 / 1d4","1-6 (2-8)","F2",7,"Nil","Neutral",75,"Animal",""
+Baboon - Rock,6,2,9,18,"120 (40)","1 Club / 1 Bite","1d6 / 1d3","2-12 (5-30)","F2",8,"U","Neutral",20,"Animal",""
+Bat - Normal,6,"1/4",1,19,"Fly: 120 (40)","Confusion","Nil","1-100 (1-100)","Normal man",6,"Nil","Neutral",5,"Animal",""
+Bat - Giant,6,2,8,18,"Fly: 180 (60)","1 Bite","1d4","1-10 (1-10)","F1",8,"Nil","Neutral",20,"Animal",""
+Bandit,6,1,4,19,"90 (30)","1 Weapon","By weapon","1-8 (3-30)","T1",8,"(U) A","Neutral",10,"Human",""
+Bear - Black,6,4,16,16,"120 (40)","2 Claws / 1 Bite + Bearhug","1d3 / 1d3 / 1d6","1-4 (1-4)","F2",7,"U","Neutral",75,"Animal","If both claws hit add 2d8"
+Bear - Grizzly,8,5,20,15,"120 (40)","2 Claws / 1 Bite + Bearhug","1d8 / 1d8 / 1d10","1-4 (1-4)","F4",10,"U","Neutral",175,"Animal","If both claws hit add 2d8"
+Bear - Polar,6,6,24,14,"120 (40)","2 Claws / 1 Bite + Bearhug","1d6 / 1d6 / 1d10","1-2 (1-2)","F3",8,"U","Neutral",275,"Animal","If both claws hit add 2d8"
+Bear - Cave,5,7,28,13,"120 (40)","2 Claws / 1 Bite + Bearhug","2d4 / 2d4 / 2d6","1-2 (1-2)","F4",9,"V","Neutral",450,"Animal","If both claws hit add 2d8"
+Bee - Giant,7,"1/2 *",2,19,"150 (50)","1 Sting","1d3 + Poison (1)","1-6 (5-30)","F1",9,"Healing honey 1d4","Neutral",6,"Insect",""
+Bee - Guard,7,1*,4,19,"150 (50)","1 Sting","1d3 + Poison (1)","4 per 10 normal bee","F1",9,"Healing honey 1d4","Neutral",13,"Insect",""
+Bee - Queen,7,2*,8,18,"150 (50)","1 Sting","1d3 + Poison (1)","1 per 10 normal","F1",9,"Healing honey 1d4","Neutral",25,"Insect",""
+Beetle Giant - Fire,4,"1 + 2",6,18,"120 (40)","1 Bite","2d4","1-8 (2-12)","F1",7,"Nil","Neutral",15,"Insect",""
+Beetle Giant - Tiger,4,2*,8,18,"120 (40)","1 Bite","1d6","1-8 (2-12)","F1",8,"Nil","Neutral",25,"Insect",""
+Beetle Giant - Oil,3,"3 + 1",13,16,"150 (50)","1 Bite + Special","2d6 + Spray Oil (-2 to Hit)","1-6 (2-8)","F2",9,"U","Neutral",50,"Insect",""
+Berserker,7,"1 + 1 *",5,18,"120 (40)","1 Weapon","1d4 or 1d6 or 1d8","1-6 (3-30)","F1",12,"(P)B","Neutral",19,"Human",""
+Boar,7,3,12,17,"90 (30)","1 Tusk","2d4","1-6 (1-6)","F2",9,"Nil","Neutral",35,"Animal",""
+Bugbear,5,"3 + 1",13,16,"90 (30)","1 Weapon","1d4+1 or 1d6+1 or 1d8+1","2-8 (5-20)","F3",9,"(P+Q)B","Chaotic",75,"Humanoid",""
+Carrion Crawler,7,"3 + 1 *",13,16,"120 (40)","8 Tentacles","Paralysis","1-4 (0)","F2",9,"B","Neutral",75,"Insect",""
+Cat Greater - Mountain Lion,6,"3 + 2",14,16,"150 (50)","2 Claws / 1 Bite","1d3 / 1d3 / 1d6","1-4 (1-4)","F2",8,"U","Neutral",50,"Animal",""
+Cat Greater - Panther,4,4,16,16,"210 (70)","2 Claws / 1 Bite","1d4 / 1d4 / 1d8","1-2 (1-6)","F2",8,"U","Neutral",75,"Animal",""
+Cat Greater - Lion,6,5,20,15,"150 (50)","2 Claws / 1 Bite","1d4+1 / 1d4+1 / 1d10","1-4 (1-8)","F3",9,"U","Neutral",175,"Animal",""
+Cat Greater - Tiger,6,6,24,14,"150 (50)","2 Claws / 1 Bite","1d6 / 1d6 / 2d6","1 (1-3)","F3",9,"U","Neutral",275,"Animal",""
+Cat Greater - Sabre-tooth Tiger,6,8,32,12,"150 (50)","2 Claws / 1 Bite","1d8 / 1d8 / 2d8","1-4 (1-4)","F4",10,"V","Neutral",650,"Animal",""
+Centipede - Giant,9,"1/4",2,19,"60 (20)","1 Bite","Poison (24h illness, 1/2 move)","2-8 (1-8)","Normal man",7,"Nil","Neutral",6,"Insect",""
+Doppelganger,5,4*,16,16,"90 (30)","1","1d12","1-6 (1-6)","F8",8,"E","Chaotic",125,"Humanoid","Can shapeshift"
+Dragon - White (S),3,6**,24,14,"Move 90 (30) / Fly 240 (80)","2 Claws / 1 Bite / Breath","1d4 / 1d4 / 2d8","1-4 (1-4)","F6",8,"H","Neutral",725,"Dragon",""
+Dragon - Black (S),2,7**,28,13,"Move 90 (30) / Fly 240 (80)","2 Claws / 1 Bite / Breath","1d4+1 / 1d4+1 / 2d10","1-4 (1-4)","F7",8,"H","Chaotic",1250,"Dragon",""
+Dragon - Green (S),1,8**,32,12,"Move 90 (30) / Fly 240 (80)","2 Claws / 1 Bite / Breath","1d6 / 1d6 / 3d8","1-4 (1-4)","F8",9,"H","Chaotic",1750,"Dragon",""
+Dragon - Blue (S),0,9**,36,11,"Move 90 (30) / Fly 240 (80)","2 Claws / 1 Bite / Breath","1d6+1 / 1d6+1 / 3d10","1-4 (1-4)","F9",9,"H","Neutral",2300,"Dragon",""
+Dragon - Red (S),-1,10**,40,10,"Move 90 (30) / Fly 240 (80)","2 Claws / 1 Bite / Breath","1d8 / 1d8 / 4d8","1-4 (1-4)","F10",10,"H","Chaotic",2300,"Dragon",""
+Dragon - Gold (S),-2,11**,44,10,"Move 90 (30) / Fly 240 (80)","2 Claws / 1 Bite / Breath","2d4 / 2d4 / 6d6","1-4 (1-4)","F11",10,"H","Lawful",2700,"Dragon",""
+Dwarf,4,1,4,19,"60 (20)","1 Weapon (Axe/Club/Mace/Crossbow)","1d6 or 1d4 or 1d6 or 1d6","1-6 (5-40)","Dwarf 1","8 or 10","(Q + S) G","Lawful or Neutral",10,"Demihuman",""
+Elf,5,1*,4,19,"120 (40)","1 Weapon (Sword/Spear/Bow)","1d6","1-4 (2-24)","Elf 1","8 or 10","(S + T) E","Neutral",13,"Demihuman",""
+Ferret - Giant,5,"1 + 1",5,18,"150 (50)","1 Bite","1d8","1-8 (1-12)","F1",8,"Nil","Neutral",15,"Animal",""
+Gargoyle*,5,4**,16,16,"Move 90 (30) / Fly 150 (50)","2 Claws / 1 Bite / 1 Horn","1d3 / 1d3 / 1d6 / 1d4","1-6 (2-8)","F8",11,"C","Chaotic",175,"Magical Monster",""
+Gelatinous Cube*,8,4*,16,16,"60 (20)","1","2d4 + Paralysis","1 (1-4)","F2",12,"(V)","Neutral",125,"Magical Monster",""
+Ghoul,6,2*,8,18,"90 (30)","2 Claws / 1 Bite","1d3 / 1d3 / 1d3 + Paralysis","1-6 (2-16)","F2",9,"B","Chaotic",25,"Undead",""
+Gnoll,5,2,8,18,"90 (30)","1 Weapon","1d6+1 or 1d8+1","1-6 (3-18)","F2",8,"(P)D","Chaotic",20,"Humanoid",""
+Gnoll - Leader,5,3,16,17,"90 (30)","1 Weapon","1d6+1 or 1d8+1","1-6 (3-18)","F2",8,"(P)D","Chaotic",20,"Humanoid",""
+Gnome,5,1,4,19,"60 (20)","Warhammer or Crossbow","1d6 or 1d6","1-8 (5-40)","Dwarf 1","8 or 10","(P)C","Lawful or Neutral",10,"Demihuman",""
+Gnome - Leader,5,2,11,18,"60 (20)","Warhammer or Crossbow","1d6 or 1d6","1-8 (5-40)","Dwarf 1","8 or 10","(P)C","Lawful or Neutral",20,"Demihuman",""
+Gnome - Clan Chieftain,5,4,18,16,"60 (20)","Warhammer or Crossbow","1d6+1 or 1d6","1-8 (5-40)","Dwarf 1","8 or 10","(P)C","Lawful or Neutral",100,"Demihuman",""
+Gnome - Bodyguard,5,3,11,17,"60 (20)","Warhammer or Crossbow","1d6 or 1d6","1-8 (5-40)","Dwarf 1","8 or 10","(P)C","Lawful or Neutral",35,"Demihuman",""
+Goblin,6,"1/4",3,19,"90 (30)","1 Weapon","1d4 or 1d6","2-8 (6-60)","Normal man","7 or 9","(R)C","Chaotic",5,"Humanoid",""
+Goblin - Bodyguard,6,2,6,18,"90 (30)","1 Weapon","1d6","2-12 (Only with King in Lair)","Normal man","7 or 9","(R)C","Chaotic",20,"Humanoid",""
+Goblin - King,6,3,15,17,"90 (30)","1 Weapon","1d6+1","1","Normal man",9,"(R)C","Chaotic",35,"Humanoid",""
+Gray Ooze,8,3*,12,17,"10 (3)","1","2d8","1-4 (1-2)","F2",12,"Nil","Neutral",50,"Ooze",""
+Green Slime,Nil,2**,8,18,"3 (1)","1","Kills after 6 rounds","1 (0)","F1",7,"(P+S)B","Lawful",30,"Slime",""
+Halfling,7,"1/4",3,19,"90 (30)","1 Weapon","1d6","3-18 (5-40)","Halfling 1",7,"(P+S)B","Lawful",5,"Demihuman",""
+Halfling - Militia,6,2,8,18,"90 (30)","1 Weapon","1d6","5-20 (Only in village/lair)","Halfling 1",7,"","Lawful",20,"Demihuman",""
+Harpy,7,3*,12,17,"Move 60 (20) / Fly 150 (50)","2 Claws / 1 Weapon + Charm song","1d4 / 1d4 / 1d6","1-6 (2-8)","F6",7,"C","Chaotic",50,"Monstrous Humanoid",""
+Hobgoblin,6,"1+1",5,18,"90 (30)","1 Weapon","1d6","1-6 (4-24)","F1","8 or 10","(Q)D","Chaotic",15,"Humanoid",""
+Hobgoblin - King,6,"Special",22,15,"90 (30)","1 Weapon","1d8+2","1","F1","8 or 10","(Q)D","Chaotic",175,"Humanoid",""
+Hobgoblin - Bodyguard,6,"Special","3-18 or 11",16,"90 (30)","1 Weapon","1d6","1-4 (Only with King)","F1","8 or 10","(Q)D","Chaotic",75,"Humanoid",""
+Kobold,7,"1/4",2,19,"90 (30)","1 Weapon","1d4","4-16 (6-60)","Normal man","6 or 8","(P)+J","Chaotic",5,"Humanoid",""
+Kobold - King,7,"Special",9,18,"90 (30)","1 Weapon","1d6","1","Normal man","6 or 8","(P)+J","Chaotic",5,"Humanoid",""
+Kobold - Bodyguard,7,"Special",6,18,"90 (30)","1 Weapon","1d4","1-6 (Only with King)","Normal man","6 or 8","(P)+J","Chaotic",5,"Humanoid",""
+Living Statue - Crystal,4,3,12,17,"90 (30)","2 Fists","1d6 / 1d6","1-6 (1-6)","F3",11,"Nil","Lawful",35,"Construct",""
+Living Statue - Iron,2,4*,16,16,"30 (10)","2 Fists + Special","1d8 / 1d8","1-4 (1-4)","F4",11,"Nil","Neutral",125,"Construct","Metal weapons save vs spells"
+Living Statue - Rock,4,5*,20,15,"60 (20)","2 Lava rays","2d6 / 2d6","1-3 (1-3)","F5",11,"Nil","Chaotic",300,"Construct",""
+Lizard - Giant Gecko,5,"3+1",13,16,"120 (40)","1 Bite","1d8","1-6 (1-10)","F2",7,"U","Neutral",50,"Animal",""
+Lizard - Giant Draco,5,"4+2",18,15,"120 (40)","1 Bite","1d10","1-4 (1-8)","F3",7,"U","Neutral",125,"Animal",""
+Lizard - Giant Horned Chameleon,2,5*,20,15,"120 (40)","1 Bite / 1 Horn","2d4 / 1d6","1-3 (1-6)","F3",7,"U","Neutral",300,"Animal",""
+Lizard - Giant Tuatara,4,6,24,14,"90 (30)","2 Claws / 1 Bite","1d4 / 1d4 / 2d6","1-2 (1-4)","F3",6,"V","Neutral",275,"Animal",""
+Lizard Man,5,"2+1",9,17,"Move 60 (20) / Swim 120 (40)","1 Weapon (Spear or Mace)","1d6+1","2-8 (6-36)","F2",12,"D","Neutral",25,"Humanoid",""
+Locust - Giant,4,2**,8,18,"Move 60 (20) / Fly 180 (60)","1 Bite or 1 Spit or 1 Bump","1d2 or 1d4 or 1d4","2-20 (0)","F2",5,"Nil","Neutral",30,"Insect",""
+Lycanthrope - Wererat,7,3*,12,17,"120 (40)","1 Bite or 1 Weapon","1d4 or Weapon","1-8 (2-16)","F3",8,"C","Chaotic",50,"Lycanthrope",""
+Lycanthrope - Werewolf,5,4*,16,16,"180 (60)","1 Bite","2d4","1-6 (2-12)","F4",8,"C","Chaotic",125,"Lycanthrope",""
+Lycanthrope - Werewolf Leader,5,5*,30,15,"180 (60)","1 Bite","2d4+2","1 per 5 werewolves","F4",8,"C","Chaotic",300,"Lycanthrope",""
+Lycanthrope - Wereboar,4,"4+1 *",17,15,"150 (50)","1 Tusk-bite","2d6","1-4 (2-8)","F4",9,"C","Neutral",200,"Lycanthrope",""
+Lycanthrope - Weretiger,3,5*,20,15,"150 (50)","2 Claws / 1 Bite","1d6 / 1d6 / 2d6","1-4 (1-4)","F5",9,"C","Neutral",300,"Lycanthrope",""
+Lycanthrope - Werebear,2,6*,24,14,"120 (40)","2 Claws / 1 Bite + Bearhug","2d4 / 2d4 / 2d8","1-4 (1-4)","F6",10,"C","Neutral",500,"Lycanthrope","If both claws hit add 2d8"
+Medusa,8,4**,16,16,"90 (30)","1 Snakebite + Special","1d6 + Poison (2)","1-3 (1-4)","F4",8,"(V)F","Chaotic",175,"Monstrous Humanoid","Petrification gaze"
+Minotaur,6,6,24,14,"120 (40)","1 Gore / 1 Bite or 1 Weapon","1d6 / 1d6 or 1d6+2","1-6 (1-8)","F6",12,"C","Chaotic",275,"Monstrous Humanoid",""
+Mule,7,2,8,18,"120 (40)","1 Kick or 1 Bite","1d4 or 1d3","1-2 (2-12)","Normal man",8,"Nil","Neutral",20,"Animal",""
+Neanderthal,8,2,8,18,"120 (40)","1 Weapon","1d4+1","1-10 (10-40)","F2",7,"C","Lawful",20,"Humanoid",""
+Neanderthal - King/Queen,8,6,24,14,"120 (40)","1 Weapon","1d4+1","2 Leaders in a lair","F6",7,"C","Lawful",275,"Humanoid",""
+Normal Human,9,1,4,19,"120 (40)","1 Weapon","1d4","1-4 (1-50)","Normal man",6,"(P)U","Any",5,"Human",""
+Ochre Jelly,8,5*,20,15,"30 (10)","1","2d6","1 (0)","F3",12,"Nil","Neutral",300,"Slime",""
+Ogre,5,"4+1",17,15,"90 (30)","1 Club","1d8+2","1-6 (2-12)","F4",10,"(S x 10) or (S x 100) + C","Chaotic",125,"Humanoid",""
+Orc,6,1,4,19,"120 (40)","1 Weapon","1d6","2-8 (10-60)","F1","8 or 6","(P)D","Chaotic",10,"Humanoid",""
+Orc - Leader,6,1,8,19,"120 (40)","1 Weapon","1d6+1","1 per 8 Orcs","F1",8,"(P)D","Chaotic",15,"Humanoid",""
+Orc - Chieftain,6,1,15,16,"120 (40)","1 Weapon","1d6+2","1 per Lair","F1",8,"(P)D","Chaotic",75,"Humanoid",""
+Owlbear,5,5,20,15,"120 (40)","2 Claws / 1 Bite + Bearhug","1d8 / 1d8 / 1d8","1-4 (1-4)","F3",9,"C","Neutral",175,"Monstrous Creature","If both claws hit add 2d8"
+Pixie,3,"1 ***",4,19,"Move 90 (30) / Fly 180 (60)","1 Dagger","1d4","2-8 (10-40)","Elf 1",7,"R + S","Neutral",19,"Demihuman",""
+Rat - Normal,9,0,1,19,"60 (20)","1 Bite per pack","1d6","5-50 (2-20)","Normal man",5,"L","Neutral",5,"Animal",""
+Rat - Giant,7,"1/4",2,19,"120 (40)","1 Bite each","1d3","3-18 (3-30)","Normal man",8,"C","Neutral",5,"Animal",""
+Robber Fly,6,2,8,18,"Move 90 (30) / Fly 180 (60)","1 Bite","1d8","1-6 (2-12)","F1",8,"U","Neutral",20,"Insect",""
+Rust Monster,2,5*,20,15,"120 (40)","1 Tentacle","Rust metal (magic items 10% resist per +)","1-4 (1-4)","F3",7,"Nil","Neutral",300,"Magical Monster",""
+Shadow*,7,"2+2 *",10,17,"90 (30)","1","1d4 + Drain 1 STR","1-8 (1-12)","F2",12,"F","Chaotic",35,"Magical Monster",""
+Shrew - Giant,4,1*,4,19,"180 (60)","2 Bites","1d6 / 1d6","1-8 (1-4)","F1",10,"Nil","Neutral",13,"Animal",""
+Shrieker,7,3,12,17,"9 (3)","Scream for 1d3 rounds","1d6 (On 4+ wandering monster appears)","1-8 (0)","F2",12,"Nil","Neutral",35,"Plant",""
+Skeleton,7,1,4,19,"60 (20)","1 Weapon","1d4 or 1d6","3-12 (3-30)","F1",12,"Nil","Chaotic",10,"Undead",""
+Snake - Spitting Cobra,7,1*,4,19,"90 (30)","1 Bite or 1 Spit","1d3 + Poison (1) / Save vs Blind","1-6 (1-6)","F1",7,"Nil","Neutral",13,"Reptile",""
+Snake - Giant Racer,5,2,8,18,"120 (40)","1 Bite","1d6","1-6 (1-8)","F1",7,"Nil","Neutral",20,"Reptile",""
+Snake - Pit Viper,6,2*,8,18,"90 (30)","1 Bite","1d4 + Poison (2)","1-8 (1-8)","F1",7,"Nil","Neutral",25,"Reptile",""
+Snake - Sea Snake,6,3*,12,17,"90 (30)","1 Bite","1 + Poison (2)","0 (1-8)","F1",7,"Nil","Neutral",50,"Reptile",""
+Snake - Giant Rattler,5,4*,16,16,"120 (40)","2 Bites","1d4 + Poison (2)","1-4 (1-4)","F2",8,"U","Neutral",125,"Reptile",""
+Snake - Rock Python,6,5*,20,15,"90 (30)","1 Bite / 1 Squeeze","1d4 + 2d4 if hit is scored","1-3 (1-3)","F2",8,"U","Neutral",300,"Reptile",""
+Spider - Giant Crab Spider,7,2*,8,18,"120 (40)","1 Bite","1d8 + Poison (1)","1-4 (1-4)","F1",7,"U","Neutral",25,"Insect",""
+Spider - Giant Black Widow,6,3*,12,17,"60 (20)","1 Bite","2d6 + Poison (2)","1-3 (1-3)","F2",8,"U","Neutral",50,"Insect",""
+Spider - Giant Tarantella,5,4*,16,16,"120 (40)","1 Bite","1d8 + Poison (Starts dancing on fail 2-12 turns)","1-3 (1-3)","F2",8,"U","Neutral",125,"Insect",""
+Sprite,Nil,"1/2 *",2,19,"60 (20)","1 Spell (Magical practical joke)","-","1-18 (5-40)","Elf 1",7,"S","Neutral",6,"Magical Monster",""
+Stirge,7,1*,4,19,"Move 30 (10) / Fly 180 (60)","1 Beak (Auto hit if first attack lands)","1d3","1-10 (3-36)","F2",9,"L","Neutral",13,"Animal",""
+Thoul,6,3**,12,17,"120 (40)","2 Claws or 1 Weapon","1d3 / 1d3 + Paralyze or Weapon","1-6 (1-10)","F3",10,"C","Chaotic",65,"Magical Monster",""
+Troglodyte,5,2*,8,18,"120 (40)","2 Claws / 1 Bite","1d4 / 1d4 / 1d4","1-8 (5-40)","F2",9,"A","Chaotic",30,"Humanoid","Aura - Save vs Poison in melee, -2 To hit if failed"
+Wight*,5,3*,12,17,"90 (30)","1","Energy drain 1","1-6 (1-8)","F3",12,"B","Chaotic",50,"Undead",""
+Wolf,7,"2+2",10,17,"180 (60)","1 Bite","1d6","2-12 (3-18)","F1","8 or 6","Nil","Neutral",25,"Animal",""
+Wolf - Dire,6,"4+1",17,15,"150 (50)","1 Bite","2d4","1-4 (2-8)","F2",8,"Nil","Neutral",125,"Animal",""
+Yellow Mold,Nil,2*,8,Nil,0,"Spore (50% when hit)","1d6 (Save vs Death ray)","1-8 (1-4)","F2",Nil,"Nil","Neutral",25,"Plant",""
+Zombie,8,2,8,18,"90 (30)","1 Claw or 1 Weapon","1d8 or Weapon","2-8 (2-24)","F1",12,"Nil","Chaotic",20,"Undead",""
