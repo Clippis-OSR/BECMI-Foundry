@@ -16,3 +16,11 @@ test('canonical actor type enforcement rejects monster alias', () => {
     /Invalid actor\.type "monster"/
   );
 });
+
+
+test('canonical inventory location enforcement rejects invalid values', () => {
+  assert.throws(
+    () => validateItemSchema({ type: 'equipment', system: { inventory: { location: 'equipped' } } }, 'inventory-location-test'),
+    /Invalid item\.system\.inventory\.location "equipped"/
+  );
+});

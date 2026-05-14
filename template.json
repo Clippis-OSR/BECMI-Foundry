@@ -367,7 +367,17 @@
       "acBonus": 0,
       "weaponKey": "",
       "hands": "one",
-      "ammoType": null
+      "ammoType": null,
+      "inventory": {
+        "location": "worn",
+        "containerId": "",
+        "quantity": 1,
+        "encumbrance": 0,
+        "countsTowardEncumbrance": true,
+        "isContainer": false,
+        "containerCapacity": 0,
+        "notes": ""
+      }
     },
     "armor": {
       "description": "",
@@ -385,7 +395,17 @@
       "armorType": "none",
       "slot": "armor",
       "acBonus": 0,
-      "baseAC": 9
+      "baseAC": 9,
+      "inventory": {
+        "location": "worn",
+        "containerId": "",
+        "quantity": 1,
+        "encumbrance": 0,
+        "countsTowardEncumbrance": true,
+        "isContainer": false,
+        "containerCapacity": 0,
+        "notes": ""
+      }
     },
     "equipment": {
       "description": "",
@@ -403,7 +423,17 @@
       "notes": "",
       "actions": [],
       "slot": "",
-      "acBonus": 0
+      "acBonus": 0,
+      "inventory": {
+        "location": "worn",
+        "containerId": "",
+        "quantity": 1,
+        "encumbrance": 0,
+        "countsTowardEncumbrance": true,
+        "isContainer": false,
+        "containerCapacity": 0,
+        "notes": ""
+      }
     },
     "treasure": {
       "description": "",
@@ -423,7 +453,17 @@
       "treasureType": "",
       "estimatedValue": 0,
       "slot": "weaponMain",
-      "acBonus": 0
+      "acBonus": 0,
+      "inventory": {
+        "location": "treasureHorde",
+        "containerId": "",
+        "quantity": 1,
+        "encumbrance": 0,
+        "countsTowardEncumbrance": true,
+        "isContainer": false,
+        "containerCapacity": 0,
+        "notes": ""
+      }
     },
     "spell": {
       "level": 1,
@@ -460,7 +500,17 @@
       "tags": [],
       "notes": "",
       "slot": "weaponMain",
-      "acBonus": 0
+      "acBonus": 0,
+      "inventory": {
+        "location": "worn",
+        "containerId": "",
+        "quantity": 1,
+        "encumbrance": 0,
+        "countsTowardEncumbrance": true,
+        "isContainer": false,
+        "containerCapacity": 0,
+        "notes": ""
+      }
     },
     "container": {
       "description": "",
@@ -483,7 +533,17 @@
       "weightReduction": 0,
       "slots": 0,
       "slot": "weaponMain",
-      "acBonus": 0
+      "acBonus": 0,
+      "inventory": {
+        "location": "worn",
+        "containerId": "",
+        "quantity": 1,
+        "encumbrance": 0,
+        "countsTowardEncumbrance": true,
+        "isContainer": true,
+        "containerCapacity": 0,
+        "notes": ""
+      }
     },
     "currency": {
       "description": "",
@@ -504,7 +564,17 @@
       "exchangeValue": 0,
       "weightPerUnit": 0,
       "slot": "weaponMain",
-      "acBonus": 0
+      "acBonus": 0,
+      "inventory": {
+        "location": "beltPouch",
+        "containerId": "",
+        "quantity": 1,
+        "encumbrance": 0,
+        "countsTowardEncumbrance": true,
+        "isContainer": false,
+        "containerCapacity": 0,
+        "notes": ""
+      }
     },
     "consumable": {
       "description": "",
@@ -526,7 +596,17 @@
       "consumedOnUse": false,
       "effectData": "",
       "slot": "weaponMain",
-      "acBonus": 0
+      "acBonus": 0,
+      "inventory": {
+        "location": "worn",
+        "containerId": "",
+        "quantity": 1,
+        "encumbrance": 0,
+        "countsTowardEncumbrance": true,
+        "isContainer": false,
+        "containerCapacity": 0,
+        "notes": ""
+      }
     },
     "ammo": {
       "description": "",
@@ -545,7 +625,17 @@
       "damageTypes": [
         "normal"
       ],
-      "slot": ""
+      "slot": "",
+      "inventory": {
+        "location": "worn",
+        "containerId": "",
+        "quantity": 20,
+        "encumbrance": 0,
+        "countsTowardEncumbrance": true,
+        "isContainer": false,
+        "containerCapacity": 0,
+        "notes": ""
+      }
     }
   }
 }

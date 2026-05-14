@@ -17,6 +17,7 @@ export const CANONICAL_ITEM_SLOTS = Object.freeze(["armor", "shield", "helmet", 
 
 export const CANONICAL_WEAPON_TYPES = Object.freeze(["melee", "missile", "natural"]);
 export const CANONICAL_HANDS_VALUES = Object.freeze(["one", "two", "none"]);
+export const CANONICAL_INVENTORY_LOCATIONS = Object.freeze(["worn", "beltPouch", "backpack", "sack1", "sack2", "carried", "treasureHorde", "stored"]);
 
 function fail(label, value, allowed, context) {
   throw new Error(`[BECMI Schema] Invalid ${label} "${value}" in ${context}. Valid values: ${allowed.join(", ")}.`);
@@ -66,11 +67,58 @@ export function validateWeaponFields(itemData, context = "item validation") {
   }
 }
 
+
+
+function normalizeBoolean(value, fallback = false) {
+  if (typeof value === "boolean") return value;
+  if (value === "true") return true;
+  if (value === "false") return false;
+  return fallback;
+}
+
+function validateInventoryFields(itemData, context = "item validation") {
+  const inventory = itemData?.system?.inventory;
+  if (!inventory || typeof inventory !== "object") return;
+
+  if (inventory.location !== undefined && inventory.location !== null) {
+    const location = String(inventory.location).trim();
+    if (!CANONICAL_INVENTORY_LOCATIONS.includes(location)) fail("item.system.inventory.location", inventory.location, CANONICAL_INVENTORY_LOCATIONS, context);
+  }
+
+  if (inventory.containerId !== undefined && inventory.containerId !== null && typeof inventory.containerId !== "string") {
+    throw new Error(`[BECMI Schema] item.system.inventory.containerId must be a string in ${context}.`);
+  }
+
+  for (const key of ["quantity", "encumbrance", "containerCapacity"]) {
+    const value = inventory[key];
+    if (value === undefined || value === null || value === "") continue;
+    const numeric = Number(value);
+    if (!Number.isFinite(numeric) || numeric < 0) {
+      throw new Error(`[BECMI Schema] item.system.inventory.${key} must be a non-negative number in ${context}.`);
+    }
+  }
+
+  if (inventory.countsTowardEncumbrance !== undefined && inventory.countsTowardEncumbrance !== null) {
+    const parsed = normalizeBoolean(inventory.countsTowardEncumbrance, null);
+    if (parsed === null) throw new Error(`[BECMI Schema] item.system.inventory.countsTowardEncumbrance must be boolean in ${context}.`);
+  }
+
+  if (inventory.isContainer !== undefined && inventory.isContainer !== null) {
+    const parsed = normalizeBoolean(inventory.isContainer, null);
+    if (parsed === null) throw new Error(`[BECMI Schema] item.system.inventory.isContainer must be boolean in ${context}.`);
+  }
+
+  if (inventory.notes !== undefined && inventory.notes !== null && typeof inventory.notes !== "string") {
+    throw new Error(`[BECMI Schema] item.system.inventory.notes must be a string in ${context}.`);
+  }
+}
+
 export function validateItemSchema(itemData, context = "item validation") {
   if (!itemData || typeof itemData !== "object") return;
   const slot = itemData?.system?.slot;
   if (slot !== undefined && slot !== null && String(slot).trim() !== "") validateItemSlot(slot, context);
   validateWeaponFields(itemData, context);
+  validateInventoryFields(itemData, context);
 }
 
 export function validateActorSchema(actorData, context = "actor validation") {

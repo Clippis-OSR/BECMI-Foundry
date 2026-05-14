@@ -7,7 +7,7 @@ import {
 } from "./inventory-manager.mjs";
 
 function isStoredItem(item) {
-  return Boolean(item?.system?.stored);
+  return getItemLocation(item) === "stored";
 }
 
 function getItemId(item) {
@@ -22,7 +22,10 @@ function normalizeContainerId(value) {
 function shouldCountItem(item) {
   if (isStoredItem(item)) return false;
   const location = getItemLocation(item);
-  return location === "equipped" || location === "worn" || location === "treasure";
+  const explicit = item?.system?.inventory?.countsTowardEncumbrance;
+  if (explicit === false) return false;
+  if (explicit === true) return true;
+  return ["worn", "beltPouch", "backpack", "sack1", "sack2", "carried", "treasureHorde"].includes(location);
 }
 
 export function calculateContainerEncumbrance(actor, containerId) {

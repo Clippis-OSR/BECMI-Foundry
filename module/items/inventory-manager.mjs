@@ -47,21 +47,28 @@ export function getContainers(actor) {
   return getActorItems(actor).filter((item) => item?.type === "container");
 }
 
+export const CANONICAL_INVENTORY_LOCATIONS = Object.freeze(["worn", "beltPouch", "backpack", "sack1", "sack2", "carried", "treasureHorde", "stored"]);
+
+/**
+ * Canonical inventory locations are independent from equipment slots.
+ * Example: slot=weaponMain while inventory.location=worn.
+ */
 export function normalizeItemLocation(value) {
-  const location = String(value ?? "").trim().toLowerCase();
-  if (["equipped", "worn", "storage", "treasure"].includes(location)) return location;
+  const location = String(value ?? "").trim();
+  if (CANONICAL_INVENTORY_LOCATIONS.includes(location)) return location;
+
+  // Legacy aliases kept for migration safety.
+  const legacy = String(value ?? "").trim().toLowerCase();
+  if (legacy === "equipped") return "worn";
+  if (legacy === "storage") return "stored";
+  if (legacy === "treasure") return "treasureHorde";
   return "worn";
 }
 
 export function getItemLocation(item) {
-  const normalized = normalizeItemLocation(item?.system?.location);
-  if (item?.type === "treasure") {
-    if (normalized === "storage") return "storage";
-    return "treasure";
-  }
-
-  if (normalized === "treasure") return "worn";
-  return normalized;
+  const inventoryLocation = item?.system?.inventory?.location;
+  const legacyLocation = item?.system?.location;
+  return normalizeItemLocation(inventoryLocation ?? legacyLocation);
 }
 
 export function getEquippedItems(actor) {
@@ -75,7 +82,7 @@ export function getWornItems(actor) {
 export function getCarriedItems(actor) {
   return getActorItems(actor).filter((item) => {
     const location = getItemLocation(item);
-    return location === "equipped" || location === "worn" || location === "treasure";
+    return ["worn", "beltPouch", "backpack", "sack1", "sack2", "carried", "treasureHorde"].includes(location);
   });
 }
 

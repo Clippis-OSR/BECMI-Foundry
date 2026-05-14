@@ -68,7 +68,7 @@ export async function unequipItem(actor, item) {
   for (const [key, value] of Object.entries(slots)) {
     if (value === item.id) slots[key] = null;
   }
-  await Promise.all([item.update({ "system.equipped": false, "system.location": "worn" }), actor.update({ "system.equipmentSlots": slots })]);
+  await Promise.all([item.update({ "system.equipped": false, "system.location": "worn", "system.inventory.location": "worn" }), actor.update({ "system.equipmentSlots": slots })]);
 }
 
 export async function equipItem(actor, item) {
@@ -84,7 +84,7 @@ export async function equipItem(actor, item) {
   const mainIsTwoHanded = mainItem?.type === "weapon" && String(mainItem?.system?.hands ?? "one").toLowerCase() === "two";
 
   if (slot === "natural") {
-    await item.update({ "system.equipped": true, "system.location": "equipped", "system.slot": "natural", "system.hands": "none" });
+    await item.update({ "system.equipped": true, "system.location": "worn", "system.inventory.location": "worn", "system.slot": "natural", "system.hands": "none" });
     return true;
   }
 
@@ -118,10 +118,10 @@ export async function equipItem(actor, item) {
   for (const id of pendingUnequipIds) {
     const other = actor.items.get(id);
     if (!other) continue;
-    await other.update({ "system.equipped": false, "system.location": "worn" });
+    await other.update({ "system.equipped": false, "system.location": "worn", "system.inventory.location": "worn" });
     for (const [k, v] of Object.entries(slots)) if (v === id) slots[k] = null;
   }
 
-  await Promise.all([item.update({ "system.equipped": true, "system.location": "equipped", "system.slot": slot }), actor.update({ "system.equipmentSlots": slots })]);
+  await Promise.all([item.update({ "system.equipped": true, "system.location": "worn", "system.inventory.location": "worn", "system.slot": slot }), actor.update({ "system.equipmentSlots": slots })]);
   return true;
 }
