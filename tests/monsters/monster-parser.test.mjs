@@ -23,6 +23,14 @@ describe('monster parser', () => {
     expect(attacks[1]).toMatchObject({ type: 'bite', count: 1 });
   });
 
+  it('parses attack edge cases', () => {
+    expect(parseMonsterAttacks('Claw/Claw/Bite').map((a) => a.type)).toEqual(['claw', 'claw', 'bite']);
+    expect(parseMonsterAttacks('2 Claws + Bite').map((a) => [a.type, a.count])).toEqual([['claws', 2], ['bite', 1]]);
+    expect(parseMonsterAttacks('Special')).toEqual([{ type: 'special', count: 1, raw: 'Special' }]);
+    expect(parseMonsterAttacks('By weapon')).toEqual([{ type: 'by weapon', count: 1, raw: 'By weapon' }]);
+    expect(parseMonsterAttacks('')).toEqual([]);
+  });
+
   it('handles malformed/invalid rows without crashing', () => {
     const warn = [];
     const out = normalizeMonsterRow({ Name: '', AC: 'x', 'Hit Dice': '' }, { sourceBook: 'Basic', onWarning: (w) => warn.push(w) });

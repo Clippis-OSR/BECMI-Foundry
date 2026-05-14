@@ -76,10 +76,27 @@ export async function parseMonsterCsv(filePath) {
 
 export function parseMonsterAttacks(input) {
   if (!input) return [];
-  return input.split('/').map((p) => p.trim()).filter(Boolean).map((part) => {
-    const m = part.match(/^(\d+)\s+(.+)$/i);
+  const normalized = String(input).trim();
+  if (!normalized) return [];
+
+  const expanded = normalized
+    .replace(/\band\b/gi, '/')
+    .replace(/\s*\+\s*/g, '/')
+    .split('/')
+    .map((p) => p.trim())
+    .filter(Boolean);
+
+  return expanded.map((part) => {
+    const clean = part.replace(/\(.*?\)/g, '').trim();
+    const simple = clean.toLowerCase();
+
+    if (simple === 'special' || simple === 'by weapon') {
+      return { type: simple, count: 1, raw: part };
+    }
+
+    const m = clean.match(/^(\d+)\s+(.+)$/i);
     const count = m ? Number(m[1]) : 1;
-    const name = (m ? m[2] : part).replace(/\(.*?\)/g, '').trim();
+    const name = (m ? m[2] : clean).trim();
     return { type: name.toLowerCase(), count, raw: part };
   });
 }
