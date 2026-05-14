@@ -26,10 +26,9 @@ const DEFAULT_EQUIPMENT_SLOTS = {
   missile: null
 };
 
-export const VALID_ITEM_EQUIP_SLOTS = [
-  "armor", "shield", "helmet", "cloak", "boots", "gloves", "ring", "amulet", "belt",
-  "weaponMain", "weaponOffhand", "natural", "missile"
-];
+export const VALID_ITEM_EQUIP_SLOTS = [...CANONICAL_ITEM_SLOTS];
+
+import { CANONICAL_ITEM_SLOTS, validateItemSlot } from "../utils/schema-validation.mjs";
 
 const SLOT_TO_ACTOR_KEY = Object.freeze({
   armor: "armor",
@@ -47,12 +46,6 @@ const SLOT_TO_ACTOR_KEY = Object.freeze({
   missile: "missile"
 });
 
-function assertValidEquipSlot(slot, context = "equip") {
-  if (!VALID_ITEM_EQUIP_SLOTS.includes(slot)) {
-    throw new Error(`[BECMI Equip] Invalid slot "${slot}" in ${context}. Canonical slots: ${VALID_ITEM_EQUIP_SLOTS.join(", ")}`);
-  }
-}
-
 export function ensureActorEquipmentSlots(actor) {
   const current = actor?.system?.equipmentSlots ?? {};
   return foundry.utils.mergeObject(foundry.utils.deepClone(DEFAULT_EQUIPMENT_SLOTS), current ?? {}, { inplace: false });
@@ -65,7 +58,7 @@ function resolveItemSlot(item) {
     if (item?.type === "weapon") return item?.system?.weaponType === "natural" ? "natural" : "weaponMain";
     throw new Error(`[BECMI Equip] Item "${item?.name ?? item?.id ?? "Unknown"}" has no slot.`);
   }
-  assertValidEquipSlot(explicit, `item "${item?.name ?? item?.id ?? "Unknown"}"`);
+  validateItemSlot(explicit, `equip item "${item?.name ?? item?.id ?? "Unknown"}"`);
   return explicit;
 }
 

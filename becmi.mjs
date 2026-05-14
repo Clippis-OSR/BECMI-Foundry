@@ -20,6 +20,7 @@ import {
   validateClassTable,
   validateMonsterProgression
 } from "./module/utils/validate-rules-data.mjs";
+import { validateActorSchema, validateItemSchema, validateItemSlot } from "./module/utils/schema-validation.mjs";
 
 const BECMI_CREATURE_SHEET_ID = "becmi-foundry.BECMICreatureSheet";
 const BECMI_CHARACTER_SHEET_ID = "becmi-foundry.BECMICharacterSheet";
@@ -72,8 +73,10 @@ async function migrateLegacyActorTypes() {
 function canonicalizeLegacyItemSlot(slot) {
   const normalized = String(slot ?? "").trim();
   if (!normalized) return normalized;
-  if (normalized === "weapon") return "weaponMain";
-  if (normalized === "bothHands") return "weaponMain";
+  if (normalized === "weapon" || normalized === "bothHands") {
+    console.info(`[BECMI Migration] Converting legacy item slot "${normalized}" -> "weaponMain".`);
+    return "weaponMain";
+  }
   return normalized;
 }
 
@@ -91,7 +94,10 @@ async function migrateLegacyEquipmentSlots() {
 
     for (const item of actor.items ?? []) {
       const slot = canonicalizeLegacyItemSlot(item.system?.slot);
-      if (slot !== item.system?.slot) await item.update({ "system.slot": slot });
+      if (slot !== item.system?.slot) {
+        validateItemSlot(slot, `legacy migration for item "${item.name}"`);
+        await item.update({ "system.slot": slot });
+      }
     }
 
     if (Object.keys(updates).length > 0) await actor.update(updates);
@@ -233,6 +239,7 @@ Hooks.on("preCreateActor", (actor) => {
     throw new Error(`[BECMI] Legacy actor type "${actor.type}" is no longer supported. Create actors as type "${legacyType}".`);
   }
   assertCanonicalActorType(actor.type, `preCreateActor for actor "${actor.name ?? "Unknown"}"`);
+  validateActorSchema(actor.toObject(), `preCreateActor for actor "${actor.name ?? "Unknown"}"`);
 
   if (actor.type === "creature") {
     const existing = actor.system ?? {};
@@ -262,6 +269,19 @@ Hooks.on("preCreateActor", (actor) => {
   }
 });
 
+Hooks.on("preUpdateActor", (actor, changes) => {
+  const merged = foundry.utils.mergeObject(actor.toObject(), changes, { inplace: false });
+  validateActorSchema(merged, `preUpdateActor for actor "${actor.name ?? actor.id ?? "Unknown"}"`);
+});
+
+Hooks.on("preCreateItem", (item) => {
+  validateItemSchema(item.toObject(), `preCreateItem for item "${item.name ?? "Unknown"}"`);
+});
+
+Hooks.on("preUpdateItem", (item, changes) => {
+  const merged = foundry.utils.mergeObject(item.toObject(), changes, { inplace: false });
+  validateItemSchema(merged, `preUpdateItem for item "${item.name ?? item.id ?? "Unknown"}"`);
+});
 
 
 async function maybePromptInitiativeMode(combat) {
@@ -464,6 +484,7 @@ Hooks.once("ready", async function () {
     const canonicalSaves = canonicalizeActorSavesForMigration(legacySaves);
     if (!canonicalSaves) continue;
 
+    console.info(`[BECMI Migration] Canonicalizing save keys for actor "${actor.name}".`);
     await actor.update({
       "system.saves": {
         ...canonicalSaves,
