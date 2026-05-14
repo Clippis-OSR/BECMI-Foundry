@@ -1,6 +1,27 @@
 import { calculateActorAC, getActorTHAC0, getActorSaves, getCharacterSaves, getCharacterTHAC0 } from "../rules/index.mjs";
 import { getActorClassId, getActorLevel, getCharacterLevelFromXP, getClassLevelData } from "../rules/lookups.mjs";
 import { assertCanonicalActorType } from "./actor-types.mjs";
+import { calculateTotalEncumbrance } from "../items/encumbrance.mjs";
+
+
+
+function applyEncumbranceDerivedData(system, actor) {
+  const summary = calculateTotalEncumbrance(actor);
+  const existingDerived = system.derived ?? {};
+  system.derived = {
+    ...existingDerived,
+    encumbrance: {
+      total: Number(summary?.total ?? 0) || 0,
+      withoutBackpack: Number(summary?.withoutBackpack ?? 0) || 0,
+      withoutSacks: Number(summary?.withoutSacks ?? 0) || 0,
+      onlyWornAndBeltPouch: Number(summary?.onlyWornAndBeltPouch ?? 0) || 0
+    },
+    movement: {
+      normalFeetPerTurn: Number(summary?.normalSpeed ?? 0) || 0,
+      encounterFeetPerRound: Number(summary?.encounterSpeed ?? 0) || 0
+    }
+  };
+}
 
 export class BECMIActor extends Actor {
   prepareDerivedData() {
@@ -10,6 +31,8 @@ export class BECMIActor extends Actor {
 
     if (actorType === "character") this._prepareCharacterDerivedData();
     if (actorType === "creature") this._prepareCreatureDerivedData();
+
+    applyEncumbranceDerivedData(this.system, this);
 
     const debugDerivedData = game?.settings?.get?.("becmi-foundry", "debugDerivedData") ?? false;
     if (debugDerivedData) {
@@ -114,5 +137,6 @@ export class BECMIActor extends Actor {
       hitDice: system.hd ?? system.hitDice ?? null,
       savesAs: system.savesAs ?? null
     };
+
   }
 }

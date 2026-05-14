@@ -225,6 +225,16 @@
       },
       "derived": {
         "thac0": null,
+        "encumbrance": {
+          "total": 0,
+          "withoutBackpack": 0,
+          "withoutSacks": 0,
+          "onlyWornAndBeltPouch": 0
+        },
+        "movement": {
+          "normalFeetPerTurn": 0,
+          "encounterFeetPerRound": 0
+        },
         "saves": {
           "deathRayPoison": null,
           "magicWands": null,
@@ -310,6 +320,16 @@
       "numberAppearing": "",
       "derived": {
         "thac0": null,
+        "encumbrance": {
+          "total": 0,
+          "withoutBackpack": 0,
+          "withoutSacks": 0,
+          "onlyWornAndBeltPouch": 0
+        },
+        "movement": {
+          "normalFeetPerTurn": 0,
+          "encounterFeetPerRound": 0
+        },
         "saves": {
           "deathRayPoison": null,
           "magicWands": null,
