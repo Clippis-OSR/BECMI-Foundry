@@ -22,6 +22,17 @@ import {
 import { SAVE_TYPES, getSaveTarget, resolveSave, rollSave, renderSaveCard } from "./saves.mjs";
 import { resolveMorale, rollMorale, renderMoraleCard, shouldCheckMorale } from "./morale.mjs";
 import { hasAvailableAmmo } from "../items/ammo.mjs";
+import {
+  getCreatureXP,
+  calculateEncounterXP,
+  getCreatureMorale,
+  canRollMorale,
+  parseTreasureType,
+  normalizeTreasureType,
+  getCreatureTreasureType,
+  buildTreasureGenerationRequest,
+  buildEncounterSummary
+} from "./creature-hooks.mjs";
 
 export async function rollMoraleForSelectedCreatures({ reason = "Manual morale check", postToChat = true } = {}) {
   const selectedTokens = Array.from(canvas?.tokens?.controlled ?? []);
@@ -172,7 +183,16 @@ export function createCombatEngine() {
     getSaveTarget,
     resolveSave,
     resolveMorale,
-    shouldCheckMorale
+    shouldCheckMorale,
+    getCreatureXP,
+    calculateEncounterXP,
+    getCreatureMorale,
+    canRollMorale,
+    parseTreasureType,
+    normalizeTreasureType,
+    getCreatureTreasureType,
+    buildTreasureGenerationRequest,
+    buildEncounterSummary
   };
 }
 
@@ -199,5 +219,14 @@ export {
   getSaveTarget,
   resolveSave,
   resolveMorale,
-  shouldCheckMorale
+  shouldCheckMorale,
+  getCreatureXP,
+  calculateEncounterXP,
+  getCreatureMorale,
+  canRollMorale,
+  parseTreasureType,
+  normalizeTreasureType,
+  getCreatureTreasureType,
+  buildTreasureGenerationRequest,
+  buildEncounterSummary
 };
