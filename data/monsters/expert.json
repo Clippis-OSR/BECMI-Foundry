@@ -15,7 +15,7 @@
       }
     ],
     "damage": "1d2",
-    "numberAppearing": "",
+    "numberAppearing": "0(3-30)",
     "saveAs": "F1",
     "morale": 5,
     "treasureType": "Nil",
@@ -41,7 +41,7 @@
       }
     ],
     "damage": "1d4",
-    "numberAppearing": "",
+    "numberAppearing": "0(3-30)",
     "saveAs": "F1",
     "morale": 5,
     "treasureType": "Nil",
@@ -67,7 +67,7 @@
       }
     ],
     "damage": "1d6",
-    "numberAppearing": "",
+    "numberAppearing": "0(3-30)",
     "saveAs": "F1",
     "morale": 5,
     "treasureType": "Nil",
@@ -93,7 +93,7 @@
       }
     ],
     "damage": "1d8",
-    "numberAppearing": "",
+    "numberAppearing": "0(3-30)",
     "saveAs": "F1",
     "morale": 5,
     "treasureType": "Nil",
@@ -124,7 +124,7 @@
       }
     ],
     "damage": "1d10 + Petrification/Save VS Petri",
-    "numberAppearing": "",
+    "numberAppearing": "1-6(1-6)",
     "saveAs": "F6",
     "morale": 9,
     "treasureType": "F",
@@ -150,14 +150,14 @@
       }
     ],
     "damage": "3d8",
-    "numberAppearing": "",
+    "numberAppearing": "1(0)",
     "saveAs": "F5",
     "morale": 12,
     "treasureType": "5d4 Gems",
     "alignment": "Neutral",
     "xp": 1750,
-    "specialAbilities": "Only take FIRE dmg, Splits if hit by anything else.",
-    "notes": "Only take FIRE dmg, Splits if hit by anything else.",
+    "specialAbilities": "Only take FIRE dmg, Splits if hit by anything else. Split: 2HD Blob, 1d8 dmg.",
+    "notes": "Only take FIRE dmg, Splits if hit by anything else. Split: 2HD Blob, 1d8 dmg.",
     "actorType": "creature"
   },
   {
@@ -176,14 +176,14 @@
       }
     ],
     "damage": "1d6",
-    "numberAppearing": "",
+    "numberAppearing": "1-6(4-9)",
     "saveAs": "F4",
     "morale": 6,
     "treasureType": "C",
     "alignment": "Lawful",
     "xp": 125,
-    "specialAbilities": "blink in to attack then blink away 10-40'",
-    "notes": "blink in to attack then blink away 10-40'",
+    "specialAbilities": "Blink in to attack then blink away 10-40'",
+    "notes": "Blink in to attack then blink away 10-40'",
     "actorType": "creature"
   },
   {
@@ -202,14 +202,14 @@
       }
     ],
     "damage": "1d8",
-    "numberAppearing": "",
+    "numberAppearing": "1-3(1-3)",
     "saveAs": "F3",
     "morale": 9,
     "treasureType": "B",
     "alignment": "Neutral",
     "xp": 500,
-    "specialAbilities": "Subterranian",
-    "notes": "Subterranian",
+    "specialAbilities": "Subterranean",
+    "notes": "Subterranean",
     "actorType": "creature"
   },
   {
@@ -222,9 +222,9 @@
     "movement": "150(50)",
     "attacks": [
       {
-        "type": "biite",
+        "type": "bite",
         "count": 1,
-        "raw": "1 Biite"
+        "raw": "1 Bite"
       },
       {
         "type": "hoof",
@@ -233,7 +233,7 @@
       }
     ],
     "damage": "1/1d4",
-    "numberAppearing": "",
+    "numberAppearing": "0(2-8)",
     "saveAs": "F1",
     "morale": 7,
     "treasureType": "Nil",
@@ -264,7 +264,7 @@
       }
     ],
     "damage": "1d6/1d6/By weapon",
-    "numberAppearing": "",
+    "numberAppearing": "0(2-20)",
     "saveAs": "F4",
     "morale": 8,
     "treasureType": "A",
@@ -295,7 +295,7 @@
       }
     ],
     "damage": "1d2/1d2/1d4",
-    "numberAppearing": "",
+    "numberAppearing": "1/2 of Centaur",
     "saveAs": "F2",
     "morale": 8,
     "treasureType": "Nil",
@@ -312,15 +312,26 @@
     "sourcePage": null,
     "armorClass": 4,
     "hitDice": "9**",
-    "movement": "120(40)",
-    "attacks": [],
-    "damage": "",
-    "numberAppearing": "",
-    "saveAs": "",
-    "morale": null,
-    "treasureType": "",
-    "alignment": "",
-    "xp": null,
+    "movement": "120(40) Fly: 180(60)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "heads + breath",
+        "count": 3,
+        "raw": "3 Heads + Breath(50%)"
+      }
+    ],
+    "damage": "1d3/1d3/2d4/1d10/3d4 OR 3d6",
+    "numberAppearing": "1-2(1-4)",
+    "saveAs": "F9",
+    "morale": 9,
+    "treasureType": "F",
+    "alignment": "Chaotic",
+    "xp": 2300,
     "specialAbilities": "",
     "notes": "",
     "actorType": "creature"
@@ -332,15 +343,21 @@
     "sourcePage": null,
     "armorClass": 6,
     "hitDice": "5**",
-    "movement": "M: 90(30)",
-    "attacks": [],
-    "damage": "",
-    "numberAppearing": "",
-    "saveAs": "",
-    "morale": null,
-    "treasureType": "",
-    "alignment": "",
-    "xp": null,
+    "movement": "M: 90(30) F: 180(60)",
+    "attacks": [
+      {
+        "type": "beak",
+        "count": 1,
+        "raw": "1 Beak"
+      }
+    ],
+    "damage": "1d6 + Petrification",
+    "numberAppearing": "1-4(2-8)",
+    "saveAs": "F5",
+    "morale": 7,
+    "treasureType": "D",
+    "alignment": "Neutral",
+    "xp": 425,
     "specialAbilities": "",
     "notes": "",
     "actorType": "creature"
@@ -361,7 +378,7 @@
       }
     ],
     "damage": "2d6/2d6",
-    "numberAppearing": "",
+    "numberAppearing": "1-2(1-6)",
     "saveAs": "F2",
     "morale": 7,
     "treasureType": "Nil",
@@ -387,7 +404,7 @@
       }
     ],
     "damage": "1d8",
-    "numberAppearing": "",
+    "numberAppearing": "0(1-8)",
     "saveAs": "F1",
     "morale": 7,
     "treasureType": "Nil",
@@ -413,7 +430,7 @@
       }
     ],
     "damage": "2d8",
-    "numberAppearing": "",
+    "numberAppearing": "0(1-4)",
     "saveAs": "F3",
     "morale": 7,
     "treasureType": "Nil",
@@ -439,7 +456,7 @@
       }
     ],
     "damage": "3d8",
-    "numberAppearing": "",
+    "numberAppearing": "0(1-3)",
     "saveAs": "F8",
     "morale": 9,
     "treasureType": "Nil",
@@ -465,7 +482,7 @@
       }
     ],
     "damage": "3d10 or 3d6",
-    "numberAppearing": "",
+    "numberAppearing": "1(1-4)",
     "saveAs": "F13",
     "morale": 9,
     "treasureType": "E + 5000gp",
@@ -491,7 +508,7 @@
       }
     ],
     "damage": "2d6",
-    "numberAppearing": "",
+    "numberAppearing": "1-3(1-4)",
     "saveAs": "F9",
     "morale": 10,
     "treasureType": "C",
@@ -517,14 +534,14 @@
       }
     ],
     "damage": "2d4/2d4",
-    "numberAppearing": "",
+    "numberAppearing": "1-4(1-4)",
     "saveAs": "F6",
     "morale": 8,
     "treasureType": "D",
     "alignment": "Neutral",
     "xp": 500,
-    "specialAbilities": "-2 To hit and +2 save throws. Gain 1 bite when hp =6 or lower. (Bite +2hit 1d6 dmg)",
-    "notes": "-2 To hit and +2 save throws. Gain 1 bite when hp =6 or lower. (Bite +2hit 1d6 dmg)",
+    "specialAbilities": "-2 To hit and +2 save throws. Gain 1 bite when hp = 6 or lower. (Bite +2 hit 1d6 dmg)",
+    "notes": "-2 To hit and +2 save throws. Gain 1 bite when hp = 6 or lower. (Bite +2 hit 1d6 dmg)",
     "actorType": "creature"
   },
   {
@@ -534,17 +551,23 @@
     "sourcePage": null,
     "armorClass": 5,
     "hitDice": "7+1*",
-    "movement": "M: 90(30)",
-    "attacks": [],
-    "damage": "",
-    "numberAppearing": "",
-    "saveAs": "",
-    "morale": null,
-    "treasureType": "",
-    "alignment": "",
-    "xp": null,
-    "specialAbilities": "",
-    "notes": "",
+    "movement": "M: 90(30) F: 240(80)",
+    "attacks": [
+      {
+        "type": "fist or whirlwind +special",
+        "count": 1,
+        "raw": "1 fist OR whirlwind +special"
+      }
+    ],
+    "damage": "2d8 or 2d6",
+    "numberAppearing": "1(1)",
+    "saveAs": "F14",
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Chaotic",
+    "xp": 1025,
+    "specialAbilities": "A djinni can use each of its seven powers 3 times each day. These powers are: create food and drink (as a 7th level cleric); create metallic objects of up to 1,000 cn weight (of temporary duration, varying by type: gold = 1 day, iron = 1 round); create soft goods and wooden objects of up to 1,000 cn weight which are permanent; become invisible; assume gaseous form; form a whirlwind; create illusions (which affect both sight and hearing, lasting until touched or magically dispelled - the djinni need not concentrate to maintain them).",
+    "notes": "A djinni can use each of its seven powers 3 times each day. These powers are: create food and drink (as a 7th level cleric); create metallic objects of up to 1,000 cn weight (of temporary duration, varying by type: gold = 1 day, iron = 1 round); create soft goods and wooden objects of up to 1,000 cn weight which are permanent; become invisible; assume gaseous form; form a whirlwind; create illusions (which affect both sight and hearing, lasting until touched or magically dispelled - the djinni need not concentrate to maintain them).",
     "actorType": "creature"
   },
   {
@@ -563,7 +586,7 @@
       }
     ],
     "damage": "Spell charm person with -2 to Save",
-    "numberAppearing": "",
+    "numberAppearing": "0(1-6)",
     "saveAs": "Elf4",
     "morale": 6,
     "treasureType": "D",
@@ -580,17 +603,23 @@
     "sourcePage": null,
     "armorClass": 3,
     "hitDice": "10*",
-    "movement": "M: 90(30)",
-    "attacks": [],
-    "damage": "",
-    "numberAppearing": "",
-    "saveAs": "",
-    "morale": null,
-    "treasureType": "",
-    "alignment": "",
-    "xp": null,
-    "specialAbilities": "",
-    "notes": "",
+    "movement": "M: 90(30) F: 240(80)",
+    "attacks": [
+      {
+        "type": "fist +",
+        "count": 1,
+        "raw": "1 Fist +(Flames)"
+      }
+    ],
+    "damage": "2d8 +(1d8)",
+    "numberAppearing": "1(1)",
+    "saveAs": "F15",
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Chaotic",
+    "xp": 1750,
+    "specialAbilities": "An efreeti can create objects, create illusions, and turn invisible like a djinni. It can cast a wall of fire spell 3 times per day. An efreeti may also transform itself into a pillar of flame that will set fire to all flammable items within 5 feet. It can retain the flame shape for up to 3 rounds. When in this form, the fire adds 1-8 points of damage to each of the efreeti's blows.",
+    "notes": "An efreeti can create objects, create illusions, and turn invisible like a djinni. It can cast a wall of fire spell 3 times per day. An efreeti may also transform itself into a pillar of flame that will set fire to all flammable items within 5 feet. It can retain the flame shape for up to 3 rounds. When in this form, the fire adds 1-8 points of damage to each of the efreeti's blows.",
     "actorType": "creature"
   },
   {
@@ -609,7 +638,7 @@
       }
     ],
     "damage": "1d8",
-    "numberAppearing": "",
+    "numberAppearing": "1(1)",
     "saveAs": "F8",
     "morale": 10,
     "treasureType": "Nil",
@@ -635,7 +664,7 @@
       }
     ],
     "damage": "2d8",
-    "numberAppearing": "",
+    "numberAppearing": "1(1)",
     "saveAs": "F12",
     "morale": 10,
     "treasureType": "Nil",
@@ -661,7 +690,7 @@
       }
     ],
     "damage": "3d8",
-    "numberAppearing": "",
+    "numberAppearing": "1(1)",
     "saveAs": "F16",
     "morale": 10,
     "treasureType": "Nil",
@@ -687,7 +716,7 @@
       }
     ],
     "damage": "1d8",
-    "numberAppearing": "",
+    "numberAppearing": "1(1)",
     "saveAs": "F8",
     "morale": 10,
     "treasureType": "Nil",
@@ -713,7 +742,7 @@
       }
     ],
     "damage": "2d8",
-    "numberAppearing": "",
+    "numberAppearing": "1(1)",
     "saveAs": "F12",
     "morale": 10,
     "treasureType": "Nil",
@@ -739,7 +768,7 @@
       }
     ],
     "damage": "3d8",
-    "numberAppearing": "",
+    "numberAppearing": "1(1)",
     "saveAs": "F16",
     "morale": 10,
     "treasureType": "Nil",
@@ -765,7 +794,7 @@
       }
     ],
     "damage": "1d8",
-    "numberAppearing": "",
+    "numberAppearing": "1(1)",
     "saveAs": "F8",
     "morale": 10,
     "treasureType": "Nil",
@@ -791,7 +820,7 @@
       }
     ],
     "damage": "2d8",
-    "numberAppearing": "",
+    "numberAppearing": "1(1)",
     "saveAs": "F12",
     "morale": 10,
     "treasureType": "Nil",
@@ -817,7 +846,7 @@
       }
     ],
     "damage": "3d8",
-    "numberAppearing": "",
+    "numberAppearing": "1(1)",
     "saveAs": "F16",
     "morale": 10,
     "treasureType": "Nil",
@@ -834,17 +863,23 @@
     "sourcePage": null,
     "armorClass": 2,
     "hitDice": "8",
-    "movement": "M: 60(20)",
-    "attacks": [],
-    "damage": "",
-    "numberAppearing": "",
-    "saveAs": "",
-    "morale": null,
-    "treasureType": "",
-    "alignment": "",
-    "xp": null,
-    "specialAbilities": "",
-    "notes": "",
+    "movement": "M: 60(20) S: 180(60)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "1d8",
+    "numberAppearing": "1(1)",
+    "saveAs": "F8",
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 650,
+    "specialAbilities": "Does +1d8 in its element.",
+    "notes": "Does +1d8 in its element.",
     "actorType": "creature"
   },
   {
@@ -854,17 +889,23 @@
     "sourcePage": null,
     "armorClass": 0,
     "hitDice": "12",
-    "movement": "M: 60(20)",
-    "attacks": [],
-    "damage": "",
-    "numberAppearing": "",
-    "saveAs": "",
-    "morale": null,
-    "treasureType": "",
-    "alignment": "",
-    "xp": null,
-    "specialAbilities": "",
-    "notes": "",
+    "movement": "M: 60(20) S: 180(60)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "2d8",
+    "numberAppearing": "1(1)",
+    "saveAs": "F12",
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 1250,
+    "specialAbilities": "Does +1d8 in its element.",
+    "notes": "Does +1d8 in its element.",
     "actorType": "creature"
   },
   {
@@ -874,17 +915,23 @@
     "sourcePage": null,
     "armorClass": -2,
     "hitDice": "16",
-    "movement": "M: 60(20)",
-    "attacks": [],
-    "damage": "",
-    "numberAppearing": "",
-    "saveAs": "",
-    "morale": null,
-    "treasureType": "",
-    "alignment": "",
-    "xp": null,
-    "specialAbilities": "",
-    "notes": "",
+    "movement": "M: 60(20) S: 180(60)",
+    "attacks": [
+      {
+        "type": "1",
+        "count": 1,
+        "raw": "1"
+      }
+    ],
+    "damage": "3d8",
+    "numberAppearing": "1(1)",
+    "saveAs": "F16",
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "xp": 1850,
+    "specialAbilities": "Does +1d8 in its element.",
+    "notes": "Does +1d8 in its element.",
     "actorType": "creature"
   },
   {
@@ -903,7 +950,7 @@
       }
     ],
     "damage": "2d4/2d4 OR 4d8",
-    "numberAppearing": "",
+    "numberAppearing": "0(1-20)",
     "saveAs": "F5",
     "morale": 8,
     "treasureType": "Tusk 1d6 x100gp",
@@ -929,7 +976,7 @@
       }
     ],
     "damage": "2d6/2d6 OR 4d8",
-    "numberAppearing": "",
+    "numberAppearing": "0(2-16)",
     "saveAs": "F8",
     "morale": 8,
     "treasureType": "Tusk 2d4 x100gp",
@@ -955,7 +1002,7 @@
       }
     ],
     "damage": "1d6",
-    "numberAppearing": "",
+    "numberAppearing": "0(2-8)",
     "saveAs": "F1",
     "morale": 8,
     "treasureType": "Nil",
@@ -981,7 +1028,7 @@
       }
     ],
     "damage": "1d4 each Spine + Save VS Poison(3)",
-    "numberAppearing": "",
+    "numberAppearing": "0(2-8)",
     "saveAs": "F3",
     "morale": 8,
     "treasureType": "Nil",
@@ -1007,14 +1054,14 @@
       }
     ],
     "damage": "2d10 (Swallow 2d6)",
-    "numberAppearing": "",
+    "numberAppearing": "0(1-2)",
     "saveAs": "F5",
     "morale": 9,
     "treasureType": "Nil",
     "alignment": "Neutral",
     "xp": 1900,
-    "specialAbilities": "Swalloed victim save VS Death Ray or be paralysed",
-    "notes": "Swalloed victim save VS Death Ray or be paralysed",
+    "specialAbilities": "Swallowed victim save VS Death Ray or be paralyzed",
+    "notes": "Swallowed victim save VS Death Ray or be paralyzed",
     "actorType": "creature"
   },
   {
@@ -1033,7 +1080,7 @@
       }
     ],
     "damage": "2d8 OR 3d6",
-    "numberAppearing": "",
+    "numberAppearing": "1-4(2d8)",
     "saveAs": "F8",
     "morale": 8,
     "treasureType": "E + 5000gp",
@@ -1059,7 +1106,7 @@
       }
     ],
     "damage": "3d6 OR 3d6",
-    "numberAppearing": "",
+    "numberAppearing": "1-2(1-6)",
     "saveAs": "F9",
     "morale": 9,
     "treasureType": "E + 5000gp",
@@ -1085,7 +1132,7 @@
       }
     ],
     "damage": "4d6 OR 3d6",
-    "numberAppearing": "",
+    "numberAppearing": "1-2(1-4)",
     "saveAs": "F10",
     "morale": 9,
     "treasureType": "E + 5000gp",
@@ -1111,7 +1158,7 @@
       }
     ],
     "damage": "5d6 OR 3d6",
-    "numberAppearing": "",
+    "numberAppearing": "1-2(1-3)",
     "saveAs": "F11",
     "morale": 9,
     "treasureType": "E + 5000gp",
@@ -1137,7 +1184,7 @@
       }
     ],
     "damage": "6d6 OR 3d6",
-    "numberAppearing": "",
+    "numberAppearing": "1-2(1-3)",
     "saveAs": "F12",
     "morale": 10,
     "treasureType": "E + 5000gp",
@@ -1162,20 +1209,20 @@
         "raw": "1 Weapon + Special"
       }
     ],
-    "damage": "8d6",
-    "numberAppearing": "",
-    "saveAs": "",
-    "morale": null,
-    "treasureType": "",
-    "alignment": "",
-    "xp": null,
+    "damage": "8d6 (Call lightning bolt, once every 5 rounds, current hp dmg Save vs Spells for 1/2 dmg)",
+    "numberAppearing": "1(1-3)",
+    "saveAs": "F15",
+    "morale": 10,
+    "treasureType": "E + 5000gp",
+    "alignment": "Lawful",
+    "xp": 3750,
     "specialAbilities": "",
     "notes": "",
     "actorType": "creature"
   },
   {
     "id": "golem-wood",
-    "name": "Golem* , Wood",
+    "name": "Golem*, Wood",
     "sourceBook": "Expert",
     "sourcePage": null,
     "armorClass": 7,
@@ -1189,7 +1236,7 @@
       }
     ],
     "damage": "1d8",
-    "numberAppearing": "",
+    "numberAppearing": "1(1)",
     "saveAs": "F1",
     "morale": 12,
     "treasureType": "Nil",
@@ -1201,7 +1248,7 @@
   },
   {
     "id": "golem-bone",
-    "name": "Golem* , Bone",
+    "name": "Golem*, Bone",
     "sourceBook": "Expert",
     "sourcePage": null,
     "armorClass": 2,
@@ -1215,7 +1262,7 @@
       }
     ],
     "damage": "By weapons",
-    "numberAppearing": "",
+    "numberAppearing": "1(1)",
     "saveAs": "F4",
     "morale": 12,
     "treasureType": "Nil",
@@ -1227,7 +1274,7 @@
   },
   {
     "id": "golem-amber",
-    "name": "Golem* , Amber",
+    "name": "Golem*, Amber",
     "sourceBook": "Expert",
     "sourcePage": null,
     "armorClass": 6,
@@ -1246,7 +1293,7 @@
       }
     ],
     "damage": "2d6/2d6/2d10",
-    "numberAppearing": "",
+    "numberAppearing": "1(1)",
     "saveAs": "F5",
     "morale": 12,
     "treasureType": "Nil",
@@ -1258,7 +1305,7 @@
   },
   {
     "id": "golem-bronze",
-    "name": "Golem* , Bronze",
+    "name": "Golem*, Bronze",
     "sourceBook": "Expert",
     "sourcePage": null,
     "armorClass": 0,
@@ -1271,15 +1318,15 @@
         "raw": "1 Fist + Special"
       }
     ],
-    "damage": "3d10 +1d10Fire",
-    "numberAppearing": "",
+    "damage": "3d10 +1d10 Fire",
+    "numberAppearing": "1(1)",
     "saveAs": "F10",
     "morale": 12,
     "treasureType": "Nil",
     "alignment": "Neutral",
     "xp": 5975,
-    "specialAbilities": "Flaming fists +1d10FIre",
-    "notes": "Flaming fists +1d10FIre",
+    "specialAbilities": "Flaming fists +1d10 Fire",
+    "notes": "Flaming fists +1d10 Fire",
     "actorType": "creature"
   }
 ]

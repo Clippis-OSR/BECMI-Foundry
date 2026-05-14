@@ -2,8 +2,8 @@ import fs from 'node:fs/promises';
 import { buildMonsterCatalog } from '../module/utils/monster-parser.mjs';
 
 const result = await buildMonsterCatalog([
-  { key: 'basic', sourceBook: 'Basic', file: 'data/raw-monsters/Basic-monsters.csv' },
-  { key: 'expert', sourceBook: 'Expert', file: 'data/raw-monsters/Expert-monster.csv' }
+  { key: 'basic', sourceBook: 'Basic', file: 'data/raw-monsters/basic.csv' },
+  { key: 'expert', sourceBook: 'Expert', file: 'data/raw-monsters/expert.csv' }
 ]);
 
 await fs.mkdir('data/monsters', { recursive: true });
