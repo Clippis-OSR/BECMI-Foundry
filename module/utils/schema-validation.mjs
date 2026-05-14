@@ -18,6 +18,7 @@ export const CANONICAL_ITEM_SLOTS = Object.freeze(["armor", "shield", "helmet", 
 export const CANONICAL_WEAPON_TYPES = Object.freeze(["melee", "missile", "natural"]);
 export const CANONICAL_HANDS_VALUES = Object.freeze(["one", "two", "none"]);
 export const CANONICAL_INVENTORY_LOCATIONS = Object.freeze(["worn", "beltPouch", "backpack", "sack1", "sack2", "carried", "treasureHorde", "stored"]);
+export const CANONICAL_LOGICAL_CONTAINERS = Object.freeze(["beltPouch", "backpack", "sack1", "sack2"]);
 
 function fail(label, value, allowed, context) {
   throw new Error(`[BECMI Schema] Invalid ${label} "${value}" in ${context}. Valid values: ${allowed.join(", ")}.`);
@@ -125,4 +126,20 @@ export function validateActorSchema(actorData, context = "actor validation") {
   if (!actorData || typeof actorData !== "object") return;
   if (actorData.type !== undefined) validateActorType(actorData.type, context);
   validateSaveKeys(actorData?.system?.saves, context);
+
+  const containers = actorData?.system?.containers;
+  if (containers && typeof containers === "object") {
+    for (const key of CANONICAL_LOGICAL_CONTAINERS) {
+      const entry = containers[key];
+      if (!entry || typeof entry !== "object") continue;
+      for (const numericKey of ["capacity", "currentContents", "totalEncumbrance"]) {
+        const value = entry[numericKey];
+        if (value === undefined || value === null || value === "") continue;
+        const numeric = Number(value);
+        if (!Number.isFinite(numeric) || numeric < 0) {
+          throw new Error(`[BECMI Schema] actor.system.containers.${key}.${numericKey} must be a non-negative number in ${context}.`);
+        }
+      }
+    }
+  }
 }
