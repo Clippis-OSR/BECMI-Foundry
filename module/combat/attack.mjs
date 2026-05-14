@@ -15,10 +15,10 @@
  * @returns {number}
  */
 export function getActorTHAC0(actor) {
-  const thac0 = actor?.system?.combat?.thac0
-    ?? actor?.system?.attributes?.thac0
-    ?? actor?.thac0
-    ?? 20;
+  // Canonical schema path for BECMI actors.
+  // We intentionally avoid legacy fallback chains so schema drift is visible
+  // during development instead of silently changing combat math.
+  const thac0 = actor?.system?.combat?.thac0 ?? 20;
 
   return Number(thac0);
 }
@@ -34,13 +34,9 @@ export function getActorTHAC0(actor) {
  * @returns {number}
  */
 export function getTargetAC(target) {
-  const ac = target?.system?.ac?.value
-    ?? target?.system?.ac?.base
-    ?? target?.system?.ac
-    ?? target?.system?.combat?.ac
-    ?? target?.system?.attributes?.ac
-    ?? target?.ac
-    ?? 9;
+  // Canonical schema path for BECMI actors and actor-like targets.
+  // This remains explicit and deterministic by design.
+  const ac = target?.system?.combat?.ac ?? 9;
 
   return Number(ac);
 }
@@ -90,8 +86,10 @@ export function isAttackHit(attackTotal, requiredRoll) {
  */
 export function weaponItemToAttackData(item) {
   const system = item?.system ?? {};
-  // BECMI weapon items stay lightweight: core modifiers are derived elsewhere
-  // (abilities, mastery, buffs, situational effects), not stored on each weapon.
+  // BECMI weapon items stay lightweight: combat modifiers are resolved by the
+  // attack caller and passed into attackData.attackBonus / damageBonus.
+  // This keeps combat item-driven while preserving extension hooks for
+  // spells, conditions, monster abilities, magical weapons, and future mastery.
   const rawTags = Array.isArray(system?.tags) ? system.tags : [];
   const damageTypes = Array.isArray(system?.damageTypes) ? system.damageTypes : [];
   const weaponType = system?.weaponType ?? "melee";
@@ -105,30 +103,8 @@ export function weaponItemToAttackData(item) {
     ammo: weaponType === "missile" ? (system?.ammo ?? null) : null,
     ammoType: system?.ammoType ?? null,
     damageTypes,
-    weaponMasteryClass: getWeaponMasteryClass(item),
     tags: ["weapon", weaponType, ...damageTypes, ...rawTags]
   };
-}
-
-/**
- * Canonical weapon classification helper used for deriving mastery class.
- * weaponType is the single source of truth for weapon behavior classification.
- *
- * @param {object} item Foundry Item document.
- * @returns {"H"|"M"|"A"}
- */
-export function getWeaponMasteryClass(item) {
-  const weaponType = item?.system?.weaponType ?? "melee";
-  const override = item?.system?.masteryOverride;
-
-  if (typeof override === "string" && override.trim().length > 0) {
-    return override.trim();
-  }
-
-  if (weaponType === "melee") return "H";
-  if (weaponType === "missile") return "M";
-  if (weaponType === "natural") return "M";
-  return "A";
 }
 
 
@@ -170,7 +146,8 @@ export function getActorAttackSources(actor) {
  * @param {object} params.target Defending actor-like object.
  * @param {object} [params.attackData={}] Attack metadata/config.
  * @param {string} [params.attackData.name] Attack display name.
- * @param {number} [params.attackData.attackBonus=0] Flat attack modifier.
+ * @param {number} [params.attackData.attackBonus=0] Internal flat attack modifier hook.
+ *   Extension systems should compose their final value before calling resolveAttack.
  * @returns {Promise<{
  *   attacker: object,
  *   target: object,
