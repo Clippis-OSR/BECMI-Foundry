@@ -5,6 +5,9 @@ import {
   getItemsInContainer,
   getItemLocation
 } from "./inventory-manager.mjs";
+import { getMovementTierByEncumbrance } from "../rules/encumbrance.mjs";
+
+const CARRIED_LOCATIONS = Object.freeze(["worn", "beltPouch", "backpack", "sack1", "sack2", "carried", "treasureHorde"]);
 
 function isStoredItem(item) {
   return getItemLocation(item) === "stored";
@@ -25,115 +28,89 @@ function shouldCountItem(item) {
   const explicit = item?.system?.inventory?.countsTowardEncumbrance;
   if (explicit === false) return false;
   if (explicit === true) return true;
-  return ["worn", "beltPouch", "backpack", "sack1", "sack2", "carried", "treasureHorde"].includes(location);
+  return CARRIED_LOCATIONS.includes(location);
 }
 
-export function calculateContainerEncumbrance(actor, containerId) {
-  const targetContainerId = normalizeContainerId(containerId);
-  if (!targetContainerId) {
-    return {
-      containerId: "",
-      containerWeight: 0,
-      contentsWeight: 0,
-      total: 0,
-      itemCount: 0
-    };
-  }
-
+function calculateScopedEncumbrance(actor, includeLocations) {
   const allItems = getActorItems(actor).filter(shouldCountItem);
-  const container = allItems.find((item) => getItemId(item) === targetContainerId);
-  if (!container || !shouldCountItem(container)) {
-    return {
-      containerId: targetContainerId,
-      containerWeight: 0,
-      contentsWeight: 0,
-      total: 0,
-      itemCount: 0
-    };
-  }
-  const contents = getItemsInContainer(actor, targetContainerId).filter(shouldCountItem);
-
-  const containerWeight = container ? getItemTotalWeight(container) : 0;
-  const contentsWeight = contents.reduce((sum, item) => sum + getItemTotalWeight(item), 0);
-
-  return {
-    containerId: targetContainerId,
-    containerWeight,
-    contentsWeight,
-    total: containerWeight + contentsWeight,
-    itemCount: contents.length
-  };
-}
-
-export function getEncumbranceBracket(total) {
-  const value = Number.isFinite(Number(total)) ? Number(total) : 0;
-
-  if (value <= 400) return "0-400";
-  if (value <= 800) return "401-800";
-  if (value <= 1200) return "801-1200";
-  if (value <= 1600) return "1201-1600";
-  if (value <= 2400) return "1601-2400";
-  return "2401+";
-}
-
-export function calculateMovementFromEncumbrance(total) {
-  const bracket = getEncumbranceBracket(total);
-
-  const map = {
-    "0-400": { normalSpeed: 120, encounterSpeed: 40 },
-    "401-800": { normalSpeed: 90, encounterSpeed: 30 },
-    "801-1200": { normalSpeed: 60, encounterSpeed: 20 },
-    "1201-1600": { normalSpeed: 30, encounterSpeed: 10 },
-    "1601-2400": { normalSpeed: 15, encounterSpeed: 5 },
-    "2401+": { normalSpeed: 0, encounterSpeed: 0 }
-  };
-
-  return {
-    bracket,
-    normalSpeed: map[bracket].normalSpeed,
-    encounterSpeed: map[bracket].encounterSpeed
-  };
-}
-
-export function calculateTotalEncumbrance(actor) {
-  const allItems = getActorItems(actor).filter(shouldCountItem);
-  const containers = getContainers(actor).filter(shouldCountItem);
-
+  const allowed = new Set(includeLocations);
+  const scopedItems = allItems.filter((item) => allowed.has(getItemLocation(item)));
+  const containers = scopedItems.filter((item) => item?.type === "container");
   const containerIds = new Set(containers.map((item) => getItemId(item)).filter(Boolean));
 
-  // Count root non-container items directly; container contents are counted via container summaries.
-  const nonContainerWeight = allItems.reduce((sum, item) => {
+  // Root non-container items contribute directly.
+  const nonContainerWeight = scopedItems.reduce((sum, item) => {
     if (containerIds.has(getItemId(item))) return sum;
 
     const containerId = normalizeContainerId(item?.system?.containerId);
-    if (containerId && containerIds.has(containerId)) {
-      return sum;
-    }
+    if (containerId && containerIds.has(containerId)) return sum;
 
     return sum + getItemTotalWeight(item);
   }, 0);
 
-  // Only root containers contribute container+contents to avoid double-counting nested relations.
+  // Root containers contribute their own weight + child contents in that container.
   const rootContainers = containers.filter((container) => {
     const parentId = normalizeContainerId(container?.system?.containerId);
-    if (!parentId) return true;
-    if (parentId === getItemId(container)) return true;
-    return !containerIds.has(parentId);
+    return !parentId || parentId === getItemId(container) || !containerIds.has(parentId);
   });
 
-  const containerSummaries = rootContainers.map((container) =>
-    calculateContainerEncumbrance(actor, getItemId(container))
-  );
+  const containerWeight = rootContainers.reduce((sum, container) => {
+    const containerId = getItemId(container);
+    const contents = getItemsInContainer(actor, containerId).filter((item) => {
+      if (!shouldCountItem(item)) return false;
+      return allowed.has(getItemLocation(item));
+    });
+    const contentsWeight = contents.reduce((inner, item) => inner + getItemTotalWeight(item), 0);
+    return sum + getItemTotalWeight(container) + contentsWeight;
+  }, 0);
 
-  const containerWeight = containerSummaries.reduce((sum, entry) => sum + entry.total, 0);
-  const total = nonContainerWeight + containerWeight;
-  const movement = calculateMovementFromEncumbrance(total);
+  return nonContainerWeight + containerWeight;
+}
+
+export function calculateContainerEncumbrance(actor, containerId) {
+  const targetContainerId = normalizeContainerId(containerId);
+  if (!targetContainerId) return { containerId: "", containerWeight: 0, contentsWeight: 0, total: 0, itemCount: 0 };
+
+  const allItems = getActorItems(actor).filter(shouldCountItem);
+  const container = allItems.find((item) => getItemId(item) === targetContainerId);
+  if (!container || !shouldCountItem(container)) {
+    return { containerId: targetContainerId, containerWeight: 0, contentsWeight: 0, total: 0, itemCount: 0 };
+  }
+
+  const contents = getItemsInContainer(actor, targetContainerId).filter(shouldCountItem);
+  const containerWeight = getItemTotalWeight(container);
+  const contentsWeight = contents.reduce((sum, item) => sum + getItemTotalWeight(item), 0);
+
+  return { containerId: targetContainerId, containerWeight, contentsWeight, total: containerWeight + contentsWeight, itemCount: contents.length };
+}
+
+/**
+ * BECMI encumbrance in coin units (cn):
+ * - total: everything carried on person or in active carried containers.
+ * - withoutBackpack: excludes backpack location contents and container.
+ * - withoutSacks: excludes sack1 and sack2 locations.
+ * - onlyWornAndBeltPouch: includes worn gear + belt pouch only.
+ */
+export function calculateTotalEncumbrance(actor) {
+  const total = calculateScopedEncumbrance(actor, CARRIED_LOCATIONS);
+  const withoutBackpack = calculateScopedEncumbrance(actor, CARRIED_LOCATIONS.filter((loc) => loc !== "backpack"));
+  const withoutSacks = calculateScopedEncumbrance(actor, CARRIED_LOCATIONS.filter((loc) => loc !== "sack1" && loc !== "sack2"));
+  const onlyWornAndBeltPouch = calculateScopedEncumbrance(actor, ["worn", "beltPouch"]);
+
+  const movementTier = getMovementTierByEncumbrance(total);
+
+  const containers = getContainers(actor)
+    .filter(shouldCountItem)
+    .map((container) => calculateContainerEncumbrance(actor, getItemId(container)));
 
   return {
     total,
-    bracket: movement.bracket,
-    normalSpeed: movement.normalSpeed,
-    encounterSpeed: movement.encounterSpeed,
-    containers: containerSummaries
+    withoutBackpack,
+    withoutSacks,
+    onlyWornAndBeltPouch,
+    bracket: movementTier.id,
+    normalSpeed: movementTier.normalFeetPerTurn,
+    encounterSpeed: movementTier.encounterFeetPerRound,
+    containers
   };
 }

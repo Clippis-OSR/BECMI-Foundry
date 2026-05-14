@@ -10,3 +10,5 @@ export * from "./armor-types.mjs";
 export * from "./ac.mjs";
 
 export * from "./weapons.mjs";
+
+export * from "./encumbrance.mjs";
