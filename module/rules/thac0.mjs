@@ -49,6 +49,45 @@ function getProfileEntries(characterThac0, profile) {
   return null;
 }
 
+export function getCharacterTHAC0(classId, level, profile = "default") {
+  const classTable = getClassTable(classId);
+  if (!classTable) return null;
+
+  const levelKey = String(level);
+  const directThac0 = classTable?.levels?.[levelKey]?.thac0;
+  if (typeof directThac0 === "number" && Number.isFinite(directThac0)) return directThac0;
+
+  const profileEntries = getProfileEntries(classTable?.characterThac0 ?? classTable?.thac0, profile);
+  const levelNumber = Number(level);
+  if (!profileEntries || !Number.isFinite(levelNumber)) return null;
+
+  for (const [label, value] of Object.entries(profileEntries.entries)) {
+    const band = parseLevelBand(label, profileEntries.profileBandIndex);
+    if (!band) continue;
+    if (levelNumber >= band.min && levelNumber <= band.max) return Number(value);
+  }
+
+  return null;
+}
+
+export function getMonsterTHAC0(hd) {
+  const normalizedHd = normalizeHitDice(hd);
+  if (!normalizedHd) return null;
+
+  const hitDiceTable = CONFIG?.BECMI?.monsterProgression?.hitDice;
+  if (!hitDiceTable || typeof hitDiceTable !== "object") return null;
+
+  for (const entry of Object.values(hitDiceTable)) {
+    if (!entry || typeof entry !== "object") continue;
+    if (!compareHitDiceToBracket(normalizedHd.numeric, entry.hd ?? entry.label)) continue;
+
+    const thac0 = Number(entry.thac0);
+    return Number.isFinite(thac0) ? thac0 : null;
+  }
+
+  return null;
+}
+
 export function getActorTHAC0(actor) {
   if (!actor) return null;
 

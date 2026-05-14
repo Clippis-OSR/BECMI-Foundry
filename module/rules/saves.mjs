@@ -65,7 +65,7 @@ export function getCharacterSaves(classId, level) {
 
   if (!levelData) {
     console.warn(
-      `[BECMI] Missing class level "${levelKey}" for class "${normalizedClassId}" in CONFIG.BECMI.classTables[\"${normalizedClassId}\"].levels.`
+      `[BECMI] Missing class level "${levelKey}" for class "${normalizedClassId}" in CONFIG.BECMI.classTables["${normalizedClassId}"].levels.`
     );
     return null;
   }
@@ -73,7 +73,7 @@ export function getCharacterSaves(classId, level) {
   const saves = toSaveObject(levelData?.saves);
   if (!saves) {
     console.warn(
-      `[BECMI] Missing or incomplete saves for class "${normalizedClassId}" level "${levelKey}" in CONFIG.BECMI.classTables[\"${normalizedClassId}\"].levels[\"${levelKey}\"].saves.`
+      `[BECMI] Missing or incomplete saves for class "${normalizedClassId}" level "${levelKey}" in CONFIG.BECMI.classTables["${normalizedClassId}"].levels["${levelKey}"].saves.`
     );
     return null;
   }
@@ -104,7 +104,7 @@ function getMonsterSaveEntry(hd) {
 
   const hdValue = toNumericValue(hd);
   if (hdValue === null) {
-    console.warn(`[BECMI] Invalid monster HD value \"${hd}\" while resolving monster saves.`);
+    console.warn(`[BECMI] Invalid monster HD value "${hd}" while resolving monster saves.`);
     return null;
   }
 
@@ -141,7 +141,7 @@ export function getMonsterSaves(hd) {
 
     if (classId === undefined || level === undefined || level === null) {
       console.warn(
-        `[BECMI] Monster savesAs is missing class/level data for HD \"${hd}\" in CONFIG.BECMI.monsterSaves.`
+        `[BECMI] Monster savesAs is missing class/level data for HD "${hd}" in CONFIG.BECMI.monsterSaves.`
       );
       return null;
     }
@@ -150,7 +150,7 @@ export function getMonsterSaves(hd) {
   }
 
   console.warn(
-    `[BECMI] Monster save entry for HD \"${hd}\" has neither direct saves nor savesAs in CONFIG.BECMI.monsterSaves.`
+    `[BECMI] Monster save entry for HD "${hd}" has neither direct saves nor savesAs in CONFIG.BECMI.monsterSaves.`
   );
   return null;
 }

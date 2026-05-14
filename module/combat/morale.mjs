@@ -109,7 +109,7 @@ export async function renderMoraleCard({ moraleResult } = {}) {
     content = await renderTemplate(templatePath, context);
   } catch (error) {
     console.warn("[BECMI Combat] Failed to render morale card template; using fallback content.", { error, templatePath, context });
-    content = `<div class=\"becmi-chat-card becmi-morale-card\">${context.actorName} morale check: 2d6 ${context.modifier >= 0 ? "+" : ""}${context.modifier} = ${context.finalTotal}; morale ${context.moraleScore}; ${context.success ? "Holds" : "Fails"}</div>`;
+    content = `<div class="becmi-chat-card becmi-morale-card">${context.actorName} morale check: 2d6 ${context.modifier >= 0 ? "+" : ""}${context.modifier} = ${context.finalTotal}; morale ${context.moraleScore}; ${context.success ? "Holds" : "Fails"}</div>`;
   }
 
   let message = null;
