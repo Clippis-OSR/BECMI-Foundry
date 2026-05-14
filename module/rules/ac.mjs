@@ -1,4 +1,5 @@
 import { ensureActorEquipmentSlots } from "../items/equipment-slots.mjs";
+import { BECMI_ARMOR_TYPES } from "./armor-types.mjs";
 
 function asNumber(value, fallback = 0) {
   const n = Number(value);
@@ -58,8 +59,14 @@ export function calculateActorAC(actor) {
     const shield = getEquippedShield(actor);
     const defensiveItems = getEquippedDefensiveItems(actor);
 
-    const baseArmorAC = asNumber(armor?.system?.baseAC, asNumber(armor?.system?.armorClass, 9));
-    const shieldBonus = Math.max(0, asNumber(shield?.system?.acBonus, asNumber(shield?.system?.shieldBonus, shield ? 1 : 0)));
+    // Standard BECMI armor AC should come from the armor type rules table.
+    const armorTypeKey = String(armor?.system?.armorType ?? "none").trim().toLowerCase();
+    const armorTypeData = BECMI_ARMOR_TYPES[armorTypeKey] ?? BECMI_ARMOR_TYPES.none;
+    const baseArmorAC = asNumber(armorTypeData?.baseAC, asNumber(armor?.system?.baseAC, 9));
+
+    const shieldTypeKey = String(shield?.system?.armorType ?? "").trim().toLowerCase();
+    const shieldFromType = shieldTypeKey === "shield" ? asNumber(BECMI_ARMOR_TYPES.shield?.acBonus, 1) : 0;
+    const shieldBonus = Math.max(0, shieldFromType || asNumber(shield?.system?.acBonus, shield ? 1 : 0));
     const dexBonus = asNumber(actor?.system?.abilities?.dex?.mod, 0);
 
     const magicalEquipmentBonus = defensiveItems.reduce((sum, item) => {
