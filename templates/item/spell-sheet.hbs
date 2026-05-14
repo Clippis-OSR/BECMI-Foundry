@@ -4,54 +4,36 @@
   </header>
 
   <section class="sheet-body">
-    <div class="form-group">
-      <label>Level</label>
-      <input type="number" name="system.level" value="{{system.level}}" min="1" step="1" />
-    </div>
+    <div class="form-group"><label>Spell Key</label><input type="text" name="system.spellKey" value="{{system.spellKey}}" placeholder="magic_missile" /></div>
+    <div class="form-group"><label>Schema Version</label><input type="number" name="system.schemaVersion" value="{{system.schemaVersion}}" min="1" step="1" /></div>
+    <div class="form-group"><label>Level</label><input type="number" name="system.level" value="{{system.level}}" min="1" step="1" /></div>
+    <div class="form-group"><label>Spell Lists</label><input type="text" name="system.spellListsString" value="{{spellListsString}}" placeholder="magicUser, cleric" /></div>
+    <div class="form-group"><label>School</label><input type="text" name="system.school" value="{{system.school}}" /></div>
+    <div class="form-group"><label>Reversible</label><input type="checkbox" name="system.reversible" {{checked system.reversible}} /></div>
 
-    <div class="form-group">
-      <label>Tradition</label>
-      <select name="system.tradition">
-        {{#each traditionOptions as |tradition|}}
-          <option value="{{tradition}}" {{#if (eq ../system.tradition tradition)}}selected{{/if}}>{{tradition}}</option>
-        {{/each}}
-      </select>
-    </div>
+    <h3>Range</h3>
+    <div class="form-group"><label>Type</label><select name="system.range.type">{{#each rangeTypeOptions as |opt|}}<option value="{{opt}}" {{#if (eq ../system.range.type opt)}}selected{{/if}}>{{opt}}</option>{{/each}}</select></div>
+    <div class="form-group"><label>Value</label><input type="number" name="system.range.value" value="{{system.range.value}}" /></div>
+    <div class="form-group"><label>Special</label><input type="text" name="system.range.special" value="{{system.range.special}}" /></div>
 
-    <div class="form-group"><label>Range</label><input type="text" name="system.range" value="{{system.range}}" /></div>
-    <div class="form-group"><label>Duration</label><input type="text" name="system.duration" value="{{system.duration}}" /></div>
-    <div class="form-group"><label>Area</label><input type="text" name="system.area" value="{{system.area}}" /></div>
+    <h3>Duration</h3>
+    <div class="form-group"><label>Type</label><select name="system.duration.type">{{#each durationTypeOptions as |opt|}}<option value="{{opt}}" {{#if (eq ../system.duration.type opt)}}selected{{/if}}>{{opt}}</option>{{/each}}</select></div>
+    <div class="form-group"><label>Value</label><input type="number" name="system.duration.value" value="{{system.duration.value}}" /></div>
+    <div class="form-group"><label>Special</label><input type="text" name="system.duration.special" value="{{system.duration.special}}" /></div>
 
-    <div class="form-group"><label>Targeting Type</label><input type="text" name="system.targeting.type" value="{{system.targeting.type}}" /></div>
-    <div class="form-group"><label>Targeting Count</label><input type="number" name="system.targeting.count" value="{{system.targeting.count}}" /></div>
+    <h3>Targeting / Save</h3>
+    <div class="form-group"><label>Targeting Type</label><select name="system.targeting.type">{{#each targetingTypeOptions as |opt|}}<option value="{{opt}}" {{#if (eq ../system.targeting.type opt)}}selected{{/if}}>{{opt}}</option>{{/each}}</select></div>
+    <div class="form-group"><label>Target Count</label><input type="number" name="system.targeting.count" value="{{system.targeting.count}}" /></div>
+    <div class="form-group"><label>Save Allowed</label><input type="checkbox" name="system.savingThrow.allowed" {{checked system.savingThrow.allowed}} /></div>
+    <div class="form-group"><label>Save Type</label><input type="text" name="system.savingThrow.type" value="{{system.savingThrow.type}}" /></div>
 
-    <div class="form-group">
-      <label>Save Required</label>
-      <input type="checkbox" name="system.save.required" {{checked system.save.required}} />
-    </div>
+    <h3>Source / Metadata</h3>
+    <div class="form-group"><label>Source Book</label><input type="text" name="system.source.book" value="{{system.source.book}}" /></div>
+    <div class="form-group"><label>Source Page</label><input type="number" name="system.source.page" value="{{system.source.page}}" /></div>
+    <div class="form-group"><label>Tags</label><input type="text" name="system.tagsString" value="{{tagsString}}" /></div>
 
-    <div class="form-group">
-      <label>Save Type</label>
-      <select name="system.save.type">
-        <option value="" {{#unless system.save.type}}selected{{/unless}}></option>
-        {{#each saveTypeOptions as |saveType|}}
-          <option value="{{saveType}}" {{#if (eq ../system.save.type saveType)}}selected{{/if}}>{{saveType}}</option>
-        {{/each}}
-      </select>
-    </div>
-
-    <div class="form-group"><label>Save Effect</label><input type="text" name="system.save.effect" value="{{system.save.effect}}" /></div>
-    <div class="form-group"><label>Scaling Mode</label><input type="text" name="system.scaling.mode" value="{{system.scaling.mode}}" /></div>
-    <div class="form-group"><label>Scaling By</label><input type="text" name="system.scaling.by" value="{{system.scaling.by}}" /></div>
-
-    <div class="form-group">
-      <label>Description</label>
-      <textarea name="system.description" rows="6">{{system.description}}</textarea>
-    </div>
-
-    <div class="form-group">
-      <label>Effects (JSON Array)</label>
-      <textarea name="system.effectsJson" rows="10">{{systemEffectsJson}}</textarea>
-    </div>
+    <h3>Raw BECMI Text</h3>
+    <div class="form-group"><label>Summary</label><textarea name="system.description.summary" rows="3">{{system.description.summary}}</textarea></div>
+    <div class="form-group"><label>Full Description</label><textarea name="system.description.full" rows="10">{{system.description.full}}</textarea></div>
   </section>
 </form>

@@ -3,7 +3,8 @@ import { assertCanonicalActorType } from "./module/actors/actor-types.mjs";
 import { BECMICharacterSheet } from "./module/actors/character-sheet.mjs";
 import { BECMICreatureSheet } from "./module/actors/creature-sheet.mjs";
 import { BECMIItemSheet } from "./module/items/item-sheet.mjs";
-import { BECMISpellItemSheet } from "./module/items/spell-sheet.mjs";
+import { BECMISpellItemSheet } from "./module/items/spell/spell-sheet.js";
+import { registerSpellValidationHooks } from "./module/items/spell/spell-validation.js";
 import {
   loadCharacterTHAC0,
   loadClassData,
@@ -227,6 +228,8 @@ Hooks.once("init", async function () {
 
   game.settings.register("becmi-foundry", "actorTypeMigrationVersion", { name: "Actor Type Migration Version", scope: "world", config: false, type: String, default: "0" });
   game.settings.register("becmi-foundry", "inventoryModelMigrationVersion", { name: "Inventory Model Migration Version", scope: "world", config: false, type: String, default: "0" });
+
+  registerSpellValidationHooks();
 
   Actors.unregisterSheet("core", ActorSheet);
 

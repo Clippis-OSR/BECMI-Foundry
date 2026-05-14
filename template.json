@@ -520,50 +520,62 @@
       }
     },
     "spell": {
+      "schemaVersion": 1,
+      "spellKey": "",
       "level": 1,
-      "tradition": "arcane",
-      "range": "",
-      "duration": "",
-      "area": "",
-      "targeting": {
-        "type": "",
-        "count": null
+      "spellLists": [],
+      "school": "",
+      "reversible": false,
+      "range": {
+        "type": "feet",
+        "value": 0,
+        "special": ""
       },
-      "save": {
-        "required": false,
-        "type": null,
-        "effect": ""
+      "duration": {
+        "type": "rounds",
+        "value": 0,
+        "special": "",
+        "concentration": false
+      },
+      "targeting": {
+        "type": "creature",
+        "count": 1,
+        "area": {
+          "shape": "",
+          "size": 0,
+          "unit": "feet"
+        }
+      },
+      "savingThrow": {
+        "allowed": false,
+        "type": "",
+        "negates": false,
+        "partial": false,
+        "special": ""
+      },
+      "effect": {
+        "damage": "",
+        "healing": "",
+        "statusEffects": [],
+        "specialEffects": []
       },
       "scaling": {
-        "mode": "none",
-        "by": null
+        "enabled": false,
+        "formula": "",
+        "details": ""
       },
-      "effects": [],
-      "description": "",
-      "actions": [],
-      "quantity": 1,
-      "stackable": false,
-      "weight": 0,
-      "value": 0,
-      "identified": false,
-      "containerId": "",
-      "location": "worn",
-      "equipped": false,
-      "worn": false,
-      "rarity": "",
+      "automation": {
+        "supported": false,
+        "mode": "none"
+      },
       "tags": [],
-      "notes": "",
-      "slot": "weaponMain",
-      "acBonus": 0,
-      "inventory": {
-        "location": "worn",
-        "containerId": "",
-        "quantity": 1,
-        "encumbrance": 0,
-        "countsTowardEncumbrance": true,
-        "isContainer": false,
-        "containerCapacity": 0,
-        "notes": ""
+      "source": {
+        "book": "",
+        "page": 0
+      },
+      "description": {
+        "summary": "",
+        "full": ""
       }
     },
     "container": {
