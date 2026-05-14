@@ -97,7 +97,7 @@ export function weaponItemToAttackData(item) {
     damage: system?.damage ?? "1d4",
     damageBonus: Number(system?.damageBonus ?? 0),
     range: system?.range ?? null,
-    tags: ["weapon", ...rawTags]
+    tags: rawTags
   };
 }
 

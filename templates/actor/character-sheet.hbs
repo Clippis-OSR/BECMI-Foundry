@@ -135,6 +135,38 @@
 
 <h2>Attacks</h2>
 
+<h3>Equipped Weapon Attacks</h3>
+{{#if combat.weaponAttacks.length}}
+<table>
+  <thead>
+    <tr>
+      <th>Roll</th>
+      <th>Weapon</th>
+      <th>Attack Bonus</th>
+      <th>Damage</th>
+      <th>Damage Bonus</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each combat.weaponAttacks as |attack|}}
+    <tr>
+      <td>
+        <button type="button" class="becmi-weapon-attack" data-item-id="{{attack.itemId}}">Attack</button>
+      </td>
+      <td>{{attack.name}}</td>
+      <td>{{attack.attackBonus}}</td>
+      <td>{{attack.damage}}</td>
+      <td>{{attack.damageBonus}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{else}}
+<p>No equipped weapons.</p>
+{{/if}}
+
+<hr>
+
 <table>
   <thead>
     <tr>

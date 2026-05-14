@@ -75,6 +75,14 @@ export class BECMICharacterSheet extends ActorSheet {
     };
     const attacks = Array.isArray(system.attacks) ? system.attacks : [];
     context.attacks = attacks;
+    const equippedWeaponAttacks = this.actor.items
+      .filter((item) => item?.type === "weapon" && item?.system?.equipped === true)
+      .map((item) => ({
+        itemId: item.id,
+        ...weaponItemToAttackData(item)
+      }));
+    context.combat = context.combat ?? {};
+    context.combat.weaponAttacks = equippedWeaponAttacks;
 
     const derived = system.derived ?? {};
     const spellSlots = derived.spellSlots;
@@ -160,7 +168,7 @@ export class BECMICharacterSheet extends ActorSheet {
       const targetToken = game.user?.targets?.first?.();
       const targetActor = targetToken?.actor;
       if (!targetActor) {
-        ui.notifications?.warn("Target a token before making a weapon attack.");
+        ui.notifications?.warn("Target a token before attacking.");
         return;
       }
 
