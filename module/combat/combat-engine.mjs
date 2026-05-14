@@ -22,6 +22,7 @@ import {
 } from "./initiative.mjs";
 import { SAVE_TYPES, getSaveTarget, resolveSave, rollSave, renderSaveCard } from "./saves.mjs";
 import { resolveMorale, rollMorale, renderMoraleCard, shouldCheckMorale } from "./morale.mjs";
+import { hasAvailableAmmo } from "../items/ammo.mjs";
 
 export async function rollMoraleForSelectedCreatures({ reason = "Manual morale check", postToChat = true } = {}) {
   const selectedTokens = Array.from(canvas?.tokens?.controlled ?? []);
@@ -64,6 +65,12 @@ export async function rollAttack({ attacker, target, attackData, rollDamageOnHit
   if (!attacker) throw new Error("[BECMI Combat] rollAttack requires an attacker.");
   if (!target) throw new Error("[BECMI Combat] rollAttack requires a target.");
   if (!attackData || typeof attackData !== "object") throw new Error("[BECMI Combat] rollAttack requires attackData.");
+
+  if (attackData?.ammoType && !hasAvailableAmmo(attacker, attackData.ammoType)) {
+    ui.notifications?.warn(`No ammunition available for ${attackData?.name ?? "weapon"}.`);
+    return { attackResult: null, damageResult: null, blockedByAmmo: true };
+  }
+  // TODO: Future: support ammo tracking modes: none, manual, automatic.
 
   const attackResult = await resolveAttack({ attacker, target, attackData });
   let damageResult = null;

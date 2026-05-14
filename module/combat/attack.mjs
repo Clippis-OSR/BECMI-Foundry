@@ -103,6 +103,7 @@ export function weaponItemToAttackData(item) {
     damage: system?.damage ?? "1d4",
     range: weaponType === "missile" ? (system?.range ?? null) : null,
     ammo: weaponType === "missile" ? (system?.ammo ?? null) : null,
+    ammoType: system?.ammoType ?? null,
     damageTypes,
     weaponMasteryClass: getWeaponMasteryClass(item),
     tags: ["weapon", weaponType, ...damageTypes, ...rawTags]

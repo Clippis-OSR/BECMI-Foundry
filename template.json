@@ -330,6 +330,7 @@
       "container",
       "currency",
       "treasure",
+      "ammo",
       "consumable",
       "spell"
     ],
@@ -362,7 +363,7 @@
       "acBonus": 0,
       "weaponKey": "",
       "hands": "one",
-      "ammoType": ""
+      "ammoType": null
     },
     "armor": {
       "description": "",
@@ -522,6 +523,25 @@
       "effectData": "",
       "slot": "weapon",
       "acBonus": 0
+    },
+    "ammo": {
+      "description": "",
+      "quantity": 20,
+      "stackable": true,
+      "weight": 0,
+      "encumbrance": 0,
+      "value": 0,
+      "identified": false,
+      "containerId": "",
+      "location": "worn",
+      "equipped": false,
+      "tags": [],
+      "notes": "",
+      "ammoType": "arrow",
+      "damageTypes": [
+        "normal"
+      ],
+      "slot": ""
     }
   }
 }

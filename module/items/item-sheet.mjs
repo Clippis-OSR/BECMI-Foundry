@@ -1,6 +1,7 @@
 import { VALID_ITEM_EQUIP_SLOTS } from "./equipment-slots.mjs";
 import { BECMI_ARMOR_TYPES } from "../rules/armor-types.mjs";
 import { BECMI_DAMAGE_TYPES, BECMI_WEAPONS } from "../rules/weapons.mjs";
+import { BECMI_AMMO_TYPES } from "./ammo.mjs";
 
 const SHARED_SYSTEM_DEFAULTS = {
   description: "",
@@ -73,10 +74,12 @@ export class BECMIItemSheet extends ItemSheet {
     context.isCurrency = this.item.type === "currency";
     context.isTreasure = this.item.type === "treasure";
     context.isConsumable = this.item.type === "consumable";
+    context.isAmmo = this.item.type === "ammo";
     context.equipSlotOptions = VALID_ITEM_EQUIP_SLOTS;
     context.weaponEquipSlotOptions = ["weaponMain", "weaponOffhand", "bothHands", "natural", "missile"];
     context.armorEquipSlotOptions = ["armor", "shield"];
     context.armorTypeOptions = Object.entries(BECMI_ARMOR_TYPES).map(([key, value]) => ({ key, ...value }));
+    context.ammoTypeOptions = ["", ...BECMI_AMMO_TYPES];
     const selectedArmorType = context.safeSystem.armorType ?? "none";
     context.selectedArmorTypeData = BECMI_ARMOR_TYPES[selectedArmorType] ?? BECMI_ARMOR_TYPES.none;
 
@@ -128,6 +131,8 @@ export class BECMIItemSheet extends ItemSheet {
         updates["system.value"] = definition.cost;
         updates["system.weaponType"] = definition.weaponType;
         updates["system.damageTypes"] = Array.from(definition.damageTypes ?? []);
+        updates["system.ammoType"] = definition.ammoType ?? null;
+        // TODO: Future: merge ammo damageTypes with weapon damageTypes for magical/silver/fire ammunition.
         updates["system.range"] = definition.range ?? { short: null, medium: null, long: null };
         const hands = definition.hands === "oneOrTwo" ? "one" : definition.hands;
         updates["system.hands"] = hands;
