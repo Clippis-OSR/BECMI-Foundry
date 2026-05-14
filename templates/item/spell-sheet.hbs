@@ -1,39 +1,51 @@
 <form class="becmi-spell-sheet" autocomplete="off">
   <header class="sheet-header">
     <h1><input type="text" name="name" value="{{item.name}}" placeholder="Spell Name" /></h1>
+    <div class="form-group"><label>Level</label><input type="number" name="system.level" value="{{system.level}}" min="1" step="1" /></div>
+    <div class="form-group"><label>Spell Lists</label><input type="text" name="system.spellListsString" value="{{spellListsString}}" placeholder="magicUser, cleric, elf" /></div>
+    <div class="form-group"><label>Spell Key</label><input type="text" name="system.spellKey" value="{{system.spellKey}}" {{#if spellKeyLocked}}readonly{{/if}} /></div>
+    <div class="form-group"><label>Schema Version</label><input type="number" name="system.schemaVersion" value="{{system.schemaVersion}}" min="1" step="1" /></div>
   </header>
 
+  {{#if validationErrors.length}}
+  <section class="spell-panel validation-panel">
+    <h3>Validation Errors</h3>
+    <ul>{{#each validationErrors as |error|}}<li>{{error}}</li>{{/each}}</ul>
+  </section>
+  {{/if}}
+
   <section class="sheet-body">
-    <div class="form-group"><label>Spell Key</label><input type="text" name="system.spellKey" value="{{system.spellKey}}" placeholder="magic_missile" /></div>
-    <div class="form-group"><label>Schema Version</label><input type="number" name="system.schemaVersion" value="{{system.schemaVersion}}" min="1" step="1" /></div>
-    <div class="form-group"><label>Level</label><input type="number" name="system.level" value="{{system.level}}" min="1" step="1" /></div>
-    <div class="form-group"><label>Spell Lists</label><input type="text" name="system.spellListsString" value="{{spellListsString}}" placeholder="magicUser, cleric" /></div>
-    <div class="form-group"><label>School</label><input type="text" name="system.school" value="{{system.school}}" /></div>
-    <div class="form-group"><label>Reversible</label><input type="checkbox" name="system.reversible" {{checked system.reversible}} /></div>
+    <section class="spell-panel">
+      <h3>Metadata <button type="button" data-action="toggle-collapse">Toggle</button></h3>
+      <div class="form-group"><label>Range Type</label><select name="system.range.type">{{#each rangeTypeOptions as |opt|}}<option value="{{opt}}" {{#if (eq ../system.range.type opt)}}selected{{/if}}>{{opt}}</option>{{/each}}</select></div>
+      <div class="form-group"><label>Range Value</label><input type="number" name="system.range.value" value="{{system.range.value}}" /></div>
+      <div class="form-group"><label>Range Special</label><input type="text" name="system.range.special" value="{{system.range.special}}" /></div>
+      <div class="form-group"><label>Duration Type</label><select name="system.duration.type">{{#each durationTypeOptions as |opt|}}<option value="{{opt}}" {{#if (eq ../system.duration.type opt)}}selected{{/if}}>{{opt}}</option>{{/each}}</select></div>
+      <div class="form-group"><label>Duration Value</label><input type="number" name="system.duration.value" value="{{system.duration.value}}" /></div>
+      <div class="form-group"><label>Duration Special</label><input type="text" name="system.duration.special" value="{{system.duration.special}}" /></div>
+      <div class="form-group"><label>Targeting Type</label><select name="system.targeting.type">{{#each targetingTypeOptions as |opt|}}<option value="{{opt}}" {{#if (eq ../system.targeting.type opt)}}selected{{/if}}>{{opt}}</option>{{/each}}</select></div>
+      <div class="form-group"><label>Saving Throw Type</label><input type="text" name="system.savingThrow.type" value="{{system.savingThrow.type}}" /></div>
+      <div class="form-group"><label>Saving Throw Allowed</label><input type="checkbox" name="system.savingThrow.allowed" {{checked system.savingThrow.allowed}} /></div>
+      <div class="form-group"><label>Tags</label><input type="text" name="system.tagsString" value="{{tagsString}}" /></div>
+      <div class="form-group"><label>Source Book</label><input type="text" name="system.source.book" value="{{system.source.book}}" /></div>
+      <div class="form-group"><label>Source Page</label><input type="text" name="system.source.page" value="{{system.source.page}}" /></div>
+      <div class="form-group"><label>Reversible</label><input type="checkbox" name="system.reversible" {{checked system.reversible}} /></div>
+      <div class="form-group"><label>Scaling Progression</label><input type="text" name="system.scaling.progression" value="{{system.scaling.progression}}" /></div>
+      <div class="form-group"><label>Scaling Formula</label><input type="text" name="system.scaling.formula" value="{{system.scaling.formula}}" /></div>
+    </section>
 
-    <h3>Range</h3>
-    <div class="form-group"><label>Type</label><select name="system.range.type">{{#each rangeTypeOptions as |opt|}}<option value="{{opt}}" {{#if (eq ../system.range.type opt)}}selected{{/if}}>{{opt}}</option>{{/each}}</select></div>
-    <div class="form-group"><label>Value</label><input type="number" name="system.range.value" value="{{system.range.value}}" /></div>
-    <div class="form-group"><label>Special</label><input type="text" name="system.range.special" value="{{system.range.special}}" /></div>
+    <section class="spell-panel">
+      <h3>Effect Data</h3>
+      <div class="form-group"><label>Damage (JSON)</label><textarea name="system.effect.damage" rows="3">{{system.effect.damage}}</textarea></div>
+      <div class="form-group"><label>Healing (JSON)</label><textarea name="system.effect.healing" rows="2">{{system.effect.healing}}</textarea></div>
+      <div class="form-group"><label>Status Effects (JSON)</label><textarea name="system.effect.conditions" rows="3">{{system.effect.conditions}}</textarea></div>
+      <div class="form-group"><label>Special Effects</label><textarea name="system.effect.summary" rows="3">{{system.effect.summary}}</textarea></div>
+    </section>
 
-    <h3>Duration</h3>
-    <div class="form-group"><label>Type</label><select name="system.duration.type">{{#each durationTypeOptions as |opt|}}<option value="{{opt}}" {{#if (eq ../system.duration.type opt)}}selected{{/if}}>{{opt}}</option>{{/each}}</select></div>
-    <div class="form-group"><label>Value</label><input type="number" name="system.duration.value" value="{{system.duration.value}}" /></div>
-    <div class="form-group"><label>Special</label><input type="text" name="system.duration.special" value="{{system.duration.special}}" /></div>
-
-    <h3>Targeting / Save</h3>
-    <div class="form-group"><label>Targeting Type</label><select name="system.targeting.type">{{#each targetingTypeOptions as |opt|}}<option value="{{opt}}" {{#if (eq ../system.targeting.type opt)}}selected{{/if}}>{{opt}}</option>{{/each}}</select></div>
-    <div class="form-group"><label>Target Count</label><input type="number" name="system.targeting.count" value="{{system.targeting.count}}" /></div>
-    <div class="form-group"><label>Save Allowed</label><input type="checkbox" name="system.savingThrow.allowed" {{checked system.savingThrow.allowed}} /></div>
-    <div class="form-group"><label>Save Type</label><input type="text" name="system.savingThrow.type" value="{{system.savingThrow.type}}" /></div>
-
-    <h3>Source / Metadata</h3>
-    <div class="form-group"><label>Source Book</label><input type="text" name="system.source.book" value="{{system.source.book}}" /></div>
-    <div class="form-group"><label>Source Page</label><input type="number" name="system.source.page" value="{{system.source.page}}" /></div>
-    <div class="form-group"><label>Tags</label><input type="text" name="system.tagsString" value="{{tagsString}}" /></div>
-
-    <h3>Raw BECMI Text</h3>
-    <div class="form-group"><label>Summary</label><textarea name="system.description.summary" rows="3">{{system.description.summary}}</textarea></div>
-    <div class="form-group"><label>Full Description</label><textarea name="system.description.full" rows="10">{{system.description.full}}</textarea></div>
+    <section class="spell-panel">
+      <h3>Raw Rules Text <button type="button" data-action="toggle-collapse">Toggle</button></h3>
+      <div class="form-group"><label>Summary</label><textarea name="system.description.summary" rows="4">{{system.description.summary}}</textarea></div>
+      <div class="form-group"><label>Full Description</label><textarea name="system.description.text" rows="14">{{system.description.text}}</textarea></div>
+    </section>
   </section>
 </form>

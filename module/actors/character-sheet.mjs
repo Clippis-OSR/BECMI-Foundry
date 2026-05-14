@@ -546,4 +546,31 @@ export class BECMICharacterSheet extends ActorSheet {
 
     await rollInitiative(this.actor);
   }
+
+  async _addKnownSpellFromItem(sourceItem, casterKey = "magicUser", level = null) {
+    const spellKey = sourceItem?.system?.spellKey;
+    if (!spellKey) return false;
+    const spellLevel = String(level ?? sourceItem?.system?.level ?? 1);
+    const system = foundry.utils.deepClone(this.actor.system ?? {});
+    const caster = system?.spellcasting?.casters?.[casterKey];
+    if (!caster?.known?.[spellLevel]) return false;
+    const ref = { spellKey, uuid: sourceItem.uuid ?? "", itemId: sourceItem.id ?? "" };
+    if (caster.known[spellLevel].some((entry) => entry.spellKey === spellKey)) return false;
+    caster.known[spellLevel].push(ref);
+    caster.known[spellLevel].sort((a, b) => String(a.spellKey).localeCompare(String(b.spellKey)));
+    await this.actor.update({ "system.spellcasting": system.spellcasting });
+    return true;
+  }
+
+  async _addPreparedSpellRef(casterKey, level, ref) {
+    const system = foundry.utils.deepClone(this.actor.system ?? {});
+    const entries = system?.spellcasting?.casters?.[casterKey]?.prepared?.[level];
+    if (!Array.isArray(entries) || !ref?.spellKey) return false;
+    if (entries.some((entry) => entry.spellKey === ref.spellKey)) return false;
+    entries.push({ spellKey: ref.spellKey, uuid: ref.uuid ?? "", itemId: ref.itemId ?? "" });
+    entries.sort((a, b) => String(a.spellKey).localeCompare(String(b.spellKey)));
+    await this.actor.update({ "system.spellcasting": system.spellcasting });
+    return true;
+  }
+
 }
