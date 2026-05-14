@@ -399,63 +399,33 @@
 {{#if system.derived.hasSpellcasting}}
 <div class="tab" data-group="primary" data-tab="magic">
 <hr>
-
-<h2>Spell Slots (Derived)</h2>
-{{#each spellSlotsList}}
-<div>
-  <strong>Level {{this.level}}</strong>: <span>{{this.slots}}</span>
-</div>
-{{/each}}
-
-<h2>Spells Known</h2>
-{{#each spellsKnownGroups as |group|}}
-<section>
-  <h3>Level {{group.level}}</h3>
-
-  {{#if group.spells.length}}
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Prepared</th>
-        <th>Source</th>
-        <th>Notes</th>
-        <th>Remove</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each group.spells as |spell|}}
-      <tr>
-        <td>
-          <input type="text" name="system.spellsKnown.{{group.level}}.{{spell.index}}.name" value="{{spell.name}}" />
-          <input type="hidden" name="system.spellsKnown.{{group.level}}.{{spell.index}}.id" value="{{spell.id}}" />
-          <input type="hidden" name="system.spellsKnown.{{group.level}}.{{spell.index}}.level" value="{{spell.level}}" />
-          <input type="hidden" name="system.spellsKnown.{{group.level}}.{{spell.index}}.type" value="{{spell.type}}" />
-          <input type="hidden" name="system.spellsKnown.{{group.level}}.{{spell.index}}.itemUuid" value="{{spell.itemUuid}}" />
-        </td>
-        <td>
-          <input type="checkbox" name="system.spellsKnown.{{group.level}}.{{spell.index}}.prepared" {{checked spell.prepared}} />
-        </td>
-        <td>
-          <span>{{spell.source}}</span>
-          <input type="hidden" name="system.spellsKnown.{{group.level}}.{{spell.index}}.source" value="{{spell.source}}" />
-        </td>
-        <td>
-          <input type="text" name="system.spellsKnown.{{group.level}}.{{spell.index}}.notes" value="{{spell.notes}}" />
-        </td>
-        <td>
-          <button type="button" class="remove-known-spell" data-level="{{group.level}}" data-index="{{spell.index}}">Remove</button>
-        </td>
-      </tr>
+<h2>Spellcasting</h2>
+{{#each spellcastingDerived as |casterData casterKey|}}
+  {{#if casterData.enabled}}
+  <section>
+    <h3>{{casterKey}}</h3>
+    <div>{{casterData.summaryLabel}}</div>
+    {{#each casterData.slots as |slot level|}}
+      <div><strong>Level {{level}}:</strong> {{slot.used}} / {{slot.max}} used ({{slot.remaining}} remaining)</div>
+    {{/each}}
+    {{#with (lookup ../spellcasting.casters casterKey) as |caster|}}
+      {{#if caster.known}}
+      <h4>Known</h4>
+      {{#each caster.known as |entries level|}}
+        <div><strong>L{{level}}:</strong>
+          {{#if entries.length}}{{#each entries as |ref|}}<span>{{ref.spellKey}}</span> {{/each}}{{else}}<em>None</em>{{/if}}
+        </div>
       {{/each}}
-    </tbody>
-  </table>
-  {{else}}
-  <p>No known spells at this level.</p>
+      {{/if}}
+      <h4>Prepared</h4>
+      {{#each caster.prepared as |entries level|}}
+        <div><strong>L{{level}}:</strong>
+          {{#if entries.length}}{{#each entries as |ref|}}<span>{{ref.spellKey}}</span> {{/each}}{{else}}<em>None</em>{{/if}}
+        </div>
+      {{/each}}
+    {{/with}}
+  </section>
   {{/if}}
-
-  <button type="button" class="add-known-spell" data-level="{{group.level}}">Add Manual Spell</button>
-</section>
 {{/each}}
 </div>
 {{/if}}
