@@ -1,0 +1,53 @@
+[
+  {
+    "schemaVersion": 1,
+    "spellKey": "detect_magic",
+    "name": "Detect Magic",
+    "level": 1,
+    "spellLists": ["magicUser", "elf"],
+    "tags": ["detection", "utility"],
+    "range": { "type": "special", "special": "60 feet around caster" },
+    "duration": { "type": "turns", "value": 2 },
+    "targeting": { "type": "special", "value": null, "units": "", "area": { "shape": "", "size": null, "units": "" } },
+    "savingThrow": { "allowed": false, "type": "", "negates": false },
+    "effect": { "summary": "Reveals magical enchantments in the area.", "damage": [], "conditions": [] },
+    "scaling": { "progression": "", "formula": "" },
+    "automation": { "supported": false, "mode": "none", "config": {} },
+    "source": { "book": "BECMI Basic", "page": 40, "notes": "" },
+    "description": { "summary": "Detects enchantments nearby.", "text": "For two turns, the caster sees magical auras within 60 feet." }
+  },
+  {
+    "schemaVersion": 1,
+    "spellKey": "magic_missile",
+    "name": "Magic Missile",
+    "level": 1,
+    "spellLists": ["magicUser", "elf"],
+    "tags": ["arcane", "damage"],
+    "range": { "type": "feet", "value": 150, "special": "" },
+    "duration": { "type": "instant", "value": null, "special": "" },
+    "targeting": { "type": "creature", "value": 1, "units": "target", "area": { "shape": "", "size": null, "units": "" } },
+    "savingThrow": { "allowed": false, "type": "", "negates": false },
+    "effect": { "summary": "A dart of magical force strikes unerringly.", "damage": [], "conditions": [] },
+    "scaling": { "progression": "", "formula": "" },
+    "automation": { "supported": false, "mode": "none", "config": {} },
+    "source": { "book": "BECMI Basic", "page": 41, "notes": "" },
+    "description": { "summary": "Creates one magical missile.", "text": "A glowing missile shoots from the caster's finger and hits one target without a saving throw." }
+  },
+  {
+    "schemaVersion": 1,
+    "spellKey": "sleep",
+    "name": "Sleep",
+    "level": 1,
+    "spellLists": ["magicUser", "elf"],
+    "tags": ["enchantment", "control"],
+    "range": { "type": "feet", "value": 240, "special": "" },
+    "duration": { "type": "turns", "value": 4, "special": "" },
+    "targeting": { "type": "area", "value": 40, "units": "feet", "area": { "shape": "sphere", "size": 40, "units": "feet" } },
+    "savingThrow": { "allowed": false, "type": "", "negates": false },
+    "effect": { "summary": "Puts creatures of low HD to sleep.", "damage": [], "conditions": [] },
+    "scaling": { "progression": "", "formula": "" },
+    "automation": { "supported": false, "mode": "none", "config": {} },
+    "source": { "book": "BECMI Basic", "page": 42, "notes": "" },
+    "description": { "summary": "Causes magical slumber.", "text": "This spell affects creatures in a 40-foot diameter area, starting with the lowest Hit Dice." }
+  }
+]
