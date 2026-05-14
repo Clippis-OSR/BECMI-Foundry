@@ -1,0 +1,19 @@
+[
+  {
+    "schemaVersion": 1,
+    "spellKey": "cure_light_wounds",
+    "name": "Cure Light Wounds",
+    "level": 1,
+    "spellLists": ["cleric"],
+    "tags": ["healing"],
+    "range": { "type": "touch", "value": null, "special": "" },
+    "duration": { "type": "instant", "value": null, "special": "" },
+    "targeting": { "type": "creature", "value": 1, "units": "target", "area": { "shape": "", "size": null, "units": "" } },
+    "savingThrow": { "allowed": false, "type": "", "negates": false },
+    "effect": { "summary": "Restores 1d6+1 hit points.", "damage": [], "conditions": [] },
+    "scaling": { "progression": "", "formula": "" },
+    "automation": { "supported": false, "mode": "none", "config": {} },
+    "source": { "book": "BECMI Basic", "page": 45, "notes": "" },
+    "description": { "summary": "Heals minor wounds by touch.", "text": "The cleric heals a touched creature by 1d6+1 hit points." }
+  }
+]
