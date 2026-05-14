@@ -1,4 +1,10 @@
-import { getActorAttackSources, weaponItemToAttackData } from "../combat/attack.mjs";
+import {
+  buildMonsterAttackSummary,
+  createNaturalAttackItem,
+  getMonsterActions,
+  getNaturalAttacks,
+  weaponItemToAttackData
+} from "../combat/attack.mjs";
 
 export class BECMICreatureSheet extends ActorSheet {
   static get defaultOptions() {
@@ -17,7 +23,14 @@ export class BECMICreatureSheet extends ActorSheet {
     data.system = system;
     // Attacks are item-driven. weaponType is the canonical weapon classification field.
     // Legacy actor.system.attacks is intentionally ignored for UI actions.
-    data.attacks = getActorAttackSources(this.actor).map((item) => ({ itemId: item.id, ...weaponItemToAttackData(item) }));
+    data.naturalAttacks = getNaturalAttacks(this.actor).map((item) => ({
+      itemId: item.id,
+      attackCount: Number(item?.system?.attackCount ?? item?.system?.quantity ?? 1) || 1,
+      attackLabel: item?.system?.attackLabel ?? item?.name,
+      ...weaponItemToAttackData(item)
+    }));
+    data.monsterAttackSummary = buildMonsterAttackSummary(this.actor);
+    data.monsterActions = getMonsterActions(this.actor);
     const monster = system.monster ?? {};
     const savesAs = monster.saveAs ?? { class: "fighter", level: 1 };
     const savesAsClass = savesAs.class || "fighter";
@@ -78,6 +91,24 @@ export class BECMICreatureSheet extends ActorSheet {
         rollDamageOnHit: true,
         postToChat: true
       });
+    });
+
+    html.find('[data-action="create-natural-attack"]').on("click", async (event) => {
+      event.preventDefault();
+      await createNaturalAttackItem(this.actor, {
+        name: "Claw",
+        attackLabel: "Claw",
+        damage: "1d4",
+        attackCount: 1,
+        damageTypes: ["normal"]
+      });
+    });
+
+    html.find('[data-action="edit-attack-item"]').on("click", async (event) => {
+      event.preventDefault();
+      const itemId = event.currentTarget?.dataset?.itemId;
+      const item = itemId ? this.actor.items.get(itemId) : null;
+      item?.sheet?.render?.(true);
     });
   }
 }

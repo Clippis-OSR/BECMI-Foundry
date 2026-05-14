@@ -107,6 +107,92 @@ export function weaponItemToAttackData(item) {
   };
 }
 
+function getActorItems(actor) {
+  return Array.from(actor?.items ?? []);
+}
+
+export function getNaturalAttacks(actor) {
+  return getActorItems(actor).filter((item) => {
+    if (item?.type !== "weapon") return false;
+    const isNaturalType = item?.system?.weaponType === "natural";
+    const isNaturalSlot = item?.system?.slot === "natural";
+    const hasNoAmmo = item?.system?.ammoType === null || item?.system?.ammoType === undefined || item?.system?.ammoType === "";
+    const isNotHandSlot = item?.system?.slot !== "weaponMain" && item?.system?.slot !== "weaponOffhand";
+    return isNaturalType && isNaturalSlot && hasNoAmmo && isNotHandSlot;
+  });
+}
+
+export function getCreatureAttackItems(actor) {
+  if (actor?.type !== "creature") return [];
+  const naturalIds = new Set(getNaturalAttacks(actor).map((item) => item.id));
+  return getActorItems(actor).filter((item) => item?.type === "weapon" && (naturalIds.has(item.id) || item?.system?.equipped === true));
+}
+
+const MONSTER_ACTION_TYPES = Object.freeze([
+  "special",
+  "breath",
+  "poison",
+  "paralysis",
+  "spellLike",
+  "gaze",
+  "saveRequired"
+]);
+
+export function getMonsterActions(actor) {
+  if (actor?.type !== "creature") return [];
+  const actions = Array.isArray(actor?.system?.monster?.actions) ? actor.system.monster.actions : [];
+  return actions
+    .filter((action) => action && typeof action === "object")
+    .map((action) => ({
+      type: MONSTER_ACTION_TYPES.includes(action.type) ? action.type : "special",
+      label: String(action.label ?? "Special Action"),
+      description: String(action.description ?? "")
+    }));
+}
+
+export function buildMonsterAttackSummary(actor) {
+  const attacks = getNaturalAttacks(actor);
+  if (!attacks.length) return "No natural attacks.";
+
+  return attacks.map((item) => {
+    const count = Number(item?.system?.attackCount ?? item?.system?.quantity ?? 1) || 1;
+    const label = String(item?.system?.attackLabel ?? item?.name ?? "Attack");
+    const damage = String(item?.system?.damage ?? "1d4");
+    return `${count}× ${label} (${damage})`;
+  }).join(", ");
+}
+
+export async function createNaturalAttackItem(actor, attackData = {}) {
+  const payload = {
+    name: attackData.name ?? attackData.attackLabel ?? "Natural Attack",
+    type: "weapon",
+    system: {
+      weaponType: "natural",
+      damage: attackData.damage ?? "1d4",
+      attackCount: Number(attackData.attackCount ?? attackData.quantity ?? 1) || 1,
+      quantity: Number(attackData.quantity ?? attackData.attackCount ?? 1) || 1,
+      attackLabel: attackData.attackLabel ?? attackData.name ?? "Natural Attack",
+      range: attackData.range ?? null,
+      damageTypes: Array.isArray(attackData.damageTypes) ? attackData.damageTypes : [],
+      equipped: true,
+      slot: "natural",
+      hands: "none",
+      ammoType: null,
+      inventory: {
+        location: attackData.location ?? "worn",
+        countsTowardEncumbrance: false
+      }
+    }
+  };
+
+  if (typeof actor?.createEmbeddedDocuments === "function") {
+    const [created] = await actor.createEmbeddedDocuments("Item", [payload]);
+    return created;
+  }
+
+  return payload;
+}
+
 
 /**
  * Get item-driven attack sources for an actor.
@@ -125,10 +211,7 @@ export function getActorAttackSources(actor) {
   }
 
   if (actor?.type === "creature") {
-    return items.filter((item) => item?.type === "weapon" && (
-      item?.system?.equipped === true
-      || item?.system?.weaponType === "natural"
-    ));
+    return getCreatureAttackItems(actor);
   }
 
   return [];
