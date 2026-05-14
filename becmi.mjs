@@ -104,6 +104,46 @@ async function migrateLegacyEquipmentSlots() {
   }
 }
 
+
+function inferInventoryLocation(item) {
+  const invLocation = item?.system?.inventory?.location;
+  if (invLocation) return invLocation;
+  if (item?.type === "treasure") return "treasureHorde";
+  if (item?.type === "currency") return "beltPouch";
+  if (item?.system?.equipped === true) return "worn";
+  return "backpack";
+}
+
+function buildInventoryForMigration(item) {
+  const system = item?.system ?? {};
+  return {
+    location: inferInventoryLocation(item),
+    containerId: String(system?.inventory?.containerId ?? system?.containerId ?? ""),
+    quantity: Number(system?.inventory?.quantity ?? system?.quantity ?? 1) || 1,
+    encumbrance: Number(system?.inventory?.encumbrance ?? system?.weight ?? 0) || 0,
+    countsTowardEncumbrance: Boolean(system?.inventory?.countsTowardEncumbrance ?? true),
+    isContainer: Boolean(system?.inventory?.isContainer ?? item?.type === "container"),
+    containerCapacity: Number(system?.inventory?.containerCapacity ?? system?.capacity ?? 0) || 0,
+    notes: String(system?.inventory?.notes ?? system?.notes ?? "")
+  };
+}
+
+async function migrateCanonicalInventoryModel() {
+  if (!game.user?.isGM) return;
+  const alreadyMigrated = game.settings.get("becmi-foundry", "inventoryModelMigrationVersion");
+  if (alreadyMigrated === "1") return;
+
+  const actors = game.actors?.contents ?? [];
+  for (const actor of actors) {
+    for (const item of actor.items ?? []) {
+      const inventory = buildInventoryForMigration(item);
+      await item.update({ "system.inventory": inventory });
+    }
+  }
+
+  await game.settings.set("becmi-foundry", "inventoryModelMigrationVersion", "1");
+}
+
 function canonicalizeActorSavesForMigration(saves) {
   if (!saves || typeof saves !== "object") return null;
 
@@ -152,6 +192,7 @@ Hooks.once("init", async function () {
   });
 
   game.settings.register("becmi-foundry", "actorTypeMigrationVersion", { name: "Actor Type Migration Version", scope: "world", config: false, type: String, default: "0" });
+  game.settings.register("becmi-foundry", "inventoryModelMigrationVersion", { name: "Inventory Model Migration Version", scope: "world", config: false, type: String, default: "0" });
 
   Actors.unregisterSheet("core", ActorSheet);
 
@@ -477,6 +518,7 @@ Hooks.once("ready", async function () {
 
   await migrateLegacyActorTypes();
   await migrateLegacyEquipmentSlots();
+  await migrateCanonicalInventoryModel();
 
   const actors = game.actors?.contents ?? [];
   for (const actor of actors) {

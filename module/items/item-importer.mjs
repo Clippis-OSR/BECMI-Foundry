@@ -3,17 +3,20 @@ import { addCurrency, getCurrencyItems, normalizeCurrencyDenomination } from "./
 
 function normalizeSystemForActorCopy(systemData = {}, containerId = "", location = "worn") {
   const normalizedLocation = normalizeItemLocation(location);
-  const syncMap = {
-    equipped: { equipped: true, worn: false },
-    worn: { equipped: false, worn: true },
-    storage: { equipped: false, worn: false }
-  };
-
   return {
     ...systemData,
+    inventory: {
+      location: normalizedLocation,
+      containerId: normalizeContainerId(containerId),
+      quantity: Number(systemData?.inventory?.quantity ?? systemData?.quantity ?? 1),
+      encumbrance: Number(systemData?.inventory?.encumbrance ?? systemData?.weight ?? 0),
+      countsTowardEncumbrance: Boolean(systemData?.inventory?.countsTowardEncumbrance ?? true),
+      isContainer: Boolean(systemData?.inventory?.isContainer ?? (systemData?.containerType !== undefined)),
+      containerCapacity: Number(systemData?.inventory?.containerCapacity ?? systemData?.capacity ?? 0),
+      notes: String(systemData?.inventory?.notes ?? systemData?.notes ?? "")
+    },
     containerId: normalizeContainerId(containerId),
-    location: normalizedLocation,
-    ...(syncMap[normalizedLocation] ?? {})
+    location: normalizedLocation
   };
 }
 
@@ -39,8 +42,8 @@ function isDescendantContainer(actor, childContainerId, ancestorContainerId) {
 export function cloneItemDataForActor(sourceItem, options = {}) {
   const containerId = normalizeContainerId(options.containerId ?? "");
   const requestedLocation = normalizeItemLocation(options.location ?? "worn");
-  const location = sourceItem?.type === "treasure" && requestedLocation !== "storage"
-    ? "treasure"
+  const location = sourceItem?.type === "treasure" && requestedLocation !== "stored"
+    ? "treasureHorde"
     : requestedLocation;
   const createData = sourceItem?.toObject ? sourceItem.toObject() : foundry.utils.deepClone(sourceItem ?? {});
 
