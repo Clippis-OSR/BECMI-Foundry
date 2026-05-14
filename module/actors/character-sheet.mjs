@@ -143,7 +143,6 @@ export class BECMICharacterSheet extends ActorSheet {
       : [];
     context.equipmentSlots = ensureActorEquipmentSlots(this.actor);
     context.inventoryGroups = this._buildInventoryGroups();
-    context.treasureGroup = this._buildTreasureGroup();
     context.currencySummary = this._buildCurrencySummary();
     context.treasureSummary = this._buildTreasureSummary();
     context.encumbranceSummary = this._buildEncumbranceSummary();
@@ -261,6 +260,13 @@ export class BECMICharacterSheet extends ActorSheet {
   }
 
 
+  _sumGroupWeight(groups, keys = []) {
+    const keySet = new Set(keys);
+    return (groups ?? [])
+      .filter((group) => keySet.has(group.key))
+      .reduce((sum, group) => sum + (Number(group.containedWeight) || 0), 0);
+  }
+
   _buildEncumbranceSummary() {
     try {
       const result = calculateTotalEncumbrance(this.actor) ?? {};
@@ -268,20 +274,32 @@ export class BECMICharacterSheet extends ActorSheet {
       const bracket = result.bracket ?? "0-400";
       const normalSpeed = Number.isFinite(Number(result.normalSpeed)) ? Number(result.normalSpeed) : 0;
       const encounterSpeed = Number.isFinite(Number(result.encounterSpeed)) ? Number(result.encounterSpeed) : 0;
-      const containers = Array.isArray(result.containers)
-        ? result.containers.map((entry) => ({
-          containerId: entry?.containerId ?? "",
-          containerWeight: Number.isFinite(Number(entry?.containerWeight)) ? Number(entry.containerWeight) : 0,
-          contentsWeight: Number.isFinite(Number(entry?.contentsWeight)) ? Number(entry.contentsWeight) : 0,
-          total: Number.isFinite(Number(entry?.total)) ? Number(entry.total) : 0,
-          itemCount: Number.isFinite(Number(entry?.itemCount)) ? Number(entry.itemCount) : 0
-        }))
-        : [];
 
-      return { total, bracket, normalSpeed, encounterSpeed, containers };
+      const inventoryGroups = this._buildInventoryGroups();
+      const withoutBackpack = this._sumGroupWeight(inventoryGroups, ["beltPouch", "worn", "sack1", "sack2"]);
+      const withoutSacks = this._sumGroupWeight(inventoryGroups, ["beltPouch", "worn", "backpack"]);
+      const beltPouchAndWorn = this._sumGroupWeight(inventoryGroups, ["beltPouch", "worn"]);
+
+      return {
+        total,
+        bracket,
+        normalSpeed,
+        encounterSpeed,
+        withoutBackpack,
+        withoutSacks,
+        beltPouchAndWorn
+      };
     } catch (error) {
       console.warn("BECMI encumbrance summary failed", error);
-      return { total: 0, bracket: "0-400", normalSpeed: 0, encounterSpeed: 0, containers: [] };
+      return {
+        total: 0,
+        bracket: "0-400",
+        normalSpeed: 0,
+        encounterSpeed: 0,
+        withoutBackpack: 0,
+        withoutSacks: 0,
+        beltPouchAndWorn: 0
+      };
     }
   }
 
@@ -404,7 +422,7 @@ export class BECMICharacterSheet extends ActorSheet {
       validateItemContainerAssignment(this.actor, item, { containerId: value });
     }
 
-    if (field === "system.location") {
+    if (field === "system.inventory.location" || field === "system.location") {
       const isTreasure = item.type === "treasure";
       value = normalizeItemLocation(value);
       if (isTreasure && value !== "storage") value = "treasure";
@@ -421,7 +439,7 @@ export class BECMICharacterSheet extends ActorSheet {
           await unequipItem(this.actor, item);
         }
         const worn = value === "worn";
-        await item.update({ [field]: value, "system.equipped": false, "system.worn": worn });
+        await item.update({ "system.inventory.location": value, "system.location": value, "system.equipped": false, "system.worn": worn });
       }
       this.render(false);
       return;
@@ -493,9 +511,11 @@ export class BECMICharacterSheet extends ActorSheet {
   _buildInventoryGroups() {
     const items = getActorItems(this.actor).filter((item) => item?.type !== "currency" && item?.type !== "treasure");
     const groupDefinitions = [
-      { key: "equipped", label: "Equipped" },
-      { key: "worn", label: "Worn" },
-      { key: "storage", label: "Storage" }
+      { key: "beltPouch", label: "Items in Belt Pouch" },
+      { key: "worn", label: "Items Worn" },
+      { key: "backpack", label: "Items in Backpack" },
+      { key: "sack1", label: "Items in Sack #1" },
+      { key: "sack2", label: "Items in Sack #2" }
     ];
 
     const groups = groupDefinitions.map((group) => ({

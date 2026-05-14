@@ -324,225 +324,73 @@
 
 <div class="tab" data-group="primary" data-tab="equipment">
 
-<hr>
+<h2>Inventory & Encumbrance</h2>
 
-<h2>Currency</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Denomination</th>
-      <th>Carried</th>
-      <th>Treasure Horde</th>
-      <th>Carried Value (gp)</th>
-      <th>Carried Weight (cn)</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each currencySummary.rows as |coin|}}
-    <tr>
-      <td>{{coin.denomination}}</td>
-      <td><input type="number" name="system.currency.carried.{{coin.denomination}}" value="{{coin.carriedQuantity}}" min="0" step="1" /></td>
-      <td>
-        <input type="number" name="system.currency.treasureHorde.{{coin.denomination}}" value="{{coin.treasureHordeQuantity}}" min="0" step="1" />
-      </td>
-      <td>{{coin.carriedValueGp}}</td>
-      <td>{{coin.carriedWeightCn}}</td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
-<div><strong>Total carried currency value:</strong> {{currencySummary.totalValueGp}} gp</div>
-<div><strong>Total carried currency weight:</strong> {{currencySummary.totalWeightCn}} cn</div>
-
-<hr>
-
-<h2>Treasure</h2>
-<div><strong>Treasure items:</strong> {{treasureSummary.count}}</div>
-<div><strong>Treasure value:</strong> {{treasureSummary.totalValue}} gp</div>
-<div><strong>Identified treasure value:</strong> {{treasureSummary.identifiedValue}} gp</div>
-<div><strong>Carried treasure weight:</strong> {{treasureSummary.totalWeight}} cn</div>
-<div>
-  <label for="treasure-notes"><strong>Treasure Notes</strong></label><br />
-  <textarea id="treasure-notes" name="system.treasure.notes" rows="3">{{system.treasure.notes}}</textarea>
-</div>
-
-<section class="inventory-group inventory-section inventory-drop-zone" data-location="treasure">
-<div class="inventory-section-header">
-  <h3>{{treasureGroup.sectionSummary}}</h3>
-</div>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Treasure Type</th>
-      <th>Qty</th>
-      <th>Wt</th>
-      <th>Total Wt</th>
-      <th>Value</th>
-      <th>Est. Value</th>
-      <th>Identified</th>
-      <th>Location</th>
-      <th>Slot</th>
-      <th>Equipped</th>
-      <th>Controls</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#if treasureGroup.items.length}}
-      {{#each treasureGroup.items as |item|}}
-      <tr class="inventory-item-row {{#if (eq item.location "storage")}}item-in-storage{{/if}}">
-        <td><input type="text" value="{{item.name}}" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="name" /></td>
-        <td>{{item.treasureType}}</td>
-        <td><input type="number" value="{{item.quantity}}" min="0" step="1" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.quantity" /></td>
-        <td><input type="number" value="{{item.weight}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.weight" /></td>
-        <td>{{item.totalWeight}}</td>
-        <td><input type="number" value="{{item.value}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.value" /></td>
-        <td><input type="number" value="{{item.estimatedValue}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.estimatedValue" /></td>
-        <td><input type="checkbox" {{checked item.identified}} data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.identified" /></td>
-        <td>
-          <select data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.location">
-            <option value="treasure" {{#if (eq item.location "treasure")}}selected{{/if}}>Treasure</option>
-            <option value="storage" {{#if (eq item.location "storage")}}selected{{/if}}>Storage</option>
-          </select>
-        </td>
-        <td>
-          {{#if (eq item.type "weapon")}}
-          <button
-            type="button"
-            class="becmi-weapon-attack"
-            data-item-id="{{item.id}}"
-            {{#unless item.equipped}}disabled{{/unless}}
-          >
-            Attack
-          </button>
-          {{/if}}
-          <button type="button" data-action="item-edit" data-item-id="{{item.id}}">Edit</button>
-          <button type="button" data-action="item-delete" data-item-id="{{item.id}}">Delete</button>
-        </td>
+<section class="inventory-section">
+  <h3>Coinage</h3>
+  <table>
+    <thead><tr><th>Type</th><th>Carried</th><th>Treasure Horde</th></tr></thead>
+    <tbody>
+      {{#each currencySummary.rows as |coin|}}
+      <tr>
+        <td>{{coin.denomination}}</td>
+        <td><input type="number" name="system.currency.carried.{{coin.denomination}}" value="{{coin.carriedQuantity}}" min="0" step="1" /></td>
+        <td><input type="number" name="system.currency.treasureHorde.{{coin.denomination}}" value="{{coin.treasureHordeQuantity}}" min="0" step="1" /></td>
       </tr>
       {{/each}}
-    {{else}}
-      <tr><td colspan="10"><em>No treasure items.</em></td></tr>
-    {{/if}}
-  </tbody>
-</table>
-<div class="inventory-drop-hint"><small>Drop item here to add to this group.</small></div>
+    </tbody>
+  </table>
 </section>
 
-<hr>
+<section class="inventory-section">
+  <h3>Treasure</h3>
+  <div><strong>Items:</strong> {{treasureSummary.count}} | <strong>Total:</strong> {{treasureSummary.totalValue}} gp</div>
+  <label for="treasure-notes">Notes</label>
+  <textarea id="treasure-notes" name="system.treasure.notes" rows="3">{{system.treasure.notes}}</textarea>
+</section>
 
-<h2>Encumbrance & Movement (Calculated)</h2>
-<div class="encumbrance-summary">
-  <div><strong>Encumbrance:</strong> {{encumbranceSummary.total}} cn — {{encumbranceSummary.bracket}} cn</div>
-  <div><strong>Movement:</strong> {{encumbranceSummary.normalSpeed}}' normal / {{encumbranceSummary.encounterSpeed}}' encounter</div>
-</div>
-
-{{#if encumbranceSummary.containers.length}}
-<h3>Container Encumbrance Summary</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Container ID</th>
-      <th>Container Wt (cn)</th>
-      <th>Contents Wt (cn)</th>
-      <th>Total (cn)</th>
-      <th>Items</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each encumbranceSummary.containers as |container|}}
-    <tr>
-      <td>{{container.containerId}}</td>
-      <td>{{container.containerWeight}}</td>
-      <td>{{container.contentsWeight}}</td>
-      <td>{{container.total}}</td>
-      <td>{{container.itemCount}}</td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
-{{/if}}
-
-<hr>
-
-<h2>Inventory</h2>
-
-<h2>Equipped Slots</h2>
-<ul>
-  <li>Armor: {{equipmentSlots.armor}}</li>
-  <li>Shield: {{equipmentSlots.shield}}</li>
-  <li>Main Weapon: {{equipmentSlots.weaponMain}}</li>
-  <li>Offhand Weapon: {{equipmentSlots.weaponOffhand}}</li>
-  <li>Ring: {{equipmentSlots.ring}}</li>
-  <li>Amulet: {{equipmentSlots.amulet}}</li>
-  <li>Cloak: {{equipmentSlots.cloak}}</li>
-  <li>Boots: {{equipmentSlots.boots}}</li>
-  <li>Gloves: {{equipmentSlots.gloves}}</li>
-  <li>Belt: {{equipmentSlots.belt}}</li>
-</ul>
+<section class="inventory-section">
+  <h3>Encumbrance & Movement (Derived)</h3>
+  <div class="enc-grid">
+    <div><strong>Total Encumbrance Carried:</strong> {{encumbranceSummary.total}} cn</div>
+    <div><strong>Without Backpack:</strong> {{encumbranceSummary.withoutBackpack}} cn</div>
+    <div><strong>Without Sacks:</strong> {{encumbranceSummary.withoutSacks}} cn</div>
+    <div><strong>Only Belt Pouch & Items Worn:</strong> {{encumbranceSummary.beltPouchAndWorn}} cn</div>
+    <div><strong>Normal Speed:</strong> {{encumbranceSummary.normalSpeed}} feet/turn</div>
+    <div><strong>Encounter Speed:</strong> {{encumbranceSummary.encounterSpeed}} feet/round</div>
+  </div>
+</section>
 
 {{#each inventoryGroups as |group|}}
 <section class="inventory-group inventory-section inventory-drop-zone" data-location="{{group.sectionLocation}}">
-<div class="inventory-section-header">
-  <h3>{{group.sectionSummary}}</h3>
-</div>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Qty</th>
-      <th>Wt</th>
-      <th>Total Wt</th>
-      <th>Value</th>
-      <th>Location</th>
-      <th>Slot</th>
-      <th>Equipped</th>
-      <th>Controls</th>
-    </tr>
-  </thead>
-  <tbody>
+  <div class="inventory-section-header"><h3>{{group.label}}</h3><span>{{group.containedWeight}} cn</span></div>
+  <table>
+    <thead><tr><th>Name</th><th>Qty</th><th>Enc</th><th>Total Enc</th><th>Location</th><th>Controls</th></tr></thead>
+    <tbody>
     {{#if group.items.length}}
       {{#each group.items as |item|}}
       <tr class="inventory-item-row">
-        <td>
-          <input type="text" value="{{item.name}}" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="name" />
-        </td>
-        <td>{{item.type}}</td>
-        <td>
-          <input type="number" value="{{item.quantity}}" min="0" step="1" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.quantity" />
-        </td>
-        <td>
-          <input type="number" value="{{item.weight}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.weight" />
-        </td>
+        <td>{{item.name}}</td>
+        <td><input type="number" value="{{item.quantity}}" min="0" step="1" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.quantity" /></td>
+        <td><input type="number" value="{{item.weight}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.weight" /></td>
         <td>{{item.totalWeight}}</td>
         <td>
-          <input type="number" value="{{item.value}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.value" />
-        </td>
-        <td>
-          <select data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.location">
-            <option value="equipped" {{#if (eq item.location "equipped")}}selected{{/if}}>Equipped</option>
+          <select data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.inventory.location">
+            <option value="beltPouch" {{#if (eq item.location "beltPouch")}}selected{{/if}}>Belt Pouch</option>
             <option value="worn" {{#if (eq item.location "worn")}}selected{{/if}}>Worn</option>
-            <option value="storage" {{#if (eq item.location "storage")}}selected{{/if}}>Storage</option>
+            <option value="backpack" {{#if (eq item.location "backpack")}}selected{{/if}}>Backpack</option>
+            <option value="sack1" {{#if (eq item.location "sack1")}}selected{{/if}}>Sack #1</option>
+            <option value="sack2" {{#if (eq item.location "sack2")}}selected{{/if}}>Sack #2</option>
           </select>
         </td>
-        <td><select data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.slot"><option value="armor" {{#if (eq item.slot "armor")}}selected{{/if}}>armor</option><option value="shield" {{#if (eq item.slot "shield")}}selected{{/if}}>shield</option><option value="helmet" {{#if (eq item.slot "helmet")}}selected{{/if}}>helmet</option><option value="cloak" {{#if (eq item.slot "cloak")}}selected{{/if}}>cloak</option><option value="boots" {{#if (eq item.slot "boots")}}selected{{/if}}>boots</option><option value="gloves" {{#if (eq item.slot "gloves")}}selected{{/if}}>gloves</option><option value="ring" {{#if (eq item.slot "ring")}}selected{{/if}}>ring</option><option value="amulet" {{#if (eq item.slot "amulet")}}selected{{/if}}>amulet</option><option value="belt" {{#if (eq item.slot "belt")}}selected{{/if}}>belt</option><option value="weaponMain" {{#if (eq item.slot "weaponMain")}}selected{{/if}}>weaponMain</option><option value="weaponOffhand" {{#if (eq item.slot "weaponOffhand")}}selected{{/if}}>weaponOffhand</option><option value="natural" {{#if (eq item.slot "natural")}}selected{{/if}}>natural</option><option value="missile" {{#if (eq item.slot "missile")}}selected{{/if}}>missile</option></select></td>
-        <td>{{#if item.equipped}}✅{{else}}—{{/if}}</td>
-        <td>
-          <button type="button" data-action="toggle-equip-item" data-item-id="{{item.id}}">{{#if item.equipped}}Unequip{{else}}Equip{{/if}}</button>
-          <button type="button" data-action="item-edit" data-item-id="{{item.id}}">Edit</button>
-          <button type="button" data-action="item-delete" data-item-id="{{item.id}}">Delete</button>
-        </td>
+        <td><button type="button" data-action="item-edit" data-item-id="{{item.id}}">Edit</button> <button type="button" data-action="item-delete" data-item-id="{{item.id}}">Delete</button></td>
       </tr>
       {{/each}}
     {{else}}
-      <tr>
-        <td colspan="10"><em>No items in {{group.label}}.</em></td>
-      </tr>
+      <tr><td colspan="6"><em>No items.</em></td></tr>
     {{/if}}
-  </tbody>
-</table>
-<div class="inventory-drop-hint"><small>Drop item here to add to this group.</small></div>
+    </tbody>
+  </table>
 </section>
 {{/each}}
 

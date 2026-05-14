@@ -135,3 +135,10 @@
 .becmi-combat-tracker-controls .becmi-tracker-button i {
   font-size: 11px;
 }
+
+.becmi.sheet.actor .enc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 12px;
+  margin-top: 4px;
+}
