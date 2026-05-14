@@ -19,6 +19,7 @@ import * as currencyHelpers from "../items/currency.mjs";
 import * as treasureHelpers from "../items/treasure.mjs";
 import { importItemToActor } from "../items/item-importer.mjs";
 import { ensureActorEquipmentSlots, equipItem, unequipItem } from "../items/equipment-slots.mjs";
+import { BECMI_ENCUMBRANCE_RULES } from "../rules/encumbrance.mjs";
 
 const DEBUG_INVENTORY = false;
 const debugInventory = (...args) => {
@@ -74,6 +75,24 @@ export class BECMICharacterSheet extends ActorSheet {
     context.system.currencyStorage = {
       note: typeof currencyStorage.note === "string" ? currencyStorage.note : "",
       gpValue: Number(currencyStorage.gpValue ?? 0) || 0
+    };
+    const coinKeys = ["pp", "gp", "ep", "sp", "cp"];
+    const normalizeCoinBucket = (bucket) => Object.fromEntries(
+      coinKeys.map((key) => {
+        const value = Number(bucket?.[key]);
+        const safe = Number.isFinite(value) && value > 0 ? Math.floor(value) : 0;
+        return [key, safe];
+      })
+    );
+    const currency = context.system.currency ?? {};
+    context.system.currency = {
+      carried: normalizeCoinBucket(currency.carried),
+      treasureHorde: normalizeCoinBucket(currency.treasureHorde)
+    };
+    const treasure = context.system.treasure && typeof context.system.treasure === "object" ? context.system.treasure : {};
+    context.system.treasure = {
+      ...treasure,
+      notes: typeof treasure.notes === "string" ? treasure.notes : ""
     };
     // Attacks are item-driven. weaponType is the canonical weapon classification field.
     // Ignore legacy actor.system.attacks for active attack actions.
@@ -267,57 +286,40 @@ export class BECMICharacterSheet extends ActorSheet {
   }
 
   _buildCurrencySummary() {
-    const denominations = ["cp", "sp", "ep", "gp", "pp"];
+    const denominations = ["pp", "gp", "ep", "sp", "cp"];
     const values = { cp: 0.01, sp: 0.1, ep: 0.5, gp: 1, pp: 5 };
+    const carried = this.actor?.system?.currency?.carried ?? {};
+    const treasureHorde = this.actor?.system?.currency?.treasureHorde ?? {};
+    const coinsPerCn = Number(BECMI_ENCUMBRANCE_RULES?.currency?.coinsPerCn ?? 10);
+    const divisor = Number.isFinite(coinsPerCn) && coinsPerCn > 0 ? coinsPerCn : 10;
     const rows = denominations.map((denomination) => ({
       denomination,
-      quantity: 0,
-      valueGp: 0,
-      weightCn: 0
+      carriedQuantity: 0,
+      treasureHordeQuantity: 0,
+      carriedValueGp: 0,
+      carriedWeightCn: 0
     }));
 
     try {
-      const getCurrencyItems = currencyHelpers?.getCurrencyItems;
-      if (typeof getCurrencyItems !== "function") {
-        return { rows, totalValueGp: 0, totalWeightCn: 0, storedValueGp: 0, combinedValueGp: 0 };
-      }
-
-      const byDenomination = new Map();
-      for (const item of getCurrencyItems(this.actor)) {
-        const key = String(item?.system?.denomination ?? "").trim().toLowerCase();
-        if (!denominations.includes(key)) continue;
-        byDenomination.set(key, item);
-      }
-
       for (const row of rows) {
-        const item = byDenomination.get(row.denomination);
-        const quantity = Math.max(0, Number(item?.system?.quantity ?? 0) || 0);
-        const weightPerUnit = Number(item?.system?.weightPerUnit ?? 1);
-        row.quantity = quantity;
-        row.valueGp = quantity * (values[row.denomination] ?? 0);
-        row.weightCn = quantity * (Number.isFinite(weightPerUnit) ? weightPerUnit : 1);
+        const carriedQuantity = Math.max(0, Math.floor(Number(carried?.[row.denomination] ?? 0) || 0));
+        const hordeQuantity = Math.max(0, Math.floor(Number(treasureHorde?.[row.denomination] ?? 0) || 0));
+        row.carriedQuantity = carriedQuantity;
+        row.treasureHordeQuantity = hordeQuantity;
+        row.carriedValueGp = carriedQuantity * (values[row.denomination] ?? 0);
+        row.carriedWeightCn = carriedQuantity / divisor;
       }
 
-      const getCurrencyTotalValue = currencyHelpers?.getCurrencyTotalValue;
-      const getCurrencyWeight = currencyHelpers?.getCurrencyWeight;
-      const totalValueGp = typeof getCurrencyTotalValue === "function"
-        ? Number(getCurrencyTotalValue(this.actor)) || 0
-        : rows.reduce((sum, row) => sum + row.valueGp, 0);
-      const totalWeightCn = typeof getCurrencyWeight === "function"
-        ? Number(getCurrencyWeight(this.actor)) || 0
-        : rows.reduce((sum, row) => sum + row.weightCn, 0);
-
-      const storedValueGp = Math.max(0, Number(this.actor?.system?.currencyStorage?.gpValue ?? 0) || 0);
+      const totalValueGp = rows.reduce((sum, row) => sum + row.carriedValueGp, 0);
+      const totalWeightCn = rows.reduce((sum, row) => sum + row.carriedWeightCn, 0);
       return {
         rows,
         totalValueGp,
-        totalWeightCn,
-        storedValueGp,
-        combinedValueGp: totalValueGp + storedValueGp
+        totalWeightCn
       };
     } catch (error) {
       console.warn("BECMI currency summary failed", error);
-      return { rows, totalValueGp: 0, totalWeightCn: 0, storedValueGp: 0, combinedValueGp: 0 };
+      return { rows, totalValueGp: 0, totalWeightCn: 0 };
     }
   }
 

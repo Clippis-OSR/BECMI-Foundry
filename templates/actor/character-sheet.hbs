@@ -331,38 +331,28 @@
   <thead>
     <tr>
       <th>Denomination</th>
-      <th>Quantity</th>
-      <th>Value (gp)</th>
-      <th>Weight (cn)</th>
+      <th>Carried</th>
+      <th>Treasure Horde</th>
+      <th>Carried Value (gp)</th>
+      <th>Carried Weight (cn)</th>
     </tr>
   </thead>
   <tbody>
     {{#each currencySummary.rows as |coin|}}
     <tr>
       <td>{{coin.denomination}}</td>
+      <td><input type="number" name="system.currency.carried.{{coin.denomination}}" value="{{coin.carriedQuantity}}" min="0" step="1" /></td>
       <td>
-        <input type="number" value="{{coin.quantity}}" min="0" step="1" data-action="change-currency-quantity" data-denomination="{{coin.denomination}}" />
+        <input type="number" name="system.currency.treasureHorde.{{coin.denomination}}" value="{{coin.treasureHordeQuantity}}" min="0" step="1" />
       </td>
-      <td>{{coin.valueGp}}</td>
-      <td>{{coin.weightCn}}</td>
+      <td>{{coin.carriedValueGp}}</td>
+      <td>{{coin.carriedWeightCn}}</td>
     </tr>
     {{/each}}
   </tbody>
 </table>
 <div><strong>Total carried currency value:</strong> {{currencySummary.totalValueGp}} gp</div>
 <div><strong>Total carried currency weight:</strong> {{currencySummary.totalWeightCn}} cn</div>
-
-<h3>Stored Currency</h3>
-<div>
-  <label for="currency-storage-note"><strong>Stored currency notes</strong></label><br />
-  <textarea id="currency-storage-note" name="system.currencyStorage.note" rows="2">{{system.currencyStorage.note}}</textarea>
-</div>
-<div>
-  <label for="currency-storage-gp"><strong>Stored value (gp)</strong></label>
-  <input id="currency-storage-gp" type="number" name="system.currencyStorage.gpValue" min="0" step="0.01" value="{{system.currencyStorage.gpValue}}" />
-</div>
-<div><strong>Stored currency value:</strong> {{currencySummary.storedValueGp}} gp</div>
-<div><strong>Combined currency value:</strong> {{currencySummary.combinedValueGp}} gp</div>
 
 <hr>
 
@@ -371,6 +361,10 @@
 <div><strong>Treasure value:</strong> {{treasureSummary.totalValue}} gp</div>
 <div><strong>Identified treasure value:</strong> {{treasureSummary.identifiedValue}} gp</div>
 <div><strong>Carried treasure weight:</strong> {{treasureSummary.totalWeight}} cn</div>
+<div>
+  <label for="treasure-notes"><strong>Treasure Notes</strong></label><br />
+  <textarea id="treasure-notes" name="system.treasure.notes" rows="3">{{system.treasure.notes}}</textarea>
+</div>
 
 <section class="inventory-group inventory-section inventory-drop-zone" data-location="treasure">
 <div class="inventory-section-header">
