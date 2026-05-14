@@ -1,3 +1,4 @@
+import { assertCanonicalActorType } from "../actors/actor-types.mjs";
 /**
  * @file Initiative helpers for BECMI combat.
  */
@@ -155,17 +156,10 @@ export async function chooseInitiativeMode(combat) {
 
 export function getCombatantSide(combatant) {
   const actor = combatant?.actor;
-  const actorType = String(actor?.type ?? "").toLowerCase();
-  const creatureRole = String(actor?.system?.creatureRole ?? "").toLowerCase();
-
+  const actorType = assertCanonicalActorType(actor?.type, `getCombatantSide for combatant "${combatant?.name ?? combatant?.id ?? "Unknown"}"`);
   if (actorType === "character") return "party";
-  if (actorType === "creature" || creatureRole === "monster") return "monster";
-
-  const disposition = Number(combatant?.token?.disposition ?? combatant?.token?.document?.disposition ?? 0);
-  if (disposition === CONST.TOKEN_DISPOSITIONS.FRIENDLY) return "party";
-  if (disposition === CONST.TOKEN_DISPOSITIONS.HOSTILE) return "monster";
-
-  return "monster";
+  if (actorType === "creature") return "monster";
+  throw new Error(`[BECMI Combat] Unsupported actor type "${actorType}" for combatant side resolution.`);
 }
 
 export async function applyGroupInitiativeToTracker({ combat, winner, partyTotal, monsterTotal } = {}) {

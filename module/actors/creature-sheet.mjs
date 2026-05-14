@@ -13,7 +13,7 @@ export class BECMICreatureSheet extends ActorSheet {
   getData(options = {}) {
     const data = super.getData(options);
     const system = data.actor?.system ?? {};
-    const creatureRole = system.creatureRole || "monster";
+    const creatureRole = system.creatureRole || "creature";
     data.system = system;
     // Attacks are item-driven. weaponType is the canonical weapon classification field.
     // Legacy actor.system.attacks is intentionally ignored for UI actions.
@@ -32,9 +32,8 @@ export class BECMICreatureSheet extends ActorSheet {
     };
     data.creatureRole = creatureRole;
     data.creatureRoleSelected = {
-      monster: creatureRole === "monster" ? "selected" : "",
-      retainer: creatureRole === "retainer" ? "selected" : "",
-      npc: creatureRole === "npc" ? "selected" : ""
+      creature: creatureRole === "creature" ? "selected" : "",
+      retainer: creatureRole === "retainer" ? "selected" : ""
     };
     return data;
   }
@@ -44,7 +43,7 @@ export class BECMICreatureSheet extends ActorSheet {
 
     html.find('[data-action="change-creature-role"]').on("change", async (event) => {
       event.preventDefault();
-      const value = event.currentTarget.value || "monster";
+      const value = event.currentTarget.value || "creature";
       await this.actor.update({ "system.creatureRole": value });
     });
 

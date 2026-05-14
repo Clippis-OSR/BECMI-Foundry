@@ -76,7 +76,7 @@ export class BECMIItemSheet extends ItemSheet {
     context.isConsumable = this.item.type === "consumable";
     context.isAmmo = this.item.type === "ammo";
     context.equipSlotOptions = VALID_ITEM_EQUIP_SLOTS;
-    context.weaponEquipSlotOptions = ["weaponMain", "weaponOffhand", "bothHands", "natural", "missile"];
+    context.weaponEquipSlotOptions = ["weaponMain", "weaponOffhand", "natural", "missile"];
     context.armorEquipSlotOptions = ["armor", "shield"];
     context.armorTypeOptions = Object.entries(BECMI_ARMOR_TYPES).map(([key, value]) => ({ key, ...value }));
     context.ammoTypeOptions = ["", ...BECMI_AMMO_TYPES];
@@ -136,7 +136,7 @@ export class BECMIItemSheet extends ItemSheet {
         updates["system.range"] = definition.range ?? { short: null, medium: null, long: null };
         const hands = definition.hands === "oneOrTwo" ? "one" : definition.hands;
         updates["system.hands"] = hands;
-        updates["system.slot"] = hands === "two" ? "bothHands" : (expanded.system?.slot || "weaponMain");
+        updates["system.slot"] = expanded.system?.slot || "weaponMain";
       }
     }
 

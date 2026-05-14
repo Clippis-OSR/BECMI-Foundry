@@ -479,8 +479,7 @@
   <li>Shield: {{equipmentSlots.shield}}</li>
   <li>Main Weapon: {{equipmentSlots.weaponMain}}</li>
   <li>Offhand Weapon: {{equipmentSlots.weaponOffhand}}</li>
-  <li>Ring (L): {{equipmentSlots.ringLeft}}</li>
-  <li>Ring (R): {{equipmentSlots.ringRight}}</li>
+  <li>Ring: {{equipmentSlots.ring}}</li>
   <li>Amulet: {{equipmentSlots.amulet}}</li>
   <li>Cloak: {{equipmentSlots.cloak}}</li>
   <li>Boots: {{equipmentSlots.boots}}</li>
@@ -533,7 +532,7 @@
             <option value="storage" {{#if (eq item.location "storage")}}selected{{/if}}>Storage</option>
           </select>
         </td>
-        <td><input type="text" value="{{item.slot}}" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.slot" placeholder="weapon/armor/ring" /></td>
+        <td><select data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.slot"><option value="armor" {{#if (eq item.slot "armor")}}selected{{/if}}>armor</option><option value="shield" {{#if (eq item.slot "shield")}}selected{{/if}}>shield</option><option value="helmet" {{#if (eq item.slot "helmet")}}selected{{/if}}>helmet</option><option value="cloak" {{#if (eq item.slot "cloak")}}selected{{/if}}>cloak</option><option value="boots" {{#if (eq item.slot "boots")}}selected{{/if}}>boots</option><option value="gloves" {{#if (eq item.slot "gloves")}}selected{{/if}}>gloves</option><option value="ring" {{#if (eq item.slot "ring")}}selected{{/if}}>ring</option><option value="amulet" {{#if (eq item.slot "amulet")}}selected{{/if}}>amulet</option><option value="belt" {{#if (eq item.slot "belt")}}selected{{/if}}>belt</option><option value="weaponMain" {{#if (eq item.slot "weaponMain")}}selected{{/if}}>weaponMain</option><option value="weaponOffhand" {{#if (eq item.slot "weaponOffhand")}}selected{{/if}}>weaponOffhand</option><option value="natural" {{#if (eq item.slot "natural")}}selected{{/if}}>natural</option><option value="missile" {{#if (eq item.slot "missile")}}selected{{/if}}>missile</option></select></td>
         <td>{{#if item.equipped}}✅{{else}}—{{/if}}</td>
         <td>
           <button type="button" data-action="toggle-equip-item" data-item-id="{{item.id}}">{{#if item.equipped}}Unequip{{else}}Equip{{/if}}</button>

@@ -1,3 +1,4 @@
+import { assertCanonicalActorType } from "../actors/actor-types.mjs";
 import { getActorClassId, getActorLevel } from "./lookups.mjs";
 
 function normalizeClassId(classId) {
@@ -197,7 +198,7 @@ export function getActorSaves(actor) {
     return null;
   }
 
-  const actorType = actor.type;
+  const actorType = assertCanonicalActorType(actor.type, `getActorSaves for actor "${actor?.name ?? actor?.id ?? "Unknown"}"`);
 
   if (actorType === "character") {
     const classId = getActorClassId(actor);
@@ -226,10 +227,9 @@ export function getActorSaves(actor) {
     return getCharacterSaves(classId, level);
   }
 
-  if (actorType === "creature" || actorType === "monster" || actorType === "npc") {
+  if (actorType === "creature") {
     return getCreatureSaves(actor);
   }
 
-  console.warn(`[BECMI] Unsupported actor type \"${actorType}\" for save lookup.`);
-  return null;
+  throw new Error(`[BECMI] Unsupported actor type "${actorType}" for save lookup.`);
 }
