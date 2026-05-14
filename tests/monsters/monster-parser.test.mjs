@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import { describe, it, expect } from 'vitest';
-import { parseMonsterCsv, normalizeMonsterRow, parseMonsterAttacks, buildMonsterCatalog } from '../../module/utils/monster-parser.mjs';
+import { parseMonsterCsv, normalizeMonsterRow, parseMonsterAttacks, buildMonsterCatalog, parseMonsterMovement, parseMonsterDamage, parseMonsterTreasure } from '../../module/utils/monster-parser.mjs';
 
 describe('monster parser', () => {
   it('parses csv/xlsx rows', async () => {
@@ -29,6 +29,25 @@ describe('monster parser', () => {
     expect(parseMonsterAttacks('Special')).toEqual([{ type: 'special', count: 1, raw: 'Special' }]);
     expect(parseMonsterAttacks('By weapon')).toEqual([{ type: 'by weapon', count: 1, raw: 'By weapon' }]);
     expect(parseMonsterAttacks('')).toEqual([]);
+  });
+
+  it('parses movement modes while preserving raw text', () => {
+    const movement = parseMonsterMovement('120 (40), Fly 180(60), Swim 90');
+    expect(movement.raw).toBe('120 (40), Fly 180(60), Swim 90');
+    expect(movement.modes).toMatchObject({ move: '120(40)', fly: '180(60)', swim: '90' });
+  });
+
+  it('parses damage into dice and rider segments', () => {
+    const damage = parseMonsterDamage('1d6 + poison / 2d4 paralysis on failed save');
+    expect(damage.parsed[0]).toMatchObject({ dice: '1d6', rider: 'poison' });
+    expect(damage.parsed[1]).toMatchObject({ dice: '2d4' });
+    expect(damage.parsed[1].rider).toMatch(/paralysis/i);
+  });
+
+  it('normalizes annotated treasure codes while preserving raw', () => {
+    const treasure = parseMonsterTreasure('(P)D, E + 5000gp');
+    expect(treasure.raw).toBe('(P)D, E + 5000gp');
+    expect(treasure.normalizedCodes).toEqual(['P', 'D', 'E']);
   });
 
   it('handles malformed/invalid rows without crashing', () => {
