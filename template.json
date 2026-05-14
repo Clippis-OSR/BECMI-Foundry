@@ -381,8 +381,9 @@
       "shieldBonus": 0,
       "maxDexBonus": 0,
       "magicalBonus": 0,
-      "slot": "weapon",
-      "acBonus": 0
+      "slot": "armor",
+      "acBonus": 0,
+      "baseAC": 9
     },
     "equipment": {
       "description": "",
@@ -399,7 +400,7 @@
       "tags": [],
       "notes": "",
       "actions": [],
-      "slot": "weapon",
+      "slot": "",
       "acBonus": 0
     },
     "treasure": {
