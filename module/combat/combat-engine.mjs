@@ -21,7 +21,7 @@ import {
 } from "./initiative.mjs";
 import { SAVE_TYPES, getSaveTarget, resolveSave, rollSave, renderSaveCard } from "./saves.mjs";
 import { resolveMorale, rollMorale, renderMoraleCard, shouldCheckMorale } from "./morale.mjs";
-import { hasAvailableAmmo } from "../items/ammo.mjs";
+import { hasAvailableAmmo, consumeAmmo } from "../items/ammo.mjs";
 import {
   getCreatureXP,
   calculateEncounterXP,
@@ -87,10 +87,21 @@ export async function rollAttack({ attacker, target, attackData, rollDamageOnHit
   if (!target) throw new Error("[BECMI Combat] rollAttack requires a target.");
   if (!attackData || typeof attackData !== "object") throw new Error("[BECMI Combat] rollAttack requires attackData.");
 
-  if (attackData?.ammoType && !hasAvailableAmmo(attacker, attackData.ammoType)) {
+  const attackItem = attackData?.id ? attacker?.items?.get?.(attackData.id) : null;
+  const requiresAmmo = attackData?.type === "missile" && attackData?.ammoType;
+  const requiresLauncher = requiresAmmo;
+
+  if (requiresLauncher && attackItem?.system?.equipped !== true) {
+    ui.notifications?.warn(`${attackData?.name ?? "Missile weapon"} must be equipped to attack.`);
+    return { attackResult: null, damageResult: null, blockedByAmmo: true };
+  }
+
+  if (requiresAmmo && !hasAvailableAmmo(attacker, attackData.ammoType)) {
     ui.notifications?.warn(`No ammunition available for ${attackData?.name ?? "weapon"}.`);
     return { attackResult: null, damageResult: null, blockedByAmmo: true };
   }
+
+  if (requiresAmmo) await consumeAmmo(attacker, attackData.ammoType, 1);
   // TODO: Future: support ammo tracking modes: none, manual, automatic.
 
   const attackResult = await resolveAttack({ attacker, target, attackData });

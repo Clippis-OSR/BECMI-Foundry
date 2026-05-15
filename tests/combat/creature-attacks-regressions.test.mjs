@@ -59,7 +59,7 @@ describe('creature natural attacks + monster actions regressions', () => {
     });
 
     const total = calculateTotalEncumbrance(actor);
-    expect(total.total).toBe(0);
+    expect(total.totalCarriedWeight).toBe(0);
   });
 
   it('monster action descriptors preserve type/label/description', () => {
