@@ -49,8 +49,8 @@ describe('schema regressions', () => {
   });
 
   it('canonical inventory location enforcement rejects invalid values', () => {
-    expect(() => validateItemSchema({ type: 'equipment', system: { inventory: { location: 'equipped' } } }, 'inventory-location-test'))
-      .toThrow(/Invalid item\.system\.inventory\.location "equipped"/);
+    expect(() => validateItemSchema({ type: 'equipment', system: { inventory: { location: 'badPlace' } } }, 'inventory-location-test'))
+      .toThrow(/Invalid item\.system\.inventory\.location "badPlace"/);
   });
 
   it('rejects self-containing and circular container references', () => {

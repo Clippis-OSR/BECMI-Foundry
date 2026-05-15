@@ -17,8 +17,8 @@ export const CANONICAL_ITEM_SLOTS = Object.freeze(["armor", "shield", "helmet", 
 
 export const CANONICAL_WEAPON_TYPES = Object.freeze(["melee", "missile", "natural"]);
 export const CANONICAL_HANDS_VALUES = Object.freeze(["one", "two", "none"]);
-export const CANONICAL_INVENTORY_LOCATIONS = Object.freeze(["worn", "beltPouch", "backpack", "sack1", "sack2", "carried", "treasureHorde", "stored"]);
-export const CANONICAL_LOGICAL_CONTAINERS = Object.freeze(["beltPouch", "backpack", "sack1", "sack2"]);
+export const CANONICAL_INVENTORY_LOCATIONS = Object.freeze(["carried", "worn", "equipped", "backpack", "beltPouch", "sack", "storage", "treasure"]);
+export const CANONICAL_LOGICAL_CONTAINERS = Object.freeze(["beltPouch", "backpack", "sack", "storage"]);
 export const CANONICAL_COIN_KEYS = Object.freeze(["pp", "gp", "ep", "sp", "cp"]);
 
 function fail(label, value, allowed, context) {

@@ -14,8 +14,8 @@ describe('migration-oriented schema guards', () => {
 
   it('normalizes legacy inventory aliases to canonical values', () => {
     expect(normalizeItemLocation('equipped')).toBe('worn');
-    expect(normalizeItemLocation('storage')).toBe('stored');
-    expect(normalizeItemLocation('treasure')).toBe('treasureHorde');
+    expect(normalizeItemLocation('storage')).toBe('storage');
+    expect(normalizeItemLocation('treasure')).toBe('treasure');
   });
 
   it('normalizes blank legacy armor slot to armor or shield', () => {
