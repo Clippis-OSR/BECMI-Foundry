@@ -12,3 +12,5 @@ export * from "./ac.mjs";
 export * from "./weapons.mjs";
 
 export * from "./encumbrance.mjs";
+
+export * from "./exploration.mjs";
