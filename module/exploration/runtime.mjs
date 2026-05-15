@@ -1,22 +1,27 @@
 import { deriveElapsedTimeFromTurns, getTimeUnits } from "./time.mjs";
 import { getMovementContext, getMovementSummary as summarizeMovement } from "./movement.mjs";
 import { normalizeLightSource, tickLightSources } from "./light.mjs";
-import { convertDistanceByContext } from "./movement-contracts.mjs";
+import { applyTerrainToDailyTravel, convertDistanceByContext, getPartyMovementSummary } from "./movement-contracts.mjs";
 
 const safeInt = (value, fallback = 0) => {
   const n = Number(value);
   return Number.isFinite(n) ? Math.max(0, Math.floor(n)) : fallback;
 };
 
-const asArray = (value) => (Array.isArray(value) ? value : []);
+const safeNum = (value, fallback = 0) => {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : fallback;
+};
 
+const asArray = (value) => (Array.isArray(value) ? value : []);
 const freezeArray = (value) => Object.freeze([...value]);
 
 const normalizeHooks = (hooks = {}) => Object.freeze({
   onExplorationTurnAdvance: typeof hooks?.onExplorationTurnAdvance === "function" ? hooks.onExplorationTurnAdvance : null,
   onExplorationLightExpired: typeof hooks?.onExplorationLightExpired === "function" ? hooks.onExplorationLightExpired : null,
   onExplorationMovementUpdated: typeof hooks?.onExplorationMovementUpdated === "function" ? hooks.onExplorationMovementUpdated : null,
-  onExplorationDurationTick: typeof hooks?.onExplorationDurationTick === "function" ? hooks.onExplorationDurationTick : null
+  onExplorationDurationTick: typeof hooks?.onExplorationDurationTick === "function" ? hooks.onExplorationDurationTick : null,
+  onExplorationEncounterCadence: typeof hooks?.onExplorationEncounterCadence === "function" ? hooks.onExplorationEncounterCadence : null
 });
 
 function emitHook(hook, payload, events) {
@@ -25,12 +30,25 @@ function emitHook(hook, payload, events) {
   if (result !== undefined) events.push(result);
 }
 
+function normalizeWildernessState(state = {}) {
+  return Object.freeze({
+    terrainKey: typeof state?.terrainKey === "string" && state.terrainKey ? state.terrainKey : "normal",
+    travelProgressMiles: Math.max(0, safeNum(state?.travelProgressMiles, 0)),
+    dayTravelMiles: Math.max(0, safeNum(state?.dayTravelMiles, 0)),
+    daysTraveled: safeInt(state?.daysTraveled, 0),
+    encounterCadenceCounter: safeInt(state?.encounterCadenceCounter, 0),
+    encounterCadenceTurns: Math.max(1, safeInt(state?.encounterCadenceTurns, 3))
+  });
+}
+
 export function normalizeExplorationState(state = {}, runtime = {}) {
   const currentTurn = safeInt(state?.currentTurn, 0);
   const elapsedTurns = safeInt(state?.elapsedTurns ?? state?.currentTurn, currentTurn);
   const elapsed = deriveElapsedTimeFromTurns(elapsedTurns);
   const movementContext = getMovementContext(state?.movementContext ?? runtime?.movementContext ?? "dungeonExploration");
   const movement = summarizeMovement(runtime?.encumbrance ?? state?.encumbrance ?? {}, movementContext);
+  const partyMovement = getPartyMovementSummary(runtime?.party ?? state?.party ?? []);
+  const movementValue = partyMovement.partyMovement > 0 ? partyMovement.partyMovement : movement.movementValue;
   const activeLightSources = asArray(state?.activeLightSources).map((source) => normalizeLightSource(source));
   const diagnostics = asArray(state?.diagnostics).map((entry) => String(entry));
 
@@ -40,10 +58,11 @@ export function normalizeExplorationState(state = {}, runtime = {}) {
     elapsedMinutes: elapsed.elapsedMinutes,
     elapsedHours: elapsed.elapsedMinutes / 60,
     elapsedDays: elapsed.elapsedDays,
-    movementValue: movement.movementValue,
+    movementValue,
     movementContext,
     activeLightSources: freezeArray(activeLightSources),
     diagnostics: freezeArray(diagnostics),
+    wilderness: normalizeWildernessState(state?.wilderness),
     extension: Object.freeze({
       encounterChecks: null,
       fatigueChecks: null,
@@ -60,12 +79,48 @@ export function advanceExplorationTurn(state = {}, runtime = {}) {
   const elapsedTurns = before.elapsedTurns + 1;
   const elapsed = deriveElapsedTimeFromTurns(elapsedTurns);
   const movement = summarizeMovement(runtime?.encumbrance ?? state?.encumbrance ?? {}, before.movementContext);
+  const partyMovement = getPartyMovementSummary(runtime?.party ?? state?.party ?? []);
+  const movementValue = partyMovement.partyMovement > 0 ? partyMovement.partyMovement : movement.movementValue;
   const activeLightSources = tickLightSources(before.activeLightSources, 1);
+
+  const nextEncounterCadenceCounter = before.wilderness.encounterCadenceCounter + 1;
+  const encounterCadenceTriggered = before.movementContext.startsWith("wilderness")
+    && nextEncounterCadenceCounter >= before.wilderness.encounterCadenceTurns;
+
+  const dailyTravel = applyTerrainToDailyTravel(movement.milesPerDay, before.wilderness.terrainKey);
+  const milesPerTurn = dailyTravel.modifiedMilesPerDay / 24;
+  const travelProgressMiles = before.movementContext.startsWith("wilderness")
+    ? before.wilderness.travelProgressMiles + milesPerTurn
+    : before.wilderness.travelProgressMiles;
+  const dayTravelMiles = before.movementContext.startsWith("wilderness")
+    ? before.wilderness.dayTravelMiles + milesPerTurn
+    : before.wilderness.dayTravelMiles;
+
+  const daysTraveled = before.movementContext.startsWith("wilderness") && dayTravelMiles >= dailyTravel.modifiedMilesPerDay
+    ? before.wilderness.daysTraveled + 1
+    : before.wilderness.daysTraveled;
+
+  const wilderness = Object.freeze({
+    terrainKey: before.wilderness.terrainKey,
+    travelProgressMiles,
+    dayTravelMiles: before.movementContext.startsWith("wilderness") && dayTravelMiles >= dailyTravel.modifiedMilesPerDay
+      ? dayTravelMiles - dailyTravel.modifiedMilesPerDay
+      : dayTravelMiles,
+    daysTraveled,
+    encounterCadenceTurns: before.wilderness.encounterCadenceTurns,
+    encounterCadenceCounter: encounterCadenceTriggered ? 0 : nextEncounterCadenceCounter
+  });
 
   const expiredLights = activeLightSources.filter((source) => !source.active && source.remainingTurns === 0);
   const diagnostics = [
     ...before.diagnostics,
     `turn advanced: ${before.currentTurn} -> ${before.currentTurn + 1}`,
+    `determine movement: ${movementValue}`,
+    `apply terrain modifiers: ${wilderness.terrainKey}`,
+    `advance travel: +${milesPerTurn.toFixed(4)} mi`,
+    `consume exploration time: +10 min`,
+    `process encounter cadence hooks: ${encounterCadenceTriggered ? "triggered" : "no-op"}`,
+    `tick light/duration systems: ${activeLightSources.length}`,
     ...activeLightSources.flatMap((source) => source.diagnostics)
   ];
 
@@ -75,10 +130,11 @@ export function advanceExplorationTurn(state = {}, runtime = {}) {
     elapsedMinutes: elapsed.elapsedMinutes,
     elapsedHours: elapsed.elapsedMinutes / 60,
     elapsedDays: elapsed.elapsedDays,
-    movementValue: movement.movementValue,
+    movementValue,
     movementContext: before.movementContext,
     activeLightSources: freezeArray(activeLightSources),
     diagnostics: freezeArray(diagnostics),
+    wilderness,
     extension: before.extension
   });
 
@@ -87,6 +143,11 @@ export function advanceExplorationTurn(state = {}, runtime = {}) {
   const turnEvent = Object.freeze({ type: "explorationTurnAdvanced", turn: next.currentTurn, elapsedTurns, elapsedMinutes: next.elapsedMinutes });
 
   events.push(durationEvent, movementEvent, turnEvent);
+  if (encounterCadenceTriggered) {
+    const encounterEvent = Object.freeze({ type: "explorationEncounterCadence", turn: next.currentTurn, cadenceTurns: next.wilderness.encounterCadenceTurns });
+    events.push(encounterEvent);
+    emitHook(hooks.onExplorationEncounterCadence, encounterEvent, events);
+  }
 
   for (const light of expiredLights) {
     const lightEvent = Object.freeze({ type: "explorationLightExpired", turn: next.currentTurn, lightKey: light.lightKey, label: light.label });
@@ -98,11 +159,7 @@ export function advanceExplorationTurn(state = {}, runtime = {}) {
   emitHook(hooks.onExplorationMovementUpdated, movementEvent, events);
   emitHook(hooks.onExplorationTurnAdvance, turnEvent, events);
 
-  return Object.freeze({
-    state: next,
-    events: freezeArray(events),
-    diagnostics: next.diagnostics
-  });
+  return Object.freeze({ state: next, events: freezeArray(events), diagnostics: next.diagnostics });
 }
 
 export function getMovementSummary(state = {}, runtime = {}) {
@@ -122,6 +179,7 @@ export function getExplorationSummary(state = {}, runtime = {}) {
     movementValue: normalized.movementValue,
     movementContext: normalized.movementContext,
     milesPerDay: movement.milesPerDay,
+    wilderness: normalized.wilderness,
     activeLights: normalized.activeLightSources.filter((source) => source.active).length,
     activeLightSources: normalized.activeLightSources,
     remainingTurns: normalized.activeLightSources.map((source) => Object.freeze({ lightKey: source.lightKey, remainingTurns: source.remainingTurns })),
@@ -130,7 +188,6 @@ export function getExplorationSummary(state = {}, runtime = {}) {
     extension: normalized.extension
   });
 }
-
 
 export function convertMissileRange(distanceFeet, context = "dungeonExploration") {
   return convertDistanceByContext(distanceFeet, "weaponRange", context);
