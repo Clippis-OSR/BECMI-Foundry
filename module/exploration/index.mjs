@@ -3,6 +3,7 @@ import * as time from "./time.mjs";
 import * as light from "./light.mjs";
 import * as movementContracts from "./movement-contracts.mjs";
 import * as distance from "./distance.mjs";
+import * as wildernessProcedures from "./wilderness-procedures.mjs";
 
 import {
   advanceExplorationTurn,
@@ -17,6 +18,7 @@ export {
   light,
   movementContracts,
   distance,
+  wildernessProcedures,
   normalizeExplorationState,
   advanceExplorationTurn,
   getMovementSummary,

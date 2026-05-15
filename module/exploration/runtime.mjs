@@ -2,6 +2,7 @@ import { deriveElapsedTimeFromTurns, getTimeUnits } from "./time.mjs";
 import { getMovementContext, getMovementSummary as summarizeMovement } from "./movement.mjs";
 import { normalizeLightSource, tickLightSources } from "./light.mjs";
 import { applyTerrainToDailyTravel, convertDistanceByContext, getForcedMarchState, getPartyMovementSummary } from "./movement-contracts.mjs";
+import { resolveWildernessEncounterCheck, resolveWildernessLostCheck, resolveWildernessEvasionCheck, resolveWildernessPursuitCheck } from "./wilderness-procedures.mjs";
 
 const safeInt = (value, fallback = 0) => {
   const n = Number(value);
@@ -21,7 +22,11 @@ const normalizeHooks = (hooks = {}) => Object.freeze({
   onExplorationLightExpired: typeof hooks?.onExplorationLightExpired === "function" ? hooks.onExplorationLightExpired : null,
   onExplorationMovementUpdated: typeof hooks?.onExplorationMovementUpdated === "function" ? hooks.onExplorationMovementUpdated : null,
   onExplorationDurationTick: typeof hooks?.onExplorationDurationTick === "function" ? hooks.onExplorationDurationTick : null,
-  onExplorationEncounterCadence: typeof hooks?.onExplorationEncounterCadence === "function" ? hooks.onExplorationEncounterCadence : null
+  onExplorationEncounterCadence: typeof hooks?.onExplorationEncounterCadence === "function" ? hooks.onExplorationEncounterCadence : null,
+  onWildernessEncounterCheck: typeof hooks?.onWildernessEncounterCheck === "function" ? hooks.onWildernessEncounterCheck : null,
+  onWildernessLostCheck: typeof hooks?.onWildernessLostCheck === "function" ? hooks.onWildernessLostCheck : null,
+  onWildernessEvasionCheck: typeof hooks?.onWildernessEvasionCheck === "function" ? hooks.onWildernessEvasionCheck : null,
+  onWildernessPursuitCheck: typeof hooks?.onWildernessPursuitCheck === "function" ? hooks.onWildernessPursuitCheck : null
 });
 
 function emitHook(hook, payload, events) {
@@ -143,10 +148,47 @@ export function advanceExplorationTurn(state = {}, runtime = {}) {
   });
 
   const durationEvent = Object.freeze({ type: "explorationDurationTick", turn: next.currentTurn, elapsedTurns, elapsedMinutes: next.elapsedMinutes });
+
+  const wildernessProcedureSupport = before.movementContext.startsWith("wilderness") ? Object.freeze({
+    encounter: resolveWildernessEncounterCheck({
+      cadenceTurns: next.wilderness.encounterCadenceTurns,
+      cadenceCounter: before.wilderness.encounterCadenceCounter,
+      dieRoll: runtime?.wildernessProcedureInput?.encounterDieRoll ?? 1,
+      target: runtime?.wildernessProcedureInput?.encounterTarget ?? 1,
+      modifier: runtime?.wildernessProcedureInput?.encounterModifier ?? 0
+    }),
+    lost: resolveWildernessLostCheck({
+      dieRoll: runtime?.wildernessProcedureInput?.lostDieRoll ?? 1,
+      target: runtime?.wildernessProcedureInput?.lostTarget ?? 1,
+      modifier: runtime?.wildernessProcedureInput?.lostModifier ?? 0
+    }),
+    evasion: resolveWildernessEvasionCheck({
+      dieRoll: runtime?.wildernessProcedureInput?.evasionDieRoll ?? 7,
+      target: runtime?.wildernessProcedureInput?.evasionTarget ?? 7,
+      modifier: runtime?.wildernessProcedureInput?.evasionModifier ?? 0
+    }),
+    pursuit: resolveWildernessPursuitCheck({
+      dieRoll: runtime?.wildernessProcedureInput?.pursuitDieRoll ?? 7,
+      target: runtime?.wildernessProcedureInput?.pursuitTarget ?? 7,
+      modifier: runtime?.wildernessProcedureInput?.pursuitModifier ?? 0
+    })
+  }) : null;
   const movementEvent = Object.freeze({ type: "explorationMovementUpdated", turn: next.currentTurn, movementValue: next.movementValue, movementContext: next.movementContext });
   const turnEvent = Object.freeze({ type: "explorationTurnAdvanced", turn: next.currentTurn, elapsedTurns, elapsedMinutes: next.elapsedMinutes });
 
   events.push(durationEvent, movementEvent, turnEvent);
+
+  if (wildernessProcedureSupport) {
+    const encounterEvent = Object.freeze({ type: "wildernessEncounterCheck", turn: next.currentTurn, result: wildernessProcedureSupport.encounter });
+    const lostEvent = Object.freeze({ type: "wildernessLostCheck", turn: next.currentTurn, result: wildernessProcedureSupport.lost });
+    const evasionEvent = Object.freeze({ type: "wildernessEvasionCheck", turn: next.currentTurn, result: wildernessProcedureSupport.evasion });
+    const pursuitEvent = Object.freeze({ type: "wildernessPursuitCheck", turn: next.currentTurn, result: wildernessProcedureSupport.pursuit });
+    events.push(encounterEvent, lostEvent, evasionEvent, pursuitEvent);
+    emitHook(hooks.onWildernessEncounterCheck, encounterEvent, events);
+    emitHook(hooks.onWildernessLostCheck, lostEvent, events);
+    emitHook(hooks.onWildernessEvasionCheck, evasionEvent, events);
+    emitHook(hooks.onWildernessPursuitCheck, pursuitEvent, events);
+  }
   if (encounterCadenceTriggered) {
     const encounterEvent = Object.freeze({ type: "explorationEncounterCadence", turn: next.currentTurn, cadenceTurns: next.wilderness.encounterCadenceTurns });
     events.push(encounterEvent);
