@@ -5,6 +5,7 @@ import { calculateTotalEncumbrance } from "../items/encumbrance.mjs";
 import { migrateActorSpellcasting } from "./spellcasting/spellcasting-migration.js";
 import { validateActorSpellcasting } from "./spellcasting/spellcasting-validation.js";
 import { prepareSpellcastingData } from "./spellcasting/spellcasting-data.js";
+import { buildCreatureRuntimeFromMonster } from "../monsters/monster-runtime.mjs";
 
 
 function applyEncumbranceDerivedData(system, actor) {
@@ -113,6 +114,7 @@ export class BECMIActor extends Actor {
   _prepareCreatureDerivedData() {
     const system = this.system;
     const monster = system.monster ?? {};
+    const monsterRuntime = buildCreatureRuntimeFromMonster(this);
 
     const existingDerived = system.derived ?? {};
     const calculatedSaves = getActorSaves(this) ?? {};
@@ -139,15 +141,23 @@ export class BECMIActor extends Actor {
         dragonBreath: canonicalSaves.dragonBreath.value,
         rodStaffSpell: canonicalSaves.rodStaffSpell.value
       },
-      hitDice: monster.hitDice ?? null,
-      savesAs: monster.saveAs ?? null,
+      hitDice: monsterRuntime.hitDice,
+      savesAs: monsterRuntime.saveAs,
       monster: {
+        monsterKey: monsterRuntime.monsterKey,
+        morale: monsterRuntime.morale,
+        xp: monsterRuntime.xp,
+        treasureType: monsterRuntime.treasureType,
+        ac: monsterRuntime.ac,
+        damage: monsterRuntime.damage,
+        specialAbilitiesRaw: monsterRuntime.specialAbilitiesRaw,
+        diagnostics: monsterRuntime.diagnostics,
         movement: {
-          summary: [monster.movement?.land?.feetPerTurn, monster.movement?.land?.feetPerRound]
+          summary: [monsterRuntime.movement?.feetPerTurn, monsterRuntime.movement?.feetPerRound]
             .map((n) => Number(n) || 0)
             .some((n) => n > 0)
-            ? `${Number(monster.movement?.land?.feetPerTurn) || 0}'/turn (${Number(monster.movement?.land?.feetPerRound) || 0}'/round)`
-            : String(monster.movement?.special ?? "")
+            ? `${Number(monsterRuntime.movement?.feetPerTurn) || 0}'/turn (${Number(monsterRuntime.movement?.feetPerRound) || 0}'/round)`
+            : String(monsterRuntime.movement?.raw ?? "")
         }
       }
     };
