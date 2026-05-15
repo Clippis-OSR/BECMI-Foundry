@@ -54,6 +54,7 @@ export function calculateTotalEncumbrance(actor) {
     const loc = getItemLocation(item);
     const ownWeight = getItemTotalWeight(item);
     if (item.type !== "container") {
+      if (item?.system?.inventory?.countsTowardEncumbrance === false) continue;
       const parent = containerLoadById.get(item?.system?.containerId ?? "");
       const parentCarried = parent?.carriedState === "carried";
       const countAsCarried = isCarried(item) || parentCarried;
