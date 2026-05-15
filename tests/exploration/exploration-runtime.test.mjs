@@ -63,6 +63,42 @@ describe('exploration runtime integration', () => {
     expect(hookEvents).toEqual(['explorationLightExpired']);
   });
 
+
+
+  it('uses slowest active party member for wilderness movement', () => {
+    const runtime = {
+      movementContext: 'wildernessExploration',
+      party: [
+        { id: 'a', name: 'Fast', movementValue: 120, active: true },
+        { id: 'b', name: 'Slow', movementValue: 60, active: true },
+        { id: 'c', name: 'Inactive', movementValue: 30, active: false }
+      ],
+      encumbrance: { totalCarriedWeight: 0 }
+    };
+    const state = normalizeExplorationState({ movementContext: 'wildernessExploration' }, runtime);
+    expect(state.movementValue).toBe(60);
+  });
+
+  it('advances deterministic wilderness travel stages in one canonical path', () => {
+    const runtime = { encumbrance: { totalCarriedWeight: 401 }, movementContext: 'wildernessExploration' };
+    const state = normalizeExplorationState({
+      movementContext: 'wildernessExploration',
+      wilderness: { terrainKey: 'rough', encounterCadenceTurns: 2, encounterCadenceCounter: 1 }
+    }, runtime);
+
+    const result = advanceExplorationTurn(state, runtime);
+    expect(result.state.wilderness.travelProgressMiles).toBeCloseTo((18 * 0.75) / 24, 6);
+    expect(result.state.wilderness.encounterCadenceCounter).toBe(0);
+    expect(result.events.some((evt) => evt.type === 'explorationEncounterCadence')).toBe(true);
+    expect(result.state.diagnostics).toEqual(expect.arrayContaining([
+      expect.stringContaining('determine movement'),
+      expect.stringContaining('apply terrain modifiers'),
+      expect.stringContaining('advance travel'),
+      expect.stringContaining('consume exploration time'),
+      expect.stringContaining('process encounter cadence hooks'),
+      expect.stringContaining('tick light/duration systems')
+    ]));
+  });
   it('exports runtime API for attachment to game.becmi', () => {
     expect(exploration).toHaveProperty('movement');
     expect(exploration).toHaveProperty('time');
