@@ -1,6 +1,7 @@
 import { deriveElapsedTimeFromTurns, getTimeUnits } from "./time.mjs";
 import { getMovementContext, getMovementSummary as summarizeMovement } from "./movement.mjs";
 import { normalizeLightSource, tickLightSources } from "./light.mjs";
+import { convertDistanceByContext } from "./movement-contracts.mjs";
 
 const safeInt = (value, fallback = 0) => {
   const n = Number(value);
@@ -128,4 +129,9 @@ export function getExplorationSummary(state = {}, runtime = {}) {
     timeUnits: getTimeUnits(),
     extension: normalized.extension
   });
+}
+
+
+export function convertMissileRange(distanceFeet, context = "dungeonExploration") {
+  return convertDistanceByContext(distanceFeet, "weaponRange", context);
 }
