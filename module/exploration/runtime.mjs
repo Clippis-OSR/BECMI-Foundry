@@ -1,7 +1,7 @@
 import { deriveElapsedTimeFromTurns, getTimeUnits } from "./time.mjs";
 import { getMovementContext, getMovementSummary as summarizeMovement } from "./movement.mjs";
 import { normalizeLightSource, tickLightSources } from "./light.mjs";
-import { applyTerrainToDailyTravel, convertDistanceByContext, getPartyMovementSummary } from "./movement-contracts.mjs";
+import { applyTerrainToDailyTravel, convertDistanceByContext, getForcedMarchState, getPartyMovementSummary } from "./movement-contracts.mjs";
 
 const safeInt = (value, fallback = 0) => {
   const n = Number(value);
@@ -35,6 +35,7 @@ function normalizeWildernessState(state = {}) {
     terrainKey: typeof state?.terrainKey === "string" && state.terrainKey ? state.terrainKey : "normal",
     travelProgressMiles: Math.max(0, safeNum(state?.travelProgressMiles, 0)),
     dayTravelMiles: Math.max(0, safeNum(state?.dayTravelMiles, 0)),
+    forcedMarchUsed: state?.forcedMarchUsed === true,
     daysTraveled: safeInt(state?.daysTraveled, 0),
     encounterCadenceCounter: safeInt(state?.encounterCadenceCounter, 0),
     encounterCadenceTurns: Math.max(1, safeInt(state?.encounterCadenceTurns, 3))
@@ -88,7 +89,8 @@ export function advanceExplorationTurn(state = {}, runtime = {}) {
     && nextEncounterCadenceCounter >= before.wilderness.encounterCadenceTurns;
 
   const dailyTravel = applyTerrainToDailyTravel(movement.milesPerDay, before.wilderness.terrainKey);
-  const milesPerTurn = dailyTravel.modifiedMilesPerDay / 24;
+  const forcedMarch = getForcedMarchState(dailyTravel.modifiedMilesPerDay, before.wilderness.forcedMarchUsed);
+  const milesPerTurn = forcedMarch.modifiedMilesPerDay / 24;
   const travelProgressMiles = before.movementContext.startsWith("wilderness")
     ? before.wilderness.travelProgressMiles + milesPerTurn
     : before.wilderness.travelProgressMiles;
@@ -96,15 +98,16 @@ export function advanceExplorationTurn(state = {}, runtime = {}) {
     ? before.wilderness.dayTravelMiles + milesPerTurn
     : before.wilderness.dayTravelMiles;
 
-  const daysTraveled = before.movementContext.startsWith("wilderness") && dayTravelMiles >= dailyTravel.modifiedMilesPerDay
+  const daysTraveled = before.movementContext.startsWith("wilderness") && dayTravelMiles >= forcedMarch.modifiedMilesPerDay
     ? before.wilderness.daysTraveled + 1
     : before.wilderness.daysTraveled;
 
   const wilderness = Object.freeze({
     terrainKey: before.wilderness.terrainKey,
     travelProgressMiles,
-    dayTravelMiles: before.movementContext.startsWith("wilderness") && dayTravelMiles >= dailyTravel.modifiedMilesPerDay
-      ? dayTravelMiles - dailyTravel.modifiedMilesPerDay
+    forcedMarchUsed: before.wilderness.forcedMarchUsed,
+    dayTravelMiles: before.movementContext.startsWith("wilderness") && dayTravelMiles >= forcedMarch.modifiedMilesPerDay
+      ? dayTravelMiles - forcedMarch.modifiedMilesPerDay
       : dayTravelMiles,
     daysTraveled,
     encounterCadenceTurns: before.wilderness.encounterCadenceTurns,
@@ -117,6 +120,7 @@ export function advanceExplorationTurn(state = {}, runtime = {}) {
     `turn advanced: ${before.currentTurn} -> ${before.currentTurn + 1}`,
     `determine movement: ${movementValue}`,
     `apply terrain modifiers: ${wilderness.terrainKey}`,
+    `forced march: ${wilderness.forcedMarchUsed ? "active" : "inactive"}`,
     `advance travel: +${milesPerTurn.toFixed(4)} mi`,
     `consume exploration time: +10 min`,
     `process encounter cadence hooks: ${encounterCadenceTriggered ? "triggered" : "no-op"}`,
@@ -179,6 +183,11 @@ export function getExplorationSummary(state = {}, runtime = {}) {
     movementValue: normalized.movementValue,
     movementContext: normalized.movementContext,
     milesPerDay: movement.milesPerDay,
+    terrainAdjustedMilesPerDay: applyTerrainToDailyTravel(movement.milesPerDay, normalized.wilderness.terrainKey).modifiedMilesPerDay,
+    forcedMarchMilesPerDay: getForcedMarchState(
+      applyTerrainToDailyTravel(movement.milesPerDay, normalized.wilderness.terrainKey).modifiedMilesPerDay,
+      normalized.wilderness.forcedMarchUsed
+    ).modifiedMilesPerDay,
     wilderness: normalized.wilderness,
     activeLights: normalized.activeLightSources.filter((source) => source.active).length,
     activeLightSources: normalized.activeLightSources,

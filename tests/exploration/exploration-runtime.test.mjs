@@ -99,6 +99,31 @@ describe('exploration runtime integration', () => {
       expect.stringContaining('tick light/duration systems')
     ]));
   });
+
+  it('applies terrain and forced march to wilderness daily travel summaries only', () => {
+    const runtime = { encumbrance: { totalCarriedWeight: 401 }, movementContext: 'wildernessExploration' };
+    const state = normalizeExplorationState({
+      movementContext: 'wildernessExploration',
+      wilderness: { terrainKey: 'rough', forcedMarchUsed: true }
+    }, runtime);
+
+    const summary = getExplorationSummary(state, runtime);
+    expect(summary.milesPerDay).toBe(18);
+    expect(summary.terrainAdjustedMilesPerDay).toBe(13.5);
+    expect(summary.forcedMarchMilesPerDay).toBe(20.25);
+  });
+
+  it('does not apply terrain or forced march to dungeon/combat movement values', () => {
+    const runtime = { encumbrance: { totalCarriedWeight: 401 }, movementContext: 'dungeonCombat' };
+    const state = normalizeExplorationState({
+      movementContext: 'dungeonCombat',
+      wilderness: { terrainKey: 'mountains', forcedMarchUsed: true }
+    }, runtime);
+
+    const summary = getExplorationSummary(state, runtime);
+    expect(summary.movementValue).toBe(90);
+    expect(summary.milesPerDay).toBe(18);
+  });
   it('exports runtime API for attachment to game.becmi', () => {
     expect(exploration).toHaveProperty('movement');
     expect(exploration).toHaveProperty('time');
