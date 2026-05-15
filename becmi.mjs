@@ -25,6 +25,7 @@ import {
 } from "./module/utils/validate-rules-data.mjs";
 import { validateActorSchema, validateItemSchema, validateItemSlot } from "./module/utils/schema-validation.mjs";
 import { isCanonicalSlot, normalizeLegacyItemSlotForMigration } from "./module/items/legacy-slot-migration.mjs";
+import * as explorationRuntime from "./module/exploration/index.mjs";
 
 const BECMI_CREATURE_SHEET_ID = "becmi-foundry.BECMICreatureSheet";
 const BECMI_CHARACTER_SHEET_ID = "becmi-foundry.BECMICharacterSheet";
@@ -208,6 +209,8 @@ Hooks.once("init", async function () {
   game.becmi = game.becmi || {};
   game.becmi.combat = combatEngine;
   console.log("BECMI Foundry | Combat engine registered at game.becmi.combat");
+  game.becmi.exploration = explorationRuntime;
+  console.log("BECMI Foundry | Exploration runtime registered at game.becmi.exploration");
 
   CONFIG.BECMI = CONFIG.BECMI || {};
   CONFIG.BECMI.classTables = {};
