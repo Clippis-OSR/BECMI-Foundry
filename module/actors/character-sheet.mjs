@@ -195,10 +195,10 @@ export class BECMICharacterSheet extends ActorSheet {
   _buildEncumbranceSummary() {
     try {
       const result = calculateTotalEncumbrance(this.actor) ?? {};
-      const total = Number.isFinite(Number(result.total)) ? Number(result.total) : 0;
-      const bracket = result.bracket ?? "0-400";
-      const normalSpeed = Number.isFinite(Number(result.normalSpeed)) ? Number(result.normalSpeed) : 0;
-      const encounterSpeed = Number.isFinite(Number(result.encounterSpeed)) ? Number(result.encounterSpeed) : 0;
+      const total = Number.isFinite(Number(result.totalCarriedWeight)) ? Number(result.totalCarriedWeight) : 0;
+      const bracket = result.movementTier?.id ?? "0-400";
+      const normalSpeed = Number.isFinite(Number(result.movementTier?.normalFeetPerTurn)) ? Number(result.movementTier.normalFeetPerTurn) : 0;
+      const encounterSpeed = Number.isFinite(Number(result.movementTier?.encounterFeetPerRound)) ? Number(result.movementTier.encounterFeetPerRound) : 0;
 
       const inventoryGroups = this._buildInventoryGroups();
       const withoutBackpack = this._sumGroupWeight(inventoryGroups, ["beltPouch", "worn", "sack1", "sack2"]);

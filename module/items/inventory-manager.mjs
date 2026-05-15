@@ -24,7 +24,7 @@ export function getActorItems(actor) {
   return toArray(actor?.items);
 }
 
-export const LOGICAL_CONTAINER_LOCATIONS = Object.freeze(["beltPouch", "backpack", "sack1", "sack2"]);
+export const LOGICAL_CONTAINER_LOCATIONS = Object.freeze(["beltPouch", "backpack", "sack", "storage"]);
 
 export function getRootItems(actor) {
   return getActorItems(actor).filter((item) => !normalizeContainerId(item?.system?.containerId));
@@ -62,7 +62,7 @@ export function getContainers(actor) {
   return getInventoryItems(actor).filter((item) => item?.type === "container");
 }
 
-export const CANONICAL_INVENTORY_LOCATIONS = Object.freeze(["worn", "beltPouch", "backpack", "sack1", "sack2", "carried", "treasureHorde", "stored"]);
+export const CANONICAL_INVENTORY_LOCATIONS = Object.freeze(["carried", "worn", "equipped", "backpack", "beltPouch", "sack", "storage", "treasure"]);
 
 /**
  * Canonical inventory locations are independent from equipment slots.
@@ -70,14 +70,16 @@ export const CANONICAL_INVENTORY_LOCATIONS = Object.freeze(["worn", "beltPouch",
  */
 export function normalizeItemLocation(value) {
   const location = String(value ?? "").trim();
+  const legacy = String(value ?? "").trim().toLowerCase();
+  if (legacy === "equipped") return "worn";
   if (CANONICAL_INVENTORY_LOCATIONS.includes(location)) return location;
 
   // Legacy aliases kept for migration safety.
-  const legacy = String(value ?? "").trim().toLowerCase();
-  if (legacy === "equipped") return "worn";
-  if (legacy === "storage") return "stored";
-  if (legacy === "treasure") return "treasureHorde";
-  return "worn";
+  if (["equipped", "worn"].includes(legacy)) return "worn";
+  if (["stored", "storage"].includes(legacy)) return "storage";
+  if (["treasurehorde", "treasure"].includes(legacy)) return "treasure";
+  if (["sack1", "sack2"].includes(legacy)) return "sack";
+  return "carried";
 }
 
 export function getItemLocation(item) {

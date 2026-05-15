@@ -20,6 +20,14 @@ export const BECMI_ENCUMBRANCE_RULES = Object.freeze({
   currency: Object.freeze({
     /** Number of coins that equal 1 cn of encumbrance. */
     coinsPerCn: 10
+  }),
+  containers: Object.freeze({
+    backpack: Object.freeze({ containerType: "backpack", label: "Backpack", capacityCn: 400, encumbranceMultiplier: 1 }),
+    beltPouch: Object.freeze({ containerType: "beltPouch", label: "Belt pouch", capacityCn: 100, encumbranceMultiplier: 1 }),
+    smallSack: Object.freeze({ containerType: "smallSack", label: "Small sack", capacityCn: 200, encumbranceMultiplier: 1 }),
+    largeSack: Object.freeze({ containerType: "largeSack", label: "Large sack", capacityCn: 600, encumbranceMultiplier: 1 }),
+    bagOfHolding: Object.freeze({ containerType: "bagOfHolding", label: "Bag of holding", capacityCn: 10000, encumbranceMultiplier: 0.06 }),
+    genericContainer: Object.freeze({ containerType: "genericContainer", label: "Generic container", capacityCn: 0, encumbranceMultiplier: 1 })
   })
 });
 
