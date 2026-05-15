@@ -25,6 +25,7 @@ import {
 } from "./module/utils/validate-rules-data.mjs";
 import { validateActorSchema, validateItemSchema, validateItemSlot } from "./module/utils/schema-validation.mjs";
 import { isCanonicalSlot, normalizeLegacyItemSlotForMigration } from "./module/items/legacy-slot-migration.mjs";
+import { detectLegacyManualDerivedFields, stripProtectedDerivedActorUpdates } from "./module/actors/derived-guards.mjs";
 import * as explorationRuntime from "./module/exploration/index.mjs";
 
 const BECMI_CREATURE_SHEET_ID = "becmi-foundry.BECMICreatureSheet";
@@ -182,6 +183,19 @@ async function migrateCreatureMonsterSchema() {
   }
 }
 
+
+
+async function migrateLegacyManualDerivedFields() {
+  if (!game.user?.isGM) return;
+  const actors = game.actors?.contents ?? [];
+  for (const actor of actors) {
+    const legacyPaths = detectLegacyManualDerivedFields(actor.toObject());
+    if (legacyPaths.length === 0) continue;
+    const updates = {};
+    for (const path of legacyPaths) updates[`system.-=${path.replace("system.", "")}`] = null;
+    if (Object.keys(updates).length > 0) await actor.update(updates);
+  }
+}
 function canonicalizeActorSavesForMigration(saves) {
   if (!saves || typeof saves !== "object") return null;
 
@@ -244,6 +258,8 @@ Hooks.once("init", async function () {
 
   Hooks.on("preUpdateActor", (actor, changes) => {
     if (actor.type !== "character") return;
+    const { sanitized, removed } = stripProtectedDerivedActorUpdates(changes);
+    if (removed.length > 0) Object.assign(changes, sanitized);
     const merged = foundry.utils.mergeObject(actor.toObject(), changes, { inplace: false });
     normalizeActorSpellcasting(merged.system);
     validateActorSpellcasting(merged);
@@ -365,6 +381,14 @@ Hooks.on("preCreateActor", (actor) => {
 });
 
 Hooks.on("preUpdateActor", (actor, changes) => {
+  const { sanitized, removed } = stripProtectedDerivedActorUpdates(changes);
+  if (removed.length > 0) {
+    Object.keys(changes).forEach((k) => delete changes[k]);
+    Object.assign(changes, sanitized);
+    if (game?.settings?.get?.("core", "debug") === true) {
+      console.warn(`[BECMI] Blocked manual derived actor updates for ${actor.name ?? actor.id ?? "Unknown"}: ${removed.join(", ")}`);
+    }
+  }
   const merged = foundry.utils.mergeObject(actor.toObject(), changes, { inplace: false });
   validateActorSchema(merged, `preUpdateActor for actor "${actor.name ?? actor.id ?? "Unknown"}"`);
 });
@@ -574,6 +598,7 @@ Hooks.once("ready", async function () {
   await migrateLegacyEquipmentSlots();
   await migrateCanonicalInventoryModel();
   await migrateCreatureMonsterSchema();
+  await migrateLegacyManualDerivedFields();
 
   const actors = game.actors?.contents ?? [];
   for (const actor of actors) {
