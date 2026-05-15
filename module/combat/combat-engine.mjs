@@ -22,6 +22,7 @@ import {
 import { SAVE_TYPES, getSaveTarget, resolveSave, rollSave, renderSaveCard } from "./saves.mjs";
 import { resolveMorale, rollMorale, renderMoraleCard, shouldCheckMorale } from "./morale.mjs";
 import { hasAvailableAmmo, consumeAmmo } from "../items/ammo.mjs";
+import { validateWeaponRestrictions } from "../rules/weapon-restrictions.mjs";
 import {
   getCreatureXP,
   calculateEncounterXP,
@@ -88,6 +89,11 @@ export async function rollAttack({ attacker, target, attackData, rollDamageOnHit
   if (!attackData || typeof attackData !== "object") throw new Error("[BECMI Combat] rollAttack requires attackData.");
 
   const attackItem = attackData?.id ? attacker?.items?.get?.(attackData.id) : null;
+  const weaponCheck = validateWeaponRestrictions({ actor: attacker, item: attackItem, requireEquipped: true });
+  if (!weaponCheck.ok) {
+    ui.notifications?.error(weaponCheck.reason);
+    return { attackResult: null, damageResult: null, blockedByRestrictions: true };
+  }
   const requiresAmmo = attackData?.type === "missile" && attackData?.ammoType;
   const requiresLauncher = requiresAmmo;
 

@@ -107,6 +107,8 @@ export function weaponItemToAttackData(item) {
   };
 }
 
+import { validateWeaponRestrictions } from "../rules/weapon-restrictions.mjs";
+
 function getActorItems(actor) {
   return Array.from(actor?.items ?? []);
 }
@@ -207,7 +209,7 @@ export function getActorAttackSources(actor) {
   const items = Array.from(actor?.items ?? []);
 
   if (actor?.type === "character") {
-    return items.filter((item) => item?.type === "weapon" && item?.system?.equipped === true);
+    return items.filter((item) => item?.type === "weapon" && validateWeaponRestrictions({ actor, item, requireEquipped: true }).ok);
   }
 
   if (actor?.type === "creature") {
