@@ -124,6 +124,34 @@ describe('exploration runtime integration', () => {
     expect(summary.movementValue).toBe(90);
     expect(summary.milesPerDay).toBe(18);
   });
+
+  it('emits wilderness procedure support events and hook outputs in wilderness context', () => {
+    const runtime = {
+      movementContext: 'wildernessExploration',
+      wildernessProcedureInput: {
+        encounterDieRoll: 1,
+        encounterTarget: 1,
+        lostDieRoll: 1,
+        lostTarget: 1,
+        evasionDieRoll: 6,
+        evasionTarget: 7,
+        pursuitDieRoll: 8,
+        pursuitTarget: 7
+      },
+      hooks: {
+        onWildernessEncounterCheck: (evt) => ({ type: 'hookWildernessEncounter', success: evt.result.check.output.success })
+      }
+    };
+
+    const state = normalizeExplorationState({ movementContext: 'wildernessExploration' }, runtime);
+    const result = advanceExplorationTurn(state, runtime);
+
+    expect(result.events.some((evt) => evt.type === 'wildernessEncounterCheck')).toBe(true);
+    expect(result.events.some((evt) => evt.type === 'wildernessLostCheck')).toBe(true);
+    expect(result.events.some((evt) => evt.type === 'wildernessEvasionCheck')).toBe(true);
+    expect(result.events.some((evt) => evt.type === 'wildernessPursuitCheck')).toBe(true);
+    expect(result.events.some((evt) => evt.type === 'hookWildernessEncounter')).toBe(true);
+  });
   it('exports runtime API for attachment to game.becmi', () => {
     expect(exploration).toHaveProperty('movement');
     expect(exploration).toHaveProperty('time');
