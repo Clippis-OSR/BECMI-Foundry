@@ -1,22 +1,133 @@
 import { getMovementTierByEncumbrance } from "../rules/encumbrance.mjs";
 
 const DEFAULT_TRAVEL_PACE = "normal";
+const DEFAULT_MOVEMENT_CONTEXT = "dungeonExploration";
+
+const MOVEMENT_CONTEXTS = Object.freeze(new Set([
+  "dungeonExploration",
+  "dungeonCombat",
+  "wildernessExploration",
+  "wildernessCombat",
+  "wildernessForcedMarch"
+]));
+
+const CONTEXT_UNITS = Object.freeze({
+  dungeonExploration: "feetPerTurn",
+  dungeonCombat: "feetPerRound",
+  wildernessExploration: "yardsPerTurn",
+  wildernessCombat: "yardsPerRound",
+  wildernessForcedMarch: "milesPerDay"
+});
 
 const safeNum = (value, fallback = 0) => (Number.isFinite(Number(value)) ? Number(value) : fallback);
 
-export function getMovementForTurn(encumbrance = {}, options = {}) {
+export function normalizeMovementValue(value) {
+  const normalized = Math.floor(safeNum(value, 0));
+  return Math.max(0, normalized);
+}
+
+export function getBaseMovement(encumbrance = {}) {
   const totalCarriedWeight = Math.max(0, safeNum(encumbrance.totalCarriedWeight, 0));
   const movementTier = getMovementTierByEncumbrance(totalCarriedWeight);
+  const movementValue = normalizeMovementValue(movementTier.normalFeetPerTurn);
+
+  return Object.freeze({
+    totalCarriedWeight,
+    movementTier: movementTier.id,
+    movementTierData: movementTier,
+    movementValue
+  });
+}
+
+export function getMovementContext(context) {
+  if (MOVEMENT_CONTEXTS.has(context)) return context;
+  return DEFAULT_MOVEMENT_CONTEXT;
+}
+
+export function explorationToCombatMovement(explorationMovement) {
+  return normalizeMovementValue(Math.floor(normalizeMovementValue(explorationMovement) / 3));
+}
+
+export function movementToMilesPerDay(movementValue) {
+  return normalizeMovementValue(movementValue) / 5;
+}
+
+export function getDungeonExplorationMovement(encumbrance = {}) {
+  return getBaseMovement(encumbrance).movementValue;
+}
+
+export function getDungeonCombatMovement(encumbrance = {}) {
+  return explorationToCombatMovement(getDungeonExplorationMovement(encumbrance));
+}
+
+export function getWildernessExplorationMovement(encumbrance = {}) {
+  return getBaseMovement(encumbrance).movementValue;
+}
+
+export function getWildernessCombatMovement(encumbrance = {}) {
+  return getDungeonCombatMovement(encumbrance);
+}
+
+export function getMilesPerDay(encumbrance = {}) {
+  return movementToMilesPerDay(getBaseMovement(encumbrance).movementValue);
+}
+
+export function getForcedMarchMilesPerDay(encumbrance = {}, context = "wildernessForcedMarch") {
+  const normalizedContext = getMovementContext(context);
+  if (normalizedContext !== "wildernessForcedMarch") return getMilesPerDay(encumbrance);
+  return getMilesPerDay(encumbrance) * 1.5;
+}
+
+export function convertRangeDistanceByContext(distanceFeet, context = DEFAULT_MOVEMENT_CONTEXT) {
+  const normalizedDistance = normalizeMovementValue(distanceFeet);
+  const normalizedContext = getMovementContext(context);
+  if (normalizedContext === "wildernessExploration" || normalizedContext === "wildernessCombat" || normalizedContext === "wildernessForcedMarch") {
+    return normalizedDistance;
+  }
+  return normalizedDistance;
+}
+
+export function isSpellAreaAlwaysFeet() {
+  return true;
+}
+
+export function getMovementSummary(encumbrance = {}, context = DEFAULT_MOVEMENT_CONTEXT) {
+  const base = getBaseMovement(encumbrance);
+  const normalizedContext = getMovementContext(context);
+
+  const contextualMovement = normalizedContext === "dungeonCombat" || normalizedContext === "wildernessCombat"
+    ? explorationToCombatMovement(base.movementValue)
+    : normalizedContext === "wildernessForcedMarch"
+      ? getForcedMarchMilesPerDay(encumbrance, normalizedContext)
+      : base.movementValue;
+
+  return Object.freeze({
+    context: normalizedContext,
+    movementValue: base.movementValue,
+    contextualMovement,
+    contextualUnit: CONTEXT_UNITS[normalizedContext],
+    dungeonExploration: getDungeonExplorationMovement(encumbrance),
+    dungeonCombat: getDungeonCombatMovement(encumbrance),
+    wildernessExploration: getWildernessExplorationMovement(encumbrance),
+    wildernessCombat: getWildernessCombatMovement(encumbrance),
+    milesPerDay: getMilesPerDay(encumbrance),
+    forcedMarchMilesPerDay: getForcedMarchMilesPerDay(encumbrance, "wildernessForcedMarch"),
+    spellAreaAlwaysFeet: isSpellAreaAlwaysFeet()
+  });
+}
+
+export function getMovementForTurn(encumbrance = {}, options = {}) {
   const travelPace = typeof options.travelPace === "string" && options.travelPace.trim() ? options.travelPace : DEFAULT_TRAVEL_PACE;
-  const movementRate = safeNum(movementTier.normalFeetPerTurn, 0);
+  const base = getBaseMovement(encumbrance);
 
   return Object.freeze({
     travelPace,
-    totalCarriedWeight,
-    movementTier: movementTier.id,
-    movementRate,
-    movementPerTurn: movementRate,
-    movementTierData: movementTier,
+    totalCarriedWeight: base.totalCarriedWeight,
+    movementTier: base.movementTier,
+    movementRate: base.movementValue,
+    movementPerTurn: base.movementValue,
+    movementValue: base.movementValue,
+    movementTierData: base.movementTierData,
     extension: Object.freeze({
       paceModifiers: Object.freeze([]),
       terrainModifiers: Object.freeze([])
