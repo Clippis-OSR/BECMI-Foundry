@@ -41,6 +41,7 @@ Expert pages scanned: ${expertPages.length}`);
   const expertDescriptionPages = (diagnostics.descriptionPages || []).filter((p) => /expert/i.test(p));
   console.log(`Expert description pages detected: ${expertDescriptionPages.length}`);
   if (expertRows.length === 0) console.log('WARNING: Expert spell index count is 0.');
+  if (expertRows.length < 20) console.log('WARNING: EXPERT SPELL INDEX COUNT BELOW 20 — verify Expert pages 6-15 (cleric) and magic-user sections are scanned.');
 
 }
 
