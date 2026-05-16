@@ -1,5 +1,6 @@
 import { getMonsterByKey } from '../monsters/monster-index.mjs';
 import { getExplorationSummary, normalizeExplorationState } from '../exploration/runtime.mjs';
+import { createTreasureVisibility, lookupCanonicalMonsterTreasure, buildGemJewelryHooks } from '../treasure/treasure-helpers.mjs';
 
 function asPositiveInt(value, fallback = 1) {
   const n = Number(value);
@@ -42,8 +43,18 @@ export function createEncounterGroup({ monsterKey, quantity = 1, context = 'dung
   });
 }
 
+export function buildEncounterTreasureSummary({ monsterKey, encounterTreasure = true } = {}) {
+  const canonical = lookupCanonicalMonsterTreasure(monsterKey);
+  return Object.freeze({
+    visibility: createTreasureVisibility({ encounterTreasure }),
+    lookup: canonical,
+    hooks: buildGemJewelryHooks()
+  });
+}
+
 export function buildEncounterHelperState({ monsterKey, quantity = 1, context = 'dungeon', notes = '' } = {}) {
   const group = createEncounterGroup({ monsterKey, quantity, context, notes });
+  const treasure = buildEncounterTreasureSummary({ monsterKey, encounterTreasure: true });
   return Object.freeze({
     context: group.context,
     groups: Object.freeze([group]),
@@ -51,7 +62,8 @@ export function buildEncounterHelperState({ monsterKey, quantity = 1, context = 
       monsterCount: group.quantity,
       moraleVisible: group.morale,
       movementVisible: group.movement
-    })
+    }),
+    treasure
   });
 }
 
