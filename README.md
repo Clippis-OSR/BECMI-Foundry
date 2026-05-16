@@ -25,6 +25,12 @@ Tested with Foundry VTT v14 build 361.
 - Exploration-first design
 - Dungeon turns, hexcrawl, morale and reaction rolls later
 
-## Architecture audit
+## Documentation map
 
-The canonical current architecture audit is `docs/full-system-audit-2026-05-14-consolidated.md`.
+For contributor and Codex work, start with these canonical docs:
+
+- Architecture source of truth: `docs/architecture/canonical-architecture.md`
+- Current audit context: `docs/audits/current-system-audit.md`
+- Documentation governance and authority rules: `docs/documentation-policy.md`
+
+Historical audits remain available under `docs/audits/archive/` and `docs/archive/` for reference only.
