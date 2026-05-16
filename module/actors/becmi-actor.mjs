@@ -1,4 +1,4 @@
-import { calculateActorAC, getActorTHAC0, getActorSaves, getCharacterSaves, getCharacterTHAC0 } from "../rules/index.mjs";
+import { calculateActorAC, getActorTHAC0, getActorSaves, getCharacterSaves, getCharacterTHAC0, getCanonicalTurnUndeadTable } from "../rules/index.mjs";
 import { getActorClassId, getActorLevel, getCharacterLevelFromXP, getClassLevelData } from "../rules/lookups.mjs";
 import { assertCanonicalActorType } from "./actor-types.mjs";
 import { calculateTotalEncumbrance } from "../items/encumbrance.mjs";
@@ -95,7 +95,7 @@ export class BECMIActor extends Actor {
       hasThiefSkills,
       thiefSkills: hasThiefSkills ? levelData?.thiefSkills ?? null : null,
       hasTurnUndead,
-      turnUndead: hasTurnUndead ? levelData?.turnUndead ?? null : null
+      turnUndead: hasTurnUndead ? getCanonicalTurnUndeadTable(levelData?.turnUndead) : null
     };
 
     const debugDerivedData = game?.settings?.get?.("becmi-foundry", "debugDerivedData") ?? false;
