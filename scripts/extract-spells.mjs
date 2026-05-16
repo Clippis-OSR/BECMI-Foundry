@@ -10,6 +10,7 @@ const generatedDir = path.resolve('private/generated');
 const indexFile = path.join(generatedDir, 'spell-index.json');
 const blocksFile = path.join(generatedDir, 'spell-description-blocks.json');
 const diagnosticsFile = path.join(generatedDir, 'spell-extraction-diagnostics.json');
+const unmatchedCandidatesFile = path.join(generatedDir, 'unmatched-description-candidates.json');
 
 async function main() {
   await ensurePdfInputs();
@@ -37,18 +38,22 @@ async function main() {
 
   const blocks = [];
   const descriptionPages = [];
+  const unmatchedCandidates = [];
   const knownSpellNames = [...knownNames];
+  const knownSpellKeys = indexRows.map((r) => r.spellKey);
   for (const page of allPages) {
-    const { blocks: pageBlocks, diagnostics } = extractDescriptionBlocksFromPage({ ...page, knownSpellNames });
+    const { blocks: pageBlocks, unmatchedCandidates: pageUnmatched, diagnostics } = extractDescriptionBlocksFromPage({ ...page, knownSpellNames, knownSpellKeys });
     blocks.push(...pageBlocks);
+    unmatchedCandidates.push(...(pageUnmatched || []));
     if (diagnostics.pagesUsedForDescriptions) descriptionPages.push(`${page.sourceFile}:${page.sourcePage}`);
   }
 
   await fs.mkdir(generatedDir, { recursive: true });
   await fs.writeFile(indexFile, JSON.stringify({ createdAt: new Date().toISOString(), indexRows }, null, 2));
   await fs.writeFile(blocksFile, JSON.stringify({ createdAt: new Date().toISOString(), blocks }, null, 2));
+  await fs.writeFile(unmatchedCandidatesFile, JSON.stringify({ createdAt: new Date().toISOString(), unmatchedCandidates }, null, 2));
   await fs.writeFile(diagnosticsFile, JSON.stringify({ createdAt: new Date().toISOString(), indexPages, descriptionPages, rejectedHeadings }, null, 2));
-  console.log(`Wrote:\n- ${indexFile}\n- ${blocksFile}\n- ${diagnosticsFile}`);
+  console.log(`Wrote:\n- ${indexFile}\n- ${blocksFile}\n- ${unmatchedCandidatesFile}\n- ${diagnosticsFile}`);
 }
 async function getPageCount(pdfFile) { const { stdout } = await execFileAsync('pdfinfo', [pdfFile]); const m = stdout.match(/^Pages:\s+(\d+)/m); if (!m) throw new Error('Could not parse page count.'); return Number(m[1]); }
 async function extractPageText(pdfFile, page) { const { stdout } = await execFileAsync('pdftotext', ['-f', String(page), '-l', String(page), '-layout', pdfFile, '-']); return stdout; }

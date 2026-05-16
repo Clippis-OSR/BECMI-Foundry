@@ -31,6 +31,17 @@ async function main() {
   (diagnostics.indexPages || []).slice(0, 100).forEach((p) => console.log(`- ${p}`));
   console.log('\npages used for spell descriptions:');
   (diagnostics.descriptionPages || []).slice(0, 100).forEach((p) => console.log(`- ${p}`));
+  const expertPages = [...new Set((diagnostics.indexPages || []).filter((p) => /expert/i.test(p)).map((p) => p.split(':').slice(1).join(':') || p))];
+  console.log(`
+Expert pages scanned: ${expertPages.length}`);
+  const expertRows = rows.filter((r) => /expert/i.test(String(r.sourceBook || r.sourceFile || '')));
+  const expertHeadingsDetected = rows.filter((r) => /expert/i.test(String(r.sourceBook || r.sourceFile || ''))).length;
+  console.log(`Expert spell-list headings detected: ${expertHeadingsDetected > 0 ? 1 : 0}`);
+  print('Expert spell index count by class/level', tally(expertRows, (r) => `${r.spellClass || 'unknown'} L${String(r.spellLevel || 0)}`));
+  const expertDescriptionPages = (diagnostics.descriptionPages || []).filter((p) => /expert/i.test(p));
+  console.log(`Expert description pages detected: ${expertDescriptionPages.length}`);
+  if (expertRows.length === 0) console.log('WARNING: Expert spell index count is 0.');
+
 }
 
 function tally(items, fn) { const m = new Map(); for (const i of items) { const k = fn(i); m.set(k, (m.get(k)||0)+1); } return [...m.entries()].sort((a,b)=>b[1]-a[1]); }
