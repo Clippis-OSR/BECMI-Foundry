@@ -37,10 +37,10 @@ describe('local spell pipeline', () => {
     expect(candidate.reversible).toBe(true);
   });
 
-  it('returns diagnostics for skipped list pages', () => {
-    const page = analyzeSpellPage({ text: 'Companion Spell Lists\nFirst Level\n', sourceFile: 'companion.pdf', sourcePage: 44 });
-    expect(page.diagnostics.hasSpellListHeading).toBe(true);
-    expect(page.diagnostics.skippedSpellListPage).toBe(true);
+  it('returns diagnostics for detected spell sections', () => {
+    const page = analyzeSpellPage({ text: 'FIRST LEVEL CLERIC SPELLS\nBless\n', sourceFile: 'companion.pdf', sourcePage: 44 });
+    expect(page.diagnostics.hasSpellSections).toBe(true);
+    expect(page.diagnostics.detectedHeadings.length).toBeGreaterThan(0);
   });
 
   it('generates review rows', () => {
