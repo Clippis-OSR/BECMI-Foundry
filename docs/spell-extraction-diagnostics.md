@@ -2,6 +2,9 @@
 
 Use a curated seed-first flow for Basic+Expert spells.
 
+> Note: the Basic+Expert seed pass intentionally captures identity metadata only (`spellKey`, `name`, `spellClass`, `spellLevel`, source and reversible fields). It does **not** populate `range`, `duration`, or `effect` yet.
+
+
 1. Run `npm run seed:spells` to generate private review files from `data/spells/seed-basic-expert.json`.
 2. Edit `private/review/spells-review.csv` or `.json` and fill `range`, `duration`, `effect`, `save`, `tags`, `manualNotes`, `pageVerified`, and set `reviewed=true` when done.
 3. Optional assist: run `npm run extract:spells` and copy suggestions only for existing seeded `spellKey` rows. Treat suggestions as `confidence` + `needsReview` hints only.
