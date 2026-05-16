@@ -474,6 +474,16 @@
   </section>
   {{/if}}
 {{/each}}
+{{#if spellcastingDerived.activeSpells.length}}
+<h3>Active Spell Runtime</h3>
+<ul>
+  {{#each spellcastingDerived.activeSpells as |active|}}
+    <li>{{active.summary}}</li>
+  {{/each}}
+</ul>
+{{else}}
+<div><em>No active spell runtimes tracked.</em></div>
+{{/if}}
 </div>
 {{/if}}
 
