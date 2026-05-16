@@ -1,3 +1,4 @@
+import { getActorTHAC0 as getRulesActorTHAC0 } from "../rules/thac0.mjs";
 import { resolveTurnUndeadOutcome } from "../rules/turn-undead.mjs";
 export async function rollSavingThrow(actor, saveKey, label) {
   const target = Number(
@@ -62,7 +63,7 @@ export async function rollWeaponAttack(actor, attackIndex) {
 
   if (!attack) return;
 
-  const thac0 = Number(actor.system.combat?.thac0 ?? 20);
+  const thac0 = Number(getRulesActorTHAC0(actor) ?? 20);
   const name = attack.name || "Attack";
   const attackModifier = Number(attack.attackModifier ?? 0);
   const damageFormula = attack.damageRoll || "1d6";
@@ -95,7 +96,7 @@ export async function rollCharacterAttack(actor, attack) {
   if (!actor || !attack) return;
 
   const attackName = (attack.name || "").trim() || "Attack";
-  const thac0 = Number(actor.system?.thac0 ?? 19);
+  const thac0 = Number(getRulesActorTHAC0(actor) ?? 20);
   const attackMod = Number(attack.attackMod ?? 0);
   const formula = attackMod === 0
     ? "1d20"
@@ -176,7 +177,7 @@ export async function rollCreatureAttack(actor, attack) {
   if (!actor || !attack) return;
 
   const attackName = (attack.name || "").trim() || "Attack";
-  const thac0 = Number(actor.system?.thac0 ?? 19);
+  const thac0 = Number(getRulesActorTHAC0(actor) ?? 20);
   const attackBonus = Number(attack.attackBonus ?? 0);
   const formula = attackBonus === 0 ? "1d20" : `1d20 + ${attackBonus}`;
 
@@ -204,7 +205,7 @@ export async function rollCreatureAttack(actor, attack) {
 export async function rollMonsterAttack(actor, attack) {
   if (!actor || !attack) return;
 
-  const thac0 = Number(actor.system?.thac0 ?? 19);
+  const thac0 = Number(getRulesActorTHAC0(actor) ?? 20);
   const attackName = (attack.name || "").trim() || "Attack";
   const attackBonus = Number(attack.attackBonus ?? 0);
   const formula = attackBonus === 0 ? "1d20" : `1d20 + ${attackBonus}`;

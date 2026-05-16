@@ -14,13 +14,12 @@
  * @param {object} actor Foundry Actor document or plain object.
  * @returns {number}
  */
-export function getActorTHAC0(actor) {
-  // Canonical schema path for BECMI actors.
-  // We intentionally avoid legacy fallback chains so schema drift is visible
-  // during development instead of silently changing combat math.
-  const thac0 = actor?.system?.combat?.thac0 ?? 20;
+import { getActorTHAC0 as getRulesActorTHAC0 } from "../rules/thac0.mjs";
 
-  return Number(thac0);
+export function getActorTHAC0(actor) {
+  const thac0 = getRulesActorTHAC0(actor);
+  if (Number.isFinite(Number(thac0))) return Number(thac0);
+  return 20;
 }
 
 /**
@@ -36,7 +35,7 @@ export function getActorTHAC0(actor) {
 export function getTargetAC(target) {
   // Canonical schema path for BECMI actors and actor-like targets.
   // This remains explicit and deterministic by design.
-  const ac = target?.system?.combat?.ac ?? 9;
+  const ac = target?.system?.ac?.value ?? target?.system?.combat?.ac ?? 9;
 
   return Number(ac);
 }
