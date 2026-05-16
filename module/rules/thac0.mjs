@@ -68,7 +68,7 @@ export function getActorTHAC0(actor) {
     return getCharacterTHAC0(classId, level);
   }
 
-  if (actorType === "creature") return getMonsterTHAC0(actor.system?.hd ?? actor.system?.hitDice);
+  if (actorType === "creature") return getMonsterTHAC0(actor.system?.monster?.hitDice);
 
   throw new Error(`[BECMI] Unsupported actor type "${actorType}" for THAC0 resolution.`);
 }

@@ -166,7 +166,7 @@ export function getCreatureSaves(actor) {
   const savesAs = actor.system?.savesAs;
   if (!savesAs) return null;
 
-  const classId = savesAs.classId ?? savesAs.class;
+  const classId = savesAs.classId;
   const level = savesAs.level;
 
   if (classId === undefined || classId === null || classId === "") {
