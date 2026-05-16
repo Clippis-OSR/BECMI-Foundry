@@ -97,7 +97,23 @@ export function parseMonsterAttacks(input) {
     const m = clean.match(/^(\d+)\s+(.+)$/i);
     const count = m ? Number(m[1]) : 1;
     const name = (m ? m[2] : clean).trim();
-    return { type: name.toLowerCase(), count, raw: part };
+    const lower = name.toLowerCase();
+    const specialTags = [];
+    const tagPatterns = [
+      ['poison', /\bpoison/i],
+      ['paralysis', /\bparalysis|paralyze[sd]?\b/i],
+      ['energy_drain', /\benergy drain|drain level/i],
+      ['petrification', /\bpetrif|turn to stone/i],
+      ['charm', /\bcharm/i],
+      ['swallow', /\bswallow/i],
+      ['swoop', /\bswoop/i],
+      ['trample', /\btrample/i],
+      ['continuous_damage', /\bongoing|continuous|per round|each round/i],
+      ['breath_weapon', /\bbreath weapon|breathes\b/i],
+      ['spellcasting', /\bspell|cast/i]
+    ];
+    for (const [tag, rx] of tagPatterns) if (rx.test(part)) specialTags.push(tag);
+    return { type: lower, count, raw: part, specialTags };
   });
 }
 

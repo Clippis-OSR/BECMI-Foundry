@@ -71,7 +71,11 @@ export function importMonsterData(monsters) {
 }
 
 export function buildMonsterCompendium(monsters = []) {
-  const sorted = [...monsters].sort((a, b) => String(a.system.monsterKey).localeCompare(String(b.system.monsterKey)));
+  const sorted = [...monsters].sort((a, b) => {
+    const keyCompare = String(a.system.monsterKey).localeCompare(String(b.system.monsterKey));
+    if (keyCompare !== 0) return keyCompare;
+    return String(a.system.name ?? a.name ?? "").localeCompare(String(b.system.name ?? b.name ?? ""));
+  });
   validateMonsterCompendiumIntegrity(sorted);
   return sorted.map((monster) => ({ ...monster, uuid: monster.uuid ?? null }));
 }

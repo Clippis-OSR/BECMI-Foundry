@@ -24,6 +24,7 @@ export function buildNaturalAttackItemsFromMonster(monster) {
     const type = String(attack?.type ?? 'natural attack').trim() || 'natural attack';
     const sequence = Array.isArray(attack?.sequence) ? attack.sequence.map((part) => String(part).trim()).filter(Boolean) : null;
     const riderText = attack?.riderText ?? null;
+    const specialTags = Array.isArray(attack?.specialTags) ? attack.specialTags.map((t) => String(t).trim()).filter(Boolean) : [];
     return {
       name: count > 1 ? `${count} ${type}` : type,
       type: 'weapon',
@@ -37,6 +38,7 @@ export function buildNaturalAttackItemsFromMonster(monster) {
         attackLabel: type,
         attackSequence: sequence,
         riderText: riderText ? String(riderText) : null,
+        specialTags,
         damage: String(attack?.damage ?? attack?.raw ?? system.damage ?? '1d4'),
         inventory: { location: 'worn', countsTowardEncumbrance: false }
       },
@@ -44,7 +46,8 @@ export function buildNaturalAttackItemsFromMonster(monster) {
         becmi: {
           importedNaturalAttack: true,
           monsterAttackIndex: index,
-          monsterKey: system.monsterKey
+          monsterKey: system.monsterKey,
+          replaceKey: `${String(system.monsterKey ?? "unknown")}::${index}`
         }
       }
     };
@@ -119,20 +122,7 @@ export function buildCreatureRuntimeFromMonster(actor) {
   };
 }
 
-export function buildNaturalAttackItemsFromLegacyActor(actor) {
-  console.warn("[BECMI Monsters] buildNaturalAttackItemsFromLegacyActor is deprecated. Normalize into canonical system.monster.attacks first.");
-  const monster = actor?.system?.monster ?? {};
-  const legacyAttackFields = [monster.attacks];
-  const parsedAttacks = legacyAttackFields
-    .flatMap((value) => normalizeMonsterAttacks(value))
-    .filter(Boolean);
-  if (!parsedAttacks.length) return [];
-  return buildNaturalAttackItemsFromMonster({
-    system: {
-      ...monster,
-      attacks: parsedAttacks,
-      damage: monster.damage ?? '1d4',
-      monsterKey: monster.monsterKey ?? actor?.id ?? actor?.name ?? null
-    }
-  });
+export function buildNaturalAttackItemsFromLegacyActor(_actor) {
+  console.warn("[BECMI Monsters] buildNaturalAttackItemsFromLegacyActor is deprecated and migration-only. Canonical runtime requires array attacks in system.monster.attacks.");
+  return [];
 }

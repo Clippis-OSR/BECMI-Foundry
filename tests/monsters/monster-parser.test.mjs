@@ -31,6 +31,15 @@ describe('monster parser', () => {
     expect(parseMonsterAttacks('')).toEqual([]);
   });
 
+  it('tags obvious special attack categories without automation', () => {
+    expect(parseMonsterAttacks('1 Sting (poison)')[0].specialTags).toContain('poison');
+    expect(parseMonsterAttacks('1 Touch (paralysis)')[0].specialTags).toContain('paralysis');
+    expect(parseMonsterAttacks('1 Bite (swallow whole)')[0].specialTags).toContain('swallow');
+    expect(parseMonsterAttacks('1 Trample')[0].specialTags).toContain('trample');
+    expect(parseMonsterAttacks('Breath weapon')[0].specialTags).toContain('breath_weapon');
+    expect(parseMonsterAttacks('Spell casting')[0].specialTags).toContain('spellcasting');
+  });
+
   it('parses movement modes while preserving raw text', () => {
     const movement = parseMonsterMovement('120 (40), Fly 180(60), Swim 90');
     expect(movement.raw).toBe('120 (40), Fly 180(60), Swim 90');
