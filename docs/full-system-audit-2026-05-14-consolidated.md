@@ -1,7 +1,7 @@
 # BECMI Foundry — Full System Audit (Consolidated)
 
 **Date:** 2026-05-14  
-**Status:** Canonical architecture audit (consolidated)  
+**Status:** Historical audit snapshot (superseded by `docs/audits/current-system-audit.md` and canonical architecture docs)  
 **Supersedes:** prior fragmented audit/status documents listed below
 
 ---
