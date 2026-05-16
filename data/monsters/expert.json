@@ -1,15 +1,18 @@
 [
   {
-    "id": "animal-herd-goat",
+    "monsterKey": "animal_herd_goat",
     "name": "Animal Herd, Goat",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "1",
-    "movement": "240(80)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "240(80)"
     },
+    "morale": 5,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 10,
+    "numberAppearing": "0(3-30)",
     "attacks": [
       {
         "type": "butt",
@@ -17,39 +20,37 @@
         "raw": "1 Butt"
       }
     ],
-    "damage": "1d2",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d2",
         "dice": "1d2",
         "rider": null
       }
     ],
-    "numberAppearing": "0(3-30)",
-    "saveAs": "F1",
-    "morale": 5,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 10,
-    "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
+    "riders": [],
     "notes": "On failed morale, 40% Stampede 1d20 dmg.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "240(80)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d2"
+    }
   },
   {
-    "id": "animal-herd-antelope-deer",
+    "monsterKey": "animal_herd_antelope_deer",
     "name": "Animal Herd, Antelope/Deer",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "2",
-    "movement": "240(80)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "240(80)"
     },
+    "morale": 5,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 20,
+    "numberAppearing": "0(3-30)",
     "attacks": [
       {
         "type": "butt",
@@ -57,39 +58,37 @@
         "raw": "1 Butt"
       }
     ],
-    "damage": "1d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       }
     ],
-    "numberAppearing": "0(3-30)",
-    "saveAs": "F1",
-    "morale": 5,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 20,
-    "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
+    "riders": [],
     "notes": "On failed morale, 40% Stampede 1d20 dmg.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "240(80)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d4"
+    }
   },
   {
-    "id": "animal-herd-caribou-oxen",
+    "monsterKey": "animal_herd_caribou_oxen",
     "name": "Animal Herd, Caribou/Oxen",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "3",
-    "movement": "240(80)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "240(80)"
     },
+    "morale": 5,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 35,
+    "numberAppearing": "0(3-30)",
     "attacks": [
       {
         "type": "butt",
@@ -97,39 +96,37 @@
         "raw": "1 Butt"
       }
     ],
-    "damage": "1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "0(3-30)",
-    "saveAs": "F1",
-    "morale": 5,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 35,
-    "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
+    "riders": [],
     "notes": "On failed morale, 40% Stampede 1d20 dmg.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "240(80)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d6"
+    }
   },
   {
-    "id": "animal-herd-elk-moose",
+    "monsterKey": "animal_herd_elk_moose",
     "name": "Animal Herd, Elk/Moose",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "4",
-    "movement": "240(80)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "240(80)"
     },
+    "morale": 5,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 75,
+    "numberAppearing": "0(3-30)",
     "attacks": [
       {
         "type": "butt",
@@ -137,39 +134,37 @@
         "raw": "1 Butt"
       }
     ],
-    "damage": "1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "0(3-30)",
-    "saveAs": "F1",
-    "morale": 5,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 75,
-    "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
+    "riders": [],
     "notes": "On failed morale, 40% Stampede 1d20 dmg.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "240(80)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d8"
+    }
   },
   {
-    "id": "basilisk",
+    "monsterKey": "basilisk",
     "name": "Basilisk",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "6 +1**",
-    "movement": "60(20)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 9,
+    "treasureType": "F",
+    "alignment": "Neutral",
+    "saveAs": "F6",
+    "XP": 950,
+    "numberAppearing": "1-6(1-6)",
     "attacks": [
       {
         "type": "bite",
@@ -182,46 +177,46 @@
         "raw": "1 Gaze"
       }
     ],
-    "damage": "1d10 + Petrification/Save VS Petri",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d10 + Petrification",
         "dice": "1d10",
         "rider": "Petrification"
       },
       {
-        "raw": "Save VS Petri",
         "dice": null,
         "rider": "Save VS Petri"
       }
     ],
-    "numberAppearing": "1-6(1-6)",
-    "saveAs": "F6",
-    "morale": 9,
-    "treasureType": "F",
-    "treasure": {
-      "raw": "F",
-      "normalizedCodes": [
-        "F"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 950,
-    "specialAbilities": "",
+    "riders": [
+      "Petrification",
+      "Save VS Petri"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "60(20)",
+      "treasure": "F",
+      "treasureCodes": [
+        "F"
+      ],
+      "damage": "1d10 + Petrification/Save VS Petri"
+    }
   },
   {
-    "id": "black-pudding",
+    "monsterKey": "black_pudding",
     "name": "Black Pudding*",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "10*",
-    "movement": "60(20)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 12,
+    "treasureType": "5d4 Gems",
+    "alignment": "Neutral",
+    "saveAs": "F5",
+    "XP": 1750,
+    "numberAppearing": "1(0)",
     "attacks": [
       {
         "type": "1",
@@ -229,39 +224,37 @@
         "raw": "1"
       }
     ],
-    "damage": "3d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "3d8",
         "dice": "3d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1(0)",
-    "saveAs": "F5",
-    "morale": 12,
-    "treasureType": "5d4 Gems",
-    "treasure": {
-      "raw": "5d4 Gems",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 1750,
-    "specialAbilities": "Only take FIRE dmg, Splits if hit by anything else. Split: 2HD Blob, 1d8 dmg.",
+    "riders": [],
     "notes": "Only take FIRE dmg, Splits if hit by anything else. Split: 2HD Blob, 1d8 dmg.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "60(20)",
+      "treasure": "5d4 Gems",
+      "treasureCodes": [],
+      "damage": "3d8"
+    }
   },
   {
-    "id": "blink-dog",
+    "monsterKey": "blink_dog",
     "name": "Blink Dog",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "4*",
-    "movement": "120(40)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 6,
+    "treasureType": "C",
+    "alignment": "Lawful",
+    "saveAs": "F4",
+    "XP": 125,
+    "numberAppearing": "1-6(4-9)",
     "attacks": [
       {
         "type": "bite",
@@ -269,41 +262,39 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6(4-9)",
-    "saveAs": "F4",
-    "morale": 6,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Lawful",
-    "xp": 125,
-    "specialAbilities": "Blink in to attack then blink away 10-40'",
+    "riders": [],
     "notes": "Blink in to attack then blink away 10-40'",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "1d6"
+    }
   },
   {
-    "id": "caecilia",
+    "monsterKey": "caecilia",
     "name": "Caecilia",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "6*",
-    "movement": "60(20)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 9,
+    "treasureType": "B",
+    "alignment": "Neutral",
+    "saveAs": "F3",
+    "XP": 500,
+    "numberAppearing": "1-3(1-3)",
     "attacks": [
       {
         "type": "bite",
@@ -316,41 +307,39 @@
         "raw": "Swallow(19)"
       }
     ],
-    "damage": "1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1-3(1-3)",
-    "saveAs": "F3",
-    "morale": 9,
-    "treasureType": "B",
-    "treasure": {
-      "raw": "B",
-      "normalizedCodes": [
-        "B"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 500,
-    "specialAbilities": "Subterranean",
+    "riders": [],
     "notes": "Subterranean",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "60(20)",
+      "treasure": "B",
+      "treasureCodes": [
+        "B"
+      ],
+      "damage": "1d8"
+    }
   },
   {
-    "id": "camel",
+    "monsterKey": "camel",
     "name": "Camel",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "2",
-    "movement": "150(50)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "150(50)"
     },
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 20,
+    "numberAppearing": "0(2-8)",
     "attacks": [
       {
         "type": "bite",
@@ -363,44 +352,43 @@
         "raw": "1 Hoof"
       }
     ],
-    "damage": "1/1d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1",
         "dice": null,
         "rider": "1"
       },
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       }
     ],
-    "numberAppearing": "0(2-8)",
-    "saveAs": "F1",
-    "morale": 7,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 20,
-    "specialAbilities": "",
+    "riders": [
+      "1"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "150(50)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1/1d4"
+    }
   },
   {
-    "id": "centaur",
+    "monsterKey": "centaur",
     "name": "Centaur",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "4",
-    "movement": "180(60)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "180(60)"
     },
+    "morale": 8,
+    "treasureType": "A",
+    "alignment": "Neutral",
+    "saveAs": "F4",
+    "XP": 75,
+    "numberAppearing": "0(2-20)",
     "attacks": [
       {
         "type": "hooves",
@@ -413,51 +401,49 @@
         "raw": "1 Weapon(Club, Lance, Bow)"
       }
     ],
-    "damage": "1d6/1d6/By weapon",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "By weapon",
         "dice": null,
         "rider": "By weapon"
       }
     ],
-    "numberAppearing": "0(2-20)",
-    "saveAs": "F4",
-    "morale": 8,
-    "treasureType": "A",
-    "treasure": {
-      "raw": "A",
-      "normalizedCodes": [
-        "A"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 75,
-    "specialAbilities": "",
+    "riders": [
+      "By weapon"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "180(60)",
+      "treasure": "A",
+      "treasureCodes": [
+        "A"
+      ],
+      "damage": "1d6/1d6/By weapon"
+    }
   },
   {
-    "id": "centaur-young",
+    "monsterKey": "centaur_young",
     "name": "Centaur, Young",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "2",
-    "movement": "150(50)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "150(50)"
     },
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 20,
+    "numberAppearing": "1/2 of Centaur",
     "attacks": [
       {
         "type": "hooves",
@@ -470,50 +456,46 @@
         "raw": "1 Weapon(Club)"
       }
     ],
-    "damage": "1d2/1d2/1d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d2",
         "dice": "1d2",
         "rider": null
       },
       {
-        "raw": "1d2",
         "dice": "1d2",
         "rider": null
       },
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       }
     ],
-    "numberAppearing": "1/2 of Centaur",
-    "saveAs": "F2",
-    "morale": 8,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 20,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "150(50)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d2/1d2/1d4"
+    }
   },
   {
-    "id": "chimera",
+    "monsterKey": "chimera",
     "name": "Chimera",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "9**",
-    "movement": "120(40) Fly: 180(60)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "120(40)",
       "fly": "180(60)"
     },
+    "morale": 9,
+    "treasureType": "F",
+    "alignment": "Chaotic",
+    "saveAs": "F9",
+    "XP": 2300,
+    "numberAppearing": "1-2(1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -531,66 +513,59 @@
         "raw": "Breath(50%)"
       }
     ],
-    "damage": "1d3/1d3/2d4/1d10/3d4 OR 3d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d3",
         "dice": "1d3",
         "rider": null
       },
       {
-        "raw": "1d3",
         "dice": "1d3",
         "rider": null
       },
       {
-        "raw": "2d4",
         "dice": "2d4",
         "rider": null
       },
       {
-        "raw": "1d10",
         "dice": "1d10",
         "rider": null
       },
       {
-        "raw": "3d4",
         "dice": "3d4",
         "rider": null
       },
       {
-        "raw": "3d6",
         "dice": "3d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-2(1-4)",
-    "saveAs": "F9",
-    "morale": 9,
-    "treasureType": "F",
-    "treasure": {
-      "raw": "F",
-      "normalizedCodes": [
-        "F"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 2300,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40) Fly: 180(60)",
+      "treasure": "F",
+      "treasureCodes": [
+        "F"
+      ],
+      "damage": "1d3/1d3/2d4/1d10/3d4 OR 3d6"
+    }
   },
   {
-    "id": "cockatrice",
+    "monsterKey": "cockatrice",
     "name": "Cockatrice",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "5**",
-    "movement": "M: 90(30) F: 180(60)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 7,
+    "treasureType": "D",
+    "alignment": "Neutral",
+    "saveAs": "F5",
+    "XP": 425,
+    "numberAppearing": "1-4(2-8)",
     "attacks": [
       {
         "type": "beak",
@@ -598,41 +573,41 @@
         "raw": "1 Beak"
       }
     ],
-    "damage": "1d6 + Petrification",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6 + Petrification",
         "dice": "1d6",
         "rider": "Petrification"
       }
     ],
-    "numberAppearing": "1-4(2-8)",
-    "saveAs": "F5",
-    "morale": 7,
-    "treasureType": "D",
-    "treasure": {
-      "raw": "D",
-      "normalizedCodes": [
-        "D"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 425,
-    "specialAbilities": "",
+    "riders": [
+      "Petrification"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "M: 90(30) F: 180(60)",
+      "treasure": "D",
+      "treasureCodes": [
+        "D"
+      ],
+      "damage": "1d6 + Petrification"
+    }
   },
   {
-    "id": "crab-giant",
+    "monsterKey": "crab_giant",
     "name": "Crab, Giant",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 2,
     "hitDice": "3",
-    "movement": "60(20)",
-    "movementModes": {
+    "armorClass": 2,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 35,
+    "numberAppearing": "1-2(1-6)",
     "attacks": [
       {
         "type": "pincers",
@@ -640,44 +615,41 @@
         "raw": "2 Pincers"
       }
     ],
-    "damage": "2d6/2d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       },
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-2(1-6)",
-    "saveAs": "F2",
-    "morale": 7,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 35,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "60(20)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d6/2d6"
+    }
   },
   {
-    "id": "crocodile",
+    "monsterKey": "crocodile",
     "name": "Crocodile",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "2",
-    "movement": "90(30)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 35,
+    "numberAppearing": "0(1-8)",
     "attacks": [
       {
         "type": "bite",
@@ -685,39 +657,37 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "0(1-8)",
-    "saveAs": "F1",
-    "morale": 7,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 35,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "90(30)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d8"
+    }
   },
   {
-    "id": "crocodile-large",
+    "monsterKey": "crocodile_large",
     "name": "Crocodile, Large",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 3,
     "hitDice": "6",
-    "movement": "90(30)",
-    "movementModes": {
+    "armorClass": 3,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F3",
+    "XP": 275,
+    "numberAppearing": "0(1-4)",
     "attacks": [
       {
         "type": "bite",
@@ -725,39 +695,37 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "2d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d8",
         "dice": "2d8",
         "rider": null
       }
     ],
-    "numberAppearing": "0(1-4)",
-    "saveAs": "F3",
-    "morale": 7,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 275,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "90(30)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d8"
+    }
   },
   {
-    "id": "crocodile-giant",
+    "monsterKey": "crocodile_giant",
     "name": "Crocodile, Giant",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 1,
     "hitDice": "15",
-    "movement": "90(30)",
-    "movementModes": {
+    "armorClass": 1,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 9,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F8",
+    "XP": 1350,
+    "numberAppearing": "0(1-3)",
     "attacks": [
       {
         "type": "bite",
@@ -765,39 +733,37 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "3d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "3d8",
         "dice": "3d8",
         "rider": null
       }
     ],
-    "numberAppearing": "0(1-3)",
-    "saveAs": "F8",
-    "morale": 9,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 1350,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "90(30)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "3d8"
+    }
   },
   {
-    "id": "cyclops",
+    "monsterKey": "cyclops",
     "name": "Cyclops",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "13*",
-    "movement": "90(30)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 9,
+    "treasureType": "E",
+    "alignment": "Chaotic",
+    "saveAs": "F13",
+    "XP": 2300,
+    "numberAppearing": "1(1-4)",
     "attacks": [
       {
         "type": "club or stone throw",
@@ -805,46 +771,43 @@
         "raw": "1 Club or Stone throw"
       }
     ],
-    "damage": "3d10 or 3d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "3d10",
         "dice": "3d10",
         "rider": null
       },
       {
-        "raw": "3d6",
         "dice": "3d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1-4)",
-    "saveAs": "F13",
-    "morale": 9,
-    "treasureType": "E + 5000gp",
-    "treasure": {
-      "raw": "E + 5000gp",
-      "normalizedCodes": [
-        "E"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 2300,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "90(30)",
+      "treasure": "E + 5000gp",
+      "treasureCodes": [
+        "E"
+      ],
+      "damage": "3d10 or 3d6"
+    }
   },
   {
-    "id": "devil-swine",
+    "monsterKey": "devil_swine",
     "name": "Devil Swine*",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 3,
     "hitDice": "9*",
-    "movement": "180(60)",
-    "movementModes": {
+    "armorClass": 3,
+    "movement": {
       "move": "180(60)"
     },
+    "morale": 10,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "saveAs": "F9",
+    "XP": 1600,
+    "numberAppearing": "1-3(1-4)",
     "attacks": [
       {
         "type": "gore",
@@ -852,41 +815,39 @@
         "raw": "1 Gore"
       }
     ],
-    "damage": "2d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-3(1-4)",
-    "saveAs": "F9",
-    "morale": 10,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 1600,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "180(60)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "2d6"
+    }
   },
   {
-    "id": "displacer-beast",
+    "monsterKey": "displacer_beast",
     "name": "Displacer Beast",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "6*",
-    "movement": "150(50)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "150(50)"
     },
+    "morale": 8,
+    "treasureType": "D",
+    "alignment": "Neutral",
+    "saveAs": "F6",
+    "XP": 500,
+    "numberAppearing": "1-4(1-4)",
     "attacks": [
       {
         "type": "tentacles",
@@ -894,46 +855,43 @@
         "raw": "2 Tentacles"
       }
     ],
-    "damage": "2d4/2d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d4",
         "dice": "2d4",
         "rider": null
       },
       {
-        "raw": "2d4",
         "dice": "2d4",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4(1-4)",
-    "saveAs": "F6",
-    "morale": 8,
-    "treasureType": "D",
-    "treasure": {
-      "raw": "D",
-      "normalizedCodes": [
-        "D"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 500,
-    "specialAbilities": "-2 To hit and +2 save throws. Gain 1 bite when hp = 6 or lower. (Bite +2 hit 1d6 dmg)",
+    "riders": [],
     "notes": "-2 To hit and +2 save throws. Gain 1 bite when hp = 6 or lower. (Bite +2 hit 1d6 dmg)",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "150(50)",
+      "treasure": "D",
+      "treasureCodes": [
+        "D"
+      ],
+      "damage": "2d4/2d4"
+    }
   },
   {
-    "id": "djinni-lesser",
+    "monsterKey": "djinni_lesser",
     "name": "Djinni(Lesser)*",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "7+1*",
-    "movement": "M: 90(30) F: 240(80)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Chaotic",
+    "saveAs": "F14",
+    "XP": 1025,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "fist or whirlwind",
@@ -946,44 +904,41 @@
         "raw": "special"
       }
     ],
-    "damage": "2d8 or 2d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d8",
         "dice": "2d8",
         "rider": null
       },
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F14",
-    "morale": 12,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Chaotic",
-    "xp": 1025,
-    "specialAbilities": "A djinni can use each of its seven powers 3 times each day. These powers are: create food and drink (as a 7th level cleric); create metallic objects of up to 1,000 cn weight (of temporary duration, varying by type: gold = 1 day, iron = 1 round); create soft goods and wooden objects of up to 1,000 cn weight which are permanent; become invisible; assume gaseous form; form a whirlwind; create illusions (which affect both sight and hearing, lasting until touched or magically dispelled - the djinni need not concentrate to maintain them).",
+    "riders": [],
     "notes": "A djinni can use each of its seven powers 3 times each day. These powers are: create food and drink (as a 7th level cleric); create metallic objects of up to 1,000 cn weight (of temporary duration, varying by type: gold = 1 day, iron = 1 round); create soft goods and wooden objects of up to 1,000 cn weight which are permanent; become invisible; assume gaseous form; form a whirlwind; create illusions (which affect both sight and hearing, lasting until touched or magically dispelled - the djinni need not concentrate to maintain them).",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "M: 90(30) F: 240(80)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d8 or 2d6"
+    }
   },
   {
-    "id": "dryad",
+    "monsterKey": "dryad",
     "name": "Dryad",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "2*",
-    "movement": "120(40)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 6,
+    "treasureType": "D",
+    "alignment": "Neutral",
+    "saveAs": "ELF4",
+    "XP": 25,
+    "numberAppearing": "0(1-6)",
     "attacks": [
       {
         "type": "charm person",
@@ -991,41 +946,41 @@
         "raw": "Charm person"
       }
     ],
-    "damage": "Spell charm person with -2 to Save",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "Spell charm person with -2 to Save",
         "dice": null,
         "rider": "Spell charm person with -2 to Save"
       }
     ],
-    "numberAppearing": "0(1-6)",
-    "saveAs": "Elf4",
-    "morale": 6,
-    "treasureType": "D",
-    "treasure": {
-      "raw": "D",
-      "normalizedCodes": [
-        "D"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 25,
-    "specialAbilities": "",
+    "riders": [
+      "Spell charm person with -2 to Save"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "D",
+      "treasureCodes": [
+        "D"
+      ],
+      "damage": "Spell charm person with -2 to Save"
+    }
   },
   {
-    "id": "efreeti-lesser",
+    "monsterKey": "efreeti_lesser",
     "name": "Efreeti(Lesser)*",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 3,
     "hitDice": "10*",
-    "movement": "M: 90(30) F: 240(80)",
-    "movementModes": {
+    "armorClass": 3,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Chaotic",
+    "saveAs": "F15",
+    "XP": 1750,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "fist",
@@ -1038,39 +993,39 @@
         "raw": "(Flames)"
       }
     ],
-    "damage": "2d8 +(1d8)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d8 +(1d8)",
         "dice": "2d8",
         "rider": "(1d8)"
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F15",
-    "morale": 12,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Chaotic",
-    "xp": 1750,
-    "specialAbilities": "An efreeti can create objects, create illusions, and turn invisible like a djinni. It can cast a wall of fire spell 3 times per day. An efreeti may also transform itself into a pillar of flame that will set fire to all flammable items within 5 feet. It can retain the flame shape for up to 3 rounds. When in this form, the fire adds 1-8 points of damage to each of the efreeti's blows.",
+    "riders": [
+      "(1d8)"
+    ],
     "notes": "An efreeti can create objects, create illusions, and turn invisible like a djinni. It can cast a wall of fire spell 3 times per day. An efreeti may also transform itself into a pillar of flame that will set fire to all flammable items within 5 feet. It can retain the flame shape for up to 3 rounds. When in this form, the fire adds 1-8 points of damage to each of the efreeti's blows.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "M: 90(30) F: 240(80)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d8 +(1d8)"
+    }
   },
   {
-    "id": "elemental-air-staff",
+    "monsterKey": "elemental_air_staff",
     "name": "Elemental* Air, staff",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 2,
     "hitDice": "8",
-    "movement": "F:360(120)",
-    "movementModes": {
+    "armorClass": 2,
+    "movement": {
       "move": "360(120)"
     },
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F8",
+    "XP": 650,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "1",
@@ -1078,39 +1033,37 @@
         "raw": "1"
       }
     ],
-    "damage": "1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F8",
-    "morale": 10,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 650,
-    "specialAbilities": "Does +1d8 in its element.",
+    "riders": [],
     "notes": "Does +1d8 in its element.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "F:360(120)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d8"
+    }
   },
   {
-    "id": "elemental-air-device",
+    "monsterKey": "elemental_air_device",
     "name": "Elemental* Air, device",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 0,
     "hitDice": "12",
-    "movement": "F:360(120)",
-    "movementModes": {
+    "armorClass": 0,
+    "movement": {
       "move": "360(120)"
     },
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F12",
+    "XP": 1250,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "1",
@@ -1118,39 +1071,37 @@
         "raw": "1"
       }
     ],
-    "damage": "2d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d8",
         "dice": "2d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F12",
-    "morale": 10,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 1250,
-    "specialAbilities": "Does +1d8 in its element.",
+    "riders": [],
     "notes": "Does +1d8 in its element.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "F:360(120)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d8"
+    }
   },
   {
-    "id": "elemental-air-spell",
+    "monsterKey": "elemental_air_spell",
     "name": "Elemental* Air, spell",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": -2,
     "hitDice": "16",
-    "movement": "F:360(120)",
-    "movementModes": {
+    "armorClass": -2,
+    "movement": {
       "move": "360(120)"
     },
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F16",
+    "XP": 1850,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "1",
@@ -1158,39 +1109,37 @@
         "raw": "1"
       }
     ],
-    "damage": "3d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "3d8",
         "dice": "3d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F16",
-    "morale": 10,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 1850,
-    "specialAbilities": "Does +1d8 in its element.",
+    "riders": [],
     "notes": "Does +1d8 in its element.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "F:360(120)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "3d8"
+    }
   },
   {
-    "id": "elemental-earth-staff",
+    "monsterKey": "elemental_earth_staff",
     "name": "Elemental* Earth, staff",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 2,
     "hitDice": "8",
-    "movement": "60(20)",
-    "movementModes": {
+    "armorClass": 2,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F8",
+    "XP": 650,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "1",
@@ -1198,39 +1147,37 @@
         "raw": "1"
       }
     ],
-    "damage": "1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F8",
-    "morale": 10,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 650,
-    "specialAbilities": "Does +1d8 in its element.",
+    "riders": [],
     "notes": "Does +1d8 in its element.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "60(20)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d8"
+    }
   },
   {
-    "id": "elemental-earth-device",
+    "monsterKey": "elemental_earth_device",
     "name": "Elemental* Earth, device",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 0,
     "hitDice": "12",
-    "movement": "60(20)",
-    "movementModes": {
+    "armorClass": 0,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F12",
+    "XP": 1250,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "1",
@@ -1238,39 +1185,37 @@
         "raw": "1"
       }
     ],
-    "damage": "2d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d8",
         "dice": "2d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F12",
-    "morale": 10,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 1250,
-    "specialAbilities": "Does +1d8 in its element.",
+    "riders": [],
     "notes": "Does +1d8 in its element.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "60(20)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d8"
+    }
   },
   {
-    "id": "elemental-earth-spell",
+    "monsterKey": "elemental_earth_spell",
     "name": "Elemental* Earth, spell",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": -2,
     "hitDice": "16",
-    "movement": "60(20)",
-    "movementModes": {
+    "armorClass": -2,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F16",
+    "XP": 1850,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "1",
@@ -1278,39 +1223,37 @@
         "raw": "1"
       }
     ],
-    "damage": "3d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "3d8",
         "dice": "3d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F16",
-    "morale": 10,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 1850,
-    "specialAbilities": "Does +1d8 in its element.",
+    "riders": [],
     "notes": "Does +1d8 in its element.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "60(20)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "3d8"
+    }
   },
   {
-    "id": "elemental-fire-staff",
+    "monsterKey": "elemental_fire_staff",
     "name": "Elemental* Fire, staff",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 2,
     "hitDice": "8",
-    "movement": "120(40)",
-    "movementModes": {
+    "armorClass": 2,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F8",
+    "XP": 650,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "1",
@@ -1318,39 +1261,37 @@
         "raw": "1"
       }
     ],
-    "damage": "1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F8",
-    "morale": 10,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 650,
-    "specialAbilities": "Does +1d8 in its element.",
+    "riders": [],
     "notes": "Does +1d8 in its element.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d8"
+    }
   },
   {
-    "id": "elemental-fire-device",
+    "monsterKey": "elemental_fire_device",
     "name": "Elemental* Fire, device",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 0,
     "hitDice": "12",
-    "movement": "120(40)",
-    "movementModes": {
+    "armorClass": 0,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F12",
+    "XP": 1250,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "1",
@@ -1358,39 +1299,37 @@
         "raw": "1"
       }
     ],
-    "damage": "2d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d8",
         "dice": "2d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F12",
-    "morale": 10,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 1250,
-    "specialAbilities": "Does +1d8 in its element.",
+    "riders": [],
     "notes": "Does +1d8 in its element.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d8"
+    }
   },
   {
-    "id": "elemental-fire-spell",
+    "monsterKey": "elemental_fire_spell",
     "name": "Elemental* Fire, spell",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": -2,
     "hitDice": "16",
-    "movement": "120(40)",
-    "movementModes": {
+    "armorClass": -2,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F16",
+    "XP": 1850,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "1",
@@ -1398,39 +1337,37 @@
         "raw": "1"
       }
     ],
-    "damage": "3d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "3d8",
         "dice": "3d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F16",
-    "morale": 10,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 1850,
-    "specialAbilities": "Does +1d8 in its element.",
+    "riders": [],
     "notes": "Does +1d8 in its element.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "3d8"
+    }
   },
   {
-    "id": "elemental-water-staff",
+    "monsterKey": "elemental_water_staff",
     "name": "Elemental* Water, staff",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 2,
     "hitDice": "8",
-    "movement": "M: 60(20) S: 180(60)",
-    "movementModes": {
+    "armorClass": 2,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F8",
+    "XP": 650,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "1",
@@ -1438,39 +1375,37 @@
         "raw": "1"
       }
     ],
-    "damage": "1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F8",
-    "morale": 10,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 650,
-    "specialAbilities": "Does +1d8 in its element.",
+    "riders": [],
     "notes": "Does +1d8 in its element.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "M: 60(20) S: 180(60)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d8"
+    }
   },
   {
-    "id": "elemental-water-device",
+    "monsterKey": "elemental_water_device",
     "name": "Elemental* Water, device",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 0,
     "hitDice": "12",
-    "movement": "M: 60(20) S: 180(60)",
-    "movementModes": {
+    "armorClass": 0,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F12",
+    "XP": 1250,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "1",
@@ -1478,39 +1413,37 @@
         "raw": "1"
       }
     ],
-    "damage": "2d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d8",
         "dice": "2d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F12",
-    "morale": 10,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 1250,
-    "specialAbilities": "Does +1d8 in its element.",
+    "riders": [],
     "notes": "Does +1d8 in its element.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "M: 60(20) S: 180(60)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d8"
+    }
   },
   {
-    "id": "elemental-water-spell",
+    "monsterKey": "elemental_water_spell",
     "name": "Elemental* Water, spell",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": -2,
     "hitDice": "16",
-    "movement": "M: 60(20) S: 180(60)",
-    "movementModes": {
+    "armorClass": -2,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F16",
+    "XP": 1850,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "1",
@@ -1518,89 +1451,37 @@
         "raw": "1"
       }
     ],
-    "damage": "3d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "3d8",
         "dice": "3d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F16",
-    "morale": 10,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 1850,
-    "specialAbilities": "Does +1d8 in its element.",
+    "riders": [],
     "notes": "Does +1d8 in its element.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "M: 60(20) S: 180(60)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "3d8"
+    }
   },
   {
-    "id": "elephant",
+    "monsterKey": "elephant",
     "name": "Elephant",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "9",
-    "movement": "120(40)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "120(40)"
     },
-    "attacks": [
-      {
-        "type": "tusks or 1 trample",
-        "count": 2,
-        "raw": "2 Tusks(75%) OR 1 Trample(25%)"
-      }
-    ],
-    "damage": "2d4/2d4 OR 4d8",
-    "damageParts": [
-      {
-        "raw": "2d4",
-        "dice": "2d4",
-        "rider": null
-      },
-      {
-        "raw": "2d4",
-        "dice": "2d4",
-        "rider": null
-      },
-      {
-        "raw": "4d8",
-        "dice": "4d8",
-        "rider": null
-      }
-    ],
-    "numberAppearing": "0(1-20)",
-    "saveAs": "F5",
     "morale": 8,
     "treasureType": "Tusk 1d6 x100gp",
-    "treasure": {
-      "raw": "Tusk 1d6 x100gp",
-      "normalizedCodes": []
-    },
     "alignment": "Neutral",
-    "xp": 900,
-    "specialAbilities": "Tries to charge first round",
-    "notes": "Tries to charge first round",
-    "actorType": "creature"
-  },
-  {
-    "id": "elephant-prehistoric",
-    "name": "Elephant, Prehistoric",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 3,
-    "hitDice": "15",
-    "movement": "120(40)",
-    "movementModes": {
-      "move": "120(40)"
-    },
+    "saveAs": "F5",
+    "XP": 900,
+    "numberAppearing": "0(1-20)",
     "attacks": [
       {
         "type": "tusks or 1 trample",
@@ -1608,49 +1489,91 @@
         "raw": "2 Tusks(75%) OR 1 Trample(25%)"
       }
     ],
-    "damage": "2d6/2d6 OR 4d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d6",
-        "dice": "2d6",
+        "dice": "2d4",
         "rider": null
       },
       {
-        "raw": "2d6",
-        "dice": "2d6",
+        "dice": "2d4",
         "rider": null
       },
       {
-        "raw": "4d8",
         "dice": "4d8",
         "rider": null
       }
     ],
-    "numberAppearing": "0(2-16)",
-    "saveAs": "F8",
-    "morale": 8,
-    "treasureType": "Tusk 2d4 x100gp",
-    "treasure": {
-      "raw": "Tusk 2d4 x100gp",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 1650,
-    "specialAbilities": "Tries to charge first round",
+    "riders": [],
     "notes": "Tries to charge first round",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "Tusk 1d6 x100gp",
+      "treasureCodes": [],
+      "damage": "2d4/2d4 OR 4d8"
+    }
   },
   {
-    "id": "fish-giant-bass",
-    "name": "Fish, Giant Bass",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 7,
-    "hitDice": "2",
-    "movement": "120(40)",
-    "movementModes": {
+    "monsterKey": "elephant_prehistoric",
+    "name": "Elephant, Prehistoric",
+    "hitDice": "15",
+    "armorClass": 3,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 8,
+    "treasureType": "Tusk 2d4 x100gp",
+    "alignment": "Neutral",
+    "saveAs": "F8",
+    "XP": 1650,
+    "numberAppearing": "0(2-16)",
+    "attacks": [
+      {
+        "type": "tusks or 1 trample",
+        "count": 2,
+        "raw": "2 Tusks(75%) OR 1 Trample(25%)"
+      }
+    ],
+    "damage": [
+      {
+        "dice": "2d6",
+        "rider": null
+      },
+      {
+        "dice": "2d6",
+        "rider": null
+      },
+      {
+        "dice": "4d8",
+        "rider": null
+      }
+    ],
+    "riders": [],
+    "notes": "Tries to charge first round",
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "Tusk 2d4 x100gp",
+      "treasureCodes": [],
+      "damage": "2d6/2d6 OR 4d8"
+    }
+  },
+  {
+    "monsterKey": "fish_giant_bass",
+    "name": "Fish, Giant Bass",
+    "hitDice": "2",
+    "armorClass": 7,
+    "movement": {
+      "move": "120(40)"
+    },
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 20,
+    "numberAppearing": "0(2-8)",
     "attacks": [
       {
         "type": "bite",
@@ -1658,39 +1581,37 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "0(2-8)",
-    "saveAs": "F1",
-    "morale": 8,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 20,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d6"
+    }
   },
   {
-    "id": "fish-giant-rockfish",
+    "monsterKey": "fish_giant_rockfish",
     "name": "Fish, Giant Rockfish",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "5+5*",
-    "movement": "180(60)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "180(60)"
     },
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F3",
+    "XP": 400,
+    "numberAppearing": "0(2-8)",
     "attacks": [
       {
         "type": "spines",
@@ -1703,39 +1624,39 @@
         "raw": "Poison"
       }
     ],
-    "damage": "1d4 each Spine + Save VS Poison(3)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4 each Spine + Save VS Poison(3)",
         "dice": "1d4",
         "rider": "each Spine + Save VS Poison(3)"
       }
     ],
-    "numberAppearing": "0(2-8)",
-    "saveAs": "F3",
-    "morale": 8,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 400,
-    "specialAbilities": "",
+    "riders": [
+      "each Spine + Save VS Poison(3)"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "180(60)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d4 each Spine + Save VS Poison(3)"
+    }
   },
   {
-    "id": "fish-giant-sturgeon",
+    "monsterKey": "fish_giant_sturgeon",
     "name": "Fish, Giant Sturgeon",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 0,
     "hitDice": "10+2*",
-    "movement": "180(60)",
-    "movementModes": {
+    "armorClass": 0,
+    "movement": {
       "move": "180(60)"
     },
+    "morale": 9,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F5",
+    "XP": 1900,
+    "numberAppearing": "0(1-2)",
     "attacks": [
       {
         "type": "bite",
@@ -1748,39 +1669,39 @@
         "raw": "Swallow(18)"
       }
     ],
-    "damage": "2d10 (Swallow 2d6)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d10 (Swallow 2d6)",
         "dice": "2d10",
         "rider": "(Swallow 2d6)"
       }
     ],
-    "numberAppearing": "0(1-2)",
-    "saveAs": "F5",
-    "morale": 9,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 1900,
-    "specialAbilities": "Swallowed victim save VS Death Ray or be paralyzed",
+    "riders": [
+      "(Swallow 2d6)"
+    ],
     "notes": "Swallowed victim save VS Death Ray or be paralyzed",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "180(60)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d10 (Swallow 2d6)"
+    }
   },
   {
-    "id": "giant-hill",
+    "monsterKey": "giant_hill",
     "name": "Giant, Hill",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "8",
-    "movement": "120(40)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 8,
+    "treasureType": "E",
+    "alignment": "Chaotic",
+    "saveAs": "F8",
+    "XP": 650,
+    "numberAppearing": "1-4(2d8)",
     "attacks": [
       {
         "type": "weapon or throw rock",
@@ -1788,46 +1709,43 @@
         "raw": "1 Weapon OR Throw Rock"
       }
     ],
-    "damage": "2d8 OR 3d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d8",
         "dice": "2d8",
         "rider": null
       },
       {
-        "raw": "3d6",
         "dice": "3d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4(2d8)",
-    "saveAs": "F8",
-    "morale": 8,
-    "treasureType": "E + 5000gp",
-    "treasure": {
-      "raw": "E + 5000gp",
-      "normalizedCodes": [
-        "E"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 650,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "E + 5000gp",
+      "treasureCodes": [
+        "E"
+      ],
+      "damage": "2d8 OR 3d6"
+    }
   },
   {
-    "id": "giant-stone",
+    "monsterKey": "giant_stone",
     "name": "Giant, Stone",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "9",
-    "movement": "120(40)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 9,
+    "treasureType": "E",
+    "alignment": "Neutral",
+    "saveAs": "F9",
+    "XP": 900,
+    "numberAppearing": "1-2(1-6)",
     "attacks": [
       {
         "type": "weapon or throw rock",
@@ -1835,46 +1753,43 @@
         "raw": "1 Weapon OR Throw Rock"
       }
     ],
-    "damage": "3d6 OR 3d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "3d6",
         "dice": "3d6",
         "rider": null
       },
       {
-        "raw": "3d6",
         "dice": "3d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-2(1-6)",
-    "saveAs": "F9",
-    "morale": 9,
-    "treasureType": "E + 5000gp",
-    "treasure": {
-      "raw": "E + 5000gp",
-      "normalizedCodes": [
-        "E"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 900,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "E + 5000gp",
+      "treasureCodes": [
+        "E"
+      ],
+      "damage": "3d6 OR 3d6"
+    }
   },
   {
-    "id": "giant-frost",
+    "monsterKey": "giant_frost",
     "name": "Giant, Frost",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "10+1*",
-    "movement": "120(40)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 9,
+    "treasureType": "E",
+    "alignment": "Chaotic",
+    "saveAs": "F10",
+    "XP": 1900,
+    "numberAppearing": "1-2(1-4)",
     "attacks": [
       {
         "type": "weapon or throw rock",
@@ -1882,46 +1797,43 @@
         "raw": "1 Weapon OR Throw Rock"
       }
     ],
-    "damage": "4d6 OR 3d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "4d6",
         "dice": "4d6",
         "rider": null
       },
       {
-        "raw": "3d6",
         "dice": "3d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-2(1-4)",
-    "saveAs": "F10",
-    "morale": 9,
-    "treasureType": "E + 5000gp",
-    "treasure": {
-      "raw": "E + 5000gp",
-      "normalizedCodes": [
-        "E"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 1900,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "E + 5000gp",
+      "treasureCodes": [
+        "E"
+      ],
+      "damage": "4d6 OR 3d6"
+    }
   },
   {
-    "id": "giant-fire",
+    "monsterKey": "giant_fire",
     "name": "Giant, Fire",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "11+2*",
-    "movement": "120(40)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 9,
+    "treasureType": "E",
+    "alignment": "Chaotic",
+    "saveAs": "F11",
+    "XP": 2100,
+    "numberAppearing": "1-2(1-3)",
     "attacks": [
       {
         "type": "weapon or throw rock",
@@ -1929,46 +1841,43 @@
         "raw": "1 Weapon OR Throw Rock"
       }
     ],
-    "damage": "5d6 OR 3d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "5d6",
         "dice": "5d6",
         "rider": null
       },
       {
-        "raw": "3d6",
         "dice": "3d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-2(1-3)",
-    "saveAs": "F11",
-    "morale": 9,
-    "treasureType": "E + 5000gp",
-    "treasure": {
-      "raw": "E + 5000gp",
-      "normalizedCodes": [
-        "E"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 2100,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "E + 5000gp",
+      "treasureCodes": [
+        "E"
+      ],
+      "damage": "5d6 OR 3d6"
+    }
   },
   {
-    "id": "giant-cloud",
+    "monsterKey": "giant_cloud",
     "name": "Giant, Cloud",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "13*",
-    "movement": "120(40)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 10,
+    "treasureType": "E",
+    "alignment": "Neutral",
+    "saveAs": "F12",
+    "XP": 2300,
+    "numberAppearing": "1-2(1-3)",
     "attacks": [
       {
         "type": "weapon or throw rock",
@@ -1976,46 +1885,43 @@
         "raw": "1 Weapon OR Throw Rock"
       }
     ],
-    "damage": "6d6 OR 3d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "6d6",
         "dice": "6d6",
         "rider": null
       },
       {
-        "raw": "3d6",
         "dice": "3d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-2(1-3)",
-    "saveAs": "F12",
-    "morale": 10,
-    "treasureType": "E + 5000gp",
-    "treasure": {
-      "raw": "E + 5000gp",
-      "normalizedCodes": [
-        "E"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 2300,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "E + 5000gp",
+      "treasureCodes": [
+        "E"
+      ],
+      "damage": "6d6 OR 3d6"
+    }
   },
   {
-    "id": "giant-storm",
+    "monsterKey": "giant_storm",
     "name": "Giant, Storm",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 2,
     "hitDice": "15**",
-    "movement": "150(50)",
-    "movementModes": {
+    "armorClass": 2,
+    "movement": {
       "move": "150(50)"
     },
+    "morale": 10,
+    "treasureType": "E",
+    "alignment": "Lawful",
+    "saveAs": "F15",
+    "XP": 3750,
+    "numberAppearing": "1(1-3)",
     "attacks": [
       {
         "type": "weapon",
@@ -2028,56 +1934,56 @@
         "raw": "Special"
       }
     ],
-    "damage": "8d6 (Call lightning bolt, once every 5 rounds, current hp dmg Save vs Spells for 1/2 dmg)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "8d6 (Call lightning bolt",
         "dice": "8d6",
         "rider": "(Call lightning bolt"
       },
       {
-        "raw": "once every 5 rounds",
         "dice": null,
         "rider": "once every 5 rounds"
       },
       {
-        "raw": "current hp dmg Save vs Spells for 1",
         "dice": null,
         "rider": "current hp dmg Save vs Spells for 1"
       },
       {
-        "raw": "2 dmg)",
         "dice": null,
         "rider": "2 dmg)"
       }
     ],
-    "numberAppearing": "1(1-3)",
-    "saveAs": "F15",
-    "morale": 10,
-    "treasureType": "E + 5000gp",
-    "treasure": {
-      "raw": "E + 5000gp",
-      "normalizedCodes": [
-        "E"
-      ]
-    },
-    "alignment": "Lawful",
-    "xp": 3750,
-    "specialAbilities": "",
+    "riders": [
+      "(Call lightning bolt",
+      "once every 5 rounds",
+      "current hp dmg Save vs Spells for 1",
+      "2 dmg)"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "150(50)",
+      "treasure": "E + 5000gp",
+      "treasureCodes": [
+        "E"
+      ],
+      "damage": "8d6 (Call lightning bolt, once every 5 rounds, current hp dmg Save vs Spells for 1/2 dmg)"
+    }
   },
   {
-    "id": "golem-wood",
+    "monsterKey": "golem_wood",
     "name": "Golem*, Wood",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "2+2*",
-    "movement": "120(40)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 35,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "fist",
@@ -2085,39 +1991,37 @@
         "raw": "1 Fist"
       }
     ],
-    "damage": "1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F1",
-    "morale": 12,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 35,
-    "specialAbilities": "-1 to INIT, -2 To Save VS Fire and takes +1 dmg per die.",
+    "riders": [],
     "notes": "-1 to INIT, -2 To Save VS Fire and takes +1 dmg per die.",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d8"
+    }
   },
   {
-    "id": "golem-bone",
+    "monsterKey": "golem_bone",
     "name": "Golem*, Bone",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 2,
     "hitDice": "6*",
-    "movement": "120(40)",
-    "movementModes": {
+    "armorClass": 2,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F4",
+    "XP": 500,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "weapons",
@@ -2125,39 +2029,39 @@
         "raw": "4 Weapons( 4x 1h or 2x 2h)"
       }
     ],
-    "damage": "By weapons",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "By weapons",
         "dice": null,
         "rider": "By weapons"
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F4",
-    "morale": 12,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 500,
-    "specialAbilities": "Immune fire, cold, electricity",
+    "riders": [
+      "By weapons"
+    ],
     "notes": "Immune fire, cold, electricity",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "120(40)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "By weapons"
+    }
   },
   {
-    "id": "golem-amber",
+    "monsterKey": "golem_amber",
     "name": "Golem*, Amber",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "10*",
-    "movement": "180(60)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "180(60)"
     },
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F5",
+    "XP": 1750,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "claws",
@@ -2170,49 +2074,45 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "2d6/2d6/2d10",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       },
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       },
       {
-        "raw": "2d10",
         "dice": "2d10",
         "rider": null
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F5",
-    "morale": 12,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 1750,
-    "specialAbilities": "Detect invis 60'",
+    "riders": [],
     "notes": "Detect invis 60'",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "180(60)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d6/2d6/2d10"
+    }
   },
   {
-    "id": "golem-bronze",
+    "monsterKey": "golem_bronze",
     "name": "Golem*, Bronze",
-    "sourceBook": "Expert",
-    "sourcePage": null,
-    "armorClass": 0,
     "hitDice": "20**",
-    "movement": "240(80)",
-    "movementModes": {
+    "armorClass": 0,
+    "movement": {
       "move": "240(80)"
     },
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F10",
+    "XP": 5975,
+    "numberAppearing": "1(1)",
     "attacks": [
       {
         "type": "fist",
@@ -2225,26 +2125,23 @@
         "raw": "Special"
       }
     ],
-    "damage": "3d10 +1d10 Fire",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "3d10 +1d10 Fire",
         "dice": "3d10+1",
         "rider": "d10 Fire"
       }
     ],
-    "numberAppearing": "1(1)",
-    "saveAs": "F10",
-    "morale": 12,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 5975,
-    "specialAbilities": "Flaming fists +1d10 Fire",
+    "riders": [
+      "d10 Fire"
+    ],
     "notes": "Flaming fists +1d10 Fire",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Expert",
+      "sourcePage": null,
+      "movement": "240(80)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "3d10 +1d10 Fire"
+    }
   }
 ]

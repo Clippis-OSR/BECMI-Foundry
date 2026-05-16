@@ -89,10 +89,12 @@ describe('monster parser', () => {
     expect(result.duplicates.length).toBeGreaterThan(0);
   });
 
-  it('canonical shape contains required fields', () => {
+  it('canonical shape contains normalized import fields only', () => {
     const out = normalizeMonsterRow({ Name: 'Orc', AC: '6', 'Hit Dice': '1', Move: '120(40)', Attack: '1 Weapon', Damage: '1d6', 'Save As': 'F1', Morale: '8', 'Tresure Type': 'C', Aligment: 'Chaotic', 'XP Value': '10' }, { sourceBook: 'Basic' });
-    for (const field of ['id', 'name', 'sourceBook', 'armorClass', 'hitDice', 'movement', 'attacks', 'damage']) {
+    for (const field of ['monsterKey', 'name', 'hitDice', 'armorClass', 'movement', 'morale', 'treasureType', 'alignment', 'saveAs', 'XP', 'numberAppearing', 'attacks', 'damage']) {
       expect(out).toHaveProperty(field);
     }
+    expect(out).toHaveProperty('raw');
+    expect(out).not.toHaveProperty('sourceBook');
   });
 });

@@ -1,15 +1,18 @@
 [
   {
-    "id": "ant-giant",
+    "monsterKey": "ant_giant",
     "name": "Ant - Giant",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 3,
     "hitDice": "4*",
-    "movement": "180 (60)",
-    "movementModes": {
+    "armorClass": 3,
+    "movement": {
       "move": "180(60)"
     },
+    "morale": 7,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 125,
+    "numberAppearing": "2-8 (4-24)",
     "attacks": [
       {
         "type": "bite",
@@ -17,39 +20,37 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "2d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       }
     ],
-    "numberAppearing": "2-8 (4-24)",
-    "saveAs": "F2",
-    "morale": 7,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 125,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "180 (60)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "2d6"
+    }
   },
   {
-    "id": "ape-white",
+    "monsterKey": "ape_white",
     "name": "Ape - White",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "4",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 75,
+    "numberAppearing": "1-6 (2-8)",
     "attacks": [
       {
         "type": "claw",
@@ -57,44 +58,41 @@
         "raw": "2 Claw"
       }
     ],
-    "damage": "1d4 / 1d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (2-8)",
-    "saveAs": "F2",
-    "morale": 7,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 75,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d4 / 1d4"
+    }
   },
   {
-    "id": "baboon-rock",
+    "monsterKey": "baboon_rock",
     "name": "Baboon - Rock",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "2",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 20,
+    "numberAppearing": "2-12 (5-30)",
     "attacks": [
       {
         "type": "club",
@@ -107,45 +105,42 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d6 / 1d3",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d3",
         "dice": "1d3",
         "rider": null
       }
     ],
-    "numberAppearing": "2-12 (5-30)",
-    "saveAs": "F2",
-    "morale": 8,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 20,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d6 / 1d3"
+    }
   },
   {
-    "id": "bat-normal",
+    "monsterKey": "bat_normal",
     "name": "Bat - Normal",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "1/4",
-    "movement": "Fly: 120 (40)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "120(40)",
       "fly": "120(40)"
     },
+    "morale": 6,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "NORMALMAN",
+    "XP": 5,
+    "numberAppearing": "1-100 (1-100)",
     "attacks": [
       {
         "type": "confusion",
@@ -153,40 +148,40 @@
         "raw": "Confusion"
       }
     ],
-    "damage": "Nil",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "Nil",
         "dice": null,
         "rider": "Nil"
       }
     ],
-    "numberAppearing": "1-100 (1-100)",
-    "saveAs": "Normal man",
-    "morale": 6,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 5,
-    "specialAbilities": "",
+    "riders": [
+      "Nil"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Fly: 120 (40)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "Nil"
+    }
   },
   {
-    "id": "bat-giant",
+    "monsterKey": "bat_giant",
     "name": "Bat - Giant",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "2",
-    "movement": "Fly: 180 (60)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "180(60)",
       "fly": "180(60)"
     },
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 20,
+    "numberAppearing": "1-10 (1-10)",
     "attacks": [
       {
         "type": "bite",
@@ -194,39 +189,37 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       }
     ],
-    "numberAppearing": "1-10 (1-10)",
-    "saveAs": "F1",
-    "morale": 8,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 20,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Fly: 180 (60)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d4"
+    }
   },
   {
-    "id": "bandit",
+    "monsterKey": "bandit",
     "name": "Bandit",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "1",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 8,
+    "treasureType": "A",
+    "alignment": "Neutral",
+    "saveAs": "T1",
+    "XP": 10,
+    "numberAppearing": "1-8 (3-30)",
     "attacks": [
       {
         "type": "weapon",
@@ -234,101 +227,41 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "By weapon",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "By weapon",
         "dice": null,
         "rider": "By weapon"
       }
     ],
-    "numberAppearing": "1-8 (3-30)",
-    "saveAs": "T1",
-    "morale": 8,
-    "treasureType": "(U) A",
-    "treasure": {
-      "raw": "(U) A",
-      "normalizedCodes": [
-        "A"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 10,
-    "specialAbilities": "",
+    "riders": [
+      "By weapon"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(U) A",
+      "treasureCodes": [
+        "A"
+      ],
+      "damage": "By weapon"
+    }
   },
   {
-    "id": "bear-black",
+    "monsterKey": "bear_black",
     "name": "Bear - Black",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "4",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "120(40)"
     },
-    "attacks": [
-      {
-        "type": "claws",
-        "count": 2,
-        "raw": "2 Claws"
-      },
-      {
-        "type": "bite",
-        "count": 1,
-        "raw": "1 Bite"
-      },
-      {
-        "type": "bearhug",
-        "count": 1,
-        "raw": "Bearhug"
-      }
-    ],
-    "damage": "1d3 / 1d3 / 1d6",
-    "damageParts": [
-      {
-        "raw": "1d3",
-        "dice": "1d3",
-        "rider": null
-      },
-      {
-        "raw": "1d3",
-        "dice": "1d3",
-        "rider": null
-      },
-      {
-        "raw": "1d6",
-        "dice": "1d6",
-        "rider": null
-      }
-    ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F2",
     "morale": 7,
     "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
     "alignment": "Neutral",
-    "xp": 75,
-    "specialAbilities": "If both claws hit add 2d8",
-    "notes": "If both claws hit add 2d8",
-    "actorType": "creature"
-  },
-  {
-    "id": "bear-grizzly",
-    "name": "Bear - Grizzly",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 8,
-    "hitDice": "5",
-    "movement": "120 (40)",
-    "movementModes": {
-      "move": "120(40)"
-    },
+    "saveAs": "F2",
+    "XP": 75,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -346,49 +279,45 @@
         "raw": "Bearhug"
       }
     ],
-    "damage": "1d8 / 1d8 / 1d10",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
-        "dice": "1d8",
+        "dice": "1d3",
         "rider": null
       },
       {
-        "raw": "1d8",
-        "dice": "1d8",
+        "dice": "1d3",
         "rider": null
       },
       {
-        "raw": "1d10",
-        "dice": "1d10",
+        "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F4",
+    "riders": [],
+    "notes": "If both claws hit add 2d8",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d3 / 1d3 / 1d6"
+    }
+  },
+  {
+    "monsterKey": "bear_grizzly",
+    "name": "Bear - Grizzly",
+    "hitDice": "5",
+    "armorClass": 8,
+    "movement": {
+      "move": "120(40)"
+    },
     "morale": 10,
     "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
     "alignment": "Neutral",
-    "xp": 175,
-    "specialAbilities": "If both claws hit add 2d8",
-    "notes": "If both claws hit add 2d8",
-    "actorType": "creature"
-  },
-  {
-    "id": "bear-polar",
-    "name": "Bear - Polar",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
-    "hitDice": "6",
-    "movement": "120 (40)",
-    "movementModes": {
-      "move": "120(40)"
-    },
+    "saveAs": "F4",
+    "XP": 175,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -406,49 +335,45 @@
         "raw": "Bearhug"
       }
     ],
-    "damage": "1d6 / 1d6 / 1d10",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
-        "dice": "1d6",
+        "dice": "1d8",
         "rider": null
       },
       {
-        "raw": "1d6",
-        "dice": "1d6",
+        "dice": "1d8",
         "rider": null
       },
       {
-        "raw": "1d10",
         "dice": "1d10",
         "rider": null
       }
     ],
-    "numberAppearing": "1-2 (1-2)",
-    "saveAs": "F3",
-    "morale": 8,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 275,
-    "specialAbilities": "If both claws hit add 2d8",
+    "riders": [],
     "notes": "If both claws hit add 2d8",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d8 / 1d8 / 1d10"
+    }
   },
   {
-    "id": "bear-cave",
-    "name": "Bear - Cave",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
-    "hitDice": "7",
-    "movement": "120 (40)",
-    "movementModes": {
+    "monsterKey": "bear_polar",
+    "name": "Bear - Polar",
+    "hitDice": "6",
+    "armorClass": 6,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F3",
+    "XP": 275,
+    "numberAppearing": "1-2 (1-2)",
     "attacks": [
       {
         "type": "claws",
@@ -466,129 +391,141 @@
         "raw": "Bearhug"
       }
     ],
-    "damage": "2d4 / 2d4 / 2d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d4",
+        "dice": "1d6",
+        "rider": null
+      },
+      {
+        "dice": "1d6",
+        "rider": null
+      },
+      {
+        "dice": "1d10",
+        "rider": null
+      }
+    ],
+    "riders": [],
+    "notes": "If both claws hit add 2d8",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d6 / 1d6 / 1d10"
+    }
+  },
+  {
+    "monsterKey": "bear_cave",
+    "name": "Bear - Cave",
+    "hitDice": "7",
+    "armorClass": 5,
+    "movement": {
+      "move": "120(40)"
+    },
+    "morale": 9,
+    "treasureType": "V",
+    "alignment": "Neutral",
+    "saveAs": "F4",
+    "XP": 450,
+    "numberAppearing": "1-2 (1-2)",
+    "attacks": [
+      {
+        "type": "claws",
+        "count": 2,
+        "raw": "2 Claws"
+      },
+      {
+        "type": "bite",
+        "count": 1,
+        "raw": "1 Bite"
+      },
+      {
+        "type": "bearhug",
+        "count": 1,
+        "raw": "Bearhug"
+      }
+    ],
+    "damage": [
+      {
         "dice": "2d4",
         "rider": null
       },
       {
-        "raw": "2d4",
         "dice": "2d4",
         "rider": null
       },
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-2 (1-2)",
-    "saveAs": "F4",
-    "morale": 9,
-    "treasureType": "V",
-    "treasure": {
-      "raw": "V",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 450,
-    "specialAbilities": "If both claws hit add 2d8",
+    "riders": [],
     "notes": "If both claws hit add 2d8",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "V",
+      "treasureCodes": [],
+      "damage": "2d4 / 2d4 / 2d6"
+    }
   },
   {
-    "id": "bee-giant",
+    "monsterKey": "bee_giant",
     "name": "Bee - Giant",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "1/2 *",
-    "movement": "150 (50)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "150(50)"
     },
-    "attacks": [
-      {
-        "type": "sting",
-        "count": 1,
-        "raw": "1 Sting"
-      }
-    ],
-    "damage": "1d3 + Poison (1)",
-    "damageParts": [
-      {
-        "raw": "1d3 + Poison (1)",
-        "dice": "1d3",
-        "rider": "Poison (1)"
-      }
-    ],
+    "morale": 9,
+    "treasureType": "Healing honey 1d4",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 6,
     "numberAppearing": "1-6 (5-30)",
-    "saveAs": "F1",
-    "morale": 9,
-    "treasureType": "Healing honey 1d4",
-    "treasure": {
-      "raw": "Healing honey 1d4",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 6,
-    "specialAbilities": "",
+    "attacks": [
+      {
+        "type": "sting",
+        "count": 1,
+        "raw": "1 Sting"
+      }
+    ],
+    "damage": [
+      {
+        "dice": "1d3",
+        "rider": "Poison (1)"
+      }
+    ],
+    "riders": [
+      "Poison (1)"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "150 (50)",
+      "treasure": "Healing honey 1d4",
+      "treasureCodes": [],
+      "damage": "1d3 + Poison (1)"
+    }
   },
   {
-    "id": "bee-guard",
+    "monsterKey": "bee_guard",
     "name": "Bee - Guard",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "1*",
-    "movement": "150 (50)",
-    "movementModes": {
-      "move": "150(50)"
-    },
-    "attacks": [
-      {
-        "type": "sting",
-        "count": 1,
-        "raw": "1 Sting"
-      }
-    ],
-    "damage": "1d3 + Poison (1)",
-    "damageParts": [
-      {
-        "raw": "1d3 + Poison (1)",
-        "dice": "1d3",
-        "rider": "Poison (1)"
-      }
-    ],
-    "numberAppearing": "4 per 10 normal bee",
-    "saveAs": "F1",
-    "morale": 9,
-    "treasureType": "Healing honey 1d4",
-    "treasure": {
-      "raw": "Healing honey 1d4",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 13,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
-  },
-  {
-    "id": "bee-queen",
-    "name": "Bee - Queen",
-    "sourceBook": "Basic",
-    "sourcePage": null,
     "armorClass": 7,
-    "hitDice": "2*",
-    "movement": "150 (50)",
-    "movementModes": {
+    "movement": {
       "move": "150(50)"
     },
+    "morale": 9,
+    "treasureType": "Healing honey 1d4",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 13,
+    "numberAppearing": "4 per 10 normal bee",
     "attacks": [
       {
         "type": "sting",
@@ -596,39 +533,79 @@
         "raw": "1 Sting"
       }
     ],
-    "damage": "1d3 + Poison (1)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d3 + Poison (1)",
         "dice": "1d3",
         "rider": "Poison (1)"
       }
     ],
-    "numberAppearing": "1 per 10 normal",
-    "saveAs": "F1",
-    "morale": 9,
-    "treasureType": "Healing honey 1d4",
-    "treasure": {
-      "raw": "Healing honey 1d4",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 25,
-    "specialAbilities": "",
+    "riders": [
+      "Poison (1)"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "150 (50)",
+      "treasure": "Healing honey 1d4",
+      "treasureCodes": [],
+      "damage": "1d3 + Poison (1)"
+    }
   },
   {
-    "id": "beetle-giant-fire",
+    "monsterKey": "bee_queen",
+    "name": "Bee - Queen",
+    "hitDice": "2*",
+    "armorClass": 7,
+    "movement": {
+      "move": "150(50)"
+    },
+    "morale": 9,
+    "treasureType": "Healing honey 1d4",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 25,
+    "numberAppearing": "1 per 10 normal",
+    "attacks": [
+      {
+        "type": "sting",
+        "count": 1,
+        "raw": "1 Sting"
+      }
+    ],
+    "damage": [
+      {
+        "dice": "1d3",
+        "rider": "Poison (1)"
+      }
+    ],
+    "riders": [
+      "Poison (1)"
+    ],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "150 (50)",
+      "treasure": "Healing honey 1d4",
+      "treasureCodes": [],
+      "damage": "1d3 + Poison (1)"
+    }
+  },
+  {
+    "monsterKey": "beetle_giant_fire",
     "name": "Beetle Giant - Fire",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "1 + 2",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 15,
+    "numberAppearing": "1-8 (2-12)",
     "attacks": [
       {
         "type": "bite",
@@ -636,39 +613,37 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "2d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d4",
         "dice": "2d4",
         "rider": null
       }
     ],
-    "numberAppearing": "1-8 (2-12)",
-    "saveAs": "F1",
-    "morale": 7,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 15,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d4"
+    }
   },
   {
-    "id": "beetle-giant-tiger",
+    "monsterKey": "beetle_giant_tiger",
     "name": "Beetle Giant - Tiger",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "2*",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 25,
+    "numberAppearing": "1-8 (2-12)",
     "attacks": [
       {
         "type": "bite",
@@ -676,39 +651,37 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-8 (2-12)",
-    "saveAs": "F1",
-    "morale": 8,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 25,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d6"
+    }
   },
   {
-    "id": "beetle-giant-oil",
+    "monsterKey": "beetle_giant_oil",
     "name": "Beetle Giant - Oil",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 3,
     "hitDice": "3 + 1",
-    "movement": "150 (50)",
-    "movementModes": {
+    "armorClass": 3,
+    "movement": {
       "move": "150(50)"
     },
+    "morale": 9,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 50,
+    "numberAppearing": "1-6 (2-8)",
     "attacks": [
       {
         "type": "bite",
@@ -721,39 +694,39 @@
         "raw": "Special"
       }
     ],
-    "damage": "2d6 + Spray Oil (-2 to Hit)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d6 + Spray Oil (-2 to Hit)",
         "dice": "2d6",
         "rider": "Spray Oil (-2 to Hit)"
       }
     ],
-    "numberAppearing": "1-6 (2-8)",
-    "saveAs": "F2",
-    "morale": 9,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 50,
-    "specialAbilities": "",
+    "riders": [
+      "Spray Oil (-2 to Hit)"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "150 (50)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "2d6 + Spray Oil (-2 to Hit)"
+    }
   },
   {
-    "id": "berserker",
+    "monsterKey": "berserker",
     "name": "Berserker",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "1 + 1 *",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 12,
+    "treasureType": "P, B",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 19,
+    "numberAppearing": "1-6 (3-30)",
     "attacks": [
       {
         "type": "weapon",
@@ -761,52 +734,48 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d4 or 1d6 or 1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (3-30)",
-    "saveAs": "F1",
-    "morale": 12,
-    "treasureType": "(P)B",
-    "treasure": {
-      "raw": "(P)B",
-      "normalizedCodes": [
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "(P)B",
+      "treasureCodes": [
         "P",
         "B"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 19,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d4 or 1d6 or 1d8"
+    }
   },
   {
-    "id": "boar",
+    "monsterKey": "boar",
     "name": "Boar",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "3",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 9,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 35,
+    "numberAppearing": "1-6 (1-6)",
     "attacks": [
       {
         "type": "tusk",
@@ -814,39 +783,37 @@
         "raw": "1 Tusk"
       }
     ],
-    "damage": "2d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d4",
         "dice": "2d4",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (1-6)",
-    "saveAs": "F2",
-    "morale": 9,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 35,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d4"
+    }
   },
   {
-    "id": "bugbear",
+    "monsterKey": "bugbear",
     "name": "Bugbear",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "3 + 1",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 9,
+    "treasureType": "P, B",
+    "alignment": "Chaotic",
+    "saveAs": "F3",
+    "XP": 75,
+    "numberAppearing": "2-8 (5-20)",
     "attacks": [
       {
         "type": "weapon",
@@ -854,52 +821,48 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d4+1 or 1d6+1 or 1d8+1",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4+1",
         "dice": "1d4+1",
         "rider": null
       },
       {
-        "raw": "1d6+1",
         "dice": "1d6+1",
         "rider": null
       },
       {
-        "raw": "1d8+1",
         "dice": "1d8+1",
         "rider": null
       }
     ],
-    "numberAppearing": "2-8 (5-20)",
-    "saveAs": "F3",
-    "morale": 9,
-    "treasureType": "(P+Q)B",
-    "treasure": {
-      "raw": "(P+Q)B",
-      "normalizedCodes": [
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(P+Q)B",
+      "treasureCodes": [
         "P",
         "B"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 75,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d4+1 or 1d6+1 or 1d8+1"
+    }
   },
   {
-    "id": "carrion-crawler",
+    "monsterKey": "carrion_crawler",
     "name": "Carrion Crawler",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "3 + 1 *",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 9,
+    "treasureType": "B",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 75,
+    "numberAppearing": "1-4 (0)",
     "attacks": [
       {
         "type": "tentacles",
@@ -907,41 +870,41 @@
         "raw": "8 Tentacles"
       }
     ],
-    "damage": "Paralysis",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "Paralysis",
         "dice": null,
         "rider": "Paralysis"
       }
     ],
-    "numberAppearing": "1-4 (0)",
-    "saveAs": "F2",
-    "morale": 9,
-    "treasureType": "B",
-    "treasure": {
-      "raw": "B",
-      "normalizedCodes": [
-        "B"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 75,
-    "specialAbilities": "",
+    "riders": [
+      "Paralysis"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "B",
+      "treasureCodes": [
+        "B"
+      ],
+      "damage": "Paralysis"
+    }
   },
   {
-    "id": "cat-greater-mountain-lion",
+    "monsterKey": "cat_greater_mountain_lion",
     "name": "Cat Greater - Mountain Lion",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "3 + 2",
-    "movement": "150 (50)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "150(50)"
     },
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 50,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -954,49 +917,45 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d3 / 1d3 / 1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d3",
         "dice": "1d3",
         "rider": null
       },
       {
-        "raw": "1d3",
         "dice": "1d3",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F2",
-    "morale": 8,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 50,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "150 (50)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d3 / 1d3 / 1d6"
+    }
   },
   {
-    "id": "cat-greater-panther",
+    "monsterKey": "cat_greater_panther",
     "name": "Cat Greater - Panther",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "4",
-    "movement": "210 (70)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "210(70)"
     },
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 75,
+    "numberAppearing": "1-2 (1-6)",
     "attacks": [
       {
         "type": "claws",
@@ -1009,49 +968,45 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d4 / 1d4 / 1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1-2 (1-6)",
-    "saveAs": "F2",
-    "morale": 8,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 75,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "210 (70)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d4 / 1d4 / 1d8"
+    }
   },
   {
-    "id": "cat-greater-lion",
+    "monsterKey": "cat_greater_lion",
     "name": "Cat Greater - Lion",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "5",
-    "movement": "150 (50)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "150(50)"
     },
+    "morale": 9,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F3",
+    "XP": 175,
+    "numberAppearing": "1-4 (1-8)",
     "attacks": [
       {
         "type": "claws",
@@ -1064,49 +1019,45 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d4+1 / 1d4+1 / 1d10",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4+1",
         "dice": "1d4+1",
         "rider": null
       },
       {
-        "raw": "1d4+1",
         "dice": "1d4+1",
         "rider": null
       },
       {
-        "raw": "1d10",
         "dice": "1d10",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-8)",
-    "saveAs": "F3",
-    "morale": 9,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 175,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "150 (50)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d4+1 / 1d4+1 / 1d10"
+    }
   },
   {
-    "id": "cat-greater-tiger",
+    "monsterKey": "cat_greater_tiger",
     "name": "Cat Greater - Tiger",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "6",
-    "movement": "150 (50)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "150(50)"
     },
+    "morale": 9,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F3",
+    "XP": 275,
+    "numberAppearing": "1 (1-3)",
     "attacks": [
       {
         "type": "claws",
@@ -1119,49 +1070,45 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d6 / 1d6 / 2d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1 (1-3)",
-    "saveAs": "F3",
-    "morale": 9,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 275,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "150 (50)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d6 / 1d6 / 2d6"
+    }
   },
   {
-    "id": "cat-greater-sabre-tooth-tiger",
+    "monsterKey": "cat_greater_sabre_tooth_tiger",
     "name": "Cat Greater - Sabre-tooth Tiger",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "8",
-    "movement": "150 (50)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "150(50)"
     },
+    "morale": 10,
+    "treasureType": "V",
+    "alignment": "Neutral",
+    "saveAs": "F4",
+    "XP": 650,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -1174,49 +1121,45 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d8 / 1d8 / 2d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       },
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       },
       {
-        "raw": "2d8",
         "dice": "2d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F4",
-    "morale": 10,
-    "treasureType": "V",
-    "treasure": {
-      "raw": "V",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 650,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "150 (50)",
+      "treasure": "V",
+      "treasureCodes": [],
+      "damage": "1d8 / 1d8 / 2d8"
+    }
   },
   {
-    "id": "centipede-giant",
+    "monsterKey": "centipede_giant",
     "name": "Centipede - Giant",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 9,
     "hitDice": "1/4",
-    "movement": "60 (20)",
-    "movementModes": {
+    "armorClass": 9,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "NORMALMAN",
+    "XP": 6,
+    "numberAppearing": "2-8 (1-8)",
     "attacks": [
       {
         "type": "bite",
@@ -1224,49 +1167,49 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "Poison (24h illness, 1/2 move)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "Poison (24h illness",
         "dice": null,
         "rider": "Poison (24h illness"
       },
       {
-        "raw": "1",
         "dice": null,
         "rider": "1"
       },
       {
-        "raw": "2 move)",
         "dice": null,
         "rider": "2 move)"
       }
     ],
-    "numberAppearing": "2-8 (1-8)",
-    "saveAs": "Normal man",
-    "morale": 7,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 6,
-    "specialAbilities": "",
+    "riders": [
+      "Poison (24h illness",
+      "1",
+      "2 move)"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "60 (20)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "Poison (24h illness, 1/2 move)"
+    }
   },
   {
-    "id": "doppelganger",
+    "monsterKey": "doppelganger",
     "name": "Doppelganger",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "4*",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 8,
+    "treasureType": "E",
+    "alignment": "Chaotic",
+    "saveAs": "F8",
+    "XP": 125,
+    "numberAppearing": "1-6 (1-6)",
     "attacks": [
       {
         "type": "1",
@@ -1274,42 +1217,40 @@
         "raw": "1"
       }
     ],
-    "damage": "1d12",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d12",
         "dice": "1d12",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (1-6)",
-    "saveAs": "F8",
-    "morale": 8,
-    "treasureType": "E",
-    "treasure": {
-      "raw": "E",
-      "normalizedCodes": [
-        "E"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 125,
-    "specialAbilities": "Can shapeshift",
+    "riders": [],
     "notes": "Can shapeshift",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "E",
+      "treasureCodes": [
+        "E"
+      ],
+      "damage": "1d12"
+    }
   },
   {
-    "id": "dragon-white-s",
+    "monsterKey": "dragon_white_s",
     "name": "Dragon - White (S)",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 3,
     "hitDice": "6**",
-    "movement": "Move 90 (30) / Fly 240 (80)",
-    "movementModes": {
+    "armorClass": 3,
+    "movement": {
       "move": "90(30)",
       "fly": "240(80)"
     },
+    "morale": 8,
+    "treasureType": "H",
+    "alignment": "Neutral",
+    "saveAs": "F6",
+    "XP": 725,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -1327,52 +1268,48 @@
         "raw": "Breath"
       }
     ],
-    "damage": "1d4 / 1d4 / 2d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "2d8",
         "dice": "2d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F6",
-    "morale": 8,
-    "treasureType": "H",
-    "treasure": {
-      "raw": "H",
-      "normalizedCodes": [
-        "H"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 725,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Move 90 (30) / Fly 240 (80)",
+      "treasure": "H",
+      "treasureCodes": [
+        "H"
+      ],
+      "damage": "1d4 / 1d4 / 2d8"
+    }
   },
   {
-    "id": "dragon-black-s",
+    "monsterKey": "dragon_black_s",
     "name": "Dragon - Black (S)",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 2,
     "hitDice": "7**",
-    "movement": "Move 90 (30) / Fly 240 (80)",
-    "movementModes": {
+    "armorClass": 2,
+    "movement": {
       "move": "90(30)",
       "fly": "240(80)"
     },
+    "morale": 8,
+    "treasureType": "H",
+    "alignment": "Chaotic",
+    "saveAs": "F7",
+    "XP": 1250,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -1390,52 +1327,48 @@
         "raw": "Breath"
       }
     ],
-    "damage": "1d4+1 / 1d4+1 / 2d10",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4+1",
         "dice": "1d4+1",
         "rider": null
       },
       {
-        "raw": "1d4+1",
         "dice": "1d4+1",
         "rider": null
       },
       {
-        "raw": "2d10",
         "dice": "2d10",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F7",
-    "morale": 8,
-    "treasureType": "H",
-    "treasure": {
-      "raw": "H",
-      "normalizedCodes": [
-        "H"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 1250,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Move 90 (30) / Fly 240 (80)",
+      "treasure": "H",
+      "treasureCodes": [
+        "H"
+      ],
+      "damage": "1d4+1 / 1d4+1 / 2d10"
+    }
   },
   {
-    "id": "dragon-green-s",
+    "monsterKey": "dragon_green_s",
     "name": "Dragon - Green (S)",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 1,
     "hitDice": "8**",
-    "movement": "Move 90 (30) / Fly 240 (80)",
-    "movementModes": {
+    "armorClass": 1,
+    "movement": {
       "move": "90(30)",
       "fly": "240(80)"
     },
+    "morale": 9,
+    "treasureType": "H",
+    "alignment": "Chaotic",
+    "saveAs": "F8",
+    "XP": 1750,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -1453,52 +1386,48 @@
         "raw": "Breath"
       }
     ],
-    "damage": "1d6 / 1d6 / 3d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "3d8",
         "dice": "3d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F8",
-    "morale": 9,
-    "treasureType": "H",
-    "treasure": {
-      "raw": "H",
-      "normalizedCodes": [
-        "H"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 1750,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Move 90 (30) / Fly 240 (80)",
+      "treasure": "H",
+      "treasureCodes": [
+        "H"
+      ],
+      "damage": "1d6 / 1d6 / 3d8"
+    }
   },
   {
-    "id": "dragon-blue-s",
+    "monsterKey": "dragon_blue_s",
     "name": "Dragon - Blue (S)",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 0,
     "hitDice": "9**",
-    "movement": "Move 90 (30) / Fly 240 (80)",
-    "movementModes": {
+    "armorClass": 0,
+    "movement": {
       "move": "90(30)",
       "fly": "240(80)"
     },
+    "morale": 9,
+    "treasureType": "H",
+    "alignment": "Neutral",
+    "saveAs": "F9",
+    "XP": 2300,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -1516,52 +1445,48 @@
         "raw": "Breath"
       }
     ],
-    "damage": "1d6+1 / 1d6+1 / 3d10",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6+1",
         "dice": "1d6+1",
         "rider": null
       },
       {
-        "raw": "1d6+1",
         "dice": "1d6+1",
         "rider": null
       },
       {
-        "raw": "3d10",
         "dice": "3d10",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F9",
-    "morale": 9,
-    "treasureType": "H",
-    "treasure": {
-      "raw": "H",
-      "normalizedCodes": [
-        "H"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 2300,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Move 90 (30) / Fly 240 (80)",
+      "treasure": "H",
+      "treasureCodes": [
+        "H"
+      ],
+      "damage": "1d6+1 / 1d6+1 / 3d10"
+    }
   },
   {
-    "id": "dragon-red-s",
+    "monsterKey": "dragon_red_s",
     "name": "Dragon - Red (S)",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": -1,
     "hitDice": "10**",
-    "movement": "Move 90 (30) / Fly 240 (80)",
-    "movementModes": {
+    "armorClass": -1,
+    "movement": {
       "move": "90(30)",
       "fly": "240(80)"
     },
+    "morale": 10,
+    "treasureType": "H",
+    "alignment": "Chaotic",
+    "saveAs": "F10",
+    "XP": 2300,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -1579,52 +1504,48 @@
         "raw": "Breath"
       }
     ],
-    "damage": "1d8 / 1d8 / 4d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       },
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       },
       {
-        "raw": "4d8",
         "dice": "4d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F10",
-    "morale": 10,
-    "treasureType": "H",
-    "treasure": {
-      "raw": "H",
-      "normalizedCodes": [
-        "H"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 2300,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Move 90 (30) / Fly 240 (80)",
+      "treasure": "H",
+      "treasureCodes": [
+        "H"
+      ],
+      "damage": "1d8 / 1d8 / 4d8"
+    }
   },
   {
-    "id": "dragon-gold-s",
+    "monsterKey": "dragon_gold_s",
     "name": "Dragon - Gold (S)",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": -2,
     "hitDice": "11**",
-    "movement": "Move 90 (30) / Fly 240 (80)",
-    "movementModes": {
+    "armorClass": -2,
+    "movement": {
       "move": "90(30)",
       "fly": "240(80)"
     },
+    "morale": 10,
+    "treasureType": "H",
+    "alignment": "Lawful",
+    "saveAs": "F11",
+    "XP": 2700,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -1642,51 +1563,47 @@
         "raw": "Breath"
       }
     ],
-    "damage": "2d4 / 2d4 / 6d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d4",
         "dice": "2d4",
         "rider": null
       },
       {
-        "raw": "2d4",
         "dice": "2d4",
         "rider": null
       },
       {
-        "raw": "6d6",
         "dice": "6d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F11",
-    "morale": 10,
-    "treasureType": "H",
-    "treasure": {
-      "raw": "H",
-      "normalizedCodes": [
-        "H"
-      ]
-    },
-    "alignment": "Lawful",
-    "xp": 2700,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Move 90 (30) / Fly 240 (80)",
+      "treasure": "H",
+      "treasureCodes": [
+        "H"
+      ],
+      "damage": "2d4 / 2d4 / 6d6"
+    }
   },
   {
-    "id": "dwarf",
+    "monsterKey": "dwarf",
     "name": "Dwarf",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "1",
-    "movement": "60 (20)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 8,
+    "treasureType": "G",
+    "alignment": "Lawful or Neutral",
+    "saveAs": "DWARF1",
+    "XP": 10,
+    "numberAppearing": "1-6 (5-40)",
     "attacks": [
       {
         "type": "weapon (axe",
@@ -1709,56 +1626,51 @@
         "raw": "Crossbow)"
       }
     ],
-    "damage": "1d6 or 1d4 or 1d6 or 1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (5-40)",
-    "saveAs": "Dwarf 1",
-    "morale": 8,
-    "treasureType": "(Q + S) G",
-    "treasure": {
-      "raw": "(Q + S) G",
-      "normalizedCodes": [
-        "G"
-      ]
-    },
-    "alignment": "Lawful or Neutral",
-    "xp": 10,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "60 (20)",
+      "treasure": "(Q + S) G",
+      "treasureCodes": [
+        "G"
+      ],
+      "damage": "1d6 or 1d4 or 1d6 or 1d6"
+    }
   },
   {
-    "id": "elf",
+    "monsterKey": "elf",
     "name": "Elf",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "1*",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 8,
+    "treasureType": "E",
+    "alignment": "Neutral",
+    "saveAs": "ELF1",
+    "XP": 13,
+    "numberAppearing": "1-4 (2-24)",
     "attacks": [
       {
         "type": "weapon (sword",
@@ -1776,41 +1688,39 @@
         "raw": "Bow)"
       }
     ],
-    "damage": "1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (2-24)",
-    "saveAs": "Elf 1",
-    "morale": 8,
-    "treasureType": "(S + T) E",
-    "treasure": {
-      "raw": "(S + T) E",
-      "normalizedCodes": [
-        "E"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 13,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "(S + T) E",
+      "treasureCodes": [
+        "E"
+      ],
+      "damage": "1d6"
+    }
   },
   {
-    "id": "ferret-giant",
+    "monsterKey": "ferret_giant",
     "name": "Ferret - Giant",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "1 + 1",
-    "movement": "150 (50)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "150(50)"
     },
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 15,
+    "numberAppearing": "1-8 (1-12)",
     "attacks": [
       {
         "type": "bite",
@@ -1818,40 +1728,38 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1-8 (1-12)",
-    "saveAs": "F1",
-    "morale": 8,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 15,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "150 (50)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d8"
+    }
   },
   {
-    "id": "gargoyle",
+    "monsterKey": "gargoyle",
     "name": "Gargoyle*",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "4**",
-    "movement": "Move 90 (30) / Fly 150 (50)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "90(30)",
       "fly": "150(50)"
     },
+    "morale": 11,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "saveAs": "F8",
+    "XP": 175,
+    "numberAppearing": "1-6 (2-8)",
     "attacks": [
       {
         "type": "claws",
@@ -1869,56 +1777,51 @@
         "raw": "1 Horn"
       }
     ],
-    "damage": "1d3 / 1d3 / 1d6 / 1d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d3",
         "dice": "1d3",
         "rider": null
       },
       {
-        "raw": "1d3",
         "dice": "1d3",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (2-8)",
-    "saveAs": "F8",
-    "morale": 11,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 175,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Move 90 (30) / Fly 150 (50)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "1d3 / 1d3 / 1d6 / 1d4"
+    }
   },
   {
-    "id": "gelatinous-cube",
+    "monsterKey": "gelatinous_cube",
     "name": "Gelatinous Cube*",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 8,
     "hitDice": "4*",
-    "movement": "60 (20)",
-    "movementModes": {
+    "armorClass": 8,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 12,
+    "treasureType": "(V)",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 125,
+    "numberAppearing": "1 (1-4)",
     "attacks": [
       {
         "type": "1",
@@ -1926,39 +1829,39 @@
         "raw": "1"
       }
     ],
-    "damage": "2d4 + Paralysis",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d4 + Paralysis",
         "dice": "2d4",
         "rider": "Paralysis"
       }
     ],
-    "numberAppearing": "1 (1-4)",
-    "saveAs": "F2",
-    "morale": 12,
-    "treasureType": "(V)",
-    "treasure": {
-      "raw": "(V)",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 125,
-    "specialAbilities": "",
+    "riders": [
+      "Paralysis"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "60 (20)",
+      "treasure": "(V)",
+      "treasureCodes": [],
+      "damage": "2d4 + Paralysis"
+    }
   },
   {
-    "id": "ghoul",
+    "monsterKey": "ghoul",
     "name": "Ghoul",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "2*",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 9,
+    "treasureType": "B",
+    "alignment": "Chaotic",
+    "saveAs": "F2",
+    "XP": 25,
+    "numberAppearing": "1-6 (2-16)",
     "attacks": [
       {
         "type": "claws",
@@ -1971,51 +1874,49 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d3 / 1d3 / 1d3 + Paralysis",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d3",
         "dice": "1d3",
         "rider": null
       },
       {
-        "raw": "1d3",
         "dice": "1d3",
         "rider": null
       },
       {
-        "raw": "1d3 + Paralysis",
         "dice": "1d3",
         "rider": "Paralysis"
       }
     ],
-    "numberAppearing": "1-6 (2-16)",
-    "saveAs": "F2",
-    "morale": 9,
-    "treasureType": "B",
-    "treasure": {
-      "raw": "B",
-      "normalizedCodes": [
+    "riders": [
+      "Paralysis"
+    ],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "B",
+      "treasureCodes": [
         "B"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 25,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d3 / 1d3 / 1d3 + Paralysis"
+    }
   },
   {
-    "id": "gnoll",
+    "monsterKey": "gnoll",
     "name": "Gnoll",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "2",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 8,
+    "treasureType": "P, D",
+    "alignment": "Chaotic",
+    "saveAs": "F2",
+    "XP": 20,
+    "numberAppearing": "1-6 (3-18)",
     "attacks": [
       {
         "type": "weapon",
@@ -2023,47 +1924,44 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d6+1 or 1d8+1",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6+1",
         "dice": "1d6+1",
         "rider": null
       },
       {
-        "raw": "1d8+1",
         "dice": "1d8+1",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (3-18)",
-    "saveAs": "F2",
-    "morale": 8,
-    "treasureType": "(P)D",
-    "treasure": {
-      "raw": "(P)D",
-      "normalizedCodes": [
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(P)D",
+      "treasureCodes": [
         "P",
         "D"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 20,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d6+1 or 1d8+1"
+    }
   },
   {
-    "id": "gnoll-leader",
+    "monsterKey": "gnoll_leader",
     "name": "Gnoll - Leader",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "3",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 8,
+    "treasureType": "P, D",
+    "alignment": "Chaotic",
+    "saveAs": "F2",
+    "XP": 20,
+    "numberAppearing": "1-6 (3-18)",
     "attacks": [
       {
         "type": "weapon",
@@ -2071,47 +1969,44 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d6+1 or 1d8+1",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6+1",
         "dice": "1d6+1",
         "rider": null
       },
       {
-        "raw": "1d8+1",
         "dice": "1d8+1",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (3-18)",
-    "saveAs": "F2",
-    "morale": 8,
-    "treasureType": "(P)D",
-    "treasure": {
-      "raw": "(P)D",
-      "normalizedCodes": [
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(P)D",
+      "treasureCodes": [
         "P",
         "D"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 20,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d6+1 or 1d8+1"
+    }
   },
   {
-    "id": "gnome",
+    "monsterKey": "gnome",
     "name": "Gnome",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "1",
-    "movement": "60 (20)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 8,
+    "treasureType": "P, C",
+    "alignment": "Lawful or Neutral",
+    "saveAs": "DWARF1",
+    "XP": 10,
+    "numberAppearing": "1-8 (5-40)",
     "attacks": [
       {
         "type": "warhammer or crossbow",
@@ -2119,47 +2014,44 @@
         "raw": "Warhammer or Crossbow"
       }
     ],
-    "damage": "1d6 or 1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-8 (5-40)",
-    "saveAs": "Dwarf 1",
-    "morale": 8,
-    "treasureType": "(P)C",
-    "treasure": {
-      "raw": "(P)C",
-      "normalizedCodes": [
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "60 (20)",
+      "treasure": "(P)C",
+      "treasureCodes": [
         "P",
         "C"
-      ]
-    },
-    "alignment": "Lawful or Neutral",
-    "xp": 10,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d6 or 1d6"
+    }
   },
   {
-    "id": "gnome-leader",
+    "monsterKey": "gnome_leader",
     "name": "Gnome - Leader",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "2",
-    "movement": "60 (20)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 8,
+    "treasureType": "P, C",
+    "alignment": "Lawful or Neutral",
+    "saveAs": "DWARF1",
+    "XP": 20,
+    "numberAppearing": "1-8 (5-40)",
     "attacks": [
       {
         "type": "warhammer or crossbow",
@@ -2167,47 +2059,44 @@
         "raw": "Warhammer or Crossbow"
       }
     ],
-    "damage": "1d6 or 1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-8 (5-40)",
-    "saveAs": "Dwarf 1",
-    "morale": 8,
-    "treasureType": "(P)C",
-    "treasure": {
-      "raw": "(P)C",
-      "normalizedCodes": [
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "60 (20)",
+      "treasure": "(P)C",
+      "treasureCodes": [
         "P",
         "C"
-      ]
-    },
-    "alignment": "Lawful or Neutral",
-    "xp": 20,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d6 or 1d6"
+    }
   },
   {
-    "id": "gnome-clan-chieftain",
+    "monsterKey": "gnome_clan_chieftain",
     "name": "Gnome - Clan Chieftain",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "4",
-    "movement": "60 (20)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 8,
+    "treasureType": "P, C",
+    "alignment": "Lawful or Neutral",
+    "saveAs": "DWARF1",
+    "XP": 100,
+    "numberAppearing": "1-8 (5-40)",
     "attacks": [
       {
         "type": "warhammer or crossbow",
@@ -2215,47 +2104,44 @@
         "raw": "Warhammer or Crossbow"
       }
     ],
-    "damage": "1d6+1 or 1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6+1",
         "dice": "1d6+1",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-8 (5-40)",
-    "saveAs": "Dwarf 1",
-    "morale": 8,
-    "treasureType": "(P)C",
-    "treasure": {
-      "raw": "(P)C",
-      "normalizedCodes": [
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "60 (20)",
+      "treasure": "(P)C",
+      "treasureCodes": [
         "P",
         "C"
-      ]
-    },
-    "alignment": "Lawful or Neutral",
-    "xp": 100,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d6+1 or 1d6"
+    }
   },
   {
-    "id": "gnome-bodyguard",
+    "monsterKey": "gnome_bodyguard",
     "name": "Gnome - Bodyguard",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "3",
-    "movement": "60 (20)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 8,
+    "treasureType": "P, C",
+    "alignment": "Lawful or Neutral",
+    "saveAs": "DWARF1",
+    "XP": 35,
+    "numberAppearing": "1-8 (5-40)",
     "attacks": [
       {
         "type": "warhammer or crossbow",
@@ -2263,47 +2149,44 @@
         "raw": "Warhammer or Crossbow"
       }
     ],
-    "damage": "1d6 or 1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-8 (5-40)",
-    "saveAs": "Dwarf 1",
-    "morale": 8,
-    "treasureType": "(P)C",
-    "treasure": {
-      "raw": "(P)C",
-      "normalizedCodes": [
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "60 (20)",
+      "treasure": "(P)C",
+      "treasureCodes": [
         "P",
         "C"
-      ]
-    },
-    "alignment": "Lawful or Neutral",
-    "xp": 35,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d6 or 1d6"
+    }
   },
   {
-    "id": "goblin",
+    "monsterKey": "goblin",
     "name": "Goblin",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "1/4",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 7,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "saveAs": "NORMALMAN",
+    "XP": 5,
+    "numberAppearing": "2-8 (6-60)",
     "attacks": [
       {
         "type": "weapon",
@@ -2311,46 +2194,43 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d4 or 1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "2-8 (6-60)",
-    "saveAs": "Normal man",
-    "morale": 7,
-    "treasureType": "(R)C",
-    "treasure": {
-      "raw": "(R)C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 5,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(R)C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "1d4 or 1d6"
+    }
   },
   {
-    "id": "goblin-bodyguard",
+    "monsterKey": "goblin_bodyguard",
     "name": "Goblin - Bodyguard",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "2",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 7,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "saveAs": "NORMALMAN",
+    "XP": 20,
+    "numberAppearing": "2-12 (Only with King in Lair)",
     "attacks": [
       {
         "type": "weapon",
@@ -2358,41 +2238,39 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "2-12 (Only with King in Lair)",
-    "saveAs": "Normal man",
-    "morale": 7,
-    "treasureType": "(R)C",
-    "treasure": {
-      "raw": "(R)C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 20,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(R)C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "1d6"
+    }
   },
   {
-    "id": "goblin-king",
+    "monsterKey": "goblin_king",
     "name": "Goblin - King",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "3",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 9,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "saveAs": "NORMALMAN",
+    "XP": 35,
+    "numberAppearing": "1",
     "attacks": [
       {
         "type": "weapon",
@@ -2400,41 +2278,39 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d6+1",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6+1",
         "dice": "1d6+1",
         "rider": null
       }
     ],
-    "numberAppearing": "1",
-    "saveAs": "Normal man",
-    "morale": 9,
-    "treasureType": "(R)C",
-    "treasure": {
-      "raw": "(R)C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 35,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(R)C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "1d6+1"
+    }
   },
   {
-    "id": "gray-ooze",
+    "monsterKey": "gray_ooze",
     "name": "Gray Ooze",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 8,
     "hitDice": "3*",
-    "movement": "10 (3)",
-    "movementModes": {
+    "armorClass": 8,
+    "movement": {
       "move": "10(3)"
     },
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 50,
+    "numberAppearing": "1-4 (1-2)",
     "attacks": [
       {
         "type": "1",
@@ -2442,39 +2318,37 @@
         "raw": "1"
       }
     ],
-    "damage": "2d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d8",
         "dice": "2d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-2)",
-    "saveAs": "F2",
-    "morale": 12,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 50,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "10 (3)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d8"
+    }
   },
   {
-    "id": "halfling",
+    "monsterKey": "halfling",
     "name": "Halfling",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "1/4",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 7,
+    "treasureType": "P, B",
+    "alignment": "Lawful",
+    "saveAs": "HALFLING1",
+    "XP": 5,
+    "numberAppearing": "3-18 (5-40)",
     "attacks": [
       {
         "type": "weapon",
@@ -2482,42 +2356,40 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "3-18 (5-40)",
-    "saveAs": "Halfling 1",
-    "morale": 7,
-    "treasureType": "(P+S)B",
-    "treasure": {
-      "raw": "(P+S)B",
-      "normalizedCodes": [
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(P+S)B",
+      "treasureCodes": [
         "P",
         "B"
-      ]
-    },
-    "alignment": "Lawful",
-    "xp": 5,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d6"
+    }
   },
   {
-    "id": "halfling-militia",
+    "monsterKey": "halfling_militia",
     "name": "Halfling - Militia",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "2",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 7,
+    "treasureType": "",
+    "alignment": "Lawful",
+    "saveAs": "HALFLING1",
+    "XP": 20,
+    "numberAppearing": "5-20 (Only in village/lair)",
     "attacks": [
       {
         "type": "weapon",
@@ -2525,40 +2397,38 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "5-20 (Only in village/lair)",
-    "saveAs": "Halfling 1",
-    "morale": 7,
-    "treasureType": "",
-    "treasure": {
-      "raw": "",
-      "normalizedCodes": []
-    },
-    "alignment": "Lawful",
-    "xp": 20,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "",
+      "treasureCodes": [],
+      "damage": "1d6"
+    }
   },
   {
-    "id": "harpy",
+    "monsterKey": "harpy",
     "name": "Harpy",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "3*",
-    "movement": "Move 60 (20) / Fly 150 (50)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "60(20)",
       "fly": "150(50)"
     },
+    "morale": 7,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "saveAs": "F6",
+    "XP": 50,
+    "numberAppearing": "1-6 (2-8)",
     "attacks": [
       {
         "type": "claws",
@@ -2576,51 +2446,47 @@
         "raw": "Charm song"
       }
     ],
-    "damage": "1d4 / 1d4 / 1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (2-8)",
-    "saveAs": "F6",
-    "morale": 7,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Move 60 (20) / Fly 150 (50)",
+      "treasure": "C",
+      "treasureCodes": [
         "C"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 50,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d4 / 1d4 / 1d6"
+    }
   },
   {
-    "id": "hobgoblin",
+    "monsterKey": "hobgoblin",
     "name": "Hobgoblin",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "1+1",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 8,
+    "treasureType": "D",
+    "alignment": "Chaotic",
+    "saveAs": "F1",
+    "XP": 15,
+    "numberAppearing": "1-6 (4-24)",
     "attacks": [
       {
         "type": "weapon",
@@ -2628,41 +2494,39 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (4-24)",
-    "saveAs": "F1",
-    "morale": 8,
-    "treasureType": "(Q)D",
-    "treasure": {
-      "raw": "(Q)D",
-      "normalizedCodes": [
-        "D"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 15,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(Q)D",
+      "treasureCodes": [
+        "D"
+      ],
+      "damage": "1d6"
+    }
   },
   {
-    "id": "hobgoblin-king",
+    "monsterKey": "hobgoblin_king",
     "name": "Hobgoblin - King",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "Special",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 8,
+    "treasureType": "D",
+    "alignment": "Chaotic",
+    "saveAs": "F1",
+    "XP": 175,
+    "numberAppearing": "1",
     "attacks": [
       {
         "type": "weapon",
@@ -2670,83 +2534,39 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d8+2",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8+2",
         "dice": "1d8+2",
         "rider": null
       }
     ],
-    "numberAppearing": "1",
-    "saveAs": "F1",
-    "morale": 8,
-    "treasureType": "(Q)D",
-    "treasure": {
-      "raw": "(Q)D",
-      "normalizedCodes": [
-        "D"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 175,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(Q)D",
+      "treasureCodes": [
+        "D"
+      ],
+      "damage": "1d8+2"
+    }
   },
   {
-    "id": "hobgoblin-bodyguard",
+    "monsterKey": "hobgoblin_bodyguard",
     "name": "Hobgoblin - Bodyguard",
-    "sourceBook": "Basic",
-    "sourcePage": null,
+    "hitDice": "Special",
     "armorClass": 6,
-    "hitDice": "Special",
-    "movement": "90 (30)",
-    "movementModes": {
+    "movement": {
       "move": "90(30)"
     },
-    "attacks": [
-      {
-        "type": "weapon",
-        "count": 1,
-        "raw": "1 Weapon"
-      }
-    ],
-    "damage": "1d6",
-    "damageParts": [
-      {
-        "raw": "1d6",
-        "dice": "1d6",
-        "rider": null
-      }
-    ],
-    "numberAppearing": "1-4 (Only with King)",
-    "saveAs": "F1",
     "morale": 8,
-    "treasureType": "(Q)D",
-    "treasure": {
-      "raw": "(Q)D",
-      "normalizedCodes": [
-        "D"
-      ]
-    },
+    "treasureType": "D",
     "alignment": "Chaotic",
-    "xp": 75,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
-  },
-  {
-    "id": "kobold",
-    "name": "Kobold",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
-    "hitDice": "1/4",
-    "movement": "90 (30)",
-    "movementModes": {
-      "move": "90(30)"
-    },
+    "saveAs": "F1",
+    "XP": 75,
+    "numberAppearing": "1-4 (Only with King)",
     "attacks": [
       {
         "type": "weapon",
@@ -2754,85 +2574,39 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
-        "dice": "1d4",
-        "rider": null
-      }
-    ],
-    "numberAppearing": "4-16 (6-60)",
-    "saveAs": "Normal man",
-    "morale": 6,
-    "treasureType": "(P)+J",
-    "treasure": {
-      "raw": "(P)+J",
-      "normalizedCodes": [
-        "P",
-        "J"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 5,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
-  },
-  {
-    "id": "kobold-king",
-    "name": "Kobold - King",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
-    "hitDice": "Special",
-    "movement": "90 (30)",
-    "movementModes": {
-      "move": "90(30)"
-    },
-    "attacks": [
-      {
-        "type": "weapon",
-        "count": 1,
-        "raw": "1 Weapon"
-      }
-    ],
-    "damage": "1d6",
-    "damageParts": [
-      {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1",
-    "saveAs": "Normal man",
-    "morale": 6,
-    "treasureType": "(P)+J",
-    "treasure": {
-      "raw": "(P)+J",
-      "normalizedCodes": [
-        "P",
-        "J"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 5,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(Q)D",
+      "treasureCodes": [
+        "D"
+      ],
+      "damage": "1d6"
+    }
   },
   {
-    "id": "kobold-bodyguard",
-    "name": "Kobold - Bodyguard",
-    "sourceBook": "Basic",
-    "sourcePage": null,
+    "monsterKey": "kobold",
+    "name": "Kobold",
+    "hitDice": "1/4",
     "armorClass": 7,
-    "hitDice": "Special",
-    "movement": "90 (30)",
-    "movementModes": {
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 6,
+    "treasureType": "P, J",
+    "alignment": "Chaotic",
+    "saveAs": "NORMALMAN",
+    "XP": 5,
+    "numberAppearing": "4-16 (6-60)",
     "attacks": [
       {
         "type": "weapon",
@@ -2840,42 +2614,122 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (Only with King)",
-    "saveAs": "Normal man",
-    "morale": 6,
-    "treasureType": "(P)+J",
-    "treasure": {
-      "raw": "(P)+J",
-      "normalizedCodes": [
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(P)+J",
+      "treasureCodes": [
         "P",
         "J"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 5,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d4"
+    }
   },
   {
-    "id": "living-statue-crystal",
-    "name": "Living Statue - Crystal",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 4,
-    "hitDice": "3",
-    "movement": "90 (30)",
-    "movementModes": {
+    "monsterKey": "kobold_king",
+    "name": "Kobold - King",
+    "hitDice": "Special",
+    "armorClass": 7,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 6,
+    "treasureType": "P, J",
+    "alignment": "Chaotic",
+    "saveAs": "NORMALMAN",
+    "XP": 5,
+    "numberAppearing": "1",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": [
+      {
+        "dice": "1d6",
+        "rider": null
+      }
+    ],
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(P)+J",
+      "treasureCodes": [
+        "P",
+        "J"
+      ],
+      "damage": "1d6"
+    }
+  },
+  {
+    "monsterKey": "kobold_bodyguard",
+    "name": "Kobold - Bodyguard",
+    "hitDice": "Special",
+    "armorClass": 7,
+    "movement": {
+      "move": "90(30)"
+    },
+    "morale": 6,
+    "treasureType": "P, J",
+    "alignment": "Chaotic",
+    "saveAs": "NORMALMAN",
+    "XP": 5,
+    "numberAppearing": "1-6 (Only with King)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": [
+      {
+        "dice": "1d4",
+        "rider": null
+      }
+    ],
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(P)+J",
+      "treasureCodes": [
+        "P",
+        "J"
+      ],
+      "damage": "1d4"
+    }
+  },
+  {
+    "monsterKey": "living_statue_crystal",
+    "name": "Living Statue - Crystal",
+    "hitDice": "3",
+    "armorClass": 4,
+    "movement": {
+      "move": "90(30)"
+    },
+    "morale": 11,
+    "treasureType": "Nil",
+    "alignment": "Lawful",
+    "saveAs": "F3",
+    "XP": 35,
+    "numberAppearing": "1-6 (1-6)",
     "attacks": [
       {
         "type": "fists",
@@ -2883,44 +2737,41 @@
         "raw": "2 Fists"
       }
     ],
-    "damage": "1d6 / 1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (1-6)",
-    "saveAs": "F3",
-    "morale": 11,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Lawful",
-    "xp": 35,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d6 / 1d6"
+    }
   },
   {
-    "id": "living-statue-iron",
+    "monsterKey": "living_statue_iron",
     "name": "Living Statue - Iron",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 2,
     "hitDice": "4*",
-    "movement": "30 (10)",
-    "movementModes": {
+    "armorClass": 2,
+    "movement": {
       "move": "30(10)"
     },
+    "morale": 11,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F4",
+    "XP": 125,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "fists",
@@ -2933,44 +2784,41 @@
         "raw": "Special"
       }
     ],
-    "damage": "1d8 / 1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       },
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F4",
-    "morale": 11,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 125,
-    "specialAbilities": "Metal weapons save vs spells",
+    "riders": [],
     "notes": "Metal weapons save vs spells",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "30 (10)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d8 / 1d8"
+    }
   },
   {
-    "id": "living-statue-rock",
+    "monsterKey": "living_statue_rock",
     "name": "Living Statue - Rock",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "5*",
-    "movement": "60 (20)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 11,
+    "treasureType": "Nil",
+    "alignment": "Chaotic",
+    "saveAs": "F5",
+    "XP": 300,
+    "numberAppearing": "1-3 (1-3)",
     "attacks": [
       {
         "type": "lava rays",
@@ -2978,44 +2826,41 @@
         "raw": "2 Lava rays"
       }
     ],
-    "damage": "2d6 / 2d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       },
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-3 (1-3)",
-    "saveAs": "F5",
-    "morale": 11,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Chaotic",
-    "xp": 300,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "60 (20)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d6 / 2d6"
+    }
   },
   {
-    "id": "lizard-giant-gecko",
+    "monsterKey": "lizard_giant_gecko",
     "name": "Lizard - Giant Gecko",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "3+1",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 7,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 50,
+    "numberAppearing": "1-6 (1-10)",
     "attacks": [
       {
         "type": "bite",
@@ -3023,39 +2868,37 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (1-10)",
-    "saveAs": "F2",
-    "morale": 7,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 50,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d8"
+    }
   },
   {
-    "id": "lizard-giant-draco",
+    "monsterKey": "lizard_giant_draco",
     "name": "Lizard - Giant Draco",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "4+2",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 7,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F3",
+    "XP": 125,
+    "numberAppearing": "1-4 (1-8)",
     "attacks": [
       {
         "type": "bite",
@@ -3063,39 +2906,37 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d10",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d10",
         "dice": "1d10",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-8)",
-    "saveAs": "F3",
-    "morale": 7,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 125,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d10"
+    }
   },
   {
-    "id": "lizard-giant-horned-chameleon",
+    "monsterKey": "lizard_giant_horned_chameleon",
     "name": "Lizard - Giant Horned Chameleon",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 2,
     "hitDice": "5*",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 2,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 7,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F3",
+    "XP": 300,
+    "numberAppearing": "1-3 (1-6)",
     "attacks": [
       {
         "type": "bite",
@@ -3108,44 +2949,41 @@
         "raw": "1 Horn"
       }
     ],
-    "damage": "2d4 / 1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d4",
         "dice": "2d4",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-3 (1-6)",
-    "saveAs": "F3",
-    "morale": 7,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 300,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "2d4 / 1d6"
+    }
   },
   {
-    "id": "lizard-giant-tuatara",
+    "monsterKey": "lizard_giant_tuatara",
     "name": "Lizard - Giant Tuatara",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "6",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 6,
+    "treasureType": "V",
+    "alignment": "Neutral",
+    "saveAs": "F3",
+    "XP": 275,
+    "numberAppearing": "1-2 (1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -3158,50 +2996,46 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d4 / 1d4 / 2d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-2 (1-4)",
-    "saveAs": "F3",
-    "morale": 6,
-    "treasureType": "V",
-    "treasure": {
-      "raw": "V",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 275,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "V",
+      "treasureCodes": [],
+      "damage": "1d4 / 1d4 / 2d6"
+    }
   },
   {
-    "id": "lizard-man",
+    "monsterKey": "lizard_man",
     "name": "Lizard Man",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "2+1",
-    "movement": "Move 60 (20) / Swim 120 (40)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "60(20)",
       "swim": "120(40)"
     },
+    "morale": 12,
+    "treasureType": "D",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 25,
+    "numberAppearing": "2-8 (6-36)",
     "attacks": [
       {
         "type": "weapon",
@@ -3209,42 +3043,40 @@
         "raw": "1 Weapon (Spear or Mace)"
       }
     ],
-    "damage": "1d6+1",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6+1",
         "dice": "1d6+1",
         "rider": null
       }
     ],
-    "numberAppearing": "2-8 (6-36)",
-    "saveAs": "F2",
-    "morale": 12,
-    "treasureType": "D",
-    "treasure": {
-      "raw": "D",
-      "normalizedCodes": [
-        "D"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 25,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Move 60 (20) / Swim 120 (40)",
+      "treasure": "D",
+      "treasureCodes": [
+        "D"
+      ],
+      "damage": "1d6+1"
+    }
   },
   {
-    "id": "locust-giant",
+    "monsterKey": "locust_giant",
     "name": "Locust - Giant",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "2**",
-    "movement": "Move 60 (20) / Fly 180 (60)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "60(20)",
       "fly": "180(60)"
     },
+    "morale": 5,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 30,
+    "numberAppearing": "2-20 (0)",
     "attacks": [
       {
         "type": "bite or 1 spit or 1 bump",
@@ -3252,49 +3084,45 @@
         "raw": "1 Bite or 1 Spit or 1 Bump"
       }
     ],
-    "damage": "1d2 or 1d4 or 1d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d2",
         "dice": "1d2",
         "rider": null
       },
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       }
     ],
-    "numberAppearing": "2-20 (0)",
-    "saveAs": "F2",
-    "morale": 5,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 30,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Move 60 (20) / Fly 180 (60)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d2 or 1d4 or 1d4"
+    }
   },
   {
-    "id": "lycanthrope-wererat",
+    "monsterKey": "lycanthrope_wererat",
     "name": "Lycanthrope - Wererat",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "3*",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 8,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "saveAs": "F3",
+    "XP": 50,
+    "numberAppearing": "1-8 (2-16)",
     "attacks": [
       {
         "type": "bite or 1 weapon",
@@ -3302,46 +3130,45 @@
         "raw": "1 Bite or 1 Weapon"
       }
     ],
-    "damage": "1d4 or Weapon",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "Weapon",
         "dice": null,
         "rider": "Weapon"
       }
     ],
-    "numberAppearing": "1-8 (2-16)",
-    "saveAs": "F3",
-    "morale": 8,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 50,
-    "specialAbilities": "",
+    "riders": [
+      "Weapon"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "1d4 or Weapon"
+    }
   },
   {
-    "id": "lycanthrope-werewolf",
+    "monsterKey": "lycanthrope_werewolf",
     "name": "Lycanthrope - Werewolf",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "4*",
-    "movement": "180 (60)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "180(60)"
     },
+    "morale": 8,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "saveAs": "F4",
+    "XP": 125,
+    "numberAppearing": "1-6 (2-12)",
     "attacks": [
       {
         "type": "bite",
@@ -3349,41 +3176,39 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "2d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d4",
         "dice": "2d4",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (2-12)",
-    "saveAs": "F4",
-    "morale": 8,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 125,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "180 (60)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "2d4"
+    }
   },
   {
-    "id": "lycanthrope-werewolf-leader",
+    "monsterKey": "lycanthrope_werewolf_leader",
     "name": "Lycanthrope - Werewolf Leader",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "5*",
-    "movement": "180 (60)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "180(60)"
     },
+    "morale": 8,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "saveAs": "F4",
+    "XP": 300,
+    "numberAppearing": "1 per 5 werewolves",
     "attacks": [
       {
         "type": "bite",
@@ -3391,41 +3216,39 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "2d4+2",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d4+2",
         "dice": "2d4+2",
         "rider": null
       }
     ],
-    "numberAppearing": "1 per 5 werewolves",
-    "saveAs": "F4",
-    "morale": 8,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 300,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "180 (60)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "2d4+2"
+    }
   },
   {
-    "id": "lycanthrope-wereboar",
+    "monsterKey": "lycanthrope_wereboar",
     "name": "Lycanthrope - Wereboar",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "4+1 *",
-    "movement": "150 (50)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "150(50)"
     },
+    "morale": 9,
+    "treasureType": "C",
+    "alignment": "Neutral",
+    "saveAs": "F4",
+    "XP": 200,
+    "numberAppearing": "1-4 (2-8)",
     "attacks": [
       {
         "type": "tusk-bite",
@@ -3433,41 +3256,39 @@
         "raw": "1 Tusk-bite"
       }
     ],
-    "damage": "2d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (2-8)",
-    "saveAs": "F4",
-    "morale": 9,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 200,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "150 (50)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "2d6"
+    }
   },
   {
-    "id": "lycanthrope-weretiger",
+    "monsterKey": "lycanthrope_weretiger",
     "name": "Lycanthrope - Weretiger",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 3,
     "hitDice": "5*",
-    "movement": "150 (50)",
-    "movementModes": {
+    "armorClass": 3,
+    "movement": {
       "move": "150(50)"
     },
+    "morale": 9,
+    "treasureType": "C",
+    "alignment": "Neutral",
+    "saveAs": "F5",
+    "XP": 300,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -3480,51 +3301,47 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d6 / 1d6 / 2d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F5",
-    "morale": 9,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 300,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "150 (50)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "1d6 / 1d6 / 2d6"
+    }
   },
   {
-    "id": "lycanthrope-werebear",
+    "monsterKey": "lycanthrope_werebear",
     "name": "Lycanthrope - Werebear",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 2,
     "hitDice": "6*",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 2,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 10,
+    "treasureType": "C",
+    "alignment": "Neutral",
+    "saveAs": "F6",
+    "XP": 500,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -3542,51 +3359,47 @@
         "raw": "Bearhug"
       }
     ],
-    "damage": "2d4 / 2d4 / 2d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d4",
         "dice": "2d4",
         "rider": null
       },
       {
-        "raw": "2d4",
         "dice": "2d4",
         "rider": null
       },
       {
-        "raw": "2d8",
         "dice": "2d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F6",
-    "morale": 10,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 500,
-    "specialAbilities": "If both claws hit add 2d8",
+    "riders": [],
     "notes": "If both claws hit add 2d8",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "2d4 / 2d4 / 2d8"
+    }
   },
   {
-    "id": "medusa",
+    "monsterKey": "medusa",
     "name": "Medusa",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 8,
     "hitDice": "4**",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 8,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 8,
+    "treasureType": "F",
+    "alignment": "Chaotic",
+    "saveAs": "F4",
+    "XP": 175,
+    "numberAppearing": "1-3 (1-4)",
     "attacks": [
       {
         "type": "snakebite",
@@ -3599,41 +3412,41 @@
         "raw": "Special"
       }
     ],
-    "damage": "1d6 + Poison (2)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6 + Poison (2)",
         "dice": "1d6",
         "rider": "Poison (2)"
       }
     ],
-    "numberAppearing": "1-3 (1-4)",
-    "saveAs": "F4",
-    "morale": 8,
-    "treasureType": "(V)F",
-    "treasure": {
-      "raw": "(V)F",
-      "normalizedCodes": [
-        "F"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 175,
-    "specialAbilities": "Petrification gaze",
+    "riders": [
+      "Poison (2)"
+    ],
     "notes": "Petrification gaze",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(V)F",
+      "treasureCodes": [
+        "F"
+      ],
+      "damage": "1d6 + Poison (2)"
+    }
   },
   {
-    "id": "minotaur",
+    "monsterKey": "minotaur",
     "name": "Minotaur",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "6",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 12,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "saveAs": "F6",
+    "XP": 275,
+    "numberAppearing": "1-6 (1-8)",
     "attacks": [
       {
         "type": "gore",
@@ -3646,51 +3459,47 @@
         "raw": "1 Bite or 1 Weapon"
       }
     ],
-    "damage": "1d6 / 1d6 or 1d6+2",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d6+2",
         "dice": "1d6+2",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (1-8)",
-    "saveAs": "F6",
-    "morale": 12,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 275,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "1d6 / 1d6 or 1d6+2"
+    }
   },
   {
-    "id": "mule",
+    "monsterKey": "mule",
     "name": "Mule",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "2",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "NORMALMAN",
+    "XP": 20,
+    "numberAppearing": "1-2 (2-12)",
     "attacks": [
       {
         "type": "kick or 1 bite",
@@ -3698,86 +3507,41 @@
         "raw": "1 Kick or 1 Bite"
       }
     ],
-    "damage": "1d4 or 1d3",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d3",
         "dice": "1d3",
         "rider": null
       }
     ],
-    "numberAppearing": "1-2 (2-12)",
-    "saveAs": "Normal man",
-    "morale": 8,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 20,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d4 or 1d3"
+    }
   },
   {
-    "id": "neanderthal",
+    "monsterKey": "neanderthal",
     "name": "Neanderthal",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 8,
     "hitDice": "2",
-    "movement": "120 (40)",
-    "movementModes": {
-      "move": "120(40)"
-    },
-    "attacks": [
-      {
-        "type": "weapon",
-        "count": 1,
-        "raw": "1 Weapon"
-      }
-    ],
-    "damage": "1d4+1",
-    "damageParts": [
-      {
-        "raw": "1d4+1",
-        "dice": "1d4+1",
-        "rider": null
-      }
-    ],
-    "numberAppearing": "1-10 (10-40)",
-    "saveAs": "F2",
-    "morale": 7,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Lawful",
-    "xp": 20,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
-  },
-  {
-    "id": "neanderthal-king-queen",
-    "name": "Neanderthal - King/Queen",
-    "sourceBook": "Basic",
-    "sourcePage": null,
     "armorClass": 8,
-    "hitDice": "6",
-    "movement": "120 (40)",
-    "movementModes": {
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 7,
+    "treasureType": "C",
+    "alignment": "Lawful",
+    "saveAs": "F2",
+    "XP": 20,
+    "numberAppearing": "1-10 (10-40)",
     "attacks": [
       {
         "type": "weapon",
@@ -3785,41 +3549,39 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d4+1",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4+1",
         "dice": "1d4+1",
         "rider": null
       }
     ],
-    "numberAppearing": "2 Leaders in a lair",
-    "saveAs": "F6",
-    "morale": 7,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Lawful",
-    "xp": 275,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "1d4+1"
+    }
   },
   {
-    "id": "normal-human",
-    "name": "Normal Human",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 9,
-    "hitDice": "1",
-    "movement": "120 (40)",
-    "movementModes": {
+    "monsterKey": "neanderthal_king_queen",
+    "name": "Neanderthal - King/Queen",
+    "hitDice": "6",
+    "armorClass": 8,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 7,
+    "treasureType": "C",
+    "alignment": "Lawful",
+    "saveAs": "F6",
+    "XP": 275,
+    "numberAppearing": "2 Leaders in a lair",
     "attacks": [
       {
         "type": "weapon",
@@ -3827,41 +3589,79 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
+        "dice": "1d4+1",
+        "rider": null
+      }
+    ],
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "1d4+1"
+    }
+  },
+  {
+    "monsterKey": "normal_human",
+    "name": "Normal Human",
+    "hitDice": "1",
+    "armorClass": 9,
+    "movement": {
+      "move": "120(40)"
+    },
+    "morale": 6,
+    "treasureType": "P",
+    "alignment": "Any",
+    "saveAs": "NORMALMAN",
+    "XP": 5,
+    "numberAppearing": "1-4 (1-50)",
+    "attacks": [
+      {
+        "type": "weapon",
+        "count": 1,
+        "raw": "1 Weapon"
+      }
+    ],
+    "damage": [
+      {
         "dice": "1d4",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-50)",
-    "saveAs": "Normal man",
-    "morale": 6,
-    "treasureType": "(P)U",
-    "treasure": {
-      "raw": "(P)U",
-      "normalizedCodes": [
-        "P"
-      ]
-    },
-    "alignment": "Any",
-    "xp": 5,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "(P)U",
+      "treasureCodes": [
+        "P"
+      ],
+      "damage": "1d4"
+    }
   },
   {
-    "id": "ochre-jelly",
+    "monsterKey": "ochre_jelly",
     "name": "Ochre Jelly",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 8,
     "hitDice": "5*",
-    "movement": "30 (10)",
-    "movementModes": {
+    "armorClass": 8,
+    "movement": {
       "move": "30(10)"
     },
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F3",
+    "XP": 300,
+    "numberAppearing": "1 (0)",
     "attacks": [
       {
         "type": "1",
@@ -3869,39 +3669,37 @@
         "raw": "1"
       }
     ],
-    "damage": "2d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d6",
         "dice": "2d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1 (0)",
-    "saveAs": "F3",
-    "morale": 12,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 300,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "30 (10)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d6"
+    }
   },
   {
-    "id": "ogre",
+    "monsterKey": "ogre",
     "name": "Ogre",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "4+1",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 10,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "saveAs": "F4",
+    "XP": 125,
+    "numberAppearing": "1-6 (2-12)",
     "attacks": [
       {
         "type": "club",
@@ -3909,41 +3707,39 @@
         "raw": "1 Club"
       }
     ],
-    "damage": "1d8+2",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8+2",
         "dice": "1d8+2",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (2-12)",
-    "saveAs": "F4",
-    "morale": 10,
-    "treasureType": "(S x 10) or (S x 100) + C",
-    "treasure": {
-      "raw": "(S x 10) or (S x 100) + C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 125,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "(S x 10) or (S x 100) + C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "1d8+2"
+    }
   },
   {
-    "id": "orc",
+    "monsterKey": "orc",
     "name": "Orc",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "1",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 8,
+    "treasureType": "P, D",
+    "alignment": "Chaotic",
+    "saveAs": "F1",
+    "XP": 10,
+    "numberAppearing": "2-8 (10-60)",
     "attacks": [
       {
         "type": "weapon",
@@ -3951,42 +3747,40 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "2-8 (10-60)",
-    "saveAs": "F1",
-    "morale": 8,
-    "treasureType": "(P)D",
-    "treasure": {
-      "raw": "(P)D",
-      "normalizedCodes": [
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "(P)D",
+      "treasureCodes": [
         "P",
         "D"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 10,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d6"
+    }
   },
   {
-    "id": "orc-leader",
+    "monsterKey": "orc_leader",
     "name": "Orc - Leader",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "1",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 8,
+    "treasureType": "P, D",
+    "alignment": "Chaotic",
+    "saveAs": "F1",
+    "XP": 15,
+    "numberAppearing": "1 per 8 Orcs",
     "attacks": [
       {
         "type": "weapon",
@@ -3994,42 +3788,40 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d6+1",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6+1",
         "dice": "1d6+1",
         "rider": null
       }
     ],
-    "numberAppearing": "1 per 8 Orcs",
-    "saveAs": "F1",
-    "morale": 8,
-    "treasureType": "(P)D",
-    "treasure": {
-      "raw": "(P)D",
-      "normalizedCodes": [
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "(P)D",
+      "treasureCodes": [
         "P",
         "D"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 15,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d6+1"
+    }
   },
   {
-    "id": "orc-chieftain",
+    "monsterKey": "orc_chieftain",
     "name": "Orc - Chieftain",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "1",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 8,
+    "treasureType": "P, D",
+    "alignment": "Chaotic",
+    "saveAs": "F1",
+    "XP": 75,
+    "numberAppearing": "1 per Lair",
     "attacks": [
       {
         "type": "weapon",
@@ -4037,42 +3829,40 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d6+2",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6+2",
         "dice": "1d6+2",
         "rider": null
       }
     ],
-    "numberAppearing": "1 per Lair",
-    "saveAs": "F1",
-    "morale": 8,
-    "treasureType": "(P)D",
-    "treasure": {
-      "raw": "(P)D",
-      "normalizedCodes": [
+    "riders": [],
+    "notes": "",
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "(P)D",
+      "treasureCodes": [
         "P",
         "D"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 75,
-    "specialAbilities": "",
-    "notes": "",
-    "actorType": "creature"
+      ],
+      "damage": "1d6+2"
+    }
   },
   {
-    "id": "owlbear",
+    "monsterKey": "owlbear",
     "name": "Owlbear",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "5",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 9,
+    "treasureType": "C",
+    "alignment": "Neutral",
+    "saveAs": "F3",
+    "XP": 175,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "claws",
@@ -4090,52 +3880,48 @@
         "raw": "Bearhug"
       }
     ],
-    "damage": "1d8 / 1d8 / 1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       },
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       },
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F3",
-    "morale": 9,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 175,
-    "specialAbilities": "If both claws hit add 2d8",
+    "riders": [],
     "notes": "If both claws hit add 2d8",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "1d8 / 1d8 / 1d8"
+    }
   },
   {
-    "id": "pixie",
+    "monsterKey": "pixie",
     "name": "Pixie",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 3,
     "hitDice": "1 ***",
-    "movement": "Move 90 (30) / Fly 180 (60)",
-    "movementModes": {
+    "armorClass": 3,
+    "movement": {
       "move": "90(30)",
       "fly": "180(60)"
     },
+    "morale": 7,
+    "treasureType": "R + S",
+    "alignment": "Neutral",
+    "saveAs": "ELF1",
+    "XP": 19,
+    "numberAppearing": "2-8 (10-40)",
     "attacks": [
       {
         "type": "dagger",
@@ -4143,39 +3929,37 @@
         "raw": "1 Dagger"
       }
     ],
-    "damage": "1d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       }
     ],
-    "numberAppearing": "2-8 (10-40)",
-    "saveAs": "Elf 1",
-    "morale": 7,
-    "treasureType": "R + S",
-    "treasure": {
-      "raw": "R + S",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 19,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Move 90 (30) / Fly 180 (60)",
+      "treasure": "R + S",
+      "treasureCodes": [],
+      "damage": "1d4"
+    }
   },
   {
-    "id": "rat-normal",
+    "monsterKey": "rat_normal",
     "name": "Rat - Normal",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 9,
     "hitDice": "0",
-    "movement": "60 (20)",
-    "movementModes": {
+    "armorClass": 9,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 5,
+    "treasureType": "L",
+    "alignment": "Neutral",
+    "saveAs": "NORMALMAN",
+    "XP": 5,
+    "numberAppearing": "5-50 (2-20)",
     "attacks": [
       {
         "type": "bite per pack",
@@ -4183,41 +3967,39 @@
         "raw": "1 Bite per pack"
       }
     ],
-    "damage": "1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "5-50 (2-20)",
-    "saveAs": "Normal man",
-    "morale": 5,
-    "treasureType": "L",
-    "treasure": {
-      "raw": "L",
-      "normalizedCodes": [
-        "L"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 5,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "60 (20)",
+      "treasure": "L",
+      "treasureCodes": [
+        "L"
+      ],
+      "damage": "1d6"
+    }
   },
   {
-    "id": "rat-giant",
+    "monsterKey": "rat_giant",
     "name": "Rat - Giant",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "1/4",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 8,
+    "treasureType": "C",
+    "alignment": "Neutral",
+    "saveAs": "NORMALMAN",
+    "XP": 5,
+    "numberAppearing": "3-18 (3-30)",
     "attacks": [
       {
         "type": "bite each",
@@ -4225,42 +4007,40 @@
         "raw": "1 Bite each"
       }
     ],
-    "damage": "1d3",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d3",
         "dice": "1d3",
         "rider": null
       }
     ],
-    "numberAppearing": "3-18 (3-30)",
-    "saveAs": "Normal man",
-    "morale": 8,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 5,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "1d3"
+    }
   },
   {
-    "id": "robber-fly",
+    "monsterKey": "robber_fly",
     "name": "Robber Fly",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "2",
-    "movement": "Move 90 (30) / Fly 180 (60)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "90(30)",
       "fly": "180(60)"
     },
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 20,
+    "numberAppearing": "1-6 (2-12)",
     "attacks": [
       {
         "type": "bite",
@@ -4268,39 +4048,37 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d8",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (2-12)",
-    "saveAs": "F1",
-    "morale": 8,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 20,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Move 90 (30) / Fly 180 (60)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d8"
+    }
   },
   {
-    "id": "rust-monster",
+    "monsterKey": "rust_monster",
     "name": "Rust Monster",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 2,
     "hitDice": "5*",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 2,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F3",
+    "XP": 300,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "tentacle",
@@ -4308,39 +4086,39 @@
         "raw": "1 Tentacle"
       }
     ],
-    "damage": "Rust metal (magic items 10% resist per +)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "Rust metal (magic items 10% resist per +)",
         "dice": null,
         "rider": "Rust metal (magic items 10% resist per +)"
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F3",
-    "morale": 7,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 300,
-    "specialAbilities": "",
+    "riders": [
+      "Rust metal (magic items 10% resist per +)"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "Rust metal (magic items 10% resist per +)"
+    }
   },
   {
-    "id": "shadow",
+    "monsterKey": "shadow",
     "name": "Shadow*",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "2+2 *",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 12,
+    "treasureType": "F",
+    "alignment": "Chaotic",
+    "saveAs": "F2",
+    "XP": 35,
+    "numberAppearing": "1-8 (1-12)",
     "attacks": [
       {
         "type": "1",
@@ -4348,41 +4126,41 @@
         "raw": "1"
       }
     ],
-    "damage": "1d4 + Drain 1 STR",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4 + Drain 1 STR",
         "dice": "1d4",
         "rider": "Drain 1 STR"
       }
     ],
-    "numberAppearing": "1-8 (1-12)",
-    "saveAs": "F2",
-    "morale": 12,
-    "treasureType": "F",
-    "treasure": {
-      "raw": "F",
-      "normalizedCodes": [
-        "F"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 35,
-    "specialAbilities": "",
+    "riders": [
+      "Drain 1 STR"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "F",
+      "treasureCodes": [
+        "F"
+      ],
+      "damage": "1d4 + Drain 1 STR"
+    }
   },
   {
-    "id": "shrew-giant",
+    "monsterKey": "shrew_giant",
     "name": "Shrew - Giant",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 4,
     "hitDice": "1*",
-    "movement": "180 (60)",
-    "movementModes": {
+    "armorClass": 4,
+    "movement": {
       "move": "180(60)"
     },
+    "morale": 10,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 13,
+    "numberAppearing": "1-8 (1-4)",
     "attacks": [
       {
         "type": "bites",
@@ -4390,44 +4168,41 @@
         "raw": "2 Bites"
       }
     ],
-    "damage": "1d6 / 1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-8 (1-4)",
-    "saveAs": "F1",
-    "morale": 10,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 13,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "180 (60)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d6 / 1d6"
+    }
   },
   {
-    "id": "shrieker",
+    "monsterKey": "shrieker",
     "name": "Shrieker",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "3",
-    "movement": "9 (3)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "9(3)"
     },
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 35,
+    "numberAppearing": "1-8 (0)",
     "attacks": [
       {
         "type": "scream for 1d3 rounds",
@@ -4435,39 +4210,39 @@
         "raw": "Scream for 1d3 rounds"
       }
     ],
-    "damage": "1d6 (On 4+ wandering monster appears)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6 (On 4+ wandering monster appears)",
         "dice": "1d6",
         "rider": "(On 4+ wandering monster appears)"
       }
     ],
-    "numberAppearing": "1-8 (0)",
-    "saveAs": "F2",
-    "morale": 12,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 35,
-    "specialAbilities": "",
+    "riders": [
+      "(On 4+ wandering monster appears)"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "9 (3)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d6 (On 4+ wandering monster appears)"
+    }
   },
   {
-    "id": "skeleton",
+    "monsterKey": "skeleton",
     "name": "Skeleton",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "1",
-    "movement": "60 (20)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Chaotic",
+    "saveAs": "F1",
+    "XP": 10,
+    "numberAppearing": "3-12 (3-30)",
     "attacks": [
       {
         "type": "weapon",
@@ -4475,44 +4250,41 @@
         "raw": "1 Weapon"
       }
     ],
-    "damage": "1d4 or 1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "3-12 (3-30)",
-    "saveAs": "F1",
-    "morale": 12,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Chaotic",
-    "xp": 10,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "60 (20)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d4 or 1d6"
+    }
   },
   {
-    "id": "snake-spitting-cobra",
+    "monsterKey": "snake_spitting_cobra",
     "name": "Snake - Spitting Cobra",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "1*",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 13,
+    "numberAppearing": "1-6 (1-6)",
     "attacks": [
       {
         "type": "bite or 1 spit",
@@ -4520,44 +4292,44 @@
         "raw": "1 Bite or 1 Spit"
       }
     ],
-    "damage": "1d3 + Poison (1) / Save vs Blind",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d3 + Poison (1)",
         "dice": "1d3",
         "rider": "Poison (1)"
       },
       {
-        "raw": "Save vs Blind",
         "dice": null,
         "rider": "Save vs Blind"
       }
     ],
-    "numberAppearing": "1-6 (1-6)",
-    "saveAs": "F1",
-    "morale": 7,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 13,
-    "specialAbilities": "",
+    "riders": [
+      "Poison (1)",
+      "Save vs Blind"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d3 + Poison (1) / Save vs Blind"
+    }
   },
   {
-    "id": "snake-giant-racer",
+    "monsterKey": "snake_giant_racer",
     "name": "Snake - Giant Racer",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "2",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 20,
+    "numberAppearing": "1-6 (1-8)",
     "attacks": [
       {
         "type": "bite",
@@ -4565,39 +4337,37 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "1-6 (1-8)",
-    "saveAs": "F1",
-    "morale": 7,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 20,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d6"
+    }
   },
   {
-    "id": "snake-pit-viper",
+    "monsterKey": "snake_pit_viper",
     "name": "Snake - Pit Viper",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "2*",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 25,
+    "numberAppearing": "1-8 (1-8)",
     "attacks": [
       {
         "type": "bite",
@@ -4605,39 +4375,39 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d4 + Poison (2)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4 + Poison (2)",
         "dice": "1d4",
         "rider": "Poison (2)"
       }
     ],
-    "numberAppearing": "1-8 (1-8)",
-    "saveAs": "F1",
-    "morale": 7,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 25,
-    "specialAbilities": "",
+    "riders": [
+      "Poison (2)"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d4 + Poison (2)"
+    }
   },
   {
-    "id": "snake-sea-snake",
+    "monsterKey": "snake_sea_snake",
     "name": "Snake - Sea Snake",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "3*",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 7,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 50,
+    "numberAppearing": "0 (1-8)",
     "attacks": [
       {
         "type": "bite",
@@ -4645,39 +4415,39 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1 + Poison (2)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1 + Poison (2)",
         "dice": null,
         "rider": "1 + Poison (2)"
       }
     ],
-    "numberAppearing": "0 (1-8)",
-    "saveAs": "F1",
-    "morale": 7,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 50,
-    "specialAbilities": "",
+    "riders": [
+      "1 + Poison (2)"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1 + Poison (2)"
+    }
   },
   {
-    "id": "snake-giant-rattler",
+    "monsterKey": "snake_giant_rattler",
     "name": "Snake - Giant Rattler",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "4*",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 125,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "bites",
@@ -4685,39 +4455,39 @@
         "raw": "2 Bites"
       }
     ],
-    "damage": "1d4 + Poison (2)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4 + Poison (2)",
         "dice": "1d4",
         "rider": "Poison (2)"
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F2",
-    "morale": 8,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 125,
-    "specialAbilities": "",
+    "riders": [
+      "Poison (2)"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d4 + Poison (2)"
+    }
   },
   {
-    "id": "snake-rock-python",
+    "monsterKey": "snake_rock_python",
     "name": "Snake - Rock Python",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "5*",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 300,
+    "numberAppearing": "1-3 (1-3)",
     "attacks": [
       {
         "type": "bite",
@@ -4730,39 +4500,39 @@
         "raw": "1 Squeeze"
       }
     ],
-    "damage": "1d4 + 2d4 if hit is scored",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4 + 2d4 if hit is scored",
         "dice": "1d4+2",
         "rider": "d4 if hit is scored"
       }
     ],
-    "numberAppearing": "1-3 (1-3)",
-    "saveAs": "F2",
-    "morale": 8,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 300,
-    "specialAbilities": "",
+    "riders": [
+      "d4 if hit is scored"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d4 + 2d4 if hit is scored"
+    }
   },
   {
-    "id": "spider-giant-crab-spider",
+    "monsterKey": "spider_giant_crab_spider",
     "name": "Spider - Giant Crab Spider",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "2*",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 7,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 25,
+    "numberAppearing": "1-4 (1-4)",
     "attacks": [
       {
         "type": "bite",
@@ -4770,39 +4540,39 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d8 + Poison (1)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8 + Poison (1)",
         "dice": "1d8",
         "rider": "Poison (1)"
       }
     ],
-    "numberAppearing": "1-4 (1-4)",
-    "saveAs": "F1",
-    "morale": 7,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 25,
-    "specialAbilities": "",
+    "riders": [
+      "Poison (1)"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d8 + Poison (1)"
+    }
   },
   {
-    "id": "spider-giant-black-widow",
+    "monsterKey": "spider_giant_black_widow",
     "name": "Spider - Giant Black Widow",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "3*",
-    "movement": "60 (20)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "60(20)"
     },
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 50,
+    "numberAppearing": "1-3 (1-3)",
     "attacks": [
       {
         "type": "bite",
@@ -4810,39 +4580,39 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "2d6 + Poison (2)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d6 + Poison (2)",
         "dice": "2d6",
         "rider": "Poison (2)"
       }
     ],
-    "numberAppearing": "1-3 (1-3)",
-    "saveAs": "F2",
-    "morale": 8,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 50,
-    "specialAbilities": "",
+    "riders": [
+      "Poison (2)"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "60 (20)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "2d6 + Poison (2)"
+    }
   },
   {
-    "id": "spider-giant-tarantella",
+    "monsterKey": "spider_giant_tarantella",
     "name": "Spider - Giant Tarantella",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "4*",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 8,
+    "treasureType": "U",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 125,
+    "numberAppearing": "1-3 (1-3)",
     "attacks": [
       {
         "type": "bite",
@@ -4850,40 +4620,40 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d8 + Poison (Starts dancing on fail 2-12 turns)",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8 + Poison (Starts dancing on fail 2-12 turns)",
         "dice": "1d8",
         "rider": "Poison (Starts dancing on fail 2-12 turns)"
       }
     ],
-    "numberAppearing": "1-3 (1-3)",
-    "saveAs": "F2",
-    "morale": 8,
-    "treasureType": "U",
-    "treasure": {
-      "raw": "U",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 125,
-    "specialAbilities": "",
+    "riders": [
+      "Poison (Starts dancing on fail 2-12 turns)"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "U",
+      "treasureCodes": [],
+      "damage": "1d8 + Poison (Starts dancing on fail 2-12 turns)"
+    }
   },
   {
-    "id": "stirge",
+    "monsterKey": "stirge",
     "name": "Stirge",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "1*",
-    "movement": "Move 30 (10) / Fly 180 (60)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "30(10)",
       "fly": "180(60)"
     },
+    "morale": 9,
+    "treasureType": "L",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 13,
+    "numberAppearing": "1-10 (3-36)",
     "attacks": [
       {
         "type": "beak",
@@ -4891,41 +4661,39 @@
         "raw": "1 Beak (Auto hit if first attack lands)"
       }
     ],
-    "damage": "1d3",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d3",
         "dice": "1d3",
         "rider": null
       }
     ],
-    "numberAppearing": "1-10 (3-36)",
-    "saveAs": "F2",
-    "morale": 9,
-    "treasureType": "L",
-    "treasure": {
-      "raw": "L",
-      "normalizedCodes": [
-        "L"
-      ]
-    },
-    "alignment": "Neutral",
-    "xp": 13,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "Move 30 (10) / Fly 180 (60)",
+      "treasure": "L",
+      "treasureCodes": [
+        "L"
+      ],
+      "damage": "1d3"
+    }
   },
   {
-    "id": "thoul",
+    "monsterKey": "thoul",
     "name": "Thoul",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "3**",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 10,
+    "treasureType": "C",
+    "alignment": "Chaotic",
+    "saveAs": "F3",
+    "XP": 65,
+    "numberAppearing": "1-6 (1-10)",
     "attacks": [
       {
         "type": "claws or 1 weapon",
@@ -4933,51 +4701,50 @@
         "raw": "2 Claws or 1 Weapon"
       }
     ],
-    "damage": "1d3 / 1d3 + Paralyze or Weapon",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d3",
         "dice": "1d3",
         "rider": null
       },
       {
-        "raw": "1d3 + Paralyze",
         "dice": "1d3",
         "rider": "Paralyze"
       },
       {
-        "raw": "Weapon",
         "dice": null,
         "rider": "Weapon"
       }
     ],
-    "numberAppearing": "1-6 (1-10)",
-    "saveAs": "F3",
-    "morale": 10,
-    "treasureType": "C",
-    "treasure": {
-      "raw": "C",
-      "normalizedCodes": [
-        "C"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 65,
-    "specialAbilities": "",
+    "riders": [
+      "Paralyze",
+      "Weapon"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "C",
+      "treasureCodes": [
+        "C"
+      ],
+      "damage": "1d3 / 1d3 + Paralyze or Weapon"
+    }
   },
   {
-    "id": "troglodyte",
+    "monsterKey": "troglodyte",
     "name": "Troglodyte",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "2*",
-    "movement": "120 (40)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "120(40)"
     },
+    "morale": 9,
+    "treasureType": "A",
+    "alignment": "Chaotic",
+    "saveAs": "F2",
+    "XP": 30,
+    "numberAppearing": "1-8 (5-40)",
     "attacks": [
       {
         "type": "claws",
@@ -4990,51 +4757,47 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d4 / 1d4 / 1d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       },
       {
-        "raw": "1d4",
         "dice": "1d4",
         "rider": null
       }
     ],
-    "numberAppearing": "1-8 (5-40)",
-    "saveAs": "F2",
-    "morale": 9,
-    "treasureType": "A",
-    "treasure": {
-      "raw": "A",
-      "normalizedCodes": [
-        "A"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 30,
-    "specialAbilities": "Aura - Save vs Poison in melee, -2 To hit if failed",
+    "riders": [],
     "notes": "Aura - Save vs Poison in melee, -2 To hit if failed",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "120 (40)",
+      "treasure": "A",
+      "treasureCodes": [
+        "A"
+      ],
+      "damage": "1d4 / 1d4 / 1d4"
+    }
   },
   {
-    "id": "wight",
+    "monsterKey": "wight",
     "name": "Wight*",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 5,
     "hitDice": "3*",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 5,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 12,
+    "treasureType": "B",
+    "alignment": "Chaotic",
+    "saveAs": "F3",
+    "XP": 50,
+    "numberAppearing": "1-6 (1-8)",
     "attacks": [
       {
         "type": "1",
@@ -5042,41 +4805,41 @@
         "raw": "1"
       }
     ],
-    "damage": "Energy drain 1",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "Energy drain 1",
         "dice": null,
         "rider": "Energy drain 1"
       }
     ],
-    "numberAppearing": "1-6 (1-8)",
-    "saveAs": "F3",
-    "morale": 12,
-    "treasureType": "B",
-    "treasure": {
-      "raw": "B",
-      "normalizedCodes": [
-        "B"
-      ]
-    },
-    "alignment": "Chaotic",
-    "xp": 50,
-    "specialAbilities": "",
+    "riders": [
+      "Energy drain 1"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "B",
+      "treasureCodes": [
+        "B"
+      ],
+      "damage": "Energy drain 1"
+    }
   },
   {
-    "id": "wolf",
+    "monsterKey": "wolf",
     "name": "Wolf",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 7,
     "hitDice": "2+2",
-    "movement": "180 (60)",
-    "movementModes": {
+    "armorClass": 7,
+    "movement": {
       "move": "180(60)"
     },
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F1",
+    "XP": 25,
+    "numberAppearing": "2-12 (3-18)",
     "attacks": [
       {
         "type": "bite",
@@ -5084,39 +4847,37 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "1d6",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d6",
         "dice": "1d6",
         "rider": null
       }
     ],
-    "numberAppearing": "2-12 (3-18)",
-    "saveAs": "F1",
-    "morale": 8,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 25,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "180 (60)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d6"
+    }
   },
   {
-    "id": "wolf-dire",
+    "monsterKey": "wolf_dire",
     "name": "Wolf - Dire",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 6,
     "hitDice": "4+1",
-    "movement": "150 (50)",
-    "movementModes": {
+    "armorClass": 6,
+    "movement": {
       "move": "150(50)"
     },
+    "morale": 8,
+    "treasureType": "Nil",
+    "alignment": "Neutral",
+    "saveAs": "F2",
+    "XP": 125,
+    "numberAppearing": "1-4 (2-8)",
     "attacks": [
       {
         "type": "bite",
@@ -5124,39 +4885,37 @@
         "raw": "1 Bite"
       }
     ],
-    "damage": "2d4",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "2d4",
         "dice": "2d4",
         "rider": null
       }
     ],
-    "numberAppearing": "1-4 (2-8)",
-    "saveAs": "F2",
-    "morale": 8,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Neutral",
-    "xp": 125,
-    "specialAbilities": "",
+    "riders": [],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "150 (50)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "2d4"
+    }
   },
   {
-    "id": "zombie",
+    "monsterKey": "zombie",
     "name": "Zombie",
-    "sourceBook": "Basic",
-    "sourcePage": null,
-    "armorClass": 8,
     "hitDice": "2",
-    "movement": "90 (30)",
-    "movementModes": {
+    "armorClass": 8,
+    "movement": {
       "move": "90(30)"
     },
+    "morale": 12,
+    "treasureType": "Nil",
+    "alignment": "Chaotic",
+    "saveAs": "F1",
+    "XP": 20,
+    "numberAppearing": "2-8 (2-24)",
     "attacks": [
       {
         "type": "claw or 1 weapon",
@@ -5164,31 +4923,27 @@
         "raw": "1 Claw or 1 Weapon"
       }
     ],
-    "damage": "1d8 or Weapon",
-    "damageParts": [
+    "damage": [
       {
-        "raw": "1d8",
         "dice": "1d8",
         "rider": null
       },
       {
-        "raw": "Weapon",
         "dice": null,
         "rider": "Weapon"
       }
     ],
-    "numberAppearing": "2-8 (2-24)",
-    "saveAs": "F1",
-    "morale": 12,
-    "treasureType": "Nil",
-    "treasure": {
-      "raw": "Nil",
-      "normalizedCodes": []
-    },
-    "alignment": "Chaotic",
-    "xp": 20,
-    "specialAbilities": "",
+    "riders": [
+      "Weapon"
+    ],
     "notes": "",
-    "actorType": "creature"
+    "raw": {
+      "sourceBook": "Basic",
+      "sourcePage": null,
+      "movement": "90 (30)",
+      "treasure": "Nil",
+      "treasureCodes": [],
+      "damage": "1d8 or Weapon"
+    }
   }
 ]

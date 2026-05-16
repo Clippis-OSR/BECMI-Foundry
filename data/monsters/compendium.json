@@ -42,12 +42,13 @@
       },
       "alignment": "Neutral",
       "xp": 20,
-      "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "On failed morale, 40% Stampede 1d20 dmg."
       },
-      "notes": "On failed morale, 40% Stampede 1d20 dmg."
+      "notes": "On failed morale, 40% Stampede 1d20 dmg.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -94,12 +95,13 @@
       },
       "alignment": "Neutral",
       "xp": 35,
-      "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "On failed morale, 40% Stampede 1d20 dmg."
       },
-      "notes": "On failed morale, 40% Stampede 1d20 dmg."
+      "notes": "On failed morale, 40% Stampede 1d20 dmg.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -146,12 +148,13 @@
       },
       "alignment": "Neutral",
       "xp": 75,
-      "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "On failed morale, 40% Stampede 1d20 dmg."
       },
-      "notes": "On failed morale, 40% Stampede 1d20 dmg."
+      "notes": "On failed morale, 40% Stampede 1d20 dmg.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -198,12 +201,13 @@
       },
       "alignment": "Neutral",
       "xp": 10,
-      "specialAbilities": "On failed morale, 40% Stampede 1d20 dmg.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "On failed morale, 40% Stampede 1d20 dmg."
       },
-      "notes": "On failed morale, 40% Stampede 1d20 dmg."
+      "notes": "On failed morale, 40% Stampede 1d20 dmg.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -255,7 +259,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -284,7 +289,7 @@
           "raw": "2 Claw"
         }
       ],
-      "damage": "1d4 / 1d4",
+      "damage": "1d4/1d4",
       "damageParts": [
         {
           "raw": "1d4",
@@ -312,7 +317,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -346,7 +352,7 @@
           "raw": "1 Bite"
         }
       ],
-      "damage": "1d6 / 1d3",
+      "damage": "1d6/1d3",
       "damageParts": [
         {
           "raw": "1d6",
@@ -374,7 +380,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -414,7 +421,7 @@
       "numberAppearing": "1-8 (3-30)",
       "saveAs": "T1",
       "morale": 8,
-      "treasureType": "(U) A",
+      "treasureType": "A",
       "treasure": {
         "raw": "(U) A",
         "normalizedCodes": [
@@ -423,12 +430,13 @@
       },
       "alignment": "Neutral",
       "xp": 10,
-      "specialAbilities": "",
+      "specialAbilities": "By weapon",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -462,10 +470,10 @@
           "raw": "1 Gaze"
         }
       ],
-      "damage": "1d10 + Petrification/Save VS Petri",
+      "damage": "1d10",
       "damageParts": [
         {
-          "raw": "1d10 + Petrification",
+          "raw": "1d10",
           "dice": "1d10",
           "rider": "Petrification"
         },
@@ -487,12 +495,13 @@
       },
       "alignment": "Neutral",
       "xp": 950,
-      "specialAbilities": "",
+      "specialAbilities": "Petrification; Save VS Petri",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -545,7 +554,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -584,7 +594,7 @@
         }
       ],
       "numberAppearing": "1-100 (1-100)",
-      "saveAs": "Normal man",
+      "saveAs": "F1",
       "morale": 6,
       "treasureType": "Nil",
       "treasure": {
@@ -593,12 +603,13 @@
       },
       "alignment": "Neutral",
       "xp": 5,
-      "specialAbilities": "",
+      "specialAbilities": "Nil",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -637,7 +648,7 @@
           "raw": "Bearhug"
         }
       ],
-      "damage": "1d3 / 1d3 / 1d6",
+      "damage": "1d3/1d3/1d6",
       "damageParts": [
         {
           "raw": "1d3",
@@ -665,12 +676,13 @@
       },
       "alignment": "Neutral",
       "xp": 75,
-      "specialAbilities": "If both claws hit add 2d8",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "If both claws hit add 2d8"
       },
-      "notes": "If both claws hit add 2d8"
+      "notes": "If both claws hit add 2d8",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -709,7 +721,7 @@
           "raw": "Bearhug"
         }
       ],
-      "damage": "2d4 / 2d4 / 2d6",
+      "damage": "2d4/2d4/2d6",
       "damageParts": [
         {
           "raw": "2d4",
@@ -737,12 +749,13 @@
       },
       "alignment": "Neutral",
       "xp": 450,
-      "specialAbilities": "If both claws hit add 2d8",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "If both claws hit add 2d8"
       },
-      "notes": "If both claws hit add 2d8"
+      "notes": "If both claws hit add 2d8",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -781,7 +794,7 @@
           "raw": "Bearhug"
         }
       ],
-      "damage": "1d8 / 1d8 / 1d10",
+      "damage": "1d8/1d8/1d10",
       "damageParts": [
         {
           "raw": "1d8",
@@ -809,12 +822,13 @@
       },
       "alignment": "Neutral",
       "xp": 175,
-      "specialAbilities": "If both claws hit add 2d8",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "If both claws hit add 2d8"
       },
-      "notes": "If both claws hit add 2d8"
+      "notes": "If both claws hit add 2d8",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -853,7 +867,7 @@
           "raw": "Bearhug"
         }
       ],
-      "damage": "1d6 / 1d6 / 1d10",
+      "damage": "1d6/1d6/1d10",
       "damageParts": [
         {
           "raw": "1d6",
@@ -881,12 +895,13 @@
       },
       "alignment": "Neutral",
       "xp": 275,
-      "specialAbilities": "If both claws hit add 2d8",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "If both claws hit add 2d8"
       },
-      "notes": "If both claws hit add 2d8"
+      "notes": "If both claws hit add 2d8",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -915,10 +930,10 @@
           "raw": "1 Sting"
         }
       ],
-      "damage": "1d3 + Poison (1)",
+      "damage": "1d3",
       "damageParts": [
         {
-          "raw": "1d3 + Poison (1)",
+          "raw": "1d3",
           "dice": "1d3",
           "rider": "Poison (1)"
         }
@@ -933,12 +948,13 @@
       },
       "alignment": "Neutral",
       "xp": 6,
-      "specialAbilities": "",
+      "specialAbilities": "Poison (1)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -967,10 +983,10 @@
           "raw": "1 Sting"
         }
       ],
-      "damage": "1d3 + Poison (1)",
+      "damage": "1d3",
       "damageParts": [
         {
-          "raw": "1d3 + Poison (1)",
+          "raw": "1d3",
           "dice": "1d3",
           "rider": "Poison (1)"
         }
@@ -985,12 +1001,13 @@
       },
       "alignment": "Neutral",
       "xp": 13,
-      "specialAbilities": "",
+      "specialAbilities": "Poison (1)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1019,10 +1036,10 @@
           "raw": "1 Sting"
         }
       ],
-      "damage": "1d3 + Poison (1)",
+      "damage": "1d3",
       "damageParts": [
         {
-          "raw": "1d3 + Poison (1)",
+          "raw": "1d3",
           "dice": "1d3",
           "rider": "Poison (1)"
         }
@@ -1037,12 +1054,13 @@
       },
       "alignment": "Neutral",
       "xp": 25,
-      "specialAbilities": "",
+      "specialAbilities": "Poison (1)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1094,7 +1112,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1128,10 +1147,10 @@
           "raw": "Special"
         }
       ],
-      "damage": "2d6 + Spray Oil (-2 to Hit)",
+      "damage": "2d6",
       "damageParts": [
         {
-          "raw": "2d6 + Spray Oil (-2 to Hit)",
+          "raw": "2d6",
           "dice": "2d6",
           "rider": "Spray Oil (-2 to Hit)"
         }
@@ -1146,12 +1165,13 @@
       },
       "alignment": "Neutral",
       "xp": 50,
-      "specialAbilities": "",
+      "specialAbilities": "Spray Oil (-2 to Hit)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1203,7 +1223,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1232,7 +1253,7 @@
           "raw": "1 Weapon"
         }
       ],
-      "damage": "1d4 or 1d6 or 1d8",
+      "damage": "1d4/1d6/1d8",
       "damageParts": [
         {
           "raw": "1d4",
@@ -1253,7 +1274,7 @@
       "numberAppearing": "1-6 (3-30)",
       "saveAs": "F1",
       "morale": 12,
-      "treasureType": "(P)B",
+      "treasureType": "P, B",
       "treasure": {
         "raw": "(P)B",
         "normalizedCodes": [
@@ -1268,7 +1289,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1315,12 +1337,13 @@
       },
       "alignment": "Neutral",
       "xp": 1750,
-      "specialAbilities": "Only take FIRE dmg, Splits if hit by anything else. Split: 2HD Blob, 1d8 dmg.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Only take FIRE dmg, Splits if hit by anything else. Split: 2HD Blob, 1d8 dmg."
       },
-      "notes": "Only take FIRE dmg, Splits if hit by anything else. Split: 2HD Blob, 1d8 dmg."
+      "notes": "Only take FIRE dmg, Splits if hit by anything else. Split: 2HD Blob, 1d8 dmg.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1369,12 +1392,13 @@
       },
       "alignment": "Lawful",
       "xp": 125,
-      "specialAbilities": "Blink in to attack then blink away 10-40'",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Blink in to attack then blink away 10-40'"
       },
-      "notes": "Blink in to attack then blink away 10-40'"
+      "notes": "Blink in to attack then blink away 10-40'",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1426,7 +1450,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1455,7 +1480,7 @@
           "raw": "1 Weapon"
         }
       ],
-      "damage": "1d4+1 or 1d6+1 or 1d8+1",
+      "damage": "1d4+1/1d6+1/1d8+1",
       "damageParts": [
         {
           "raw": "1d4+1",
@@ -1476,7 +1501,7 @@
       "numberAppearing": "2-8 (5-20)",
       "saveAs": "F3",
       "morale": 9,
-      "treasureType": "(P+Q)B",
+      "treasureType": "P, B",
       "treasure": {
         "raw": "(P+Q)B",
         "normalizedCodes": [
@@ -1491,7 +1516,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1545,12 +1571,13 @@
       },
       "alignment": "Neutral",
       "xp": 500,
-      "specialAbilities": "Subterranean",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Subterranean"
       },
-      "notes": "Subterranean"
+      "notes": "Subterranean",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1584,7 +1611,7 @@
           "raw": "1 Hoof"
         }
       ],
-      "damage": "1/1d4",
+      "damage": "1d4",
       "damageParts": [
         {
           "raw": "1",
@@ -1607,12 +1634,13 @@
       },
       "alignment": "Neutral",
       "xp": 20,
-      "specialAbilities": "",
+      "specialAbilities": "1",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1661,12 +1689,13 @@
       },
       "alignment": "Neutral",
       "xp": 75,
-      "specialAbilities": "",
+      "specialAbilities": "Paralysis",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1700,7 +1729,7 @@
           "raw": "1 Bite"
         }
       ],
-      "damage": "1d4+1 / 1d4+1 / 1d10",
+      "damage": "1d4+1/1d4+1/1d10",
       "damageParts": [
         {
           "raw": "1d4+1",
@@ -1733,7 +1762,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1767,7 +1797,7 @@
           "raw": "1 Bite"
         }
       ],
-      "damage": "1d3 / 1d3 / 1d6",
+      "damage": "1d3/1d3/1d6",
       "damageParts": [
         {
           "raw": "1d3",
@@ -1800,7 +1830,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1834,7 +1865,7 @@
           "raw": "1 Bite"
         }
       ],
-      "damage": "1d4 / 1d4 / 1d8",
+      "damage": "1d4/1d4/1d8",
       "damageParts": [
         {
           "raw": "1d4",
@@ -1867,7 +1898,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1901,7 +1933,7 @@
           "raw": "1 Bite"
         }
       ],
-      "damage": "1d8 / 1d8 / 2d8",
+      "damage": "1d8/1d8/2d8",
       "damageParts": [
         {
           "raw": "1d8",
@@ -1934,7 +1966,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -1968,7 +2001,7 @@
           "raw": "1 Bite"
         }
       ],
-      "damage": "1d6 / 1d6 / 2d6",
+      "damage": "1d6/1d6/2d6",
       "damageParts": [
         {
           "raw": "1d6",
@@ -2001,7 +2034,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2035,7 +2069,7 @@
           "raw": "1 Weapon(Club, Lance, Bow)"
         }
       ],
-      "damage": "1d6/1d6/By weapon",
+      "damage": "1d6/1d6",
       "damageParts": [
         {
           "raw": "1d6",
@@ -2065,12 +2099,13 @@
       },
       "alignment": "Neutral",
       "xp": 75,
-      "specialAbilities": "",
+      "specialAbilities": "By weapon",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2137,7 +2172,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2185,7 +2221,7 @@
         }
       ],
       "numberAppearing": "2-8 (1-8)",
-      "saveAs": "Normal man",
+      "saveAs": "F1",
       "morale": 7,
       "treasureType": "Nil",
       "treasure": {
@@ -2194,12 +2230,13 @@
       },
       "alignment": "Neutral",
       "xp": 6,
-      "specialAbilities": "",
+      "specialAbilities": "Poison (24h illness; 1; 2 move)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2239,7 +2276,7 @@
           "raw": "Breath(50%)"
         }
       ],
-      "damage": "1d3/1d3/2d4/1d10/3d4 OR 3d6",
+      "damage": "1d3/1d3/2d4/1d10/3d4/3d6",
       "damageParts": [
         {
           "raw": "1d3",
@@ -2289,7 +2326,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2318,10 +2356,10 @@
           "raw": "1 Beak"
         }
       ],
-      "damage": "1d6 + Petrification",
+      "damage": "1d6",
       "damageParts": [
         {
-          "raw": "1d6 + Petrification",
+          "raw": "1d6",
           "dice": "1d6",
           "rider": "Petrification"
         }
@@ -2338,12 +2376,13 @@
       },
       "alignment": "Neutral",
       "xp": 425,
-      "specialAbilities": "",
+      "specialAbilities": "Petrification",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2400,7 +2439,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2452,7 +2492,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2504,7 +2545,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2556,7 +2598,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2585,7 +2628,7 @@
           "raw": "1 Club or Stone throw"
         }
       ],
-      "damage": "3d10 or 3d6",
+      "damage": "3d10/3d6",
       "damageParts": [
         {
           "raw": "3d10",
@@ -2601,7 +2644,7 @@
       "numberAppearing": "1(1-4)",
       "saveAs": "F13",
       "morale": 9,
-      "treasureType": "E + 5000gp",
+      "treasureType": "E",
       "treasure": {
         "raw": "E + 5000gp",
         "normalizedCodes": [
@@ -2615,7 +2658,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2669,7 +2713,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2723,12 +2768,13 @@
       },
       "alignment": "Neutral",
       "xp": 500,
-      "specialAbilities": "-2 To hit and +2 save throws. Gain 1 bite when hp = 6 or lower. (Bite +2 hit 1d6 dmg)",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "-2 To hit and +2 save throws. Gain 1 bite when hp = 6 or lower. (Bite +2 hit 1d6 dmg)"
       },
-      "notes": "-2 To hit and +2 save throws. Gain 1 bite when hp = 6 or lower. (Bite +2 hit 1d6 dmg)"
+      "notes": "-2 To hit and +2 save throws. Gain 1 bite when hp = 6 or lower. (Bite +2 hit 1d6 dmg)",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2762,7 +2808,7 @@
           "raw": "special"
         }
       ],
-      "damage": "2d8 or 2d6",
+      "damage": "2d8/2d6",
       "damageParts": [
         {
           "raw": "2d8",
@@ -2785,12 +2831,13 @@
       },
       "alignment": "Chaotic",
       "xp": 1025,
-      "specialAbilities": "A djinni can use each of its seven powers 3 times each day. These powers are: create food and drink (as a 7th level cleric); create metallic objects of up to 1,000 cn weight (of temporary duration, varying by type: gold = 1 day, iron = 1 round); create soft goods and wooden objects of up to 1,000 cn weight which are permanent; become invisible; assume gaseous form; form a whirlwind; create illusions (which affect both sight and hearing, lasting until touched or magically dispelled - the djinni need not concentrate to maintain them).",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "A djinni can use each of its seven powers 3 times each day. These powers are: create food and drink (as a 7th level cleric); create metallic objects of up to 1,000 cn weight (of temporary duration, varying by type: gold = 1 day, iron = 1 round); create soft goods and wooden objects of up to 1,000 cn weight which are permanent; become invisible; assume gaseous form; form a whirlwind; create illusions (which affect both sight and hearing, lasting until touched or magically dispelled - the djinni need not concentrate to maintain them)."
       },
-      "notes": "A djinni can use each of its seven powers 3 times each day. These powers are: create food and drink (as a 7th level cleric); create metallic objects of up to 1,000 cn weight (of temporary duration, varying by type: gold = 1 day, iron = 1 round); create soft goods and wooden objects of up to 1,000 cn weight which are permanent; become invisible; assume gaseous form; form a whirlwind; create illusions (which affect both sight and hearing, lasting until touched or magically dispelled - the djinni need not concentrate to maintain them)."
+      "notes": "A djinni can use each of its seven powers 3 times each day. These powers are: create food and drink (as a 7th level cleric); create metallic objects of up to 1,000 cn weight (of temporary duration, varying by type: gold = 1 day, iron = 1 round); create soft goods and wooden objects of up to 1,000 cn weight which are permanent; become invisible; assume gaseous form; form a whirlwind; create illusions (which affect both sight and hearing, lasting until touched or magically dispelled - the djinni need not concentrate to maintain them).",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2839,12 +2886,13 @@
       },
       "alignment": "Chaotic",
       "xp": 125,
-      "specialAbilities": "Can shapeshift",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Can shapeshift"
       },
-      "notes": "Can shapeshift"
+      "notes": "Can shapeshift",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2884,7 +2932,7 @@
           "raw": "Breath"
         }
       ],
-      "damage": "1d4+1 / 1d4+1 / 2d10",
+      "damage": "1d4+1/1d4+1/2d10",
       "damageParts": [
         {
           "raw": "1d4+1",
@@ -2919,7 +2967,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -2959,7 +3008,7 @@
           "raw": "Breath"
         }
       ],
-      "damage": "1d6+1 / 1d6+1 / 3d10",
+      "damage": "1d6+1/1d6+1/3d10",
       "damageParts": [
         {
           "raw": "1d6+1",
@@ -2994,7 +3043,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3034,7 +3084,7 @@
           "raw": "Breath"
         }
       ],
-      "damage": "2d4 / 2d4 / 6d6",
+      "damage": "2d4/2d4/6d6",
       "damageParts": [
         {
           "raw": "2d4",
@@ -3069,7 +3119,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3109,7 +3160,7 @@
           "raw": "Breath"
         }
       ],
-      "damage": "1d6 / 1d6 / 3d8",
+      "damage": "1d6/1d6/3d8",
       "damageParts": [
         {
           "raw": "1d6",
@@ -3144,7 +3195,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3184,7 +3236,7 @@
           "raw": "Breath"
         }
       ],
-      "damage": "1d8 / 1d8 / 4d8",
+      "damage": "1d8/1d8/4d8",
       "damageParts": [
         {
           "raw": "1d8",
@@ -3219,7 +3271,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3259,7 +3312,7 @@
           "raw": "Breath"
         }
       ],
-      "damage": "1d4 / 1d4 / 2d8",
+      "damage": "1d4/1d4/2d8",
       "damageParts": [
         {
           "raw": "1d4",
@@ -3294,7 +3347,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3332,7 +3386,7 @@
         }
       ],
       "numberAppearing": "0(1-6)",
-      "saveAs": "Elf4",
+      "saveAs": "ELF4",
       "morale": 6,
       "treasureType": "D",
       "treasure": {
@@ -3343,12 +3397,13 @@
       },
       "alignment": "Neutral",
       "xp": 25,
-      "specialAbilities": "",
+      "specialAbilities": "Spell charm person with -2 to Save",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3392,7 +3447,7 @@
           "raw": "Crossbow)"
         }
       ],
-      "damage": "1d6 or 1d4 or 1d6 or 1d6",
+      "damage": "1d6/1d4/1d6/1d6",
       "damageParts": [
         {
           "raw": "1d6",
@@ -3416,9 +3471,9 @@
         }
       ],
       "numberAppearing": "1-6 (5-40)",
-      "saveAs": "Dwarf 1",
+      "saveAs": "DWARF1",
       "morale": 8,
-      "treasureType": "(Q + S) G",
+      "treasureType": "G",
       "treasure": {
         "raw": "(Q + S) G",
         "normalizedCodes": [
@@ -3432,7 +3487,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3466,10 +3522,10 @@
           "raw": "(Flames)"
         }
       ],
-      "damage": "2d8 +(1d8)",
+      "damage": "2d8",
       "damageParts": [
         {
-          "raw": "2d8 +(1d8)",
+          "raw": "2d8",
           "dice": "2d8",
           "rider": "(1d8)"
         }
@@ -3484,12 +3540,13 @@
       },
       "alignment": "Chaotic",
       "xp": 1750,
-      "specialAbilities": "An efreeti can create objects, create illusions, and turn invisible like a djinni. It can cast a wall of fire spell 3 times per day. An efreeti may also transform itself into a pillar of flame that will set fire to all flammable items within 5 feet. It can retain the flame shape for up to 3 rounds. When in this form, the fire adds 1-8 points of damage to each of the efreeti's blows.",
+      "specialAbilities": "(1d8)",
       "description": {
         "text": "",
         "notes": "An efreeti can create objects, create illusions, and turn invisible like a djinni. It can cast a wall of fire spell 3 times per day. An efreeti may also transform itself into a pillar of flame that will set fire to all flammable items within 5 feet. It can retain the flame shape for up to 3 rounds. When in this form, the fire adds 1-8 points of damage to each of the efreeti's blows."
       },
-      "notes": "An efreeti can create objects, create illusions, and turn invisible like a djinni. It can cast a wall of fire spell 3 times per day. An efreeti may also transform itself into a pillar of flame that will set fire to all flammable items within 5 feet. It can retain the flame shape for up to 3 rounds. When in this form, the fire adds 1-8 points of damage to each of the efreeti's blows."
+      "notes": "An efreeti can create objects, create illusions, and turn invisible like a djinni. It can cast a wall of fire spell 3 times per day. An efreeti may also transform itself into a pillar of flame that will set fire to all flammable items within 5 feet. It can retain the flame shape for up to 3 rounds. When in this form, the fire adds 1-8 points of damage to each of the efreeti's blows.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3536,12 +3593,13 @@
       },
       "alignment": "Neutral",
       "xp": 1250,
-      "specialAbilities": "Does +1d8 in its element.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Does +1d8 in its element."
       },
-      "notes": "Does +1d8 in its element."
+      "notes": "Does +1d8 in its element.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3588,12 +3646,13 @@
       },
       "alignment": "Neutral",
       "xp": 1850,
-      "specialAbilities": "Does +1d8 in its element.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Does +1d8 in its element."
       },
-      "notes": "Does +1d8 in its element."
+      "notes": "Does +1d8 in its element.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3640,12 +3699,13 @@
       },
       "alignment": "Neutral",
       "xp": 650,
-      "specialAbilities": "Does +1d8 in its element.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Does +1d8 in its element."
       },
-      "notes": "Does +1d8 in its element."
+      "notes": "Does +1d8 in its element.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3692,12 +3752,13 @@
       },
       "alignment": "Neutral",
       "xp": 1250,
-      "specialAbilities": "Does +1d8 in its element.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Does +1d8 in its element."
       },
-      "notes": "Does +1d8 in its element."
+      "notes": "Does +1d8 in its element.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3744,12 +3805,13 @@
       },
       "alignment": "Neutral",
       "xp": 1850,
-      "specialAbilities": "Does +1d8 in its element.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Does +1d8 in its element."
       },
-      "notes": "Does +1d8 in its element."
+      "notes": "Does +1d8 in its element.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3796,12 +3858,13 @@
       },
       "alignment": "Neutral",
       "xp": 650,
-      "specialAbilities": "Does +1d8 in its element.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Does +1d8 in its element."
       },
-      "notes": "Does +1d8 in its element."
+      "notes": "Does +1d8 in its element.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3848,12 +3911,13 @@
       },
       "alignment": "Neutral",
       "xp": 1250,
-      "specialAbilities": "Does +1d8 in its element.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Does +1d8 in its element."
       },
-      "notes": "Does +1d8 in its element."
+      "notes": "Does +1d8 in its element.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3900,12 +3964,13 @@
       },
       "alignment": "Neutral",
       "xp": 1850,
-      "specialAbilities": "Does +1d8 in its element.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Does +1d8 in its element."
       },
-      "notes": "Does +1d8 in its element."
+      "notes": "Does +1d8 in its element.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -3952,12 +4017,13 @@
       },
       "alignment": "Neutral",
       "xp": 650,
-      "specialAbilities": "Does +1d8 in its element.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Does +1d8 in its element."
       },
-      "notes": "Does +1d8 in its element."
+      "notes": "Does +1d8 in its element.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4004,12 +4070,13 @@
       },
       "alignment": "Neutral",
       "xp": 1250,
-      "specialAbilities": "Does +1d8 in its element.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Does +1d8 in its element."
       },
-      "notes": "Does +1d8 in its element."
+      "notes": "Does +1d8 in its element.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4056,12 +4123,13 @@
       },
       "alignment": "Neutral",
       "xp": 1850,
-      "specialAbilities": "Does +1d8 in its element.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Does +1d8 in its element."
       },
-      "notes": "Does +1d8 in its element."
+      "notes": "Does +1d8 in its element.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4108,12 +4176,13 @@
       },
       "alignment": "Neutral",
       "xp": 650,
-      "specialAbilities": "Does +1d8 in its element.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Does +1d8 in its element."
       },
-      "notes": "Does +1d8 in its element."
+      "notes": "Does +1d8 in its element.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4142,7 +4211,7 @@
           "raw": "2 Tusks(75%) OR 1 Trample(25%)"
         }
       ],
-      "damage": "2d4/2d4 OR 4d8",
+      "damage": "2d4/2d4/4d8",
       "damageParts": [
         {
           "raw": "2d4",
@@ -4170,12 +4239,13 @@
       },
       "alignment": "Neutral",
       "xp": 900,
-      "specialAbilities": "Tries to charge first round",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Tries to charge first round"
       },
-      "notes": "Tries to charge first round"
+      "notes": "Tries to charge first round",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4204,7 +4274,7 @@
           "raw": "2 Tusks(75%) OR 1 Trample(25%)"
         }
       ],
-      "damage": "2d6/2d6 OR 4d8",
+      "damage": "2d6/2d6/4d8",
       "damageParts": [
         {
           "raw": "2d6",
@@ -4232,12 +4302,13 @@
       },
       "alignment": "Neutral",
       "xp": 1650,
-      "specialAbilities": "Tries to charge first round",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Tries to charge first round"
       },
-      "notes": "Tries to charge first round"
+      "notes": "Tries to charge first round",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4285,9 +4356,9 @@
         }
       ],
       "numberAppearing": "1-4 (2-24)",
-      "saveAs": "Elf 1",
+      "saveAs": "ELF1",
       "morale": 8,
-      "treasureType": "(S + T) E",
+      "treasureType": "E",
       "treasure": {
         "raw": "(S + T) E",
         "normalizedCodes": [
@@ -4301,7 +4372,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4353,7 +4425,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4405,7 +4478,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4439,10 +4513,10 @@
           "raw": "Poison"
         }
       ],
-      "damage": "1d4 each Spine + Save VS Poison(3)",
+      "damage": "1d4",
       "damageParts": [
         {
-          "raw": "1d4 each Spine + Save VS Poison(3)",
+          "raw": "1d4",
           "dice": "1d4",
           "rider": "each Spine + Save VS Poison(3)"
         }
@@ -4457,12 +4531,13 @@
       },
       "alignment": "Neutral",
       "xp": 400,
-      "specialAbilities": "",
+      "specialAbilities": "each Spine + Save VS Poison(3)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4496,10 +4571,10 @@
           "raw": "Swallow(18)"
         }
       ],
-      "damage": "2d10 (Swallow 2d6)",
+      "damage": "2d10",
       "damageParts": [
         {
-          "raw": "2d10 (Swallow 2d6)",
+          "raw": "2d10",
           "dice": "2d10",
           "rider": "(Swallow 2d6)"
         }
@@ -4514,12 +4589,13 @@
       },
       "alignment": "Neutral",
       "xp": 1900,
-      "specialAbilities": "Swallowed victim save VS Death Ray or be paralyzed",
+      "specialAbilities": "(Swallow 2d6)",
       "description": {
         "text": "",
         "notes": "Swallowed victim save VS Death Ray or be paralyzed"
       },
-      "notes": "Swallowed victim save VS Death Ray or be paralyzed"
+      "notes": "Swallowed victim save VS Death Ray or be paralyzed",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4559,7 +4635,7 @@
           "raw": "1 Horn"
         }
       ],
-      "damage": "1d3 / 1d3 / 1d6 / 1d4",
+      "damage": "1d3/1d3/1d6/1d4",
       "damageParts": [
         {
           "raw": "1d3",
@@ -4599,7 +4675,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4628,10 +4705,10 @@
           "raw": "1"
         }
       ],
-      "damage": "2d4 + Paralysis",
+      "damage": "2d4",
       "damageParts": [
         {
-          "raw": "2d4 + Paralysis",
+          "raw": "2d4",
           "dice": "2d4",
           "rider": "Paralysis"
         }
@@ -4646,12 +4723,13 @@
       },
       "alignment": "Neutral",
       "xp": 125,
-      "specialAbilities": "",
+      "specialAbilities": "Paralysis",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4685,7 +4763,7 @@
           "raw": "1 Bite"
         }
       ],
-      "damage": "1d3 / 1d3 / 1d3 + Paralysis",
+      "damage": "1d3/1d3/1d3",
       "damageParts": [
         {
           "raw": "1d3",
@@ -4698,7 +4776,7 @@
           "rider": null
         },
         {
-          "raw": "1d3 + Paralysis",
+          "raw": "1d3",
           "dice": "1d3",
           "rider": "Paralysis"
         }
@@ -4715,12 +4793,13 @@
       },
       "alignment": "Chaotic",
       "xp": 25,
-      "specialAbilities": "",
+      "specialAbilities": "Paralysis",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4749,7 +4828,7 @@
           "raw": "1 Weapon OR Throw Rock"
         }
       ],
-      "damage": "6d6 OR 3d6",
+      "damage": "6d6/3d6",
       "damageParts": [
         {
           "raw": "6d6",
@@ -4765,7 +4844,7 @@
       "numberAppearing": "1-2(1-3)",
       "saveAs": "F12",
       "morale": 10,
-      "treasureType": "E + 5000gp",
+      "treasureType": "E",
       "treasure": {
         "raw": "E + 5000gp",
         "normalizedCodes": [
@@ -4779,7 +4858,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4808,7 +4888,7 @@
           "raw": "1 Weapon OR Throw Rock"
         }
       ],
-      "damage": "5d6 OR 3d6",
+      "damage": "5d6/3d6",
       "damageParts": [
         {
           "raw": "5d6",
@@ -4824,7 +4904,7 @@
       "numberAppearing": "1-2(1-3)",
       "saveAs": "F11",
       "morale": 9,
-      "treasureType": "E + 5000gp",
+      "treasureType": "E",
       "treasure": {
         "raw": "E + 5000gp",
         "normalizedCodes": [
@@ -4838,7 +4918,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4867,7 +4948,7 @@
           "raw": "1 Weapon OR Throw Rock"
         }
       ],
-      "damage": "4d6 OR 3d6",
+      "damage": "4d6/3d6",
       "damageParts": [
         {
           "raw": "4d6",
@@ -4883,7 +4964,7 @@
       "numberAppearing": "1-2(1-4)",
       "saveAs": "F10",
       "morale": 9,
-      "treasureType": "E + 5000gp",
+      "treasureType": "E",
       "treasure": {
         "raw": "E + 5000gp",
         "normalizedCodes": [
@@ -4897,7 +4978,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4926,7 +5008,7 @@
           "raw": "1 Weapon OR Throw Rock"
         }
       ],
-      "damage": "2d8 OR 3d6",
+      "damage": "2d8/3d6",
       "damageParts": [
         {
           "raw": "2d8",
@@ -4942,7 +5024,7 @@
       "numberAppearing": "1-4(2d8)",
       "saveAs": "F8",
       "morale": 8,
-      "treasureType": "E + 5000gp",
+      "treasureType": "E",
       "treasure": {
         "raw": "E + 5000gp",
         "normalizedCodes": [
@@ -4956,7 +5038,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -4985,7 +5068,7 @@
           "raw": "1 Weapon OR Throw Rock"
         }
       ],
-      "damage": "3d6 OR 3d6",
+      "damage": "3d6/3d6",
       "damageParts": [
         {
           "raw": "3d6",
@@ -5001,7 +5084,7 @@
       "numberAppearing": "1-2(1-6)",
       "saveAs": "F9",
       "morale": 9,
-      "treasureType": "E + 5000gp",
+      "treasureType": "E",
       "treasure": {
         "raw": "E + 5000gp",
         "normalizedCodes": [
@@ -5015,7 +5098,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5049,10 +5133,10 @@
           "raw": "Special"
         }
       ],
-      "damage": "8d6 (Call lightning bolt, once every 5 rounds, current hp dmg Save vs Spells for 1/2 dmg)",
+      "damage": "8d6",
       "damageParts": [
         {
-          "raw": "8d6 (Call lightning bolt",
+          "raw": "8d6",
           "dice": "8d6",
           "rider": "(Call lightning bolt"
         },
@@ -5075,7 +5159,7 @@
       "numberAppearing": "1(1-3)",
       "saveAs": "F15",
       "morale": 10,
-      "treasureType": "E + 5000gp",
+      "treasureType": "E",
       "treasure": {
         "raw": "E + 5000gp",
         "normalizedCodes": [
@@ -5084,12 +5168,13 @@
       },
       "alignment": "Lawful",
       "xp": 3750,
-      "specialAbilities": "",
+      "specialAbilities": "(Call lightning bolt; once every 5 rounds; current hp dmg Save vs Spells for 1; 2 dmg)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5118,7 +5203,7 @@
           "raw": "1 Weapon"
         }
       ],
-      "damage": "1d6+1 or 1d8+1",
+      "damage": "1d6+1/1d8+1",
       "damageParts": [
         {
           "raw": "1d6+1",
@@ -5134,7 +5219,7 @@
       "numberAppearing": "1-6 (3-18)",
       "saveAs": "F2",
       "morale": 8,
-      "treasureType": "(P)D",
+      "treasureType": "P, D",
       "treasure": {
         "raw": "(P)D",
         "normalizedCodes": [
@@ -5149,7 +5234,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5178,7 +5264,7 @@
           "raw": "1 Weapon"
         }
       ],
-      "damage": "1d6+1 or 1d8+1",
+      "damage": "1d6+1/1d8+1",
       "damageParts": [
         {
           "raw": "1d6+1",
@@ -5194,7 +5280,7 @@
       "numberAppearing": "1-6 (3-18)",
       "saveAs": "F2",
       "morale": 8,
-      "treasureType": "(P)D",
+      "treasureType": "P, D",
       "treasure": {
         "raw": "(P)D",
         "normalizedCodes": [
@@ -5209,7 +5295,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5238,7 +5325,7 @@
           "raw": "Warhammer or Crossbow"
         }
       ],
-      "damage": "1d6 or 1d6",
+      "damage": "1d6/1d6",
       "damageParts": [
         {
           "raw": "1d6",
@@ -5252,9 +5339,9 @@
         }
       ],
       "numberAppearing": "1-8 (5-40)",
-      "saveAs": "Dwarf 1",
+      "saveAs": "DWARF1",
       "morale": 8,
-      "treasureType": "(P)C",
+      "treasureType": "P, C",
       "treasure": {
         "raw": "(P)C",
         "normalizedCodes": [
@@ -5269,7 +5356,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5298,7 +5386,7 @@
           "raw": "Warhammer or Crossbow"
         }
       ],
-      "damage": "1d6 or 1d6",
+      "damage": "1d6/1d6",
       "damageParts": [
         {
           "raw": "1d6",
@@ -5312,9 +5400,9 @@
         }
       ],
       "numberAppearing": "1-8 (5-40)",
-      "saveAs": "Dwarf 1",
+      "saveAs": "DWARF1",
       "morale": 8,
-      "treasureType": "(P)C",
+      "treasureType": "P, C",
       "treasure": {
         "raw": "(P)C",
         "normalizedCodes": [
@@ -5329,7 +5417,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5358,7 +5447,7 @@
           "raw": "Warhammer or Crossbow"
         }
       ],
-      "damage": "1d6+1 or 1d6",
+      "damage": "1d6+1/1d6",
       "damageParts": [
         {
           "raw": "1d6+1",
@@ -5372,9 +5461,9 @@
         }
       ],
       "numberAppearing": "1-8 (5-40)",
-      "saveAs": "Dwarf 1",
+      "saveAs": "DWARF1",
       "morale": 8,
-      "treasureType": "(P)C",
+      "treasureType": "P, C",
       "treasure": {
         "raw": "(P)C",
         "normalizedCodes": [
@@ -5389,7 +5478,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5418,7 +5508,7 @@
           "raw": "Warhammer or Crossbow"
         }
       ],
-      "damage": "1d6 or 1d6",
+      "damage": "1d6/1d6",
       "damageParts": [
         {
           "raw": "1d6",
@@ -5432,9 +5522,9 @@
         }
       ],
       "numberAppearing": "1-8 (5-40)",
-      "saveAs": "Dwarf 1",
+      "saveAs": "DWARF1",
       "morale": 8,
-      "treasureType": "(P)C",
+      "treasureType": "P, C",
       "treasure": {
         "raw": "(P)C",
         "normalizedCodes": [
@@ -5449,7 +5539,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5478,7 +5569,7 @@
           "raw": "1 Weapon"
         }
       ],
-      "damage": "1d4 or 1d6",
+      "damage": "1d4/1d6",
       "damageParts": [
         {
           "raw": "1d4",
@@ -5492,9 +5583,9 @@
         }
       ],
       "numberAppearing": "2-8 (6-60)",
-      "saveAs": "Normal man",
+      "saveAs": "F1",
       "morale": 7,
-      "treasureType": "(R)C",
+      "treasureType": "C",
       "treasure": {
         "raw": "(R)C",
         "normalizedCodes": [
@@ -5508,7 +5599,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5546,9 +5638,9 @@
         }
       ],
       "numberAppearing": "2-12 (Only with King in Lair)",
-      "saveAs": "Normal man",
+      "saveAs": "F1",
       "morale": 7,
-      "treasureType": "(R)C",
+      "treasureType": "C",
       "treasure": {
         "raw": "(R)C",
         "normalizedCodes": [
@@ -5562,7 +5654,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5600,9 +5693,9 @@
         }
       ],
       "numberAppearing": "1",
-      "saveAs": "Normal man",
+      "saveAs": "F1",
       "morale": 9,
-      "treasureType": "(R)C",
+      "treasureType": "C",
       "treasure": {
         "raw": "(R)C",
         "normalizedCodes": [
@@ -5616,7 +5709,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5678,12 +5772,13 @@
       },
       "alignment": "Neutral",
       "xp": 1750,
-      "specialAbilities": "Detect invis 60'",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Detect invis 60'"
       },
-      "notes": "Detect invis 60'"
+      "notes": "Detect invis 60'",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5730,12 +5825,13 @@
       },
       "alignment": "Neutral",
       "xp": 500,
-      "specialAbilities": "Immune fire, cold, electricity",
+      "specialAbilities": "By weapons",
       "description": {
         "text": "",
         "notes": "Immune fire, cold, electricity"
       },
-      "notes": "Immune fire, cold, electricity"
+      "notes": "Immune fire, cold, electricity",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5769,10 +5865,10 @@
           "raw": "Special"
         }
       ],
-      "damage": "3d10 +1d10 Fire",
+      "damage": "3d10+1",
       "damageParts": [
         {
-          "raw": "3d10 +1d10 Fire",
+          "raw": "3d10+1",
           "dice": "3d10+1",
           "rider": "d10 Fire"
         }
@@ -5787,12 +5883,13 @@
       },
       "alignment": "Neutral",
       "xp": 5975,
-      "specialAbilities": "Flaming fists +1d10 Fire",
+      "specialAbilities": "d10 Fire",
       "description": {
         "text": "",
         "notes": "Flaming fists +1d10 Fire"
       },
-      "notes": "Flaming fists +1d10 Fire"
+      "notes": "Flaming fists +1d10 Fire",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5839,12 +5936,13 @@
       },
       "alignment": "Neutral",
       "xp": 35,
-      "specialAbilities": "-1 to INIT, -2 To Save VS Fire and takes +1 dmg per die.",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "-1 to INIT, -2 To Save VS Fire and takes +1 dmg per die."
       },
-      "notes": "-1 to INIT, -2 To Save VS Fire and takes +1 dmg per die."
+      "notes": "-1 to INIT, -2 To Save VS Fire and takes +1 dmg per die.",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5896,7 +5994,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5934,9 +6033,9 @@
         }
       ],
       "numberAppearing": "3-18 (5-40)",
-      "saveAs": "Halfling 1",
+      "saveAs": "HALFLING1",
       "morale": 7,
-      "treasureType": "(P+S)B",
+      "treasureType": "P, B",
       "treasure": {
         "raw": "(P+S)B",
         "normalizedCodes": [
@@ -5951,7 +6050,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -5989,7 +6089,7 @@
         }
       ],
       "numberAppearing": "5-20 (Only in village/lair)",
-      "saveAs": "Halfling 1",
+      "saveAs": "HALFLING1",
       "morale": 7,
       "treasureType": "",
       "treasure": {
@@ -6003,7 +6103,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6043,7 +6144,7 @@
           "raw": "Charm song"
         }
       ],
-      "damage": "1d4 / 1d4 / 1d6",
+      "damage": "1d4/1d4/1d6",
       "damageParts": [
         {
           "raw": "1d4",
@@ -6078,7 +6179,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6118,7 +6220,7 @@
       "numberAppearing": "1-6 (4-24)",
       "saveAs": "F1",
       "morale": 8,
-      "treasureType": "(Q)D",
+      "treasureType": "D",
       "treasure": {
         "raw": "(Q)D",
         "normalizedCodes": [
@@ -6132,7 +6234,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6172,7 +6275,7 @@
       "numberAppearing": "1-4 (Only with King)",
       "saveAs": "F1",
       "morale": 8,
-      "treasureType": "(Q)D",
+      "treasureType": "D",
       "treasure": {
         "raw": "(Q)D",
         "normalizedCodes": [
@@ -6186,7 +6289,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6226,7 +6330,7 @@
       "numberAppearing": "1",
       "saveAs": "F1",
       "morale": 8,
-      "treasureType": "(Q)D",
+      "treasureType": "D",
       "treasure": {
         "raw": "(Q)D",
         "normalizedCodes": [
@@ -6240,7 +6344,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6278,9 +6383,9 @@
         }
       ],
       "numberAppearing": "4-16 (6-60)",
-      "saveAs": "Normal man",
+      "saveAs": "F1",
       "morale": 6,
-      "treasureType": "(P)+J",
+      "treasureType": "P, J",
       "treasure": {
         "raw": "(P)+J",
         "normalizedCodes": [
@@ -6295,7 +6400,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6333,9 +6439,9 @@
         }
       ],
       "numberAppearing": "1-6 (Only with King)",
-      "saveAs": "Normal man",
+      "saveAs": "F1",
       "morale": 6,
-      "treasureType": "(P)+J",
+      "treasureType": "P, J",
       "treasure": {
         "raw": "(P)+J",
         "normalizedCodes": [
@@ -6350,7 +6456,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6388,9 +6495,9 @@
         }
       ],
       "numberAppearing": "1",
-      "saveAs": "Normal man",
+      "saveAs": "F1",
       "morale": 6,
-      "treasureType": "(P)+J",
+      "treasureType": "P, J",
       "treasure": {
         "raw": "(P)+J",
         "normalizedCodes": [
@@ -6405,7 +6512,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6434,7 +6542,7 @@
           "raw": "2 Fists"
         }
       ],
-      "damage": "1d6 / 1d6",
+      "damage": "1d6/1d6",
       "damageParts": [
         {
           "raw": "1d6",
@@ -6462,7 +6570,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6496,7 +6605,7 @@
           "raw": "Special"
         }
       ],
-      "damage": "1d8 / 1d8",
+      "damage": "1d8/1d8",
       "damageParts": [
         {
           "raw": "1d8",
@@ -6519,12 +6628,13 @@
       },
       "alignment": "Neutral",
       "xp": 125,
-      "specialAbilities": "Metal weapons save vs spells",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Metal weapons save vs spells"
       },
-      "notes": "Metal weapons save vs spells"
+      "notes": "Metal weapons save vs spells",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6553,7 +6663,7 @@
           "raw": "2 Lava rays"
         }
       ],
-      "damage": "2d6 / 2d6",
+      "damage": "2d6/2d6",
       "damageParts": [
         {
           "raw": "2d6",
@@ -6581,7 +6691,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6633,7 +6744,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6685,7 +6797,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6719,7 +6832,7 @@
           "raw": "1 Horn"
         }
       ],
-      "damage": "2d4 / 1d6",
+      "damage": "2d4/1d6",
       "damageParts": [
         {
           "raw": "2d4",
@@ -6747,7 +6860,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6781,7 +6895,7 @@
           "raw": "1 Bite"
         }
       ],
-      "damage": "1d4 / 1d4 / 2d6",
+      "damage": "1d4/1d4/2d6",
       "damageParts": [
         {
           "raw": "1d4",
@@ -6814,7 +6928,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6869,7 +6984,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6899,7 +7015,7 @@
           "raw": "1 Bite or 1 Spit or 1 Bump"
         }
       ],
-      "damage": "1d2 or 1d4 or 1d4",
+      "damage": "1d2/1d4/1d4",
       "damageParts": [
         {
           "raw": "1d2",
@@ -6932,7 +7048,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -6971,7 +7088,7 @@
           "raw": "Bearhug"
         }
       ],
-      "damage": "2d4 / 2d4 / 2d8",
+      "damage": "2d4/2d4/2d8",
       "damageParts": [
         {
           "raw": "2d4",
@@ -7001,12 +7118,13 @@
       },
       "alignment": "Neutral",
       "xp": 500,
-      "specialAbilities": "If both claws hit add 2d8",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "If both claws hit add 2d8"
       },
-      "notes": "If both claws hit add 2d8"
+      "notes": "If both claws hit add 2d8",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7060,7 +7178,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7089,7 +7208,7 @@
           "raw": "1 Bite or 1 Weapon"
         }
       ],
-      "damage": "1d4 or Weapon",
+      "damage": "1d4",
       "damageParts": [
         {
           "raw": "1d4",
@@ -7114,12 +7233,13 @@
       },
       "alignment": "Chaotic",
       "xp": 50,
-      "specialAbilities": "",
+      "specialAbilities": "Weapon",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7153,7 +7273,7 @@
           "raw": "1 Bite"
         }
       ],
-      "damage": "1d6 / 1d6 / 2d6",
+      "damage": "1d6/1d6/2d6",
       "damageParts": [
         {
           "raw": "1d6",
@@ -7188,7 +7308,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7242,7 +7363,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7296,7 +7418,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7330,10 +7453,10 @@
           "raw": "Special"
         }
       ],
-      "damage": "1d6 + Poison (2)",
+      "damage": "1d6",
       "damageParts": [
         {
-          "raw": "1d6 + Poison (2)",
+          "raw": "1d6",
           "dice": "1d6",
           "rider": "Poison (2)"
         }
@@ -7341,7 +7464,7 @@
       "numberAppearing": "1-3 (1-4)",
       "saveAs": "F4",
       "morale": 8,
-      "treasureType": "(V)F",
+      "treasureType": "F",
       "treasure": {
         "raw": "(V)F",
         "normalizedCodes": [
@@ -7350,12 +7473,13 @@
       },
       "alignment": "Chaotic",
       "xp": 175,
-      "specialAbilities": "Petrification gaze",
+      "specialAbilities": "Poison (2)",
       "description": {
         "text": "",
         "notes": "Petrification gaze"
       },
-      "notes": "Petrification gaze"
+      "notes": "Petrification gaze",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7389,7 +7513,7 @@
           "raw": "1 Bite or 1 Weapon"
         }
       ],
-      "damage": "1d6 / 1d6 or 1d6+2",
+      "damage": "1d6/1d6/1d6+2",
       "damageParts": [
         {
           "raw": "1d6",
@@ -7424,7 +7548,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7453,7 +7578,7 @@
           "raw": "1 Kick or 1 Bite"
         }
       ],
-      "damage": "1d4 or 1d3",
+      "damage": "1d4/1d3",
       "damageParts": [
         {
           "raw": "1d4",
@@ -7467,7 +7592,7 @@
         }
       ],
       "numberAppearing": "1-2 (2-12)",
-      "saveAs": "Normal man",
+      "saveAs": "F1",
       "morale": 8,
       "treasureType": "Nil",
       "treasure": {
@@ -7481,7 +7606,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7535,7 +7661,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7589,7 +7716,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7627,9 +7755,9 @@
         }
       ],
       "numberAppearing": "1-4 (1-50)",
-      "saveAs": "Normal man",
+      "saveAs": "F1",
       "morale": 6,
-      "treasureType": "(P)U",
+      "treasureType": "P",
       "treasure": {
         "raw": "(P)U",
         "normalizedCodes": [
@@ -7643,7 +7771,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7695,7 +7824,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7735,7 +7865,7 @@
       "numberAppearing": "1-6 (2-12)",
       "saveAs": "F4",
       "morale": 10,
-      "treasureType": "(S x 10) or (S x 100) + C",
+      "treasureType": "C",
       "treasure": {
         "raw": "(S x 10) or (S x 100) + C",
         "normalizedCodes": [
@@ -7749,7 +7879,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7789,7 +7920,7 @@
       "numberAppearing": "2-8 (10-60)",
       "saveAs": "F1",
       "morale": 8,
-      "treasureType": "(P)D",
+      "treasureType": "P, D",
       "treasure": {
         "raw": "(P)D",
         "normalizedCodes": [
@@ -7804,7 +7935,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7844,7 +7976,7 @@
       "numberAppearing": "1 per Lair",
       "saveAs": "F1",
       "morale": 8,
-      "treasureType": "(P)D",
+      "treasureType": "P, D",
       "treasure": {
         "raw": "(P)D",
         "normalizedCodes": [
@@ -7859,7 +7991,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7899,7 +8032,7 @@
       "numberAppearing": "1 per 8 Orcs",
       "saveAs": "F1",
       "morale": 8,
-      "treasureType": "(P)D",
+      "treasureType": "P, D",
       "treasure": {
         "raw": "(P)D",
         "normalizedCodes": [
@@ -7914,7 +8047,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -7953,7 +8087,7 @@
           "raw": "Bearhug"
         }
       ],
-      "damage": "1d8 / 1d8 / 1d8",
+      "damage": "1d8/1d8/1d8",
       "damageParts": [
         {
           "raw": "1d8",
@@ -7983,12 +8117,13 @@
       },
       "alignment": "Neutral",
       "xp": 175,
-      "specialAbilities": "If both claws hit add 2d8",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "If both claws hit add 2d8"
       },
-      "notes": "If both claws hit add 2d8"
+      "notes": "If both claws hit add 2d8",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8027,7 +8162,7 @@
         }
       ],
       "numberAppearing": "2-8 (10-40)",
-      "saveAs": "Elf 1",
+      "saveAs": "ELF1",
       "morale": 7,
       "treasureType": "R + S",
       "treasure": {
@@ -8041,7 +8176,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8079,7 +8215,7 @@
         }
       ],
       "numberAppearing": "3-18 (3-30)",
-      "saveAs": "Normal man",
+      "saveAs": "F1",
       "morale": 8,
       "treasureType": "C",
       "treasure": {
@@ -8095,7 +8231,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8133,7 +8270,7 @@
         }
       ],
       "numberAppearing": "5-50 (2-20)",
-      "saveAs": "Normal man",
+      "saveAs": "F1",
       "morale": 5,
       "treasureType": "L",
       "treasure": {
@@ -8149,7 +8286,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8202,7 +8340,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8249,12 +8388,13 @@
       },
       "alignment": "Neutral",
       "xp": 300,
-      "specialAbilities": "",
+      "specialAbilities": "Rust metal (magic items 10% resist per +)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8283,10 +8423,10 @@
           "raw": "1"
         }
       ],
-      "damage": "1d4 + Drain 1 STR",
+      "damage": "1d4",
       "damageParts": [
         {
-          "raw": "1d4 + Drain 1 STR",
+          "raw": "1d4",
           "dice": "1d4",
           "rider": "Drain 1 STR"
         }
@@ -8303,12 +8443,13 @@
       },
       "alignment": "Chaotic",
       "xp": 35,
-      "specialAbilities": "",
+      "specialAbilities": "Drain 1 STR",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8337,7 +8478,7 @@
           "raw": "2 Bites"
         }
       ],
-      "damage": "1d6 / 1d6",
+      "damage": "1d6/1d6",
       "damageParts": [
         {
           "raw": "1d6",
@@ -8365,7 +8506,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8394,10 +8536,10 @@
           "raw": "Scream for 1d3 rounds"
         }
       ],
-      "damage": "1d6 (On 4+ wandering monster appears)",
+      "damage": "1d6",
       "damageParts": [
         {
-          "raw": "1d6 (On 4+ wandering monster appears)",
+          "raw": "1d6",
           "dice": "1d6",
           "rider": "(On 4+ wandering monster appears)"
         }
@@ -8412,12 +8554,13 @@
       },
       "alignment": "Neutral",
       "xp": 35,
-      "specialAbilities": "",
+      "specialAbilities": "(On 4+ wandering monster appears)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8446,7 +8589,7 @@
           "raw": "1 Weapon"
         }
       ],
-      "damage": "1d4 or 1d6",
+      "damage": "1d4/1d6",
       "damageParts": [
         {
           "raw": "1d4",
@@ -8474,7 +8617,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8526,7 +8670,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8555,10 +8700,10 @@
           "raw": "2 Bites"
         }
       ],
-      "damage": "1d4 + Poison (2)",
+      "damage": "1d4",
       "damageParts": [
         {
-          "raw": "1d4 + Poison (2)",
+          "raw": "1d4",
           "dice": "1d4",
           "rider": "Poison (2)"
         }
@@ -8573,12 +8718,13 @@
       },
       "alignment": "Neutral",
       "xp": 125,
-      "specialAbilities": "",
+      "specialAbilities": "Poison (2)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8607,10 +8753,10 @@
           "raw": "1 Bite"
         }
       ],
-      "damage": "1d4 + Poison (2)",
+      "damage": "1d4",
       "damageParts": [
         {
-          "raw": "1d4 + Poison (2)",
+          "raw": "1d4",
           "dice": "1d4",
           "rider": "Poison (2)"
         }
@@ -8625,12 +8771,13 @@
       },
       "alignment": "Neutral",
       "xp": 25,
-      "specialAbilities": "",
+      "specialAbilities": "Poison (2)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8664,10 +8811,10 @@
           "raw": "1 Squeeze"
         }
       ],
-      "damage": "1d4 + 2d4 if hit is scored",
+      "damage": "1d4+2",
       "damageParts": [
         {
-          "raw": "1d4 + 2d4 if hit is scored",
+          "raw": "1d4+2",
           "dice": "1d4+2",
           "rider": "d4 if hit is scored"
         }
@@ -8682,12 +8829,13 @@
       },
       "alignment": "Neutral",
       "xp": 300,
-      "specialAbilities": "",
+      "specialAbilities": "d4 if hit is scored",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8734,12 +8882,13 @@
       },
       "alignment": "Neutral",
       "xp": 50,
-      "specialAbilities": "",
+      "specialAbilities": "1 + Poison (2)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8768,10 +8917,10 @@
           "raw": "1 Bite or 1 Spit"
         }
       ],
-      "damage": "1d3 + Poison (1) / Save vs Blind",
+      "damage": "1d3",
       "damageParts": [
         {
-          "raw": "1d3 + Poison (1)",
+          "raw": "1d3",
           "dice": "1d3",
           "rider": "Poison (1)"
         },
@@ -8791,12 +8940,13 @@
       },
       "alignment": "Neutral",
       "xp": 13,
-      "specialAbilities": "",
+      "specialAbilities": "Poison (1); Save vs Blind",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8825,10 +8975,10 @@
           "raw": "1 Bite"
         }
       ],
-      "damage": "2d6 + Poison (2)",
+      "damage": "2d6",
       "damageParts": [
         {
-          "raw": "2d6 + Poison (2)",
+          "raw": "2d6",
           "dice": "2d6",
           "rider": "Poison (2)"
         }
@@ -8843,12 +8993,13 @@
       },
       "alignment": "Neutral",
       "xp": 50,
-      "specialAbilities": "",
+      "specialAbilities": "Poison (2)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8877,10 +9028,10 @@
           "raw": "1 Bite"
         }
       ],
-      "damage": "1d8 + Poison (1)",
+      "damage": "1d8",
       "damageParts": [
         {
-          "raw": "1d8 + Poison (1)",
+          "raw": "1d8",
           "dice": "1d8",
           "rider": "Poison (1)"
         }
@@ -8895,12 +9046,13 @@
       },
       "alignment": "Neutral",
       "xp": 25,
-      "specialAbilities": "",
+      "specialAbilities": "Poison (1)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -8929,10 +9081,10 @@
           "raw": "1 Bite"
         }
       ],
-      "damage": "1d8 + Poison (Starts dancing on fail 2-12 turns)",
+      "damage": "1d8",
       "damageParts": [
         {
-          "raw": "1d8 + Poison (Starts dancing on fail 2-12 turns)",
+          "raw": "1d8",
           "dice": "1d8",
           "rider": "Poison (Starts dancing on fail 2-12 turns)"
         }
@@ -8947,12 +9099,13 @@
       },
       "alignment": "Neutral",
       "xp": 125,
-      "specialAbilities": "",
+      "specialAbilities": "Poison (Starts dancing on fail 2-12 turns)",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -9007,7 +9160,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -9036,7 +9190,7 @@
           "raw": "2 Claws or 1 Weapon"
         }
       ],
-      "damage": "1d3 / 1d3 + Paralyze or Weapon",
+      "damage": "1d3/1d3",
       "damageParts": [
         {
           "raw": "1d3",
@@ -9044,7 +9198,7 @@
           "rider": null
         },
         {
-          "raw": "1d3 + Paralyze",
+          "raw": "1d3",
           "dice": "1d3",
           "rider": "Paralyze"
         },
@@ -9066,12 +9220,13 @@
       },
       "alignment": "Chaotic",
       "xp": 65,
-      "specialAbilities": "",
+      "specialAbilities": "Paralyze; Weapon",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -9105,7 +9260,7 @@
           "raw": "1 Bite"
         }
       ],
-      "damage": "1d4 / 1d4 / 1d4",
+      "damage": "1d4/1d4/1d4",
       "damageParts": [
         {
           "raw": "1d4",
@@ -9135,12 +9290,13 @@
       },
       "alignment": "Chaotic",
       "xp": 30,
-      "specialAbilities": "Aura - Save vs Poison in melee, -2 To hit if failed",
+      "specialAbilities": "",
       "description": {
         "text": "",
         "notes": "Aura - Save vs Poison in melee, -2 To hit if failed"
       },
-      "notes": "Aura - Save vs Poison in melee, -2 To hit if failed"
+      "notes": "Aura - Save vs Poison in melee, -2 To hit if failed",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -9189,12 +9345,13 @@
       },
       "alignment": "Chaotic",
       "xp": 50,
-      "specialAbilities": "",
+      "specialAbilities": "Energy drain 1",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -9246,7 +9403,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -9298,7 +9456,8 @@
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   },
@@ -9327,7 +9486,7 @@
           "raw": "1 Claw or 1 Weapon"
         }
       ],
-      "damage": "1d8 or Weapon",
+      "damage": "1d8",
       "damageParts": [
         {
           "raw": "1d8",
@@ -9350,12 +9509,13 @@
       },
       "alignment": "Chaotic",
       "xp": 20,
-      "specialAbilities": "",
+      "specialAbilities": "Weapon",
       "description": {
         "text": "",
         "notes": ""
       },
-      "notes": ""
+      "notes": "",
+      "lairChance": null
     },
     "uuid": null
   }

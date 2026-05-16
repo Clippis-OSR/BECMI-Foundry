@@ -9,25 +9,28 @@ const result = await buildMonsterCatalog([
 ]);
 
 const sourceMonsters = [...result.out.basic, ...result.out.expert].map((monster) => ({
-  monsterKey: String(monster.id).replace(/-/g, '_'),
+  monsterKey: monster.monsterKey,
   schemaVersion: 1,
   name: monster.name,
-  source: { book: monster.sourceBook, page: monster.sourcePage ?? '', notes: '' },
+  source: { book: monster.raw?.sourceBook ?? '', page: monster.raw?.sourcePage ?? '', notes: '' },
   ac: monster.armorClass,
   hitDice: monster.hitDice,
-  movement: monster.movement,
-  movementModes: monster.movementModes ?? {},
+  movement: monster.raw?.movement ?? '',
+  movementModes: monster.movement ?? {},
   attacks: monster.attacks ?? [],
-  damage: monster.damage ?? '',
-  damageParts: monster.damageParts ?? [],
+  damage: (() => {
+    const asDice = (monster.damage ?? []).map((d) => d.dice).filter(Boolean).join('/');
+    return asDice || (monster.raw?.damage ?? '').trim() || 'special';
+  })(),
+  damageParts: (monster.damage ?? []).map((d) => ({ raw: d.dice ?? d.rider ?? '', dice: d.dice ?? null, rider: d.rider ?? null })),
   numberAppearing: monster.numberAppearing ?? '',
-  saveAs: monster.saveAs ?? '',
+  saveAs: /^[A-Z]+\d+$/.test(monster.saveAs ?? '') ? monster.saveAs : 'F1',
   morale: monster.morale ?? null,
   treasureType: monster.treasureType ?? '',
-  treasure: monster.treasure ?? { raw: '', normalizedCodes: [] },
+  treasure: { raw: monster.raw?.treasure ?? '', normalizedCodes: monster.raw?.treasureCodes ?? [] },
   alignment: monster.alignment ?? '',
-  xp: monster.xp ?? null,
-  specialAbilities: monster.specialAbilities ?? '',
+  xp: monster.XP ?? null,
+  specialAbilities: (monster.riders ?? []).join('; '),
   description: { text: '', notes: monster.notes ?? '' },
   notes: monster.notes ?? ''
 }));
