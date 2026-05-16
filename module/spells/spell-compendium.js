@@ -6,9 +6,9 @@ export function validateCompendiumIntegrity(entries) {
 
   for (const entry of entries) {
     try {
-      validateSpellSchema(entry, `compendium spell \"${entry?.name ?? "Unknown"}\"`);
+      validateSpellSchema(entry, `compendium spell "${entry?.name ?? "Unknown"}"`);
       const spellKey = entry.system.spellKey;
-      if (seen.has(spellKey)) throw new Error(`[BECMI Spell Compendium] duplicate spellKey \"${spellKey}\" in compendium.`);
+      if (seen.has(spellKey)) throw new Error(`[BECMI Spell Compendium] duplicate spellKey "${spellKey}" in compendium.`);
       seen.add(spellKey);
       diagnostics.imported += 1;
     } catch (error) {

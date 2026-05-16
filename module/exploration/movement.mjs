@@ -1,5 +1,5 @@
 import { getMovementTierByEncumbrance } from "../rules/encumbrance.mjs";
-import { getForcedMarchState } from "./movement-contracts.mjs";
+import { convertDistanceByContext, getForcedMarchState } from "./movement-contracts.mjs";
 
 const DEFAULT_TRAVEL_PACE = "normal";
 const DEFAULT_MOVEMENT_CONTEXT = "dungeonExploration";
