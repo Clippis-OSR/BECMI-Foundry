@@ -435,6 +435,15 @@
 <hr>
 
 <h2>Turn Undead (Derived)</h2>
+<div>
+  <label for="turn-undead-target">Undead Type:</label>
+  <select id="turn-undead-target" data-action="turn-undead-target">
+    {{#each turnUndeadList}}
+      <option value="{{this.target}}">{{this.target}}</option>
+    {{/each}}
+  </select>
+  <button type="button" class="roll-turn-undead">Roll Turn Undead</button>
+</div>
 <table>
   <thead>
     <tr>

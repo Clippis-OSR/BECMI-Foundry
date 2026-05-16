@@ -1,3 +1,4 @@
+import { resolveTurnUndeadOutcome } from "../rules/turn-undead.mjs";
 export async function rollSavingThrow(actor, saveKey, label) {
   const target = Number(
     actor.system.saves?.[saveKey]?.value
@@ -254,4 +255,42 @@ export async function rollMonsterDamage(actor, attack) {
       <p><strong>Damage Total:</strong> ${roll.total}</p>
     `
   });
+}
+
+
+export function evaluateTurnUndead({ actor, undeadType, rollTotal, turnUndeadTable } = {}) {
+  if (!actor || actor.type !== "character") return { ok: false, reason: "invalid-actor" };
+
+  const table = turnUndeadTable ?? actor.system?.derived?.turnUndead;
+  if (!table || typeof table !== "object") return { ok: false, reason: "not-cleric" };
+
+  const entry = table[undeadType];
+  const roll = Number.isFinite(Number(rollTotal)) ? Number(rollTotal) : null;
+  const resolved = resolveTurnUndeadOutcome(entry, roll);
+
+  return { ok: true, undeadType, entry: entry ?? null, rollTotal: roll, ...resolved };
+}
+
+export async function rollTurnUndead(actor, undeadType) {
+  const preview = evaluateTurnUndead({ actor, undeadType });
+  if (!preview.ok) {
+    ui.notifications?.warn("Only clerics with Turn Undead can use this action.");
+    return null;
+  }
+
+  const roll = await new Roll("2d6").evaluate();
+  const result = evaluateTurnUndead({ actor, undeadType, rollTotal: roll.total });
+
+  await roll.toMessage({
+    speaker: ChatMessage.getSpeaker({ actor }),
+    flavor: `
+      <h2>Turn Undead</h2>
+      <p><strong>Target:</strong> ${undeadType}</p>
+      <p><strong>Table Entry:</strong> ${result.entry ?? "—"}</p>
+      <p><strong>Roll (2d6):</strong> ${result.rollTotal ?? "—"}</p>
+      <p><strong>Result:</strong> ${result.outcome.toUpperCase()}</p>
+    `
+  });
+
+  return result;
 }

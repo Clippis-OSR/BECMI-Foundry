@@ -2,7 +2,8 @@ import {
   rollAbilityCheck,
   rollInitiative,
   rollSavingThrow,
-  rollThiefSkill
+  rollThiefSkill,
+  rollTurnUndead
 } from "../rolls/becmi-rolls.mjs";
 import { getActorAttackSources, weaponItemToAttackData } from "../combat/attack.mjs";
 import {
@@ -125,6 +126,7 @@ export class BECMICharacterSheet extends ActorSheet {
     html.find(".roll-ability").click(this._onRollAbility.bind(this));
     html.find(".roll-thief-skill").click(this._onRollThiefSkill.bind(this));
     html.find(".roll-initiative").click(this._onRollInitiative.bind(this));
+    html.find(".roll-turn-undead").click(this._onRollTurnUndead.bind(this));
     html.find(".becmi-weapon-attack").on("click", async (event) => {
       event.preventDefault();
 
@@ -184,6 +186,14 @@ export class BECMICharacterSheet extends ActorSheet {
     html.find('[data-action="update-inventory-item"]').on("click", (event) => event.stopPropagation());
   }
 
+
+
+  async _onRollTurnUndead(event) {
+    event.preventDefault();
+    const undeadType = event.currentTarget?.dataset?.undeadType || this.element.find('[data-action="turn-undead-target"]').val();
+    if (!undeadType) return;
+    await rollTurnUndead(this.actor, undeadType);
+  }
 
   _sumGroupWeight(groups, keys = []) {
     const keySet = new Set(keys);
