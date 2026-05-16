@@ -52,6 +52,31 @@ Do not write protected derived actor values directly in updates.
 Reason:
 - Runtime sanitization strips protected derived updates before persistence.
 
+### 6) Legacy actor attack payload as active combat input
+
+Deprecated field usage:
+- `actor.system.attacks` as authoritative attack-action source.
+
+Use instead:
+- Item-driven attack actions and canonical combat validation paths.
+
+### 7) Deprecated exploration wrapper modules
+
+Deprecated import/use:
+- `module/exploration/exploration-state.mjs`
+- Deprecated exploration helper wrappers where runtime/summary APIs already exist.
+
+Use instead:
+- `module/exploration/runtime.mjs` and canonical domain exports.
+
+### 8) Legacy monster builder/import compatibility path
+
+Deprecated import/use for new development:
+- `module/utils/monster-builder.mjs`
+
+Use instead:
+- Canonical monster runtime/import path under `module/monsters/*`.
+
 ## Legacy files/documents treatment
 
 - Existing audit files in `docs/` and `docs/audits/` are retained for historical traceability.
