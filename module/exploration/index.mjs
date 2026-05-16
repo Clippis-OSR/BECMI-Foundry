@@ -4,6 +4,7 @@ import * as light from "./light.mjs";
 import * as movementContracts from "./movement-contracts.mjs";
 import * as distance from "./distance.mjs";
 import * as wildernessProcedures from "./wilderness-procedures.mjs";
+import * as runtimeDisplay from "./runtime-display.mjs";
 
 import {
   advanceExplorationTurn,
@@ -19,8 +20,11 @@ export {
   movementContracts,
   distance,
   wildernessProcedures,
+  runtimeDisplay,
   normalizeExplorationState,
   advanceExplorationTurn,
   getMovementSummary,
   getExplorationSummary
 };
+
+export { getWildernessRuntimeDisplay, renderWildernessRuntimeSummary } from "./runtime-display.mjs";
