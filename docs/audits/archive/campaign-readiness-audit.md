@@ -1,3 +1,11 @@
+# ARCHIVED DOCUMENT
+
+This document reflects repository state at the time it was written.
+It is no longer a canonical source of truth.
+See:
+- /docs/architecture/canonical-architecture.md
+- /docs/audits/current-system-audit.md
+
 # Campaign Readiness Audit (Basic/Expert Long-Play)
 
 **Date:** 2026-05-16  
