@@ -151,6 +151,10 @@ export function parseMonsterTreasure(input) {
   return { raw, normalizedCodes };
 }
 
+function normalizeAttackName(name = '') {
+  return String(name).trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
 export function normalizeMonsterRow(row, { sourceBook, onWarning = () => {} } = {}) {
   const name = row.Name?.trim();
   const hitDice = parseMonsterHitDice(row['Hit Dice']);
@@ -169,28 +173,32 @@ export function normalizeMonsterRow(row, { sourceBook, onWarning = () => {} } = 
   const damage = parseMonsterDamage(row.Damage);
   const treasure = parseMonsterTreasure(row['Tresure Type'] || row['Treasure Type']);
 
+  const monsterKey = name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
+  const notes = String(row.Notes || row.Special || '').trim();
   return {
-    id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+    monsterKey,
     name,
-    sourceBook,
-    sourcePage: null,
-    armorClass,
     hitDice,
-    movement: movement.raw,
-    movementModes: movement.modes,
-    attacks,
-    damage: damage.raw,
-    damageParts: damage.parsed,
-    numberAppearing: String(row['No. Appering '] || row['No. Appearing'] || '').trim(),
-    saveAs: String(row['Save As'] || '').trim(),
+    armorClass,
+    movement: movement.modes,
     morale: toInt(row.Morale),
-    treasureType: parseMonsterTreasureType(row['Tresure Type'] || row['Treasure Type']),
-    treasure,
+    treasureType: treasure.normalizedCodes.length ? treasure.normalizedCodes.join(', ') : parseMonsterTreasureType(row['Tresure Type'] || row['Treasure Type']),
     alignment: parseMonsterAlignment(row.Aligment || row.Alignment),
-    xp: toInt(row['XP Value']),
-    specialAbilities: String(row.Special || '').trim(),
-    notes: String(row.Notes || row.Special || '').trim(),
-    actorType: 'creature'
+    saveAs: String(row['Save As'] || '').trim().toUpperCase().replace(/\s+/g, ''),
+    XP: toInt(row['XP Value']),
+    numberAppearing: String(row['No. Appering '] || row['No. Appearing'] || '').trim(),
+    attacks: attacks.map((a) => ({ ...a, type: normalizeAttackName(a.type) })),
+    damage: damage.parsed.map((d) => ({ dice: d.dice, rider: d.rider })).filter((d) => d.dice || d.rider),
+    riders: damage.parsed.map((d) => d.rider).filter(Boolean),
+    notes,
+    raw: {
+      sourceBook,
+      sourcePage: null,
+      movement: movement.raw,
+      treasure: treasure.raw,
+      treasureCodes: treasure.normalizedCodes,
+      damage: damage.raw
+    }
   };
 }
 
