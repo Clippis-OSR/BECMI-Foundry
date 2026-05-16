@@ -16,7 +16,7 @@ async function main() {
   const files = (await fs.readdir(rulesDir)).filter((name) => name.toLowerCase().endsWith('.pdf'));
   const pages = [];
   const candidates = [];
-  const diagnostics = { createdAt: new Date().toISOString(), files: {}, skippedPagesWithSpellListHeadings: [], detectedSpellSectionRanges: [] };
+  const diagnostics = { createdAt: new Date().toISOString(), files: {}, detectedSpellSectionRanges: [], pageSummaries: [], falsePositiveLikeHeadings: [] };
 
   for (const file of files) {
     const fullPath = path.join(rulesDir, file);
@@ -30,8 +30,9 @@ async function main() {
       candidates.push(...pageResult.candidates);
       diagnostics.files[file].candidatesAccepted += pageResult.candidates.length;
       diagnostics.files[file].candidatesRejected += pageResult.diagnostics.rejected.length;
-      diagnostics.detectedSpellSectionRanges.push({ sourceFile: file, sourcePage: page, ranges: pageResult.diagnostics.spellSectionRanges });
-      if (pageResult.diagnostics.skippedSpellListPage) diagnostics.skippedPagesWithSpellListHeadings.push({ sourceFile: file, sourcePage: page });
+      diagnostics.detectedSpellSectionRanges.push({ sourceFile: file, sourcePage: page, ranges: pageResult.diagnostics.spellSectionRanges, headings: pageResult.diagnostics.detectedHeadings });
+      diagnostics.pageSummaries.push({ sourceFile: file, sourcePage: page, spellPage: pageResult.diagnostics.hasSpellSections, candidates: pageResult.candidates.length, headings: pageResult.diagnostics.detectedHeadings });
+      if (pageResult.diagnostics.falsePositiveLikeHeadings?.length) diagnostics.falsePositiveLikeHeadings.push({ sourceFile: file, sourcePage: page, headings: pageResult.diagnostics.falsePositiveLikeHeadings });
     }
   }
 

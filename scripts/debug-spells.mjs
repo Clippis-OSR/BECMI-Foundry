@@ -11,9 +11,14 @@ async function main() {
   printCounts('level', tally(candidates, (c) => String(c.spellLevel || 0)));
   const suspicious = candidates.filter((c) => !c.range || !c.duration || !c.effect || !c.spellClass || !c.spellLevel);
   console.log(`\nSuspiciously empty fields: ${suspicious.length}`);
-  const missed = (data.skippedPagesWithSpellListHeadings || []).map((p) => `${p.sourceFile}:${p.sourcePage}`);
-  console.log(`Likely missed spell pages (${missed.length}):`);
-  missed.slice(0, 40).forEach((line) => console.log(`- ${line}`));
+  const pages = data.pageSummaries || [];
+  const spellPages = pages.filter((p) => p.spellPage).map((p) => `${p.sourceFile}:${p.sourcePage} (${p.candidates})`);
+  console.log(`\nSpell pages detected (${spellPages.length}):`);
+  spellPages.slice(0, 80).forEach((line) => console.log(`- ${line}`));
+  console.log('\nDetected headings:');
+  (data.detectedSpellSectionRanges || []).slice(0,80).forEach((r) => { if ((r.headings||[]).length) console.log(`- ${r.sourceFile}:${r.sourcePage} => ${(r.headings||[]).map((h)=>h.heading).join(' | ')}`); });
+  console.log('\nFalse-positive-like headings:');
+  (data.falsePositiveLikeHeadings || []).slice(0, 60).forEach((f) => console.log(`- ${f.sourceFile}:${f.sourcePage} => ${f.headings.join(' | ')}`));
 }
 
 function tally(items, keyFn) {
