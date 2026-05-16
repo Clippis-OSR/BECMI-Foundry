@@ -14,12 +14,31 @@ describe('spell detail assist', () => {
     expect(suggestions[0].spellKey).toBe('light');
   });
 
-  it('handles punctuation/case variants and isolates adjacent blocks', () => {
-    const pages = [{ sourcePage: 2, text: `DETECT MAGIC\nRange: 60'\nDuration: 2 turns\nEffect: magical aura\nLight\nRange: touch` }];
+  it('heading immediately followed by prose still captures sourcePage', () => {
+    const pages = [{ sourcePage: 8, text: `Light The object shines brightly for one turn.` }];
+    const { suggestions } = buildSeededSpellDetailSuggestions({ seedRows, pages });
+    expect(suggestions[0].sourcePage).toBe(8);
+  });
+
+  it('supports centered uppercase headings', () => {
+    const pages = [{ sourcePage: 2, text: `   DETECT MAGIC   \nRange: 60'\nDuration: 2 turns\nEffect: magical aura` }];
     const { suggestions } = buildSeededSpellDetailSuggestions({ seedRows, pages });
     const dm = suggestions.find((s) => s.spellKey === 'detect-magic');
     expect(dm.suggested.range).toBe("60'");
     expect(dm.suggested.effect).toBe('magical aura');
+  });
+
+  it('repairs broken OCR hyphenation', () => {
+    const pages = [{ sourcePage: 9, text: `Detect Mag-\nic\nRange: 30'` }];
+    const { suggestions } = buildSeededSpellDetailSuggestions({ seedRows, pages });
+    expect(suggestions.some((s) => s.spellKey === 'detect-magic')).toBe(true);
+  });
+
+  it('extracts partial fields when available', () => {
+    const pages = [{ sourcePage: 10, text: `Light\nRange: 120'` }];
+    const { suggestions } = buildSeededSpellDetailSuggestions({ seedRows, pages });
+    expect(suggestions[0].suggested.range).toBe("120'");
+    expect(suggestions[0].suggested.duration).toBe('');
   });
 
   it('detects reversible phrase and tags', () => {
@@ -27,6 +46,13 @@ describe('spell detail assist', () => {
     const { suggestions } = buildSeededSpellDetailSuggestions({ seedRows, pages });
     expect(suggestions[0].suggested.reversible).toBe(true);
     expect(suggestions[0].suggested.reverseName).toContain('Darkness');
+  });
+
+  it('uses fuzzy seeded-name matching but never creates rows', () => {
+    const pages = [{ sourcePage: 11, text: `Detect-Magic\nDuration: 2 turns` }];
+    const { suggestions } = buildSeededSpellDetailSuggestions({ seedRows, pages });
+    expect(suggestions.some((s) => s.spellKey === 'detect-magic')).toBe(true);
+    expect(suggestions.some((s) => s.spellKey === 'unknown-spell')).toBe(false);
   });
 
   it('marks duplicate names ambiguous across classes', () => {

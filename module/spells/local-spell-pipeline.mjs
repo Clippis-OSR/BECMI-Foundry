@@ -9,9 +9,14 @@ const FORBIDDEN_STARTS = [/^this spell/i, /^the\s/i, /^a\s/i, /^an\s/i, /^any\s/
 export const ALLOWED_TAGS = new Set(['healing','damage','protection','detection','charm','paralysis','poison','light','darkness','movement','summoning','transformation','dispel','communication','creation','terrain-control','resurrection','death','special']);
 
 export function slugifySpellKey(value) { return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
-export const normalizeSpellName = (name) => String(name || '').replace(/\*+$/, '').replace(/[’]/g, "'").replace(/\s+/g, ' ').trim();
+export const normalizeSpellName = (name) => String(name || '').replace(/\*+$/, '').replace(/[’‘`´]/g, "'").replace(/[“”]/g, '"').replace(/\s+/g, ' ').trim();
 const normalizeSpellKey = (name) => slugifySpellKey(normalizeSpellName(name));
 const normalizeForMatch = (name) => normalizeSpellName(name).toLowerCase().replace(/[^a-z0-9]+/g, '');
+const preprocessOcrText = (text) => String(text || '')
+  .replace(/(\w)-\s*\n\s*(\w)/g, '$1$2')
+  .replace(/[’‘`´]/g, "'")
+  .replace(/[“”]/g, '"')
+  .replace(/[\t\f\v]+/g, ' ');
 
 function parseLevelToken(token) { if (!token) return 0; const lowered = token.toLowerCase(); if (ORDINAL_TO_LEVEL[lowered]) return ORDINAL_TO_LEVEL[lowered]; const d = lowered.match(/\d+/); return d ? Number.parseInt(d[0], 10) : 0; }
 function normalizeClass(value) { const lowered = String(value || '').toLowerCase(); if (lowered.includes('magic')) return 'Magic-User'; if (lowered.includes('cleric')) return 'Cleric'; if (lowered.includes('druid')) return 'Druid'; return 'unknown'; }
@@ -34,12 +39,12 @@ function parseListLine(line) { if (!line || line.includes(':')) return []; const
 function makeIndexRow(spellName, section, source) { return { ...source, spellName, spellKey: slugifySpellKey(spellName), spellClass: section.spellClass, spellLevel: section.spellLevel, reversible: /\*$/.test(spellName) }; }
 
 export function extractSpellIndexFromPage({ text = '', sourceFile = '', sourceBook = '', sourcePage = 0 }) { /* unchanged */
-  const lines = String(text).split(/\r?\n/).map((line) => line.trimEnd()); const indexRows = []; const diagnostics = { sourceFile, sourceBook, sourcePage, pagesUsedForIndex: false, rejectedHeadings: [], headingsDetected: [] }; let activeSection = null;
+  const lines = preprocessOcrText(text).split(/\r?\n/).map((line) => line.trimEnd()); const indexRows = []; const diagnostics = { sourceFile, sourceBook, sourcePage, pagesUsedForIndex: false, rejectedHeadings: [], headingsDetected: [] }; let activeSection = null;
   for (const rawLine of lines) { const line = String(rawLine || '').trim(); if (!line) continue; const section = parseListHeading(line); if (section) { activeSection = section; diagnostics.pagesUsedForIndex = true; diagnostics.headingsDetected.push(line); continue; } if (!activeSection) continue; if (SECTION_LIKE_PATTERN.test(line) || /\bSAVING THROW TABLE\b/i.test(line)) { activeSection = null; continue; } for (const maybeName of parseListLine(line)) indexRows.push(makeIndexRow(maybeName, activeSection, { sourceBook, sourceFile, sourcePage })); }
   return { indexRows, diagnostics };
 }
 
-export function extractDescriptionBlocksFromPage({ text = '', sourceFile = '', sourceBook = '', sourcePage = 0, knownSpellNames = [], knownSpellKeys = [] }) { const lines = String(text).split(/\r?\n/).map((line) => line.trimEnd()); const knownByName = new Map((knownSpellNames || []).map((name) => [normalizeSpellName(name), normalizeSpellKey(name)])); const knownKeySet = new Set([...(knownSpellKeys || []), ...knownByName.values()].filter(Boolean)); const blocks = []; const unmatchedCandidates = []; const diagnostics = { sourceFile, sourceBook, sourcePage, pagesUsedForDescriptions: false };
+export function extractDescriptionBlocksFromPage({ text = '', sourceFile = '', sourceBook = '', sourcePage = 0, knownSpellNames = [], knownSpellKeys = [] }) { const lines = preprocessOcrText(text).split(/\r?\n/).map((line) => line.trimEnd()); const knownByName = new Map((knownSpellNames || []).map((name) => [normalizeSpellName(name), normalizeSpellKey(name)])); const knownKeySet = new Set([...(knownSpellKeys || []), ...knownByName.values()].filter(Boolean)); const blocks = []; const unmatchedCandidates = []; const diagnostics = { sourceFile, sourceBook, sourcePage, pagesUsedForDescriptions: false };
   for (let i = 0; i < lines.length; i += 1) { const line = normalizeSpellName((lines[i] || '').trim()); if (!line) continue; const lineKey = normalizeSpellKey(line); if (!knownKeySet.has(lineKey)) { if (/^[A-Z][A-Za-z'\- ]{1,80}\*?$/.test(line) && !line.includes(':') && !TABLE_ROW_REJECT.test(line) && !parseListHeading(line) && !SECTION_LIKE_PATTERN.test(line) && !shouldRejectSpellName(line)) unmatchedCandidates.push({ sourceBook, sourceFile, sourcePage, candidate: line, spellKey: lineKey }); continue; }
     diagnostics.pagesUsedForDescriptions = true; let range = ''; let duration = ''; let effect = '';
     for (let j = i + 1; j < lines.length; j += 1) { const next = normalizeSpellName((lines[j] || '').trim()); if (!next) continue; const nextKey = normalizeSpellKey(next); if (knownKeySet.has(nextKey) || parseListHeading(next) || SECTION_LIKE_PATTERN.test(next)) break; const m = next.match(FIELD_PATTERN); if (!m) continue; const key = m[1].toLowerCase(); const value = m[2].trim(); if (key === 'range') range = value; if (key === 'duration') duration = value; if (key === 'effect' || key === 'area of effect') effect = value; }
@@ -47,7 +52,7 @@ export function extractDescriptionBlocksFromPage({ text = '', sourceFile = '', s
   } return { blocks, unmatchedCandidates, diagnostics };
 }
 
-export function buildSeededSpellDetailSuggestions({ seedRows = [], pages = [] }) {
+export function buildSeededSpellDetailSuggestions({ seedRows = [], pages = [], includeDebug = false }) {
   const rows = Array.isArray(seedRows) ? seedRows : [];
   const normIndex = new Map();
   const duplicates = new Set();
@@ -58,12 +63,33 @@ export function buildSeededSpellDetailSuggestions({ seedRows = [], pages = [] })
     if ((normIndex.get(norm) || []).length > 1) duplicates.add(norm);
   }
   const suggestions = [];
+  const debug = [];
   for (const page of pages) {
-    const lines = String(page.text || '').split(/\r?\n/);
+    const lines = preprocessOcrText(page.text || '').split(/\r?\n/);
     for (let i = 0; i < lines.length; i += 1) {
-      const heading = normalizeSpellName(lines[i]);
-      const norm = normalizeForMatch(heading);
-      const candidates = normIndex.get(norm) || [];
+      const headingRaw = normalizeSpellName(lines[i]);
+      if (!headingRaw) continue;
+      const heading = headingRaw.toUpperCase() === headingRaw ? normalizeSpellName(headingRaw.toLowerCase().replace(/\b\w/g, (m) => m.toUpperCase())) : headingRaw;
+      let norm = normalizeForMatch(heading);
+      let candidates = normIndex.get(norm) || [];
+      let matchedByFuzzy = false;
+      if (!candidates.length) {
+        const pref = rows.find((r) => heading.toLowerCase().startsWith(String(r.name || '').toLowerCase() + ' '));
+        if (pref) {
+          candidates = [pref];
+          norm = normalizeForMatch(pref.name);
+          matchedByFuzzy = true;
+        }
+      }
+      if (!candidates.length) {
+        let best = null;
+        for (const [nameNorm, rowsForName] of normIndex.entries()) {
+          const contains = nameNorm.includes(norm) || norm.includes(nameNorm);
+          if (!contains || Math.abs(nameNorm.length - norm.length) > 3) continue;
+          if (!best || nameNorm.length > best.nameNorm.length) best = { nameNorm, rowsForName };
+        }
+        if (best) { candidates = best.rowsForName; matchedByFuzzy = true; }
+      }
       if (!candidates.length) continue;
       let j = i + 1;
       const blockLines = [];
@@ -74,10 +100,26 @@ export function buildSeededSpellDetailSuggestions({ seedRows = [], pages = [] })
         blockLines.push(n); j += 1;
       }
       const fields = parseSuggestionFields(blockLines);
-      for (const row of candidates) suggestions.push(makeSuggestion(row, page, heading, fields, duplicates.has(norm), candidates.length > 1));
+      const score = computeCandidateScore({ heading, blockLines, fields, fuzzy: matchedByFuzzy });
+      for (const row of candidates) {
+        suggestions.push(makeSuggestion(row, page, heading, fields, duplicates.has(norm), candidates.length > 1, score));
+        if (includeDebug) debug.push({ spellKey: row.spellKey, candidatePages: [page.sourcePage || null], candidateHeadings: [heading], extractedLines: blockLines, confidenceScore: score });
+      }
     }
   }
-  return { suggestions };
+  return { suggestions, debug };
+}
+function computeCandidateScore({ heading, blockLines, fields, fuzzy }) {
+  let score = fuzzy ? 0.55 : 0.78;
+  if (heading) score += 0.05;
+  if (fields.range) score += 0.05;
+  if (fields.duration) score += 0.05;
+  if (fields.effect) score += 0.05;
+  if (fields.save) score += 0.03;
+  const prose = blockLines.join(' ').toLowerCase();
+  if (/\bsave\b|saving throw/.test(prose)) score += 0.02;
+  if (/\breverse\b/.test(prose)) score += 0.02;
+  return Math.min(0.99, Number(score.toFixed(2)));
 }
 function parseSuggestionFields(blockLines) {
   const join = blockLines.join(' ');
@@ -104,7 +146,7 @@ function parseSuggestionFields(blockLines) {
   out.confidenceByField = { sourcePage: 0.95, range: conf(out.range), duration: conf(out.duration), effect: conf(out.effect), save: conf(out.save), reversible: out.reversible === true ? 0.7 : 0.4, reverseName: out.reverseName ? 0.65 : 0.3, tags: out.tags.length ? 0.65 : 0.3, manualNotes: 0.4 };
   return out;
 }
-function makeSuggestion(row, page, heading, fields, duplicateName, multi) { const ambiguous = duplicateName || multi; return { spellKey: row.spellKey, name: row.name, spellClass: row.spellClass, spellLevel: row.spellLevel, sourceBook: row.sourceBook, sourceFile: page.sourceFile || '', sourcePage: page.sourcePage || null, headingMatched: heading, suggested: fields, confidenceByField: fields.confidenceByField, needsReview: ambiguous || fields.needsReview, ambiguousMatch: ambiguous }; }
+function makeSuggestion(row, page, heading, fields, duplicateName, multi, score = 0.8) { const ambiguous = duplicateName || multi; return { spellKey: row.spellKey, name: row.name, spellClass: row.spellClass, spellLevel: row.spellLevel, sourceBook: row.sourceBook, sourceFile: page.sourceFile || '', sourcePage: page.sourcePage || null, headingMatched: heading, suggested: fields, confidenceByField: { ...fields.confidenceByField, sourcePage: Math.max(fields.confidenceByField.sourcePage || 0.95, score >= 0.6 ? 0.98 : 0.8) }, needsReview: ambiguous || fields.needsReview || (!fields.range && !fields.duration && !fields.effect), ambiguousMatch: ambiguous, matchScore: score }; }
 
 export function mergeSpellSuggestionsIntoReview(seedRows, suggestions) {
   const byKey = new Map((suggestions || []).map((s) => [s.spellKey, s]));
