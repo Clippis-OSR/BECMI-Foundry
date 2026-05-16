@@ -18,7 +18,7 @@ function pushIndexedValue(map, key, spell) {
 export function registerSpellIndex(spell) {
   const spellKey = spell?.system?.spellKey;
   if (!spellKey) throw new Error("[BECMI Spell Index] Cannot index spell without spellKey.");
-  if (indexes.bySpellKey.has(spellKey)) throw new Error(`[BECMI Spell Index] duplicate spellKey \"${spellKey}\" during registration.`);
+  if (indexes.bySpellKey.has(spellKey)) throw new Error(`[BECMI Spell Index] duplicate spellKey "${spellKey}" during registration.`);
 
   indexes.bySpellKey.set(spellKey, spell);
   pushIndexedValue(indexes.byLevel, Number(spell.system.level), spell);

@@ -32,14 +32,14 @@ export function validateSpellSchema(itemData, context = "spell validation") {
 }
 
 export function registerSpellValidationHooks() {
-  Hooks.on("preCreateItem", (item) => {
+  globalThis.Hooks.on("preCreateItem", (item) => {
     if (item.type !== "spell") return;
     validateSpellSchema(item.toObject(), `preCreateItem for spell "${item.name ?? "Unknown"}"`);
   });
 
-  Hooks.on("preUpdateItem", (item, changes) => {
+  globalThis.Hooks.on("preUpdateItem", (item, changes) => {
     if (item.type !== "spell") return;
-    const merged = foundry.utils.mergeObject(item.toObject(), changes, { inplace: false });
+    const merged = globalThis.foundry.utils.mergeObject(item.toObject(), changes, { inplace: false });
     validateSpellSchema(merged, `preUpdateItem for spell "${item.name ?? item.id ?? "Unknown"}"`);
   });
 }

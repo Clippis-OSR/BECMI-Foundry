@@ -23,9 +23,9 @@ export function logSpellMigration({ fromVersion, toVersion, itemData, spellKey, 
   ].filter(Boolean).join("\n");
 
   if (verboseLoggingEnabled()) {
-    console.debug(message);
+    globalThis.console.debug(message);
   } else {
-    console.info(message);
+    globalThis.console.info(message);
   }
 }
 
@@ -45,7 +45,7 @@ export function validateMigrationVersion(schemaVersion, { itemData } = {}) {
 }
 
 export function migrateSpellData(itemData) {
-  const system = foundry.utils.deepClone(itemData?.system ?? {});
+  const system = globalThis.foundry.utils.deepClone(itemData?.system ?? {});
   validateMigrationVersion(system.schemaVersion, { itemData });
 
   const schemaVersion = system.schemaVersion;

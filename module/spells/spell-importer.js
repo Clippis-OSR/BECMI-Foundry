@@ -4,7 +4,7 @@ import { registerSpellIndex } from "./spell-index.js";
 import { validateImportedSpellData } from "./spell-import-validation.js";
 
 function deepClone(value) {
-  return globalThis.foundry?.utils?.deepClone ? foundry.utils.deepClone(value) : structuredClone(value);
+  return globalThis.foundry?.utils?.deepClone ? globalThis.foundry.utils.deepClone(value) : globalThis.structuredClone(value);
 }
 
 export function createSpellItem(spellData) {
@@ -46,6 +46,6 @@ export function importSpellData(spells) {
 export async function importSpellFile(path) {
   const content = await readFile(path, "utf8");
   const parsed = JSON.parse(content);
-  if (!Array.isArray(parsed)) throw new Error(`[BECMI Spell Import] spell file \"${path}\" must export an array.`);
+  if (!Array.isArray(parsed)) throw new Error(`[BECMI Spell Import] spell file "${path}" must export an array.`);
   return importSpellData(parsed);
 }

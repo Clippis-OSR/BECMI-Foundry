@@ -10,7 +10,7 @@ export function validateImportedSpellData(spellData, { seenSpellKeys } = {}) {
   }
 
   const legacyField = LEGACY_FIELDS.find((field) => field in spellData || field in (spellData.system ?? {}));
-  if (legacyField) throw new Error(`[BECMI Spell Import] legacy field \"${legacyField}\" is not allowed.`);
+  if (legacyField) throw new Error(`[BECMI Spell Import] legacy field "${legacyField}" is not allowed.`);
 
   if (!("schemaVersion" in spellData)) {
     throw new Error("[BECMI Spell Import] missing schemaVersion on canonical spell import.");
@@ -25,10 +25,10 @@ export function validateImportedSpellData(spellData, { seenSpellKeys } = {}) {
     system: { ...normalizedSystem, schemaVersion: spellData.schemaVersion, spellKey: spellData.spellKey }
   };
 
-  validateSpellSchema(itemData, `spell import for \"${spellData.name ?? spellData.spellKey ?? "unknown"}\"`);
+  validateSpellSchema(itemData, `spell import for "${spellData.name ?? spellData.spellKey ?? "unknown"}"`);
 
   if (seenSpellKeys?.has(normalizedSystem.spellKey)) {
-    throw new Error(`[BECMI Spell Import] duplicate spellKey \"${normalizedSystem.spellKey}\" detected during import.`);
+    throw new Error(`[BECMI Spell Import] duplicate spellKey "${normalizedSystem.spellKey}" detected during import.`);
   }
 
   return itemData;

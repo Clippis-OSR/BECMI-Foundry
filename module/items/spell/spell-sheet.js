@@ -6,9 +6,9 @@ function parseCsv(value) {
   return String(value ?? "").split(",").map((entry) => entry.trim()).filter(Boolean);
 }
 
-export class BECMISpellItemSheet extends ItemSheet {
+export class BECMISpellItemSheet extends globalThis.ItemSheet {
   static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
+    return globalThis.foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["becmi", "sheet", "item", "spell"],
       template: "systems/becmi-foundry/templates/item/spell-sheet.hbs",
       width: 760,
@@ -52,13 +52,13 @@ export class BECMISpellItemSheet extends ItemSheet {
   }
 
   async _updateObject(event, formData) {
-    const expanded = foundry.utils.expandObject(formData);
+    const expanded = globalThis.foundry.utils.expandObject(formData);
     expanded.system = normalizeSpellData(expanded.system ?? {});
 
     const existingSpellKey = this.item.system?.spellKey;
     const incomingSpellKey = expanded.system?.spellKey;
     if (existingSpellKey && incomingSpellKey !== existingSpellKey) {
-      ui.notifications?.error(`Spell Key is immutable after creation. Keeping "${existingSpellKey}".`);
+      globalThis.ui.notifications?.error(`Spell Key is immutable after creation. Keeping "${existingSpellKey}".`);
       expanded.system.spellKey = existingSpellKey;
     }
 

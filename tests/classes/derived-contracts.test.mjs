@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { installFoundryStubs, createActor, createItem } from '../helpers/foundry-test-helpers.mjs';
-import { calculateActorAC, getClassLevelData, getCharacterTHAC0, getMovementTierByEncumbrance } from '../../module/rules/index.mjs';
+import { calculateActorAC , getClassLevelData, getMovementTierByEncumbrance } from '../../module/rules/index.mjs';
 
 beforeEach(async () => {
   installFoundryStubs();

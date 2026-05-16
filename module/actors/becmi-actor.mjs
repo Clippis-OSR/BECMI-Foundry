@@ -115,7 +115,6 @@ export class BECMIActor extends Actor {
 
   _prepareCreatureDerivedData() {
     const system = this.system;
-    const monster = system.monster ?? {};
     const monsterRuntime = buildCreatureRuntimeFromMonster(this);
 
     const existingDerived = system.derived ?? {};
