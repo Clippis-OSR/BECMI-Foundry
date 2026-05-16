@@ -457,7 +457,7 @@
     <h3>{{casterKey}}</h3>
     <div class="inline-summary"><strong>{{casterData.summaryLabel}}</strong></div>
     {{#each casterData.slots as |slot level|}}
-      <div class="derived-pill"><strong>Level {{level}} Slots:</strong> {{slot.remaining}} remaining ({{slot.used}} / {{slot.max}} used)</div>
+      <div class="derived-pill"><strong>Level {{level}} Slots:</strong> {{slot.remaining}} remaining ({{slot.used}} / {{slot.max}} used) <button type="button" data-action="restore-slot" data-caster-key="{{casterKey}}" data-level="{{level}}">Restore 1</button></div>
     {{/each}}
     <h4>Known Spells</h4>
     {{#each casterData.slots as |slot level|}}
@@ -468,7 +468,7 @@
     <h4>Prepared Spells</h4>
     {{#each casterData.slots as |slot level|}}
       <div><strong>L{{level}}:</strong>
-        {{#if slot.preparedReferences.length}}{{#each slot.preparedReferences as |ref|}}<span class="spell-tag">{{ref.summary}}</span> {{/each}}{{else}}<em>None</em>{{/if}}
+        {{#if slot.preparedReferences.length}}{{#each slot.preparedReferences as |ref idx|}}<span class="spell-tag">{{ref.summary}}</span> <button type="button" data-action="cast-spell" data-caster-key="{{casterKey}}" data-level="{{level}}" data-prepared-index="{{idx}}">Cast</button> {{/each}}{{else}}<em>None</em>{{/if}}
       </div>
     {{/each}}
   </section>
@@ -478,7 +478,7 @@
 <h3>Active Spell Runtime</h3>
 <ul>
   {{#each spellcastingDerived.activeSpells as |active|}}
-    <li>{{active.summary}}</li>
+    <li>{{active.summary}} <button type="button" data-action="runtime-action" data-runtime-id="{{active.id}}" data-runtime-action="suppress">Suppress</button> <button type="button" data-action="runtime-action" data-runtime-id="{{active.id}}" data-runtime-action="restore">Restore</button> <button type="button" data-action="runtime-action" data-runtime-id="{{active.id}}" data-runtime-action="expire">Expire</button> <button type="button" data-action="runtime-action" data-runtime-id="{{active.id}}" data-runtime-action="dismiss">Dismiss</button></li>
   {{/each}}
 </ul>
 {{else}}
