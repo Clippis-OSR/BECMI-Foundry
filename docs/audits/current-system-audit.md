@@ -15,7 +15,7 @@ Treat the following as **historical** and non-canonical unless re-adopted by arc
 
 - `docs/audits/archive/*`
 - `docs/archive/*`
-- `docs/full-system-audit-2026-05-14-consolidated.md`
+- `docs/audits/archive/full-system-audit-2026-05-14-consolidated.md`
 
 ---
 
