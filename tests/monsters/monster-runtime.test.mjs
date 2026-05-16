@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { getActorAttackSources } from '../../module/combat/attack.mjs';
 import { createActor, createItem, installFoundryStubs } from '../helpers/foundry-test-helpers.mjs';
 import {
+  buildNaturalAttackItemsFromLegacyActor,
   buildCreatureActorDataFromCanonicalMonster,
   buildCreatureRuntimeFromMonster,
   buildNaturalAttackItemsFromMonster
@@ -52,6 +53,22 @@ describe('monster runtime integration', () => {
     const sources = getActorAttackSources(actor);
     expect(sources).toHaveLength(2);
     expect(sources.every((s) => s.system.weaponType === 'natural')).toBe(true);
+  });
+
+  it('normalizes legacy inline attack text into natural weapon items', () => {
+    const actor = createActor({
+      id: 'legacy-actor',
+      type: 'creature',
+      system: {
+        monster: { attacks: '2 Claws/1 Bite', damage: '1d6/1d8' }
+      }
+    });
+    const items = buildNaturalAttackItemsFromLegacyActor(actor);
+    expect(items).toHaveLength(2);
+    expect(items[0].system.attackCount).toBe(2);
+    expect(items[0].system.weaponType).toBe('natural');
+    expect(items[0].system.ammoType).toBeNull();
+    expect(items[0].system.inventory.countsTowardEncumbrance).toBe(false);
   });
 
   it('runtime exposes morale and xp safely', () => {

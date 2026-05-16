@@ -18,10 +18,12 @@ function parseMovement(raw) {
 
 export function buildNaturalAttackItemsFromMonster(monster) {
   const system = monster?.system ?? monster;
-  const attacks = Array.isArray(system.attacks) ? system.attacks : [];
+  const attacks = normalizeMonsterAttacks(system.attacks);
   return attacks.map((attack, index) => {
     const count = Number(attack?.count ?? 1) || 1;
     const type = String(attack?.type ?? 'natural attack').trim() || 'natural attack';
+    const sequence = Array.isArray(attack?.sequence) ? attack.sequence.map((part) => String(part).trim()).filter(Boolean) : null;
+    const riderText = attack?.riderText ?? null;
     return {
       name: count > 1 ? `${count} ${type}` : type,
       type: 'weapon',
@@ -33,6 +35,8 @@ export function buildNaturalAttackItemsFromMonster(monster) {
         ammoType: null,
         attackCount: count,
         attackLabel: type,
+        attackSequence: sequence,
+        riderText: riderText ? String(riderText) : null,
         damage: String(attack?.damage ?? attack?.raw ?? system.damage ?? '1d4'),
         inventory: { location: 'worn', countsTowardEncumbrance: false }
       },
@@ -45,6 +49,23 @@ export function buildNaturalAttackItemsFromMonster(monster) {
       }
     };
   });
+}
+
+export function normalizeMonsterAttacks(attacks) {
+  if (Array.isArray(attacks)) return attacks.filter(Boolean);
+  if (typeof attacks === 'string') {
+    return attacks
+      .split(/[\/;+]|\band\b/gi)
+      .map((part) => String(part).trim())
+      .filter(Boolean)
+      .map((part) => {
+        const match = part.match(/^(\d+)\s+(.+)$/i);
+        const count = match ? Number(match[1]) : 1;
+        const type = (match ? match[2] : part).trim().toLowerCase();
+        return { type, count, raw: part };
+      });
+  }
+  return [];
 }
 
 export function buildCreatureActorDataFromCanonicalMonster(monsterData, { importVersion = 1 } = {}) {
@@ -108,4 +129,25 @@ export function buildCreatureRuntimeFromMonster(actor) {
     specialAbilitiesRaw: monster.specialAbilities ?? '',
     diagnostics
   };
+}
+
+export function buildNaturalAttackItemsFromLegacyActor(actor) {
+  const monster = actor?.system?.monster ?? {};
+  const legacyAttackFields = [
+    monster.attacks,
+    actor?.system?.attacks,
+    monster.attack
+  ];
+  const parsedAttacks = legacyAttackFields
+    .flatMap((value) => normalizeMonsterAttacks(value))
+    .filter(Boolean);
+  if (!parsedAttacks.length) return [];
+  return buildNaturalAttackItemsFromMonster({
+    system: {
+      ...monster,
+      attacks: parsedAttacks,
+      damage: monster.damage ?? actor?.system?.damage ?? '1d4',
+      monsterKey: monster.monsterKey ?? actor?.id ?? actor?.name ?? null
+    }
+  });
 }
