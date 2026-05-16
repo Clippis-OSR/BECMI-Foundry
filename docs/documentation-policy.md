@@ -18,6 +18,15 @@ The following documents are canonical and should be treated as the source of tru
 
 Codex tasks, implementation plans, and change proposals should reference canonical documents first.
 
+## Contributor and Codex Quick Links
+
+When preparing implementation plans or making code changes, reference these first:
+
+- `docs/architecture/canonical-architecture.md`
+- `docs/audits/current-system-audit.md`
+- `docs/documentation-policy.md`
+
+
 ## Document Types and Their Roles
 
 ### Architecture Docs
