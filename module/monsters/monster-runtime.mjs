@@ -53,18 +53,6 @@ export function buildNaturalAttackItemsFromMonster(monster) {
 
 export function normalizeMonsterAttacks(attacks) {
   if (Array.isArray(attacks)) return attacks.filter(Boolean);
-  if (typeof attacks === 'string') {
-    return attacks
-      .split(/[/;+]|\band\b/gi)
-      .map((part) => String(part).trim())
-      .filter(Boolean)
-      .map((part) => {
-        const match = part.match(/^(\d+)\s+(.+)$/i);
-        const count = match ? Number(match[1]) : 1;
-        const type = (match ? match[2] : part).trim().toLowerCase();
-        return { type, count, raw: part };
-      });
-  }
   return [];
 }
 
@@ -121,12 +109,12 @@ export function buildCreatureRuntimeFromMonster(actor) {
     morale: monster.morale ?? null,
     xp: monster.xp ?? null,
     treasureType: monster.treasureType ?? '',
-    movement: monster.movement ?? { raw: '', feetPerTurn: null, feetPerRound: null },
-    ac: monster.ac ?? null,
-    hitDice: monster.hitDice ?? null,
-    saveAs: monster.saveAs ?? null,
-    damage: monster.damage ?? '',
-    specialAbilitiesRaw: monster.specialAbilities ?? '',
+    movement: monster.movement,
+    ac: monster.ac,
+    hitDice: monster.hitDice,
+    saveAs: monster.saveAs,
+    damage: monster.damage,
+    specialAbilitiesRaw: monster.specialAbilities,
     diagnostics
   };
 }
@@ -134,11 +122,7 @@ export function buildCreatureRuntimeFromMonster(actor) {
 export function buildNaturalAttackItemsFromLegacyActor(actor) {
   console.warn("[BECMI Monsters] buildNaturalAttackItemsFromLegacyActor is deprecated. Normalize into canonical system.monster.attacks first.");
   const monster = actor?.system?.monster ?? {};
-  const legacyAttackFields = [
-    monster.attacks,
-    actor?.system?.attacks,
-    monster.attack
-  ];
+  const legacyAttackFields = [monster.attacks];
   const parsedAttacks = legacyAttackFields
     .flatMap((value) => normalizeMonsterAttacks(value))
     .filter(Boolean);
@@ -147,7 +131,7 @@ export function buildNaturalAttackItemsFromLegacyActor(actor) {
     system: {
       ...monster,
       attacks: parsedAttacks,
-      damage: monster.damage ?? actor?.system?.damage ?? '1d4',
+      damage: monster.damage ?? '1d4',
       monsterKey: monster.monsterKey ?? actor?.id ?? actor?.name ?? null
     }
   });

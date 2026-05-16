@@ -57,7 +57,7 @@ describe('monster runtime integration', () => {
     expect(sources.every((s) => s.system.weaponType === 'natural')).toBe(true);
   });
 
-  it('normalizes legacy inline attack text into natural weapon items', () => {
+  it('rejects legacy inline attack text at runtime; migration must occur first', () => {
     const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const actor = createActor({
       id: 'legacy-actor',
@@ -67,11 +67,7 @@ describe('monster runtime integration', () => {
       }
     });
     const items = buildNaturalAttackItemsFromLegacyActor(actor);
-    expect(items).toHaveLength(2);
-    expect(items[0].system.attackCount).toBe(2);
-    expect(items[0].system.weaponType).toBe('natural');
-    expect(items[0].system.ammoType).toBeNull();
-    expect(items[0].system.inventory.countsTowardEncumbrance).toBe(false);
+    expect(items).toHaveLength(0);
     expect(warnSpy).toHaveBeenCalled();
     warnSpy.mockRestore();
   });
@@ -100,7 +96,8 @@ describe('monster runtime integration', () => {
     expect(b.monsterKey).toBe('owl_bear');
   });
 
-  it('attack parsing for legacy text is deterministic', () => {
-    expect(normalizeMonsterAttacks('2 Claws/1 Bite')).toEqual(normalizeMonsterAttacks('2 Claws + 1 Bite'));
+  it('canonical attack normalization accepts arrays only', () => {
+    expect(normalizeMonsterAttacks('2 Claws/1 Bite')).toEqual([]);
+    expect(normalizeMonsterAttacks([{ type: 'claw', count: 2 }])).toEqual([{ type: 'claw', count: 2 }]);
   });
 });

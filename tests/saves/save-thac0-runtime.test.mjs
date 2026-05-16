@@ -56,6 +56,22 @@ describe('save + thac0 canonical runtime lookups', () => {
     expect(thac0).toBeTypeOf('number');
   });
 
+
+  it('creature THAC0 and saves read canonical monster fields only', () => {
+    const actor = {
+      type: 'creature',
+      name: 'Strict Monster',
+      system: {
+        hd: '99',
+        hitDice: '99',
+        savesAs: { class: 'fighter', level: 20 },
+        monster: { hitDice: '1', saveAs: 'F1' }
+      }
+    };
+    expect(getActorTHAC0(actor)).toBeNull();
+    expect(getActorSaves(actor)).toBeNull();
+  });
+
   it('combat attack helpers use canonical derived THAC0 and descending AC', () => {
     const attacker = { type: 'character', system: { class: 'fighter', derived: { level: 2 }, combat: { thac0: 2 } } };
     const target = { system: { ac: { value: -1 }, combat: { ac: 9 } } };
