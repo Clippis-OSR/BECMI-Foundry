@@ -1,0 +1,60 @@
+import { describe, it, expect } from 'vitest';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { execFileSync } from 'node:child_process';
+
+const seedPath = path.resolve('data/spells/seed-basic-expert.json');
+const contextPath = path.resolve('private/review/spell-detail-context.json');
+const reviewJsonPath = path.resolve('private/review/spells-review.json');
+const reviewCsvPath = path.resolve('private/review/spells-review.csv');
+const unmatchedPath = path.resolve('private/generated/unmatched-description-candidates.json');
+
+async function readJsonMaybe(file) {
+  try { return JSON.parse(await fs.readFile(file, 'utf8')); } catch { return undefined; }
+}
+
+describe('review:spells guardrails', () => {
+  it('uses seed rows as authoritative source and ignores OCR-only garbage rows', async () => {
+    const originalSeed = await fs.readFile(seedPath, 'utf8');
+    const originalContext = await readJsonMaybe(contextPath);
+    const originalUnmatched = await readJsonMaybe(unmatchedPath);
+
+    const seedRows = [
+      { spellKey: 'magic-missile', name: 'Magic Missile', spellClass: 'Magic-User', spellLevel: 1, sourceBook: 'Basic', sourcePage: 42, reversible: false, reverseName: '', needsDetails: true },
+      { spellKey: 'light', name: 'Light', spellClass: 'Cleric', spellLevel: 1, sourceBook: 'Basic', sourcePage: 43, reversible: true, reverseName: 'Darkness', needsDetails: true }
+    ];
+
+    const contexts = {
+      contexts: [
+        { spellKey: 'magic-missile', spellClass: 'Magic-User', spellLevel: 1, candidatePage: 99, nearbyRangeLines: ['150 feet'], nearbyDurationLines: ['1 turn'], nearbyEffectLines: ['Creates darts'], nearbySaveReferences: ['None'], nearbyTextBlock: 'known' },
+        { spellKey: 'druid', spellClass: 'Cleric', spellLevel: 9, candidatePage: 9, nearbyRangeLines: ['Oak'], nearbyDurationLines: ['Evergreen trees'], nearbyEffectLines: ['Other trees'], nearbySaveReferences: ['Number of'], nearbyTextBlock: 'Lying Questions Insanity Knowing' }
+      ]
+    };
+
+    try {
+      await fs.writeFile(seedPath, JSON.stringify({ spells: seedRows }, null, 2));
+      await fs.mkdir(path.dirname(contextPath), { recursive: true });
+      await fs.writeFile(contextPath, JSON.stringify(contexts, null, 2));
+
+      execFileSync('node', ['scripts/review-spells.mjs'], { encoding: 'utf8' });
+
+      const reviewRows = JSON.parse(await fs.readFile(reviewJsonPath, 'utf8'));
+      const reviewCsv = await fs.readFile(reviewCsvPath, 'utf8');
+      const unmatched = JSON.parse(await fs.readFile(unmatchedPath, 'utf8'));
+
+      expect(reviewRows).toHaveLength(seedRows.length);
+      expect(reviewRows.map((r) => `${r.spellKey}|${r.spellClass}|${r.spellLevel}`)).toEqual(seedRows.map((r) => `${r.spellKey}|${r.spellClass}|${r.spellLevel}`));
+      expect(reviewRows.every((r) => r.spellKey !== 'druid')).toBe(true);
+      expect(reviewCsv.includes('"druid"')).toBe(false);
+      expect(reviewRows.find((r) => r.spellKey === 'magic-missile')?.suggestedRange).toBe('150 feet');
+      expect(reviewRows.find((r) => r.spellKey === 'light')?.suggestedRange).toBe('');
+      expect(unmatched.candidates.some((c) => c.spellKey === 'druid')).toBe(true);
+    } finally {
+      await fs.writeFile(seedPath, originalSeed);
+      if (originalContext == null) await fs.rm(contextPath, { force: true });
+      else await fs.writeFile(contextPath, JSON.stringify(originalContext, null, 2));
+      if (originalUnmatched == null) await fs.rm(unmatchedPath, { force: true });
+      else await fs.writeFile(unmatchedPath, JSON.stringify(originalUnmatched, null, 2));
+    }
+  });
+});
