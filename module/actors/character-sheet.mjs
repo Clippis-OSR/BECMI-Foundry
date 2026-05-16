@@ -21,6 +21,7 @@ import * as treasureHelpers from "../items/treasure.mjs";
 import { importItemToActor } from "../items/item-importer.mjs";
 import { ensureActorEquipmentSlots, equipItem, unequipItem } from "../items/equipment-slots.mjs";
 import { BECMI_ENCUMBRANCE_RULES } from "../rules/encumbrance.mjs";
+import { buildInventoryDiagnosticsPresentation } from "../items/inventory-diagnostics-ui.mjs";
 
 const DEBUG_INVENTORY = false;
 const debugInventory = (...args) => {
@@ -112,8 +113,10 @@ export class BECMICharacterSheet extends ActorSheet {
       ? Object.entries(turnUndead).map(([target, score]) => ({ target, score }))
       : [];
     context.equipmentSlots = ensureActorEquipmentSlots(this.actor);
-    context.inventoryGroups = this._buildInventoryGroups();
-    context.inventoryDiagnostics = getInventoryDiagnostics(this.actor);
+    const inventoryDiagnostics = getInventoryDiagnostics(this.actor);
+    const diagnosticsPresentation = buildInventoryDiagnosticsPresentation(inventoryDiagnostics);
+    context.inventoryGroups = this._buildInventoryGroups(diagnosticsPresentation.itemDiagnosticsById);
+    context.inventoryDiagnostics = diagnosticsPresentation;
     context.currencySummary = this._buildCurrencySummary();
     context.treasureSummary = this._buildTreasureSummary();
     context.encumbranceSummary = this._buildEncumbranceSummary();
@@ -404,7 +407,7 @@ export class BECMICharacterSheet extends ActorSheet {
     };
   }
 
-  _mapInventoryItem(item) {
+  _mapInventoryItem(item, itemDiagnosticsById = {}) {
     const quantityRaw = item?.system?.quantity;
     const weightRaw = item?.system?.weight;
     const valueRaw = item?.system?.value;
@@ -420,6 +423,7 @@ export class BECMICharacterSheet extends ActorSheet {
       source: { quantity: quantityRaw, weight: weightRaw, value: valueRaw }
     });
 
+    const diagnostics = Array.isArray(itemDiagnosticsById?.[item?.id]) ? itemDiagnosticsById[item.id] : [];
     return {
       id: item.id,
       name: item.name,
@@ -436,11 +440,14 @@ export class BECMICharacterSheet extends ActorSheet {
       equipped: Boolean(item?.system?.equipped),
       slot: String(item?.system?.slot ?? ""),
       notes: String(item?.system?.notes ?? ""),
-      type: item?.type ?? ""
+      type: item?.type ?? "",
+      diagnostics,
+      hasDiagnostics: diagnostics.length > 0,
+      diagnosticBadge: diagnostics.length > 0 ? diagnostics[0].severity : ""
     };
   }
 
-  _buildInventoryGroups() {
+  _buildInventoryGroups(itemDiagnosticsById = {}) {
     const items = getActorItems(this.actor).filter((item) => item?.type !== "currency" && item?.type !== "treasure");
     const groupDefinitions = [
       { key: "beltPouch", label: "Items in Belt Pouch" },
@@ -461,7 +468,7 @@ export class BECMICharacterSheet extends ActorSheet {
           if (group.key === "sack1" || group.key === "sack2") return loc === "sack";
           return loc === group.key;
         })
-        .map((item) => this._mapInventoryItem(item))
+        .map((item) => this._mapInventoryItem(item, itemDiagnosticsById))
     }));
 
     return groups.map((group) => {

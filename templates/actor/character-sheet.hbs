@@ -330,6 +330,29 @@
   </div>
 </section>
 
+{{#if inventoryDiagnostics.hasDiagnostics}}
+<section class="inventory-section inventory-diagnostics-summary">
+  <h3>Inventory Diagnostics</h3>
+  <div class="inline-summary">
+    <strong>Errors:</strong> {{inventoryDiagnostics.severityCounts.error}}
+    <span>•</span>
+    <strong>Warnings:</strong> {{inventoryDiagnostics.severityCounts.warning}}
+    <span>•</span>
+    <strong>Info:</strong> {{inventoryDiagnostics.severityCounts.info}}
+  </div>
+  {{#if inventoryDiagnostics.actorDiagnostics.length}}
+  <ul class="inventory-diagnostics-list">
+    {{#each inventoryDiagnostics.actorDiagnostics as |diag|}}
+    <li class="diag-{{diag.severity}}">
+      <strong>[{{diag.severity}}]</strong> {{diag.message}}
+      {{#if diag.suggestion}}<em>Suggestion: {{diag.suggestion}}</em>{{/if}}
+    </li>
+    {{/each}}
+  </ul>
+  {{/if}}
+</section>
+{{/if}}
+
 <section class="inventory-section">
   <h3>Coinage</h3>
   <div class="inline-summary">
@@ -379,7 +402,20 @@
     {{#if group.items.length}}
       {{#each group.items as |item|}}
       <tr class="inventory-item-row">
-        <td>{{item.name}}</td>
+        <td>
+          {{item.name}}
+          {{#if item.hasDiagnostics}}
+          <span class="item-diagnostic-badge diag-{{item.diagnosticBadge}}">{{item.diagnostics.length}}</span>
+          <ul class="inventory-diagnostics-list item-diag-list">
+            {{#each item.diagnostics as |diag|}}
+            <li class="diag-{{diag.severity}}">
+              <strong>[{{diag.severity}}]</strong> {{diag.summary}}
+              {{#if diag.suggestion}}<em>Suggestion: {{diag.suggestion}}</em>{{/if}}
+            </li>
+            {{/each}}
+          </ul>
+          {{/if}}
+        </td>
         <td>
           <button type="button" data-action="toggle-equip-item" data-item-id="{{item.id}}">
             {{#if item.equipped}}Equipped{{else}}Carry{{/if}}

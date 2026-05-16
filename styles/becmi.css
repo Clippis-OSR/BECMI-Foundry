@@ -174,3 +174,52 @@
     font-size: 12px;
   }
 }
+.inventory-diagnostics-summary {
+  border-left: 4px solid #8a6f00;
+  padding-left: 8px;
+}
+
+.inventory-diagnostics-list {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  font-size: 12px;
+}
+
+.item-diag-list {
+  margin-top: 4px;
+}
+
+.diag-error {
+  color: #8b1a1a;
+}
+
+.diag-warning {
+  color: #7a4a00;
+}
+
+.diag-info {
+  color: #1d3c72;
+}
+
+.item-diagnostic-badge {
+  display: inline-block;
+  min-width: 18px;
+  margin-left: 6px;
+  border-radius: 10px;
+  padding: 0 6px;
+  font-size: 11px;
+  text-align: center;
+  color: #fff;
+}
+
+.item-diagnostic-badge.diag-error {
+  background: #8b1a1a;
+}
+
+.item-diagnostic-badge.diag-warning {
+  background: #7a4a00;
+}
+
+.item-diagnostic-badge.diag-info {
+  background: #1d3c72;
+}
