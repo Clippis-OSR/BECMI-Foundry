@@ -5,6 +5,7 @@ const SECTION_LIKE_PATTERN = /^(chapter|table|appendix|introduction|contents|com
 const LIST_HEADING_PATTERN = /^(?<level>(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|\d+(?:st|nd|rd|th)))(?:\s*|-\s*)level\s+(?<class>cleric(?:al)?|magic-?user|druid)\s+spells$/i;
 const TABLE_ROW_REJECT = /^(death ray or poison|magic wands|paralysis or stone|dragon breath)$/i;
 const FORBIDDEN_NAME_PATTERNS = [ /spell\s+table/i, /saving\s+throw/i, /experience\s+table/i, /hit\s+chart/i, /combat/i, /equipment/i ];
+const FORBIDDEN_STARTS = [/^this spell/i, /^the\s/i, /^a\s/i, /^an\s/i, /^any\s/i, /^when\s/i, /^if\s/i];
 
 export function slugifySpellKey(value) { return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
 const normalizeSpellName = (name) => String(name || '').replace(/\*+$/, '').trim();
@@ -14,11 +15,25 @@ function parseLevelToken(token) { if (!token) return 0; const lowered = token.to
 function normalizeClass(value) { const lowered = String(value || '').toLowerCase(); if (lowered.includes('magic')) return 'Magic-User'; if (lowered.includes('cleric')) return 'Cleric'; if (lowered.includes('druid')) return 'Druid'; return 'unknown'; }
 function parseListHeading(line) { const m = String(line || '').trim().match(LIST_HEADING_PATTERN); if (!m?.groups) return null; return { spellLevel: parseLevelToken(m.groups.level), spellClass: normalizeClass(m.groups.class) }; }
 
+export function shouldRejectSpellName(rawName, { allowLongExplicit = false } = {}) {
+  const name = normalizeSpellName(rawName);
+  if (!name) return true;
+  if (FORBIDDEN_STARTS.some((p) => p.test(name))) return true;
+  if (/\bSPELLS\b/i.test(name) || /Saving Throw/i.test(name) || /\bTABLE\b/i.test(name)) return true;
+  if (/\b[A-Za-z]+-\s*$/.test(name)) return true;
+  if (/^[^a-z]*[A-Z][A-Z\s\-']+$/.test(name)) return true;
+  const words = name.split(/\s+/).filter(Boolean);
+  if (!allowLongExplicit && words.length > 5) return true;
+  if (/\b(and|the)$/i.test(name)) return true;
+  if (name.includes('\n')) return true;
+  return false;
+}
+
 function parseListLine(line) {
   if (!line || line.includes(':')) return [];
   const parts = line.split(COLUMN_SPLIT_PATTERN).map((p) => normalizeSpellName(p)).filter(Boolean);
   const maybe = (parts.length > 1 ? parts : [normalizeSpellName(line)]).filter(Boolean);
-  return maybe.filter((n) => /^[A-Z][A-Za-z'\- ]{1,80}\*?$/.test(n) && !SECTION_LIKE_PATTERN.test(n) && !TABLE_ROW_REJECT.test(n) && !FORBIDDEN_NAME_PATTERNS.some((p) => p.test(n)));
+  return maybe.filter((n) => /^[A-Z][A-Za-z'\- ]{1,80}\*?$/.test(n) && !shouldRejectSpellName(n) && !SECTION_LIKE_PATTERN.test(n) && !TABLE_ROW_REJECT.test(n) && !FORBIDDEN_NAME_PATTERNS.some((p) => p.test(n)));
 }
 
 function makeIndexRow(spellName, section, source) { return { ...source, spellName, spellKey: slugifySpellKey(spellName), spellClass: section.spellClass, spellLevel: section.spellLevel, reversible: /\*$/.test(spellName) }; }
@@ -62,7 +77,7 @@ export function extractDescriptionBlocksFromPage({ text = '', sourceFile = '', s
     if (!line) continue;
     const lineKey = normalizeSpellKey(line);
     if (!knownKeySet.has(lineKey)) {
-      if (/^[A-Z][A-Za-z'\- ]{1,80}\*?$/.test(line) && !line.includes(':') && !TABLE_ROW_REJECT.test(line) && !parseListHeading(line) && !SECTION_LIKE_PATTERN.test(line)) {
+      if (/^[A-Z][A-Za-z'\- ]{1,80}\*?$/.test(line) && !line.includes(':') && !TABLE_ROW_REJECT.test(line) && !parseListHeading(line) && !SECTION_LIKE_PATTERN.test(line) && !shouldRejectSpellName(line)) {
         unmatchedCandidates.push({ sourceBook, sourceFile, sourcePage, candidate: line, spellKey: lineKey });
       }
       continue;

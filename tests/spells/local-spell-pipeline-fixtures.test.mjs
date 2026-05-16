@@ -28,7 +28,7 @@ describe('spell extraction fixtures', () => {
     const { blocks, unmatchedCandidates } = extractDescriptionBlocksFromPage({ text, knownSpellNames: ['Invisibility'], knownSpellKeys: ['invisibility'] });
     expect(blocks).toHaveLength(1);
     expect(blocks[0].spellName).toBe('Invisibility');
-    expect(unmatchedCandidates.some((c) => c.candidate.startsWith('This spell'))).toBe(true);
+    expect(unmatchedCandidates.some((c) => c.candidate.startsWith('This spell'))).toBe(false);
   });
 
   it('saving throw table rows are rejected', () => {
