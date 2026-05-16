@@ -27,6 +27,7 @@ import { validateActorSchema, validateItemSchema, validateItemSlot } from "./mod
 import { isCanonicalSlot, normalizeLegacyItemSlotForMigration } from "./module/items/legacy-slot-migration.mjs";
 import { detectLegacyManualDerivedFields, stripProtectedDerivedActorUpdates } from "./module/actors/derived-guards.mjs";
 import * as explorationRuntime from "./module/exploration/index.mjs";
+import * as encounterHelpers from "./module/encounters/index.mjs";
 
 const BECMI_CREATURE_SHEET_ID = "becmi-foundry.BECMICreatureSheet";
 const BECMI_CHARACTER_SHEET_ID = "becmi-foundry.BECMICharacterSheet";
@@ -225,6 +226,8 @@ Hooks.once("init", async function () {
   console.log("BECMI Foundry | Combat engine registered at game.becmi.combat");
   game.becmi.exploration = explorationRuntime;
   console.log("BECMI Foundry | Exploration runtime registered at game.becmi.exploration");
+  game.becmi.encounters = encounterHelpers;
+  console.log("BECMI Foundry | Encounter helpers registered at game.becmi.encounters");
 
   CONFIG.BECMI = CONFIG.BECMI || {};
   CONFIG.BECMI.classTables = {};
