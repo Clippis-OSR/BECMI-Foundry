@@ -1,51 +1,38 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-const diagnosticsFile = path.resolve('private/generated/spell-extraction-diagnostics.json');
-const indexFile = path.resolve('private/generated/spell-index.json');
-const blocksFile = path.resolve('private/generated/spell-description-blocks.json');
+const seedFile = path.resolve('data/spells/seed-basic-expert.json');
+const suggestionsFile = path.resolve('private/generated/spell-detail-suggestions.json');
 
 async function main() {
-  const diagnostics = JSON.parse(await fs.readFile(diagnosticsFile, 'utf8'));
-  const index = JSON.parse(await fs.readFile(indexFile, 'utf8'));
-  const blocks = JSON.parse(await fs.readFile(blocksFile, 'utf8'));
-  const rows = index.indexRows || [];
+  const seed = JSON.parse(await fs.readFile(seedFile, 'utf8'));
+  const seedRows = Array.isArray(seed) ? seed : (seed.spells || []);
+  let suggestions = [];
+  try { suggestions = (JSON.parse(await fs.readFile(suggestionsFile, 'utf8')).suggestions || []); } catch { suggestions = []; }
 
-  print('count by sourceBook', tally(rows, (r) => r.sourceBook || 'unknown'));
-  print('count by spellClass', tally(rows, (r) => r.spellClass || 'unknown'));
-  print('count by spellLevel', tally(rows, (r) => String(r.spellLevel || 0)));
-
-  const blocksByKey = new Map((blocks.blocks || []).map((b) => [b.spellKey, b]));
-  const missingRde = rows.filter((r) => { const b = blocksByKey.get(r.spellKey); return !b || !b.range || !b.duration || !b.effect; });
-  console.log(`\ncount with missing range/duration/effect: ${missingRde.length}`);
+  const byKey = new Set(suggestions.map((s) => s.spellKey));
+  const missing = seedRows.filter((r) => !byKey.has(r.spellKey)).length;
+  const ambiguous = suggestions.filter((s) => s.ambiguousMatch).length;
+  const low = suggestions.filter((s) => Object.values(s.confidenceByField || {}).some((v) => Number(v) < 0.5)).length;
+  const r = suggestions.filter((s) => s.suggested?.range).length;
+  const d = suggestions.filter((s) => s.suggested?.duration).length;
+  const e = suggestions.filter((s) => s.suggested?.effect).length;
+  const rev = suggestions.filter((s) => s.suggested?.reversible === true || s.suggested?.reverseName).length;
 
   const dupes = new Map();
-  for (const r of rows) { const k = `${r.spellKey}:${r.spellClass}:${r.spellLevel}`; dupes.set(k, (dupes.get(k) || 0) + 1); }
-  console.log('\nduplicate spellKey/class/level:');
-  [...dupes.entries()].filter(([,c])=>c>1).forEach(([k,c])=>console.log(`- ${k} => ${c}`));
+  for (const row of seedRows) { const k = String(row.name || '').toLowerCase(); dupes.set(k, (dupes.get(k) || 0) + 1); }
 
-  console.log('\nsection headings falsely extracted:');
-  (diagnostics.rejectedHeadings || []).slice(0, 100).forEach((h) => console.log(`- ${h.sourceFile}:${h.sourcePage} => ${h.name}`));
-
-  console.log('\npages used for spell index:');
-  (diagnostics.indexPages || []).slice(0, 100).forEach((p) => console.log(`- ${p}`));
-  console.log('\npages used for spell descriptions:');
-  (diagnostics.descriptionPages || []).slice(0, 100).forEach((p) => console.log(`- ${p}`));
-  const expertPages = [...new Set((diagnostics.indexPages || []).filter((p) => /expert/i.test(p)).map((p) => p.split(':').slice(1).join(':') || p))];
-  console.log(`
-Expert pages scanned: ${expertPages.length}`);
-  const expertRows = rows.filter((r) => /expert/i.test(String(r.sourceBook || r.sourceFile || '')));
-  const expertHeadingsDetected = rows.filter((r) => /expert/i.test(String(r.sourceBook || r.sourceFile || ''))).length;
-  console.log(`Expert spell-list headings detected: ${expertHeadingsDetected > 0 ? 1 : 0}`);
-  print('Expert spell index count by class/level', tally(expertRows, (r) => `${r.spellClass || 'unknown'} L${String(r.spellLevel || 0)}`));
-  const expertDescriptionPages = (diagnostics.descriptionPages || []).filter((p) => /expert/i.test(p));
-  console.log(`Expert description pages detected: ${expertDescriptionPages.length}`);
-  if (expertRows.length === 0) console.log('WARNING: Expert spell index count is 0.');
-  if (expertRows.length < 20) console.log('WARNING: EXPERT SPELL INDEX COUNT BELOW 20 — verify Expert pages 6-15 (cleric) and magic-user sections are scanned.');
-
+  console.log(`seed rows total: ${seedRows.length}`);
+  console.log(`suggestions matched: ${suggestions.length}`);
+  console.log(`suggestions missing: ${missing}`);
+  console.log(`ambiguous matches: ${ambiguous}`);
+  console.log(`range fill rate: ${r}/${seedRows.length}`);
+  console.log(`duration fill rate: ${d}/${seedRows.length}`);
+  console.log(`effect fill rate: ${e}/${seedRows.length}`);
+  console.log(`reversible suggestions: ${rev}`);
+  console.log(`low-confidence suggestions: ${low}`);
+  console.log('duplicate/ambiguous spell names:');
+  for (const [k, c] of [...dupes.entries()].filter(([, c]) => c > 1)) console.log(`- ${k}: ${c}`);
 }
-
-function tally(items, fn) { const m = new Map(); for (const i of items) { const k = fn(i); m.set(k, (m.get(k)||0)+1); } return [...m.entries()].sort((a,b)=>b[1]-a[1]); }
-function print(label, rows) { console.log(`\n${label}:`); rows.forEach(([k,v])=>console.log(`- ${k}: ${v}`)); }
 
 main().catch((error) => { console.error(`debug:spells failed: ${error.message}`); process.exitCode = 1; });
