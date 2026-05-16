@@ -115,3 +115,11 @@ Coverage gaps to add next:
 3. **Drift prevention**: eliminate/label non-canonical travel pace placeholders.
 4. **Regression expansion**: add the three gap tests listed above.
 5. **Documentation alignment**: keep this audit and the canonical rules reference synchronized when runtime contracts evolve.
+
+
+## 2026-05-16 Consolidation Update
+
+- `module/exploration/exploration-state.mjs` no longer contains a parallel runtime implementation.
+- The module is now an explicit deprecated compatibility wrapper that delegates directly to `module/exploration/runtime.mjs`.
+- Wrapper emits a development warning so accidental legacy-path imports are visible during tests/dev.
+- Exploration turn sequencing, wilderness progression, movement progression, light ticking, and duration ticking remain canonicalized under `runtime.mjs`.
