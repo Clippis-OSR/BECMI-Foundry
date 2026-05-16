@@ -129,6 +129,7 @@ function getMonsterSaveEntry(hd) {
 }
 
 export function getMonsterSaves(hd) {
+  console.warn("[BECMI Rules] getMonsterSaves is deprecated. Prefer actor-based resolution via getActorSaves.");
   const saveEntry = getMonsterSaveEntry(hd);
   if (!saveEntry) return null;
 
@@ -156,6 +157,7 @@ export function getMonsterSaves(hd) {
 }
 
 export function getCreatureSaves(actor) {
+  console.warn("[BECMI Rules] getCreatureSaves is deprecated. Prefer getActorSaves(creatureActor).");
   if (!actor) {
     console.warn("[BECMI] Cannot resolve creature saves: actor is missing.");
     return null;
