@@ -24,13 +24,16 @@ async function main() {
 async function enforceQualityGate(reviewRows) {
   if (forced) return;
   const total = reviewRows.length;
-  const missingCore = reviewRows.filter((row) => !row.spellClass || !row.spellLevel || !row.spellName).length;
   const unknownClass = reviewRows.filter((row) => !row.spellClass || row.spellClass === "unknown").length;
   const unknownRatio = total ? unknownClass / total : 0;
-  if (unknownRatio > 0.25) { throw new Error(`Extraction quality gate failed: unknown spellClass ratio ${(unknownRatio*100).toFixed(1)}% > 25%. Use --force to override.`); }
-  if (total < 20 || missingCore > total * 0.4) {
-    throw new Error(`Extraction quality gate failed (candidates=${total}, missingCore=${missingCore}). Re-run extraction and inspect diagnostics, or use --force to override.`);
-  }
+  const missingRde = reviewRows.filter((row) => !row.range || !row.duration || !row.effect).length;
+  const missingRdeRatio = total ? missingRde / total : 0;
+  const badHeading = reviewRows.find((row) => /(level\s+magic-?user\s+spells|level\s+cleric\s+spells|spell\s+table|saving\s+throw|experience\s+table|hit\s+chart|combat|equipment)/i.test(row.spellName || ""));
+  const beRows = reviewRows.filter((row) => /basic|expert/i.test(String(row.sourceBook || row.sourceFile || "")));
+  if (beRows.length < 50) throw new Error(`Extraction quality gate failed: Basic+Expert candidates ${beRows.length} < 50. Use --force to override.`);
+  if (unknownRatio > 0.10) throw new Error(`Extraction quality gate failed: missing spellClass ratio ${(unknownRatio*100).toFixed(1)}% > 10%. Use --force to override.`);
+  if (missingRdeRatio > 0.25) throw new Error(`Extraction quality gate failed: missing range/duration/effect ratio ${(missingRdeRatio*100).toFixed(1)}% > 25%. Use --force to override.`);
+  if (badHeading) throw new Error(`Extraction quality gate failed: section heading extracted as spellName (${badHeading.spellName}). Use --force to override.`);
 }
 
 main().catch((error) => {

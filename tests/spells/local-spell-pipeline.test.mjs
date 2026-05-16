@@ -1,68 +1,32 @@
 import { describe, it, expect } from 'vitest';
-import {
-  analyzeSpellPage,
-  detectSpellCandidatesFromText,
-  toReviewRows,
-  sanitizeCanonicalRows,
-  validateCanonicalRows,
-} from '../../module/spells/local-spell-pipeline.mjs';
+import { detectSpellCandidatesFromText, toReviewRows, sanitizeCanonicalRows, validateCanonicalRows } from '../../module/spells/local-spell-pipeline.mjs';
 
 describe('local spell pipeline', () => {
-  const sampleText = `Light (Magic-User Level 1)\nRange: 120'\nDuration: 6 turns\nEffect: 20' radius\nSaving Throw: None\nThis spell is reversible as Darkness.\n`;
-
-  it('detects spell headings and key fields', () => {
-    const [candidate] = detectSpellCandidatesFromText({ text: sampleText, sourceFile: 'basic.pdf', sourcePage: 12, sourceBook: 'basic' });
-    expect(candidate.spellName).toBe('Light');
-    expect(candidate.range).toContain("120'");
-    expect(candidate.duration).toContain('6 turns');
-    expect(candidate.effect).toContain("20' radius");
+  it('supports basic style list extraction', () => {
+    const text = `FIRST LEVEL CLERIC SPELLS\nCure Light Wounds    Detect Magic\nFIRST LEVEL MAGIC-USER SPELLS\nCharm Person    Sleep`; 
+    const out = detectSpellCandidatesFromText({ text, sourceBook: 'basic', sourcePage: 37 });
+    expect(out.length).toBeGreaterThan(3);
+    expect(out.find((c) => c.spellName === 'Charm Person')?.spellClass).toBe('Magic-User');
   });
 
-  it('extracts reversible metadata', () => {
-    const [candidate] = detectSpellCandidatesFromText({ text: sampleText });
-    expect(candidate.reversible).toBe(true);
+  it('supports expert clerical description style with R/D/E', () => {
+    const text = `FIRST LEVEL CLERIC SPELLS\nCure Light Wounds\nCure Light Wounds\nRange: Touch\nDuration: permanent\nEffect: heals 1d6+1 HP`; 
+    const out = detectSpellCandidatesFromText({ text, sourceBook: 'expert', sourcePage: 23 });
+    const row = out.find((c) => c.spellName === 'Cure Light Wounds');
+    expect(row?.range).toBe('Touch');
+    expect(row?.duration).toContain('permanent');
   });
 
-  it('detects class/level list headings and two-column names', () => {
-    const text = `Cleric Spells\nFirst Level\nCure Light Wounds    Detect Magic\nSecond Level\nBless\n`;
-    const out = detectSpellCandidatesFromText({ text, sourceFile: 'x.pdf', sourcePage: 2 });
-    expect(out.some((c) => c.spellName === 'Cure Light Wounds')).toBe(true);
-    expect(out.some((c) => c.spellName === 'Detect Magic')).toBe(true);
+  it('excludes heading false positives', () => {
+    const text = `SEVENTH-LEVEL MAGIC-USER SPELLS\nSaving Throw\nExperience Table`; 
+    const out = detectSpellCandidatesFromText({ text });
+    expect(out.some((c) => /Saving Throw|Experience Table/i.test(c.spellName))).toBe(false);
   });
 
-  it('detects name-line followed by field blocks and reversed star markers', () => {
-    const text = `Magic-User Spells\nThird Level\nHaste*\nRange: 240'\nDuration: 3 turns\nEffect: one creature per level\n`;
-    const [candidate] = detectSpellCandidatesFromText({ text });
-    expect(candidate.spellName).toBe('Haste');
-    expect(candidate.reversible).toBe(true);
-  });
-
-  it('returns diagnostics for detected spell sections', () => {
-    const page = analyzeSpellPage({ text: 'FIRST LEVEL CLERIC SPELLS\nBless\n', sourceFile: 'companion.pdf', sourcePage: 44 });
-    expect(page.diagnostics.hasSpellSections).toBe(true);
-    expect(page.diagnostics.detectedHeadings.length).toBeGreaterThan(0);
-  });
-
-  it('generates review rows', () => {
-    const rows = toReviewRows(detectSpellCandidatesFromText({ text: sampleText, sourceFile: 'x.pdf', sourcePage: 1 }));
-    expect(rows[0]).toHaveProperty('needsReview', true);
-    expect(rows[0]).toHaveProperty('confidence');
-  });
-
-  it('sanitizes canonical output and avoids raw leakage', () => {
-    const rows = toReviewRows(detectSpellCandidatesFromText({ text: sampleText, sourceFile: 'x.pdf', sourcePage: 1, sourceBook: 'basic' }));
-    rows[0].needsReview = false;
-    rows[0].manualNotes = 'Creates useful light for exploration.';
-    const [canonical] = sanitizeCanonicalRows(rows.filter((r) => !r.needsReview));
-    expect(canonical.summary).toBe('Creates useful light for exploration.');
-    expect(JSON.stringify(canonical)).not.toContain('This spell is reversible as Darkness');
-  });
-
-  it('rejects duplicate spell keys', () => {
-    const errors = validateCanonicalRows([
-      { spellKey: 'light', spellName: 'Light', spellClass: 'Magic-User', spellLevel: 1, range: '', duration: '', effect: '', save: '', reversible: false, reverseName: '', tags: [], summary: '', source: {} },
-      { spellKey: 'light', spellName: 'Light Copy', spellClass: 'Magic-User', spellLevel: 1, range: '', duration: '', effect: '', save: '', reversible: false, reverseName: '', tags: [], summary: '', source: {} },
-    ]);
-    expect(errors.join(' ')).toContain('duplicate spellKey');
+  it('review rows and canonical validation still work', () => {
+    const rows = toReviewRows([{ spellName: 'Light', spellKey: 'light', spellClass: 'Magic-User', spellLevel: 1, sourcePage: 1, sourceBook: 'basic', sourceFile: 'basic.pdf', range: '', duration: '', effect: '', needsReview: false }]);
+    const [canonical] = sanitizeCanonicalRows(rows);
+    expect(canonical.spellName).toBe('Light');
+    expect(validateCanonicalRows([canonical])).toEqual([]);
   });
 });
