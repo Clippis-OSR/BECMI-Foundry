@@ -55,7 +55,7 @@ export function normalizeMonsterAttacks(attacks) {
   if (Array.isArray(attacks)) return attacks.filter(Boolean);
   if (typeof attacks === 'string') {
     return attacks
-      .split(/[\/;+]|\band\b/gi)
+      .split(/[/;+]|\band\b/gi)
       .map((part) => String(part).trim())
       .filter(Boolean)
       .map((part) => {
