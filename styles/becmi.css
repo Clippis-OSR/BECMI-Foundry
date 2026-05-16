@@ -34,6 +34,28 @@
   padding: 6px;
   margin: 8px 0;
 }
+.becmi.sheet.actor .inline-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin: 4px 0 6px;
+}
+
+.becmi.sheet.actor .derived-pill {
+  border: 1px solid #aaa;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.becmi.sheet.actor .spell-tag {
+  display: inline-block;
+  margin: 1px 2px;
+  padding: 1px 4px;
+  border: 1px solid #999;
+  border-radius: 3px;
+}
 
 .becmi.sheet.actor .inventory-section-header {
   display: flex;
@@ -141,4 +163,14 @@
   grid-template-columns: 1fr 1fr;
   gap: 4px 12px;
   margin-top: 4px;
+}
+
+@media (max-width: 680px) {
+  .becmi.sheet.actor .enc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .becmi.sheet.actor table {
+    font-size: 12px;
+  }
 }

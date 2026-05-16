@@ -209,6 +209,7 @@ export class BECMICharacterSheet extends ActorSheet {
       const bracket = result.movementTier?.id ?? "0-400";
       const normalSpeed = Number.isFinite(Number(result.movementTier?.normalFeetPerTurn)) ? Number(result.movementTier.normalFeetPerTurn) : 0;
       const encounterSpeed = Number.isFinite(Number(result.movementTier?.encounterFeetPerRound)) ? Number(result.movementTier.encounterFeetPerRound) : 0;
+      const milesPerDay = normalSpeed > 0 ? normalSpeed / 5 : 0;
 
       const inventoryGroups = this._buildInventoryGroups();
       const withoutBackpack = this._sumGroupWeight(inventoryGroups, ["beltPouch", "worn", "sack1", "sack2"]);
@@ -220,6 +221,7 @@ export class BECMICharacterSheet extends ActorSheet {
         bracket,
         normalSpeed,
         encounterSpeed,
+        milesPerDay,
         withoutBackpack,
         withoutSacks,
         beltPouchAndWorn
@@ -231,6 +233,7 @@ export class BECMICharacterSheet extends ActorSheet {
         bracket: "0-400",
         normalSpeed: 0,
         encounterSpeed: 0,
+        milesPerDay: 0,
         withoutBackpack: 0,
         withoutSacks: 0,
         beltPouchAndWorn: 0
