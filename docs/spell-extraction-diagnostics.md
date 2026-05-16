@@ -1,22 +1,10 @@
-# Spell Extraction Diagnostics
+# Spell Seeding + Review Workflow
 
-After running `npm run extract:spells`, review private diagnostics artifacts:
+Use a curated seed-first flow for Basic+Expert spells.
 
-- `private/generated/spell-extraction-diagnostics.json`
-- `private/generated/spell-pages.txt`
+1. Run `npm run seed:spells` to generate private review files from `data/spells/seed-basic-expert.json`.
+2. Edit `private/review/spells-review.csv` or `.json` and fill `range`, `duration`, `effect`, `save`, `tags`, `manualNotes`, `pageVerified`, and set `reviewed=true` when done.
+3. Optional assist: run `npm run extract:spells` and copy suggestions only for existing seeded `spellKey` rows. Treat suggestions as `confidence` + `needsReview` hints only.
+4. Build canonical output with `npm run build:spells`. The build refuses rows with `reviewed=false` unless `--allow-unreviewed` is passed.
 
-Then run `npm run debug:spells` for a summary report:
-
-- total candidates by source
-- total candidates by class
-- total candidates by level
-- suspiciously empty fields
-- likely missed spell pages
-
-## Recommended review flow
-
-1. Run extraction and confirm candidate count is materially above low-recall baselines.
-2. Run debug summary and inspect any source file with unusually low counts.
-3. Inspect `skippedPagesWithSpellListHeadings` and `detectedSpellSectionRanges` in diagnostics JSON.
-4. Spot check candidate `confidence`, `parseReason`, and `rejectReason` values.
-5. Only run `npm run build:spells` after quality is acceptable. Use `npm run build:spells -- --force` only for intentional overrides.
+This keeps canonical public JSON tied to manually reviewed seed rows and prevents OCR/PDF auto-discovery from inventing spells.

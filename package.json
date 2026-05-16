@@ -15,7 +15,8 @@
     "build:spells": "node scripts/build-spells.mjs",
     "validate:spells": "node scripts/validate-spells.mjs",
     "debug:spells": "node scripts/debug-spells.mjs",
-    "clean:spell-review-backups": "find private/review -maxdepth 1 -type f -name '*.bak.*' -delete"
+    "clean:spell-review-backups": "find private/review -maxdepth 1 -type f -name '*.bak.*' -delete",
+    "seed:spells": "node scripts/seed-spells.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",

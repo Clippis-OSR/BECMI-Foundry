@@ -39,8 +39,8 @@ Historical audits remain available under `docs/audits/archive/` and `docs/archiv
 
 This project includes a local-only spell extraction pipeline for legally owned rulebook PDFs stored under `private/rules/`.
 
-- `npm run extract:spells`
-- `npm run review:spells`
+- `npm run seed:spells`
+- (optional) `npm run extract:spells`
 - `npm run build:spells`
 - `npm run validate:spells`
 
