@@ -320,8 +320,23 @@
 
 <h2>Inventory & Encumbrance</h2>
 
+<section class="inventory-section inventory-highlights">
+  <h3>At-a-Glance Movement & Load</h3>
+  <div class="enc-grid enc-grid-highlight">
+    <div class="derived-pill"><strong>Encumbrance Bracket:</strong> {{encumbranceSummary.bracket}} cn</div>
+    <div class="derived-pill"><strong>Movement:</strong> {{encumbranceSummary.normalSpeed}} ft/turn</div>
+    <div class="derived-pill"><strong>Combat Movement:</strong> {{encumbranceSummary.encounterSpeed}} ft/round</div>
+    <div class="derived-pill"><strong>Miles/Day:</strong> {{encumbranceSummary.milesPerDay}}</div>
+  </div>
+</section>
+
 <section class="inventory-section">
   <h3>Coinage</h3>
+  <div class="inline-summary">
+    <strong>Carried Coin Value:</strong> {{currencySummary.totalValueGp}} gp
+    <span>•</span>
+    <strong>Carried Coin Weight:</strong> {{currencySummary.totalWeightCn}} cn
+  </div>
   <table>
     <thead><tr><th>Type</th><th>Carried</th><th>Treasure Horde</th></tr></thead>
     <tbody>
@@ -338,7 +353,7 @@
 
 <section class="inventory-section">
   <h3>Treasure</h3>
-  <div><strong>Items:</strong> {{treasureSummary.count}} | <strong>Total:</strong> {{treasureSummary.totalValue}} gp</div>
+  <div><strong>Items:</strong> {{treasureSummary.count}} | <strong>Total:</strong> {{treasureSummary.totalValue}} gp | <strong>Identified:</strong> {{treasureSummary.identifiedValue}} gp</div>
   <label for="treasure-notes">Notes</label>
   <textarea id="treasure-notes" name="system.treasure.notes" rows="3">{{system.treasure.notes}}</textarea>
 </section>
@@ -359,12 +374,17 @@
 <section class="inventory-group inventory-section inventory-drop-zone" data-location="{{group.sectionLocation}}">
   <div class="inventory-section-header"><h3>{{group.label}}</h3><span>{{group.containedWeight}} cn</span></div>
   <table>
-    <thead><tr><th>Name</th><th>Qty</th><th>Enc</th><th>Total Enc</th><th>Location</th><th>Controls</th></tr></thead>
+    <thead><tr><th>Name</th><th>Equip</th><th>Qty</th><th>Enc</th><th>Total Enc</th><th>Location</th><th>Ammo</th><th>Controls</th></tr></thead>
     <tbody>
     {{#if group.items.length}}
       {{#each group.items as |item|}}
       <tr class="inventory-item-row">
         <td>{{item.name}}</td>
+        <td>
+          <button type="button" data-action="toggle-equip-item" data-item-id="{{item.id}}">
+            {{#if item.equipped}}Equipped{{else}}Carry{{/if}}
+          </button>
+        </td>
         <td><input type="number" value="{{item.quantity}}" min="0" step="1" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.quantity" /></td>
         <td><input type="number" value="{{item.weight}}" step="0.01" data-action="update-inventory-item" data-item-id="{{item.id}}" data-field="system.weight" /></td>
         <td>{{item.totalWeight}}</td>
@@ -377,11 +397,12 @@
             <option value="sack2" {{#if (eq item.location "sack2")}}selected{{/if}}>Sack #2</option>
           </select>
         </td>
+        <td>{{#if item.ammoType}}{{item.ammoType}}{{else}}-{{/if}}</td>
         <td><button type="button" data-action="item-edit" data-item-id="{{item.id}}">Edit</button> <button type="button" data-action="item-delete" data-item-id="{{item.id}}">Delete</button></td>
       </tr>
       {{/each}}
     {{else}}
-      <tr><td colspan="6"><em>No items.</em></td></tr>
+      <tr><td colspan="8"><em>No items.</em></td></tr>
     {{/if}}
     </tbody>
   </table>
@@ -398,23 +419,23 @@
   {{#if casterData.enabled}}
   <section>
     <h3>{{casterKey}}</h3>
-    <div>{{casterData.summaryLabel}}</div>
+    <div class="inline-summary"><strong>{{casterData.summaryLabel}}</strong></div>
     {{#each casterData.slots as |slot level|}}
-      <div><strong>Level {{level}}:</strong> {{slot.used}} / {{slot.max}} used ({{slot.remaining}} remaining)</div>
+      <div class="derived-pill"><strong>Level {{level}} Slots:</strong> {{slot.remaining}} remaining ({{slot.used}} / {{slot.max}} used)</div>
     {{/each}}
     {{#with (lookup ../spellcasting.casters casterKey) as |caster|}}
       {{#if caster.known}}
-      <h4>Known</h4>
+      <h4>Known Spells</h4>
       {{#each caster.known as |entries level|}}
         <div><strong>L{{level}}:</strong>
-          {{#if entries.length}}{{#each entries as |ref|}}<span>{{ref.spellKey}}</span> {{/each}}{{else}}<em>None</em>{{/if}}
+          {{#if entries.length}}{{#each entries as |ref|}}<span class="spell-tag">{{ref.spellKey}}</span> {{/each}}{{else}}<em>None</em>{{/if}}
         </div>
       {{/each}}
       {{/if}}
-      <h4>Prepared</h4>
+      <h4>Prepared Spells</h4>
       {{#each caster.prepared as |entries level|}}
         <div><strong>L{{level}}:</strong>
-          {{#if entries.length}}{{#each entries as |ref|}}<span>{{ref.spellKey}}</span> {{/each}}{{else}}<em>None</em>{{/if}}
+          {{#if entries.length}}{{#each entries as |ref|}}<span class="spell-tag">{{ref.spellKey}}</span> {{/each}}{{else}}<em>None</em>{{/if}}
         </div>
       {{/each}}
     {{/with}}
@@ -429,7 +450,7 @@
 <hr>
 
 <h2>Turn Undead (Derived)</h2>
-<div>
+<div class="inline-summary">
   <label for="turn-undead-target">Undead Type:</label>
   <select id="turn-undead-target" data-action="turn-undead-target">
     {{#each turnUndeadList}}
