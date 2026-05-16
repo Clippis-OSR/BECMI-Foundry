@@ -1,3 +1,11 @@
+# ARCHIVED DOCUMENT
+
+This document reflects repository state at the time it was written.
+It is no longer a canonical source of truth.
+See:
+- /docs/architecture/canonical-architecture.md
+- /docs/audits/current-system-audit.md
+
 # FAS 6 Closeout Audit — Exploration + Movement Consistency Verification
 
 Date: 2026-05-15

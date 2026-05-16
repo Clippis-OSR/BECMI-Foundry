@@ -11,32 +11,32 @@ Date: 2026-05-16
 
 ## Historical/archive candidates
 
-- `docs/full-system-audit-2026-05-14.md` — superseded by consolidated audit.
-- `docs/spell-reference-architecture-audit-2026-05-14.md` — point-in-time architecture audit snapshot.
-- `docs/sheet-schema-audit.md` — point-in-time schema gap analysis.
-- `docs/spell-action-closeout.md` — closeout-style completion snapshot.
+- `docs/audits/archive/full-system-audit-2026-05-14.md` — superseded by consolidated audit.
+- `docs/audits/archive/spell-reference-architecture-audit-2026-05-14.md` — point-in-time architecture audit snapshot.
+- `docs/archive/sheet-schema-audit.md` — point-in-time schema gap analysis.
+- `docs/archive/spell-action-closeout.md` — closeout-style completion snapshot.
 - `docs/inventory-qa-checklist.md` — manual QA checklist (still useful operationally, but not architecture source-of-truth).
 
 ## Deprecated docs
 
-- `docs/exploration-runtime-audit.md` (repository root duplicate) — appears redundant with `docs/audits/exploration-runtime-audit.md`; should be retired after confirming no unique required section.
-- `docs/audit-current-state.md` — status snapshot likely superseded by consolidated and newer subsystem audits.
+- `docs/audits/archive/exploration-runtime-audit-root-duplicate.md` (repository root duplicate) — appears redundant with `docs/audits/archive/exploration-runtime-audit.md`; should be retired after confirming no unique required section.
+- `docs/audits/archive/audit-current-state.md` — status snapshot likely superseded by consolidated and newer subsystem audits.
 
 ## Closeout/status-only docs
 
-- `docs/spell-action-closeout.md`
-- `docs/audits/final-basic-expert-audit.md`
-- `docs/audits/campaign-readiness-audit.md`
-- `docs/audits/basic-expert-system-audit.md`
-- `docs/audits/monster-runtime-audit.md`
-- `docs/audits/character-runtime-audit.md`
+- `docs/archive/spell-action-closeout.md`
+- `docs/audits/archive/final-basic-expert-audit.md`
+- `docs/audits/archive/campaign-readiness-audit.md`
+- `docs/audits/archive/basic-expert-system-audit.md`
+- `docs/audits/archive/monster-runtime-audit.md`
+- `docs/audits/archive/character-runtime-audit.md`
 
 These are valuable historical records, but should not be treated as live architecture authority.
 
 ## Duplicate / overlapping docs
 
-- `docs/exploration-runtime-audit.md` and `docs/audits/exploration-runtime-audit.md` overlap heavily in scope/title and should be merged or one archived.
-- `docs/full-system-audit-2026-05-14.md` overlaps with and is superseded by `docs/full-system-audit-2026-05-14-consolidated.md`.
+- `docs/audits/archive/exploration-runtime-audit-root-duplicate.md` and `docs/audits/archive/exploration-runtime-audit.md` overlap heavily in scope/title and should be merged or one archived.
+- `docs/audits/archive/full-system-audit-2026-05-14.md` overlaps with and is superseded by `docs/full-system-audit-2026-05-14-consolidated.md`.
 - Multiple subsystem audits under `docs/audits/` overlap recommendations already captured in the consolidated audit.
 
 ## Contradictory docs (or likely contradiction risk)
@@ -46,38 +46,38 @@ These are valuable historical records, but should not be treated as live archite
 
 ## Documents describing outdated architecture or superseded implementation details
 
-- `docs/full-system-audit-2026-05-14.md` (explicitly superseded by consolidated).
-- `docs/exploration-runtime-audit.md` and/or `docs/audits/exploration-runtime-audit.md` sections that discuss now-removed parallel runtime behavior should be treated as historical context.
-- `docs/sheet-schema-audit.md` where findings reflect pre-remediation sheet paths (validate against current code before relying).
-- `docs/spell-action-closeout.md` sections that describe “placeholder” limitations may be outdated depending on subsequent implementation.
+- `docs/audits/archive/full-system-audit-2026-05-14.md` (explicitly superseded by consolidated).
+- `docs/audits/archive/exploration-runtime-audit-root-duplicate.md` and/or `docs/audits/archive/exploration-runtime-audit.md` sections that discuss now-removed parallel runtime behavior should be treated as historical context.
+- `docs/archive/sheet-schema-audit.md` where findings reflect pre-remediation sheet paths (validate against current code before relying).
+- `docs/archive/spell-action-closeout.md` sections that describe “placeholder” limitations may be outdated depending on subsequent implementation.
 
 ## Subsystem documentation inventory
 
 - `docs/action-effect-library-design.md`
 - `docs/rules-data-layer.md`
 - `docs/rules/basic-expert-reference.md`
-- `docs/audits/basic-expert-system-audit.md`
-- `docs/audits/character-runtime-audit.md`
-- `docs/audits/monster-runtime-audit.md`
-- `docs/audits/exploration-runtime-audit.md`
-- `docs/spell-reference-architecture-audit-2026-05-14.md`
-- `docs/spell-action-closeout.md`
-- `docs/sheet-schema-audit.md`
+- `docs/audits/archive/basic-expert-system-audit.md`
+- `docs/audits/archive/character-runtime-audit.md`
+- `docs/audits/archive/monster-runtime-audit.md`
+- `docs/audits/archive/exploration-runtime-audit.md`
+- `docs/audits/archive/spell-reference-architecture-audit-2026-05-14.md`
+- `docs/archive/spell-action-closeout.md`
+- `docs/archive/sheet-schema-audit.md`
 
 ## Audit file inventory
 
-- `docs/audit-current-state.md`
-- `docs/full-system-audit-2026-05-14.md`
+- `docs/audits/archive/audit-current-state.md`
+- `docs/audits/archive/full-system-audit-2026-05-14.md`
 - `docs/full-system-audit-2026-05-14-consolidated.md`
-- `docs/spell-reference-architecture-audit-2026-05-14.md`
-- `docs/sheet-schema-audit.md`
-- `docs/exploration-runtime-audit.md`
-- `docs/audits/basic-expert-system-audit.md`
-- `docs/audits/campaign-readiness-audit.md`
-- `docs/audits/character-runtime-audit.md`
-- `docs/audits/exploration-runtime-audit.md`
-- `docs/audits/final-basic-expert-audit.md`
-- `docs/audits/monster-runtime-audit.md`
+- `docs/audits/archive/spell-reference-architecture-audit-2026-05-14.md`
+- `docs/archive/sheet-schema-audit.md`
+- `docs/audits/archive/exploration-runtime-audit-root-duplicate.md`
+- `docs/audits/archive/basic-expert-system-audit.md`
+- `docs/audits/archive/campaign-readiness-audit.md`
+- `docs/audits/archive/character-runtime-audit.md`
+- `docs/audits/archive/exploration-runtime-audit.md`
+- `docs/audits/archive/final-basic-expert-audit.md`
+- `docs/audits/archive/monster-runtime-audit.md`
 
 ## README references
 
