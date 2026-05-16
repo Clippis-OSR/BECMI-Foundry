@@ -132,6 +132,7 @@ export function buildCreatureRuntimeFromMonster(actor) {
 }
 
 export function buildNaturalAttackItemsFromLegacyActor(actor) {
+  console.warn("[BECMI Monsters] buildNaturalAttackItemsFromLegacyActor is deprecated. Normalize into canonical system.monster.attacks first.");
   const monster = actor?.system?.monster ?? {};
   const legacyAttackFields = [
     monster.attacks,

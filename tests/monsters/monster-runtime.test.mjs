@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { getActorAttackSources } from '../../module/combat/attack.mjs';
 import { createActor, createItem, installFoundryStubs } from '../helpers/foundry-test-helpers.mjs';
 import {
@@ -58,6 +58,7 @@ describe('monster runtime integration', () => {
   });
 
   it('normalizes legacy inline attack text into natural weapon items', () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const actor = createActor({
       id: 'legacy-actor',
       type: 'creature',
@@ -71,6 +72,8 @@ describe('monster runtime integration', () => {
     expect(items[0].system.weaponType).toBe('natural');
     expect(items[0].system.ammoType).toBeNull();
     expect(items[0].system.inventory.countsTowardEncumbrance).toBe(false);
+    expect(warnSpy).toHaveBeenCalled();
+    warnSpy.mockRestore();
   });
 
   it('runtime exposes morale and xp safely', () => {

@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   explorationToCombatMovement,
   getDungeonCombatMovement,
@@ -59,5 +59,18 @@ describe('canonical becmi movement runtime', () => {
   it('deterministic rounding and negative normalization behavior', () => {
     expect(normalizeMovementValue(-90)).toBe(0);
     expect(explorationToCombatMovement(91)).toBe(30);
+  });
+
+  it('legacy movement wrappers remain output-compatible and warn', () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const summary = getMovementSummary({ totalCarriedWeight: 401 }, 'dungeonExploration');
+    expect(getDungeonExplorationMovement({ totalCarriedWeight: 401 })).toBe(summary.dungeonExploration);
+    expect(getDungeonCombatMovement({ totalCarriedWeight: 401 })).toBe(summary.dungeonCombat);
+    expect(getWildernessExplorationMovement({ totalCarriedWeight: 401 })).toBe(summary.wildernessExploration);
+    expect(getWildernessCombatMovement({ totalCarriedWeight: 401 })).toBe(summary.wildernessCombat);
+    expect(getMilesPerDay({ totalCarriedWeight: 401 })).toBe(summary.milesPerDay);
+    expect(getForcedMarchMilesPerDay({ totalCarriedWeight: 401 }, 'wildernessForcedMarch')).toBe(summary.forcedMarchMilesPerDay);
+    expect(warnSpy).toHaveBeenCalled();
+    warnSpy.mockRestore();
   });
 });

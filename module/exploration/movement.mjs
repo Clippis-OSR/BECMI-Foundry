@@ -1,4 +1,5 @@
 import { getMovementTierByEncumbrance } from "../rules/encumbrance.mjs";
+import { getForcedMarchState } from "./movement-contracts.mjs";
 
 const DEFAULT_TRAVEL_PACE = "normal";
 const DEFAULT_MOVEMENT_CONTEXT = "dungeonExploration";
@@ -53,38 +54,40 @@ export function movementToMilesPerDay(movementValue) {
 }
 
 export function getDungeonExplorationMovement(encumbrance = {}) {
+  console.warn("[BECMI Exploration] getDungeonExplorationMovement is deprecated. Use getMovementSummary(...).dungeonExploration.");
   return getBaseMovement(encumbrance).movementValue;
 }
 
 export function getDungeonCombatMovement(encumbrance = {}) {
+  console.warn("[BECMI Exploration] getDungeonCombatMovement is deprecated. Use getMovementSummary(...).dungeonCombat.");
   return explorationToCombatMovement(getDungeonExplorationMovement(encumbrance));
 }
 
 export function getWildernessExplorationMovement(encumbrance = {}) {
+  console.warn("[BECMI Exploration] getWildernessExplorationMovement is deprecated. Use getMovementSummary(...).wildernessExploration.");
   return getBaseMovement(encumbrance).movementValue;
 }
 
 export function getWildernessCombatMovement(encumbrance = {}) {
+  console.warn("[BECMI Exploration] getWildernessCombatMovement is deprecated. Use getMovementSummary(...).wildernessCombat.");
   return getDungeonCombatMovement(encumbrance);
 }
 
 export function getMilesPerDay(encumbrance = {}) {
+  console.warn("[BECMI Exploration] getMilesPerDay is deprecated. Use getMovementSummary(...).milesPerDay.");
   return movementToMilesPerDay(getBaseMovement(encumbrance).movementValue);
 }
 
 export function getForcedMarchMilesPerDay(encumbrance = {}, context = "wildernessForcedMarch") {
+  console.warn("[BECMI Exploration] getForcedMarchMilesPerDay is deprecated. Use movement-contracts.getForcedMarchState.");
   const normalizedContext = getMovementContext(context);
   if (normalizedContext !== "wildernessForcedMarch") return getMilesPerDay(encumbrance);
-  return getMilesPerDay(encumbrance) * 1.5;
+  return getForcedMarchState(getMilesPerDay(encumbrance), true).modifiedMilesPerDay;
 }
 
 export function convertRangeDistanceByContext(distanceFeet, context = DEFAULT_MOVEMENT_CONTEXT) {
-  const normalizedDistance = normalizeMovementValue(distanceFeet);
-  const normalizedContext = getMovementContext(context);
-  if (normalizedContext === "wildernessExploration" || normalizedContext === "wildernessCombat" || normalizedContext === "wildernessForcedMarch") {
-    return normalizedDistance;
-  }
-  return normalizedDistance;
+  console.warn("[BECMI Exploration] convertRangeDistanceByContext is deprecated. Use convertDistanceByContext(distance, \"weaponRange\", context).");
+  return convertDistanceByContext(distanceFeet, "weaponRange", getMovementContext(context));
 }
 
 export function isSpellAreaAlwaysFeet() {
@@ -117,6 +120,7 @@ export function getMovementSummary(encumbrance = {}, context = DEFAULT_MOVEMENT_
 }
 
 export function getMovementForTurn(encumbrance = {}, options = {}) {
+  console.warn("[BECMI Exploration] getMovementForTurn is deprecated. Use getMovementSummary for canonical runtime movement.");
   const travelPace = typeof options.travelPace === "string" && options.travelPace.trim() ? options.travelPace : DEFAULT_TRAVEL_PACE;
   const base = getBaseMovement(encumbrance);
 
