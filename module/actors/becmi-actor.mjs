@@ -1,4 +1,5 @@
 import { calculateActorAC, getActorTHAC0, getActorSaves, getCharacterSaves, getCharacterTHAC0, getCanonicalTurnUndeadTable } from "../rules/index.mjs";
+import { normalizeThiefSkills } from "../rules/thief-skills.mjs";
 import { getActorClassId, getActorLevel, getCharacterLevelFromXP, getClassLevelData } from "../rules/lookups.mjs";
 import { assertCanonicalActorType } from "./actor-types.mjs";
 import { calculateTotalEncumbrance } from "../items/encumbrance.mjs";
@@ -64,7 +65,8 @@ export class BECMIActor extends Actor {
     const actorSpellcasting = this.system?.spellcasting;
     const spellcastingData = levelData?.spellcasting;
     const hasSpellcasting = spellcastingData?.enabled === true || Object.values(actorSpellcasting?.casters ?? {}).some((c) => c?.enabled === true);
-    const hasThiefSkills = !!levelData?.thiefSkills && typeof levelData.thiefSkills === "object";
+    const normalizedThiefSkills = normalizeThiefSkills(levelData?.thiefSkills);
+    const hasThiefSkills = normalizedThiefSkills !== null;
     const hasTurnUndead = !!levelData?.turnUndead && typeof levelData.turnUndead === "object";
     const canonicalSaves = {
       deathRayPoison: { value: calculatedSaves.deathRayPoison ?? null, label: "Death Ray / Poison" },
@@ -93,7 +95,7 @@ export class BECMIActor extends Actor {
       hasSpellcasting,
       spellcasting: prepareSpellcastingData(this),
       hasThiefSkills,
-      thiefSkills: hasThiefSkills ? levelData?.thiefSkills ?? null : null,
+      thiefSkills: hasThiefSkills ? normalizedThiefSkills : null,
       hasTurnUndead,
       turnUndead: hasTurnUndead ? getCanonicalTurnUndeadTable(levelData?.turnUndead) : null
     };

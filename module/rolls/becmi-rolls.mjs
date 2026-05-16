@@ -40,7 +40,7 @@ export async function rollAbilityCheck(actor, abilityKey, label) {
 }
 
 export async function rollThiefSkill(actor, skillKey, label) {
-  const target = Number(actor.system.thiefSkills?.[skillKey] ?? 0);
+  const target = Number(actor.system.derived?.thiefSkills?.[skillKey] ?? 0);
 
   const roll = await new Roll("1d100").evaluate();
 
