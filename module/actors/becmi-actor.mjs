@@ -59,7 +59,7 @@ export class BECMIActor extends Actor {
     const existingDerived = system.derived ?? {};
     const calculatedSaves = classId !== null && level !== null ? getCharacterSaves(classId, level) ?? {} : {};
     const calculatedThac0 = classId !== null && level !== null ? getCharacterTHAC0(classId, level) : null;
-    const levelData = classId !== null && derivedLevel !== null ? getClassLevelData(classId, derivedLevel) : null;
+    const levelData = classId !== null && level !== null ? getClassLevelData(classId, level) : null;
     migrateActorSpellcasting(this);
     validateActorSpellcasting(this);
     const actorSpellcasting = this.system?.spellcasting;

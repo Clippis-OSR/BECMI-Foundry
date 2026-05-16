@@ -22,6 +22,12 @@ function normalizeClassId(classId) {
   return classId;
 }
 
+const BECMI_DEMI_HUMAN_LEVEL_CAPS = Object.freeze({
+  dwarf: 12,
+  elf: 10,
+  halfling: 8
+});
+
 export function getActorClassId(actor) {
   const actorSystem = actor?.system ?? {};
   const classId =
@@ -87,6 +93,11 @@ export function getCharacterLevelFromXP(classId, xp) {
   for (const entry of sortedLevelEntries) {
     if (currentXP >= entry.xp) resolvedLevel = entry.level;
     else break;
+  }
+
+  const demiHumanLevelCap = BECMI_DEMI_HUMAN_LEVEL_CAPS[normalizeActorClassIdValue(classId)];
+  if (Number.isFinite(demiHumanLevelCap) && resolvedLevel > demiHumanLevelCap) {
+    resolvedLevel = demiHumanLevelCap;
   }
 
   debugDerivedDataLog("[BECMI] getCharacterLevelFromXP resolved.", {
