@@ -1,5 +1,6 @@
 import { resolveSpellReferenceSync } from "../../spells/spell-reference.js";
 import { normalizeSpellRuntimeData, buildSpellDurationSummary, buildSpellEffectSummary, buildSpellReversalContext } from "../../spells/spell-runtime.js";
+import { migrateActiveSpellRuntime, buildActiveSpellSummary } from "../../spells/active-spell-runtime.js";
 
 const SPELL_LEVELS = ["1", "2", "3", "4", "5", "6"];
 const CASTER_ORDER = ["magicUser", "cleric", "elf"];
@@ -42,5 +43,10 @@ export function prepareSpellcastingData(actor) {
     }
     derived[casterKey] = { enabled: caster.enabled === true, totalKnown, totalPrepared, slots, summaryLabel: `${LABELS[casterKey]}: ${totalPrepared} prepared` };
   }
+  const activeSpells = Array.isArray(actor?.system?.activeSpells) ? actor.system.activeSpells.map((entry) => {
+    const runtime = migrateActiveSpellRuntime(entry);
+    return { ...runtime, summary: buildActiveSpellSummary(runtime) };
+  }) : [];
+  derived.activeSpells = activeSpells;
   return derived;
 }
