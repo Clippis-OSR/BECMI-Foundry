@@ -1,5 +1,7 @@
 const titleCase = (value) => String(value ?? "").replace(/([A-Z])/g, " $1").replace(/^./, (m) => m.toUpperCase()).trim();
 
+import { normalizeSpellRuntimeData, buildSpellEffectSummary, buildSpellDurationSummary, buildSpellReversalContext, buildSpellManualResolutionNotes } from "../../spells/spell-runtime.js";
+
 const LEGACY_FIELDS = Object.freeze(["spellRange", "spellDuration", "targetType", "saveType"]);
 
 function assert(condition, message) {
@@ -44,7 +46,10 @@ export function normalizeSpellData(system = {}) {
     scaling: sanitizeObject({ progression: system.scaling?.progression ?? "", formula: system.scaling?.formula ?? "" }),
     automation: sanitizeObject({ supported: Boolean(system.automation?.supported), mode: system.automation?.mode ?? "none", config: sanitizeObject(system.automation?.config ?? {}) }),
     source: sanitizeObject({ book: system.source?.book ?? "", page: system.source?.page ?? "", notes: system.source?.notes ?? "" }),
-    description: sanitizeObject({ summary: system.description?.summary ?? "", text: system.description?.text ?? "" })
+    description: sanitizeObject({ summary: system.description?.summary ?? "", text: system.description?.text ?? "" }),
+    reverse: sanitizeObject({ spellKey: system.reverse?.spellKey ?? "", name: system.reverse?.name ?? "", effect: system.reverse?.effect ?? "" }),
+    manualNotes: system.manualNotes ?? "",
+    stacking: sanitizeObject({ sameSpellPolicy: system.stacking?.sameSpellPolicy ?? "", key: system.stacking?.key ?? "" })
   };
 
   return sanitizeObject(normalized);
@@ -67,16 +72,27 @@ export function prepareSpellData(item) {
   if (!item || item.type !== "spell") return {};
   const system = normalizeSpellData(item.system ?? {});
   const spellLists = Array.isArray(system.spellLists) ? system.spellLists : [];
+  const runtime = normalizeSpellRuntimeData({ ...system, name: item.name });
+  const effectSummary = buildSpellEffectSummary(runtime);
+  const durationSummary = buildSpellDurationSummary(runtime.duration);
+  const reversal = buildSpellReversalContext(runtime);
   return {
     labels: {
       spellLists: spellLists.map(titleCase).join(", "),
       duration: formatDuration(system.duration),
-      range: formatRange(system.range)
+      range: formatRange(system.range),
+      effect: effectSummary.summary || "See spell text",
+      durationFamily: durationSummary.family,
+      save: effectSummary.save,
+      reversible: reversal.label
     },
     computed: {
       hasAreaTargeting: Boolean(system.targeting?.area?.shape),
       hasSavingThrow: Boolean(system.savingThrow?.allowed),
-      supportsAutomation: Boolean(system.automation?.supported)
+      supportsAutomation: Boolean(system.automation?.supported),
+      runtime,
+      manualResolutionNotes: buildSpellManualResolutionNotes(runtime),
+      area: effectSummary.area
     }
   };
 }
