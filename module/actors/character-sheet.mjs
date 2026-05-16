@@ -22,6 +22,8 @@ import { importItemToActor } from "../items/item-importer.mjs";
 import { ensureActorEquipmentSlots, equipItem, unequipItem } from "../items/equipment-slots.mjs";
 import { BECMI_ENCUMBRANCE_RULES } from "../rules/encumbrance.mjs";
 import { buildInventoryDiagnosticsPresentation } from "../items/inventory-diagnostics-ui.mjs";
+import { buildSpellCastingContext, buildSpellDurationSummary, buildSpellEffectSummary, buildSpellManualResolutionNotes } from "../spells/spell-runtime.js";
+import { createActiveSpellRuntime, expireActiveSpell, dismissActiveSpell, suppressActiveSpell, restoreSuppressedSpell } from "../spells/active-spell-runtime.js";
 
 const DEBUG_INVENTORY = false;
 const debugInventory = (...args) => {
@@ -189,6 +191,9 @@ export class BECMICharacterSheet extends ActorSheet {
     html.find('[data-action="change-currency-quantity"]').on("change", this._onCurrencyQuantityChange.bind(this));
     html.find('[data-action="update-inventory-item"]').on("change", this._onUpdateInventoryItem.bind(this));
     html.find('[data-action="update-inventory-item"]').on("click", (event) => event.stopPropagation());
+    html.find('[data-action="cast-spell"]').on("click", this._onCastSpell.bind(this));
+    html.find('[data-action="restore-slot"]').on("click", this._onRestoreSpellSlot.bind(this));
+    html.find('[data-action="runtime-action"]').on("click", this._onRuntimeAction.bind(this));
   }
 
 
@@ -599,6 +604,73 @@ export class BECMICharacterSheet extends ActorSheet {
     entries.sort((a, b) => String(a.spellKey).localeCompare(String(b.spellKey)));
     await this.actor.update({ "system.spellcasting": system.spellcasting });
     return true;
+  }
+
+
+  async _onCastSpell(event) {
+    event.preventDefault();
+    const casterKey = event.currentTarget?.dataset?.casterKey;
+    const level = String(event.currentTarget?.dataset?.level ?? "1");
+    const index = Number(event.currentTarget?.dataset?.preparedIndex ?? -1);
+    const system = foundry.utils.deepClone(this.actor.system ?? {});
+    const caster = system?.spellcasting?.casters?.[casterKey];
+    const prepared = caster?.prepared?.[level];
+    if (!Array.isArray(prepared) || index < 0 || !prepared[index]) return;
+    const ref = prepared[index];
+    const item = (ref.itemId && this.actor.items.get(ref.itemId)) || this.actor.items.find((i) => i.system?.spellKey === ref.spellKey);
+    if (!item) return ui.notifications?.warn(`Cannot resolve spell ${ref.spellKey}.`);
+
+    let castAs = "normal";
+    const runtimeContext = buildSpellCastingContext({ spell: item, casterKey });
+    if (runtimeContext.reversal?.castTimeChoice) {
+      const reverse = await Dialog.confirm({ title: "Reversible Spell", content: `<p>Cast <strong>${item.name}</strong> as reversed form?</p>` });
+      castAs = reverse ? "reversed" : "normal";
+    }
+    const castContext = buildSpellCastingContext({ spell: item, casterKey, castAs });
+    const shouldTrack = await Dialog.confirm({ title: "Track Active Spell", content: `<p>Track <strong>${castContext.displayName}</strong> as active spell runtime?</p>` });
+
+    caster.slots[level].used = Math.min(Number(caster.slots[level].max) || 0, (Number(caster.slots[level].used) || 0) + 1);
+    if (casterKey !== "cleric") prepared.splice(index, 1);
+
+    if (shouldTrack) {
+      const active = createActiveSpellRuntime({ spell: item, casterActorId: this.actor.id, sourceItemUuid: item.uuid, reverseMode: castAs === "reversed" });
+      system.activeSpells = Array.isArray(system.activeSpells) ? system.activeSpells : [];
+      system.activeSpells.push(active);
+    }
+
+    await this.actor.update({ "system.spellcasting": system.spellcasting, "system.activeSpells": system.activeSpells ?? this.actor.system.activeSpells ?? [] });
+
+    const duration = buildSpellDurationSummary(castContext.duration);
+    const effect = buildSpellEffectSummary(castContext.runtime);
+    const notes = buildSpellManualResolutionNotes(castContext.runtime, casterKey);
+    const content = `<div class="becmi-spell-card"><h3>${this.actor.name} casts ${castContext.displayName}.</h3><p><strong>Caster:</strong> ${castContext.casterLabel}</p><p><strong>Range:</strong> ${effect.range || "See spell text"}</p><p><strong>Duration:</strong> ${duration.label}</p><p><strong>Save:</strong> ${effect.save}</p><p><strong>Area/Effect:</strong> ${effect.area || effect.text || "See spell text"}</p><p><strong>Track Active Spell:</strong> ${shouldTrack ? "Yes" : "No"}</p><ul>${notes.map((n) => `<li>Manual: ${n}</li>`).join("")}</ul></div>`;
+    await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: this.actor }), content });
+  }
+
+  async _onRestoreSpellSlot(event) {
+    event.preventDefault();
+    const casterKey = event.currentTarget?.dataset?.casterKey;
+    const level = String(event.currentTarget?.dataset?.level ?? "1");
+    const system = foundry.utils.deepClone(this.actor.system ?? {});
+    const slot = system?.spellcasting?.casters?.[casterKey]?.slots?.[level];
+    if (!slot) return;
+    slot.used = Math.max(0, Number(slot.used || 0) - 1);
+    await this.actor.update({ "system.spellcasting": system.spellcasting });
+  }
+
+  async _onRuntimeAction(event) {
+    event.preventDefault();
+    const action = event.currentTarget?.dataset?.runtimeAction;
+    const runtimeId = event.currentTarget?.dataset?.runtimeId;
+    const spells = Array.isArray(this.actor.system?.activeSpells) ? foundry.utils.deepClone(this.actor.system.activeSpells) : [];
+    const idx = spells.findIndex((s) => s?.id === runtimeId);
+    if (idx < 0) return;
+    const current = spells[idx];
+    if (action === "dismiss") spells[idx] = dismissActiveSpell(current);
+    if (action === "expire") spells[idx] = expireActiveSpell(current);
+    if (action === "suppress") spells[idx] = suppressActiveSpell(current);
+    if (action === "restore") spells[idx] = restoreSuppressedSpell(current);
+    await this.actor.update({ "system.activeSpells": spells });
   }
 
 }
