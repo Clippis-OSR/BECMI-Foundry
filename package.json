@@ -18,7 +18,13 @@
     "clean:spell-review-backups": "find private/review -maxdepth 1 -type f -name '*.bak.*' -delete",
     "seed:spells": "node scripts/seed-spells.mjs",
     "assist:spell-details": "node scripts/assist-spell-details.mjs",
-    "inspect:spell": "node scripts/inspect-spell.mjs"
+    "inspect:spell": "node scripts/inspect-spell.mjs",
+    "spell:progress": "node scripts/spell-progress.mjs",
+    "spell:missing": "node scripts/spell-missing.mjs",
+    "spell:validate-review": "node scripts/spell-validate-review.mjs",
+    "spell:apply-suggestions": "node scripts/spell-apply-suggestions.mjs",
+    "spell:export-review": "node scripts/spell-export-review.mjs",
+    "spell:inspect": "node scripts/inspect-spell.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",

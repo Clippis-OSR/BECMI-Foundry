@@ -1,23 +1,7 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { slugifySpellKey } from '../module/spells/local-spell-pipeline.mjs';
-
-const contextFile = path.resolve('private/review/spell-detail-context.json');
-const arg = process.argv.find((a) => a.startsWith('--spell='));
-const spell = arg ? arg.slice('--spell='.length) : '';
-if (!spell) { console.error('Usage: npm run inspect:spell -- --spell="Fire Ball"'); process.exit(1); }
-
-const key = slugifySpellKey(spell);
-const data = JSON.parse(await fs.readFile(contextFile, 'utf8'));
-const matches = (data.contexts || []).filter((c) => c.spellKey === key || String(c.name || '').toLowerCase() === spell.toLowerCase());
-if (!matches.length) { console.log(`No context found for: ${spell}`); process.exit(0); }
-for (const c of matches) {
-  console.log(`Spell: ${c.name} (${c.spellKey})`);
-  console.log(`Candidate page: ${c.sourceFile}:${c.candidatePage} | heading confidence=${c.headingConfidence}`);
-  console.log('Likely lines:');
-  console.log(`- Range: ${(c.nearbyRangeLines || []).join(' | ') || '(none)'}`);
-  console.log(`- Duration: ${(c.nearbyDurationLines || []).join(' | ') || '(none)'}`);
-  console.log(`- Effect: ${(c.nearbyEffectLines || []).join(' | ') || '(none)'}`);
-  console.log('Nearby OCR text:');
-  console.log(c.nearbyTextBlock || '(none)');
-}
+import { loadReviewRows, loadSeedRows, validateReview } from './spell-review-tools.mjs'; import { slugifySpellKey } from '../module/spells/local-spell-pipeline.mjs';
+const arg=process.argv.find(a=>a.startsWith('--spell=')); if(!arg) throw new Error('Usage --spell="name"'); const q=arg.slice(8).toLowerCase(); const key=slugifySpellKey(q);
+const rows=await loadReviewRows(); const row=rows.find(r=>r.spellKey===key||String(r.name).toLowerCase()===q); if(!row){console.log('No spell found'); process.exit(0);} console.log('identity:',{spellKey:row.spellKey,name:row.name,spellClass:row.spellClass,spellLevel:row.spellLevel});
+console.log('review fields:',{sourcePage:row.sourcePage,range:row.range,duration:row.duration,effect:row.effect,save:row.save,tags:row.tags,manualNotes:row.manualNotes,reviewed:row.reviewed,pageVerified:row.pageVerified});
+console.log('suggestions:',{suggestedSourcePage:row.suggestedSourcePage,suggestedRange:row.suggestedRange,suggestedDuration:row.suggestedDuration,suggestedEffect:row.suggestedEffect,suggestedSave:row.suggestedSave,suggestedTags:row.suggestedTags});
+const excerpt=String(row.suggestedContextExcerpt||'').split('\n').slice(0,4).join('\n'); console.log('private excerpt:',excerpt||'(none)');
+const issues=validateReview(await loadSeedRows(),rows).filter(e=>e.includes(row.spellKey)); console.log('validation issues:',issues); console.log('next action:', row.reviewed===true?'ready':'complete missing reviewed fields');
