@@ -1,12 +1,24 @@
 import { resolveSpellReferenceSync } from "../../spells/spell-reference.js";
+import { normalizeSpellRuntimeData, buildSpellDurationSummary, buildSpellEffectSummary, buildSpellReversalContext } from "../../spells/spell-runtime.js";
 
 const SPELL_LEVELS = ["1", "2", "3", "4", "5", "6"];
 const CASTER_ORDER = ["magicUser", "cleric", "elf"];
 const LABELS = { magicUser: "Magic-User", cleric: "Cleric", elf: "Elf" };
 
-function resolveEntries(actor, entries) {
+function resolveEntries(actor, entries, casterKey) {
   if (!Array.isArray(entries)) return [];
-  return entries.map((ref) => ({ reference: ref, ...resolveSpellReferenceSync(ref, actor) }));
+  return entries.map((ref) => {
+    const resolved = resolveSpellReferenceSync(ref, actor);
+    const runtime = resolved.spell ? normalizeSpellRuntimeData({ ...resolved.spell.system, name: resolved.spell.name }) : null;
+    const duration = runtime ? buildSpellDurationSummary(runtime.duration) : null;
+    const effect = runtime ? buildSpellEffectSummary(runtime) : null;
+    const reversal = runtime ? buildSpellReversalContext(runtime, casterKey) : null;
+    return {
+      reference: ref,
+      ...resolved,
+      summary: runtime ? `${runtime.name} • ${duration.label} • ${effect.save}${reversal?.reversible ? ` • ${reversal.label}` : ""}` : ref.spellKey
+    };
+  });
 }
 
 export function prepareSpellcastingData(actor) {
@@ -24,8 +36,8 @@ export function prepareSpellcastingData(actor) {
         max,
         used,
         remaining: Math.max(0, max - used),
-        knownReferences: resolveEntries(actor, caster?.known?.[level]),
-        preparedReferences: resolveEntries(actor, caster?.prepared?.[level])
+        knownReferences: resolveEntries(actor, caster?.known?.[level], casterKey),
+        preparedReferences: resolveEntries(actor, caster?.prepared?.[level], casterKey)
       };
     }
     derived[casterKey] = { enabled: caster.enabled === true, totalKnown, totalPrepared, slots, summaryLabel: `${LABELS[casterKey]}: ${totalPrepared} prepared` };

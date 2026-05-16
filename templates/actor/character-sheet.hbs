@@ -459,22 +459,18 @@
     {{#each casterData.slots as |slot level|}}
       <div class="derived-pill"><strong>Level {{level}} Slots:</strong> {{slot.remaining}} remaining ({{slot.used}} / {{slot.max}} used)</div>
     {{/each}}
-    {{#with (lookup ../spellcasting.casters casterKey) as |caster|}}
-      {{#if caster.known}}
-      <h4>Known Spells</h4>
-      {{#each caster.known as |entries level|}}
-        <div><strong>L{{level}}:</strong>
-          {{#if entries.length}}{{#each entries as |ref|}}<span class="spell-tag">{{ref.spellKey}}</span> {{/each}}{{else}}<em>None</em>{{/if}}
-        </div>
-      {{/each}}
-      {{/if}}
-      <h4>Prepared Spells</h4>
-      {{#each caster.prepared as |entries level|}}
-        <div><strong>L{{level}}:</strong>
-          {{#if entries.length}}{{#each entries as |ref|}}<span class="spell-tag">{{ref.spellKey}}</span> {{/each}}{{else}}<em>None</em>{{/if}}
-        </div>
-      {{/each}}
-    {{/with}}
+    <h4>Known Spells</h4>
+    {{#each casterData.slots as |slot level|}}
+      <div><strong>L{{level}}:</strong>
+        {{#if slot.knownReferences.length}}{{#each slot.knownReferences as |ref|}}<span class="spell-tag">{{ref.summary}}</span> {{/each}}{{else}}<em>None</em>{{/if}}
+      </div>
+    {{/each}}
+    <h4>Prepared Spells</h4>
+    {{#each casterData.slots as |slot level|}}
+      <div><strong>L{{level}}:</strong>
+        {{#if slot.preparedReferences.length}}{{#each slot.preparedReferences as |ref|}}<span class="spell-tag">{{ref.summary}}</span> {{/each}}{{else}}<em>None</em>{{/if}}
+      </div>
+    {{/each}}
   </section>
   {{/if}}
 {{/each}}
