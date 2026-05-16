@@ -34,3 +34,14 @@ For contributor and Codex work, start with these canonical docs:
 - Documentation governance and authority rules: `docs/documentation-policy.md`
 
 Historical audits remain available under `docs/audits/archive/` and `docs/archive/` for reference only.
+
+## Local-only spell extraction workflow
+
+This project includes a local-only spell extraction pipeline for legally owned rulebook PDFs stored under `private/rules/`.
+
+- `npm run extract:spells`
+- `npm run review:spells`
+- `npm run build:spells`
+- `npm run validate:spells`
+
+`private/` is gitignored so PDFs, raw extraction text, and review artifacts stay local.
