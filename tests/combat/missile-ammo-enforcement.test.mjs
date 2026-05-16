@@ -68,6 +68,20 @@ describe('missile ammo enforcement', () => {
     expect(result.blockedByAmmo).toBeUndefined();
   });
 
+
+
+  it('manual mode does not auto-consume ammo when toggle disabled', async () => {
+    installDeterministicRolls([14]);
+    const bow = createItem({ id: 'w-bow-manual', type: 'weapon', system: { equipped: true, weaponType: 'missile', ammoType: 'arrow', damage: '1d6' } });
+    const arrows = createItem({ id: 'a-arrow-manual', type: 'ammo', system: { ammoType: 'arrow', quantity: 3 } });
+    const actor = createActor({ items: [bow, arrows] });
+
+    const result = await rollAttack({ attacker: actor, target: createActor({ id: 't7' }), attackData: weaponItemToAttackData(bow), postToChat: false, rollDamageOnHit: false, automation: { autoConsumeAmmo: false } });
+
+    expect(result.attackResult).toBeTruthy();
+    expect(arrows.system.quantity).toBe(3);
+  });
+
   it('natural attack does not require ammo', async () => {
     installDeterministicRolls([16]);
     const bite = createItem({ id: 'w-bite', type: 'weapon', system: { equipped: true, weaponType: 'natural', ammoType: null, slot: 'natural', damage: '1d4' } });

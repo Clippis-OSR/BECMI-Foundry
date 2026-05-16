@@ -22,6 +22,7 @@ import {
 import { SAVE_TYPES, getSaveTarget, resolveSave, rollSave, renderSaveCard } from "./saves.mjs";
 import { resolveMorale, rollMorale, renderMoraleCard, shouldCheckMorale } from "./morale.mjs";
 import { hasAvailableAmmo, consumeAmmo } from "../items/ammo.mjs";
+import { resolveAutomationSettings } from "../automation/settings.mjs";
 import { validateWeaponRestrictions } from "../rules/weapon-restrictions.mjs";
 import {
   getCreatureXP,
@@ -83,7 +84,7 @@ export async function rollMoraleForSelectedCreatures({ reason = "Manual morale c
  *   compute modifier totals before calling rollAttack.
  * - Post-hit effects: apply after attackResult / damageResult are returned.
  */
-export async function rollAttack({ attacker, target, attackData, rollDamageOnHit = true, postToChat = true } = {}) {
+export async function rollAttack({ attacker, target, attackData, rollDamageOnHit = true, postToChat = true, automation = {} } = {}) {
   if (!attacker) throw new Error("[BECMI Combat] rollAttack requires an attacker.");
   if (!target) throw new Error("[BECMI Combat] rollAttack requires a target.");
   if (!attackData || typeof attackData !== "object") throw new Error("[BECMI Combat] rollAttack requires attackData.");
@@ -107,8 +108,8 @@ export async function rollAttack({ attacker, target, attackData, rollDamageOnHit
     return { attackResult: null, damageResult: null, blockedByAmmo: true };
   }
 
-  if (requiresAmmo) await consumeAmmo(attacker, attackData.ammoType, 1);
-  // TODO: Future: support ammo tracking modes: none, manual, automatic.
+  const automationSettings = resolveAutomationSettings(automation);
+  if (requiresAmmo && automationSettings.autoConsumeAmmo) await consumeAmmo(attacker, attackData.ammoType, 1);
 
   const attackResult = await resolveAttack({ attacker, target, attackData });
   let damageResult = null;

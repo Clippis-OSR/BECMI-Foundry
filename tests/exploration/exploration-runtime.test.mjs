@@ -152,6 +152,26 @@ describe('exploration runtime integration', () => {
     expect(result.events.some((evt) => evt.type === 'wildernessPursuitCheck')).toBe(true);
     expect(result.events.some((evt) => evt.type === 'hookWildernessEncounter')).toBe(true);
   });
+
+
+  it('respects light automation toggle when disabled', () => {
+    const state = normalizeExplorationState({ currentTurn: 1, elapsedTurns: 1, activeLightSources: [{ lightKey: 'torch', remainingTurns: 4 }] });
+    const result = advanceExplorationTurn(state, { automation: { autoTickLightSources: false } });
+
+    expect(result.state.activeLightSources[0].remainingTurns).toBe(4);
+    expect(result.events.some((evt) => evt.type === 'explorationLightExpired')).toBe(false);
+  });
+
+  it('emits optional ration, morale, and rest helper reminder events deterministically', () => {
+    const state = normalizeExplorationState({ currentTurn: 143, elapsedTurns: 143, movementContext: 'wildernessExploration', wilderness: { encounterCadenceTurns: 1, encounterCadenceCounter: 0 } });
+    const runtime = { automation: { rationReminderCadenceTurns: 2, moraleReminderPrompts: true, restHelperPrompts: true } };
+    const result = advanceExplorationTurn(state, runtime);
+
+    expect(result.events.some((evt) => evt.type === 'explorationRationReminder')).toBe(true);
+    expect(result.events.some((evt) => evt.type === 'explorationMoraleReminder')).toBe(true);
+    expect(result.events.some((evt) => evt.type === 'explorationRestPrompt')).toBe(true);
+  });
+
   it('exports runtime API for attachment to game.becmi', () => {
     expect(exploration).toHaveProperty('movement');
     expect(exploration).toHaveProperty('time');

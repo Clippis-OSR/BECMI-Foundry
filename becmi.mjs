@@ -28,6 +28,7 @@ import { isCanonicalSlot, normalizeLegacyItemSlotForMigration } from "./module/i
 import { detectLegacyManualDerivedFields, stripProtectedDerivedActorUpdates } from "./module/actors/derived-guards.mjs";
 import * as explorationRuntime from "./module/exploration/index.mjs";
 import * as encounterHelpers from "./module/encounters/index.mjs";
+import { registerAutomationSettings } from "./module/automation/settings.mjs";
 
 const BECMI_CREATURE_SHEET_ID = "becmi-foundry.BECMICreatureSheet";
 const BECMI_CHARACTER_SHEET_ID = "becmi-foundry.BECMICharacterSheet";
@@ -250,6 +251,7 @@ Hooks.once("init", async function () {
 
   game.settings.register("becmi-foundry", "actorTypeMigrationVersion", { name: "Actor Type Migration Version", scope: "world", config: false, type: String, default: "0" });
   game.settings.register("becmi-foundry", "inventoryModelMigrationVersion", { name: "Inventory Model Migration Version", scope: "world", config: false, type: String, default: "0" });
+  registerAutomationSettings();
 
   registerSpellValidationHooks();
 
