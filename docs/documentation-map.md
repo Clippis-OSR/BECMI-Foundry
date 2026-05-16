@@ -2,28 +2,38 @@
 
 Date: 2026-05-16
 
-## Canonical docs (start here)
+## Canonical documentation map and authority entrypoints
 
-These are the contributor-facing source-of-truth documents for architecture, current audit context, and documentation policy:
+This file is the **single canonical documentation map** for contributor routing.
 
-- `docs/architecture/canonical-architecture.md`
-- `docs/audits/current-system-audit.md`
-- `docs/documentation-policy.md`
-- `README.md`
+Start here in order:
 
-## Documentation map (quick routing)
+1. `README.md`
+2. `docs/architecture/canonical-architecture.md`
+3. `docs/documentation-policy.md`
+4. `docs/audits/current-system-audit.md`
 
+## Canonical docs (current-state authority)
+
+- **Project entrypoint and quick navigation:** `README.md`
 - **Architecture decisions and current runtime boundaries:** `docs/architecture/canonical-architecture.md`
-- **Current system findings, risks, and remediation context:** `docs/audits/current-system-audit.md`
-- **How to classify docs, authority order, and archive policy:** `docs/documentation-policy.md`
-- **Rules reference context:** `docs/rules/basic-expert-reference.md`
-- **Test-scope and regression intent:** `tests/README.md`
+- **Documentation authority/lifecycle rules:** `docs/documentation-policy.md`
+- **Single active audit path:** `docs/audits/current-system-audit.md`
+
+Supporting canonical references:
+
+- `docs/architecture/runtime-systems.md`
+- `docs/architecture/data-layer.md`
+- `docs/architecture/api-surface.md`
+- `docs/architecture/deprecated-systems.md`
+- `docs/rules/basic-expert-reference.md`
+- `docs/rules-data-layer.md`
 
 ## Historical documentation
 
-Historical audits and closeout documents are intentionally preserved and are not deleted. Treat them as reference material only, per `docs/documentation-policy.md`.
+Historical audits and closeout records are reference-only and must not be treated as implementation authority.
 
-Use these directories when you need historical context:
+Use only for historical context:
 
 - `docs/audits/archive/`
 - `docs/archive/`
