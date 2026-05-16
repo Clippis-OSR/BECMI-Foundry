@@ -5,8 +5,10 @@ import {
   buildNaturalAttackItemsFromLegacyActor,
   buildCreatureActorDataFromCanonicalMonster,
   buildCreatureRuntimeFromMonster,
-  buildNaturalAttackItemsFromMonster
+  buildNaturalAttackItemsFromMonster,
+  normalizeMonsterAttacks
 } from '../../module/monsters/monster-runtime.mjs';
+import { normalizeMonsterData } from '../../module/monsters/monster-data.mjs';
 import { createCreatureFromCanonicalMonster } from '../../module/monsters/monster-importer.mjs';
 
 installFoundryStubs();
@@ -86,5 +88,16 @@ describe('monster runtime integration', () => {
 
   it('invalid canonical monster data throws and cannot silently create actor', async () => {
     await expect(createCreatureFromCanonicalMonster({ system: { name: 'Bad' } }, { actorApi: { createActor: async () => ({ id: 'x' }) } })).rejects.toThrow();
+  });
+
+  it('monsterKey normalization is deterministic', () => {
+    const a = normalizeMonsterData({ name: 'Owl Bear' });
+    const b = normalizeMonsterData({ name: 'Owl   Bear!!' });
+    expect(a.monsterKey).toBe('owl_bear');
+    expect(b.monsterKey).toBe('owl_bear');
+  });
+
+  it('attack parsing for legacy text is deterministic', () => {
+    expect(normalizeMonsterAttacks('2 Claws/1 Bite')).toEqual(normalizeMonsterAttacks('2 Claws + 1 Bite'));
   });
 });

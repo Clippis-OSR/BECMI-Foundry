@@ -47,8 +47,20 @@ describe("monster schema lock", () => {
   });
 
   it("rejects legacy aliases", () => {
-    expect(() => normalizeMonsterData({ id: "owl-bear" })).toThrow(/Legacy field "id"/);
     expect(() => validateMonsterSchema(createValidMonster({ system: { armorClass: 5 } }))).toThrow(/Legacy monster alias "armorClass"/);
+  });
+
+  it("migrates legacy aliases with warnings", () => {
+    const warnings = [];
+    const normalized = normalizeMonsterData({ id: "owl-bear", armorClass: 5, move: "120' (40')", attack: "1 bite", saveAs: "f 3", morale: "9", XP: "175" }, { onWarning: (w) => warnings.push(w) });
+    expect(warnings.length).toBeGreaterThan(0);
+    expect(normalized.monsterKey).toBe("owl_bear");
+    expect(normalized.ac).toBe(5);
+    expect(normalized.movement).toBe("120' (40')");
+    expect(normalized.attacks).toBe("1 bite");
+    expect(normalized.saveAs).toBe("F3");
+    expect(normalized.morale).toBe(9);
+    expect(normalized.xp).toBe(175);
   });
 
   it("normalization preserves raw BECMI strings", () => {

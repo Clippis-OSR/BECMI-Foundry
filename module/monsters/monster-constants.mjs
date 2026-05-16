@@ -22,16 +22,22 @@ export const REQUIRED_MONSTER_FIELDS = Object.freeze([
   "ac",
   "hitDice",
   "movement",
-  "movementModes",
   "attacks",
   "damage",
-  "damageParts",
   "numberAppearing",
   "saveAs",
   "morale",
   "treasureType",
-  "treasure",
   "alignment",
-  "xp",
-  "specialAbilities"
+  "xp"
+]);
+
+export const OPTIONAL_MONSTER_FIELDS = Object.freeze([
+  "lairChance",
+  "notes",
+  "specialAbilities",
+  "movementModes",
+  "damageParts",
+  "treasure",
+  "description"
 ]);
