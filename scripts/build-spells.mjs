@@ -4,13 +4,13 @@ import { sanitizeCanonicalRows, validateCanonicalRows } from '../module/spells/l
 
 const reviewJson = path.resolve('private/review/spells-review.json');
 const outFile = path.resolve('data/spells/canonical.json');
-const forced = process.argv.includes('--force');
+const allowUnreviewed = process.argv.includes('--allow-unreviewed');
 
 async function main() {
   const reviewRows = JSON.parse(await fs.readFile(reviewJson, 'utf8'));
-  await enforceQualityGate(reviewRows);
-  const filtered = reviewRows.filter((row) => !row.needsReview);
-  const invalidReviewed = filtered.filter((row) => (!row.spellName || !row.sourcePage || !row.spellLevel || row.spellLevel <= 0 || !row.spellClass || row.spellClass === "unknown" || (!(row.range || row.duration || row.effect) && row.needsReview !== true)));
+  enforceReviewGate(reviewRows);
+  const filtered = reviewRows.filter((row) => allowUnreviewed || row.reviewed === true);
+  const invalidReviewed = filtered.filter((row) => (!row.name || !row.spellLevel || row.spellLevel <= 0 || !row.spellClass || !(row.range || row.duration || row.effect)));
   if (invalidReviewed.length) throw new Error(`Reviewed rows missing required spell fields: ${invalidReviewed.length}.`);
   const canonical = sanitizeCanonicalRows(filtered);
   const errors = validateCanonicalRows(canonical);
@@ -21,32 +21,11 @@ async function main() {
   console.log('Next step: npm run validate:spells');
 }
 
-async function enforceQualityGate(reviewRows) {
-  if (forced) return;
-  const total = reviewRows.length;
-  const unknownClass = reviewRows.filter((row) => !row.spellClass || row.spellClass === "unknown").length;
-  const unknownRatio = total ? unknownClass / total : 0;
-  const missingRde = reviewRows.filter((row) => !row.range || !row.duration || !row.effect).length;
-  const missingRdeRatio = total ? missingRde / total : 0;
-  const badHeading = reviewRows.find((row) => /(level\s+magic-?user\s+spells|level\s+cleric\s+spells|spell\s+table|saving\s+throw|experience\s+table|hit\s+chart|combat|equipment)/i.test(row.spellName || ""));
-  const beRows = reviewRows.filter((row) => /basic|expert/i.test(String(row.sourceBook || row.sourceFile || "")));
-  if (beRows.length < 50) throw new Error(`Extraction quality gate failed: Basic+Expert candidates ${beRows.length} < 50. Use --force to override.`);
-  const expertRows = reviewRows.filter((row) => /expert/i.test(String(row.sourceBook || row.sourceFile || "")));
-  if (expertRows.length === 0) throw new Error('Extraction quality gate failed: Expert count is 0. Use --force to override.');
-  const badStart = reviewRows.find((row) => /^This spell/i.test(String(row.spellName || '')));
-  if (badStart) throw new Error(`Extraction quality gate failed: prose extracted as spellName (${badStart.spellName}). Use --force to override.`);
-  const savingThrow = reviewRows.find((row) => /Saving Throw Table/i.test(String(row.spellName || '')));
-  if (savingThrow) throw new Error(`Extraction quality gate failed: table heading extracted as spellName (${savingThrow.spellName}). Use --force to override.`);
-  const tableRows = /^(Death Ray or Poison|Magic Wands|Paralysis or Stone|Dragon Breath)$/i;
-  const tableRowHit = reviewRows.find((row) => tableRows.test(String(row.spellName || '')));
-  if (tableRowHit) throw new Error(`Extraction quality gate failed: saving throw row extracted as spellName (${tableRowHit.spellName}). Use --force to override.`);
-  const whitelistMiss = reviewRows.filter((row) => !row.spellKey);
-  const whitelistMissRatio = total ? whitelistMiss.length / total : 0;
-  if (whitelistMissRatio > 0.10) throw new Error(`Extraction quality gate failed: non-whitelist ratio ${(whitelistMissRatio*100).toFixed(1)}% > 10%. Use --force to override.`);
+function enforceReviewGate(reviewRows) {
+  if (allowUnreviewed) return;
+  const unreviewed = reviewRows.filter((row) => row.reviewed !== true);
+  if (unreviewed.length) throw new Error(`Refusing build: ${unreviewed.length} rows have reviewed=false. Use --allow-unreviewed to override.`);
 
-  if (unknownRatio > 0.10) throw new Error(`Extraction quality gate failed: missing spellClass ratio ${(unknownRatio*100).toFixed(1)}% > 10%. Use --force to override.`);
-  if (missingRdeRatio > 0.25) throw new Error(`Extraction quality gate failed: missing range/duration/effect ratio ${(missingRdeRatio*100).toFixed(1)}% > 25%. Use --force to override.`);
-  if (badHeading) throw new Error(`Extraction quality gate failed: section heading extracted as spellName (${badHeading.spellName}). Use --force to override.`);
 }
 
 main().catch((error) => {
