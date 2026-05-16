@@ -2,7 +2,7 @@ const IMPORT_VERSION = 1;
 function normalizeMonsterAttacks(attacks) {
   if (Array.isArray(attacks)) return attacks.filter(Boolean);
   if (typeof attacks === 'string') {
-    return attacks.split(/[\/;+]|\band\b/gi).map((part) => String(part).trim()).filter(Boolean).map((part) => {
+    return attacks.split(/[/;+]|\band\b/gi).map((part) => String(part).trim()).filter(Boolean).map((part) => {
       const match = part.match(/^(\d+)\s+(.+)$/i);
       return { type: match ? match[2] : part, count: match ? Number(match[1]) : 1, raw: part };
     });
