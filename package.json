@@ -17,7 +17,8 @@
     "debug:spells": "node scripts/debug-spells.mjs",
     "clean:spell-review-backups": "find private/review -maxdepth 1 -type f -name '*.bak.*' -delete",
     "seed:spells": "node scripts/seed-spells.mjs",
-    "assist:spell-details": "node scripts/assist-spell-details.mjs"
+    "assist:spell-details": "node scripts/assist-spell-details.mjs",
+    "inspect:spell": "node scripts/inspect-spell.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",
