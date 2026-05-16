@@ -46,6 +46,10 @@ describe('monster builder', () => {
         weaponType: 'natural',
         slot: 'natural',
         equipped: true,
+        hands: 'none',
+        ammoType: null,
+        attackCount: 2,
+        attackLabel: 'claw',
         inventory: {
           location: 'worn',
           countsTowardEncumbrance: false

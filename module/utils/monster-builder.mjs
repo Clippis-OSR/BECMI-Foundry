@@ -1,4 +1,14 @@
 const IMPORT_VERSION = 1;
+function normalizeMonsterAttacks(attacks) {
+  if (Array.isArray(attacks)) return attacks.filter(Boolean);
+  if (typeof attacks === 'string') {
+    return attacks.split(/[\/;+]|\band\b/gi).map((part) => String(part).trim()).filter(Boolean).map((part) => {
+      const match = part.match(/^(\d+)\s+(.+)$/i);
+      return { type: match ? match[2] : part, count: match ? Number(match[1]) : 1, raw: part };
+    });
+  }
+  return [];
+}
 
 function normalizeDamageTypes(damageTypes) {
   if (!damageTypes) return [];
@@ -59,6 +69,11 @@ export function buildNaturalAttackItemData(attack, monster, { attackIndex = 0 } 
       weaponType: 'natural',
       slot: 'natural',
       equipped: true,
+      hands: 'none',
+      ammoType: null,
+      attackCount,
+      attackLabel: baseName,
+      riderText: attack?.riderText ? String(attack.riderText) : null,
       damage: attack.damage ?? monster.damage ?? '',
       damageTypes: normalizeDamageTypes(attack.damageTypes),
       inventory: {
@@ -77,7 +92,7 @@ export function buildNaturalAttackItemData(attack, monster, { attackIndex = 0 } 
 }
 
 export function buildMonsterItemData(monster) {
-  const attacks = Array.isArray(monster.attacks) ? monster.attacks : [];
+  const attacks = normalizeMonsterAttacks(monster.attacks);
   return attacks.map((attack, index) => buildNaturalAttackItemData(attack, monster, { attackIndex: index }));
 }
 
