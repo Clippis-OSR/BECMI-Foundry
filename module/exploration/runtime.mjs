@@ -1,3 +1,4 @@
+import { resolveAutomationSettings } from "../automation/settings.mjs";
 import { deriveElapsedTimeFromTurns, getTimeUnits } from "./time.mjs";
 import { getMovementContext, getMovementSummary as summarizeMovement } from "./movement.mjs";
 import { normalizeLightSource, tickLightSources } from "./light.mjs";
@@ -87,7 +88,10 @@ export function advanceExplorationTurn(state = {}, runtime = {}) {
   const movement = summarizeMovement(runtime?.encumbrance ?? state?.encumbrance ?? {}, before.movementContext);
   const partyMovement = getPartyMovementSummary(runtime?.party ?? state?.party ?? []);
   const movementValue = partyMovement.partyMovement > 0 ? partyMovement.partyMovement : movement.movementValue;
-  const activeLightSources = tickLightSources(before.activeLightSources, 1);
+  const automationSettings = resolveAutomationSettings(runtime?.automation);
+  const activeLightSources = automationSettings.autoTickLightSources
+    ? tickLightSources(before.activeLightSources, 1)
+    : before.activeLightSources;
 
   const nextEncounterCadenceCounter = before.wilderness.encounterCadenceCounter + 1;
   const encounterCadenceTriggered = before.movementContext.startsWith("wilderness")
@@ -120,6 +124,17 @@ export function advanceExplorationTurn(state = {}, runtime = {}) {
   });
 
   const expiredLights = activeLightSources.filter((source) => !source.active && source.remainingTurns === 0);
+  const reminders = [];
+  if (automationSettings.rationReminderCadenceTurns > 0 && (elapsedTurns % automationSettings.rationReminderCadenceTurns) === 0) {
+    reminders.push(Object.freeze({ type: "explorationRationReminder", turn: before.currentTurn + 1, cadenceTurns: automationSettings.rationReminderCadenceTurns }));
+  }
+  if (automationSettings.restHelperPrompts && Number.isFinite(elapsed.elapsedMinutes) && (elapsed.elapsedMinutes % (24 * 60) === 0)) {
+    reminders.push(Object.freeze({ type: "explorationRestPrompt", turn: before.currentTurn + 1, elapsedDays: elapsed.elapsedDays }));
+  }
+  if (automationSettings.moraleReminderPrompts && encounterCadenceTriggered) {
+    reminders.push(Object.freeze({ type: "explorationMoraleReminder", turn: before.currentTurn + 1, reason: "Encounter cadence reached" }));
+  }
+
   const diagnostics = [
     ...before.diagnostics,
     `turn advanced: ${before.currentTurn} -> ${before.currentTurn + 1}`,
@@ -176,7 +191,7 @@ export function advanceExplorationTurn(state = {}, runtime = {}) {
   const movementEvent = Object.freeze({ type: "explorationMovementUpdated", turn: next.currentTurn, movementValue: next.movementValue, movementContext: next.movementContext });
   const turnEvent = Object.freeze({ type: "explorationTurnAdvanced", turn: next.currentTurn, elapsedTurns, elapsedMinutes: next.elapsedMinutes });
 
-  events.push(durationEvent, movementEvent, turnEvent);
+  events.push(durationEvent, movementEvent, turnEvent, ...reminders);
 
   if (wildernessProcedureSupport) {
     const encounterEvent = Object.freeze({ type: "wildernessEncounterCheck", turn: next.currentTurn, result: wildernessProcedureSupport.encounter });
