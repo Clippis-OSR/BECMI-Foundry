@@ -12,7 +12,8 @@ import {
   getItemTotalWeight,
   normalizeContainerId,
   normalizeItemLocation,
-  validateItemContainerAssignment
+  validateItemContainerAssignment,
+  getInventoryDiagnostics
 } from "../items/inventory-manager.mjs";
 import { calculateTotalEncumbrance } from "../items/encumbrance.mjs";
 import * as currencyHelpers from "../items/currency.mjs";
@@ -112,6 +113,7 @@ export class BECMICharacterSheet extends ActorSheet {
       : [];
     context.equipmentSlots = ensureActorEquipmentSlots(this.actor);
     context.inventoryGroups = this._buildInventoryGroups();
+    context.inventoryDiagnostics = getInventoryDiagnostics(this.actor);
     context.currencySummary = this._buildCurrencySummary();
     context.treasureSummary = this._buildTreasureSummary();
     context.encumbranceSummary = this._buildEncumbranceSummary();
@@ -445,14 +447,20 @@ export class BECMICharacterSheet extends ActorSheet {
       { key: "worn", label: "Items Worn" },
       { key: "backpack", label: "Items in Backpack" },
       { key: "sack1", label: "Items in Sack #1" },
-      { key: "sack2", label: "Items in Sack #2" }
+      { key: "sack2", label: "Items in Sack #2" },
+      { key: "carried", label: "Carried (Loose/Other)" },
+      { key: "storage", label: "Stored / Treasure Hoard Containers" }
     ];
 
     const groups = groupDefinitions.map((group) => ({
       ...group,
       sectionLocation: group.key,
       items: items
-        .filter((item) => getItemLocation(item) === group.key)
+        .filter((item) => {
+          const loc = getItemLocation(item);
+          if (group.key === "sack1" || group.key === "sack2") return loc === "sack";
+          return loc === group.key;
+        })
         .map((item) => this._mapInventoryItem(item))
     }));
 

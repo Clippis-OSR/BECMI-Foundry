@@ -180,6 +180,82 @@ export function validateItemContainerAssignment(actor, item, { containerId, loca
   return true;
 }
 
+export function getInventoryDiagnostics(actor) {
+  const diagnostics = [];
+  const items = getActorItems(actor).filter((item) => item?.type !== "currency");
+  const byId = new Map(items.map((it) => [getItemId(it), it]));
+
+  for (const item of items) {
+    const id = getItemId(item);
+    const name = item?.name ?? id ?? "Unknown";
+    const inventory = item?.system?.inventory;
+    if (!inventory || typeof inventory !== "object" || Array.isArray(inventory)) {
+      diagnostics.push({ severity: "error", code: "missingInventoryFields", itemId: id, message: `[${name}] missing system.inventory object.` });
+      continue;
+    }
+
+    const rawLocation = item?.system?.inventory?.location ?? item?.system?.location;
+    if (!CANONICAL_INVENTORY_LOCATIONS.includes(normalizeItemLocation(rawLocation))) {
+      diagnostics.push({ severity: "error", code: "invalidLocation", itemId: id, message: `[${name}] invalid inventory location "${rawLocation}".` });
+    }
+
+    const quantity = Number(item?.system?.quantity);
+    if (!Number.isFinite(quantity) || quantity < 0) {
+      diagnostics.push({ severity: "error", code: "invalidQuantity", itemId: id, message: `[${name}] has invalid quantity "${item?.system?.quantity}".` });
+    }
+
+    const weight = Number(item?.system?.weight);
+    if (!Number.isFinite(weight) || weight < 0) {
+      diagnostics.push({ severity: "error", code: "malformedEncumbrance", itemId: id, message: `[${name}] has malformed weight "${item?.system?.weight}".` });
+    }
+
+    if (item?.system?.equipped === true && !["worn", "carried", "equipped", "backpack", "beltPouch", "sack"].includes(getItemLocation(item))) {
+      diagnostics.push({ severity: "error", code: "equippedNotCarried", itemId: id, message: `[${name}] is equipped but not carried.` });
+    }
+
+    const containerId = normalizeContainerId(item?.system?.containerId);
+    if (containerId) {
+      const parent = byId.get(containerId);
+      if (!parent || parent.type !== "container") diagnostics.push({ severity: "error", code: "invalidContainer", itemId: id, message: `[${name}] references invalid containerId "${containerId}".` });
+    }
+  }
+
+  // Cycle/orphan detection.
+  for (const item of items) {
+    const id = getItemId(item);
+    if (!id) continue;
+    let cursor = item;
+    const visited = new Set([id]);
+    while (cursor) {
+      const parentId = normalizeContainerId(cursor?.system?.containerId);
+      if (!parentId) break;
+      if (visited.has(parentId)) {
+        diagnostics.push({ severity: "error", code: "containerCycle", itemId: id, message: `[${item?.name ?? id}] is part of a container cycle.` });
+        break;
+      }
+      visited.add(parentId);
+      cursor = byId.get(parentId);
+      if (!cursor) {
+        diagnostics.push({ severity: "error", code: "orphanedContainedItem", itemId: id, message: `[${item?.name ?? id}] has orphaned container parent "${parentId}".` });
+        break;
+      }
+    }
+  }
+
+  const currency = actor?.system?.currency ?? {};
+  for (const bucket of ["carried", "treasureHorde"]) {
+    if (!currency[bucket] || typeof currency[bucket] !== "object") {
+      diagnostics.push({ severity: "error", code: "missingCurrencyBucket", message: `Missing currency bucket system.currency.${bucket}.` });
+      continue;
+    }
+    for (const key of ["pp", "gp", "ep", "sp", "cp"]) {
+      const qty = Number(currency[bucket][key] ?? 0);
+      if (!Number.isFinite(qty) || qty < 0) diagnostics.push({ severity: "error", code: "invalidCurrency", message: `Invalid ${bucket}.${key} currency quantity.` });
+    }
+  }
+  return diagnostics;
+}
+
 export async function moveItemToContainer(item, containerId) {
   if (!item?.update) return null;
 
