@@ -28,6 +28,13 @@ export function validateMonsterSchema(monsterData, context = "monster validation
 
   validateMonsterKey(system.monsterKey);
   assert(Number(system.schemaVersion) === MONSTER_SCHEMA_VERSION, `schemaVersion is required and must be ${MONSTER_SCHEMA_VERSION} in ${context}.`);
+  assert(Number.isFinite(Number(system.ac)), `ac must be numeric in ${context}.`);
+  assert(typeof system.hitDice === "string" && system.hitDice.trim().length > 0, `hitDice must be a non-empty string in ${context}.`);
+  assert(typeof system.movement === "string" && system.movement.trim().length > 0, `movement must be a non-empty string in ${context}.`);
+  assert(typeof system.damage === "string" && system.damage.trim().length > 0, `damage must be a non-empty string in ${context}.`);
+  assert(Number.isFinite(Number(system.morale)), `morale must be numeric in ${context}.`);
+  assert(Number.isFinite(Number(system.xp)), `xp must be numeric and table/data-driven in ${context}.`);
+  assert(typeof system.saveAs === "string" && /^[A-Z]+\d+$/.test(system.saveAs.trim()), `saveAs must match canonical form like F3 in ${context}.`);
 
   if (originalMonsterData) {
     const originalSystem = originalMonsterData?.system ?? originalMonsterData;
