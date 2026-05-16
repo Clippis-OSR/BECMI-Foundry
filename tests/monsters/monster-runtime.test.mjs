@@ -100,4 +100,20 @@ describe('monster runtime integration', () => {
     expect(normalizeMonsterAttacks('2 Claws/1 Bite')).toEqual([]);
     expect(normalizeMonsterAttacks([{ type: 'claw', count: 2 }])).toEqual([{ type: 'claw', count: 2 }]);
   });
+
+  it('natural attack items preserve sequence, count, rider, and deterministic replacement flags', () => {
+    const [item] = buildNaturalAttackItemsFromMonster({
+      system: {
+        monsterKey: 'wight',
+        attacks: [{ type: 'touch', count: 2, sequence: ['claw', 'claw'], damage: '1d4', riderText: 'energy drain', specialTags: ['energy_drain'] }],
+        damage: '1d4'
+      }
+    });
+    expect(item.system.attackCount).toBe(2);
+    expect(item.system.attackLabel).toBe('touch');
+    expect(item.system.attackSequence).toEqual(['claw', 'claw']);
+    expect(item.system.riderText).toBe('energy drain');
+    expect(item.system.specialTags).toEqual(['energy_drain']);
+    expect(item.flags.becmi.replaceKey).toBe('wight::0');
+  });
 });

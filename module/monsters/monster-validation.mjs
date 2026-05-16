@@ -35,6 +35,22 @@ export function validateMonsterSchema(monsterData, context = "monster validation
   assert(Number.isFinite(Number(system.morale)), `morale must be numeric in ${context}.`);
   assert(Number.isFinite(Number(system.xp)), `xp must be numeric and table/data-driven in ${context}.`);
   assert(typeof system.saveAs === "string" && /^[A-Z]+\d+$/.test(system.saveAs.trim()), `saveAs must match canonical form like F3 in ${context}.`);
+  if (system.treasure?.normalizedCodes) {
+    assert(Array.isArray(system.treasure.normalizedCodes), `treasure.normalizedCodes must be an array in ${context}.`);
+    for (const code of system.treasure.normalizedCodes) {
+      assert(/^[A-P]$/i.test(String(code)), `treasure.normalizedCodes entries must be A-P in ${context}.`);
+    }
+  }
+  if (system.movementModes) {
+    assert(system.movementModes && typeof system.movementModes === "object" && !Array.isArray(system.movementModes), `movementModes must be an object in ${context}.`);
+    for (const [mode, value] of Object.entries(system.movementModes)) {
+      assert(/^(move|fly|swim|burrow|climb)$/i.test(mode), `movementModes contains unknown mode "${mode}" in ${context}.`);
+      assert(/^\d+(?:\(\d+\))?$/.test(String(value).replace(/\s+/g, "")), `movementModes.${mode} must be numeric movement like 120(40) in ${context}.`);
+    }
+  }
+  if (Array.isArray(system.attacks) && Array.isArray(system.damageParts) && system.damageParts.length > 0) {
+    assert(system.attacks.every((attack) => attack && typeof attack === "object"), `attacks must contain structured attack objects in ${context}.`);
+  }
 
   if (originalMonsterData) {
     const originalSystem = originalMonsterData?.system ?? originalMonsterData;
