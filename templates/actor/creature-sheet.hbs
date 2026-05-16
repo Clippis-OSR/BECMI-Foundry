@@ -78,6 +78,23 @@
     <label>Save As Level</label>
     <input type="number" name="system.monster.saveAs.level" value="{{savesAs.level}}" data-action="change-creature-field"/>
 
+
+    <h2>Encounter Helper</h2>
+    <p>Quick-add this creature to a dungeon or wilderness encounter group without auto-running initiative.</p>
+    <div class="encounter-helper-row">
+      <label>Encounter Quantity</label>
+      <input type="number" min="1" step="1" name="system.encounterHelper.quantity" value="1" data-action="encounter-helper-quantity"/>
+    </div>
+    <div class="encounter-helper-row">
+      <button type="button" data-action="encounter-helper-dungeon">Add Dungeon Group</button>
+      <button type="button" data-action="encounter-helper-wilderness">Add Wilderness Group</button>
+    </div>
+    <div class="encounter-helper-readout">
+      <div><strong>Morale:</strong> {{monster.morale}}</div>
+      <div><strong>Movement:</strong> {{monster.movement.special}}</div>
+      <div><strong>Number Appearing:</strong> {{monster.numberAppearing}}</div>
+    </div>
+
     <h2>Natural Attacks</h2>
     <button type="button" data-action="create-natural-attack">+ Add Natural Attack</button>
 
