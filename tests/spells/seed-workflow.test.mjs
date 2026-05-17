@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { extractDescriptionBlocksFromPage, sanitizeCanonicalRows } from '../../module/spells/local-spell-pipeline.mjs';
+import { PATHS } from '../../scripts/spell-review-tools.mjs';
 
 const seedPath = path.resolve('data/spells/seed-basic-expert.json');
 
@@ -49,6 +50,6 @@ it('build refuses unreviewed rows by default', async () => {
 it('seed generation creates one review row per seed spell', async () => {
   execFileSync('node', ['scripts/seed-spells.mjs'], { encoding: 'utf8' });
   const seed = JSON.parse(await fs.readFile(seedPath, 'utf8')).spells;
-  const review = JSON.parse(await fs.readFile(path.resolve('private/review/spells-review.json'), 'utf8'));
+  const review = JSON.parse(await fs.readFile(PATHS.reviewJson, 'utf8'));
   expect(review).toHaveLength(seed.length);
 });
