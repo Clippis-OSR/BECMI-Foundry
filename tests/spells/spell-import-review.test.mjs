@@ -102,9 +102,12 @@ describe('spell import review', () => {
       execFileSync('node', ['scripts/spell-import-review.mjs'], { encoding: 'utf8' });
 
       const imported = JSON.parse(await fs.readFile(reviewJsonPath, 'utf8'));
-      expect(imported).toHaveLength(companionKeys.length);
-      expect(imported.every((r) => r.sourceBook === 'Companion')).toBe(true);
-      expect(imported.every((r) => r.sourcePage === '200')).toBe(true);
+      for (const [spellKey, spellClass, spellLevel] of companionKeys) {
+        const row = imported.find((r) => r.spellKey === spellKey && r.spellClass === spellClass && Number(r.spellLevel) === spellLevel);
+        expect(row).toBeTruthy();
+        expect(row.sourceBook).toBe('Companion');
+        expect(row.sourcePage).toBe('200');
+      }
     } finally {
       if (originalReviewJson == null) await fs.rm(reviewJsonPath, { force: true }); else await fs.writeFile(reviewJsonPath, originalReviewJson);
       if (originalWorkbook == null) await fs.rm(reviewWorkbookPath, { force: true }); else await fs.writeFile(reviewWorkbookPath, originalWorkbook);
@@ -134,6 +137,47 @@ describe('spell import review', () => {
 
       const after = await fs.readFile(reviewJsonPath, 'utf8');
       expect(after).toBe(before);
+    } finally {
+      if (originalSeed == null) await fs.rm(seedPath, { force: true }); else await fs.writeFile(seedPath, originalSeed);
+      if (originalReviewJson == null) await fs.rm(reviewJsonPath, { force: true }); else await fs.writeFile(reviewJsonPath, originalReviewJson);
+      if (originalWorkbook == null) await fs.rm(reviewWorkbookPath, { force: true }); else await fs.writeFile(reviewWorkbookPath, originalWorkbook);
+    }
+  });
+
+  it('resolves canonical key cure-critical-wounds|Cleric|5 even when review JSON is stale', async () => {
+    const originalSeed = await readMaybe(seedPath);
+    const originalReviewJson = await readMaybe(reviewJsonPath);
+    const originalWorkbook = await readMaybe(reviewWorkbookPath);
+
+    const seed = {
+      spells: [
+        { spellKey: 'known', name: 'Known', spellClass: 'Cleric', spellLevel: 1, sourceBook: 'Basic', sourcePage: 1, reversible: false, reverseName: '', needsDetails: true },
+        { spellKey: 'cure-critical-wounds', name: 'Cure Critical Wounds', spellClass: 'Cleric', spellLevel: 5, sourceBook: 'Companion', sourcePage: 200, reversible: false, reverseName: '', needsDetails: true }
+      ]
+    };
+    // Stale review JSON intentionally missing cure-critical-wounds.
+    const existingReview = [
+      { spellKey: 'known', name: 'Known', spellClass: 'Cleric', spellLevel: 1, sourceBook: 'Basic', sourcePage: '', reversible: false, reverseName: '', needsDetails: true, range: '', duration: '', effect: '', save: '', tags: [], manualNotes: '', pageVerified: false, reviewed: false }
+    ];
+    const workbook = [
+      'spellKey,name,spellClass,spellLevel,sourceBook,sourcePage,range,duration,effect,save,tags,manualNotes,reviewed,pageVerified,suggestedSourcePage,suggestedRange,suggestedDuration,suggestedEffect,suggestedSave,suggestedTags,validationStatus,nextAction',
+      'cure-critical-wounds,Cure Critical Wounds,Cleric,5,Companion,200,Touch,Instant,Heals target,none,healing,Companion verified,true,true,200,Touch,Instant,Heals target,none,healing,ready,ready'
+    ].join('\n');
+
+    try {
+      await fs.writeFile(seedPath, JSON.stringify(seed, null, 2));
+      await fs.mkdir(reviewDir, { recursive: true });
+      await fs.writeFile(reviewJsonPath, JSON.stringify(existingReview, null, 2));
+      await fs.writeFile(reviewWorkbookPath, workbook);
+
+      expect(() => execFileSync('node', ['scripts/spell-import-review.mjs'], { encoding: 'utf8' })).not.toThrow();
+
+      const imported = JSON.parse(await fs.readFile(reviewJsonPath, 'utf8'));
+      const row = imported.find((r) => `${r.spellKey}|${r.spellClass}|${r.spellLevel}` === 'cure-critical-wounds|Cleric|5');
+      expect(row).toBeTruthy();
+      expect(row.reviewed).toBe(true);
+      expect(row.pageVerified).toBe(true);
+      expect(row.manualNotes).toBe('Companion verified');
     } finally {
       if (originalSeed == null) await fs.rm(seedPath, { force: true }); else await fs.writeFile(seedPath, originalSeed);
       if (originalReviewJson == null) await fs.rm(reviewJsonPath, { force: true }); else await fs.writeFile(reviewJsonPath, originalReviewJson);
