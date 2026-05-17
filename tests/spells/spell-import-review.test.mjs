@@ -104,6 +104,7 @@ describe.sequential('spell import review', () => {
 
     try {
       await fs.mkdir(reviewDir, { recursive: true });
+      await fs.writeFile(seedPath, JSON.stringify(seed, null, 2));
       await fs.writeFile(reviewJsonPath, JSON.stringify(existingReview, null, 2));
       const before = await fs.readFile(reviewJsonPath, 'utf8');
       await fs.writeFile(reviewWorkbookPath, workbook);
@@ -113,6 +114,7 @@ describe.sequential('spell import review', () => {
       const after = await fs.readFile(reviewJsonPath, 'utf8');
       expect(after).toBe(before);
     } finally {
+      if (originalSeed == null) await fs.rm(seedPath, { force: true }); else await fs.writeFile(seedPath, originalSeed);
       if (originalReviewJson == null) await fs.rm(reviewJsonPath, { force: true }); else await fs.writeFile(reviewJsonPath, originalReviewJson);
       if (originalWorkbook == null) await fs.rm(reviewWorkbookPath, { force: true }); else await fs.writeFile(reviewWorkbookPath, originalWorkbook);
     }
@@ -140,6 +142,7 @@ describe.sequential('spell import review', () => {
 
     try {
       await fs.mkdir(reviewDir, { recursive: true });
+      await fs.writeFile(seedPath, JSON.stringify(seed, null, 2));
       await fs.writeFile(reviewJsonPath, JSON.stringify(existingReview, null, 2));
       await fs.writeFile(reviewWorkbookPath, workbook);
 
@@ -152,6 +155,7 @@ describe.sequential('spell import review', () => {
       expect(row.pageVerified).toBe(true);
       expect(row.manualNotes).toBe('Companion verified');
     } finally {
+      if (originalSeed == null) await fs.rm(seedPath, { force: true }); else await fs.writeFile(seedPath, originalSeed);
       if (originalReviewJson == null) await fs.rm(reviewJsonPath, { force: true }); else await fs.writeFile(reviewJsonPath, originalReviewJson);
       if (originalWorkbook == null) await fs.rm(reviewWorkbookPath, { force: true }); else await fs.writeFile(reviewWorkbookPath, originalWorkbook);
     }
