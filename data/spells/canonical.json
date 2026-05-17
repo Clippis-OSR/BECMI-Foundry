@@ -1,0 +1,3708 @@
+{
+  "generatedAt": "2026-05-17T15:16:20.714Z",
+  "spells": [
+    {
+      "spellKey": "cure-light-wounds",
+      "spellName": "Cure Light Wounds",
+      "spellClass": "Cleric",
+      "spellLevel": 1,
+      "range": "Touch",
+      "duration": "Permanent",
+      "effect": "Heals 2-7 hp or removes paralysis from one living creature.",
+      "save": "none",
+      "reversible": true,
+      "reverseName": "Cause Light Wounds",
+      "tags": [
+        "healing,paralysis,reversible"
+      ],
+      "summary": "Heals light damage or paralysis; reverse causes 2-7 damage by touch.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 26
+      }
+    },
+    {
+      "spellKey": "detect-magic",
+      "spellName": "Detect Magic",
+      "spellClass": "Cleric",
+      "spellLevel": 1,
+      "range": "0",
+      "duration": "2 turns",
+      "effect": "Magical objects, creatures, and places within 60 ft glow.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "detection,magic"
+      ],
+      "summary": "Caster sees magic within 60 ft glow for a short time.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 26
+      }
+    },
+    {
+      "spellKey": "light",
+      "spellName": "Light",
+      "spellClass": "Cleric",
+      "spellLevel": 1,
+      "range": "120 ft",
+      "duration": "12 turns",
+      "effect": "Creates light in a 30 ft diameter volume; can blind if cast at eyes.",
+      "save": "negates blindness if targeted",
+      "reversible": true,
+      "reverseName": "Darkness",
+      "tags": [
+        "light,reversible"
+      ],
+      "summary": "Creates torch-like light; reverse creates darkness.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 26
+      }
+    },
+    {
+      "spellKey": "protection-from-evil",
+      "spellName": "Protection from Evil",
+      "spellClass": "Cleric",
+      "spellLevel": 1,
+      "range": "0",
+      "duration": "12 turns",
+      "effect": "Caster gains protective barrier: attacks -1, saves +1; enchanted creatures blocked.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "protection"
+      ],
+      "summary": "Protects caster from hostile attacks and blocks enchanted melee contact.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 27
+      }
+    },
+    {
+      "spellKey": "purify-food-and-water",
+      "spellName": "Purify Food and Water",
+      "spellClass": "Cleric",
+      "spellLevel": 1,
+      "range": "10 ft",
+      "duration": "Permanent",
+      "effect": "Purifies spoiled/poisoned food or water; can settle mud into clear water.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "utility,purification"
+      ],
+      "summary": "Makes food and water safe; does not affect living creatures.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 27
+      }
+    },
+    {
+      "spellKey": "remove-fear",
+      "spellName": "Remove Fear",
+      "spellClass": "Cleric",
+      "spellLevel": 1,
+      "range": "Touch",
+      "duration": "2 turns",
+      "effect": "Calms one living creature and may end magical fear with a bonus save.",
+      "save": "special",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "fear,protection,reversible"
+      ],
+      "summary": "Removes fear; reverse causes fear.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 27
+      }
+    },
+    {
+      "spellKey": "resist-cold",
+      "spellName": "Resist Cold",
+      "spellClass": "Cleric",
+      "spellLevel": 1,
+      "range": "0",
+      "duration": "6 turns",
+      "effect": "Creatures within 30 ft resist freezing; +2 saves vs cold and -1 damage per die.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "protection,cold"
+      ],
+      "summary": "Party near caster resists cold and cold-based attacks.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 27
+      }
+    },
+    {
+      "spellKey": "bless",
+      "spellName": "Bless",
+      "spellClass": "Cleric",
+      "spellLevel": 2,
+      "range": "60 ft",
+      "duration": "6 turns",
+      "effect": "Friendly creatures in 20 ft square gain +1 morale, hit, and damage before melee.",
+      "save": "none / negates blight",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "buff,morale,reversible"
+      ],
+      "summary": "Bless buffs allies not yet in melee; reverse penalizes enemies.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 5
+      }
+    },
+    {
+      "spellKey": "find-traps",
+      "spellName": "Find Traps",
+      "spellClass": "Cleric",
+      "spellLevel": 2,
+      "range": "0",
+      "duration": "2 turns",
+      "effect": "Traps within 30 ft glow blue when the cleric approaches.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "detection,traps"
+      ],
+      "summary": "Reveals presence of traps, not type or removal method.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 5
+      }
+    },
+    {
+      "spellKey": "hold-person",
+      "spellName": "Hold Person",
+      "spellClass": "Cleric",
+      "spellLevel": 2,
+      "range": "180 ft",
+      "duration": "9 turns",
+      "effect": "Paralyzes up to 4 humanoids; single target saves at -2.",
+      "save": "spells negates",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "paralysis,control,reversible"
+      ],
+      "summary": "Paralyzes humanoids; reverse frees held persons.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 5
+      }
+    },
+    {
+      "spellKey": "know-alignment",
+      "spellName": "Know Alignment",
+      "spellClass": "Cleric",
+      "spellLevel": 2,
+      "range": "0",
+      "duration": "1 round",
+      "effect": "Reveals alignment of one creature, item, or area within 10 ft.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "detection,alignment,reversible"
+      ],
+      "summary": "Identifies alignment; reverse masks with false alignment.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 5
+      }
+    },
+    {
+      "spellKey": "silence-15-radius",
+      "spellName": "Silence 15' Radius",
+      "spellClass": "Cleric",
+      "spellLevel": 2,
+      "range": "180 ft",
+      "duration": "12 turns",
+      "effect": "Creates 30 ft diameter silence; moving target may carry effect if save fails.",
+      "save": "spells negates moving effect",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "control,silence"
+      ],
+      "summary": "Stops speech and spellcasting inside the silent area.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 6
+      }
+    },
+    {
+      "spellKey": "snake-charm",
+      "spellName": "Snake Charm",
+      "spellClass": "Cleric",
+      "spellLevel": 2,
+      "range": "60 ft",
+      "duration": "2-5 rounds or 2-5 turns",
+      "effect": "Charms 1 HD of snakes per caster level; no save.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "animals,charm"
+      ],
+      "summary": "Snakes sway harmlessly unless attacked; shorter duration in combat.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 6
+      }
+    },
+    {
+      "spellKey": "speak-with-animals",
+      "spellName": "Speak with Animals",
+      "spellClass": "Cleric",
+      "spellLevel": 2,
+      "range": "0",
+      "duration": "6 turns",
+      "effect": "Caster speaks with one named animal type within 30 ft.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "communication,animals"
+      ],
+      "summary": "Talks to a chosen animal type; reactions are usually favorable.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 6
+      }
+    },
+    {
+      "spellKey": "continual-light",
+      "spellName": "Continual Light",
+      "spellClass": "Cleric",
+      "spellLevel": 3,
+      "range": "120 ft",
+      "duration": "Permanent",
+      "effect": "Creates daylight-bright 60 ft sphere; can blind if cast at eyes.",
+      "save": "spells negates blindness",
+      "reversible": true,
+      "reverseName": "Continual Darkness",
+      "tags": [
+        "light,reversible"
+      ],
+      "summary": "Permanent daylight effect; reverse creates continual darkness.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 6
+      }
+    },
+    {
+      "spellKey": "cure-disease",
+      "spellName": "Cure Disease",
+      "spellClass": "Cleric",
+      "spellLevel": 3,
+      "range": "30 ft",
+      "duration": "Permanent",
+      "effect": "Cures one disease; high-level caster can cure lycanthropy.",
+      "save": "none",
+      "reversible": true,
+      "reverseName": "Cause Disease",
+      "tags": [
+        "healing,disease,reversible"
+      ],
+      "summary": "Cures disease; reverse inflicts wasting disease.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 6
+      }
+    },
+    {
+      "spellKey": "growth-of-animal",
+      "spellName": "Growth of Animal",
+      "spellClass": "Cleric",
+      "spellLevel": 3,
+      "range": "120 ft",
+      "duration": "12 turns",
+      "effect": "Doubles size, strength, damage, and carrying capacity of one animal.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "animals,buff"
+      ],
+      "summary": "Enlarges normal or giant animal without changing behavior.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 6
+      }
+    },
+    {
+      "spellKey": "locate-object",
+      "spellName": "Locate Object",
+      "spellClass": "Cleric",
+      "spellLevel": 3,
+      "range": "0",
+      "duration": "6 turns",
+      "effect": "Caster senses direction of one known object within 120 ft.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "detection,utility"
+      ],
+      "summary": "Detects direction only; does not locate creatures.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 6
+      }
+    },
+    {
+      "spellKey": "remove-curse",
+      "spellName": "Remove Curse",
+      "spellClass": "Cleric",
+      "spellLevel": 3,
+      "range": "Touch",
+      "duration": "Permanent",
+      "effect": "Removes one curse from creature, item, or area; some removals may be temporary.",
+      "save": "none",
+      "reversible": true,
+      "reverseName": "Curse",
+      "tags": [
+        "curse,reversible"
+      ],
+      "summary": "Removes curses; reverse applies a misfortune or penalty.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 6
+      }
+    },
+    {
+      "spellKey": "striking",
+      "spellName": "Striking",
+      "spellClass": "Cleric",
+      "spellLevel": 3,
+      "range": "30 ft",
+      "duration": "1 turn",
+      "effect": "One weapon gains +1d6 damage per attack and can harm magic-only targets for that bonus.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "buff,weapon,damage"
+      ],
+      "summary": "Temporarily empowers a weapon with extra striking damage.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 7
+      }
+    },
+    {
+      "spellKey": "warp-wood",
+      "spellName": "Warp Wood",
+      "spellClass": "Cleric",
+      "spellLevel": 3,
+      "range": "240 ft",
+      "duration": "Permanent",
+      "effect": "Bends or warps wooden items, usually spoiling weapons, doors, or small objects.",
+      "save": "special",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "wood,utility"
+      ],
+      "summary": "Warps wood; useful against bows, doors, shafts, and similar items.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 6
+      }
+    },
+    {
+      "spellKey": "create-water",
+      "spellName": "Create Water",
+      "spellClass": "Cleric",
+      "spellLevel": 4,
+      "range": "10 ft",
+      "duration": "6 turns",
+      "effect": "Creates a spring with water for 12 men and mounts, plus more at higher levels.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "creation,water"
+      ],
+      "summary": "Creates drinking water from ground or wall for one hour.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 7
+      }
+    },
+    {
+      "spellKey": "cure-serious-wounds",
+      "spellName": "Cure Serious Wounds",
+      "spellClass": "Cleric",
+      "spellLevel": 4,
+      "range": "Touch",
+      "duration": "Permanent",
+      "effect": "Heals 4-14 hp damage to one living creature.",
+      "save": "none",
+      "reversible": true,
+      "reverseName": "Cause Serious Wounds",
+      "tags": [
+        "healing,reversible"
+      ],
+      "summary": "Heals serious wounds; reverse causes 4-14 damage by touch.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 7
+      }
+    },
+    {
+      "spellKey": "neutralize-poison",
+      "spellName": "Neutralize Poison",
+      "spellClass": "Cleric",
+      "spellLevel": 4,
+      "range": "Touch",
+      "duration": "Permanent",
+      "effect": "Neutralizes poison in creature, container, or object; can revive poison death within 10 rounds.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "poison,healing,reversible"
+      ],
+      "summary": "Makes poison harmless; reverse creates lethal poison.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 8
+      }
+    },
+    {
+      "spellKey": "protection-from-evil-10-radius",
+      "spellName": "Protection from Evil 10' Radius",
+      "spellClass": "Cleric",
+      "spellLevel": 4,
+      "range": "0",
+      "duration": "12 turns",
+      "effect": "20 ft diameter barrier gives allies +1 saves, attackers -1 hit, and blocks enchanted melee.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "protection,area"
+      ],
+      "summary": "Area version of protection from evil centered on caster.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 8
+      }
+    },
+    {
+      "spellKey": "speak-with-plants",
+      "spellName": "Speak with Plants",
+      "spellClass": "Cleric",
+      "spellLevel": 4,
+      "range": "0",
+      "duration": "3 turns",
+      "effect": "Caster speaks with plants within 30 ft and can request simple favors.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "communication,plants"
+      ],
+      "summary": "Allows plant communication and passage through vegetation.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 8
+      }
+    },
+    {
+      "spellKey": "sticks-to-snakes",
+      "spellName": "Sticks to Snakes",
+      "spellClass": "Cleric",
+      "spellLevel": 4,
+      "range": "120 ft",
+      "duration": "6 turns",
+      "effect": "Turns 2-16 sticks into snakes that obey the cleric.",
+      "save": "none",
+      "reversible": true,
+      "reverseName": "Snakes to Sticks",
+      "tags": [
+        "summoning,animals"
+      ],
+      "summary": "Creates temporary snake servants from sticks.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 8
+      }
+    },
+    {
+      "spellKey": "commune",
+      "spellName": "Commune",
+      "spellClass": "Cleric",
+      "spellLevel": 5,
+      "range": "0",
+      "duration": "3 turns",
+      "effect": "Cleric asks higher powers three yes/no questions; usable rarely.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "divination"
+      ],
+      "summary": "Ask divine powers limited questions for guidance.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 9
+      }
+    },
+    {
+      "spellKey": "create-food",
+      "spellName": "Create Food",
+      "spellClass": "Cleric",
+      "spellLevel": 5,
+      "range": "10 ft",
+      "duration": "Permanent",
+      "effect": "Creates food for 12 men and mounts for one day, more at higher levels.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "creation,food"
+      ],
+      "summary": "Creates sustaining food for a group and mounts.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 9
+      }
+    },
+    {
+      "spellKey": "cure-critical-wounds",
+      "spellName": "Cure Critical Wounds",
+      "spellClass": "Cleric",
+      "spellLevel": 5,
+      "range": "Touch",
+      "duration": "Permanent",
+      "effect": "Cures 6-21 hp damage to one living creature; reverse causes same damage by touch.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "healing,damage,reversible"
+      ],
+      "summary": "Major cure spell; reverse causes critical wounds by touch.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 12
+      }
+    },
+    {
+      "spellKey": "dispel-evil",
+      "spellName": "Dispel Evil",
+      "spellClass": "Cleric",
+      "spellLevel": 5,
+      "range": "30 ft",
+      "duration": "1 turn",
+      "effect": "Banishing/protective power against enchanted or summoned evil creatures and curses.",
+      "save": "special",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "protection,banishment"
+      ],
+      "summary": "Can drive away or destroy evil magical influence at close range.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 9
+      }
+    },
+    {
+      "spellKey": "insect-plague",
+      "spellName": "Insect Plague",
+      "spellClass": "Cleric",
+      "spellLevel": 5,
+      "range": "480 ft",
+      "duration": "1 day",
+      "effect": "Summons a 60 ft swarm cloud that drives away creatures under 3 HD.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "summoning,insects,control"
+      ],
+      "summary": "Creates a large insect swarm that disrupts weak creatures.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 9
+      }
+    },
+    {
+      "spellKey": "quest",
+      "spellName": "Quest",
+      "spellClass": "Cleric",
+      "spellLevel": 5,
+      "range": "30 ft",
+      "duration": "Until fulfilled",
+      "effect": "Compels a creature to perform or avoid a task; refusal causes penalties.",
+      "save": "spells negates",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "control,geas,reversible"
+      ],
+      "summary": "Places a divine obligation; reverse removes quest.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 10
+      }
+    },
+    {
+      "spellKey": "raise-dead",
+      "spellName": "Raise Dead",
+      "spellClass": "Cleric",
+      "spellLevel": 5,
+      "range": "120 ft",
+      "duration": "Permanent",
+      "effect": "Restores a dead human/demi-human within time limit; recipient returns weak.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "healing,resurrection,reversible"
+      ],
+      "summary": "Raises dead; reverse can slay like finger of death.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 10
+      }
+    },
+    {
+      "spellKey": "truesight",
+      "spellName": "Truesight",
+      "spellClass": "Cleric",
+      "spellLevel": 5,
+      "range": "0",
+      "duration": "1 turn + 1 round per level",
+      "effect": "Reveals hidden, invisible, ethereal, disguised, and polymorphed things within 120 ft; also reveals alignment and power.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "detection,truth"
+      ],
+      "summary": "Powerful true-seeing effect within 120 ft.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 12
+      }
+    },
+    {
+      "spellKey": "aerial-servant",
+      "spellName": "Aerial Servant",
+      "spellClass": "Cleric",
+      "spellLevel": 6,
+      "range": "60 ft",
+      "duration": "1 day per level",
+      "effect": "Summons an aerial servant to fetch a described creature or item from an approximate location.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "summoning,ethereal,utility"
+      ],
+      "summary": "Summons servant to retrieve one named target.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 12
+      }
+    },
+    {
+      "spellKey": "barrier",
+      "spellName": "Barrier",
+      "spellClass": "Cleric",
+      "spellLevel": 6,
+      "range": "60 ft",
+      "duration": "12 turns",
+      "effect": "Creates a 30 ft diameter by 30 ft high wall of whirling hammers; passing through causes 7-70 damage.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "barrier,damage,reversible"
+      ],
+      "summary": "Blocks passage with damaging hammer barrier; reverse removes clerical/magical walls.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 12
+      }
+    },
+    {
+      "spellKey": "create-normal-animals",
+      "spellName": "Create Normal Animals",
+      "spellClass": "Cleric",
+      "spellLevel": 6,
+      "range": "30 ft",
+      "duration": "10 turns",
+      "effect": "Creates 1 large, 3 medium, or 6 small normal loyal animals that obey the cleric.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "creation,animals,summoning"
+      ],
+      "summary": "Creates temporary normal animals under command.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 12
+      }
+    },
+    {
+      "spellKey": "earthquake",
+      "spellName": "Earthquake",
+      "spellClass": "Cleric",
+      "spellLevel": 7,
+      "range": "120 yards",
+      "duration": "1 turn",
+      "effect": "Shakes earth in a large area, damaging structures and opening cracks that may engulf creatures.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "earth,area,destruction"
+      ],
+      "summary": "Creates destructive earth tremors over a scaling area.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 13
+      }
+    },
+    {
+      "spellKey": "holy-word",
+      "spellName": "Holy Word",
+      "spellClass": "Cleric",
+      "spellLevel": 7,
+      "range": "0",
+      "duration": "Instantaneous",
+      "effect": "Affects all creatures within 40 ft whose alignment differs from the cleric: may kill, stun, or deafen by level.",
+      "save": "spells negates for level 13+ or same alignment",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "alignment,area,power-word"
+      ],
+      "summary": "Alignment-based area word with severe effects.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 13
+      }
+    },
+    {
+      "spellKey": "restore",
+      "spellName": "Restore",
+      "spellClass": "Cleric",
+      "spellLevel": 7,
+      "range": "Touch",
+      "duration": "Permanent",
+      "effect": "Restores one full level of energy experience lost to energy drain; reverse drains one level.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "restoration,energy-drain,reversible"
+      ],
+      "summary": "Restores one drained level; reverse drains one level.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 13
+      }
+    },
+    {
+      "spellKey": "raise-dead-fully",
+      "spellName": "Raise Dead Fully",
+      "spellClass": "Cleric",
+      "spellLevel": 7,
+      "range": "60 ft",
+      "duration": "Permanent",
+      "effect": "Raises any living creature; humans and demi-humans return fully healed and ready to act.",
+      "save": "special",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "resurrection,healing,reversible"
+      ],
+      "summary": "Full resurrection; reverse obliterates living targets like the spell affects undead.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 13
+      }
+    },
+    {
+      "spellKey": "faerie-fire",
+      "spellName": "Faerie Fire",
+      "spellClass": "Druid",
+      "spellLevel": 1,
+      "range": "60 ft",
+      "duration": "1 round per level",
+      "effect": "Outlines detected creatures or objects with harmless green fire; attacks against them gain +2 to hit.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "detection,combat,light"
+      ],
+      "summary": "Outlines targets and makes them easier to hit.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 14
+      }
+    },
+    {
+      "spellKey": "locate",
+      "spellName": "Locate",
+      "spellClass": "Druid",
+      "spellLevel": 1,
+      "range": "0",
+      "duration": "6 turns",
+      "effect": "Caster senses direction of one known animal, plant, or natural outdoor object within range.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "detection,nature"
+      ],
+      "summary": "Nature-focused locate effect.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "predict-weather",
+      "spellName": "Predict Weather",
+      "spellClass": "Druid",
+      "spellLevel": 1,
+      "range": "0",
+      "duration": "12 hours",
+      "effect": "Caster accurately predicts natural weather in the local area for the next 12 hours.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "weather,utility"
+      ],
+      "summary": "Predicts upcoming natural weather.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "obscure",
+      "spellName": "Obscure",
+      "spellClass": "Druid",
+      "spellLevel": 2,
+      "range": "0",
+      "duration": "1 turn per level",
+      "effect": "Creates a misty cloud around the druid, heavily obscuring sight in a 10 ft radius per level.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "weather,concealment"
+      ],
+      "summary": "Creates fog-like concealment around caster.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "produce-fire",
+      "spellName": "Produce Fire",
+      "spellClass": "Druid",
+      "spellLevel": 2,
+      "range": "0",
+      "duration": "2 turns per level",
+      "effect": "Creates a magical flame in the druid's hand that can ignite objects or be thrown.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "fire,damage,utility"
+      ],
+      "summary": "Creates controllable magical fire.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "warp-wood",
+      "spellName": "Warp Wood",
+      "spellClass": "Druid",
+      "spellLevel": 2,
+      "range": "240 ft",
+      "duration": "Permanent",
+      "effect": "Bends and warps wooden weapons, doors, or objects, often making them useless.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "wood,control"
+      ],
+      "summary": "Warps wooden objects out of shape.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "call-lightning",
+      "spellName": "Call Lightning",
+      "spellClass": "Druid",
+      "spellLevel": 3,
+      "range": "360 ft",
+      "duration": "1 turn per level",
+      "effect": "Calls lightning bolts from stormy skies; each bolt deals heavy electrical damage in an area.",
+      "save": "spells half",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "lightning,damage,weather"
+      ],
+      "summary": "Calls lightning during a storm.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "hold-animal",
+      "spellName": "Hold Animal",
+      "spellClass": "Druid",
+      "spellLevel": 3,
+      "range": "180 ft",
+      "duration": "1 turn per level",
+      "effect": "Paralyzes normal or giant animals of animal intelligence within range.",
+      "save": "spells negates",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "animals,paralysis"
+      ],
+      "summary": "Holds animal targets immobile.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "water-breathing",
+      "spellName": "Water Breathing",
+      "spellClass": "Druid",
+      "spellLevel": 3,
+      "range": "30 ft",
+      "duration": "1 day",
+      "effect": "Allows one air-breathing creature to breathe water; reverse lets water-breathers breathe air.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "water,breathing,utility"
+      ],
+      "summary": "Allows breathing in water.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "control-temperature-10-radius",
+      "spellName": "Control Temperature 10' Radius",
+      "spellClass": "Druid",
+      "spellLevel": 4,
+      "range": "0",
+      "duration": "1 turn per level",
+      "effect": "Changes temperature within 10 ft of the caster to extreme heat or cold.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "weather,environment"
+      ],
+      "summary": "Controls local temperature around caster.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "protection-from-lightning",
+      "spellName": "Protection from Lightning",
+      "spellClass": "Druid",
+      "spellLevel": 4,
+      "range": "Touch",
+      "duration": "1 turn per level",
+      "effect": "Protects one creature from lightning damage, including natural and magical lightning.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "lightning,protection"
+      ],
+      "summary": "Grants lightning protection.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "anti-plant-shell",
+      "spellName": "Anti-Plant Shell",
+      "spellClass": "Druid",
+      "spellLevel": 5,
+      "range": "0",
+      "duration": "1 round per level",
+      "effect": "Personal invisible barrier blocks attacks from plants and plant-like monsters.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "plants,protection,barrier"
+      ],
+      "summary": "Blocks plant attacks around caster.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 16
+      }
+    },
+    {
+      "spellKey": "control-winds",
+      "spellName": "Control Winds",
+      "spellClass": "Druid",
+      "spellLevel": 5,
+      "range": "10 ft radius per level",
+      "duration": "1 turn per level",
+      "effect": "Calms or increases winds within range; can affect air creatures with proper control.",
+      "save": "spells negates for air creatures",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "weather,air,control"
+      ],
+      "summary": "Controls wind strength around caster.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 16
+      }
+    },
+    {
+      "spellKey": "charm-person",
+      "spellName": "Charm Person",
+      "spellClass": "Magic-User",
+      "spellLevel": 1,
+      "range": "120 ft",
+      "duration": "Special",
+      "effect": "Charms one humanoid as a trusted friend; repeat saves based on Intelligence.",
+      "save": "spells negates",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "charm,control"
+      ],
+      "summary": "Makes a humanoid friendly unless save succeeds.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 40
+      }
+    },
+    {
+      "spellKey": "detect-magic",
+      "spellName": "Detect Magic",
+      "spellClass": "Magic-User",
+      "spellLevel": 1,
+      "range": "0",
+      "duration": "2 turns",
+      "effect": "Magic within 60 ft glows to the caster.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "detection,magic"
+      ],
+      "summary": "Caster sees magical auras nearby.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 40
+      }
+    },
+    {
+      "spellKey": "floating-disc",
+      "spellName": "Floating Disc",
+      "spellClass": "Magic-User",
+      "spellLevel": 1,
+      "range": "0",
+      "duration": "6 turns",
+      "effect": "Creates floating disc carrying up to 5,000 cn, following caster.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "utility,transport"
+      ],
+      "summary": "Creates a hovering carrier for treasure or gear.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 40
+      }
+    },
+    {
+      "spellKey": "hold-portal",
+      "spellName": "Hold Portal",
+      "spellClass": "Magic-User",
+      "spellLevel": 1,
+      "range": "10 ft",
+      "duration": "2-12 turns",
+      "effect": "Magically holds one door, gate, or similar portal shut.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "control,door"
+      ],
+      "summary": "Holds a portal closed unless forced or magically opened.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 40
+      }
+    },
+    {
+      "spellKey": "light",
+      "spellName": "Light",
+      "spellClass": "Magic-User",
+      "spellLevel": 1,
+      "range": "120 ft",
+      "duration": "6 turns + caster level",
+      "effect": "Creates 30 ft diameter light; can blind if targeted.",
+      "save": "spells negates blindness",
+      "reversible": true,
+      "reverseName": "Darkness",
+      "tags": [
+        "light,reversible"
+      ],
+      "summary": "Creates light; reverse creates darkness.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 40
+      }
+    },
+    {
+      "spellKey": "magic-missile",
+      "spellName": "Magic Missile",
+      "spellClass": "Magic-User",
+      "spellLevel": 1,
+      "range": "150 ft",
+      "duration": "1 round",
+      "effect": "Creates unerring magical missile(s) dealing 1d6+1 damage each.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "damage,force"
+      ],
+      "summary": "Automatically hits visible target within range.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 40
+      }
+    },
+    {
+      "spellKey": "protection-from-evil",
+      "spellName": "Protection from Evil",
+      "spellClass": "Magic-User",
+      "spellLevel": 1,
+      "range": "0",
+      "duration": "6 turns",
+      "effect": "Caster gains attacks -1, saves +1, and enchanted creatures are blocked.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "protection"
+      ],
+      "summary": "Protects caster from hostile and enchanted melee attacks.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 40
+      }
+    },
+    {
+      "spellKey": "read-languages",
+      "spellName": "Read Languages",
+      "spellClass": "Magic-User",
+      "spellLevel": 1,
+      "range": "0",
+      "duration": "2 turns",
+      "effect": "Caster reads unknown languages, codes, maps, and inscriptions.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "utility,language"
+      ],
+      "summary": "Translates written language but not magical writing.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 40
+      }
+    },
+    {
+      "spellKey": "read-magic",
+      "spellName": "Read Magic",
+      "spellClass": "Magic-User",
+      "spellLevel": 1,
+      "range": "0",
+      "duration": "1 turn",
+      "effect": "Caster reads magical writing and scrolls.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "utility,magic"
+      ],
+      "summary": "Allows reading spell books, scrolls, and magical inscriptions.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 40
+      }
+    },
+    {
+      "spellKey": "shield",
+      "spellName": "Shield",
+      "spellClass": "Magic-User",
+      "spellLevel": 1,
+      "range": "0",
+      "duration": "2 turns",
+      "effect": "Invisible barrier improves AC and blocks magic missiles.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "protection"
+      ],
+      "summary": "Defensive shield protects caster, especially from missiles.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 40
+      }
+    },
+    {
+      "spellKey": "sleep",
+      "spellName": "Sleep",
+      "spellClass": "Magic-User",
+      "spellLevel": 1,
+      "range": "240 ft",
+      "duration": "4-16 turns",
+      "effect": "Puts 2d8 HD of creatures to sleep, usually affecting weakest first.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "sleep,control"
+      ],
+      "summary": "Drops low-HD enemies asleep; no save.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 40
+      }
+    },
+    {
+      "spellKey": "ventriloquism",
+      "spellName": "Ventriloquism",
+      "spellClass": "Magic-User",
+      "spellLevel": 1,
+      "range": "60 ft",
+      "duration": "2 turns",
+      "effect": "Caster makes voice or sound appear to come from elsewhere.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "illusion,sound"
+      ],
+      "summary": "Throws the caster’s voice to mislead listeners.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 40
+      }
+    },
+    {
+      "spellKey": "continual-light",
+      "spellName": "Continual Light",
+      "spellClass": "Magic-User",
+      "spellLevel": 2,
+      "range": "120 ft",
+      "duration": "Permanent",
+      "effect": "Creates daylight-bright 60 ft sphere; can blind if targeted.",
+      "save": "spells negates blindness",
+      "reversible": true,
+      "reverseName": "Continual Darkness",
+      "tags": [
+        "light,reversible"
+      ],
+      "summary": "Permanent light; reverse creates continual darkness.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 41
+      }
+    },
+    {
+      "spellKey": "detect-evil",
+      "spellName": "Detect Evil",
+      "spellClass": "Magic-User",
+      "spellLevel": 2,
+      "range": "60 ft",
+      "duration": "2 turns",
+      "effect": "Detects evil intentions or evil-enchanted objects.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "detection,evil"
+      ],
+      "summary": "Reveals evil intent or magic, not traps or poison.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 41
+      }
+    },
+    {
+      "spellKey": "detect-invisible",
+      "spellName": "Detect Invisible",
+      "spellClass": "Magic-User",
+      "spellLevel": 2,
+      "range": "10 ft per level",
+      "duration": "6 turns",
+      "effect": "Caster can see invisible creatures and objects within range.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "detection,invisibility"
+      ],
+      "summary": "Reveals invisible things to caster.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 41
+      }
+    },
+    {
+      "spellKey": "esp",
+      "spellName": "ESP",
+      "spellClass": "Magic-User",
+      "spellLevel": 2,
+      "range": "60 ft",
+      "duration": "12 turns",
+      "effect": "Caster reads surface thoughts in one direction through some barriers.",
+      "save": "spells negates",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "detection,mind"
+      ],
+      "summary": "Reads thoughts of creatures in range and direction.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 41
+      }
+    },
+    {
+      "spellKey": "invisibility",
+      "spellName": "Invisibility",
+      "spellClass": "Magic-User",
+      "spellLevel": 2,
+      "range": "240 ft",
+      "duration": "Permanent until broken",
+      "effect": "One creature or object becomes invisible until attacking/casting or dispelled.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "invisibility"
+      ],
+      "summary": "Makes target invisible until it takes hostile action.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 41
+      }
+    },
+    {
+      "spellKey": "knock",
+      "spellName": "Knock",
+      "spellClass": "Magic-User",
+      "spellLevel": 2,
+      "range": "60 ft",
+      "duration": "Instant",
+      "effect": "Opens stuck, locked, barred, or magically held portals.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "utility,door"
+      ],
+      "summary": "Opens locked or held doors and similar closures.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 41
+      }
+    },
+    {
+      "spellKey": "levitate",
+      "spellName": "Levitate",
+      "spellClass": "Magic-User",
+      "spellLevel": 2,
+      "range": "0",
+      "duration": "6 turns + caster level",
+      "effect": "Caster moves up or down vertically by mental control.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "movement"
+      ],
+      "summary": "Allows vertical movement but not horizontal flight.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 41
+      }
+    },
+    {
+      "spellKey": "locate-object",
+      "spellName": "Locate Object",
+      "spellClass": "Magic-User",
+      "spellLevel": 2,
+      "range": "0",
+      "duration": "2 turns",
+      "effect": "Caster senses direction of a known object within 60 ft + 10 ft/level.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "detection,utility"
+      ],
+      "summary": "Detects direction of a familiar object.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 41
+      }
+    },
+    {
+      "spellKey": "mirror-image",
+      "spellName": "Mirror Image",
+      "spellClass": "Magic-User",
+      "spellLevel": 2,
+      "range": "0",
+      "duration": "6 turns",
+      "effect": "Creates 1d4 illusory duplicates that may absorb attacks.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "illusion,defense"
+      ],
+      "summary": "Creates duplicate images to confuse attackers.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 41
+      }
+    },
+    {
+      "spellKey": "phantasmal-force",
+      "spellName": "Phantasmal Force",
+      "spellClass": "Magic-User",
+      "spellLevel": 2,
+      "range": "240 ft",
+      "duration": "Concentration",
+      "effect": "Creates a visual illusion in a 20 ft cube.",
+      "save": "spells disbelief",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "illusion"
+      ],
+      "summary": "Creates an illusion sustained by concentration.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 41
+      }
+    },
+    {
+      "spellKey": "web",
+      "spellName": "Web",
+      "spellClass": "Magic-User",
+      "spellLevel": 2,
+      "range": "10 ft",
+      "duration": "48 turns",
+      "effect": "Fills up to 10x10x10 ft with sticky webs, entangling creatures.",
+      "save": "special",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "control,web"
+      ],
+      "summary": "Entangles creatures; fire can burn webs away.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 41
+      }
+    },
+    {
+      "spellKey": "wizard-lock",
+      "spellName": "Wizard Lock",
+      "spellClass": "Magic-User",
+      "spellLevel": 2,
+      "range": "10 ft",
+      "duration": "Permanent",
+      "effect": "Magically locks a portal; higher-level casters may bypass.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "door,magic"
+      ],
+      "summary": "Long-term magical lock on door or portal.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Basic",
+        "sourceFile": "",
+        "sourcePage": 41
+      }
+    },
+    {
+      "spellKey": "clairvoyance",
+      "spellName": "Clairvoyance",
+      "spellClass": "Magic-User",
+      "spellLevel": 3,
+      "range": "60 ft",
+      "duration": "12 turns",
+      "effect": "See through the eyes of one creature in range.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "detection,scrying"
+      ],
+      "summary": "Remote sight through another creature.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 11
+      }
+    },
+    {
+      "spellKey": "dispel-magic",
+      "spellName": "Dispel Magic",
+      "spellClass": "Magic-User",
+      "spellLevel": 3,
+      "range": "120 ft",
+      "duration": "Permanent",
+      "effect": "Ends spell effects in 20 ft cube; higher-level effects may resist.",
+      "save": "special",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "dispel,magic"
+      ],
+      "summary": "Removes active spell effects, not magic items.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 11
+      }
+    },
+    {
+      "spellKey": "fire-ball",
+      "spellName": "Fire Ball",
+      "spellClass": "Magic-User",
+      "spellLevel": 3,
+      "range": "240 ft",
+      "duration": "Instant",
+      "effect": "20 ft radius explosion deals 1d6 fire damage per caster level.",
+      "save": "spells half",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "damage,fire,area"
+      ],
+      "summary": "Area fire blast; capped by caster level rules.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 11
+      }
+    },
+    {
+      "spellKey": "fly",
+      "spellName": "Fly",
+      "spellClass": "Magic-User",
+      "spellLevel": 3,
+      "range": "Touch",
+      "duration": "1d6 turns + level",
+      "effect": "Target flies at 360 ft/turn with concentration.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "movement,flight"
+      ],
+      "summary": "Grants controlled flight for variable duration.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 11
+      }
+    },
+    {
+      "spellKey": "haste",
+      "spellName": "Haste",
+      "spellClass": "Magic-User",
+      "spellLevel": 3,
+      "range": "240 ft",
+      "duration": "3 turns",
+      "effect": "Up to 24 creatures move and attack at double speed.",
+      "save": "none",
+      "reversible": true,
+      "reverseName": "Slow",
+      "tags": [
+        "buff,movement"
+      ],
+      "summary": "Speeds allies; multiple haste effects do not stack.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 11
+      }
+    },
+    {
+      "spellKey": "hold-person",
+      "spellName": "Hold Person",
+      "spellClass": "Magic-User",
+      "spellLevel": 3,
+      "range": "120 ft",
+      "duration": "1 turn/level",
+      "effect": "Paralyzes up to 4 humanoids; single target saves at -2.",
+      "save": "spells negates",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "paralysis,control"
+      ],
+      "summary": "Paralyzes humanoids like cleric spell.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 11
+      }
+    },
+    {
+      "spellKey": "infravision",
+      "spellName": "Infravision",
+      "spellClass": "Magic-User",
+      "spellLevel": 3,
+      "range": "Touch",
+      "duration": "1 day",
+      "effect": "Gives 60 ft infravision.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "vision"
+      ],
+      "summary": "Grants heat-sight in darkness.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 11
+      }
+    },
+    {
+      "spellKey": "invisibility-10-radius",
+      "spellName": "Invisibility 10' Radius",
+      "spellClass": "Magic-User",
+      "spellLevel": 3,
+      "range": "120 ft",
+      "duration": "Permanent until broken",
+      "effect": "All within 10 ft of target become invisible until attacking/casting or leaving area.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "invisibility,area"
+      ],
+      "summary": "Group invisibility centered on target.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 12
+      }
+    },
+    {
+      "spellKey": "lightning-bolt",
+      "spellName": "Lightning Bolt",
+      "spellClass": "Magic-User",
+      "spellLevel": 3,
+      "range": "180 ft",
+      "duration": "Instant",
+      "effect": "Bolt deals 1d6 lightning damage per caster level, bouncing off barriers.",
+      "save": "spells half",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "damage,lightning,area"
+      ],
+      "summary": "Line attack with rebound risk.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 12
+      }
+    },
+    {
+      "spellKey": "protection-from-evil-10-radius",
+      "spellName": "Protection from Evil 10' Radius",
+      "spellClass": "Magic-User",
+      "spellLevel": 3,
+      "range": "0",
+      "duration": "12 turns",
+      "effect": "20 ft diameter protection from evil around caster.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "protection,area"
+      ],
+      "summary": "Area protective barrier against evil/enchanted attacks.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 12
+      }
+    },
+    {
+      "spellKey": "protection-from-normal-missiles",
+      "spellName": "Protection from Normal Missiles",
+      "spellClass": "Magic-User",
+      "spellLevel": 3,
+      "range": "30 ft",
+      "duration": "12 turns",
+      "effect": "One target is immune to small nonmagical missiles.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "protection,missiles"
+      ],
+      "summary": "Blocks normal arrows, bolts, and similar missiles.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 12
+      }
+    },
+    {
+      "spellKey": "water-breathing",
+      "spellName": "Water Breathing",
+      "spellClass": "Magic-User",
+      "spellLevel": 3,
+      "range": "30 ft",
+      "duration": "1 day",
+      "effect": "One target can breathe underwater.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "water,movement"
+      ],
+      "summary": "Allows underwater breathing for a day.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 12
+      }
+    },
+    {
+      "spellKey": "charm-monster",
+      "spellName": "Charm Monster",
+      "spellClass": "Magic-User",
+      "spellLevel": 4,
+      "range": "120 ft",
+      "duration": "Special",
+      "effect": "Charms one or more living creatures as friends.",
+      "save": "spells negates",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "charm,control"
+      ],
+      "summary": "Like charm person but works on monsters.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 13
+      }
+    },
+    {
+      "spellKey": "confusion",
+      "spellName": "Confusion",
+      "spellClass": "Magic-User",
+      "spellLevel": 4,
+      "range": "120 ft",
+      "duration": "12 rounds",
+      "effect": "Confuses creatures in 60 ft area, causing random actions.",
+      "save": "spells negates",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "control,mind"
+      ],
+      "summary": "Area mental confusion.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 13
+      }
+    },
+    {
+      "spellKey": "dimension-door",
+      "spellName": "Dimension Door",
+      "spellClass": "Magic-User",
+      "spellLevel": 4,
+      "range": "10 ft",
+      "duration": "Instant",
+      "effect": "Teleports caster or one target up to 360 ft.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "teleport,movement"
+      ],
+      "summary": "Short-range teleport without error.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 13
+      }
+    },
+    {
+      "spellKey": "growth-of-plants",
+      "spellName": "Growth of Plants",
+      "spellClass": "Magic-User",
+      "spellLevel": 4,
+      "range": "120 ft",
+      "duration": "Permanent until dispelled",
+      "effect": "Thickens vegetation into an impassable barrier.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "plants,control"
+      ],
+      "summary": "Turns plants into dense obstacle.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 13
+      }
+    },
+    {
+      "spellKey": "hallucinatory-terrain",
+      "spellName": "Hallucinatory Terrain",
+      "spellClass": "Magic-User",
+      "spellLevel": 4,
+      "range": "240 ft",
+      "duration": "Until touched/dispelled",
+      "effect": "Creates terrain illusion over outdoor area.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "illusion,terrain"
+      ],
+      "summary": "Makes terrain appear different.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 13
+      }
+    },
+    {
+      "spellKey": "massmorph",
+      "spellName": "Massmorph",
+      "spellClass": "Magic-User",
+      "spellLevel": 4,
+      "range": "240 ft",
+      "duration": "Until dispelled",
+      "effect": "Makes up to 100 creatures look like trees/woods.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "illusion,plants"
+      ],
+      "summary": "Camouflages a group as woodland.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 14
+      }
+    },
+    {
+      "spellKey": "polymorph-other",
+      "spellName": "Polymorph Other",
+      "spellClass": "Magic-User",
+      "spellLevel": 4,
+      "range": "60 ft",
+      "duration": "Permanent until dispelled",
+      "effect": "Changes one creature into another form.",
+      "save": "spells negates",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "polymorph,control"
+      ],
+      "summary": "Transforms a target creature.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 14
+      }
+    },
+    {
+      "spellKey": "polymorph-self",
+      "spellName": "Polymorph Self",
+      "spellClass": "Magic-User",
+      "spellLevel": 4,
+      "range": "0",
+      "duration": "6 turns + level",
+      "effect": "Caster assumes another form with movement but not special attacks.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "polymorph,movement"
+      ],
+      "summary": "Caster shapeshifts temporarily.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 14
+      }
+    },
+    {
+      "spellKey": "remove-curse",
+      "spellName": "Remove Curse",
+      "spellClass": "Magic-User",
+      "spellLevel": 4,
+      "range": "Touch",
+      "duration": "Permanent",
+      "effect": "Removes a curse; reverse bestows curse.",
+      "save": "none",
+      "reversible": true,
+      "reverseName": "Curse",
+      "tags": [
+        "curse,reversible"
+      ],
+      "summary": "Removes magical curse or cursed item bond.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 14
+      }
+    },
+    {
+      "spellKey": "wall-of-fire",
+      "spellName": "Wall of Fire",
+      "spellClass": "Magic-User",
+      "spellLevel": 4,
+      "range": "60 ft",
+      "duration": "Concentration",
+      "effect": "Creates fiery wall damaging creatures passing through.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "fire,wall,damage"
+      ],
+      "summary": "Fire barrier, especially strong vs cold creatures.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 14
+      }
+    },
+    {
+      "spellKey": "wall-of-ice",
+      "spellName": "Wall of Ice",
+      "spellClass": "Magic-User",
+      "spellLevel": 4,
+      "range": "120 ft",
+      "duration": "12 turns",
+      "effect": "Creates wall or hemisphere of ice.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "ice,wall,control"
+      ],
+      "summary": "Creates solid ice barrier.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 14
+      }
+    },
+    {
+      "spellKey": "wizard-eye",
+      "spellName": "Wizard Eye",
+      "spellClass": "Magic-User",
+      "spellLevel": 4,
+      "range": "240 ft",
+      "duration": "6 turns",
+      "effect": "Invisible magical eye scouts under caster control.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "scrying,detection"
+      ],
+      "summary": "Remote scouting sensor.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 14
+      }
+    },
+    {
+      "spellKey": "animate-dead",
+      "spellName": "Animate Dead",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "range": "60 ft",
+      "duration": "Permanent",
+      "effect": "Creates skeletons or zombies from remains.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "undead,creation"
+      ],
+      "summary": "Animates undead servants.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "cloudkill",
+      "spellName": "Cloudkill",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "range": "1 ft",
+      "duration": "6 turns",
+      "effect": "Creates moving poisonous cloud killing weak creatures.",
+      "save": "poison special",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "poison,area,death"
+      ],
+      "summary": "Poison cloud deadly to low-HD creatures.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "conjure-elemental",
+      "spellName": "Conjure Elemental",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "range": "240 ft",
+      "duration": "Concentration",
+      "effect": "Summons and controls one 16 HD elemental.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "summoning,elemental"
+      ],
+      "summary": "Summons elemental; loss of concentration is dangerous.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "feeblemind",
+      "spellName": "Feeblemind",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "range": "240 ft",
+      "duration": "Permanent until dispelled",
+      "effect": "Reduces spellcaster intelligence to near animal level.",
+      "save": "spells negates",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "mind,control"
+      ],
+      "summary": "Disables enemy spellcasters.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "hold-monster",
+      "spellName": "Hold Monster",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "range": "120 ft",
+      "duration": "6 turns + level",
+      "effect": "Paralyzes up to 4 creatures; single target saves at -2.",
+      "save": "spells negates",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "paralysis,control"
+      ],
+      "summary": "Hold person for monsters.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 16
+      }
+    },
+    {
+      "spellKey": "magic-jar",
+      "spellName": "Magic Jar",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "range": "30 ft",
+      "duration": "Special",
+      "effect": "Caster’s life force inhabits a container and may possess bodies.",
+      "save": "spells negates possession",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "possession,magic"
+      ],
+      "summary": "Body-swapping possession through a jar focus.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 16
+      }
+    },
+    {
+      "spellKey": "pass-wall",
+      "spellName": "Pass-Wall",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "range": "30 ft",
+      "duration": "3 turns",
+      "effect": "Creates passage through solid rock or wall.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "movement,earth"
+      ],
+      "summary": "Opens temporary tunnel through barrier.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 16
+      }
+    },
+    {
+      "spellKey": "telekinesis",
+      "spellName": "Telekinesis",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "range": "120 ft",
+      "duration": "6 rounds",
+      "effect": "Moves objects by mental force up to caster weight limit.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "movement,force"
+      ],
+      "summary": "Moves objects at range by concentration.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 16
+      }
+    },
+    {
+      "spellKey": "teleport",
+      "spellName": "Teleport",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "range": "10 ft",
+      "duration": "Instant",
+      "effect": "Teleports one creature/object to known destination, with error risk.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "teleport,movement"
+      ],
+      "summary": "Long-distance teleport based on familiarity.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 16
+      }
+    },
+    {
+      "spellKey": "anti-magic-shell",
+      "spellName": "Anti-Magic Shell",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "range": "0",
+      "duration": "12 turns",
+      "effect": "Creates barrier around caster blocking magic in or out.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "protection,anti-magic"
+      ],
+      "summary": "Caster is insulated from magic but cannot cast through shell.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 17
+      }
+    },
+    {
+      "spellKey": "death-spell",
+      "spellName": "Death Spell",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "range": "240 ft",
+      "duration": "Instant",
+      "effect": "Kills 4d8 HD of living creatures in 60 ft cube.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "death,area"
+      ],
+      "summary": "Slays groups of weaker living creatures.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 17
+      }
+    },
+    {
+      "spellKey": "disintegrate",
+      "spellName": "Disintegrate",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "range": "60 ft",
+      "duration": "Instant",
+      "effect": "Disintegrates one creature or nonmagical object.",
+      "save": "death ray negates",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "damage,destruction"
+      ],
+      "summary": "Destroys target if save fails.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 17
+      }
+    },
+    {
+      "spellKey": "geas",
+      "spellName": "Geas",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "range": "30 ft",
+      "duration": "Until fulfilled",
+      "effect": "Compels a creature to perform a task or suffer penalties.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "control,quest"
+      ],
+      "summary": "Magical command binding target to a task.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 17
+      }
+    },
+    {
+      "spellKey": "invisible-stalker",
+      "spellName": "Invisible Stalker",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "range": "0",
+      "duration": "Until mission complete",
+      "effect": "Summons invisible stalker to perform a task.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "summoning,air"
+      ],
+      "summary": "Invisible servant hunts or retrieves as commanded.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 18
+      }
+    },
+    {
+      "spellKey": "lower-water",
+      "spellName": "Lower Water",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "range": "240 ft",
+      "duration": "10 turns",
+      "effect": "Lowers water level in a large area.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "water,terrain"
+      ],
+      "summary": "Creates passage through or reduces water.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 18
+      }
+    },
+    {
+      "spellKey": "move-earth",
+      "spellName": "Move Earth",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "range": "240 ft",
+      "duration": "6 turns",
+      "effect": "Moves soil terrain slowly, reshaping earth.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "earth,terrain"
+      ],
+      "summary": "Large-scale earthmoving, not stone.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 18
+      }
+    },
+    {
+      "spellKey": "part-water",
+      "spellName": "Part Water",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "range": "120 ft",
+      "duration": "6 turns",
+      "effect": "Parts water to create dry path.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "water,terrain"
+      ],
+      "summary": "Opens a passage through water.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 18
+      }
+    },
+    {
+      "spellKey": "projected-image",
+      "spellName": "Projected Image",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "range": "240 ft",
+      "duration": "6 turns",
+      "effect": "Creates image through which caster can cast spells.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "illusion,scrying"
+      ],
+      "summary": "Remote image acts as spellcasting origin.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 18
+      }
+    },
+    {
+      "spellKey": "reincarnation",
+      "spellName": "Reincarnation",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "range": "10 ft",
+      "duration": "Permanent",
+      "effect": "Returns dead character as a new body/creature.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "resurrection,polymorph"
+      ],
+      "summary": "Restores life in a new form.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 18
+      }
+    },
+    {
+      "spellKey": "stone-to-flesh",
+      "spellName": "Stone to Flesh",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "range": "120 ft",
+      "duration": "Permanent",
+      "effect": "Restores petrified creature; reverse turns flesh to stone.",
+      "save": "spells negates reverse",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "petrification,reversible"
+      ],
+      "summary": "Reverses petrification; reverse petrifies a target.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Expert",
+        "sourceFile": "",
+        "sourcePage": 18
+      }
+    },
+    {
+      "spellKey": "delayed-blast-fire-ball",
+      "spellName": "Delayed Blast Fire Ball",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "range": "240 ft",
+      "duration": "0 to 60 rounds delay",
+      "effect": "Creates a delayed fire ball that explodes after a chosen delay, dealing up to 20d6 fire damage.",
+      "save": "spells half",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "fire,damage,area"
+      ],
+      "summary": "Fire ball with chosen detonation delay.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 22
+      }
+    },
+    {
+      "spellKey": "magic-door",
+      "spellName": "Magic Door",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "range": "10 ft",
+      "duration": "7 uses",
+      "effect": "Creates an invisible magical passage through up to 10 ft of nonliving material; reverse creates magic lock.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "movement,barrier,reversible"
+      ],
+      "summary": "Creates secret passage; reverse locks portal.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 22
+      }
+    },
+    {
+      "spellKey": "mass-invisibility",
+      "spellName": "Mass Invisibility",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "range": "240 ft",
+      "duration": "Permanent until broken",
+      "effect": "Makes many creatures or objects invisible within a 60 ft square area; reverse reveals invisibility.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "illusion,invisibility,reversible"
+      ],
+      "summary": "Grants invisibility to many targets.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 22
+      }
+    },
+    {
+      "spellKey": "power-word-stun",
+      "spellName": "Power Word Stun",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "range": "120 ft",
+      "duration": "2-12 or 1-6 rounds",
+      "effect": "Stuns one creature with 70 hp or fewer; lower hp targets are stunned longer.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "power-word,stun"
+      ],
+      "summary": "Stuns a low-hit-point target without save.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 22
+      }
+    },
+    {
+      "spellKey": "reverse-gravity",
+      "spellName": "Reverse Gravity",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "range": "90 ft",
+      "duration": "1/5 round",
+      "effect": "Causes creatures and objects in a 30 ft cube to fall upward, then fall back when gravity returns.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "gravity,damage,control"
+      ],
+      "summary": "Briefly reverses gravity in an area.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 22
+      }
+    },
+    {
+      "spellKey": "mass-charm",
+      "spellName": "Mass Charm",
+      "spellClass": "Magic-User",
+      "spellLevel": 8,
+      "range": "120 ft",
+      "duration": "Special",
+      "effect": "Charms multiple creatures with total levels or Hit Dice based on caster level; reverse removes charm.",
+      "save": "spells negates",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "charm,enchantment,reversible"
+      ],
+      "summary": "Charms many creatures at once.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 24
+      }
+    },
+    {
+      "spellKey": "symbol",
+      "spellName": "Symbol",
+      "spellClass": "Magic-User",
+      "spellLevel": 8,
+      "range": "Touch",
+      "duration": "Permanent until triggered",
+      "effect": "Creates a magical rune with one chosen effect triggered by reading, touching, or passing.",
+      "save": "special",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "rune,trap,magic"
+      ],
+      "summary": "Creates triggered magical symbol.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 25
+      }
+    },
+    {
+      "spellKey": "meteor-swarm",
+      "spellName": "Meteor Swarm",
+      "spellClass": "Magic-User",
+      "spellLevel": 9,
+      "range": "240 ft",
+      "duration": "Instantaneous",
+      "effect": "Creates four or eight fiery meteors that explode for heavy fire damage in selected areas.",
+      "save": "spells half",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "fire,damage,area"
+      ],
+      "summary": "Creates multiple explosive meteors.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 26
+      }
+    },
+    {
+      "spellKey": "power-word-kill",
+      "spellName": "Power Word Kill",
+      "spellClass": "Magic-User",
+      "spellLevel": 9,
+      "range": "120 ft",
+      "duration": "Instantaneous",
+      "effect": "Kills one or more creatures within hit point limits; no saving throw.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "power-word,death"
+      ],
+      "summary": "Kills low-hit-point targets without save.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 26
+      }
+    },
+    {
+      "spellKey": "cureall",
+      "spellName": "Cureall",
+      "spellClass": "Cleric",
+      "spellLevel": 6,
+      "range": "Touch",
+      "duration": "Permanent",
+      "effect": "Cures one major affliction or nearly all damage, leaving only 1-6 damage remaining.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "healing,restoration"
+      ],
+      "summary": "Cures one condition or nearly all wounds.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 13
+      }
+    },
+    {
+      "spellKey": "plant-door",
+      "spellName": "Plant Door",
+      "spellClass": "Druid",
+      "spellLevel": 4,
+      "range": "0",
+      "duration": "1 turn per level",
+      "effect": "Allows the druid to pass through trees and dense plant growth as if through a doorway.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "plants,movement"
+      ],
+      "summary": "Moves through plant matter.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 15
+      }
+    },
+    {
+      "spellKey": "pass-plant",
+      "spellName": "Pass Plant",
+      "spellClass": "Druid",
+      "spellLevel": 5,
+      "range": "0",
+      "duration": "Instantaneous",
+      "effect": "Short-range teleportation from one tree into another tree of the same type.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "plants,teleportation,movement"
+      ],
+      "summary": "Tree-to-tree teleport.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 16
+      }
+    },
+    {
+      "spellKey": "anti-animal-shell",
+      "spellName": "Anti-Animal Shell",
+      "spellClass": "Druid",
+      "spellLevel": 6,
+      "range": "0",
+      "duration": "1 turn per level",
+      "effect": "Personal invisible barrier blocks attacks from normal and giant animals and animal-intelligence creatures.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "animals,protection,barrier"
+      ],
+      "summary": "Blocks animal attacks around caster.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 16
+      }
+    },
+    {
+      "spellKey": "transport-through-plants",
+      "spellName": "Transport Through Plants",
+      "spellClass": "Druid",
+      "spellLevel": 6,
+      "range": "Infinite",
+      "duration": "Instantaneous",
+      "effect": "Long-range plant teleport; druid enters one living plant and exits another on the same plane.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "plants,teleportation,movement"
+      ],
+      "summary": "Long-range travel through living plants.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 16
+      }
+    },
+    {
+      "spellKey": "summon-weather",
+      "spellName": "Summon Weather",
+      "spellClass": "Druid",
+      "spellLevel": 6,
+      "range": "5 miles or more",
+      "duration": "6 turns per level",
+      "effect": "Summons weather appropriate to the climate and season over a broad area.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "weather,summoning"
+      ],
+      "summary": "Calls appropriate natural weather.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 16
+      }
+    },
+    {
+      "spellKey": "creeping-doom",
+      "spellName": "Creeping Doom",
+      "spellClass": "Druid",
+      "spellLevel": 7,
+      "range": "120 ft",
+      "duration": "1 round per level",
+      "effect": "Summons a swarm of insects that moves as directed and deals damage to creatures it engulfs.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "insects,damage,summoning"
+      ],
+      "summary": "Summons deadly insect swarm.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 16
+      }
+    },
+    {
+      "spellKey": "metal-to-wood",
+      "spellName": "Metal to Wood",
+      "spellClass": "Druid",
+      "spellLevel": 7,
+      "range": "120 ft",
+      "duration": "Permanent",
+      "effect": "Transforms metal items in the area into wood, affecting weapons, armor, and gear.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "transmutation,wood,metal"
+      ],
+      "summary": "Turns metal objects into wood.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 16
+      }
+    },
+    {
+      "spellKey": "weather-control",
+      "spellName": "Weather Control",
+      "spellClass": "Druid",
+      "spellLevel": 7,
+      "range": "0",
+      "duration": "Concentration",
+      "effect": "Allows the druid to choose and control local outdoor weather while concentrating.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "weather,control"
+      ],
+      "summary": "Controls outdoor weather.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 16
+      }
+    },
+    {
+      "spellKey": "contact-outer-plane",
+      "spellName": "Contact Outer Plane",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "range": "0",
+      "duration": "See spell",
+      "effect": "Contact an Outer Plane Immortal to ask 3-12 questions, risking insanity for better knowledge.",
+      "save": "special",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "divination,planar"
+      ],
+      "summary": "Ask questions of an Immortal with risk of insanity.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 20
+      }
+    },
+    {
+      "spellKey": "dissolve",
+      "spellName": "Dissolve",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "range": "120 ft",
+      "duration": "3-18 days",
+      "effect": "Turns up to 3,000 square ft of rock or soil into mud; reverse hardens mud to rock permanently.",
+      "save": "spells avoids reverse trapping",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "earth,transmutation,reversible"
+      ],
+      "summary": "Liquefies ground into mud; reverse hardens mud.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 20
+      }
+    },
+    {
+      "spellKey": "wall-of-stone",
+      "spellName": "Wall of Stone",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "range": "60 ft",
+      "duration": "Permanent",
+      "effect": "Creates a stone wall or shape that can be used as a barrier or structure.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "wall,earth,creation"
+      ],
+      "summary": "Creates permanent stone wall.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 22
+      }
+    },
+    {
+      "spellKey": "wall-of-iron",
+      "spellName": "Wall of Iron",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "range": "120 ft",
+      "duration": "Permanent",
+      "effect": "Creates a vertical iron wall that can block passage or topple to damage targets.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "wall,metal,creation"
+      ],
+      "summary": "Creates permanent iron wall.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 21
+      }
+    },
+    {
+      "spellKey": "weather-control",
+      "spellName": "Weather Control",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "range": "0",
+      "duration": "Concentration",
+      "effect": "Changes outdoor weather in a broad area while the caster concentrates.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "weather,control"
+      ],
+      "summary": "Controls outdoor weather.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 21
+      }
+    },
+    {
+      "spellKey": "charm-plant",
+      "spellName": "Charm Plant",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "range": "120 ft",
+      "duration": "Permanent until dispelled",
+      "effect": "Charms plant creatures or controls ordinary plant growth in an area.",
+      "save": "spells negates for plant creatures",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "plants,charm,control"
+      ],
+      "summary": "Controls plants or charms plant monsters.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 22
+      }
+    },
+    {
+      "spellKey": "create-normal-monsters",
+      "spellName": "Create Normal Monsters",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "range": "30 ft",
+      "duration": "1 turn",
+      "effect": "Creates normal monsters up to total Hit Dice equal to caster level; they obey commands then vanish.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "creation,summoning,monsters"
+      ],
+      "summary": "Creates temporary normal monsters.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 22
+      }
+    },
+    {
+      "spellKey": "lore",
+      "spellName": "Lore",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "range": "0",
+      "duration": "Permanent",
+      "effect": "Reveals detailed knowledge about one item, place, or person, with time required varying by familiarity.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "divination,knowledge"
+      ],
+      "summary": "Researches lore of an item, place, or person.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 22
+      }
+    },
+    {
+      "spellKey": "statue",
+      "spellName": "Statue",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "range": "0",
+      "duration": "2 turns per level",
+      "effect": "Caster may become a stone statue and return to normal once per round during the spell.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "transformation,defense"
+      ],
+      "summary": "Caster can shift into statue form.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 23
+      }
+    },
+    {
+      "spellKey": "summon-object",
+      "spellName": "Summon Object",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "range": "Infinite",
+      "duration": "Instantaneous",
+      "effect": "Summons one nonliving object from the caster's home to hand, if prepared and not blocked.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "summoning,utility"
+      ],
+      "summary": "Calls a prepared object to the caster.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 23
+      }
+    },
+    {
+      "spellKey": "sword",
+      "spellName": "Sword",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "range": "30 ft",
+      "duration": "1 round per level",
+      "effect": "Creates a magical sword of force that attacks as directed by the caster.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "force,damage,weapon"
+      ],
+      "summary": "Creates floating magical attacking sword.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 23
+      }
+    },
+    {
+      "spellKey": "teleport-any-object",
+      "spellName": "Teleport any Object",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "range": "Touch",
+      "duration": "Instantaneous",
+      "effect": "Teleports one object to a known destination; mishap chances apply by familiarity.",
+      "save": "special",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "teleportation,utility"
+      ],
+      "summary": "Teleports an object.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 23
+      }
+    },
+    {
+      "spellKey": "dance",
+      "spellName": "Dance",
+      "spellClass": "Magic-User",
+      "spellLevel": 8,
+      "range": "Touch",
+      "duration": "3 or more rounds",
+      "effect": "Forces one touched victim to dance helplessly, losing AC and saves while unable to act.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "enchantment,control"
+      ],
+      "summary": "Makes touched victim dance helplessly.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 24
+      }
+    },
+    {
+      "spellKey": "explosive-cloud",
+      "spellName": "Explosive Cloud",
+      "spellClass": "Magic-User",
+      "spellLevel": 8,
+      "range": "1 ft",
+      "duration": "6 turns",
+      "effect": "Creates a moving poisonous cloud that can also explode if touched by fire.",
+      "save": "poison special",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "cloud,poison,fire,damage"
+      ],
+      "summary": "Creates deadly cloud that may explode.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 24
+      }
+    },
+    {
+      "spellKey": "mind-barrier",
+      "spellName": "Mind Barrier",
+      "spellClass": "Magic-User",
+      "spellLevel": 8,
+      "range": "0",
+      "duration": "1 hour per level",
+      "effect": "Protects caster from ESP, crystal balls, and similar mind-reading or scrying; reverse opens mind to reading.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "mind,protection,reversible"
+      ],
+      "summary": "Blocks mental detection and scrying.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 24
+      }
+    },
+    {
+      "spellKey": "permanence",
+      "spellName": "Permanence",
+      "spellClass": "Magic-User",
+      "spellLevel": 8,
+      "range": "10 ft",
+      "duration": "Permanent until dispelled",
+      "effect": "Makes certain spell effects permanent, subject to restrictions and dispel magic.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "metamagic,permanence"
+      ],
+      "summary": "Makes eligible magic effects permanent.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 25
+      }
+    },
+    {
+      "spellKey": "polymorph-any-object",
+      "spellName": "Polymorph any Object",
+      "spellClass": "Magic-User",
+      "spellLevel": 8,
+      "range": "240 ft",
+      "duration": "Variable",
+      "effect": "Changes one object or creature into another form; duration depends on similarity.",
+      "save": "spells negates for creatures",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "transformation,polymorph"
+      ],
+      "summary": "Transforms almost any object or creature.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 25
+      }
+    },
+    {
+      "spellKey": "power-word-blind",
+      "spellName": "Power Word Blind",
+      "spellClass": "Magic-User",
+      "spellLevel": 8,
+      "range": "120 ft",
+      "duration": "1-4 days or 2-8 hours",
+      "effect": "Blinds one or more creatures with hit point limits; no saving throw.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "power-word,blindness"
+      ],
+      "summary": "Blinds targets by current hit points.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 25
+      }
+    },
+    {
+      "spellKey": "gate",
+      "spellName": "Gate",
+      "spellClass": "Magic-User",
+      "spellLevel": 9,
+      "range": "30 ft",
+      "duration": "Concentration or special",
+      "effect": "Opens a gate to another plane or calls a powerful creature; reverse closes a gate.",
+      "save": "special",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "planar,summoning,reversible"
+      ],
+      "summary": "Opens planar gate or calls entity.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 26
+      }
+    },
+    {
+      "spellKey": "maze",
+      "spellName": "Maze",
+      "spellClass": "Magic-User",
+      "spellLevel": 9,
+      "range": "60 ft",
+      "duration": "Variable",
+      "effect": "Banishes one creature into an extradimensional maze until it escapes after a time based on Intelligence.",
+      "save": "none",
+      "reversible": false,
+      "reverseName": "",
+      "tags": [
+        "banishment,control"
+      ],
+      "summary": "Traps target in extradimensional maze.",
+      "needsReview": true,
+      "confidence": 1,
+      "source": {
+        "sourceBook": "Companion",
+        "sourceFile": "",
+        "sourcePage": 26
+      }
+    }
+  ]
+}
