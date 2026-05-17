@@ -70,7 +70,11 @@ describe('spell import review', () => {
       ['truesight', 'Cleric', 5],
       ['aerial-servant', 'Cleric', 6],
       ['barrier', 'Cleric', 6],
-      ['create-normal-animals', 'Cleric', 6]
+      ['create-normal-animals', 'Cleric', 6],
+      ['cureall', 'Cleric', 7],
+      ['raise-dead-fully', 'Cleric', 7],
+      ['obscure', 'Druid', 2],
+      ['produce-fire', 'Druid', 2]
     ];
 
     const seed = JSON.parse(await fs.readFile(seedPath, 'utf8'));

@@ -529,7 +529,7 @@
       "needsDetails": true
     },
     {
-      "spellKey": "restore",
+      "spellKey": "cureall",
       "name": "Restore",
       "spellClass": "Cleric",
       "spellLevel": 7,
@@ -540,7 +540,7 @@
       "needsDetails": true
     },
     {
-      "spellKey": "resurrection",
+      "spellKey": "raise-dead-fully",
       "name": "Resurrection",
       "spellClass": "Cleric",
       "spellLevel": 7,
@@ -683,7 +683,7 @@
       "needsDetails": true
     },
     {
-      "spellKey": "obscurement",
+      "spellKey": "obscure",
       "name": "Obscurement",
       "spellClass": "Druid",
       "spellLevel": 2,
@@ -694,7 +694,7 @@
       "needsDetails": true
     },
     {
-      "spellKey": "produce-flame",
+      "spellKey": "produce-fire",
       "name": "Produce Flame",
       "spellClass": "Druid",
       "spellLevel": 2,
