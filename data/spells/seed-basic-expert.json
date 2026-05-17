@@ -320,17 +320,6 @@
       "needsDetails": true
     },
     {
-      "spellKey": "create-normal-animals",
-      "name": "Create Normal Animals",
-      "spellClass": "Cleric",
-      "spellLevel": 5,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
       "spellKey": "cure-critical-wounds",
       "name": "Cure Critical Wounds",
       "spellClass": "Cleric",
@@ -350,17 +339,6 @@
       "sourcePage": null,
       "reversible": false,
       "reverseName": null,
-      "needsDetails": true
-    },
-    {
-      "spellKey": "dispel-magic",
-      "name": "Dispel Magic",
-      "spellClass": "Cleric",
-      "spellLevel": 5,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
       "needsDetails": true
     },
     {
@@ -397,17 +375,6 @@
       "needsDetails": true
     },
     {
-      "spellKey": "remove-curse",
-      "name": "Remove Curse",
-      "spellClass": "Cleric",
-      "spellLevel": 5,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
       "spellKey": "truesight",
       "name": "Truesight",
       "spellClass": "Cleric",
@@ -421,17 +388,6 @@
     {
       "spellKey": "aerial-servant",
       "name": "Aerial Servant",
-      "spellClass": "Cleric",
-      "spellLevel": 6,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "animate-object",
-      "name": "Animate Object",
       "spellClass": "Cleric",
       "spellLevel": 6,
       "sourceBook": "Companion",
@@ -463,39 +419,6 @@
       "needsDetails": true
     },
     {
-      "spellKey": "find-the-path",
-      "name": "Find the Path",
-      "spellClass": "Cleric",
-      "spellLevel": 6,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "speak-with-monsters",
-      "name": "Speak With Monsters",
-      "spellClass": "Cleric",
-      "spellLevel": 6,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "word-of-recall",
-      "name": "Word of Recall",
-      "spellClass": "Cleric",
-      "spellLevel": 6,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
       "spellKey": "earthquake",
       "name": "Earthquake",
       "spellClass": "Cleric",
@@ -518,18 +441,7 @@
       "needsDetails": true
     },
     {
-      "spellKey": "part-water",
-      "name": "Part Water",
-      "spellClass": "Cleric",
-      "spellLevel": 7,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "cureall",
+      "spellKey": "restore",
       "name": "Restore",
       "spellClass": "Cleric",
       "spellLevel": 7,
@@ -544,28 +456,6 @@
       "name": "Resurrection",
       "spellClass": "Cleric",
       "spellLevel": 7,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "reversed-quest",
-      "name": "Reverse Quest",
-      "spellClass": "Cleric",
-      "spellLevel": 7,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "detect-danger",
-      "name": "Detect Danger",
-      "spellClass": "Druid",
-      "spellLevel": 1,
       "sourceBook": "Companion",
       "sourcePage": "",
       "reversible": false,
@@ -595,87 +485,10 @@
       "needsDetails": true
     },
     {
-      "spellKey": "pass-without-trace",
-      "name": "Pass Without Trace",
-      "spellClass": "Druid",
-      "spellLevel": 1,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
       "spellKey": "predict-weather",
       "name": "Predict Weather",
       "spellClass": "Druid",
       "spellLevel": 1,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "purify-water",
-      "name": "Purify Water",
-      "spellClass": "Druid",
-      "spellLevel": 1,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "shillelagh",
-      "name": "Shillelagh",
-      "spellClass": "Druid",
-      "spellLevel": 1,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "barkskin",
-      "name": "Barkskin",
-      "spellClass": "Druid",
-      "spellLevel": 2,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "charm-person-or-mammal",
-      "name": "Charm Person or Mammal",
-      "spellClass": "Druid",
-      "spellLevel": 2,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "create-water",
-      "name": "Create Water",
-      "spellClass": "Druid",
-      "spellLevel": 2,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "heat-metal",
-      "name": "Heat Metal",
-      "spellClass": "Druid",
-      "spellLevel": 2,
       "sourceBook": "Companion",
       "sourcePage": "",
       "reversible": false,
@@ -727,52 +540,8 @@
       "needsDetails": true
     },
     {
-      "spellKey": "cure-blindness",
-      "name": "Cure Blindness",
-      "spellClass": "Druid",
-      "spellLevel": 3,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "cure-disease",
-      "name": "Cure Disease",
-      "spellClass": "Druid",
-      "spellLevel": 3,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
       "spellKey": "hold-animal",
       "name": "Hold Animal",
-      "spellClass": "Druid",
-      "spellLevel": 3,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "plant-growth",
-      "name": "Plant Growth",
-      "spellClass": "Druid",
-      "spellLevel": 3,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "protection-from-fire",
-      "name": "Protection from Fire",
       "spellClass": "Druid",
       "spellLevel": 3,
       "sourceBook": "Companion",
@@ -793,41 +562,8 @@
       "needsDetails": true
     },
     {
-      "spellKey": "animal-summoning-i",
-      "name": "Animal Summoning I",
-      "spellClass": "Druid",
-      "spellLevel": 4,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
       "spellKey": "control-temperature-10-radius",
       "name": "Control Temperature 10' Radius",
-      "spellClass": "Druid",
-      "spellLevel": 4,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "cure-serious-wounds",
-      "name": "Cure Serious Wounds",
-      "spellClass": "Druid",
-      "spellLevel": 4,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "neutralize-poison",
-      "name": "Neutralize Poison",
       "spellClass": "Druid",
       "spellLevel": 4,
       "sourceBook": "Companion",
@@ -848,50 +584,6 @@
       "needsDetails": true
     },
     {
-      "spellKey": "speak-with-plants",
-      "name": "Speak with Plants",
-      "spellClass": "Druid",
-      "spellLevel": 4,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "stick-to-snakes",
-      "name": "Stick to Snakes",
-      "spellClass": "Druid",
-      "spellLevel": 4,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "animal-growth",
-      "name": "Animal Growth",
-      "spellClass": "Druid",
-      "spellLevel": 5,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "animal-summoning-ii",
-      "name": "Animal Summoning II",
-      "spellClass": "Druid",
-      "spellLevel": 5,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
       "spellKey": "anti-plant-shell",
       "name": "Anti-Plant Shell",
       "spellClass": "Druid",
@@ -903,41 +595,8 @@
       "needsDetails": true
     },
     {
-      "spellKey": "commune-with-nature",
-      "name": "Commune with Nature",
-      "spellClass": "Druid",
-      "spellLevel": 5,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
       "spellKey": "control-winds",
       "name": "Control Winds",
-      "spellClass": "Druid",
-      "spellLevel": 5,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "insect-plague",
-      "name": "Insect Plague",
-      "spellClass": "Druid",
-      "spellLevel": 5,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "transmute-rock-to-mud",
-      "name": "Transmute Rock to Mud",
       "spellClass": "Druid",
       "spellLevel": 5,
       "sourceBook": "Companion",
@@ -1706,17 +1365,6 @@
       "needsDetails": true
     },
     {
-      "spellKey": "instant-summons",
-      "name": "Instant Summons",
-      "spellClass": "Magic-User",
-      "spellLevel": 7,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
       "spellKey": "magic-door",
       "name": "Magic Door",
       "spellClass": "Magic-User",
@@ -1730,17 +1378,6 @@
     {
       "spellKey": "mass-invisibility",
       "name": "Mass Invisibility",
-      "spellClass": "Magic-User",
-      "spellLevel": 7,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "phase-door",
-      "name": "Phase Door",
       "spellClass": "Magic-User",
       "spellLevel": 7,
       "sourceBook": "Companion",
@@ -1772,85 +1409,8 @@
       "needsDetails": true
     },
     {
-      "spellKey": "simulacrum",
-      "name": "Simulacrum",
-      "spellClass": "Magic-User",
-      "spellLevel": 7,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "cloak-of-fear",
-      "name": "Cloak of Fear",
-      "spellClass": "Magic-User",
-      "spellLevel": 8,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "create-normal-monsters",
-      "name": "Create Normal Monsters",
-      "spellClass": "Magic-User",
-      "spellLevel": 8,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "incendiary-cloud",
-      "name": "Incendiary Cloud",
-      "spellClass": "Magic-User",
-      "spellLevel": 8,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
       "spellKey": "mass-charm",
       "name": "Mass Charm",
-      "spellClass": "Magic-User",
-      "spellLevel": 8,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "maze",
-      "name": "Maze",
-      "spellClass": "Magic-User",
-      "spellLevel": 8,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "mind-blank",
-      "name": "Mind Blank",
-      "spellClass": "Magic-User",
-      "spellLevel": 8,
-      "sourceBook": "Companion",
-      "sourcePage": "",
-      "reversible": false,
-      "reverseName": "",
-      "needsDetails": true
-    },
-    {
-      "spellKey": "permanency",
-      "name": "Permanency",
       "spellClass": "Magic-User",
       "spellLevel": 8,
       "sourceBook": "Companion",
@@ -1893,45 +1453,320 @@
       "needsDetails": true
     },
     {
-      "spellKey": "prismatic-wall",
-      "name": "Prismatic Wall",
-      "spellClass": "Magic-User",
-      "spellLevel": 9,
+      "spellKey": "cureall",
+      "name": "Cureall",
+      "spellClass": "Cleric",
+      "spellLevel": 6,
       "sourceBook": "Companion",
-      "sourcePage": "",
+      "sourcePage": 13,
       "reversible": false,
       "reverseName": "",
       "needsDetails": true
     },
     {
-      "spellKey": "shapechange",
-      "name": "Shapechange",
-      "spellClass": "Magic-User",
-      "spellLevel": 9,
+      "spellKey": "plant-door",
+      "name": "Plant Door",
+      "spellClass": "Druid",
+      "spellLevel": 4,
       "sourceBook": "Companion",
-      "sourcePage": "",
+      "sourcePage": 15,
       "reversible": false,
       "reverseName": "",
       "needsDetails": true
     },
     {
-      "spellKey": "time-stop",
-      "name": "Time Stop",
-      "spellClass": "Magic-User",
-      "spellLevel": 9,
+      "spellKey": "pass-plant",
+      "name": "Pass Plant",
+      "spellClass": "Druid",
+      "spellLevel": 5,
       "sourceBook": "Companion",
-      "sourcePage": "",
+      "sourcePage": 16,
       "reversible": false,
       "reverseName": "",
       "needsDetails": true
     },
     {
-      "spellKey": "wish",
-      "name": "Wish",
+      "spellKey": "anti-animal-shell",
+      "name": "Anti-Animal Shell",
+      "spellClass": "Druid",
+      "spellLevel": 6,
+      "sourceBook": "Companion",
+      "sourcePage": 16,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "transport-through-plants",
+      "name": "Transport Through Plants",
+      "spellClass": "Druid",
+      "spellLevel": 6,
+      "sourceBook": "Companion",
+      "sourcePage": 16,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "summon-weather",
+      "name": "Summon Weather",
+      "spellClass": "Druid",
+      "spellLevel": 6,
+      "sourceBook": "Companion",
+      "sourcePage": 16,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "creeping-doom",
+      "name": "Creeping Doom",
+      "spellClass": "Druid",
+      "spellLevel": 7,
+      "sourceBook": "Companion",
+      "sourcePage": 16,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "metal-to-wood",
+      "name": "Metal to Wood",
+      "spellClass": "Druid",
+      "spellLevel": 7,
+      "sourceBook": "Companion",
+      "sourcePage": 16,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "weather-control",
+      "name": "Weather Control",
+      "spellClass": "Druid",
+      "spellLevel": 7,
+      "sourceBook": "Companion",
+      "sourcePage": 16,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "contact-outer-plane",
+      "name": "Contact Outer Plane",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "sourceBook": "Companion",
+      "sourcePage": 20,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "dissolve",
+      "name": "Dissolve",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "sourceBook": "Companion",
+      "sourcePage": 20,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "wall-of-stone",
+      "name": "Wall of Stone",
+      "spellClass": "Magic-User",
+      "spellLevel": 5,
+      "sourceBook": "Companion",
+      "sourcePage": 22,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "wall-of-iron",
+      "name": "Wall of Iron",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "sourceBook": "Companion",
+      "sourcePage": 21,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "weather-control",
+      "name": "Weather Control",
+      "spellClass": "Magic-User",
+      "spellLevel": 6,
+      "sourceBook": "Companion",
+      "sourcePage": 21,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "charm-plant",
+      "name": "Charm Plant",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "sourceBook": "Companion",
+      "sourcePage": 22,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "create-normal-monsters",
+      "name": "Create Normal Monsters",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "sourceBook": "Companion",
+      "sourcePage": 22,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "lore",
+      "name": "Lore",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "sourceBook": "Companion",
+      "sourcePage": 22,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "statue",
+      "name": "Statue",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "sourceBook": "Companion",
+      "sourcePage": 23,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "summon-object",
+      "name": "Summon Object",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "sourceBook": "Companion",
+      "sourcePage": 23,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "sword",
+      "name": "Sword",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "sourceBook": "Companion",
+      "sourcePage": 23,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "teleport-any-object",
+      "name": "Teleport any Object",
+      "spellClass": "Magic-User",
+      "spellLevel": 7,
+      "sourceBook": "Companion",
+      "sourcePage": 23,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "dance",
+      "name": "Dance",
+      "spellClass": "Magic-User",
+      "spellLevel": 8,
+      "sourceBook": "Companion",
+      "sourcePage": 24,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "explosive-cloud",
+      "name": "Explosive Cloud",
+      "spellClass": "Magic-User",
+      "spellLevel": 8,
+      "sourceBook": "Companion",
+      "sourcePage": 24,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "mind-barrier",
+      "name": "Mind Barrier",
+      "spellClass": "Magic-User",
+      "spellLevel": 8,
+      "sourceBook": "Companion",
+      "sourcePage": 24,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "permanence",
+      "name": "Permanence",
+      "spellClass": "Magic-User",
+      "spellLevel": 8,
+      "sourceBook": "Companion",
+      "sourcePage": 25,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "polymorph-any-object",
+      "name": "Polymorph any Object",
+      "spellClass": "Magic-User",
+      "spellLevel": 8,
+      "sourceBook": "Companion",
+      "sourcePage": 25,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "power-word-blind",
+      "name": "Power Word Blind",
+      "spellClass": "Magic-User",
+      "spellLevel": 8,
+      "sourceBook": "Companion",
+      "sourcePage": 25,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "gate",
+      "name": "Gate",
       "spellClass": "Magic-User",
       "spellLevel": 9,
       "sourceBook": "Companion",
-      "sourcePage": "",
+      "sourcePage": 26,
+      "reversible": false,
+      "reverseName": "",
+      "needsDetails": true
+    },
+    {
+      "spellKey": "maze",
+      "name": "Maze",
+      "spellClass": "Magic-User",
+      "spellLevel": 9,
+      "sourceBook": "Companion",
+      "sourcePage": 26,
       "reversible": false,
       "reverseName": "",
       "needsDetails": true
