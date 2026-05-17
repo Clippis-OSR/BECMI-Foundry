@@ -4,12 +4,30 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
 const seedPath = path.resolve('data/spells/seed-basic-expert.json');
-const reviewDir = path.resolve('private/review');
+const reviewDir = path.resolve('data/spells/review');
 const reviewJsonPath = path.join(reviewDir, 'spells-review.json');
 const reviewWorkbookPath = path.join(reviewDir, 'spells-review-workbook.csv');
+const workbookHeader = 'spellKey,name,spellClass,spellLevel,sourceBook,sourcePage,range,duration,effect,save,tags,manualNotes,reviewed,pageVerified,suggestedSourcePage,suggestedRange,suggestedDuration,suggestedEffect,suggestedSave,suggestedTags,validationStatus,nextAction';
 
 async function readMaybe(file) {
   try { return await fs.readFile(file, 'utf8'); } catch { return undefined; }
+}
+function workbookRowForSeedRow(row, overrides = {}) {
+  const merged = {
+    spellKey: row.spellKey, name: row.name, spellClass: row.spellClass, spellLevel: row.spellLevel,
+    sourceBook: row.sourceBook, sourcePage: row.sourcePage ?? '',
+    range: '', duration: '', effect: '', save: '', tags: '', manualNotes: '',
+    reviewed: 'false', pageVerified: 'false',
+    suggestedSourcePage: '', suggestedRange: '', suggestedDuration: '', suggestedEffect: '', suggestedSave: '', suggestedTags: '',
+    validationStatus: 'pending', nextAction: 'fill details',
+    ...overrides
+  };
+  return [
+    merged.spellKey, merged.name, merged.spellClass, merged.spellLevel, merged.sourceBook, merged.sourcePage,
+    merged.range, merged.duration, merged.effect, merged.save, merged.tags, merged.manualNotes, merged.reviewed, merged.pageVerified,
+    merged.suggestedSourcePage, merged.suggestedRange, merged.suggestedDuration, merged.suggestedEffect, merged.suggestedSave, merged.suggestedTags,
+    merged.validationStatus, merged.nextAction
+  ].join(',');
 }
 
 describe('spell import review', () => {
@@ -36,8 +54,13 @@ describe('spell import review', () => {
     ];
 
     const workbook = [
-      'spellKey,name,spellClass,spellLevel,sourceBook,sourcePage,range,duration,effect,save,tags,manualNotes,reviewed,pageVerified,suggestedSourcePage,suggestedRange,suggestedDuration,suggestedEffect,suggestedSave,suggestedTags,validationStatus,nextAction',
-      'magic-missile,Magic Missile,Magic-User,1,Basic,,120ft,1turn,CreatesDarts,,combat|arcane,,true,true,42,120ft,1turn,CreatesDarts,none,combat|arcane,pending,fill details'
+      workbookHeader,
+      workbookRowForSeedRow(seed.spells[0], {
+        sourcePage: '',
+        range: '120ft', duration: '1turn', effect: 'CreatesDarts', save: '', tags: 'combat|arcane', manualNotes: '',
+        reviewed: 'true', pageVerified: 'true',
+        suggestedSourcePage: '42', suggestedRange: '120ft', suggestedDuration: '1turn', suggestedEffect: 'CreatesDarts', suggestedSave: 'none', suggestedTags: 'combat|arcane'
+      })
     ].join('\n');
 
     try {
@@ -71,7 +94,7 @@ describe('spell import review', () => {
       ['aerial-servant', 'Cleric', 6],
       ['barrier', 'Cleric', 6],
       ['create-normal-animals', 'Cleric', 6],
-      ['cureall', 'Cleric', 7],
+      ['cureall', 'Cleric', 6],
       ['raise-dead-fully', 'Cleric', 7],
       ['obscure', 'Druid', 2],
       ['produce-fire', 'Druid', 2]
@@ -89,12 +112,22 @@ describe('spell import review', () => {
       range: '', duration: '', effect: '', save: '', tags: [], manualNotes: '', pageVerified: false, reviewed: false
     }));
 
-    const workbookRows = companionKeys.map(([spellKey, spellClass, spellLevel]) =>
-      `${spellKey},${spellKey},${spellClass},${spellLevel},Companion,200,120ft,1turn,Test effect,none,companion,,false,true,200,120ft,1turn,Test effect,none,companion,pending,verify`
-    );
+    const workbookRows = seedRows.map((row) => {
+      const target = companionKeys.find(([spellKey, spellClass, spellLevel]) =>
+        row.spellKey === spellKey && row.spellClass === spellClass && Number(row.spellLevel) === spellLevel);
+      if (!target) return workbookRowForSeedRow(row);
+      return workbookRowForSeedRow(row, {
+        sourceBook: 'Companion',
+        sourcePage: '200',
+        range: '120ft', duration: '1turn', effect: 'Test effect', save: 'none', tags: 'companion', manualNotes: 'Companion canonical',
+        reviewed: 'true', pageVerified: 'true',
+        suggestedSourcePage: '200', suggestedRange: '120ft', suggestedDuration: '1turn', suggestedEffect: 'Test effect', suggestedSave: 'none', suggestedTags: 'companion',
+        validationStatus: 'ready', nextAction: 'ready'
+      });
+    });
 
     const workbook = [
-      'spellKey,name,spellClass,spellLevel,sourceBook,sourcePage,range,duration,effect,save,tags,manualNotes,reviewed,pageVerified,suggestedSourcePage,suggestedRange,suggestedDuration,suggestedEffect,suggestedSave,suggestedTags,validationStatus,nextAction',
+      workbookHeader,
       ...workbookRows
     ].join('\n');
 

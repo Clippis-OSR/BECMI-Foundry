@@ -4,9 +4,9 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
 const seedPath = path.resolve('data/spells/seed-basic-expert.json');
-const contextPath = path.resolve('private/review/spell-detail-context.json');
-const reviewJsonPath = path.resolve('private/review/spells-review.json');
-const reviewCsvPath = path.resolve('private/review/spells-review.csv');
+const contextPath = path.resolve('data/spells/review/spell-detail-context.json');
+const reviewJsonPath = path.resolve('data/spells/review/spells-review.json');
+const reviewCsvPath = path.resolve('data/spells/review/spells-review.csv');
 const unmatchedPath = path.resolve('private/generated/unmatched-description-candidates.json');
 
 async function readJsonMaybe(file) {
@@ -17,6 +17,8 @@ describe('review:spells guardrails', () => {
   it('uses seed rows as authoritative source and ignores OCR-only garbage rows', async () => {
     const originalSeed = await fs.readFile(seedPath, 'utf8');
     const originalContext = await readJsonMaybe(contextPath);
+    const originalReview = await readJsonMaybe(reviewJsonPath);
+    const originalReviewCsv = await fs.readFile(reviewCsvPath, 'utf8').catch(() => undefined);
     const originalUnmatched = await readJsonMaybe(unmatchedPath);
 
     const seedRows = [
@@ -35,6 +37,7 @@ describe('review:spells guardrails', () => {
       await fs.writeFile(seedPath, JSON.stringify({ spells: seedRows }, null, 2));
       await fs.mkdir(path.dirname(contextPath), { recursive: true });
       await fs.writeFile(contextPath, JSON.stringify(contexts, null, 2));
+      await fs.writeFile(reviewJsonPath, JSON.stringify([], null, 2));
 
       execFileSync('node', ['scripts/review-spells.mjs'], { encoding: 'utf8' });
 
@@ -53,6 +56,10 @@ describe('review:spells guardrails', () => {
       await fs.writeFile(seedPath, originalSeed);
       if (originalContext == null) await fs.rm(contextPath, { force: true });
       else await fs.writeFile(contextPath, JSON.stringify(originalContext, null, 2));
+      if (originalReview == null) await fs.rm(reviewJsonPath, { force: true });
+      else await fs.writeFile(reviewJsonPath, JSON.stringify(originalReview, null, 2));
+      if (originalReviewCsv == null) await fs.rm(reviewCsvPath, { force: true });
+      else await fs.writeFile(reviewCsvPath, originalReviewCsv);
       if (originalUnmatched == null) await fs.rm(unmatchedPath, { force: true });
       else await fs.writeFile(unmatchedPath, JSON.stringify(originalUnmatched, null, 2));
     }
