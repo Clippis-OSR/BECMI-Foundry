@@ -1,12 +1,17 @@
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import os from 'node:os';
 import { execFileSync } from 'node:child_process';
 
-const seedPath = path.resolve('data/spells/seed-basic-expert.json');
-const reviewDir = path.resolve('data/spells/review');
+const testRoot = fs.mkdtemp(path.join(os.tmpdir(), 'spell-import-review-'));
+const seedPath = path.resolve(await testRoot, 'data/spells/seed-basic-expert.json');
+const canonicalSeedPath = path.resolve('data/spells/seed-basic-expert.json');
+const reviewDir = path.resolve(await testRoot, 'data/spells/review');
 const reviewJsonPath = path.join(reviewDir, 'spells-review.json');
 const reviewWorkbookPath = path.join(reviewDir, 'spells-review-workbook.csv');
+const reviewCsvPath = path.join(reviewDir, 'spells-review.csv');
+const env = (overrides = {}) => ({ ...process.env, SPELLS_SEED_PATH: seedPath, SPELLS_REVIEW_DIR: reviewDir, SPELLS_REVIEW_JSON_PATH: reviewJsonPath, SPELLS_REVIEW_CSV_PATH: reviewCsvPath, SPELLS_REVIEW_WORKBOOK_PATH: reviewWorkbookPath, SPELLS_BACKUP_DIR: path.join(reviewDir, 'backups'), ...overrides });
 const workbookHeader = 'spellKey,name,spellClass,spellLevel,sourceBook,sourcePage,range,duration,effect,save,tags,manualNotes,reviewed,pageVerified,suggestedSourcePage,suggestedRange,suggestedDuration,suggestedEffect,suggestedSave,suggestedTags,validationStatus,nextAction';
 
 async function readMaybe(file) {
@@ -35,7 +40,7 @@ describe.sequential('spell import review', () => {
     const originalReviewJson = await readMaybe(reviewJsonPath);
     const originalWorkbook = await readMaybe(reviewWorkbookPath);
 
-    const seed = JSON.parse(await fs.readFile(seedPath, 'utf8'));
+    const seed = JSON.parse(await fs.readFile(canonicalSeedPath, 'utf8'));
     const seedRows = Array.isArray(seed) ? seed : seed.spells;
 
     const companionKeys = seedRows
@@ -72,10 +77,12 @@ describe.sequential('spell import review', () => {
 
     try {
       await fs.mkdir(reviewDir, { recursive: true });
+      await fs.mkdir(path.dirname(seedPath), { recursive: true });
+      await fs.writeFile(seedPath, JSON.stringify(seed, null, 2));
       await fs.writeFile(reviewJsonPath, JSON.stringify(existingReview, null, 2));
       await fs.writeFile(reviewWorkbookPath, workbook);
 
-      execFileSync('node', ['scripts/spell-import-review.mjs'], { encoding: 'utf8' });
+      execFileSync('node', ['scripts/spell-import-review.mjs'], { encoding: 'utf8', env: env() });
 
       const imported = JSON.parse(await fs.readFile(reviewJsonPath, 'utf8'));
       for (const [spellKey, spellClass, spellLevel] of companionKeys) {
@@ -109,7 +116,7 @@ describe.sequential('spell import review', () => {
       const before = await fs.readFile(reviewJsonPath, 'utf8');
       await fs.writeFile(reviewWorkbookPath, workbook);
 
-      expect(() => execFileSync('node', ['scripts/spell-import-review.mjs'], { encoding: 'utf8' })).toThrow();
+      expect(() => execFileSync('node', ['scripts/spell-import-review.mjs'], { encoding: 'utf8', env: env() })).toThrow();
 
       const after = await fs.readFile(reviewJsonPath, 'utf8');
       expect(after).toBe(before);
@@ -146,7 +153,7 @@ describe.sequential('spell import review', () => {
       await fs.writeFile(reviewJsonPath, JSON.stringify(existingReview, null, 2));
       await fs.writeFile(reviewWorkbookPath, workbook);
 
-      expect(() => execFileSync('node', ['scripts/spell-import-review.mjs'], { encoding: 'utf8' })).not.toThrow();
+      expect(() => execFileSync('node', ['scripts/spell-import-review.mjs'], { encoding: 'utf8', env: env() })).not.toThrow();
 
       const imported = JSON.parse(await fs.readFile(reviewJsonPath, 'utf8'));
       const row = imported.find((r) => `${r.spellKey}|${r.spellClass}|${r.spellLevel}` === 'cure-critical-wounds|Cleric|5');

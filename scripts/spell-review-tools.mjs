@@ -2,17 +2,18 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 export const PATHS = {
-  seed: path.resolve('data/spells/seed-basic-expert.json'),
-  reviewDir: path.resolve('data/spells/review'),
-  reviewJson: path.resolve('data/spells/review/spells-review.json'),
-  reviewCsv: path.resolve('data/spells/review/spells-review.csv'),
-  reviewWorkbookCsv: path.resolve('data/spells/review/spells-review-workbook.csv'),
-  context: path.resolve('data/spells/review/spell-detail-context.json'),
-  backupDir: path.resolve('data/spells/review/backups'),
-  legacyReviewDir: path.resolve('private/review'),
-  legacyReviewJson: path.resolve('private/review/spells-review.json'),
-  legacyReviewCsv: path.resolve('private/review/spells-review.csv'),
-  legacyReviewWorkbookCsv: path.resolve('private/review/spells-review-workbook.csv')
+  seed: path.resolve(process.env.SPELLS_SEED_PATH || 'data/spells/seed-basic-expert.json'),
+  reviewDir: path.resolve(process.env.SPELLS_REVIEW_DIR || 'data/spells/review'),
+  reviewJson: path.resolve(process.env.SPELLS_REVIEW_JSON_PATH || 'data/spells/review/spells-review.json'),
+  reviewCsv: path.resolve(process.env.SPELLS_REVIEW_CSV_PATH || 'data/spells/review/spells-review.csv'),
+  reviewWorkbookCsv: path.resolve(process.env.SPELLS_REVIEW_WORKBOOK_PATH || 'data/spells/review/spells-review-workbook.csv'),
+  context: path.resolve(process.env.SPELLS_CONTEXT_PATH || 'data/spells/review/spell-detail-context.json'),
+  backupDir: path.resolve(process.env.SPELLS_BACKUP_DIR || 'data/spells/review/backups'),
+  legacyReviewDir: path.resolve(process.env.SPELLS_LEGACY_REVIEW_DIR || 'private/review'),
+  legacyReviewJson: path.resolve(process.env.SPELLS_LEGACY_REVIEW_JSON_PATH || 'private/review/spells-review.json'),
+  legacyReviewCsv: path.resolve(process.env.SPELLS_LEGACY_REVIEW_CSV_PATH || 'private/review/spells-review.csv'),
+  legacyReviewWorkbookCsv: path.resolve(process.env.SPELLS_LEGACY_REVIEW_WORKBOOK_PATH || 'private/review/spells-review-workbook.csv'),
+  unmatchedCandidatesJson: path.resolve(process.env.SPELLS_UNMATCHED_CANDIDATES_PATH || 'private/generated/unmatched-description-candidates.json')
 };
 export const REVIEW_HEADER = ['spellKey','name','spellClass','spellLevel','sourceBook','sourcePage','reversible','reverseName','needsDetails','range','duration','effect','save','tags','manualNotes','pageVerified','reviewed','confidence','needsReview','suggestedSourcePage','suggestedRange','suggestedDuration','suggestedEffect','suggestedSave','suggestedTags','suggestedManualNotes','suggestedContextExcerpt'];
 export const ID_FIELDS=['spellKey','name','spellClass','spellLevel'];
