@@ -13,7 +13,7 @@ async function readJsonMaybe(file) {
   try { return JSON.parse(await fs.readFile(file, 'utf8')); } catch { return undefined; }
 }
 
-describe('review:spells guardrails', () => {
+describe.sequential('review:spells guardrails', () => {
   it('uses seed rows as authoritative source and ignores OCR-only garbage rows', async () => {
     const originalSeed = await fs.readFile(seedPath, 'utf8');
     const originalContext = await readJsonMaybe(contextPath);
