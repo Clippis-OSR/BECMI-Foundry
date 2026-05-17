@@ -23,7 +23,7 @@ describe.sequential('review:spells guardrails', () => {
 
     const seedRows = [
       { spellKey: 'magic-missile', name: 'Magic Missile', spellClass: 'Magic-User', spellLevel: 1, sourceBook: 'Basic', sourcePage: 42, reversible: false, reverseName: '', needsDetails: true },
-      { spellKey: 'light', name: 'Light', spellClass: 'Cleric', spellLevel: 1, sourceBook: 'Basic', sourcePage: 43, reversible: true, reverseName: 'Darkness', needsDetails: true }
+      { spellKey: 'cure-light-wounds', name: 'Cure Light Wounds', spellClass: 'Cleric', spellLevel: 1, sourceBook: 'Basic', sourcePage: 43, reversible: false, reverseName: '', needsDetails: true }
     ];
 
     const contexts = {
@@ -50,7 +50,7 @@ describe.sequential('review:spells guardrails', () => {
       expect(reviewRows.every((r) => r.spellKey !== 'druid')).toBe(true);
       expect(reviewCsv.includes('"druid"')).toBe(false);
       expect(reviewRows.find((r) => r.spellKey === 'magic-missile')?.suggestedRange).toBe('150 feet');
-      expect(reviewRows.find((r) => r.spellKey === 'light')?.suggestedRange).toBe('');
+      expect(reviewRows.find((r) => r.spellKey === 'cure-light-wounds')?.suggestedRange).toBe('');
       expect(unmatched.candidates.some((c) => c.spellKey === 'druid')).toBe(true);
     } finally {
       await fs.writeFile(seedPath, originalSeed);

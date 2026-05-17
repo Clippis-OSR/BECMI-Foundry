@@ -34,9 +34,16 @@ describe('seed-first spell workflow', () => {
 import { execFileSync } from 'node:child_process';
 
 it('build refuses unreviewed rows by default', async () => {
-  await fs.mkdir(path.resolve('private/review'), { recursive: true });
-  await fs.writeFile(path.resolve('private/review/spells-review.json'), JSON.stringify([{ spellKey: 'x', name: 'X', spellClass: 'Cleric', spellLevel: 1, range: 'r', duration: 'd', effect: 'e', reviewed: false }]));
-  expect(() => execFileSync('node', ['scripts/build-spells.mjs'], { encoding: 'utf8' })).toThrow();
+  const reviewPath = path.resolve('data/spells/review/spells-review.json');
+  const originalReview = await fs.readFile(reviewPath, 'utf8').catch(() => undefined);
+  try {
+    await fs.mkdir(path.dirname(reviewPath), { recursive: true });
+    await fs.writeFile(reviewPath, JSON.stringify([{ spellKey: 'x', name: 'X', spellClass: 'Cleric', spellLevel: 1, range: 'r', duration: 'd', effect: 'e', reviewed: false }]));
+    expect(() => execFileSync('node', ['scripts/build-spells.mjs'], { encoding: 'utf8' })).toThrow();
+  } finally {
+    if (originalReview == null) await fs.rm(reviewPath, { force: true });
+    else await fs.writeFile(reviewPath, originalReview);
+  }
 });
 
 it('seed generation creates one review row per seed spell', async () => {
