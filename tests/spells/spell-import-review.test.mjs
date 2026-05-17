@@ -60,4 +60,85 @@ describe('spell import review', () => {
       if (originalWorkbook == null) await fs.rm(reviewWorkbookPath, { force: true }); else await fs.writeFile(reviewWorkbookPath, originalWorkbook);
     }
   });
+
+  it('resolves Companion identities from canonical seed', async () => {
+    const originalReviewJson = await readMaybe(reviewJsonPath);
+    const originalWorkbook = await readMaybe(reviewWorkbookPath);
+
+    const companionKeys = [
+      ['cure-critical-wounds', 'Cleric', 5],
+      ['truesight', 'Cleric', 5],
+      ['aerial-servant', 'Cleric', 6],
+      ['barrier', 'Cleric', 6],
+      ['create-normal-animals', 'Cleric', 6]
+    ];
+
+    const seed = JSON.parse(await fs.readFile(seedPath, 'utf8'));
+    const seedRows = Array.isArray(seed) ? seed : seed.spells;
+    for (const [spellKey, spellClass, spellLevel] of companionKeys) {
+      expect(seedRows.some((r) => r.spellKey === spellKey && r.spellClass === spellClass && Number(r.spellLevel) === spellLevel)).toBe(true);
+    }
+
+    const existingReview = companionKeys.map(([spellKey, spellClass, spellLevel]) => ({
+      spellKey, name: spellKey, spellClass, spellLevel,
+      sourceBook: 'Companion', sourcePage: '', reversible: false, reverseName: '', needsDetails: true,
+      range: '', duration: '', effect: '', save: '', tags: [], manualNotes: '', pageVerified: false, reviewed: false
+    }));
+
+    const workbookRows = companionKeys.map(([spellKey, spellClass, spellLevel]) =>
+      `${spellKey},${spellKey},${spellClass},${spellLevel},Companion,200,120ft,1turn,Test effect,none,companion,,false,true,200,120ft,1turn,Test effect,none,companion,pending,verify`
+    );
+
+    const workbook = [
+      'spellKey,name,spellClass,spellLevel,sourceBook,sourcePage,range,duration,effect,save,tags,manualNotes,reviewed,pageVerified,suggestedSourcePage,suggestedRange,suggestedDuration,suggestedEffect,suggestedSave,suggestedTags,validationStatus,nextAction',
+      ...workbookRows
+    ].join('\n');
+
+    try {
+      await fs.mkdir(reviewDir, { recursive: true });
+      await fs.writeFile(reviewJsonPath, JSON.stringify(existingReview, null, 2));
+      await fs.writeFile(reviewWorkbookPath, workbook);
+
+      execFileSync('node', ['scripts/spell-import-review.mjs'], { encoding: 'utf8' });
+
+      const imported = JSON.parse(await fs.readFile(reviewJsonPath, 'utf8'));
+      expect(imported).toHaveLength(companionKeys.length);
+      expect(imported.every((r) => r.sourceBook === 'Companion')).toBe(true);
+      expect(imported.every((r) => r.sourcePage === '200')).toBe(true);
+    } finally {
+      if (originalReviewJson == null) await fs.rm(reviewJsonPath, { force: true }); else await fs.writeFile(reviewJsonPath, originalReviewJson);
+      if (originalWorkbook == null) await fs.rm(reviewWorkbookPath, { force: true }); else await fs.writeFile(reviewWorkbookPath, originalWorkbook);
+    }
+  });
+
+  it('does not write partial review JSON when workbook has unresolved rows', async () => {
+    const originalSeed = await readMaybe(seedPath);
+    const originalReviewJson = await readMaybe(reviewJsonPath);
+    const originalWorkbook = await readMaybe(reviewWorkbookPath);
+
+    const seed = { spells: [{ spellKey: 'known', name: 'Known', spellClass: 'Cleric', spellLevel: 5, sourceBook: 'Companion', sourcePage: 1, reversible: false, reverseName: '', needsDetails: true }] };
+    const existingReview = [{ spellKey: 'known', name: 'Known', spellClass: 'Cleric', spellLevel: 5, sourceBook: 'Companion', sourcePage: '', reversible: false, reverseName: '', needsDetails: true, range: '', duration: '', effect: '', save: '', tags: [], manualNotes: '', pageVerified: false, reviewed: false }];
+    const workbook = [
+      'spellKey,name,spellClass,spellLevel,sourceBook,sourcePage,range,duration,effect,save,tags,manualNotes,reviewed,pageVerified,suggestedSourcePage,suggestedRange,suggestedDuration,suggestedEffect,suggestedSave,suggestedTags,validationStatus,nextAction',
+      'unknown,Unknown,Cleric,5,Companion,200,120ft,1turn,Test effect,none,companion,,false,true,200,120ft,1turn,Test effect,none,companion,pending,verify'
+    ].join('\n');
+
+    try {
+      await fs.writeFile(seedPath, JSON.stringify(seed, null, 2));
+      await fs.mkdir(reviewDir, { recursive: true });
+      await fs.writeFile(reviewJsonPath, JSON.stringify(existingReview, null, 2));
+      const before = await fs.readFile(reviewJsonPath, 'utf8');
+      await fs.writeFile(reviewWorkbookPath, workbook);
+
+      expect(() => execFileSync('node', ['scripts/spell-import-review.mjs'], { encoding: 'utf8' })).toThrow();
+
+      const after = await fs.readFile(reviewJsonPath, 'utf8');
+      expect(after).toBe(before);
+    } finally {
+      if (originalSeed == null) await fs.rm(seedPath, { force: true }); else await fs.writeFile(seedPath, originalSeed);
+      if (originalReviewJson == null) await fs.rm(reviewJsonPath, { force: true }); else await fs.writeFile(reviewJsonPath, originalReviewJson);
+      if (originalWorkbook == null) await fs.rm(reviewWorkbookPath, { force: true }); else await fs.writeFile(reviewWorkbookPath, originalWorkbook);
+    }
+  });
+
 });
