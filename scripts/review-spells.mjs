@@ -13,7 +13,7 @@ async function main(){
  const byKey=new Map(contexts.filter(c=>seedKeys.has(rowKey(c))).map(c=>[rowKey(c),c]));
  const rows=merged.map(r=>{const c=byKey.get(rowKey(r)); return {...r,suggestedSourcePage:r.suggestedSourcePage??(c?.candidatePage??''),suggestedRange:r.suggestedRange??((c?.nearbyRangeLines||[])[0]||''),suggestedDuration:r.suggestedDuration??((c?.nearbyDurationLines||[])[0]||''),suggestedEffect:r.suggestedEffect??((c?.nearbyEffectLines||[])[0]||''),suggestedSave:r.suggestedSave??((c?.nearbySaveReferences||[])[0]||''),suggestedTags:r.suggestedTags??(c?.nearbyReverseWording?.length?'reverse':''),suggestedContextExcerpt:r.suggestedContextExcerpt??(c?.nearbyTextBlock||'')};});
  const ocrOnlyCandidates=contexts.filter(c=>!seedKeys.has(rowKey(c))).map(c=>({spellKey:c.spellKey||'',spellClass:c.spellClass||'',spellLevel:c.spellLevel??'',sourceBook:c.sourceBook||'',candidatePage:c.candidatePage??'',nearbyTextBlock:c.nearbyTextBlock||''}));
- const genDir=path.resolve('private/generated'); await fs.mkdir(genDir,{recursive:true}); await fs.writeFile(path.join(genDir,'unmatched-description-candidates.json'),JSON.stringify({createdAt:new Date().toISOString(),count:ocrOnlyCandidates.length,candidates:ocrOnlyCandidates},null,2));
+ const genDir=path.dirname(PATHS.unmatchedCandidatesJson); await fs.mkdir(genDir,{recursive:true}); await fs.writeFile(PATHS.unmatchedCandidatesJson,JSON.stringify({createdAt:new Date().toISOString(),count:ocrOnlyCandidates.length,candidates:ocrOnlyCandidates},null,2));
  await writeReview(rows);
  console.log(`review:spells wrote ${rows.length} seed-only rows with preserved review fields.`);
 }
