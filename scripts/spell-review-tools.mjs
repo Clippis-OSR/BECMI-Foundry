@@ -16,7 +16,12 @@ export const SAVE_ALLOWED = new Set(['none','manual','see text']);
 
 export const isEmpty=(v)=>v==null||String(v).trim()==='';
 export const normalizeTags=(v)=>Array.isArray(v)?v:String(v||'').split('|').map(s=>s.trim()).filter(Boolean);
-export const rowKey=(r)=>`${r.spellKey}|${r.spellClass}|${r.spellLevel}`;
+export const canonicalSpellIdentity=(r)=>({
+ spellKey:String(r?.spellKey??'').trim().toLowerCase(),
+ spellClass:String(r?.spellClass??'').trim(),
+ spellLevel:Number(r?.spellLevel)
+});
+export const rowKey=(r)=>{const c=canonicalSpellIdentity(r); return `${c.spellKey}|${c.spellClass}|${c.spellLevel}`;};
 export function suspiciousText(v){const s=String(v||''); return s.length>350||/\b(this spell|caster|target|saving throw)\b.{120,}/i.test(s)||/[[]{}\]]{3,}|\bLying Questions Insanity Knowing\b/i.test(s);}
 
 export async function loadSeedRows(){const raw=JSON.parse(await fs.readFile(PATHS.seed,'utf8')); return Array.isArray(raw)?raw:(raw.spells||[]);} 
@@ -47,4 +52,3 @@ export function parseArgs(argv){return Object.fromEntries(argv.filter(a=>a.start
 export function filterRows(rows, f){return rows.filter(r=>(!f.class||r.spellClass===f.class)&&(!f.level||Number(r.spellLevel)===Number(f.level))&&(!f.book||r.sourceBook===f.book));}
 export function missingFields(r){const m=[]; for(const f of ['sourcePage','range','duration','effect','save','tags','manualNotes']) if(isEmpty(r[f])) m.push(f); if(r.reviewed!==true) m.push('reviewed'); if(r.pageVerified!==true) m.push('pageVerified'); return m;}
 export function nextAction(r){const m=missingFields(r); if(!m.length) return 'Ready for build'; if(m.includes('sourcePage')) return 'Verify source page'; if(m.includes('range')||m.includes('duration')||m.includes('effect')||m.includes('save')) return 'Fill core details'; return 'Complete review flags';}
-

@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import { PATHS, loadReviewRows, backupReviewJson, writeReview, rowKey, normalizeTags } from './spell-review-tools.mjs';
+import { PATHS, loadReviewRows, loadSeedRows, backupReviewJson, writeReview, rowKey, normalizeTags, mergeSeedWithReview } from './spell-review-tools.mjs';
 
 const WORKBOOK_PATH = PATHS.reviewWorkbookCsv;
 const FIELDS = ['spellKey','name','spellClass','spellLevel','sourceBook','sourcePage','range','duration','effect','save','tags','manualNotes','reviewed','pageVerified','suggestedSourcePage','suggestedRange','suggestedDuration','suggestedEffect','suggestedSave','suggestedTags','validationStatus','nextAction'];
@@ -80,7 +80,9 @@ async function main(){
     return normalizeRow(obj);
   });
 
-  const existing=await loadReviewRows();
+  const seedRows=await loadSeedRows();
+  const existingReview=await loadReviewRows();
+  const existing=mergeSeedWithReview(seedRows, existingReview);
   const existingByKey=new Map(existing.map((r,i)=>[rowKey(r),i]));
   const out=existing.map(r=>({...r}));
 
