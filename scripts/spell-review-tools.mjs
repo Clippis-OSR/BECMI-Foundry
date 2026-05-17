@@ -6,6 +6,7 @@ export const PATHS = {
   reviewDir: path.resolve('private/review'),
   reviewJson: path.resolve('private/review/spells-review.json'),
   reviewCsv: path.resolve('private/review/spells-review.csv'),
+  reviewWorkbookCsv: path.resolve('private/review/spells-review-workbook.csv'),
   context: path.resolve('private/review/spell-detail-context.json'),
   backupDir: path.resolve('private/review/backups')
 };

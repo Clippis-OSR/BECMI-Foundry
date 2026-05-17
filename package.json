@@ -24,7 +24,8 @@
     "spell:validate-review": "node scripts/spell-validate-review.mjs",
     "spell:apply-suggestions": "node scripts/spell-apply-suggestions.mjs",
     "spell:export-review": "node scripts/spell-export-review.mjs",
-    "spell:inspect": "node scripts/inspect-spell.mjs"
+    "spell:inspect": "node scripts/inspect-spell.mjs",
+    "spell:import-review": "node scripts/spell-import-review.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",
