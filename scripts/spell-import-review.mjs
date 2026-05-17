@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import { PATHS, loadReviewRows, backupReviewJson, writeReview, rowKey, normalizeTags } from './spell-review-tools.mjs';
 
 const WORKBOOK_PATH = PATHS.reviewWorkbookCsv;
-const FIELDS = ['spellKey','name','spellClass','spellLevel','sourceBook','sourcePage','range','duration','effect','save','tags','manualNotes','reviewed','pageVerified'];
+const FIELDS = ['spellKey','name','spellClass','spellLevel','sourceBook','sourcePage','range','duration','effect','save','tags','manualNotes','reviewed','pageVerified','suggestedSourcePage','suggestedRange','suggestedDuration','suggestedEffect','suggestedSave','suggestedTags','validationStatus','nextAction'];
 
 function parseCsv(text){
   const rows=[]; let i=0; let cur=''; let row=[]; let inQ=false;
@@ -51,8 +51,17 @@ function normalizeRow(raw){
   r.manualNotes=String(r.manualNotes ?? '').trim();
   r.reviewed=toBool(r.reviewed);
   r.pageVerified=toBool(r.pageVerified);
+  r.suggestedSourcePage=String(r.suggestedSourcePage ?? '').trim();
+  r.suggestedRange=String(r.suggestedRange ?? '').trim();
+  r.suggestedDuration=String(r.suggestedDuration ?? '').trim();
+  r.suggestedEffect=String(r.suggestedEffect ?? '').trim();
+  r.suggestedSave=String(r.suggestedSave ?? '').trim().toLowerCase();
+  r.suggestedTags=normalizeTags(r.suggestedTags);
+  r.validationStatus=String(r.validationStatus ?? '').trim();
+  r.nextAction=String(r.nextAction ?? '').trim();
+
   const requiredForReview = [r.sourcePage, r.range, r.duration, r.effect, r.save, r.manualNotes].every((v) => String(v).trim() !== '');
-  if (!requiredForReview) r.reviewed=false;
+  if (r.reviewed && !requiredForReview) r.reviewed=false;
   if (!r.sourcePage) r.pageVerified=false;
   return r;
 }
