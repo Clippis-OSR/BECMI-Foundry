@@ -14,7 +14,7 @@ This pipeline reads locally stored, legally owned rulebook PDFs from `private/ru
    - Writes `private/generated/spells.raw.json`.
 2. `npm run review:spells`
    - Reads raw extraction.
-   - Writes `private/review/spells-review.json` and `.csv`.
+   - Writes `data/spells/review/spells-review.json` and `.csv`.
    - Existing review files are backed up automatically.
 3. `npm run build:spells`
    - Reads reviewed JSON.

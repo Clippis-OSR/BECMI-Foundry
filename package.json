@@ -15,7 +15,7 @@
     "build:spells": "node scripts/build-spells.mjs",
     "validate:spells": "node scripts/validate-spells.mjs",
     "debug:spells": "node scripts/debug-spells.mjs",
-    "clean:spell-review-backups": "find data/spells/review -maxdepth 1 -type f -name '*.bak.*' -delete",
+    "clean:spell-review-backups": "find data/spells/review/backups -maxdepth 1 -type f -name 'spells-review.*.json' -delete",
     "seed:spells": "node scripts/seed-spells.mjs",
     "assist:spell-details": "node scripts/assist-spell-details.mjs",
     "inspect:spell": "node scripts/inspect-spell.mjs",
@@ -25,7 +25,8 @@
     "spell:apply-suggestions": "node scripts/spell-apply-suggestions.mjs",
     "spell:export-review": "node scripts/spell-export-review.mjs",
     "spell:inspect": "node scripts/inspect-spell.mjs",
-    "spell:import-review": "node scripts/spell-import-review.mjs"
+    "spell:import-review": "node scripts/spell-import-review.mjs",
+    "ci:spell-pipeline": "npm run spell:validate-review && npm run build:spells && npm test"
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",
