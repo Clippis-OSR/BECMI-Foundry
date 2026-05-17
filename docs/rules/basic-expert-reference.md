@@ -523,3 +523,11 @@ Codex Guidance
 All future implementation prompts should include:
 
 "Use this document as the canonical Basic/Expert rules reference. Do not import AD&D, Rules Cyclopedia variants, OSR reinterpretations, or modern D&D assumptions unless explicitly requested."
+
+## Spellcasting UX Workflow (Basic/Expert)
+- The Character sheet **Magic** tab always renders and shows an explicit empty state for non-casters.
+- For enabled casters (Magic-User, Cleric, Elf), the tab presents by spell level: slot usage, known spell references where applicable, and prepared/memorized spells.
+- Casting from the sheet validates caster eligibility, prepared entry presence, and available slots before consuming runtime actor spellcasting state.
+- Canonical spell records remain immutable runtime references; gameplay casting updates actor system state only.
+- Active spell runtime summaries remain visible in the Magic tab when active runtimes are tracked.
+- Spell review workspace references should use `data/spells/review`.

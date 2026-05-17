@@ -447,10 +447,10 @@
 
 </div>
 
-{{#if system.derived.hasSpellcasting}}
 <div class="tab" data-group="primary" data-tab="magic">
 <hr>
 <h2>Spellcasting</h2>
+{{#if system.derived.hasSpellcasting}}
 {{#each spellcastingDerived as |casterData casterKey|}}
   {{#if casterData.enabled}}
   <section>
@@ -474,6 +474,10 @@
   </section>
   {{/if}}
 {{/each}}
+{{else}}
+<div><em>This character is not a spellcaster in Basic/Expert progression.</em></div>
+{{/if}}
+
 {{#if spellcastingDerived.activeSpells.length}}
 <h3>Active Spell Runtime</h3>
 <ul>
@@ -485,7 +489,6 @@
 <div><em>No active spell runtimes tracked.</em></div>
 {{/if}}
 </div>
-{{/if}}
 
 {{#if system.derived.hasTurnUndead}}
 <div class="tab" data-group="primary" data-tab="cleric">
