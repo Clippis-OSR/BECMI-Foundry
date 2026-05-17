@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import { PATHS, loadReviewRows, backupReviewJson, writeReview, rowKey } from './spell-review-tools.mjs';
+import { PATHS, loadReviewRows, backupReviewJson, writeReview, rowKey, normalizeTags } from './spell-review-tools.mjs';
 
 const WORKBOOK_PATH = PATHS.reviewWorkbookCsv;
 const FIELDS = ['spellKey','name','spellClass','spellLevel','sourceBook','sourcePage','range','duration','effect','save','tags','manualNotes','reviewed','pageVerified'];
@@ -37,9 +37,23 @@ function toBool(v){
 
 function normalizeRow(raw){
   const r={...raw};
+  r.spellKey=String(r.spellKey ?? '').trim();
+  r.name=String(r.name ?? '').trim();
+  r.spellClass=String(r.spellClass ?? '').trim();
   r.spellLevel=Number(r.spellLevel);
+  r.sourceBook=String(r.sourceBook ?? '').trim();
+  r.sourcePage=String(r.sourcePage ?? '').trim();
+  r.range=String(r.range ?? '').trim();
+  r.duration=String(r.duration ?? '').trim();
+  r.effect=String(r.effect ?? '').trim();
+  r.save=String(r.save ?? '').trim().toLowerCase();
+  r.tags=normalizeTags(r.tags);
+  r.manualNotes=String(r.manualNotes ?? '').trim();
   r.reviewed=toBool(r.reviewed);
   r.pageVerified=toBool(r.pageVerified);
+  const requiredForReview = [r.sourcePage, r.range, r.duration, r.effect, r.save, r.manualNotes].every((v) => String(v).trim() !== '');
+  if (!requiredForReview) r.reviewed=false;
+  if (!r.sourcePage) r.pageVerified=false;
   return r;
 }
 
