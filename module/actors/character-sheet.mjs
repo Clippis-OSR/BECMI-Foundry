@@ -22,7 +22,8 @@ import { importItemToActor } from "../items/item-importer.mjs";
 import { ensureActorEquipmentSlots, equipItem, unequipItem } from "../items/equipment-slots.mjs";
 import { BECMI_ENCUMBRANCE_RULES } from "../rules/encumbrance.mjs";
 import { buildInventoryDiagnosticsPresentation } from "../items/inventory-diagnostics-ui.mjs";
-import { buildSpellCastingContext, buildSpellDurationSummary, buildSpellEffectSummary, buildSpellManualResolutionNotes } from "../spells/spell-runtime.js";
+import { buildSpellCastingContext } from "../spells/spell-runtime.js";
+import { validateSpellCastState, applySpellCastToState, buildSpellCastChatContent } from "./spellcasting/spellcasting-cast.js";
 import { createActiveSpellRuntime, expireActiveSpell, dismissActiveSpell, suppressActiveSpell, restoreSuppressedSpell } from "../spells/active-spell-runtime.js";
 
 const DEBUG_INVENTORY = false;
@@ -614,9 +615,9 @@ export class BECMICharacterSheet extends ActorSheet {
     const index = Number(event.currentTarget?.dataset?.preparedIndex ?? -1);
     const system = foundry.utils.deepClone(this.actor.system ?? {});
     const caster = system?.spellcasting?.casters?.[casterKey];
-    const prepared = caster?.prepared?.[level];
-    if (!Array.isArray(prepared) || index < 0 || !prepared[index]) return;
-    const ref = prepared[index];
+    const validation = validateSpellCastState({ actor: this.actor, casterKey, level, preparedIndex: index });
+    if (!validation.ok) return ui.notifications?.warn(validation.reason);
+    const ref = validation.ref;
     const item = (ref.itemId && this.actor.items.get(ref.itemId)) || this.actor.items.find((i) => i.system?.spellKey === ref.spellKey);
     if (!item) return ui.notifications?.warn(`Cannot resolve spell ${ref.spellKey}.`);
 
@@ -629,8 +630,7 @@ export class BECMICharacterSheet extends ActorSheet {
     const castContext = buildSpellCastingContext({ spell: item, casterKey, castAs });
     const shouldTrack = await Dialog.confirm({ title: "Track Active Spell", content: `<p>Track <strong>${castContext.displayName}</strong> as active spell runtime?</p>` });
 
-    caster.slots[level].used = Math.min(Number(caster.slots[level].max) || 0, (Number(caster.slots[level].used) || 0) + 1);
-    if (casterKey !== "cleric") prepared.splice(index, 1);
+    applySpellCastToState({ system, casterKey, level, preparedIndex: index, shouldConsumePrepared: casterKey !== "cleric" });
 
     if (shouldTrack) {
       const active = createActiveSpellRuntime({ spell: item, casterActorId: this.actor.id, sourceItemUuid: item.uuid, reverseMode: castAs === "reversed" });
@@ -640,10 +640,7 @@ export class BECMICharacterSheet extends ActorSheet {
 
     await this.actor.update({ "system.spellcasting": system.spellcasting, "system.activeSpells": system.activeSpells ?? this.actor.system.activeSpells ?? [] });
 
-    const duration = buildSpellDurationSummary(castContext.duration);
-    const effect = buildSpellEffectSummary(castContext.runtime);
-    const notes = buildSpellManualResolutionNotes(castContext.runtime, casterKey);
-    const content = `<div class="becmi-spell-card"><h3>${this.actor.name} casts ${castContext.displayName}.</h3><p><strong>Caster:</strong> ${castContext.casterLabel}</p><p><strong>Range:</strong> ${effect.range || "See spell text"}</p><p><strong>Duration:</strong> ${duration.label}</p><p><strong>Save:</strong> ${effect.save}</p><p><strong>Area/Effect:</strong> ${effect.area || effect.text || "See spell text"}</p><p><strong>Track Active Spell:</strong> ${shouldTrack ? "Yes" : "No"}</p><ul>${notes.map((n) => `<li>Manual: ${n}</li>`).join("")}</ul></div>`;
+    const content = buildSpellCastChatContent({ actorName: this.actor.name, castContext, shouldTrack });
     await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: this.actor }), content });
   }
 
