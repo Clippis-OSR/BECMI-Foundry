@@ -3,12 +3,16 @@ import path from 'node:path';
 
 export const PATHS = {
   seed: path.resolve('data/spells/seed-basic-expert.json'),
-  reviewDir: path.resolve('private/review'),
-  reviewJson: path.resolve('private/review/spells-review.json'),
-  reviewCsv: path.resolve('private/review/spells-review.csv'),
-  reviewWorkbookCsv: path.resolve('private/review/spells-review-workbook.csv'),
-  context: path.resolve('private/review/spell-detail-context.json'),
-  backupDir: path.resolve('private/review/backups')
+  reviewDir: path.resolve('data/spells/review'),
+  reviewJson: path.resolve('data/spells/review/spells-review.json'),
+  reviewCsv: path.resolve('data/spells/review/spells-review.csv'),
+  reviewWorkbookCsv: path.resolve('data/spells/review/spells-review-workbook.csv'),
+  context: path.resolve('data/spells/review/spell-detail-context.json'),
+  backupDir: path.resolve('data/spells/review/backups'),
+  legacyReviewDir: path.resolve('private/review'),
+  legacyReviewJson: path.resolve('private/review/spells-review.json'),
+  legacyReviewCsv: path.resolve('private/review/spells-review.csv'),
+  legacyReviewWorkbookCsv: path.resolve('private/review/spells-review-workbook.csv')
 };
 export const REVIEW_HEADER = ['spellKey','name','spellClass','spellLevel','sourceBook','sourcePage','reversible','reverseName','needsDetails','range','duration','effect','save','tags','manualNotes','pageVerified','reviewed','confidence','needsReview','suggestedSourcePage','suggestedRange','suggestedDuration','suggestedEffect','suggestedSave','suggestedTags','suggestedManualNotes','suggestedContextExcerpt'];
 export const ID_FIELDS=['spellKey','name','spellClass','spellLevel'];
@@ -25,9 +29,41 @@ export const rowKey=(r)=>{const c=canonicalSpellIdentity(r); return `${c.spellKe
 export function suspiciousText(v){const s=String(v||''); return s.length>350||/\b(this spell|caster|target|saving throw)\b.{120,}/i.test(s)||/[[]{}\]]{3,}|\bLying Questions Insanity Knowing\b/i.test(s);}
 
 export async function loadSeedRows(){const raw=JSON.parse(await fs.readFile(PATHS.seed,'utf8')); return Array.isArray(raw)?raw:(raw.spells||[]);} 
-export async function loadReviewRows(){const raw=JSON.parse(await fs.readFile(PATHS.reviewJson,'utf8')); return Array.isArray(raw)?raw:[];}
-export async function backupReviewJson(){await fs.mkdir(PATHS.backupDir,{recursive:true}); const stamp=new Date().toISOString().replace(/[:.]/g,'-'); const out=path.join(PATHS.backupDir,`spells-review.${stamp}.json`); await fs.copyFile(PATHS.reviewJson,out); return out;}
-export async function writeReview(rows){await fs.mkdir(PATHS.reviewDir,{recursive:true}); await fs.writeFile(PATHS.reviewJson,JSON.stringify(rows,null,2)); await fs.writeFile(PATHS.reviewCsv,[REVIEW_HEADER.join(','),...rows.map(r=>REVIEW_HEADER.map(k=>JSON.stringify(r[k]??'')).join(','))].join('\n'));}
+async function readJsonIfExists(file){
+  try {
+    const raw = JSON.parse(await fs.readFile(file,'utf8'));
+    return Array.isArray(raw) ? raw : [];
+  } catch {
+    return null;
+  }
+}
+
+export async function loadReviewRows(){
+  const canonical = await readJsonIfExists(PATHS.reviewJson);
+  if (canonical) return canonical;
+  const legacy = await readJsonIfExists(PATHS.legacyReviewJson);
+  return legacy || [];
+}
+export async function backupReviewJson(){
+  const source = (await readJsonIfExists(PATHS.reviewJson)) ? PATHS.reviewJson : PATHS.legacyReviewJson;
+  await fs.mkdir(PATHS.backupDir,{recursive:true});
+  const stamp=new Date().toISOString().replace(/[:.]/g,'-');
+  const out=path.join(PATHS.backupDir,`spells-review.${stamp}.json`);
+  await fs.copyFile(source,out);
+  return out;
+}
+export async function writeReview(rows){
+  const csv=[REVIEW_HEADER.join(','),...rows.map(r=>REVIEW_HEADER.map(k=>JSON.stringify(r[k]??'')).join(','))].join('\n');
+  await fs.mkdir(PATHS.reviewDir,{recursive:true});
+  await fs.writeFile(PATHS.reviewJson,JSON.stringify(rows,null,2));
+  await fs.writeFile(PATHS.reviewCsv,csv);
+
+  try {
+    await fs.access(PATHS.legacyReviewDir);
+    await fs.writeFile(PATHS.legacyReviewJson,JSON.stringify(rows,null,2));
+    await fs.writeFile(PATHS.legacyReviewCsv,csv);
+  } catch {}
+}
 
 export function validateReview(seedRows, reviewRows){
  const errors=[]; const seedKeys=new Set(seedRows.map(rowKey));
